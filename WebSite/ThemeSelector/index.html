@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 اختيار الثيم - SASERP Theme Selector</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Theme Selector Styles -->
+    <link href="css/theme-selector.css" rel="stylesheet">
+</head>
+<body>
+    <div class="theme-selector-container">
+        <!-- Header -->
+        <header class="selector-header">
+            <h1><i class="fas fa-palette"></i> اختيار ثيم النظام</h1>
+            <p>اختر الثيم المفضل لك من مجموعة متنوعة من التصاميم المميزة</p>
+            <div class="current-theme-info">
+                <i class="fas fa-info-circle"></i>
+                <span>الثيم الحالي: </span>
+                <strong id="currentThemeName">سيتروس</strong>
+            </div>
+        </header>
+
+        <!-- Category Tabs -->
+        <nav class="category-tabs">
+            <button class="category-tab active" data-category="all">
+                <i class="fas fa-th"></i> جميع الثيمات
+            </button>
+            <button class="category-tab" data-category="classic">
+                <i class="fas fa-crown"></i> كلاسيكي
+            </button>
+            <button class="category-tab" data-category="modern">
+                <i class="fas fa-rocket"></i> حديث
+            </button>
+            <button class="category-tab" data-category="dark">
+                <i class="fas fa-moon"></i> داكن
+            </button>
+            <button class="category-tab" data-category="premium">
+                <i class="fas fa-star"></i> مميز
+            </button>
+        </nav>
+
+        <!-- Themes Content -->
+        <main class="themes-content">
+            <div class="themes-grid" id="themesGrid">
+                <!-- Themes will be loaded here by JavaScript -->
+            </div>
+        </main>
+
+        <!-- Preview Section -->
+        <section class="preview-section">
+            <div class="preview-container">
+                <h3 class="preview-title">
+                    <i class="fas fa-eye"></i> معاينة الثيم المحدد
+                </h3>
+                <div class="preview-demo" id="previewDemo">
+                    <div class="demo-element" id="demoHeader">
+                        <h4>رأس الصفحة</h4>
+                        <p>هذا مثال على شكل رأس الصفحة</p>
+                    </div>
+                    <div class="demo-element" id="demoCard">
+                        <h4>بطاقة</h4>
+                        <p>هذا مثال على شكل البطاقات</p>
+                    </div>
+                    <div class="demo-element" id="demoButton">
+                        <button class="btn btn-primary">زر أساسي</button>
+                    </div>
+                    <div class="demo-element" id="demoTable">
+                        <h4>جدول</h4>
+                        <p>مثال على شكل الجداول</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Buttons -->
+        <footer class="action-buttons">
+            <button class="btn btn-success" id="applyThemeBtn" disabled>
+                <i class="fas fa-check"></i> تطبيق الثيم
+            </button>
+            <button class="btn btn-secondary" id="previewBtn" disabled>
+                <i class="fas fa-eye"></i> معاينة مؤقتة
+            </button>
+            <a href="../Default.aspx" class="btn btn-secondary">
+                <i class="fas fa-arrow-right"></i> العودة للنظام
+            </a>
+            <button class="btn btn-primary" id="resetBtn">
+                <i class="fas fa-undo"></i> استعادة الافتراضي
+            </button>
+        </footer>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i>
+        <span id="successText">تم تطبيق الثيم بنجاح!</span>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/theme-selector.js"></script>
+    <script>
+        // Initialize theme selector when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.ThemeSelector) {
+                window.ThemeSelector.init();
+            }
+        });
+    </script>
+</body>
+</html>

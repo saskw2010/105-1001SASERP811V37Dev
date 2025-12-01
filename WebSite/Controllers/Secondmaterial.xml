@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Secondmaterial" conflictDetection="overwriteChanges" label="Secondmaterial" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Secondmaterial"."ID_comp" "ID_comp"
+	,"Secondmaterial"."CatgID" "CatgID"
+	,"Secondmaterial"."ID_USER" "ID_USER"
+	,"Secondmaterial"."ITEM" "ITEM"
+	,"Secondmaterial"."ITEME" "ITEME"
+	,"Secondmaterial"."Sup_No" "Sup_No"
+	,"Secondmaterial"."id1" "id1"
+	,"Secondmaterial"."id2" "id2"
+	,"Secondmaterial"."id3" "id3"
+	,"Secondmaterial"."id4" "id4"
+	,"Secondmaterial"."Description" "Description"
+	,"Secondmaterial"."Unit_No" "Unit_No"
+	,"Secondmaterial"."Itm_Pur" "Itm_Pur"
+	,"Secondmaterial"."Itm_COst" "Itm_COst"
+	,"Secondmaterial"."Itm_Sal1" "Itm_Sal1"
+	,"Secondmaterial"."Itm_Sal2" "Itm_Sal2"
+	,"Secondmaterial"."Itm_Othr" "Itm_Othr"
+	,"Secondmaterial"."Itm_size" "Itm_size"
+	,"Secondmaterial"."Itm_colr" "Itm_colr"
+	,"Secondmaterial"."Barcod1" "Barcod1"
+	,"Secondmaterial"."Barcod2" "Barcod2"
+	,"Secondmaterial"."combin" "combin"
+	,"Secondmaterial"."openblnc" "openblnc"
+	,"Secondmaterial"."talbhad" "talbhad"
+	,"Secondmaterial"."sarfhad" "sarfhad"
+	,"Secondmaterial"."notes" "notes"
+	,"Secondmaterial"."id5" "id5"
+	,"Secondmaterial"."id6" "id6"
+	,"Secondmaterial"."id7" "id7"
+from "dbo"."Secondmaterial" "Secondmaterial"
+]]></text>
+    </command>
+    <command id="ID_compIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID_comp" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ID_comp" type="Int64" allowNulls="false" label="ID comp" readOnly="true" showInSummary="true" />
+    <field name="CatgID" type="Int64" label="Catg#" showInSummary="true" />
+    <field name="ID_USER" type="String" label="Id User" length="50" showInSummary="true" />
+    <field name="ITEM" type="String" label="Item" length="255" showInSummary="true" />
+    <field name="ITEME" type="String" label="Iteme" length="255" showInSummary="true" />
+    <field name="Sup_No" type="Int64" label="Sup No" />
+    <field name="id1" type="Int64" label="Id1" />
+    <field name="id2" type="Int64" label="Id2" />
+    <field name="id3" type="Int64" label="Id3" />
+    <field name="id4" type="Int64" label="Id4" />
+    <field name="Description" type="String" allowQBE="false" allowSorting="false" label="Description" />
+    <field name="Unit_No" type="String" label="Unit No" length="50" />
+    <field name="Itm_Pur" type="Decimal" label="Itm Pur" />
+    <field name="Itm_COst" type="Double" label="Itm C Ost" />
+    <field name="Itm_Sal1" type="Double" label="Itm Sal1" />
+    <field name="Itm_Sal2" type="Double" label="Itm Sal2" />
+    <field name="Itm_Othr" type="String" label="Itm Othr" length="40" />
+    <field name="Itm_size" type="String" label="Itm size" length="50" />
+    <field name="Itm_colr" type="String" label="Itm colr" length="50" />
+    <field name="Barcod1" type="String" label="Barcod1" length="50" />
+    <field name="Barcod2" type="String" label="Barcod2" length="50" />
+    <field name="combin" type="Boolean" label="Combin" />
+    <field name="openblnc" type="Double" label="Openblnc" />
+    <field name="talbhad" type="Double" label="Talbhad" />
+    <field name="sarfhad" type="Double" label="Sarfhad" />
+    <field name="notes" type="String" label="Notes" length="255" />
+    <field name="id5" type="Int64" label="Id5" />
+    <field name="id6" type="Int64" label="Id6" />
+    <field name="id7" type="Int64" label="Id7" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Secondmaterial">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="ID_comp" columns="15" />
+        <dataField fieldName="CatgID" columns="15" />
+        <dataField fieldName="ID_USER" columns="50" />
+        <dataField fieldName="ITEM" />
+        <dataField fieldName="ITEME" />
+        <dataField fieldName="Sup_No" columns="15" />
+        <dataField fieldName="id1" columns="15" />
+        <dataField fieldName="id2" columns="15" />
+        <dataField fieldName="id3" columns="15" />
+        <dataField fieldName="id4" columns="15" />
+        <dataField fieldName="Description" rows="5" />
+        <dataField fieldName="Unit_No" columns="50" />
+        <dataField fieldName="Itm_Pur" columns="15" />
+        <dataField fieldName="Itm_COst" columns="15" />
+        <dataField fieldName="Itm_Sal1" columns="15" />
+        <dataField fieldName="Itm_Sal2" columns="15" />
+        <dataField fieldName="Itm_Othr" columns="40" />
+        <dataField fieldName="Itm_size" columns="50" />
+        <dataField fieldName="Itm_colr" columns="50" />
+        <dataField fieldName="Barcod1" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Secondmaterial">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Secondmaterial" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ID_comp" columns="15" />
+            <dataField fieldName="CatgID" columns="15" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="ITEME" />
+            <dataField fieldName="Sup_No" columns="15" />
+            <dataField fieldName="id1" columns="15" />
+            <dataField fieldName="id2" columns="15" />
+            <dataField fieldName="id3" columns="15" />
+            <dataField fieldName="id4" columns="15" />
+            <dataField fieldName="Description" rows="5" />
+            <dataField fieldName="Unit_No" columns="50" />
+            <dataField fieldName="Itm_Pur" columns="15" />
+            <dataField fieldName="Itm_COst" columns="15" />
+            <dataField fieldName="Itm_Sal1" columns="15" />
+            <dataField fieldName="Itm_Sal2" columns="15" />
+            <dataField fieldName="Itm_Othr" columns="40" />
+            <dataField fieldName="Itm_size" columns="50" />
+            <dataField fieldName="Itm_colr" columns="50" />
+            <dataField fieldName="Barcod1" columns="50" />
+            <dataField fieldName="Barcod2" columns="50" />
+            <dataField fieldName="combin" />
+            <dataField fieldName="openblnc" columns="15" />
+            <dataField fieldName="talbhad" columns="15" />
+            <dataField fieldName="sarfhad" columns="15" />
+            <dataField fieldName="notes" />
+            <dataField fieldName="id5" columns="15" />
+            <dataField fieldName="id6" columns="15" />
+            <dataField fieldName="id7" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Secondmaterial">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Secondmaterial" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CatgID" columns="15" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="ITEME" />
+            <dataField fieldName="Sup_No" columns="15" />
+            <dataField fieldName="id1" columns="15" />
+            <dataField fieldName="id2" columns="15" />
+            <dataField fieldName="id3" columns="15" />
+            <dataField fieldName="id4" columns="15" />
+            <dataField fieldName="Description" rows="5" />
+            <dataField fieldName="Unit_No" columns="50" />
+            <dataField fieldName="Itm_Pur" columns="15" />
+            <dataField fieldName="Itm_COst" columns="15" />
+            <dataField fieldName="Itm_Sal1" columns="15" />
+            <dataField fieldName="Itm_Sal2" columns="15" />
+            <dataField fieldName="Itm_Othr" columns="40" />
+            <dataField fieldName="Itm_size" columns="50" />
+            <dataField fieldName="Itm_colr" columns="50" />
+            <dataField fieldName="Barcod1" columns="50" />
+            <dataField fieldName="Barcod2" columns="50" />
+            <dataField fieldName="combin" />
+            <dataField fieldName="openblnc" columns="15" />
+            <dataField fieldName="talbhad" columns="15" />
+            <dataField fieldName="sarfhad" columns="15" />
+            <dataField fieldName="notes" />
+            <dataField fieldName="id5" columns="15" />
+            <dataField fieldName="id6" columns="15" />
+            <dataField fieldName="id7" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

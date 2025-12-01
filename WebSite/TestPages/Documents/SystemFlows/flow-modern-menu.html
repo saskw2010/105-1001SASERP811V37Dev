@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>System Flow – Modern Menu Drawer</title>
+  <style>
+    body{font-family:Arial, sans-serif; margin:20px; background:#f8fafc;}
+    h1{margin-bottom:8px;}
+    .meta{color:#555;margin-bottom:16px}
+    a{color:#2563eb}
+    .container{overflow:auto}
+    svg{max-width:100%; height:auto; background:#fff; border:1px solid #e5e7eb; border-radius:8px}
+    .node{fill:#ffffff; stroke:#0f172a; stroke-width:1.5}
+    .term{fill:#f1f5f9; stroke:#0f172a; stroke-width:1.5}
+    .edge{stroke:#334155; stroke-width:1.5; fill:none; marker-end:url(#arrow)}
+    .group{fill:#f8fafc; stroke:#cbd5e1; stroke-width:1}
+    text{font-size:12px; fill:#0f172a}
+    .small{font-size:11px; fill:#475569}
+  </style>
+</head>
+<body>
+  <h1>System Flow: Modern Menu Drawer</h1>
+  <div class="meta">Global.asax → Pages/MenuApi.aspx.vb → js/modern-menu-once.js → Drawer UI.</div>
+  <div class="container">
+    <svg viewBox="0 0 1100 780" role="img" aria-label="Modern menu drawer flow">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155" />
+        </marker>
+      </defs>
+
+      <!-- Left track: App start -->
+      <rect class="group" x="40" y="30" width="380" height="160" rx="8" />
+      <text x="230" y="50" text-anchor="middle" class="small">Application lifecycle</text>
+      <rect class="node" x="90" y="70" width="280" height="50" rx="6"/>
+      <text x="230" y="95" text-anchor="middle" dominant-baseline="middle">Global.asax Application_Start</text>
+      <rect class="node" x="90" y="140" width="280" height="50" rx="6"/>
+      <text x="230" y="165" text-anchor="middle" dominant-baseline="middle">App services initialized</text>
+      <path class="edge" d="M230,120 L230,140" />
+
+      <!-- Right track: User interaction to UI -->
+      <rect class="node" x="600" y="40" width="420" height="50" rx="6"/>
+      <text x="810" y="65" text-anchor="middle" dominant-baseline="middle">User clicks #menuToggleBtn</text>
+
+      <rect class="node" x="600" y="120" width="420" height="50" rx="6"/>
+      <text x="810" y="145" text-anchor="middle" dominant-baseline="middle">modern-menu-once.js: initModernMenuOnce</text>
+
+      <rect class="node" x="600" y="200" width="420" height="50" rx="6"/>
+      <text x="810" y="225" text-anchor="middle" dominant-baseline="middle">POST /Pages/MenuApi.aspx/GetMenuTree</text>
+
+      <rect class="node" x="600" y="280" width="420" height="50" rx="6"/>
+      <text x="810" y="305" text-anchor="middle" dominant-baseline="middle">MenuApi.aspx.vb GetMenuTree</text>
+
+      <rect class="node" x="600" y="360" width="420" height="50" rx="6"/>
+      <text x="810" y="385" text-anchor="middle" dominant-baseline="middle">Build nodes from SiteMap, trim by roles</text>
+
+      <rect class="node" x="600" y="440" width="420" height="50" rx="6"/>
+      <text x="810" y="465" text-anchor="middle" dominant-baseline="middle">Cache with CacheDependency(web.sitemap)</text>
+
+      <rect class="term" x="600" y="520" width="420" height="50" rx="6"/>
+      <text x="810" y="545" text-anchor="middle" dominant-baseline="middle">Return JSON { version, items[] }</text>
+
+      <rect class="node" x="600" y="600" width="420" height="50" rx="6"/>
+      <text x="810" y="625" text-anchor="middle" dominant-baseline="middle">Render tree UL/LI with icons and badges</text>
+
+      <rect class="node" x="600" y="680" width="420" height="50" rx="6"/>
+      <text x="810" y="705" text-anchor="middle" dominant-baseline="middle">Wire keyboard, focus trap, backdrop, esc</text>
+
+      <path class="edge" d="M810,90 L810,120" />
+      <path class="edge" d="M810,170 L810,200" />
+      <path class="edge" d="M810,250 L810,280" />
+      <path class="edge" d="M810,330 L810,360" />
+      <path class="edge" d="M810,410 L810,440" />
+      <path class="edge" d="M810,490 L810,520" />
+      <path class="edge" d="M810,570 L810,600" />
+      <path class="edge" d="M810,650 L810,680" />
+
+      <!-- Final UI bubble -->
+      <rect class="node" x="1060" y="680" width="0" height="0" rx="6"/>
+      <text x="1020" y="705" text-anchor="end" dominant-baseline="middle" class="small">Drawer visible with menu items</text>
+    </svg>
+
+    <div class="flow-links" style="margin-top:12px">
+      <strong>Related docs:</strong>
+      <ul style="margin:6px 0 0 18px">
+        <li><a href="../docs-html/README.html">App Overview</a></li>
+        <li><a href="../docs-html/files/Pages_MenuApi.aspx.vb.html">MenuApi.aspx.vb</a></li>
+        <li><a href="../docs-html/files/js_modern-menu-once.js.html">modern-menu-once.js</a></li>
+        <li><a href="../index.html#/files/css_modern-menu.css">modern-menu.css</a></li>
+      </ul>
+    </div>
+
+    <h3 style="margin-top:16px">Function Links</h3>
+    <table style="border-collapse:collapse; width:100%">
+      <thead>
+        <tr>
+          <th style="text-align:left;border-bottom:1px solid #e5e7eb;padding:6px 8px">Node</th>
+          <th style="text-align:left;border-bottom:1px solid #e5e7eb;padding:6px 8px">File</th>
+          <th style="text-align:left;border-bottom:1px solid #e5e7eb;padding:6px 8px">Function</th>
+          <th style="text-align:left;border-bottom:1px solid #e5e7eb;padding:6px 8px">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:6px 8px">A</td>
+          <td style="padding:6px 8px">Global.asax</td>
+          <td style="padding:6px 8px">Application_Start</td>
+          <td style="padding:6px 8px"><a href="../docs-html/files/Global.asax.html#function-Application_Start">../docs-html/files/Global.asax.html#function-Application_Start</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px">B</td>
+          <td style="padding:6px 8px">js/modern-menu-once.js</td>
+          <td style="padding:6px 8px">initModernMenuOnce</td>
+          <td style="padding:6px 8px"><a href="../docs-html/files/js_modern-menu-once.js.html#function-initModernMenuOnce">../docs-html/files/js_modern-menu-once.js.html#function-initModernMenuOnce</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px">C</td>
+          <td style="padding:6px 8px">Pages/MenuApi.aspx.vb</td>
+          <td style="padding:6px 8px">GetMenuTree</td>
+          <td style="padding:6px 8px"><a href="../docs-html/files/Pages_MenuApi.aspx.vb.html#function-GetMenuTree">../docs-html/files/Pages_MenuApi.aspx.vb.html#function-GetMenuTree</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px">D</td>
+          <td style="padding:6px 8px">Pages/MenuApi.aspx.vb</td>
+          <td style="padding:6px 8px">BuildNode</td>
+          <td style="padding:6px 8px"><a href="../docs-html/files/Pages_MenuApi.aspx.vb.html#function-BuildNode">../docs-html/files/Pages_MenuApi.aspx.vb.html#function-BuildNode</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px">E</td>
+          <td style="padding:6px 8px">Pages/MenuApi.aspx.vb</td>
+          <td style="padding:6px 8px">GetMenuVersion</td>
+          <td style="padding:6px 8px"><a href="../docs-html/files/Pages_MenuApi.aspx.vb.html#function-GetMenuVersion">../docs-html/files/Pages_MenuApi.aspx.vb.html#function-GetMenuVersion</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

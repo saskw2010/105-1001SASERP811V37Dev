@@ -1,0 +1,498 @@
+/* 🔧 Dashboard Fixes V2.1 - HIDE SIDEBAR + NO SCROLL + CLEAN UI */
+
+/* Main Container - FULL PAGE RESPONSIVE WITHOUT SCROLLBARS */
+html, body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+}
+
+.enterprise-dashboard-container {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+    min-height: 100vh !important;
+    max-height: none !important;
+    height: auto !important;
+    width: 100% !important;
+    padding: 10px !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    overflow: visible !important;
+    position: relative !important;
+    z-index: 1 !important;
+    box-sizing: border-box !important;
+}
+
+/* Dashboard Tabs Container */
+.dashboard-tabs-container {
+    background: white !important;
+    border-radius: 12px 12px 0 0 !important;
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.1) !important;
+    overflow: hidden !important;
+    margin-bottom: 0 !important;
+}
+
+/* Tabs Header - COMPACT */
+.tabs-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    text-align: center !important;
+    padding: 12px !important;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+.tabs-header h2 {
+    margin: 0 !important;
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+}
+
+/* Tab Navigation - SIMPLE HORIZONTAL */
+.enterprise-tabs {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: nowrap !important;
+    padding: 0 10px !important;
+    background: #f8fafc !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+    margin: 0 !important;
+    max-height: 45px !important;
+    /* HIDE SCROLLBAR COMPLETELY */
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.enterprise-tabs::-webkit-scrollbar {
+    display: none !important;
+}
+
+.enterprise-tabs .nav-item {
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+}
+
+.enterprise-tabs .nav-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 8px 16px !important;
+    color: #64748b !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    border: none !important;
+    border-bottom: 3px solid transparent !important;
+    background: none !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    min-width: 90px !important;
+    justify-content: center !important;
+    height: 40px !important;
+}
+
+.enterprise-tabs .nav-link:hover {
+    color: #3b82f6 !important;
+    background: rgba(59, 130, 246, 0.05) !important;
+    border-bottom-color: #93c5fd !important;
+    text-decoration: none !important;
+}
+
+.enterprise-tabs .nav-link.active {
+    color: #1e40af !important;
+    background: rgba(30, 64, 175, 0.08) !important;
+    border-bottom-color: #1e40af !important;
+    font-weight: 700 !important;
+}
+
+.enterprise-tabs .nav-link i {
+    font-size: 14px !important;
+    transition: transform 0.3s ease !important;
+}
+
+.enterprise-tabs .nav-link:hover i {
+    transform: scale(1.1) !important;
+}
+
+/* Tab Content - RESPONSIVE WITHOUT FIXED HEIGHT */
+.enterprise-tab-content {
+    background: white !important;
+    border-radius: 0 0 12px 12px !important;
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    min-height: 400px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.enterprise-tab-content::-webkit-scrollbar {
+    display: none !important;
+}
+
+.enterprise-tab-content::-webkit-scrollbar-track {
+    display: none !important;
+}
+
+.enterprise-tab-content::-webkit-scrollbar-thumb {
+    display: none !important;
+}
+
+/* Tab Panes - RESPONSIVE FULL HEIGHT */
+.tab-pane {
+    opacity: 0 !important;
+    transform: translateY(10px) !important;
+    transition: all 0.3s ease !important;
+    padding: 15px !important;
+    min-height: 400px !important;
+    height: auto !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+}
+
+.tab-pane.active {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Dashboard Layout - SIDEBAR HIDDEN */
+.dashboard-layout {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* HIDE SIDEBAR COMPLETELY */
+.dashboard-sidebar,
+.sidebar-toggle-btn {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+/* Main Content - FULL WIDTH ALWAYS */
+.dashboard-main-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    flex: 1 !important;
+}
+
+.dashboard-main-content.full-width {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Content Areas - OPTIMIZED */
+.original-dashboard-content {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.school-dashboard-section {
+    margin-bottom: 20px !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+    border: 1px solid rgba(99, 102, 241, 0.1) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+.current-menu-section {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+    border: 1px solid rgba(46, 204, 113, 0.1) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Section Headers - CLEAN */
+.section-header {
+    margin-bottom: 12px !important;
+    padding-bottom: 8px !important;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.1) !important;
+}
+
+.section-header h2 {
+    margin: 0 0 4px 0 !important;
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+    color: #475569 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.section-header h2 i {
+    color: #3498db !important;
+    font-size: 1.3rem !important;
+}
+
+.section-header p {
+    color: #64748b !important;
+    font-size: 0.9rem !important;
+    margin: 0 !important;
+}
+
+/* Navigation Section - COMPACT */
+.navigation-section {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.02), rgba(26, 188, 156, 0.02)) !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
+    border: 1px solid rgba(46, 204, 113, 0.08) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Container Responsive */
+.container.contenthome {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Tab Content Containers */
+.tab-content-container {
+    padding: 20px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 8px !important;
+    margin: 10px !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid rgba(148, 163, 184, 0.1) !important;
+    min-height: 300px !important;
+}
+
+.tab-header {
+    text-align: center !important;
+    margin-bottom: 20px !important;
+    padding-bottom: 15px !important;
+    border-bottom: 2px solid rgba(148, 163, 184, 0.1) !important;
+}
+
+.tab-header h2 {
+    color: #334155 !important;
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+}
+
+.tab-header p {
+    color: #64748b !important;
+    font-size: 1rem !important;
+    margin: 0 !important;
+}
+
+/* Placeholder Content */
+.placeholder-content {
+    text-align: center !important;
+    padding: 40px 20px !important;
+    color: #64748b !important;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05)) !important;
+    border-radius: 8px !important;
+    border: 2px dashed rgba(99, 102, 241, 0.2) !important;
+}
+
+.placeholder-content h3 {
+    color: #475569 !important;
+    margin-bottom: 10px !important;
+    font-size: 1.4rem !important;
+}
+
+.placeholder-content p {
+    margin-bottom: 5px !important;
+    font-size: 0.95rem !important;
+}
+
+/* REMOVE ALL TAB SCROLL BUTTONS - CRITICAL */
+.tab-scroll-wrapper,
+.tab-scroll-btn,
+.tab-scroll-left,
+.tab-scroll-right,
+.tab-scroll-button,
+.scroll-btn {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+/* Mobile Responsive - FULL CONTROL */
+@media (max-width: 768px) {
+    .enterprise-dashboard-container {
+        padding: 5px !important;
+        min-height: 100vh !important;
+        max-height: none !important;
+        height: auto !important;
+    }
+    
+    .tabs-header h2 {
+        font-size: 1.1rem !important;
+    }
+    
+    .enterprise-tabs .nav-link {
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+        min-width: 80px !important;
+    }
+    
+    .tab-content-container {
+        padding: 15px !important;
+        margin: 5px !important;
+        min-height: 300px !important;
+        height: auto !important;
+    }
+    
+    .tab-header h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    .enterprise-tab-content {
+        min-height: 300px !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .enterprise-dashboard-container {
+        padding: 2px !important;
+        min-height: 100vh !important;
+    }
+    
+    .enterprise-tabs .nav-link span {
+        display: none !important;
+    }
+    
+    .enterprise-tabs .nav-link {
+        min-width: 50px !important;
+        padding: 6px 8px !important;
+    }
+    
+    .tab-header h2 {
+        font-size: 1.3rem !important;
+        flex-direction: column !important;
+        gap: 5px !important;
+    }
+    
+    .tab-content-container {
+        padding: 10px !important;
+        margin: 2px !important;
+        min-height: 250px !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .enterprise-tabs,
+    .dashboard-sidebar,
+    .sidebar-toggle-btn {
+        display: none !important;
+    }
+    
+    .enterprise-dashboard-container {
+        max-height: none !important;
+        overflow: visible !important;
+    }
+}
+
+/* Focus States for Accessibility */
+.enterprise-tabs .nav-link:focus {
+    outline: 2px solid #3b82f6 !important;
+    outline-offset: 2px !important;
+    z-index: 10 !important;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tab-pane.show {
+    animation: fadeInUp 0.3s ease-out !important;
+}
+
+/* FORCE REMOVE ALL SCROLLBARS EVERYWHERE */
+.enterprise-dashboard-container,
+.enterprise-dashboard-container *,
+.dashboard-layout,
+.dashboard-layout *,
+.tab-content,
+.tab-content *,
+.tab-pane,
+.tab-pane * {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.enterprise-dashboard-container *::-webkit-scrollbar,
+.dashboard-layout *::-webkit-scrollbar,
+.tab-content *::-webkit-scrollbar,
+.tab-pane *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Ensure full page responsiveness */
+.enterprise-dashboard-container {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    flex-shrink: 0 !important;
+}
+
+.dashboard-tabs-container {
+    flex-shrink: 0 !important;
+}
+
+.enterprise-tab-content {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.tab-pane {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.original-dashboard-content,
+.tab-content-container {
+    flex-grow: 1 !important;
+    height: auto !important;
+    min-height: 0 !important;
+}

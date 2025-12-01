@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Machines" conflictDetection="overwriteChanges" label="Machines" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Machines"."ID" "ID"
+	,"Machines"."MachineAlias" "MachineAlias"
+	,"Machines"."ConnectType" "ConnectType"
+	,"Machines"."IP" "IP"
+	,"Machines"."SerialPort" "SerialPort"
+	,"Machines"."Port" "Port"
+	,"Machines"."Baudrate" "Baudrate"
+	,"Machines"."MachineNumber" "MachineNumber"
+	,"Machines"."IsHost" "IsHost"
+	,"Machines"."Enabled" "Enabled"
+	,"Machines"."CommPassword" "CommPassword"
+	,"Machines"."UILanguage" "UILanguage"
+	,"Machines"."DateFormat" "DateFormat"
+	,"Machines"."InOutRecordWarn" "InOutRecordWarn"
+	,"Machines"."Idle" "Idle"
+	,"Machines"."Voice" "Voice"
+	,"Machines"."managercount" "managercount"
+	,"Machines"."usercount" "usercount"
+	,"Machines"."fingercount" "fingercount"
+	,"Machines"."SecretCount" "SecretCount"
+	,"Machines"."FirmwareVersion" "FirmwareVersion"
+	,"Machines"."ProductType" "ProductType"
+	,"Machines"."LockControl" "LockControl"
+	,"Machines"."Purpose" "Purpose"
+	,"Machines"."ProduceKind" "ProduceKind"
+from "dbo"."Machines" "Machines"
+]]></text>
+    </command>
+    <command id="IDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ID" type="Int32" allowNulls="false" isPrimaryKey="true" label="Id" readOnly="true" />
+    <field name="MachineAlias" type="String" allowNulls="false" label="Machine Alias" length="20" showInSummary="true" />
+    <field name="ConnectType" type="Int32" allowNulls="false" label="Connect Type" showInSummary="true" />
+    <field name="IP" type="String" label="Ip" length="20" showInSummary="true" />
+    <field name="SerialPort" type="Int32" default="((1))" label="Serial Port" showInSummary="true" />
+    <field name="Port" type="Int32" default="((1))" label="Port" showInSummary="true" />
+    <field name="Baudrate" type="Int32" label="Baudrate" />
+    <field name="MachineNumber" type="Int32" allowNulls="false" default="((1))" label="Machine Number" />
+    <field name="IsHost" type="Boolean" label="Is Host" />
+    <field name="Enabled" type="Boolean" label="Enabled" />
+    <field name="CommPassword" type="String" label="Comm Password" length="12" />
+    <field name="UILanguage" type="Int16" default="((-1))" label="UI Language" />
+    <field name="DateFormat" type="Int16" default="((-1))" label="Date Format" />
+    <field name="InOutRecordWarn" type="Int16" default="((-1))" label="In Out Record Warn" />
+    <field name="Idle" type="Int16" default="((-1))" label="Idle" />
+    <field name="Voice" type="Int16" default="((-1))" label="Voice" />
+    <field name="managercount" type="Int16" default="((-1))" label="Managercount" />
+    <field name="usercount" type="Int16" default="((-1))" label="Usercount" />
+    <field name="fingercount" type="Int16" default="((-1))" label="Fingercount" />
+    <field name="SecretCount" type="Int16" default="((-1))" label="Secret Count" />
+    <field name="FirmwareVersion" type="String" label="Firmware Version" length="20" />
+    <field name="ProductType" type="String" label="Product Type" length="20" />
+    <field name="LockControl" type="Int16" default="((-1))" label="Lock Control" />
+    <field name="Purpose" type="Int16" default="((1))" label="Purpose" />
+    <field name="ProduceKind" type="Int32" default="((1))" label="Produce Kind" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Machines">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="MachineAlias" columns="20" />
+        <dataField fieldName="ConnectType" columns="15" />
+        <dataField fieldName="IP" columns="20" />
+        <dataField fieldName="SerialPort" columns="15" />
+        <dataField fieldName="Port" columns="15" />
+        <dataField fieldName="Baudrate" columns="15" />
+        <dataField fieldName="MachineNumber" columns="15" />
+        <dataField fieldName="IsHost" />
+        <dataField fieldName="Enabled" />
+        <dataField fieldName="UILanguage" columns="15" />
+        <dataField fieldName="DateFormat" columns="15" />
+        <dataField fieldName="InOutRecordWarn" columns="15" />
+        <dataField fieldName="Idle" columns="15" />
+        <dataField fieldName="Voice" columns="15" />
+        <dataField fieldName="managercount" columns="15" />
+        <dataField fieldName="usercount" columns="15" />
+        <dataField fieldName="fingercount" columns="15" />
+        <dataField fieldName="SecretCount" columns="15" />
+        <dataField fieldName="FirmwareVersion" columns="20" />
+        <dataField fieldName="ProductType" columns="20" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Machines">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Machines" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="MachineAlias" columns="20" />
+            <dataField fieldName="ConnectType" columns="15" />
+            <dataField fieldName="IP" columns="20" />
+            <dataField fieldName="SerialPort" columns="15" />
+            <dataField fieldName="Port" columns="15" />
+            <dataField fieldName="Baudrate" columns="15" />
+            <dataField fieldName="MachineNumber" columns="15" />
+            <dataField fieldName="IsHost" />
+            <dataField fieldName="Enabled" />
+            <dataField fieldName="CommPassword" columns="12" />
+            <dataField fieldName="UILanguage" columns="15" />
+            <dataField fieldName="DateFormat" columns="15" />
+            <dataField fieldName="InOutRecordWarn" columns="15" />
+            <dataField fieldName="Idle" columns="15" />
+            <dataField fieldName="Voice" columns="15" />
+            <dataField fieldName="managercount" columns="15" />
+            <dataField fieldName="usercount" columns="15" />
+            <dataField fieldName="fingercount" columns="15" />
+            <dataField fieldName="SecretCount" columns="15" />
+            <dataField fieldName="FirmwareVersion" columns="20" />
+            <dataField fieldName="ProductType" columns="20" />
+            <dataField fieldName="LockControl" columns="15" />
+            <dataField fieldName="Purpose" columns="15" />
+            <dataField fieldName="ProduceKind" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Machines">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Machines" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="MachineAlias" columns="20" />
+            <dataField fieldName="ConnectType" columns="15" />
+            <dataField fieldName="IP" columns="20" />
+            <dataField fieldName="SerialPort" columns="15" />
+            <dataField fieldName="Port" columns="15" />
+            <dataField fieldName="Baudrate" columns="15" />
+            <dataField fieldName="MachineNumber" columns="15" />
+            <dataField fieldName="IsHost" />
+            <dataField fieldName="Enabled" />
+            <dataField fieldName="CommPassword" columns="12" />
+            <dataField fieldName="UILanguage" columns="15" />
+            <dataField fieldName="DateFormat" columns="15" />
+            <dataField fieldName="InOutRecordWarn" columns="15" />
+            <dataField fieldName="Idle" columns="15" />
+            <dataField fieldName="Voice" columns="15" />
+            <dataField fieldName="managercount" columns="15" />
+            <dataField fieldName="usercount" columns="15" />
+            <dataField fieldName="fingercount" columns="15" />
+            <dataField fieldName="SecretCount" columns="15" />
+            <dataField fieldName="FirmwareVersion" columns="20" />
+            <dataField fieldName="ProductType" columns="20" />
+            <dataField fieldName="LockControl" columns="15" />
+            <dataField fieldName="Purpose" columns="15" />
+            <dataField fieldName="ProduceKind" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

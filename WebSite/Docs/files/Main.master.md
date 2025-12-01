@@ -1,0 +1,10 @@
+# File: Main.master
+
+- Cleaned inline CSS/JS; references css/modern-menu.css and js/modern-menu-once.js.
+- Hosts ModernMenuHost drawer and single #menuToggleBtn. Legacy PageMenuBar remains hidden for compatibility.
+- Uses ToolkitScriptManager, SiteMapDataSource, aquarium:MenuExtender (legacy hidden).
+
+### Function: Page_Load
+- Signature: Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
+- Purpose: Wire master-level behaviors and ensure menu toggle presence.
+- Called by: ASP.NET runtime on each request.

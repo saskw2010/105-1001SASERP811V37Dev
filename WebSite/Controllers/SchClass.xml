@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="SchClass" conflictDetection="overwriteChanges" label="Sch Class" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"SchClass"."schClassid" "schClassid"
+	,"SchClass"."schName" "schName"
+	,"SchClass"."StartTime" "StartTime"
+	,"SchClass"."EndTime" "EndTime"
+	,"SchClass"."LateMinutes" "LateMinutes"
+	,"SchClass"."EarlyMinutes" "EarlyMinutes"
+	,"SchClass"."CheckIn" "CheckIn"
+	,"SchClass"."CheckOut" "CheckOut"
+	,"SchClass"."CheckInTime1" "CheckInTime1"
+	,"SchClass"."CheckInTime2" "CheckInTime2"
+	,"SchClass"."CheckOutTime1" "CheckOutTime1"
+	,"SchClass"."CheckOutTime2" "CheckOutTime2"
+	,"SchClass"."Color" "Color"
+	,"SchClass"."AutoBind" "AutoBind"
+	,"SchClass"."WorkDay" "WorkDay"
+	,"SchClass"."SensorID" "SensorID"
+	,"SchClass"."WorkMins" "WorkMins"
+from "dbo"."SchClass" "SchClass"
+]]></text>
+    </command>
+    <command id="schClassidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="schClassid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="schClassid" type="Int32" allowNulls="false" isPrimaryKey="true" label="sch Classid" readOnly="true" />
+    <field name="schName" type="String" allowNulls="false" label="sch Name" length="20" showInSummary="true" />
+    <field name="StartTime" type="DateTime" allowNulls="false" label="Start Time" showInSummary="true" />
+    <field name="EndTime" type="DateTime" allowNulls="false" label="End Time" showInSummary="true" />
+    <field name="LateMinutes" type="Int32" label="Late Minutes" showInSummary="true" />
+    <field name="EarlyMinutes" type="Int32" label="Early Minutes" showInSummary="true" />
+    <field name="CheckIn" type="Int32" default="((1))" label="Check In" />
+    <field name="CheckOut" type="Int32" default="((1))" label="Check Out" />
+    <field name="CheckInTime1" type="String" label="Check In Time1" />
+    <field name="CheckInTime2" type="String" label="Check In Time2" />
+    <field name="CheckOutTime1" type="String" label="Check Out Time1" />
+    <field name="CheckOutTime2" type="String" label="Check Out Time2" />
+    <field name="Color" type="Int32" default="((16715535))" label="Color" />
+    <field name="AutoBind" type="Int16" default="((1))" label="Auto Bind" />
+    <field name="WorkDay" type="Double" default="((1))" label="Work Day" />
+    <field name="SensorID" type="String" label="Sensor#" length="5" />
+    <field name="WorkMins" type="Double" default="((0))" label="Work Mins" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Sch Class">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="schName" columns="20" />
+        <dataField fieldName="StartTime" dataFormatString="t" columns="10" />
+        <dataField fieldName="EndTime" dataFormatString="t" columns="10" />
+        <dataField fieldName="LateMinutes" columns="15" />
+        <dataField fieldName="EarlyMinutes" columns="15" />
+        <dataField fieldName="CheckIn" columns="15" />
+        <dataField fieldName="CheckOut" columns="15" />
+        <dataField fieldName="CheckInTime1" dataFormatString="t" columns="10" />
+        <dataField fieldName="CheckInTime2" dataFormatString="t" columns="10" />
+        <dataField fieldName="CheckOutTime1" dataFormatString="t" columns="10" />
+        <dataField fieldName="CheckOutTime2" dataFormatString="t" columns="10" />
+        <dataField fieldName="Color" columns="15" />
+        <dataField fieldName="AutoBind" columns="15" />
+        <dataField fieldName="WorkDay" columns="15" />
+        <dataField fieldName="SensorID" columns="5" />
+        <dataField fieldName="WorkMins" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Sch Class">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Sch Class" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="schName" columns="20" />
+            <dataField fieldName="StartTime" dataFormatString="t" columns="10" />
+            <dataField fieldName="EndTime" dataFormatString="t" columns="10" />
+            <dataField fieldName="LateMinutes" columns="15" />
+            <dataField fieldName="EarlyMinutes" columns="15" />
+            <dataField fieldName="CheckIn" columns="15" />
+            <dataField fieldName="CheckOut" columns="15" />
+            <dataField fieldName="CheckInTime1" dataFormatString="t" columns="10" />
+            <dataField fieldName="CheckInTime2" dataFormatString="t" columns="10" />
+            <dataField fieldName="CheckOutTime1" dataFormatString="t" columns="10" />
+            <dataField fieldName="CheckOutTime2" dataFormatString="t" columns="10" />
+            <dataField fieldName="Color" columns="15" />
+            <dataField fieldName="AutoBind" columns="15" />
+            <dataField fieldName="WorkDay" columns="15" />
+            <dataField fieldName="SensorID" columns="5" />
+            <dataField fieldName="WorkMins" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Sch Class">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Sch Class" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="schName" columns="20" />
+            <dataField fieldName="StartTime" dataFormatString="t" columns="10" />
+            <dataField fieldName="EndTime" dataFormatString="t" columns="10" />
+            <dataField fieldName="LateMinutes" columns="15" />
+            <dataField fieldName="EarlyMinutes" columns="15" />
+            <dataField fieldName="CheckIn" columns="15" />
+            <dataField fieldName="CheckOut" columns="15" />
+            <dataField fieldName="CheckInTime1" dataFormatString="t" columns="10" />
+            <dataField fieldName="CheckInTime2" dataFormatString="t" columns="10" />
+            <dataField fieldName="CheckOutTime1" dataFormatString="t" columns="10" />
+            <dataField fieldName="CheckOutTime2" dataFormatString="t" columns="10" />
+            <dataField fieldName="Color" columns="15" />
+            <dataField fieldName="AutoBind" columns="15" />
+            <dataField fieldName="WorkDay" columns="15" />
+            <dataField fieldName="SensorID" columns="5" />
+            <dataField fieldName="WorkMins" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

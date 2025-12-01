@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="schregacdmicold" conflictDetection="overwriteChanges" label="Schregacdmicold" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"schregacdmicold"."regacdmic" "regacdmic"
+	,"schregacdmicold"."transdate" "transdate"
+	,"schregacdmicold"."acdcode" "acdcode"
+	,"schregacdmicold"."schtrnsid" "schtrnsid"
+	,"schregacdmicold"."StudentCode" "StudentCode"
+	,"schregacdmicold"."branch" "branch"
+	,"schregacdmicold"."Stage" "Stage"
+	,"schregacdmicold"."GradeCode" "GradeCode"
+	,"schregacdmicold"."Class" "Class"
+	,"schregacdmicold"."schstatus_code" "schstatus_code"
+	,"schregacdmicold"."schstudenttypid" "schstudenttypid"
+	,"schregacdmicold"."Cntry_No1" "Cntry_No1"
+	,"schregacdmicold"."Cntry_No2" "Cntry_No2"
+	,"schregacdmicold"."state" "state"
+	,"schregacdmicold"."area" "area"
+	,"schregacdmicold"."blockno" "blockno"
+	,"schregacdmicold"."streetno" "streetno"
+	,"schregacdmicold"."gadah" "gadah"
+	,"schregacdmicold"."houseno" "houseno"
+	,"schregacdmicold"."addressdetail" "addressdetail"
+	,"schregacdmicold"."EmergencyTelNo1" "EmergencyTelNo1"
+	,"schregacdmicold"."mothercase" "mothercase"
+	,"schregacdmicold"."fathercase" "fathercase"
+	,"schregacdmicold"."socialstatus" "socialstatus"
+	,"schregacdmicold"."id" "id"
+	,"schregacdmicold"."schsthlthcaseid" "schsthlthcaseid"
+	,"schregacdmicold"."studentsefa" "studentsefa"
+	,"schregacdmicold"."resigncases" "resigncases"
+	,"schregacdmicold"."Schclasskindid" "Schclasskindid"
+	,"schregacdmicold"."schstclasskinddmgid" "schstclasskinddmgid"
+	,"schregacdmicold"."Schtransferid" "Schtransferid"
+	,"schregacdmicold"."joindate" "joindate"
+	,"schregacdmicold"."classorder" "classorder"
+	,"schregacdmicold"."scucessflag" "scucessflag"
+	,"schregacdmicold"."approved" "approved"
+	,"schregacdmicold"."ModifiedBy" "ModifiedBy"
+	,"schregacdmicold"."ModifiedOn" "ModifiedOn"
+	,"schregacdmicold"."CreatedBy" "CreatedBy"
+	,"schregacdmicold"."CreatedOn" "CreatedOn"
+from "dbo"."schregacdmicold" "schregacdmicold"
+]]></text>
+    </command>
+    <command id="regacdmicIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="regacdmic" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="regacdmic" type="Int64" allowNulls="false" isPrimaryKey="true" label="Regacdmic" readOnly="true" />
+    <field name="transdate" type="DateTime" allowNulls="false" default="(getdate())" label="Transdate" showInSummary="true" />
+    <field name="acdcode" type="Int64" allowNulls="false" label="Acdcode" showInSummary="true" />
+    <field name="schtrnsid" type="Int64" allowNulls="false" default="((1))" label="Schtrnsid" showInSummary="true" />
+    <field name="StudentCode" type="Int64" allowNulls="false" label="Student Code" showInSummary="true" />
+    <field name="branch" type="Int64" allowNulls="false" label="Branch" showInSummary="true" />
+    <field name="Stage" type="Int64" allowNulls="false" label="Stage" />
+    <field name="GradeCode" type="Int64" allowNulls="false" label="Grade Code" />
+    <field name="Class" type="Int64" label="Class" />
+    <field name="schstatus_code" type="Int64" label="Schstatus Code" />
+    <field name="schstudenttypid" type="Int64" label="Schstudenttypid" />
+    <field name="Cntry_No1" type="Int64" label="Cntry No1" />
+    <field name="Cntry_No2" type="Int64" label="Cntry No2" />
+    <field name="state" type="Int64" label="State" />
+    <field name="area" type="Int64" label="Area" />
+    <field name="blockno" type="String" label="Blockno" length="150" />
+    <field name="streetno" type="String" label="Streetno" length="150" />
+    <field name="gadah" type="Int64" label="Gadah" />
+    <field name="houseno" type="String" label="Houseno" length="150" />
+    <field name="addressdetail" type="String" allowQBE="false" allowSorting="false" label="Addressdetail" length="-1" />
+    <field name="EmergencyTelNo1" type="String" label="Emergency Tel No1" length="50" />
+    <field name="mothercase" type="Int64" label="Mothercase" />
+    <field name="fathercase" type="Int64" label="Fathercase" />
+    <field name="socialstatus" type="Int64" label="Socialstatus" />
+    <field name="id" type="Int64" label="Id" />
+    <field name="schsthlthcaseid" type="Int64" label="Schsthlthcaseid" />
+    <field name="studentsefa" type="Int64" label="Studentsefa" />
+    <field name="resigncases" type="String" label="Resigncases" length="250" />
+    <field name="Schclasskindid" type="Int64" label="Schclasskindid" />
+    <field name="schstclasskinddmgid" type="Int64" label="Schstclasskinddmgid" />
+    <field name="Schtransferid" type="Int64" label="Schtransferid" />
+    <field name="joindate" type="DateTime" label="Joindate" />
+    <field name="classorder" type="Int64" label="Classorder" />
+    <field name="scucessflag" type="Boolean" label="Scucessflag" />
+    <field name="approved" type="Boolean" label="Approved" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Schregacdmicold">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="transdate" columns="10" />
+        <dataField fieldName="acdcode" columns="15" />
+        <dataField fieldName="schtrnsid" columns="15" />
+        <dataField fieldName="StudentCode" columns="15" />
+        <dataField fieldName="branch" columns="15" />
+        <dataField fieldName="Stage" columns="15" />
+        <dataField fieldName="GradeCode" columns="15" />
+        <dataField fieldName="Class" columns="15" />
+        <dataField fieldName="schstatus_code" columns="15" />
+        <dataField fieldName="schstudenttypid" columns="15" />
+        <dataField fieldName="Cntry_No1" columns="15" />
+        <dataField fieldName="Cntry_No2" columns="15" />
+        <dataField fieldName="state" columns="15" />
+        <dataField fieldName="area" columns="15" />
+        <dataField fieldName="blockno" />
+        <dataField fieldName="streetno" />
+        <dataField fieldName="gadah" columns="15" />
+        <dataField fieldName="houseno" />
+        <dataField fieldName="addressdetail" rows="5" />
+        <dataField fieldName="EmergencyTelNo1" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Schregacdmicold">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Schregacdmicold" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="transdate" columns="10" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="schtrnsid" columns="15" />
+            <dataField fieldName="StudentCode" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="Stage" columns="15" />
+            <dataField fieldName="GradeCode" columns="15" />
+            <dataField fieldName="Class" columns="15" />
+            <dataField fieldName="schstatus_code" columns="15" />
+            <dataField fieldName="schstudenttypid" columns="15" />
+            <dataField fieldName="Cntry_No1" columns="15" />
+            <dataField fieldName="Cntry_No2" columns="15" />
+            <dataField fieldName="state" columns="15" />
+            <dataField fieldName="area" columns="15" />
+            <dataField fieldName="blockno" />
+            <dataField fieldName="streetno" />
+            <dataField fieldName="gadah" columns="15" />
+            <dataField fieldName="houseno" />
+            <dataField fieldName="addressdetail" rows="5" />
+            <dataField fieldName="EmergencyTelNo1" columns="50" />
+            <dataField fieldName="mothercase" columns="15" />
+            <dataField fieldName="fathercase" columns="15" />
+            <dataField fieldName="socialstatus" columns="15" />
+            <dataField fieldName="id" columns="15" />
+            <dataField fieldName="schsthlthcaseid" columns="15" />
+            <dataField fieldName="studentsefa" columns="15" />
+            <dataField fieldName="resigncases" />
+            <dataField fieldName="Schclasskindid" columns="15" />
+            <dataField fieldName="schstclasskinddmgid" columns="15" />
+            <dataField fieldName="Schtransferid" columns="15" />
+            <dataField fieldName="joindate" columns="10" />
+            <dataField fieldName="classorder" columns="15" />
+            <dataField fieldName="scucessflag" />
+            <dataField fieldName="approved" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Schregacdmicold">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Schregacdmicold" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="transdate" columns="10" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="schtrnsid" columns="15" />
+            <dataField fieldName="StudentCode" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="Stage" columns="15" />
+            <dataField fieldName="GradeCode" columns="15" />
+            <dataField fieldName="Class" columns="15" />
+            <dataField fieldName="schstatus_code" columns="15" />
+            <dataField fieldName="schstudenttypid" columns="15" />
+            <dataField fieldName="Cntry_No1" columns="15" />
+            <dataField fieldName="Cntry_No2" columns="15" />
+            <dataField fieldName="state" columns="15" />
+            <dataField fieldName="area" columns="15" />
+            <dataField fieldName="blockno" />
+            <dataField fieldName="streetno" />
+            <dataField fieldName="gadah" columns="15" />
+            <dataField fieldName="houseno" />
+            <dataField fieldName="addressdetail" rows="5" />
+            <dataField fieldName="EmergencyTelNo1" columns="50" />
+            <dataField fieldName="mothercase" columns="15" />
+            <dataField fieldName="fathercase" columns="15" />
+            <dataField fieldName="socialstatus" columns="15" />
+            <dataField fieldName="id" columns="15" />
+            <dataField fieldName="schsthlthcaseid" columns="15" />
+            <dataField fieldName="studentsefa" columns="15" />
+            <dataField fieldName="resigncases" />
+            <dataField fieldName="Schclasskindid" columns="15" />
+            <dataField fieldName="schstclasskinddmgid" columns="15" />
+            <dataField fieldName="Schtransferid" columns="15" />
+            <dataField fieldName="joindate" columns="10" />
+            <dataField fieldName="classorder" columns="15" />
+            <dataField fieldName="scucessflag" />
+            <dataField fieldName="approved" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

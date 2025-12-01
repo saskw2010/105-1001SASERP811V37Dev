@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="QwizAnswertrue" conflictDetection="overwriteChanges" label="Qwiz Answertrue" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"QwizAnswertrue"."qwizid" "qwizid"
+	,"qwiz"."qwizquastion" "qwizqwizquastion"
+	,"qwizpragraph"."pragraphtitle" "qwizpragraphpragraphtitle"
+	,"qwizcatid1"."cat1name" "qwizcatid1cat1name"
+	,"qwizcatid10"."cat10name" "qwizcatid10cat10name"
+	,"qwizcatid11"."cat11name" "qwizcatid11cat11name"
+	,"qwizcatid12"."cat12name" "qwizcatid12cat12name"
+	,"qwizcatid13"."cat13name" "qwizcatid13cat13name"
+	,"qwizcatid14"."cat13name" "qwizcatid14cat13name"
+	,"qwizcatid2"."cat2name" "qwizcatid2cat2name"
+	,"qwizcatid2Cntry_"."Cntry_Nm" "qwizcatid2Cntry_Cntry_Nm"
+	,"qwizcatid3"."cat3name" "qwizcatid3cat3name"
+	,"qwizcatid3catid2"."cat2name" "qwizcatid3catid2cat2name"
+	,"qwizcatid4"."cat4name" "qwizcatid4cat4name"
+	,"qwizcatid5"."cat5name" "qwizcatid5cat5name"
+	,"qwizcatid6"."cat6name" "qwizcatid6cat6name"
+	,"qwizcatid7"."cat7name" "qwizcatid7cat7name"
+	,"qwizcatid8"."cat8name" "qwizcatid8cat8name"
+	,"qwizcatid9"."cat9name" "qwizcatid9cat9name"
+	,"qwizqwizcatgory"."CatgoryTitle" "qwizqwizcatgoryCatgoryTitle"
+	,"QwizAnswertrue"."AnswerID" "AnswerID"
+from "dbo"."QwizAnswertrue" "QwizAnswertrue"
+	left join "dbo"."Qwiz" "qwiz" on "QwizAnswertrue"."qwizid" = "qwiz"."qwizid"
+	left join "dbo"."pragraphRelated" "qwizpragraph" on "qwiz"."pragraphid" = "qwizpragraph"."pragraphid"
+	left join "dbo"."Qwaizcat1" "qwizcatid1" on "qwiz"."catid1" = "qwizcatid1"."catid1"
+	left join "dbo"."Qwaizcat10" "qwizcatid10" on "qwiz"."catid10" = "qwizcatid10"."catid10"
+	left join "dbo"."Qwaizcat11" "qwizcatid11" on "qwiz"."catid11" = "qwizcatid11"."catid11"
+	left join "dbo"."Qwaizcat12" "qwizcatid12" on "qwiz"."catid12" = "qwizcatid12"."catid12"
+	left join "dbo"."Qwaizcat13" "qwizcatid13" on "qwiz"."catid13" = "qwizcatid13"."catid13"
+	left join "dbo"."Qwaizcat14" "qwizcatid14" on "qwiz"."catid14" = "qwizcatid14"."catid14"
+	left join "dbo"."Qwaizcat2" "qwizcatid2" on "qwiz"."catid2" = "qwizcatid2"."catid2"
+	left join "dbo"."PYCntry" "qwizcatid2Cntry_" on "qwizcatid2"."Cntry_No" = "qwizcatid2Cntry_"."Cntry_No"
+	left join "dbo"."Qwaizcat3" "qwizcatid3" on "qwiz"."catid3" = "qwizcatid3"."catid3"
+	left join "dbo"."Qwaizcat2" "qwizcatid3catid2" on "qwizcatid3"."catid2" = "qwizcatid3catid2"."catid2"
+	left join "dbo"."Qwaizcat4" "qwizcatid4" on "qwiz"."catid4" = "qwizcatid4"."catid4"
+	left join "dbo"."Qwaizcat5" "qwizcatid5" on "qwiz"."catid5" = "qwizcatid5"."catid5"
+	left join "dbo"."Qwaizcat6" "qwizcatid6" on "qwiz"."catid6" = "qwizcatid6"."catid6"
+	left join "dbo"."Qwaizcat7" "qwizcatid7" on "qwiz"."catid7" = "qwizcatid7"."catid7"
+	left join "dbo"."Qwaizcat8" "qwizcatid8" on "qwiz"."catid8" = "qwizcatid8"."catid8"
+	left join "dbo"."Qwaizcat9" "qwizcatid9" on "qwiz"."catid9" = "qwizcatid9"."catid9"
+	left join "dbo"."QwizCatgory" "qwizqwizcatgory" on "qwiz"."qwizcatgoryid" = "qwizqwizcatgory"."QwizCatgoryid"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="qwizid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Qwizid" showInSummary="true">
+      <items style="Lookup" dataController="Qwiz" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="qwizqwizquastion" type="String" readOnly="true" oneToOne="qwizquastion" allowQBE="false" allowSorting="false" label="Qwizqwizquastion" />
+    <field name="qwizpragraphpragraphtitle" type="String" readOnly="true" label="Qwizpragraphpragraphtitle" length="100" />
+    <field name="qwizcatid1cat1name" type="String" readOnly="true" label="Qwizcatid1cat1name" length="255" />
+    <field name="qwizcatid10cat10name" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Qwizcatid10cat10name" length="-1" />
+    <field name="qwizcatid11cat11name" type="String" readOnly="true" label="Qwizcatid11cat11name" length="255" />
+    <field name="qwizcatid12cat12name" type="String" readOnly="true" label="Qwizcatid12cat12name" length="255" />
+    <field name="qwizcatid13cat13name" type="String" readOnly="true" label="Qwizcatid13cat13name" length="255" />
+    <field name="qwizcatid14cat13name" type="String" readOnly="true" label="Qwizcatid14cat13name" length="255" />
+    <field name="qwizcatid2cat2name" type="String" readOnly="true" label="Qwizcatid2cat2name" length="255" />
+    <field name="qwizcatid2Cntry_Cntry_Nm" type="String" readOnly="true" label="qwizcatid2 Cntry Nm" length="255" />
+    <field name="qwizcatid3cat3name" type="String" readOnly="true" label="Qwizcatid3cat3name" length="255" />
+    <field name="qwizcatid3catid2cat2name" type="String" readOnly="true" label="Qwizcatid3catid2cat2name" length="255" />
+    <field name="qwizcatid4cat4name" type="String" readOnly="true" label="Qwizcatid4cat4name" length="255" />
+    <field name="qwizcatid5cat5name" type="String" readOnly="true" label="Qwizcatid5cat5name" length="255" />
+    <field name="qwizcatid6cat6name" type="String" readOnly="true" label="Qwizcatid6cat6name" length="255" />
+    <field name="qwizcatid7cat7name" type="String" readOnly="true" label="Qwizcatid7cat7name" length="255" />
+    <field name="qwizcatid8cat8name" type="String" readOnly="true" label="Qwizcatid8cat8name" length="255" />
+    <field name="qwizcatid9cat9name" type="String" readOnly="true" label="Qwizcatid9cat9name" length="255" />
+    <field name="qwizqwizcatgoryCatgoryTitle" type="String" readOnly="true" label="qwizqwizcatgory Catgory Title" length="255" />
+    <field name="AnswerID" type="Boolean" allowNulls="false" label="Answer#" showInSummary="true">
+      <items style="Lookup" dataController="TrueFalseTable" newDataView="createForm1" searchOnStart="true" />
+    </field>
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Qwiz Answertrue">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="qwizid" aliasFieldName="qwizqwizquastion" />
+        <dataField fieldName="AnswerID" aliasFieldName="" hyperlinkFormatString="~/Pages/TrueFalseTable.aspx?AnswerID={AnswerID}&amp;_controller=TrueFalseTable&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="qwizpragraphpragraphtitle" />
+        <dataField fieldName="qwizcatid1cat1name" />
+        <dataField fieldName="qwizcatid10cat10name" rows="5" />
+        <dataField fieldName="qwizcatid11cat11name" />
+        <dataField fieldName="qwizcatid12cat12name" />
+        <dataField fieldName="qwizcatid13cat13name" />
+        <dataField fieldName="qwizcatid14cat13name" />
+        <dataField fieldName="qwizcatid2cat2name" />
+        <dataField fieldName="qwizcatid2Cntry_Cntry_Nm" />
+        <dataField fieldName="qwizcatid3cat3name" />
+        <dataField fieldName="qwizcatid3catid2cat2name" />
+        <dataField fieldName="qwizcatid4cat4name" />
+        <dataField fieldName="qwizcatid5cat5name" />
+        <dataField fieldName="qwizcatid6cat6name" />
+        <dataField fieldName="qwizcatid7cat7name" />
+        <dataField fieldName="qwizcatid8cat8name" />
+        <dataField fieldName="qwizcatid9cat9name" />
+        <dataField fieldName="qwizqwizcatgoryCatgoryTitle" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Qwiz Answertrue">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Qwiz Answertrue" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="qwizid" aliasFieldName="qwizqwizquastion" hyperlinkFormatString="~/Pages/Qwiz.aspx?qwizid={qwizid}&amp;_controller=Qwiz&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="AnswerID" aliasFieldName="" hyperlinkFormatString="~/Pages/TrueFalseTable.aspx?AnswerID={AnswerID}&amp;_controller=TrueFalseTable&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="qwizpragraphpragraphtitle" />
+            <dataField fieldName="qwizcatid1cat1name" />
+            <dataField fieldName="qwizcatid10cat10name" rows="5" />
+            <dataField fieldName="qwizcatid11cat11name" />
+            <dataField fieldName="qwizcatid12cat12name" />
+            <dataField fieldName="qwizcatid13cat13name" />
+            <dataField fieldName="qwizcatid14cat13name" />
+            <dataField fieldName="qwizcatid2cat2name" />
+            <dataField fieldName="qwizcatid2Cntry_Cntry_Nm" />
+            <dataField fieldName="qwizcatid3cat3name" />
+            <dataField fieldName="qwizcatid3catid2cat2name" />
+            <dataField fieldName="qwizcatid4cat4name" />
+            <dataField fieldName="qwizcatid5cat5name" />
+            <dataField fieldName="qwizcatid6cat6name" />
+            <dataField fieldName="qwizcatid7cat7name" />
+            <dataField fieldName="qwizcatid8cat8name" />
+            <dataField fieldName="qwizcatid9cat9name" />
+            <dataField fieldName="qwizqwizcatgoryCatgoryTitle" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Qwiz Answertrue">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Qwiz Answertrue" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="qwizid" aliasFieldName="qwizqwizquastion" />
+            <dataField fieldName="AnswerID" aliasFieldName="" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,1620 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <LobbyCentral Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>LobbyCentral</Alias>
+        <ConnectionString>Data Source=192.167.15.102;Integrated Security=True;Initial Catalog=santa_clarita</ConnectionString>
+        <Name>LobbyCentral</Name>
+      </LobbyCentral>
+    </Databases>
+    <DataSources isList="true" count="3">
+      <ReportData Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>ReportData</Alias>
+        <Columns isList="true" count="39">
+          <value>requestID,System.Int32</value>
+          <value>customerID,System.Int32</value>
+          <value>dateCreated,System.DateTime</value>
+          <value>createdBy,System.Int32</value>
+          <value>timeIn,System.DateTime</value>
+          <value>status,System.Int32</value>
+          <value>queueID,System.Int32</value>
+          <value>originatingRequestID,System.Int32</value>
+          <value>requestedUserID,System.Int32</value>
+          <value>note,System.String</value>
+          <value>accountID,System.Int32</value>
+          <value>counterID,System.Int32</value>
+          <value>ticketNumber,System.Int32</value>
+          <value>scheduledDate,System.DateTime</value>
+          <value>workTimeDur,System.Int32</value>
+          <value>notifySMS,System.Boolean</value>
+          <value>reqServID,System.Int32</value>
+          <value>requestID1,System.Int32</value>
+          <value>serviceID,System.Int32</value>
+          <value>serviceDescOvrd,System.String</value>
+          <value>ordinal,System.Int32</value>
+          <value>userFirstName,System.String</value>
+          <value>userLastName,System.String</value>
+          <value>firstName,System.String</value>
+          <value>lastName,System.String</value>
+          <value>custName,System.String</value>
+          <value>ticketID,System.Int32</value>
+          <value>requestID2,System.Int32</value>
+          <value>userID,System.Int32</value>
+          <value>timeSeen,System.DateTime</value>
+          <value>timeOut,System.DateTime</value>
+          <value>comments,System.String</value>
+          <value>queueID1,System.Int32</value>
+          <value>ticketAction,System.Int32</value>
+          <value>locationName,System.String</value>
+          <value>serviceName,System.String</value>
+          <value>accountNumber,System.String</value>
+          <value>queueName,System.String</value>
+          <value>locationID,System.Int32</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <ConnectOnStart>False</ConnectOnStart>
+        <Dictionary isRef="1" />
+        <Name>ReportData</Name>
+        <NameInSource>LobbyCentral</NameInSource>
+        <Parameters isList="true" count="3">
+          <value>_x0040_locationID,,8,0</value>
+          <value>_x0040_startDate,,4,0</value>
+          <value>_x0040_endDate,,4,0</value>
+        </Parameters>
+        <SqlCommand>		
+	SELECT R.*, RS.*, U.firstName AS userFirstName, U.lastName AS userLastName, C.firstName, C.lastName, (C.firstName + ' ' + C.lastName) as custName, RT.*, L.locationID, L.locationName, S.serviceName, A.accountNumber, Q.queueName
+	FROM tblRequest AS R
+	LEFT JOIN tblRequestTicket AS RT ON RT.requestID = R.requestID				
+	LEFT JOIN tblRequest_Service AS RS ON (RS.requestID = R.requestID AND RS.ordinal = 0)
+	LEFT JOIN tblUser AS U ON U.userID= RT.userID
+	LEFT JOIN tblCustomer AS C ON C.customerID=R.customerID
+	LEFT JOIN tblQueue AS Q ON Q.queueID=R.queueID
+	LEFT JOIN tblLocation AS L on L.locationID = Q.locationID
+	LEFT JOIN tblService AS S ON S.serviceID = RS.serviceID
+	LEFT JOIN tblAccount AS A ON A.accountID = R.accountID
+	WHERE R.requestID IN (SELECT TOP 1 requestID FROM tblRequestTicket WHERE requestID=R.requestID  AND ticketAction &lt;&gt; 5 AND Convert(char, timeout, 101) &gt;= @startDate AND Convert(char, timeout, 101) &lt;= @endDate ORDER BY timeSeen desc)
+	AND	R.status &lt;&gt; 0 
+	AND R.status &lt;&gt; 1  	
+	AND Q.queueType = 0
+	AND (RT.ticketAction = 1 OR (RT.ticketAction=4 AND RT.timeSeen &gt; '1/1/1900'))
+	AND (Q.locationID = @locationID OR @locationID=0)
+	ORDER BY L.locationName, R.timeIn
+</SqlCommand>
+      </ReportData>
+      <LocationSource Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>LocationSource</Alias>
+        <Columns isList="true" count="2">
+          <value>locationID,System.Int32</value>
+          <value>locationName,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <ConnectOnStart>False</ConnectOnStart>
+        <Dictionary isRef="1" />
+        <Name>LocationSource</Name>
+        <NameInSource>LobbyCentral</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select locationID, locationName from tblLocation
+order by locationName
+</SqlCommand>
+      </LocationSource>
+      <UserSource Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>UserSource</Alias>
+        <Columns isList="true" count="2">
+          <value>userID,System.Int32</value>
+          <value>userFullname,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <ConnectOnStart>False</ConnectOnStart>
+        <Dictionary isRef="1" />
+        <Name>UserSource</Name>
+        <NameInSource>LobbyCentral</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select userID, (firstName + ' ' + lastName) as userFullname
+from tblUser
+order by userFullname</SqlCommand>
+      </UserSource>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="1">
+      <value>,varUser,varUser,System.Int32,,False,False</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="2">
+    <Page1 Ref="6" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="12">
+        <ReportTitle1 Ref="7" type="ReportTitleBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.2,10.91,1.2</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text1 Ref="8" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.1,0.1,9.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14.25,Bold</Font>
+              <Guid>93e305cfe41d43579096fc8be01fe0c4</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>Lobby Service Request Activity
+</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text1>
+            <Text2 Ref="9" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.1,0.5,7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>1287d28feb274b9986ec61a95fdbac72</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>Date:  {string.Format("{0:d}",ReportData.Parameters["@startDate"].ParameterValue)} - {string.Format("{0:d}",ReportData.Parameters["@endDate"].ParameterValue)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="10" type="DateFormat" isKey="true" />
+            </Text2>
+            <Text57 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.1,0.9,3.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold| Italic</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text57</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>{ReportData.Count == 0?"No data found":""}
+</Text>
+              <TextBrush>[237:28:36]</TextBrush>
+            </Text57>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ReportTitle1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ReportTitle1>
+        <GroupHeader_Location Ref="12" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,1.8,10.91,0.9</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text3 Ref="13" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.1,0.1,5.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="6" />
+              <Parent isRef="12" />
+              <Text>Location:  {ReportData.locationName}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text3>
+            <Panel_Location Ref="14" type="Stimulsoft.Report.Components.StiPanel" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.3,0.4,10.6,0.4</ClientRectangle>
+              <Components isList="true" count="10">
+                <Text24 Ref="15" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0,0.1,0.8,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>e377c03e79684687829842d5444cd2da</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text24</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="14" />
+                  <Text>Request ID</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text24>
+                <Text25 Ref="16" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0.9,0.1,2,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>be987464c23f4398b132e60fecbc7823</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text25</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="14" />
+                  <Text>Customer</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text25>
+                <Text26 Ref="17" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>3,0.1,0.8,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>dad35dd03803431ba95d081852a6efb5</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text26</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="14" />
+                  <Text>Date In</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text26>
+                <Text27 Ref="18" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>4.7,0.1,0.6,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>c06b32ff6b4f40b7b5b959502dbc8068</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text27</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="14" />
+                  <Text>Assisted</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text27>
+                <Text28 Ref="19" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>3.9,0.1,0.7,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>0ab280f66df2463789476874ca2589cd</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text28</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="14" />
+                  <Text>Arrived</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text28>
+                <Text29 Ref="20" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>5.4,0.1,0.7,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>c0d817271a0248f6a2311eaacc2d43f3</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text29</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="14" />
+                  <Text>Departed</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text29>
+                <Text30 Ref="21" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>6.2,0,0.7,0.3</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>43f6f02e6b2c4c84aac62a5fc6de13a8</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text30</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="14" />
+                  <Text>Length 
+of Wait</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text30>
+                <Text31 Ref="22" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>7,0,0.7,0.3</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>971e31a613354df38637632d6f377b26</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text31</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="14" />
+                  <Text>Length 
+of Service</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text31>
+                <Text32 Ref="23" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>7.8,0.1,1.5,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>22720a60d2eb48f0ab9fbe67a0d17fb9</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text32</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="14" />
+                  <Text>Service</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text32>
+                <Text65 Ref="24" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>9.4,0.1,1.1,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>14f95f4a2dab4b82b61de4c0167b4946</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text65</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="14" />
+                  <Text>Completed</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text65>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Guid>93de769088f147b18ef35fd6fa5e3e37</Guid>
+              <Name>Panel_Location</Name>
+              <Page isRef="6" />
+              <Parent isRef="12" />
+            </Panel_Location>
+          </Components>
+          <Condition>{ReportData.locationID}</Condition>
+          <Conditions isList="true" count="0" />
+          <Enabled>False</Enabled>
+          <Name>GroupHeader_Location</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </GroupHeader_Location>
+        <GroupHeader_Queue Ref="25" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,3.1,10.91,0.8</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text4 Ref="26" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.3,0.1,5.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>37cbb24548564723ba310d9eee2e76eb</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>Service Queue:  {ReportData.queueName}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text4>
+            <Panel_Queue Ref="27" type="Stimulsoft.Report.Components.StiPanel" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.3,0.4,10.6,0.4</ClientRectangle>
+              <Components isList="true" count="10">
+                <Text5 Ref="28" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0,0.1,0.8,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>0d17cdf5f8114c4f80f891f58287fc86</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text5</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="27" />
+                  <Text>Request ID</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text5>
+                <Text6 Ref="29" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0.9,0.1,2,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>199e052535404479b3521261fd8ff44a</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text6</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="27" />
+                  <Text>Customer</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text6>
+                <Text7 Ref="30" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>3,0.1,0.8,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>0d2aedca74104bd892a51b5ed1570f5d</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text7</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="27" />
+                  <Text>Date In</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text7>
+                <Text8 Ref="31" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>4.7,0.1,0.6,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>df9a4d47e2a644e086c41e1bd080e6db</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text8</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="27" />
+                  <Text>Assisted</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text8>
+                <Text9 Ref="32" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>3.9,0.1,0.7,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>7365458e8f7b44e6b3a7ce685d355ceb</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text9</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="27" />
+                  <Text>Arrived</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text9>
+                <Text10 Ref="33" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>5.4,0.1,0.7,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>b987604208104a2d924f46ce75831e58</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text10</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="27" />
+                  <Text>Departed</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text10>
+                <Text11 Ref="34" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>6.2,0,0.7,0.3</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>9b0088be6d2949fa85ab16464f5262b1</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text11</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="27" />
+                  <Text>Length 
+of Wait</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text11>
+                <Text12 Ref="35" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>7,0,0.7,0.3</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>256f4ff7b3784520b7cad2f73ba9e6b5</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text12</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="27" />
+                  <Text>Length 
+of Service</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text12>
+                <Text13 Ref="36" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>7.8,0.1,1.5,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>634eda2d61b14dc3a90e0057d87b0104</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text13</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="27" />
+                  <Text>Service</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text13>
+                <Text64 Ref="37" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>9.4,0.1,1.1,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>d2d1f404358846938e4f00680ddc5026</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text64</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="27" />
+                  <Text>Completed</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text64>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Name>Panel_Queue</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+            </Panel_Queue>
+          </Components>
+          <Condition>{ReportData.queueID}</Condition>
+          <Conditions isList="true" count="0" />
+          <Name>GroupHeader_Queue</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </GroupHeader_Queue>
+        <GroupHeader_Date Ref="38" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.3,10.91,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Condition>{Format("{0:MM/dd/yyyy}", ReportData.timeIn)}</Condition>
+          <Conditions isList="true" count="0" />
+          <Enabled>False</Enabled>
+          <Name>GroupHeader_Date</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </GroupHeader_Date>
+        <GroupHeader_User Ref="39" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,4.7,10.91,0.9</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text22 Ref="40" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.3,0.1,5.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>e9c94f8dbecc41bf9f557b038de23534</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="6" />
+              <Parent isRef="39" />
+              <Text>User:  {ReportData.userFirstName} {ReportData.userLastName}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text22>
+            <Panel_User Ref="41" type="Stimulsoft.Report.Components.StiPanel" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.3,0.4,10.6,0.4</ClientRectangle>
+              <Components isList="true" count="10">
+                <Text33 Ref="42" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0,0.1,0.8,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>dfb9de2ef34640ae837b5ec7605452b3</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text33</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="41" />
+                  <Text>Request ID</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text33>
+                <Text34 Ref="43" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0.9,0.1,2,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>7575a9cbde494249ad0949116971387f</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text34</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="41" />
+                  <Text>Customer</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text34>
+                <Text35 Ref="44" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>3,0.1,0.8,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>00018cf9f0934d48977596d3d5b11ddf</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text35</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="41" />
+                  <Text>Date In</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text35>
+                <Text36 Ref="45" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>4.7,0.1,0.6,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>f953bd68f1474bd7b9b73d4a50050641</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text36</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="41" />
+                  <Text>Assisted</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text36>
+                <Text37 Ref="46" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>3.9,0.1,0.7,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>50c5c6fc499a4be98a55ad07aa454a20</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text37</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="41" />
+                  <Text>Arrived</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text37>
+                <Text38 Ref="47" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>5.4,0.1,0.7,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>e80156d2e09548d9ab2e5051927f4593</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text38</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="41" />
+                  <Text>Departed</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text38>
+                <Text39 Ref="48" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>6.2,0,0.7,0.3</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>82c59306a064481b91ecb000fe50403d</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text39</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="41" />
+                  <Text>Length 
+of Wait</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text39>
+                <Text40 Ref="49" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>7,0,0.7,0.3</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>1ffadd17b02c47ca9522d366035189db</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text40</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="41" />
+                  <Text>Length 
+of Service</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text40>
+                <Text41 Ref="50" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>7.8,0.1,1.5,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>1e1d9ddc12574bdd9a5bdb5bc442f5a7</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text41</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="41" />
+                  <Text>Service</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text41>
+                <Text63 Ref="51" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>9.4,0.1,1.1,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>dd85f1a361274190b28e62475697abe7</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text63</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="41" />
+                  <Text>Completed</Text>
+                  <TextBrush>Black</TextBrush>
+                </Text63>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Guid>8a830d14b41d4a688888d37ed4774265</Guid>
+              <Name>Panel_User</Name>
+              <Page isRef="6" />
+              <Parent isRef="39" />
+            </Panel_User>
+          </Components>
+          <Condition>{ReportData.userID}</Condition>
+          <Conditions isList="true" count="0" />
+          <Enabled>False</Enabled>
+          <Name>GroupHeader_User</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </GroupHeader_User>
+        <GroupHeader_Data Ref="52" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,6,10.91,0.4</ClientRectangle>
+          <Components isList="true" count="10">
+            <Text14 Ref="53" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.3,0.1,0.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>{ReportData.requestID}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text14>
+            <Text15 Ref="54" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.2,0.1,2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>{ReportData.custName}  {IIF(ReportData.ticketAction == 4,"(Abandoned)","")}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text15>
+            <Text16 Ref="55" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.3,0.1,0.8,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>{Format("{0:MM/dd/yyyy}", ReportData.timeIn)}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text16>
+            <Text17 Ref="56" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.2,0.1,0.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>{Format("{0:hh:mm tt}", ReportData.timeIn)}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text17>
+            <Text18 Ref="57" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5,0.1,0.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>4c25666aeef74b11b4ccff314302e6ef</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>{Format("{0:hh:mm tt}", ReportData.timeSeen)}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text18>
+            <Text19 Ref="58" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.7,0.1,0.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>7803acd7a9f54d2ea0912ebc3a6779c3</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>{Format("{0:hh:mm tt}", ReportData.timeOut)}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text19>
+            <Text20 Ref="59" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.5,0.1,0.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>{GetFormattedTime(Sum(Data1, CalcTime(ReportData.timeSeen, ReportData.timeIn)))}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text20>
+            <Text21 Ref="60" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>8.1,0.1,1.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>{IIF(ReportData.serviceID &gt; 0,ReportData.serviceName,ReportData.serviceDescOvrd)}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text21>
+            <txtCompletedBy Ref="61" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>9.7,0.1,1.1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>txtCompletedBy</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>{ReportData.userFirstName} {ReportData.userLastName}</Text>
+              <TextBrush>Black</TextBrush>
+            </txtCompletedBy>
+            <Text23 Ref="62" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.3,0.1,0.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>b8b29d858245439fa4772b8975ce102f</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>{GetFormattedTime(Sum(Data1, CalcTime(ReportData.timeOut, ReportData.timeSeen)))}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text23>
+          </Components>
+          <Condition>{ReportData.originatingRequestID}</Condition>
+          <Conditions isList="true" count="0" />
+          <Name>GroupHeader_Data</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </GroupHeader_Data>
+        <Data1 Ref="63" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,6.8,10.91,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>ReportData</DataSourceName>
+          <Filters isList="true" count="1">
+            <value>_x007B_ReportData.userID_x0020__x003D__x003D__x0020__x0028__x0028_varUser_x0020__x003D__x003D__x0020_0_x0029__x0020__x003F__x0020_ReportData.userID_x0020_:_x0020_varUser_x0029__x007D_</value>
+          </Filters>
+          <Name>Data1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Sort isList="true" count="0" />
+        </Data1>
+        <GroupFooter_Data Ref="64" type="GroupFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,7.2,10.91,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <Name>GroupFooter_Data</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </GroupFooter_Data>
+        <GroupFooter_User Ref="65" type="GroupFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,7.6,10.91,0.7</ClientRectangle>
+          <Components isList="true" count="5">
+            <Text52 Ref="66" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.7,0.1,2.8,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>98730858866442b9b50decf200703f79</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text52</Name>
+              <Page isRef="6" />
+              <Parent isRef="65" />
+              <Text>{ReportData.userFirstName} {ReportData.userLastName} Totals:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text52>
+            <Text53 Ref="67" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.6,0.1,0.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>9615842f2892431da58ec3257d120749</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text53</Name>
+              <Page isRef="6" />
+              <Parent isRef="65" />
+              <Text>{GetFormattedTime(Sum(Data1, CalcTime(ReportData.timeSeen, ReportData.timeIn)))}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text53>
+            <Text54 Ref="68" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.3,0.1,0.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>37c39843b5204b5e81ed750ebfd995f8</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text54</Name>
+              <Page isRef="6" />
+              <Parent isRef="65" />
+              <Text>{GetFormattedTime(Sum(Data1, CalcTime(ReportData.timeOut, ReportData.timeSeen)))}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text54>
+            <Text55 Ref="69" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.3,0.4,1.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>cc068a170b384158924b43e18da591a2</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text55</Name>
+              <Page isRef="6" />
+              <Parent isRef="65" />
+              <Text>Total Requests:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text55>
+            <Text56 Ref="70" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.6,0.4,0.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>824cf30e13fb49f692c29d7e95fe8183</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text56</Name>
+              <Page isRef="6" />
+              <Parent isRef="65" />
+              <Text>{CountDistinct(Data1, ReportData.requestID)}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text56>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Enabled>False</Enabled>
+          <Name>GroupFooter_User</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </GroupFooter_User>
+        <GroupFooter_Date Ref="71" type="GroupFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.7,10.91,0.7</ClientRectangle>
+          <Components isList="true" count="5">
+            <Text58 Ref="72" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.7,0.1,2.8,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>3a4606f749a34b498a448a3ebffe97d7</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text58</Name>
+              <Page isRef="6" />
+              <Parent isRef="71" />
+              <Text>{Format("{0:MM/dd/yyyy}", ReportData.timeIn)} Totals:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text58>
+            <Text59 Ref="73" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.6,0.1,0.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>87c1e96b4a154a569d5194a242d96f85</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text59</Name>
+              <Page isRef="6" />
+              <Parent isRef="71" />
+              <Text>{GetFormattedTime(Sum(Data1, CalcTime(ReportData.timeSeen, ReportData.timeIn)))}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text59>
+            <Text60 Ref="74" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.3,0.1,0.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>a2600f83705d41099c7ebf034fa827e2</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text60</Name>
+              <Page isRef="6" />
+              <Parent isRef="71" />
+              <Text>{GetFormattedTime(Sum(Data1, CalcTime(ReportData.timeOut, ReportData.timeSeen)))}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text60>
+            <Text61 Ref="75" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.3,0.4,1.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>f61b0e2509c94714819477d0abf35f8e</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text61</Name>
+              <Page isRef="6" />
+              <Parent isRef="71" />
+              <Text>Total Requests:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text61>
+            <Text62 Ref="76" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.6,0.4,0.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>cd50822c9bcc40f69182c1b113eff2a0</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text62</Name>
+              <Page isRef="6" />
+              <Parent isRef="71" />
+              <Text>{CountDistinct(Data1, ReportData.requestID)}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text62>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Enabled>False</Enabled>
+          <Name>GroupFooter_Date</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </GroupFooter_Date>
+        <GroupFooter_Queue Ref="77" type="GroupFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,9.8,10.91,0.7</ClientRectangle>
+          <Components isList="true" count="5">
+            <Text47 Ref="78" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.7,0.1,2.8,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>a78b583548114d17958166e5a17fe781</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text47</Name>
+              <Page isRef="6" />
+              <Parent isRef="77" />
+              <Text>{ReportData.queueName} Totals:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text47>
+            <Text48 Ref="79" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.6,0.1,0.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>deb9f724b2af47d5ad393ec578cc7bbd</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text48</Name>
+              <Page isRef="6" />
+              <Parent isRef="77" />
+              <Text>{GetFormattedTime(Sum(Data1, CalcTime(ReportData.timeSeen, ReportData.timeIn)))}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text48>
+            <Text49 Ref="80" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.3,0.1,0.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>0a0eee42317446d3bb52035ee5880bf7</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text49</Name>
+              <Page isRef="6" />
+              <Parent isRef="77" />
+              <Text>{GetFormattedTime(Sum(Data1, CalcTime(ReportData.timeOut, ReportData.timeSeen)))}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text49>
+            <Text50 Ref="81" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.3,0.4,1.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>7c1f378936d049be95ea633781a224eb</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text50</Name>
+              <Page isRef="6" />
+              <Parent isRef="77" />
+              <Text>Total Requests:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text50>
+            <Text51 Ref="82" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.6,0.4,0.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>bc3e08dd91034dd0bd74aae1a39064fb</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text51</Name>
+              <Page isRef="6" />
+              <Parent isRef="77" />
+              <Text>{CountDistinct(Data1, ReportData.requestID)}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text51>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>GroupFooter_Queue</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </GroupFooter_Queue>
+        <GroupFooter_Location Ref="83" type="GroupFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,10.9,10.91,0.8</ClientRectangle>
+          <Components isList="true" count="5">
+            <Text44 Ref="84" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.7,0.1,2.8,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text44</Name>
+              <Page isRef="6" />
+              <Parent isRef="83" />
+              <Text>{ReportData.locationName} Totals:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text44>
+            <Text45 Ref="85" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.6,0.1,0.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text45</Name>
+              <Page isRef="6" />
+              <Parent isRef="83" />
+              <Text>{GetFormattedTime(Sum(Data1, CalcTime(ReportData.timeSeen, ReportData.timeIn)))}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text45>
+            <Text42 Ref="86" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.3,0.1,0.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text42</Name>
+              <Page isRef="6" />
+              <Parent isRef="83" />
+              <Text>{GetFormattedTime(Sum(Data1, CalcTime(ReportData.timeOut, ReportData.timeSeen)))}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text42>
+            <Text43 Ref="87" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.3,0.4,1.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text43</Name>
+              <Page isRef="6" />
+              <Parent isRef="83" />
+              <Text>Total Requests:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text43>
+            <Text46 Ref="88" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.6,0.4,0.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text46</Name>
+              <Page isRef="6" />
+              <Parent isRef="83" />
+              <Text>{CountDistinct(Data1, ReportData.requestID)}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text46>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Enabled>False</Enabled>
+          <Name>GroupFooter_Location</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </GroupFooter_Location>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>b811b496fe4b4d4ab9ef8f9a40b29021</Guid>
+      <LargeHeight>True</LargeHeight>
+      <Margins>0.39,0.39,0.39,0.39</Margins>
+      <Name>Page1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>8.27</PageHeight>
+      <PageWidth>11.69</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="89" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+    <Form1 Ref="90" type="Stimulsoft.Report.Dialogs.StiForm" isKey="true">
+      <BackColor>Control</BackColor>
+      <Components isList="true" count="13">
+        <Button2 Ref="91" type="Stimulsoft.Report.Dialogs.StiButtonControl" isKey="true">
+          <ClickEvent>ReportData.Parameters["@startDate"].ParameterValue = startDate.Value.ToString("MM/dd/yyyy");
+ReportData.Parameters["@endDate"].ParameterValue = endDate.Value.ToString("MM/dd/yyyy");
+
+int locationID = 0;
+int userID = 0;
+int queueID = 0;
+
+if (lstLocation.SelectedIndex &gt; 0) {
+int index = lstLocation.SelectedIndex;
+	index--;
+
+	int.TryParse(LocationSource.GetData("locationID", index).ToString() ,out locationID);
+}
+
+
+
+if (lstUser.SelectedIndex &gt; 0) {
+int index = lstUser.SelectedIndex;
+	index--;
+
+	int.TryParse(UserSource.GetData("userID", index).ToString() ,out userID);
+}
+
+
+
+ReportData.Parameters["@locationID"].ParameterValue = locationID;
+
+
+if (groupQueue.Checked ||
+	groupUser.Checked ) {
+	Panel_Location.Enabled = false;
+} else {
+	Panel_Location.Enabled = true;
+}
+
+
+if (groupQueue.Checked) {
+	GroupHeader_Queue.Enabled = true;
+	GroupFooter_Queue.Enabled = true;
+	Panel_Queue.Enabled = true;
+} else {
+	GroupHeader_Queue.Enabled = false;
+	GroupFooter_Queue.Enabled = false;
+	Panel_Queue.Enabled = false;
+}
+
+if (groupDate.Checked) {
+	GroupHeader_Date.Enabled = true;
+	GroupFooter_Date.Enabled = true;
+} else {
+	GroupHeader_Date.Enabled = false;
+	GroupFooter_Date.Enabled = false;
+}
+
+if (groupUser.Checked) {
+	GroupHeader_User.Enabled = true;
+	GroupFooter_User.Enabled = true;
+	txtCompletedBy.Enabled = false;
+	Panel_User.Enabled = true;
+	Panel_Queue.Enabled = false;
+} else {
+	GroupHeader_User.Enabled = false;
+	GroupFooter_User.Enabled = false;
+	Panel_User.Enabled = false;	
+}
+
+varUser = userID;
+
+
+ReportData.Connect();
+
+</ClickEvent>
+          <ClientRectangle>264,224,96,24</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Default>True</Default>
+          <DialogResult>OK</DialogResult>
+          <Font>Microsoft Sans Serif,8</Font>
+          <ForeColor>Black</ForeColor>
+          <Guid>006f725690b246ba962ea24e545455bd</Guid>
+          <Location>264, 224</Location>
+          <Name>Button2</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+          <Size>96, 24</Size>
+          <Text>Run Report</Text>
+        </Button2>
+        <groupQueue Ref="92" type="Stimulsoft.Report.Dialogs.StiCheckBoxControl" isKey="true">
+          <BackColor>Control</BackColor>
+          <Checked>True</Checked>
+          <ClientRectangle>24,184,96,24</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Font>Microsoft Sans Serif,8</Font>
+          <ForeColor>Black</ForeColor>
+          <Location>24, 184</Location>
+          <Name>groupQueue</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+          <Size>96, 24</Size>
+          <Text>by Queue</Text>
+        </groupQueue>
+        <groupDate Ref="93" type="Stimulsoft.Report.Dialogs.StiCheckBoxControl" isKey="true">
+          <BackColor>Control</BackColor>
+          <ClientRectangle>112,184,96,24</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Font>Microsoft Sans Serif,8</Font>
+          <ForeColor>Black</ForeColor>
+          <Location>112, 184</Location>
+          <Name>groupDate</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+          <Size>96, 24</Size>
+          <Text>by Date</Text>
+        </groupDate>
+        <groupUser Ref="94" type="Stimulsoft.Report.Dialogs.StiCheckBoxControl" isKey="true">
+          <BackColor>Control</BackColor>
+          <ClientRectangle>192,184,96,24</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Font>Microsoft Sans Serif,8</Font>
+          <ForeColor>Black</ForeColor>
+          <Location>192, 184</Location>
+          <Name>groupUser</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+          <Size>96, 24</Size>
+          <Text>by User</Text>
+        </groupUser>
+        <Label6 Ref="95" type="Stimulsoft.Report.Dialogs.StiLabelControl" isKey="true">
+          <BackColor>Control</BackColor>
+          <ClientRectangle>8,160,96,16</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Font>Microsoft Sans Serif,8,Bold</Font>
+          <ForeColor>Black</ForeColor>
+          <Location>8, 160</Location>
+          <Name>Label6</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+          <Size>96, 16</Size>
+          <Text>Group Options:</Text>
+        </Label6>
+        <Label2 Ref="96" type="Stimulsoft.Report.Dialogs.StiLabelControl" isKey="true">
+          <BackColor>Control</BackColor>
+          <ClientRectangle>16,16,64,16</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Font>Microsoft Sans Serif,8,Bold</Font>
+          <ForeColor>Black</ForeColor>
+          <Guid>156446d899f44c53a7f7fee0edf6b4ce</Guid>
+          <Location>16, 16</Location>
+          <Name>Label2</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+          <Size>64, 16</Size>
+          <Text>Start Date:</Text>
+        </Label2>
+        <Label1 Ref="97" type="Stimulsoft.Report.Dialogs.StiLabelControl" isKey="true">
+          <BackColor>Control</BackColor>
+          <ClientRectangle>16,64,64,16</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Font>Microsoft Sans Serif,8,Bold</Font>
+          <ForeColor>Black</ForeColor>
+          <Guid>b6ea560de48b4788841b27601b39351e</Guid>
+          <Location>16, 64</Location>
+          <Name>Label1</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+          <Size>64, 16</Size>
+          <Text>End Date:</Text>
+        </Label1>
+        <startDate Ref="98" type="Stimulsoft.Report.Dialogs.StiDateTimePickerControl" isKey="true">
+          <BackColor>Window</BackColor>
+          <ClientRectangle>16,32,88,20</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Font>Microsoft Sans Serif,8</Font>
+          <ForeColor>Black</ForeColor>
+          <Format>Short</Format>
+          <Guid>c8fca311520e4cbeba213aa2285ba267</Guid>
+          <Location>16, 32</Location>
+          <MaxDate>12/31/9998 12:00:00 AM</MaxDate>
+          <MinDate>1/1/1753 12:00:00 AM</MinDate>
+          <Name>startDate</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+          <Size>88, 20</Size>
+          <Value>12/9/2008 12:00:00 AM</Value>
+        </startDate>
+        <endDate Ref="99" type="Stimulsoft.Report.Dialogs.StiDateTimePickerControl" isKey="true">
+          <BackColor>Window</BackColor>
+          <ClientRectangle>16,80,88,20</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Font>Microsoft Sans Serif,8</Font>
+          <ForeColor>Black</ForeColor>
+          <Format>Short</Format>
+          <Guid>fe50e449b0224441ad8378f21f195425</Guid>
+          <Location>16, 80</Location>
+          <MaxDate>12/31/9998 12:00:00 AM</MaxDate>
+          <MinDate>1/1/1753 12:00:00 AM</MinDate>
+          <Name>endDate</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+          <Size>88, 20</Size>
+          <Value>12/9/2008 12:00:00 AM</Value>
+        </endDate>
+        <Label3 Ref="100" type="Stimulsoft.Report.Dialogs.StiLabelControl" isKey="true">
+          <BackColor>Control</BackColor>
+          <ClientRectangle>136,16,112,16</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Font>Microsoft Sans Serif,8,Bold</Font>
+          <ForeColor>Black</ForeColor>
+          <Guid>d74d5c2cd3c045699d278d99dc4a5e9b</Guid>
+          <Location>136, 16</Location>
+          <Name>Label3</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+          <Size>112, 16</Size>
+          <Text>Location:</Text>
+        </Label3>
+        <lstLocation Ref="101" type="Stimulsoft.Report.Dialogs.StiComboBoxControl" isKey="true">
+          <BackColor>Window</BackColor>
+          <ClientRectangle>136,32,200,20</ClientRectangle>
+          <Components isList="true" count="0" />
+          <DropDownStyle>DropDownList</DropDownStyle>
+          <Font>Microsoft Sans Serif,8</Font>
+          <ForeColor>Black</ForeColor>
+          <Guid>1ef5f295c49045b2868bc900edbdf41f</Guid>
+          <Items isList="true" count="0" />
+          <Location>136, 32</Location>
+          <Name>lstLocation</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+          <SelectedIndexChangedEvent>int locationID = 0;
+
+if (lstLocation.SelectedIndex &gt; 0) {
+int index = lstLocation.SelectedIndex;
+	index--;
+
+	int.TryParse(LocationSource.GetData("locationID", index).ToString() ,out locationID);
+}</SelectedIndexChangedEvent>
+          <Size>200, 20</Size>
+          <Text>Combo Box</Text>
+        </lstLocation>
+        <Label5 Ref="102" type="Stimulsoft.Report.Dialogs.StiLabelControl" isKey="true">
+          <BackColor>Control</BackColor>
+          <ClientRectangle>136,64,112,16</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Font>Microsoft Sans Serif,8,Bold</Font>
+          <ForeColor>Black</ForeColor>
+          <Guid>8078e599b02c446586e3f6cb7123d8eb</Guid>
+          <Location>136, 64</Location>
+          <Name>Label5</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+          <Size>112, 16</Size>
+          <Text>User:</Text>
+        </Label5>
+        <lstUser Ref="103" type="Stimulsoft.Report.Dialogs.StiComboBoxControl" isKey="true">
+          <BackColor>Window</BackColor>
+          <ClientRectangle>136,80,200,20</ClientRectangle>
+          <Components isList="true" count="0" />
+          <DropDownStyle>DropDownList</DropDownStyle>
+          <Font>Microsoft Sans Serif,8</Font>
+          <ForeColor>Black</ForeColor>
+          <Guid>4fc7907fbefe4223a60101cabd1e6ea6</Guid>
+          <Items isList="true" count="0" />
+          <Location>136, 80</Location>
+          <Name>lstUser</Name>
+          <Page isRef="90" />
+          <Parent isRef="90" />
+          <Size>200, 20</Size>
+          <Text>Combo Box</Text>
+        </lstUser>
+      </Components>
+      <Font>Microsoft Sans Serif,8</Font>
+      <Guid>f36b3c2318e3400b9b2f3ecd008ac401</Guid>
+      <LoadFormEvent>if (!formLoaded) {
+	InitForm();
+
+startDate.Value = DateTime.Now;
+endDate.Value = DateTime.Now;
+}</LoadFormEvent>
+      <Location>0, 0</Location>
+      <Name>Form1</Name>
+      <Report isRef="0" />
+      <Size>376, 288</Size>
+      <Text>Service Request Activity</Text>
+    </Form1>
+  </Pages>
+  <PrinterSettings Ref="104" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Service Request Transactions</ReportAlias>
+  <ReportAuthor>FSi</ReportAuthor>
+  <ReportChanged>6/23/2013 10:16:43 AM</ReportChanged>
+  <ReportCreated>11/25/2009 8:29:07 AM</ReportCreated>
+  <ReportDescription>A detailed listing of service requests completed for a specific date range</ReportDescription>
+  <ReportFile>C:\dev\LobbyCentral\LobbyCentral ServiceCenter Web\v6.0\ServiceCenter Web\reports\reportManager\files\Reports\serviceRequestActivity.mrt</ReportFile>
+  <ReportGuid>ec6ad38309204442bedca8e8d9505855</ReportGuid>
+  <ReportName>Service Request Transactions</ReportName>
+  <ReportUnit>Inches</ReportUnit>
+  <ReportVersion>2011.2.1100</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    
+    public class Service_Request_Transactions : Stimulsoft.Report.StiReport
+    {
+		private bool formLoaded;
+			
+        public Service_Request_Transactions()
+        {
+            this.InitializeComponent();
+        }
+		
+		public void InitForm() {
+			
+			UserSource.Connect();
+			UserSource.First();
+	
+			this.lstUser.Items.Add("All Users");
+	
+			while(!UserSource.IsEof) {								
+				this.lstUser.Items.Add(UserSource["userFullname"].ToString());
+				UserSource.Next();
+			}
+			
+			lstUser.SelectedIndex = 0;
+				
+				
+			LocationSource.Connect();
+			LocationSource.First();
+	
+			this.lstLocation.Items.Add("All Locations");
+	
+			while(!LocationSource.IsEof) {								
+				this.lstLocation.Items.Add(LocationSource["locationName"].ToString());
+				LocationSource.Next();
+			}
+			
+			lstLocation.SelectedIndex = 0;
+			
+			
+			
+			
+
+			formLoaded = true;
+		}
+		
+		private int CalcTime(DateTime date1, DateTime date2) {
+			TimeSpan ts =  date1.Subtract(date2);
+			
+			return System.Convert.ToInt32(ts.TotalMinutes);
+			
+		}
+		
+		private double CalcAvg(string totalRequest, string totalMinutes) {
+			double avgMins = 0;
+					
+			
+			int requests = 0;
+			int mins = 0;
+			
+			int.TryParse(totalRequest, out requests);
+			int.TryParse(totalMinutes, out mins);
+			
+			if (requests &gt; 0) {			
+				avgMins = mins / requests;
+			}
+			
+			return avgMins;
+		}
+		
+		private string GetFormattedTime(decimal minutes) {
+			
+			TimeSpan ts = new TimeSpan(0,System.Convert.ToInt32(minutes), 0);
+			
+			return ts.TotalHours.ToString("00") + "h " + ts.Minutes.ToString("00") + "m";
+			
+		}
+		
+		
+		
+        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

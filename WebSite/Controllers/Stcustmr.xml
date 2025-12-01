@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Stcustmr" conflictDetection="overwriteChanges" label="Stcustmr" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Stcustmr"."Cstm_No" "Cstm_No"
+	,"Stcustmr"."Cstm_Nm" "Cstm_Nm"
+	,"Stcustmr"."Cstm_Nme" "Cstm_Nme"
+	,"Stcustmr"."Cntry_No" "Cntry_No"
+	,"Cntry_"."Cntry_Nm" "Cntry_Cntry_Nm"
+	,"Stcustmr"."TSNEFNO" "TSNEFNO"
+	,"TSNEF"."TSNEF_name" "TSNEFTSNEF_name"
+	,"Stcustmr"."AreaNo" "AreaNo"
+	,"Area"."Area_name" "AreaArea_name"
+	,"Stcustmr"."TSNEFNO1" "TSNEFNO1"
+	,"TheTSNEFNO1"."TSNEF1_name" "TheTSNEFNO1TSNEF1_name"
+	,"Stcustmr"."blacklist" "blacklist"
+	,"Stcustmr"."EvaluationNO" "EvaluationNO"
+	,"Evaluation"."Evaluation_name" "EvaluationEvaluation_name"
+	,"Stcustmr"."acc_no" "acc_no"
+	,"acc_"."Acc_Nm" "acc_Acc_Nm"
+	,"acc_Clsacc_"."Acc_Nm" "acc_Clsacc_Acc_Nm"
+	,"acc_Acc_Bnd"."Acc_Nm" "acc_Acc_BndAcc_Nm"
+	,"acc_Acc_Bndaccclass"."accountclass" "acc_Acc_Bndaccclassaccountclass"
+	,"acc_Acc_BndAcc_Bab"."Acc_Nm" "acc_Acc_BndAcc_BabAcc_Nm"
+	,"Stcustmr"."curncy_no" "curncy_no"
+	,"curncy_"."Curncy_Nm" "curncy_Curncy_Nm"
+	,"Stcustmr"."Slm_No" "Slm_No"
+	,"Slm_"."Slm_Nm" "Slm_Slm_Nm"
+	,"Slm_masngerclass"."masngerclass" "Slm_masngerclassmasngerclass"
+	,"Stcustmr"."Cstm_Adr" "Cstm_Adr"
+	,"Stcustmr"."workadress" "workadress"
+	,"Stcustmr"."Cstm_Rsp" "Cstm_Rsp"
+	,"Stcustmr"."Cstm_Email" "Cstm_Email"
+	,"Stcustmr"."Cstm_Tel" "Cstm_Tel"
+	,"Stcustmr"."Cstm_Tel1" "Cstm_Tel1"
+	,"Stcustmr"."Cstm_Tel2" "Cstm_Tel2"
+	,"Stcustmr"."Cstm_Fax" "Cstm_Fax"
+	,"Stcustmr"."Cmp_code" "Cmp_code"
+	,"Stcustmr"."Cstm_Othr" "Cstm_Othr"
+	,"Stcustmr"."CivilID" "CivilID"
+	,"Stcustmr"."CivilEnddate" "CivilEnddate"
+	,"Stcustmr"."BirthDate" "BirthDate"
+	,"Stcustmr"."LicenceNumber" "LicenceNumber"
+	,"Stcustmr"."LicenceEnddate" "LicenceEnddate"
+	,"Stcustmr"."LicenceEnddatehijry" "LicenceEnddatehijry"
+	,"Stcustmr"."Cstm_Limt" "Cstm_Limt"
+	,"Stcustmr"."Cstm_Limtperiod" "Cstm_Limtperiod"
+	,"Stcustmr"."Fbal_DB" "Fbal_DB"
+	,"Stcustmr"."FBal_CR" "FBal_CR"
+	,"Stcustmr"."ModifiedBy" "ModifiedBy"
+	,"Stcustmr"."ModifiedOn" "ModifiedOn"
+	,"Stcustmr"."CreatedBy" "CreatedBy"
+	,"Stcustmr"."CreatedOn" "CreatedOn"
+	,"Stcustmr"."typ" "typ"
+from "dbo"."Stcustmr" "Stcustmr"
+	left join "dbo"."PYCntry" "Cntry_" on "Stcustmr"."Cntry_No" = "Cntry_"."Cntry_No"
+	left join "dbo"."stcustmrtasnef" "TSNEF" on "Stcustmr"."TSNEFNO" = "TSNEF"."TSNEFNO"
+	left join "dbo"."AreaList" "Area" on "Stcustmr"."AreaNo" = "Area"."AreaNo"
+	left join "dbo"."stcustmrtasnef1" "TheTSNEFNO1" on "Stcustmr"."TSNEFNO1" = "TheTSNEFNO1"."TSNEFNO1"
+	left join "dbo"."EvaluationList" "Evaluation" on "Stcustmr"."EvaluationNO" = "Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "acc_" on "Stcustmr"."acc_no" = "acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "acc_Clsacc_" on "acc_"."Clsacc_No" = "acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "acc_Acc_Bnd" on "acc_"."Acc_Bnd" = "acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "acc_Acc_Bndaccclass" on "acc_Acc_Bnd"."accclass" = "acc_Acc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "acc_Acc_BndAcc_Bab" on "acc_Acc_Bnd"."Acc_Bab" = "acc_Acc_BndAcc_Bab"."Acc_Bab"
+	left join "dbo"."Stcurncy" "curncy_" on "Stcustmr"."curncy_no" = "curncy_"."Curncy_No"
+	left join "dbo"."Stslsman" "Slm_" on "Stcustmr"."Slm_No" = "Slm_"."Slm_No"
+	left join "dbo"."masngerclass" "Slm_masngerclass" on "Slm_"."masngerclassid" = "Slm_masngerclass"."masngerclassid"
+]]></text>
+    </command>
+    <command id="Cstm_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Cstm_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Cstm_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Cstm No" readOnly="true" />
+    <field name="Cstm_Nm" type="String" label="Cstm Nm" length="155" showInSummary="true" />
+    <field name="Cstm_Nme" type="String" label="Cstm Nme" length="155" showInSummary="true" />
+    <field name="Cntry_No" type="Int64" label="Cntry No" showInSummary="true">
+      <items style="DropDownList" dataController="PYCntry" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Cntry_Cntry_Nm" type="String" readOnly="true" label="Cntry Nm" length="255" />
+    <field name="TSNEFNO" type="Int64" label="Tsnefno" showInSummary="true">
+      <items style="DropDownList" dataController="stcustmrtasnef" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TSNEFTSNEF_name" type="String" readOnly="true" label="TSNEFTSNEF name" length="150" />
+    <field name="AreaNo" type="Int64" label="Area No" showInSummary="true">
+      <items style="DropDownList" dataController="AreaList" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="AreaArea_name" type="String" readOnly="true" label="Area name" length="150" />
+    <field name="TSNEFNO1" type="Int64" label="Tsnefno1">
+      <items style="DropDownList" dataController="stcustmrtasnef1" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheTSNEFNO1TSNEF1_name" type="String" readOnly="true" label="TSNEFNO1TSNEF1 name" length="150" />
+    <field name="blacklist" type="Boolean" label="Blacklist" />
+    <field name="EvaluationNO" type="Int64" label="Evaluation NO">
+      <items style="DropDownList" dataController="EvaluationList" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="EvaluationEvaluation_name" type="String" readOnly="true" label="Evaluation name" length="150" />
+    <field name="acc_no" type="Int64" label="Acc No">
+      <items style="Lookup" dataController="GLmstrfl" searchOnStart="true" />
+    </field>
+    <field name="acc_Acc_Nm" type="String" readOnly="true" label="acc Acc Nm" length="255" />
+    <field name="acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="acc Clsacc Acc Nm" length="250" />
+    <field name="acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="acc Acc Bnd Acc Nm" length="50" />
+    <field name="acc_Acc_Bndaccclassaccountclass" type="String" readOnly="true" label="acc Acc Bndaccclassaccountclass" length="100" />
+    <field name="acc_Acc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="acc Acc Bnd Acc Bab Acc Nm" length="250" />
+    <field name="curncy_no" type="Int64" label="Curncy No">
+      <items style="DropDownList" dataController="Stcurncy" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="curncy_Curncy_Nm" type="String" readOnly="true" label="curncy Curncy Nm" length="200" />
+    <field name="Slm_No" type="Int64" label="Slm No">
+      <items style="DropDownList" dataController="Stslsman" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Slm_Slm_Nm" type="String" readOnly="true" label="Slm Nm" length="100" />
+    <field name="Slm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Slm masngerclassmasngerclass" length="-1" />
+    <field name="Cstm_Adr" type="String" label="Cstm Adr" length="155" />
+    <field name="workadress" type="String" label="Workadress" length="155" />
+    <field name="Cstm_Rsp" type="String" label="Cstm Rsp" length="155" />
+    <field name="Cstm_Email" type="String" label="Cstm Email" length="155" />
+    <field name="Cstm_Tel" type="String" label="Cstm Tel" length="8" />
+    <field name="Cstm_Tel1" type="String" label="Cstm Tel1" length="8" />
+    <field name="Cstm_Tel2" type="String" label="Cstm Tel2" length="8" />
+    <field name="Cstm_Fax" type="String" label="Cstm Fax" length="50" />
+    <field name="Cmp_code" type="String" label="Cmp code" length="50" />
+    <field name="Cstm_Othr" type="String" label="Cstm Othr" length="155" />
+    <field name="CivilID" type="String" label="Civil#" length="12" />
+    <field name="CivilEnddate" type="DateTime" label="Civil Enddate" />
+    <field name="BirthDate" type="DateTime" label="Birth Date" />
+    <field name="LicenceNumber" type="String" label="Licence Number" length="12" />
+    <field name="LicenceEnddate" type="DateTime" label="Licence Enddate" />
+    <field name="LicenceEnddatehijry" type="DateTime" label="Licence Enddatehijry" />
+    <field name="Cstm_Limt" type="Decimal" label="Cstm Limt" />
+    <field name="Cstm_Limtperiod" type="Int64" label="Cstm Limtperiod" />
+    <field name="Fbal_DB" type="Decimal" label="Fbal DB" />
+    <field name="FBal_CR" type="Decimal" label="F Bal CR" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="typ" type="Int64" default="((1))" label="Typ" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Stcustmr">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Cstm_No" columns="15" />
+        <dataField fieldName="Cstm_Nm" />
+        <dataField fieldName="Cstm_Nme" />
+        <dataField fieldName="Cntry_No" aliasFieldName="Cntry_Cntry_Nm" hyperlinkFormatString="~/Pages/PYCntry.aspx?Cntry_No={Cntry_No}&amp;_controller=PYCntry&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="TSNEFNO" aliasFieldName="TSNEFTSNEF_name" hyperlinkFormatString="~/Pages/stcustmrtasnef.aspx?TSNEFNO={TSNEFNO}&amp;_controller=stcustmrtasnef&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="AreaNo" aliasFieldName="AreaArea_name" hyperlinkFormatString="~/Pages/AreaList.aspx?AreaNo={AreaNo}&amp;_controller=AreaList&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="TSNEFNO1" aliasFieldName="TheTSNEFNO1TSNEF1_name" hyperlinkFormatString="~/Pages/stcustmrtasnef1.aspx?TSNEFNO1={TSNEFNO1}&amp;_controller=stcustmrtasnef1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="blacklist" />
+        <dataField fieldName="EvaluationNO" aliasFieldName="EvaluationEvaluation_name" hyperlinkFormatString="~/Pages/EvaluationList.aspx?EvaluationNO={EvaluationNO}&amp;_controller=EvaluationList&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="acc_no" aliasFieldName="acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={acc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="curncy_no" aliasFieldName="curncy_Curncy_Nm" hyperlinkFormatString="~/Pages/Stcurncy.aspx?Curncy_No={curncy_no}&amp;_controller=Stcurncy&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm" hyperlinkFormatString="~/Pages/Stslsman.aspx?Slm_No={Slm_No}&amp;_controller=Stslsman&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+	<dataField fieldName="Fbal_DB" dataFormatString="n3"   aggregate="Sum" />
+	<dataField fieldName="Cstm_Adr" />
+        <dataField fieldName="workadress" />
+        <dataField fieldName="Cstm_Rsp" />
+        <dataField fieldName="Cstm_Email" />
+        <dataField fieldName="Cstm_Tel" columns="8" />
+        <dataField fieldName="Cstm_Tel1" columns="8" />
+        <dataField fieldName="Cstm_Tel2" columns="8" />
+        <dataField fieldName="Cstm_Fax" columns="50" />
+        <dataField fieldName="Cmp_code" columns="50" />
+        <dataField fieldName="acc_Clsacc_Acc_Nm" />
+        <dataField fieldName="acc_Acc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="acc_Acc_Bndaccclassaccountclass" />
+        <dataField fieldName="acc_Acc_BndAcc_BabAcc_Nm" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Stcustmr">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Stcustmr" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Cstm_Nm" />
+            <dataField fieldName="Cstm_Nme" />
+            <dataField fieldName="Cntry_No" aliasFieldName="Cntry_Cntry_Nm" hyperlinkFormatString="~/Pages/PYCntry.aspx?Cntry_No={Cntry_No}&amp;_controller=PYCntry&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="TSNEFNO" aliasFieldName="TSNEFTSNEF_name" hyperlinkFormatString="~/Pages/stcustmrtasnef.aspx?TSNEFNO={TSNEFNO}&amp;_controller=stcustmrtasnef&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="AreaNo" aliasFieldName="AreaArea_name" hyperlinkFormatString="~/Pages/AreaList.aspx?AreaNo={AreaNo}&amp;_controller=AreaList&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="TSNEFNO1" aliasFieldName="TheTSNEFNO1TSNEF1_name" hyperlinkFormatString="~/Pages/stcustmrtasnef1.aspx?TSNEFNO1={TSNEFNO1}&amp;_controller=stcustmrtasnef1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="blacklist" />
+            <dataField fieldName="EvaluationNO" aliasFieldName="EvaluationEvaluation_name" hyperlinkFormatString="~/Pages/EvaluationList.aspx?EvaluationNO={EvaluationNO}&amp;_controller=EvaluationList&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="acc_no" aliasFieldName="acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={acc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="curncy_no" aliasFieldName="curncy_Curncy_Nm" hyperlinkFormatString="~/Pages/Stcurncy.aspx?Curncy_No={curncy_no}&amp;_controller=Stcurncy&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm" hyperlinkFormatString="~/Pages/Stslsman.aspx?Slm_No={Slm_No}&amp;_controller=Stslsman&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          </dataFields>
+        </category>
+        <category headerText="Extra" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="Cstm_Adr" />
+            <dataField fieldName="workadress" />
+            <dataField fieldName="Cstm_Rsp" />
+            <dataField fieldName="Cstm_Email" />
+            <dataField fieldName="Cstm_Tel" columns="8" />
+            <dataField fieldName="Cstm_Tel1" columns="8" />
+            <dataField fieldName="Cstm_Tel2" columns="8" />
+            <dataField fieldName="Cstm_Fax" columns="50" />
+            <dataField fieldName="Cmp_code" columns="50" />
+            <dataField fieldName="Cstm_Othr" />
+            <dataField fieldName="CivilID" columns="12" />
+            <dataField fieldName="CivilEnddate" columns="10" />
+            <dataField fieldName="BirthDate" columns="10" />
+            <dataField fieldName="LicenceNumber" columns="12" />
+            <dataField fieldName="LicenceEnddate" columns="10" />
+            <dataField fieldName="LicenceEnddatehijry" columns="10" />
+            <dataField fieldName="Cstm_Limt" dataFormatString="c" columns="15" />
+            <dataField fieldName="Cstm_Limtperiod" columns="15" />
+            <dataField fieldName="Fbal_DB" dataFormatString="c" columns="15" />
+            <dataField fieldName="FBal_CR" dataFormatString="c" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="typ" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Stcustmr">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Stcustmr" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Cstm_Nm" />
+            <dataField fieldName="Cstm_Nme" />
+            <dataField fieldName="Cntry_No" aliasFieldName="Cntry_Cntry_Nm" />
+            <dataField fieldName="TSNEFNO" aliasFieldName="TSNEFTSNEF_name" />
+            <dataField fieldName="AreaNo" aliasFieldName="AreaArea_name" />
+            <dataField fieldName="TSNEFNO1" aliasFieldName="TheTSNEFNO1TSNEF1_name" />
+            <dataField fieldName="blacklist" />
+            <dataField fieldName="EvaluationNO" aliasFieldName="EvaluationEvaluation_name" />
+            <dataField fieldName="acc_no" aliasFieldName="acc_Acc_Nm" />
+            <dataField fieldName="curncy_no" aliasFieldName="curncy_Curncy_Nm" />
+            <dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm" />
+            <dataField fieldName="Fbal_DB" dataFormatString="c" columns="15" />
+            <dataField fieldName="FBal_CR" dataFormatString="c" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="typ" columns="15" />
+          </dataFields>
+        </category>
+        <category headerText="Extra" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="Cstm_Adr" />
+            <dataField fieldName="workadress" />
+            <dataField fieldName="Cstm_Rsp" />
+            <dataField fieldName="Cstm_Email" />
+            <dataField fieldName="Cstm_Tel" columns="8" />
+            <dataField fieldName="Cstm_Tel1" columns="8" />
+            <dataField fieldName="Cstm_Tel2" columns="8" />
+            <dataField fieldName="Cstm_Fax" columns="50" />
+            <dataField fieldName="Cmp_code" columns="50" />
+            <dataField fieldName="Cstm_Othr" />
+            <dataField fieldName="CivilID" columns="12" />
+            <dataField fieldName="CivilEnddate" columns="10" />
+            <dataField fieldName="BirthDate" columns="10" />
+            <dataField fieldName="LicenceNumber" columns="12" />
+            <dataField fieldName="LicenceEnddate" columns="10" />
+            <dataField fieldName="LicenceEnddatehijry" columns="10" />
+            <dataField fieldName="Cstm_Limt" dataFormatString="c" columns="15" />
+            <dataField fieldName="Cstm_Limtperiod" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="searchgrid1" type="Grid" legend="false" commandId="command1" label="searchgrid1" showInSelector="true" reportTemplate="false">
+      <categories />
+      <dataFields>
+        <dataField fieldName="Cstm_No" hidden="false" />
+        <dataField fieldName="Cstm_Nm" hidden="false" />
+        <dataField fieldName="Cstm_Tel" hidden="false" />
+        <dataField fieldName="CivilID" hidden="false" />
+      </dataFields>
+    </view>
+  </views>
+  <actions>
+  <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+      <action commandName="SQL" headerText="NewCode" confirmation="_controller=CustomINsert1001&#xD;&#xA;_width=500&#xD;&#xA;_title=Insert new&#xD;&#xA;_shortcut=true&#xD;&#xA;_view=createForm2&#xD;&#xA;" id="a100">
+        <data><![CDATA[exec dbo.[insertStcustmrCode] @Parameters_Recalldateagain,@BusinessRules_UserName
+ ]]></data>
+      </action>
+    </actionGroup>
+  </actions>
+</dataController>

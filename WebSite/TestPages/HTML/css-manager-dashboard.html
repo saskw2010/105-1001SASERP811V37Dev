@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Manager Dashboard - لوحة إدارة CSS</title>
+    <link rel="stylesheet" href="css/modern-variables.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .dashboard-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .dashboard-header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .dashboard-header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .content-panel {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .panel-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .tab-buttons {
+            display: flex;
+            background: #ecf0f1;
+            border-radius: 8px;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background: transparent;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: #7f8c8d;
+        }
+
+        .tab-button.active {
+            background: #3498db;
+            color: white;
+            box-shadow: 0 2px 10px rgba(52, 152, 219, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .class-list {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ecf0f1;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .class-item {
+            background: #f8f9fa;
+            margin: 5px 0;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #495057;
+            border-left: 3px solid #3498db;
+            transition: all 0.2s ease;
+        }
+
+        .class-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60, #229954);
+        }
+
+        .files-overview {
+            grid-column: 1 / -1;
+        }
+
+        .file-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .file-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .file-stats {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+
+        .error {
+            background: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>🎨 لوحة إدارة CSS</h1>
+            <p>نظام شامل لإدارة وتحليل ملفات CSS - تم استخراج 551 كلاس من 5 ملفات</p>
+        </div>
+
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalClasses">551</div>
+                <div class="stat-label">إجمالي الكلاسات</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalFiles">5</div>
+                <div class="stat-label">الملفات المعالجة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalIds">21</div>
+                <div class="stat-label">معرفات CSS</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalElements">13</div>
+                <div class="stat-label">عناصر HTML</div>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="content-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">🏗️ الكلاسات حسب النوع</h2>
+                </div>
+                <div class="tab-buttons" id="typeTabButtons">
+                    <!-- سيتم ملؤها بـ JavaScript -->
+                </div>
+                <input type="text" class="search-box" id="typeSearchBox" placeholder="🔍 البحث في الكلاسات...">
+                <div id="typeTabsContent">
+                    <!-- سيتم ملؤها بـ JavaScript -->
+                </div>
+            </div>
+
+            <div class="content-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">📝 جميع الكلاسات</h2>
+                </div>
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="showAllClasses('alphabetical')">أبجدي</button>
+                    <button class="tab-button" onclick="showAllClasses('byLetter')">حسب الحرف</button>
+                </div>
+                <input type="text" class="search-box" id="allClassesSearchBox" placeholder="🔍 البحث في جميع الكلاسات...">
+                <div class="class-list" id="allClassesList">
+                    <div class="loading">⏳ جاري التحميل...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-panel files-overview">
+            <div class="panel-header">
+                <h2 class="panel-title">📁 نظرة عامة على الملفات</h2>
+            </div>
+            <div id="filesOverview">
+                <div class="loading">⏳ جاري تحميل بيانات الملفات...</div>
+            </div>
+        </div>
+
+        <div class="content-panel">
+            <div class="panel-header">
+                <h2 class="panel-title">💾 تحميل الملفات</h2>
+            </div>
+            <p style="margin-bottom: 20px; color: #7f8c8d;">تحميل ملفات JSON و CSS المولدة:</p>
+            <div class="download-buttons">
+                <a href="css-master-index.json" class="btn" download>📊 الفهرس الرئيسي</a>
+                <a href="css-classes-by-type.json" class="btn" download>🏗️ الكلاسات حسب النوع</a>
+                <a href="css-all-classes.json" class="btn" download>📝 جميع الكلاسات</a>
+                <a href="css-ids-elements.json" class="btn btn-secondary" download>🆔 المعرفات والعناصر</a>
+                <a href="css-files-details.json" class="btn btn-secondary" download>📁 تفاصيل الملفات</a>
+                <a href="css-reset-complete.css" class="btn btn-success" download>🔄 CSS Reset</a>
+                <a href="css-modern-variables.css" class="btn btn-success" download>🎨 متغيرات CSS</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allData = {};
+
+        // تحميل البيانات عند تحميل الصفحة
+        async function loadData() {
+            try {
+                // تحميل جميع ملفات JSON
+                const responses = await Promise.all([
+                    fetch('css-master-index.json'),
+                    fetch('css-classes-by-type.json'),
+                    fetch('css-all-classes.json'),
+                    fetch('css-ids-elements.json'),
+                    fetch('css-files-details.json')
+                ]);
+
+                const [masterIndex, classesByType, allClasses, idsElements, filesDetails] = 
+                    await Promise.all(responses.map(r => r.json()));
+
+                allData = {
+                    masterIndex,
+                    classesByType,
+                    allClasses,
+                    idsElements,
+                    filesDetails
+                };
+
+                // تحديث الإحصائيات
+                updateStats();
+                
+                // تحديث المحتوى
+                updateTypesTabs();
+                updateAllClasses();
+                updateFilesOverview();
+
+            } catch (error) {
+                console.error('خطأ في تحميل البيانات:', error);
+                showError('فشل في تحميل البيانات. تأكد من وجود ملفات JSON.');
+            }
+        }
+
+        function updateStats() {
+            const { masterIndex } = allData;
+            document.getElementById('totalClasses').textContent = masterIndex.total_classes;
+            document.getElementById('totalFiles').textContent = masterIndex.total_files_processed;
+            document.getElementById('totalIds').textContent = masterIndex.total_ids;
+            document.getElementById('totalElements').textContent = masterIndex.total_elements;
+        }
+
+        function updateTypesTabs() {
+            const { classesByType } = allData;
+            const tabButtons = document.getElementById('typeTabButtons');
+            const tabsContent = document.getElementById('typeTabsContent');
+            
+            tabButtons.innerHTML = '';
+            tabsContent.innerHTML = '';
+
+            let isFirst = true;
+            for (const [type, classes] of Object.entries(classesByType)) {
+                if (classes.length === 0) continue;
+
+                // إنشاء زر التبويب
+                const button = document.createElement('button');
+                button.className = `tab-button ${isFirst ? 'active' : ''}`;
+                button.textContent = `${type} (${classes.length})`;
+                button.onclick = () => showTypeTab(type);
+                tabButtons.appendChild(button);
+
+                // إنشاء محتوى التبويب
+                const content = document.createElement('div');
+                content.className = `tab-content ${isFirst ? 'active' : ''}`;
+                content.id = `type-${type}`;
+                
+                const classList = document.createElement('div');
+                classList.className = 'class-list';
+                classList.innerHTML = classes.map(cls => 
+                    `<div class="class-item">.${cls}</div>`
+                ).join('');
+                
+                content.appendChild(classList);
+                tabsContent.appendChild(content);
+
+                isFirst = false;
+            }
+
+            // إضافة البحث
+            document.getElementById('typeSearchBox').addEventListener('input', (e) => {
+                filterClasses(e.target.value, 'type');
+            });
+        }
+
+        function showTypeTab(type) {
+            // إزالة active من جميع الأزرار والمحتويات
+            document.querySelectorAll('#typeTabButtons .tab-button').forEach(btn => 
+                btn.classList.remove('active')
+            );
+            document.querySelectorAll('#typeTabsContent .tab-content').forEach(content => 
+                content.classList.remove('active')
+            );
+
+            // إضافة active للعنصر المحدد
+            event.target.classList.add('active');
+            document.getElementById(`type-${type}`).classList.add('active');
+        }
+
+        function updateAllClasses() {
+            const { allClasses } = allData;
+            const container = document.getElementById('allClassesList');
+            
+            container.innerHTML = allClasses.all_classes.map(cls => 
+                `<div class="class-item">.${cls}</div>`
+            ).join('');
+
+            // إضافة البحث
+            document.getElementById('allClassesSearchBox').addEventListener('input', (e) => {
+                filterClasses(e.target.value, 'all');
+            });
+        }
+
+        function showAllClasses(type) {
+            // تحديث أزرار التبويب
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const { allClasses } = allData;
+            const container = document.getElementById('allClassesList');
+
+            if (type === 'alphabetical') {
+                container.innerHTML = allClasses.all_classes.map(cls => 
+                    `<div class="class-item">.${cls}</div>`
+                ).join('');
+            } else if (type === 'byLetter') {
+                const { alphabetical_index } = allClasses;
+                let html = '';
+                for (const [letter, classes] of Object.entries(alphabetical_index)) {
+                    html += `<h4 style="margin: 15px 0 10px 0; color: #3498db;">${letter}</h4>`;
+                    html += classes.map(cls => 
+                        `<div class="class-item">.${cls}</div>`
+                    ).join('');
+                }
+                container.innerHTML = html;
+            }
+        }
+
+        function updateFilesOverview() {
+            const { masterIndex, filesDetails } = allData;
+            const container = document.getElementById('filesOverview');
+            
+            let html = '';
+            for (const [filename, summary] of Object.entries(masterIndex.files_summary)) {
+                const details = filesDetails[filename];
+                html += `
+                    <div class="file-item">
+                        <div class="file-name">📄 ${filename}</div>
+                        <div class="file-stats">
+                            <span>🎨 ${summary.classes_count} كلاس</span>
+                            <span>🆔 ${summary.ids_count} معرف</span>
+                            <span>📦 ${(summary.file_size / 1024).toFixed(1)} KB</span>
+                            <span>📅 ${new Date(summary.last_modified).toLocaleDateString('ar-EG')}</span>
+                        </div>
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+        }
+
+        function filterClasses(searchTerm, context) {
+            const term = searchTerm.toLowerCase();
+            let selector = '';
+            
+            if (context === 'type') {
+                selector = '#typeTabsContent .tab-content.active .class-item';
+            } else if (context === 'all') {
+                selector = '#allClassesList .class-item';
+            }
+
+            document.querySelectorAll(selector).forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(term) ? 'block' : 'none';
+            });
+        }
+
+        function showError(message) {
+            const container = document.querySelector('.dashboard-container');
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error';
+            errorDiv.textContent = message;
+            container.insertBefore(errorDiv, container.firstChild);
+        }
+
+        // تحميل البيانات عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Tbl_RSales" conflictDetection="overwriteChanges" label="Tbl R Sales" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Tbl_RSales"."S_Inv" "S_Inv"
+	,"Tbl_RSales"."Date_R" "Date_R"
+	,"Tbl_RSales"."Description" "Description"
+	,"Tbl_RSales"."Item_Code" "Item_Code"
+	,"Tbl_RSales"."Arab_Desc" "Arab_Desc"
+	,"Tbl_RSales"."QTY_R" "QTY_R"
+	,"Tbl_RSales"."Sale_Price" "Sale_Price"
+	,"Tbl_RSales"."Grand_Total" "Grand_Total"
+from "dbo"."Tbl_RSales" "Tbl_RSales"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="S_Inv" type="String" isPrimaryKey="true" label="S Inv" length="20" showInSummary="true" />
+    <field name="Date_R" type="DateTime" label="Date R" showInSummary="true" />
+    <field name="Description" type="String" label="Description" length="50" showInSummary="true" />
+    <field name="Item_Code" type="String" label="Item Code" length="50" showInSummary="true" />
+    <field name="Arab_Desc" type="String" label="Arab Desc" length="50" showInSummary="true" />
+    <field name="QTY_R" type="Decimal" default="((0))" label="Qty R" />
+    <field name="Sale_Price" type="Double" default="((0))" label="Sale Price" />
+    <field name="Grand_Total" type="Double" default="((0))" label="Grand Total" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Tbl R Sales">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="S_Inv" columns="20" />
+        <dataField fieldName="Date_R" columns="10" />
+        <dataField fieldName="Description" columns="50" />
+        <dataField fieldName="Item_Code" columns="50" />
+        <dataField fieldName="Arab_Desc" columns="50" />
+        <dataField fieldName="QTY_R" columns="15" />
+        <dataField fieldName="Sale_Price" columns="15" />
+        <dataField fieldName="Grand_Total" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Tbl R Sales">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Tbl R Sales" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="S_Inv" columns="20" />
+            <dataField fieldName="Date_R" columns="10" />
+            <dataField fieldName="Description" columns="50" />
+            <dataField fieldName="Item_Code" columns="50" />
+            <dataField fieldName="Arab_Desc" columns="50" />
+            <dataField fieldName="QTY_R" columns="15" />
+            <dataField fieldName="Sale_Price" columns="15" />
+            <dataField fieldName="Grand_Total" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Tbl R Sales">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Tbl R Sales" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="S_Inv" columns="20" />
+            <dataField fieldName="Date_R" columns="10" />
+            <dataField fieldName="Description" columns="50" />
+            <dataField fieldName="Item_Code" columns="50" />
+            <dataField fieldName="Arab_Desc" columns="50" />
+            <dataField fieldName="QTY_R" columns="15" />
+            <dataField fieldName="Sale_Price" columns="15" />
+            <dataField fieldName="Grand_Total" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a8" commandName="New" commandArgument="grid1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="TeleymarkhaylaSalary" conflictDetection="overwriteChanges" label="Teleymarkhayla Salary" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"TeleymarkhaylaSalary"."Yearofdateapp" "Yearofdateapp"
+	,"TeleymarkhaylaSalary"."Monthofdateapp" "Monthofdateapp"
+	,"TeleymarkhaylaSalary"."Tele_Mark_SecID" "Tele_Mark_SecID"
+	,"TeleymarkhaylaSalary"."Tele_Mark_Sec" "Tele_Mark_Sec"
+	,"TeleymarkhaylaSalary"."Totalard" "Totalard"
+	,"TeleymarkhaylaSalary"."Ardcommistion" "Ardcommistion"
+	,"TeleymarkhaylaSalary"."Sales" "Sales"
+	,"TeleymarkhaylaSalary"."salescommistion" "salescommistion"
+	,"TeleymarkhaylaSalary"."calc1" "calc1"
+	,"TeleymarkhaylaSalary"."calc2" "calc2"
+from "dbo"."TeleymarkhaylaSalary" "TeleymarkhaylaSalary"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="Yearofdateapp" type="Int32" label="Yearofdateapp" showInSummary="true" />
+    <field name="Monthofdateapp" type="Int32" label="Monthofdateapp" showInSummary="true" />
+    <field name="Tele_Mark_SecID" type="Int64" label="Tele Mark Sec#" showInSummary="true" />
+    <field name="Tele_Mark_Sec" type="String" label="Tele Mark Sec" length="50" showInSummary="true" />
+    <field name="Totalard" type="Int32" label="Totalard" showInSummary="true" />
+    <field name="Ardcommistion" type="Int32" allowNulls="false" label="Ardcommistion" readOnly="true" />
+    <field name="Sales" type="Int32" label="Sales" />
+    <field name="salescommistion" type="Int32" label="Salescommistion" readOnly="true" />
+    <field name="calc1" type="Int32" allowNulls="false" label="Calc1" readOnly="true" />
+    <field name="calc2" type="Int32" allowNulls="false" label="Calc2" readOnly="true" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Teleymarkhayla Salary">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Ardcommistion" columns="15" />
+        <dataField fieldName="Yearofdateapp" columns="15" />
+        <dataField fieldName="Monthofdateapp" columns="15" />
+        <dataField fieldName="Tele_Mark_SecID" columns="15" />
+        <dataField fieldName="Tele_Mark_Sec" columns="50" />
+        <dataField fieldName="Totalard" columns="15" />
+        <dataField fieldName="Sales" columns="15" />
+        <dataField fieldName="salescommistion" columns="15" />
+        <dataField fieldName="calc1" columns="15" />
+        <dataField fieldName="calc2" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Teleymarkhayla Salary">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Teleymarkhayla Salary" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Yearofdateapp" columns="15" />
+            <dataField fieldName="Monthofdateapp" columns="15" />
+            <dataField fieldName="Tele_Mark_SecID" columns="15" />
+            <dataField fieldName="Tele_Mark_Sec" columns="50" />
+            <dataField fieldName="Totalard" columns="15" />
+            <dataField fieldName="Ardcommistion" columns="15" />
+            <dataField fieldName="Sales" columns="15" />
+            <dataField fieldName="salescommistion" columns="15" />
+            <dataField fieldName="calc1" columns="15" />
+            <dataField fieldName="calc2" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Teleymarkhayla Salary">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Teleymarkhayla Salary" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Yearofdateapp" columns="15" />
+            <dataField fieldName="Monthofdateapp" columns="15" />
+            <dataField fieldName="Tele_Mark_SecID" columns="15" />
+            <dataField fieldName="Tele_Mark_Sec" columns="50" />
+            <dataField fieldName="Totalard" columns="15" />
+            <dataField fieldName="Sales" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

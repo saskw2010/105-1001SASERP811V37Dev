@@ -1,0 +1,250 @@
+/* White Text Color Fix - إصلاح مشكلة النص الأبيض */
+/* هذا الملف يحل مشكلة عدم ظهور النص الأبيض على خلفيات فاتحة */
+
+/* ===== GLOBAL TEXT COLOR FIXES ===== */
+
+/* Override all white text colors with readable alternatives */
+* {
+    /* Ensure all text is readable by default */
+    color: inherit !important;
+}
+
+/* High priority fixes for common white text scenarios */
+[style*="color: white"],
+[style*="color: #fff"],
+[style*="color: #ffffff"],
+[style*="color: #FFFFFF"] {
+    color: #1f2937 !important; /* Dark gray for readability */
+}
+
+/* CSS class overrides */
+.white,
+.White,
+.text-white {
+    color: #1f2937 !important;
+}
+
+/* ===== SPECIFIC COMPONENT FIXES ===== */
+
+/* Tables and General Headers */
+table th,
+.GridView th {
+    color: #f8f9fa !important; /* Light color on dark backgrounds */
+}
+
+/* Button overrides - preserve white text only on dark backgrounds */
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger,
+.Button,
+input[type="submit"],
+input[type="button"],
+button {
+    color: #f8f9fa !important; /* Light color for buttons */
+}
+
+/* Navigation elements with dark backgrounds */
+.navbar-dark .navbar-nav .nav-link,
+.nav-dark a,
+.sidebar-dark a,
+.menu-dark a {
+    color: #f8f9fa !important;
+}
+
+/* Form elements - ensure dark text on light backgrounds */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+    color: #1f2937 !important;
+    background-color: #ffffff !important;
+}
+
+/* ===== EXCEPTIONS FOR DARK BACKGROUNDS ===== */
+
+/* Elements that should keep light text on dark backgrounds */
+.bg-primary,
+.bg-secondary,
+.bg-dark,
+.bg-success,
+.bg-info,
+.bg-warning,
+.bg-danger,
+[style*="background-color: #"],
+[style*="background: #"] {
+    color: #f8f9fa !important;
+}
+
+/* Specific dark background selectors */
+.TaskBox .Header,
+.ModalWindow .Header,
+.card-header,
+.navbar-dark,
+.sidebar-dark {
+    color: #f8f9fa !important;
+}
+
+/* ===== BOOTSTRAP OVERRIDES ===== */
+
+/* Override Bootstrap white text issues */
+.text-white {
+    color: #1f2937 !important;
+}
+
+.btn-outline-light {
+    color: #1f2937 !important;
+    border-color: #1f2937 !important;
+}
+
+.btn-outline-light:hover {
+    color: #f8f9fa !important;
+    background-color: #1f2937 !important;
+}
+
+/* ===== LOGIN PAGE SPECIFIC FIXES ===== */
+
+.login-container,
+.login-form,
+#LoginControl {
+    color: #1f2937 !important;
+}
+
+.login-container .btn,
+.login-form .btn,
+#LoginControl .btn {
+    color: #f8f9fa !important;
+}
+
+/* ===== NAVIGATION SPECIFIC FIXES ===== */
+
+#mynavbar a,
+.mainsidepanel a,
+.openbtn,
+.myhomeopenbtn {
+    color: #f8f9fa !important;
+}
+
+/* ===== TABLES AND DATA GRIDS ===== */
+
+/* Ensure table content is readable */
+table tbody td,
+table tbody td,
+table tbody tr,
+.GridView tbody td,
+.GridView tbody tr {
+    color: #1f2937 !important;
+}
+
+/* ===== ALERTS AND NOTIFICATIONS ===== */
+
+.alert,
+.notification,
+.message,
+.ValidationSummary {
+    color: #1f2937 !important;
+}
+
+.alert-success,
+.alert-info,
+.alert-warning,
+.alert-danger {
+    color: #1f2937 !important;
+}
+
+/* ===== CARDS AND PANELS ===== */
+
+.card-body,
+.panel-body,
+.TaskBox .Content {
+    color: #1f2937 !important;
+}
+
+/* ===== LINKS ===== */
+
+a {
+    color: #2563eb !important;
+}
+
+a:hover {
+    color: #1d4ed8 !important;
+}
+
+/* Preserve light links on dark backgrounds */
+.bg-dark a,
+.bg-primary a,
+.bg-secondary a,
+.navbar-dark a {
+    color: #dbeafe !important;
+}
+
+.bg-dark a:hover,
+.bg-primary a:hover,
+.bg-secondary a:hover,
+.navbar-dark a:hover {
+    color: #ffffff !important;
+}
+
+/* ===== RESPONSIVE FIXES ===== */
+
+@media (max-width: 768px) {
+    /* Ensure mobile readability */
+    * {
+        color: inherit !important;
+    }
+    
+    .mobile-menu,
+    .mobile-nav {
+        color: #1f2937 !important;
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+    * {
+        color: #000000 !important;
+        background: #ffffff !important;
+    }
+}
+
+/* ===== HIGH PRIORITY FINAL OVERRIDES ===== */
+
+/* Last resort overrides with maximum specificity */
+html body * {
+    /* Ensure no element has problematic white text */
+}
+
+html body [style*="color: white"] {
+    color: #1f2937 !important;
+}
+
+html body [style*="color: #fff"] {
+    color: #1f2937 !important;
+}
+
+html body [style*="color: #ffffff"] {
+    color: #1f2937 !important;
+}
+
+/* Specific fixes for common CodeOnTime elements */
+html body .TaskBox,
+html body .GridView,
+html body .ModalWindow {
+    color: #1f2937 !important;
+}
+
+/* Exception: Keep light text on dark backgrounds */
+html body .TaskBox .Header,
+html body .GridView th,
+html body .ModalWindow .Header {
+    color: #f8f9fa !important;
+}
+
+/* Final safety net */
+html body *:not(.bg-dark):not(.bg-primary):not(.bg-secondary):not(.navbar-dark):not(.btn):not(.alert-dark) {
+    color: #1f2937 !important;
+}

@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Stpurdtl" conflictDetection="overwriteChanges" label="Stpurdtl" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Stpurdtl"."Ln_No" "Ln_No"
+	,"Stpurdtl"."Doc_No" "Doc_No"
+	,"Doc_"."Reftxt" "Doc_Reftxt"
+	,"Doc_Brn_"."Brn_Nm" "Doc_Brn_Brn_Nm"
+	,"Doc_Brn_Cmp_"."Grp_Nm" "Doc_Brn_Cmp_Grp_Nm"
+	,"Doc_sgm"."sgm_Nm" "Doc_sgmsgm_Nm"
+	,"Doc_sgmOpco"."OpcoName" "Doc_sgmOpcoOpcoName"
+	,"Doc_typcmsup"."SubledgerDescrption" "Doc_typcmsupSubledgerDescrption"
+	,"Doc_Pym_"."Pymnt_Nm" "Doc_Pym_Pymnt_Nm"
+	,"Doc_Pym_pymnt_acc"."Acc_Nm" "Doc_Pym_pymnt_accAcc_Nm"
+	,"Doc_Pym_sgm"."sgm_Nm" "Doc_Pym_sgmsgm_Nm"
+	,"Doc_acd"."AcademicYear" "Doc_acdAcademicYear"
+	,"Doc_acdGlFinperiod"."Fin_period_info" "Doc_acdGlFinperiodFin_period_info"
+	,"Doc_branch"."Desc1" "Doc_branchDesc1"
+	,"Doc_branchsgm"."sgm_Nm" "Doc_branchsgmsgm_Nm"
+	,"Doc_branchGender"."Gender" "Doc_branchGenderGender"
+	,"Doc_branchstage"."ShortDesc1" "Doc_branchstageShortDesc1"
+	,"Doc_branchschtyp"."schtypDesc" "Doc_branchschtypschtypDesc"
+	,"Doc_cur"."Curncy_Nm" "Doc_curCurncy_Nm"
+	,"Doc_Cstm_"."Sup_Nm" "Doc_Cstm_Sup_Nm"
+	,"Doc_Cstm_Acc_"."Acc_Nm" "Doc_Cstm_Acc_Acc_Nm"
+	,"Doc_Cstm_Cntry_"."Cntry_Nm" "Doc_Cstm_Cntry_Cntry_Nm"
+	,"Doc_Cstm_Curncy_"."Curncy_Nm" "Doc_Cstm_Curncy_Curncy_Nm"
+	,"Doc_Slm_"."Slm_Nm" "Doc_Slm_Slm_Nm"
+	,"Doc_Slm_masngerclass"."masngerclass" "Doc_Slm_masngerclassmasngerclass"
+	,"Stpurdtl"."Brn_No" "Brn_No"
+	,"Brn_"."Brn_Nm" "Brn_Brn_Nm"
+	,"Brn_Cmp_"."Grp_Nm" "Brn_Cmp_Grp_Nm"
+	,"Brn_Cmp_Grp_"."Grp_Nm" "Brn_Cmp_Grp_Grp_Nm"
+	,"Stpurdtl"."Itm_No" "Itm_No"
+	,"Itm_"."ID_USER" "Itm_ID_USER"
+	,"Itm_"."ITEM" "ITEM"
+	,"Itm_IDGROUP"."ID_USER" "Itm_IDGROUPID_USER"
+	,"Itm_Sup_"."Item_name" "Itm_Sup_Item_name"
+	,"Itm_id1"."DESCRP1" "Itm_id1DESCRP1"
+	,"Itm_id2"."DESCRP1" "Itm_id2DESCRP1"
+	,"Itm_id3"."DESCRP1" "Itm_id3DESCRP1"
+	,"Itm_id4"."DESCRP1" "Itm_id4DESCRP1"
+	,"Itm_id5"."DESCRP1" "Itm_id5DESCRP1"
+	,"Itm_id6"."DESCRP1" "Itm_id6DESCRP1"
+	,"Itm_id7"."DESCRP1" "Itm_id7DESCRP1"
+	,"Stpurdtl"."Reftxt1" "Reftxt1"
+	,"Stpurdtl"."expiresdate" "expiresdate"
+	,"Stpurdtl"."Unit_No" "Unit_No"
+	,"Unit_"."Unit_Nm" "Unit_Unit_Nm"
+	,"Stpurdtl"."UnitPrice" "UnitPrice"
+	,"Stpurdtl"."Quantity" "Quantity"
+	,"Stpurdtl"."Discount" "Discount"
+	,"Stpurdtl"."Titm_Sal" "Titm_Sal"
+	,"Stpurdtl"."Titm_Cost" "Titm_Cost"
+	,"Stpurdtl"."Itm_Cost" "Itm_Cost"
+	,"Stpurdtl"."notesdtl" "notesdtl"
+	,"Stpurdtl"."Idate" "Idate"
+	,"Stpurdtl"."darb" "darb"
+	,"Stpurdtl"."paplcprc" "paplcprc"
+	,"Stpurdtl"."nakdy" "nakdy"
+	,"Stpurdtl"."shad" "shad"
+	,"Stpurdtl"."carno" "carno"
+	,"Stpurdtl"."locno" "locno"
+	,"Stpurdtl"."Refcode" "Refcode"
+	,"Stpurdtl"."Reftxt" "Reftxt"
+	,"Stpurdtl"."whhus" "whhus"
+	,"Stpurdtl"."ModifiedBy" "ModifiedBy"
+	,"Stpurdtl"."ModifiedOn" "ModifiedOn"
+	,"Stpurdtl"."CreatedBy" "CreatedBy"
+	,"Stpurdtl"."CreatedOn" "CreatedOn"
+from "dbo"."Stpurdtl" "Stpurdtl"
+	left join "dbo"."Stpurhdr" "Doc_" on "Stpurdtl"."Doc_No" = "Doc_"."Doc_No"
+	left join "dbo"."Branchcnst" "Doc_Brn_" on "Doc_"."Brn_No" = "Doc_Brn_"."Brn_No"
+	left join "dbo"."Pycnstnt" "Doc_Brn_Cmp_" on "Doc_Brn_"."Cmp_code" = "Doc_Brn_Cmp_"."Cmp_No"
+	left join "dbo"."glmulcmp" "Doc_sgm" on "Doc_"."sgm" = "Doc_sgm"."sgmid"
+	left join "dbo"."OpCo" "Doc_sgmOpco" on "Doc_sgm"."OpcoID" = "Doc_sgmOpco"."OpcoIDidentity"
+	left join "dbo"."GLSubledgertyplist" "Doc_typcmsup" on "Doc_"."typcmsup" = "Doc_typcmsup"."Subledgerid"
+	left join "dbo"."Pymntype" "Doc_Pym_" on "Doc_"."Pym_No" = "Doc_Pym_"."Pymnt_No"
+	left join "dbo"."GLmstrfl" "Doc_Pym_pymnt_acc" on "Doc_Pym_"."pymnt_acc" = "Doc_Pym_pymnt_acc"."Acc_No"
+	left join "dbo"."glmulcmp" "Doc_Pym_sgm" on "Doc_Pym_"."sgm" = "Doc_Pym_sgm"."sgmid"
+	left join "dbo"."schAcademicyear" "Doc_acd" on "Doc_"."acdcode" = "Doc_acd"."Code"
+	left join "dbo"."GlFinanceperiod" "Doc_acdGlFinperiod" on "Doc_acd"."GlFinperiodID" = "Doc_acdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."schBranch" "Doc_branch" on "Doc_"."branch" = "Doc_branch"."branch"
+	left join "dbo"."glmulcmp" "Doc_branchsgm" on "Doc_branch"."sgm" = "Doc_branchsgm"."sgmid"
+	left join "dbo"."PyGender" "Doc_branchGender" on "Doc_branch"."Genderid" = "Doc_branchGender"."Genderid"
+	left join "dbo"."schStage" "Doc_branchstage" on "Doc_branch"."stagecode" = "Doc_branchstage"."Code"
+	left join "dbo"."schtyp" "Doc_branchschtyp" on "Doc_branch"."schtypid" = "Doc_branchschtyp"."schtypid"
+	left join "dbo"."Stcurncy" "Doc_cur" on "Doc_"."curcode" = "Doc_cur"."Curncy_No"
+	left join "dbo"."Stsuplir" "Doc_Cstm_" on "Doc_"."Cstm_No" = "Doc_Cstm_"."Sup_No"
+	left join "dbo"."GLmstrfl" "Doc_Cstm_Acc_" on "Doc_Cstm_"."Acc_No" = "Doc_Cstm_Acc_"."Acc_No"
+	left join "dbo"."PYCntry" "Doc_Cstm_Cntry_" on "Doc_Cstm_"."Cntry_No" = "Doc_Cstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "Doc_Cstm_Curncy_" on "Doc_Cstm_"."Curncy_No" = "Doc_Cstm_Curncy_"."Curncy_No"
+	left join "dbo"."Stslsman" "Doc_Slm_" on "Doc_"."Slm_No" = "Doc_Slm_"."Slm_No"
+	left join "dbo"."masngerclass" "Doc_Slm_masngerclass" on "Doc_Slm_"."masngerclassid" = "Doc_Slm_masngerclass"."masngerclassid"
+	left join "dbo"."Branchcnst" "Brn_" on "Stpurdtl"."Brn_No" = "Brn_"."Brn_No"
+	left join "dbo"."Pycnstnt" "Brn_Cmp_" on "Brn_"."Cmp_code" = "Brn_Cmp_"."Cmp_No"
+	left join "dbo"."Groupcnst" "Brn_Cmp_Grp_" on "Brn_Cmp_"."Grp_No" = "Brn_Cmp_Grp_"."Grp_No"
+	left join "dbo"."ITEMS" "Itm_" on "Stpurdtl"."Itm_No" = "Itm_"."ID_comp"
+	left join "dbo"."GROUPStk" "Itm_IDGROUP" on "Itm_"."IDGROUP" = "Itm_IDGROUP"."IDGROUP"
+	left join "dbo"."ItemList" "Itm_Sup_" on "Itm_"."Sup_No" = "Itm_Sup_"."ItemNo"
+	left join "dbo"."PYHldtypsv1" "Itm_id1" on "Itm_"."id1" = "Itm_id1"."ID1"
+	left join "dbo"."PYHldtypsv2" "Itm_id2" on "Itm_"."id2" = "Itm_id2"."ID2"
+	left join "dbo"."PYHldtypsv3" "Itm_id3" on "Itm_"."id3" = "Itm_id3"."id3"
+	left join "dbo"."PYHldtypsv4" "Itm_id4" on "Itm_"."id4" = "Itm_id4"."id4"
+	left join "dbo"."PYHldtypsv5" "Itm_id5" on "Itm_"."id5" = "Itm_id5"."id5"
+	left join "dbo"."PYHldtypsv6" "Itm_id6" on "Itm_"."id6" = "Itm_id6"."id6"
+	left join "dbo"."PYHldtypsv7" "Itm_id7" on "Itm_"."id7" = "Itm_id7"."id7"
+	left join "dbo"."Stunit" "Unit_" on "Stpurdtl"."Unit_No" = "Unit_"."Unit_No"
+]]></text>
+    </command>
+    <command id="Ln_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Ln_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Ln_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Ln No" readOnly="true" />
+    <field name="Doc_No" type="Int64" allowNulls="false" label="Doc No" showInSummary="true">
+      <items style="Lookup" dataController="Stpurhdr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Doc_Reftxt" type="String" readOnly="true" label="Doc Reftxt" length="50" />
+    <field name="Doc_Brn_Brn_Nm" type="String" readOnly="true" label="Doc Brn Nm" length="255" />
+    <field name="Doc_Brn_Cmp_Grp_Nm" type="String" readOnly="true" label="Doc Brn Cmp Grp Nm" length="255" />
+    <field name="Doc_sgmsgm_Nm" type="String" readOnly="true" label="Doc sgmsgm Nm" length="255" />
+    <field name="Doc_sgmOpcoOpcoName" type="String" readOnly="true" label="Doc sgm Opco Name" length="50" />
+    <field name="Doc_typcmsupSubledgerDescrption" type="String" readOnly="true" label="Doc typcmsup Subledger Descrption" length="50" />
+    <field name="Doc_Pym_Pymnt_Nm" type="String" readOnly="true" label="Doc Pym Pymnt Nm" length="255" />
+    <field name="Doc_Pym_pymnt_accAcc_Nm" type="String" readOnly="true" label="Doc Pym pymnt acc Acc Nm" length="255" />
+    <field name="Doc_Pym_sgmsgm_Nm" type="String" readOnly="true" label="Doc Pym sgmsgm Nm" length="255" />
+    <field name="Doc_acdAcademicYear" type="String" readOnly="true" label="Doc acd Academic Year" length="150" />
+    <field name="Doc_acdGlFinperiodFin_period_info" type="String" readOnly="true" label="Doc acd Gl Finperiod Fin period info" length="150" />
+    <field name="Doc_branchDesc1" type="String" readOnly="true" label="Doc branch Desc1" length="50" />
+    <field name="Doc_branchsgmsgm_Nm" type="String" readOnly="true" label="Doc branchsgmsgm Nm" length="255" />
+    <field name="Doc_branchGenderGender" type="String" readOnly="true" label="Doc branch Gender" length="100" />
+    <field name="Doc_branchstageShortDesc1" type="String" readOnly="true" label="Doc branchstage Short Desc1" length="50" />
+    <field name="Doc_branchschtypschtypDesc" type="String" readOnly="true" label="Doc branchschtypschtyp Desc" length="150" />
+    <field name="Doc_curCurncy_Nm" type="String" readOnly="true" label="Doc cur Curncy Nm" length="200" />
+    <field name="Doc_Cstm_Sup_Nm" type="String" readOnly="true" label="Doc Cstm Sup Nm" length="255" />
+    <field name="Doc_Cstm_Acc_Acc_Nm" type="String" readOnly="true" label="Doc Cstm Acc Nm" length="255" />
+    <field name="Doc_Cstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="Doc Cstm Cntry Nm" length="255" />
+    <field name="Doc_Cstm_Curncy_Curncy_Nm" type="String" readOnly="true" label="Doc Cstm Curncy Nm" length="200" />
+    <field name="Doc_Slm_Slm_Nm" type="String" readOnly="true" label="Doc Slm Nm" length="100" />
+    <field name="Doc_Slm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Doc Slm masngerclassmasngerclass" length="-1" />
+    <field name="Brn_No" type="Int64" label="Brn No" showInSummary="true">
+      <items style="Lookup" dataController="Branchcnst" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Brn_Brn_Nm" type="String" readOnly="true" label="Brn Nm" length="255" />
+    <field name="Brn_Cmp_Grp_Nm" type="String" readOnly="true" label="Brn Cmp Grp Nm" length="255" />
+    <field name="Brn_Cmp_Grp_Grp_Nm" type="String" readOnly="true" label="Brn Cmp Grp Nm" length="200" />
+    <field name="Itm_No" type="Int64" label="Itm No" allowNulls="false" showInSummary="true">
+      <items style="Lookup" dataController="ITEMS"   copy="Unit_No=Unit_No"  />
+    </field>
+    <field name="Itm_ID_USER" type="String" readOnly="true" label="Itm ID USER" length="50" />
+    <field name="ITEM" type="String" readOnly="true" label="ItmITEM" length="50" />
+    <field name="Itm_IDGROUPID_USER" type="String" readOnly="true" label="Itm IDGROUPID USER" length="50" />
+    <field name="Itm_Sup_Item_name" type="String" readOnly="true" label="Itm Sup Item name" length="150" />
+    <field name="Itm_id1DESCRP1" type="String" readOnly="true" label="Itm id1 DESCRP1" length="255" />
+    <field name="Itm_id2DESCRP1" type="String" readOnly="true" label="Itm id2 DESCRP1" length="255" />
+    <field name="Itm_id3DESCRP1" type="String" readOnly="true" label="Itm id3 DESCRP1" length="255" />
+    <field name="Itm_id4DESCRP1" type="String" readOnly="true" label="Itm id4 DESCRP1" length="255" />
+    <field name="Itm_id5DESCRP1" type="String" readOnly="true" label="Itm id5 DESCRP1" length="255" />
+    <field name="Itm_id6DESCRP1" type="String" readOnly="true" label="Itm id6 DESCRP1" length="255" />
+    <field name="Itm_id7DESCRP1" type="String" readOnly="true" label="Itm id7 DESCRP1" length="255" />
+    <field name="Reftxt1" type="String" label="Reftxt1" length="50" showInSummary="true" />
+    <field name="expiresdate" type="DateTime" label="Expiresdate" showInSummary="true" />
+    <field name="Unit_No" type="Int64" allowNulls="false" label="Unit No">
+      <items style="DropDownList" dataController="Stunit" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Unit_Nm" dataValueField="Unit_No" />
+    </field>
+    <field name="Unit_Unit_Nm" type="String" readOnly="true" label="Unit Nm" length="255" />
+    <field name="UnitPrice" type="Decimal" label="Unit Price" dataFormatString="n3" FormatOnClient="False" aggregate="avg" />
+    <field name="Quantity" type="Decimal" label="Quantity" allowNulls="false" dataFormatString="n3" FormatOnClient="False" aggregate="none" />
+    <field name="Discount" type="Int64" label="Discount" dataFormatString="n3" FormatOnClient="False" aggregate="avg" />
+    <field name="Titm_Sal" type="Decimal" label="Titm Sal" dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+    <field name="Titm_Cost" type="Decimal" label="Titm Cost" dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+    <field name="Itm_Cost" type="Decimal" label="Itm Cost" dataFormatString="n3" FormatOnClient="False" aggregate="avg" />
+    <field name="notesdtl" type="String" label="Notesdtl" length="255" />
+    <field name="Idate" type="DateTime" label="Idate" />
+    <field name="darb" type="Int64" label="Darb" />
+    <field name="paplcprc" type="Int64" label="Paplcprc" />
+    <field name="nakdy" type="Int64" label="Nakdy" />
+    <field name="shad" type="Double" label="Shad" />
+    <field name="carno" type="Int64" label="Carno" />
+    <field name="locno" type="String" label="Locno" length="50" />
+    <field name="Refcode" type="String" label="Refcode" length="50" />
+    <field name="Reftxt" type="String" label="Reftxt" length="255" />
+    <field name="whhus" type="String" label="Whhus" length="50" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Stpurdtl">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Doc_No"  />
+        <dataField fieldName="Brn_No" aliasFieldName="Brn_Brn_Nm"  />
+        <dataField fieldName="Itm_No" aliasFieldName="Itm_ID_USER"  />
+        <dataField fieldName="Reftxt1" columns="50" />
+        <dataField fieldName="expiresdate" columns="10" />
+        <dataField fieldName="Unit_No" aliasFieldName="Unit_Unit_Nm"  />
+        <dataField fieldName="UnitPrice"  columns="15"  hidden="true"/>
+        <dataField fieldName="Quantity"  columns="15" />
+        <dataField fieldName="Discount" columns="15" />
+        <dataField fieldName="Titm_Sal"  columns="15" dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="Titm_Cost"  columns="15" dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="Itm_Cost"  columns="15" />
+        <dataField fieldName="notesdtl" hidden="true"/>
+        <dataField fieldName="Idate" columns="10" hidden="true"/>
+        <dataField fieldName="darb" columns="15" hidden="true"/>
+        <dataField fieldName="paplcprc" columns="15" hidden="true"/>
+        <dataField fieldName="nakdy" columns="15" hidden="true"/>
+        <dataField fieldName="shad" columns="15" hidden="true"/>
+        <dataField fieldName="carno" columns="15" hidden="true"/>
+        <dataField fieldName="locno" columns="50" hidden="true"/>
+ <dataField fieldName="ITEM" columns="50" />
+ <dataField fieldName="Refcode" columns="50" hidden="true"/>
+            <dataField fieldName="Reftxt" hidden="true"/>
+            <dataField fieldName="whhus" columns="50" hidden="true"/>
+<dataField fieldName="Doc_Brn_Brn_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Brn_Cmp_Grp_Nm" hidden="true"/>
+            <dataField fieldName="Doc_sgmsgm_Nm" hidden="true"/>
+            <dataField fieldName="Doc_sgmOpcoOpcoName" columns="50" hidden="true"/>
+            <dataField fieldName="Doc_typcmsupSubledgerDescrption" columns="50" hidden="true"/>
+            <dataField fieldName="Doc_Pym_Pymnt_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Pym_pymnt_accAcc_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Pym_sgmsgm_Nm" hidden="true"/>
+            <dataField fieldName="Doc_acdAcademicYear" hidden="true"/>
+            <dataField fieldName="Doc_acdGlFinperiodFin_period_info" hidden="true"/>
+            <dataField fieldName="Doc_branchDesc1" columns="50" hidden="true"/>
+            <dataField fieldName="Doc_branchsgmsgm_Nm" hidden="true"/>
+            <dataField fieldName="Doc_branchGenderGender" hidden="true"/>
+            <dataField fieldName="Doc_branchstageShortDesc1" columns="50" hidden="true"/>
+            <dataField fieldName="Doc_branchschtypschtypDesc" hidden="true"/>
+            <dataField fieldName="Doc_curCurncy_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Cstm_Sup_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Cstm_Acc_Acc_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Cstm_Cntry_Cntry_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Cstm_Curncy_Curncy_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Slm_Slm_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Slm_masngerclassmasngerclass" rows="5" hidden="true"/>
+            <dataField fieldName="Brn_Cmp_Grp_Nm" hidden="true"/>
+            <dataField fieldName="Brn_Cmp_Grp_Grp_Nm" hidden="true"/>
+            <dataField fieldName="Itm_IDGROUPID_USER" columns="50" hidden="true"/>
+            <dataField fieldName="Itm_Sup_Item_name" hidden="true"/>
+            <dataField fieldName="Itm_id1DESCRP1" hidden="true"/>
+            <dataField fieldName="Itm_id2DESCRP1" hidden="true"/>
+            <dataField fieldName="Itm_id3DESCRP1" hidden="true"/>
+            <dataField fieldName="Itm_id4DESCRP1" hidden="true"/>
+            <dataField fieldName="Itm_id5DESCRP1" hidden="true"/>
+            <dataField fieldName="Itm_id6DESCRP1" hidden="true"/>
+            <dataField fieldName="Itm_id7DESCRP1" hidden="true"/>
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Stpurdtl">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Stpurdtl" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Doc_No" aliasFieldName="Doc_Reftxt" hyperlinkFormatString="~/Pages/Stpurhdr.aspx?Doc_No={Doc_No}&amp;_controller=Stpurhdr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Brn_No" aliasFieldName="Brn_Brn_Nm" hyperlinkFormatString="~/Pages/Branchcnst.aspx?Brn_No={Brn_No}&amp;_controller=Branchcnst&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Itm_No" aliasFieldName="Itm_ID_USER" hyperlinkFormatString="~/Pages/ITEMS.aspx?ID_comp={Itm_No}&amp;_controller=ITEMS&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Reftxt1" columns="50" />
+            <dataField fieldName="expiresdate" columns="10" />
+            <dataField fieldName="Unit_No" aliasFieldName="Unit_Unit_Nm" hyperlinkFormatString="~/Pages/Stunit.aspx?Unit_No={Unit_No}&amp;_controller=Stunit&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="UnitPrice"  columns="15" />
+            <dataField fieldName="Quantity"  columns="15" />
+            <dataField fieldName="Discount" columns="15" />
+            <dataField fieldName="Titm_Sal"  columns="15" />
+            <dataField fieldName="Titm_Cost"  columns="15" />
+            <dataField fieldName="Itm_Cost"  columns="15" />
+            <dataField fieldName="notesdtl" />
+            <dataField fieldName="Idate" columns="10" />
+            <dataField fieldName="darb" columns="15" />
+            <dataField fieldName="paplcprc" columns="15" />
+            <dataField fieldName="nakdy" columns="15" />
+            <dataField fieldName="shad" columns="15" />
+            <dataField fieldName="carno" columns="15" />
+            <dataField fieldName="locno" columns="50" />
+            <dataField fieldName="Refcode" columns="50" />
+            <dataField fieldName="Reftxt" />
+            <dataField fieldName="whhus" columns="50" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Doc_Brn_Brn_Nm" />
+            <dataField fieldName="Doc_Brn_Cmp_Grp_Nm" />
+            <dataField fieldName="Doc_sgmsgm_Nm" />
+            <dataField fieldName="Doc_sgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="Doc_typcmsupSubledgerDescrption" columns="50" />
+            <dataField fieldName="Doc_Pym_Pymnt_Nm" />
+            <dataField fieldName="Doc_Pym_pymnt_accAcc_Nm" />
+            <dataField fieldName="Doc_Pym_sgmsgm_Nm" />
+            <dataField fieldName="Doc_acdAcademicYear" />
+            <dataField fieldName="Doc_acdGlFinperiodFin_period_info" />
+            <dataField fieldName="Doc_branchDesc1" columns="50" />
+            <dataField fieldName="Doc_branchsgmsgm_Nm" />
+            <dataField fieldName="Doc_branchGenderGender" />
+            <dataField fieldName="Doc_branchstageShortDesc1" columns="50" />
+            <dataField fieldName="Doc_branchschtypschtypDesc" />
+            <dataField fieldName="Doc_curCurncy_Nm" />
+            <dataField fieldName="Doc_Cstm_Sup_Nm" />
+            <dataField fieldName="Doc_Cstm_Acc_Acc_Nm" />
+            <dataField fieldName="Doc_Cstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="Doc_Cstm_Curncy_Curncy_Nm" />
+            <dataField fieldName="Doc_Slm_Slm_Nm" />
+            <dataField fieldName="Doc_Slm_masngerclassmasngerclass" rows="5" />
+            <dataField fieldName="Brn_Cmp_Grp_Nm" />
+            <dataField fieldName="Brn_Cmp_Grp_Grp_Nm" />
+            <dataField fieldName="Itm_IDGROUPID_USER" columns="50" />
+            <dataField fieldName="Itm_Sup_Item_name" />
+            <dataField fieldName="Itm_id1DESCRP1" />
+            <dataField fieldName="Itm_id2DESCRP1" />
+            <dataField fieldName="Itm_id3DESCRP1" />
+            <dataField fieldName="Itm_id4DESCRP1" />
+            <dataField fieldName="Itm_id5DESCRP1" />
+            <dataField fieldName="Itm_id6DESCRP1" />
+            <dataField fieldName="Itm_id7DESCRP1" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Stpurdtl">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Stpurdtl" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Brn_No" aliasFieldName="Brn_Brn_Nm" />
+            <dataField fieldName="Doc_No" aliasFieldName="Doc_Reftxt" />
+            <dataField fieldName="Idate" columns="10" />
+            <dataField fieldName="Itm_No" aliasFieldName="Itm_ID_USER" />
+            <dataField fieldName="expiresdate" columns="10" />
+            <dataField fieldName="Unit_No" aliasFieldName="Unit_Unit_Nm" />
+            <dataField fieldName="UnitPrice"  columns="15" />
+            <dataField fieldName="Quantity"  columns="15" />
+            <dataField fieldName="Discount" columns="15" />
+            <dataField fieldName="Titm_Sal"  columns="15" />
+            <dataField fieldName="Titm_Cost"  columns="15" />
+            <dataField fieldName="Itm_Cost"  columns="15" />
+            <dataField fieldName="notesdtl" />
+          </dataFields>
+        </category>
+        <category headerText="moredetails" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="darb" columns="15" />
+            <dataField fieldName="paplcprc" columns="15" />
+            <dataField fieldName="nakdy" columns="15" />
+            <dataField fieldName="shad" columns="15" />
+            <dataField fieldName="carno" columns="15" />
+            <dataField fieldName="locno" columns="50" />
+            <dataField fieldName="Refcode" columns="50" />
+            <dataField fieldName="Reftxt" />
+            <dataField fieldName="whhus" columns="50" />
+            <dataField fieldName="Reftxt1" columns="50" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="gridDetails" commandId="command1" type="DataSheet" label="gridDetails">
+      <dataFields>
+        <dataField fieldName="Doc_No"  />
+        <dataField fieldName="Itm_No" aliasFieldName="Itm_ID_USER"  />
+	<dataField fieldName="ITEM" columns="50" />
+        <dataField fieldName="Unit_No" aliasFieldName="Unit_Unit_Nm"  />
+        <dataField fieldName="UnitPrice" columns="15" dataFormatString="n3" FormatOnClient="False"  />
+        <dataField fieldName="Quantity" columns="15" />
+        <dataField fieldName="Titm_Sal" columns="15" dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="Discount" columns="15" />
+        <dataField fieldName="Titm_Cost" columns="15" dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="Itm_Cost" columns="15"  hidden="true"/>
+        <dataField fieldName="notesdtl" />
+        <dataField fieldName="expiresdate" columns="10" hidden="true"/>
+        <dataField fieldName="Idate" columns="10" hidden="true"/>
+        <dataField fieldName="darb" columns="15"  hidden="true"/>
+        <dataField fieldName="paplcprc" columns="15"  hidden="true"/>
+        <dataField fieldName="nakdy" columns="15"  hidden="true"/>
+        <dataField fieldName="shad" columns="15"  hidden="true"/>
+        <dataField fieldName="carno" columns="15" hidden="true"/>
+        <dataField fieldName="locno"  hidden="true"/>
+ <dataField fieldName="Refcode" columns="50" hidden="true"/>
+            <dataField fieldName="Reftxt" hidden="true"/>
+            <dataField fieldName="whhus" columns="50" hidden="true"/>
+<dataField fieldName="Doc_Brn_Brn_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Brn_Cmp_Grp_Nm" hidden="true"/>
+            <dataField fieldName="Doc_sgmsgm_Nm" hidden="true"/>
+            <dataField fieldName="Doc_sgmOpcoOpcoName" columns="50" hidden="true"/>
+            <dataField fieldName="Doc_typcmsupSubledgerDescrption" columns="50" hidden="true"/>
+            <dataField fieldName="Doc_Pym_Pymnt_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Pym_pymnt_accAcc_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Pym_sgmsgm_Nm" hidden="true"/>
+            <dataField fieldName="Doc_acdAcademicYear" hidden="true"/>
+            <dataField fieldName="Doc_acdGlFinperiodFin_period_info" hidden="true"/>
+            <dataField fieldName="Doc_branchDesc1" columns="50" hidden="true"/>
+            <dataField fieldName="Doc_branchsgmsgm_Nm" hidden="true"/>
+            <dataField fieldName="Doc_branchGenderGender" hidden="true"/>
+            <dataField fieldName="Doc_branchstageShortDesc1" columns="50" hidden="true"/>
+            <dataField fieldName="Doc_branchschtypschtypDesc" hidden="true"/>
+            <dataField fieldName="Doc_curCurncy_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Cstm_Sup_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Cstm_Acc_Acc_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Cstm_Cntry_Cntry_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Cstm_Curncy_Curncy_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Slm_Slm_Nm" hidden="true"/>
+            <dataField fieldName="Doc_Slm_masngerclassmasngerclass" rows="5" hidden="true"/>
+            <dataField fieldName="Brn_Cmp_Grp_Nm" hidden="true"/>
+            <dataField fieldName="Brn_Cmp_Grp_Grp_Nm" hidden="true"/>
+            <dataField fieldName="Itm_IDGROUPID_USER" columns="50" hidden="true"/>
+            <dataField fieldName="Itm_Sup_Item_name" hidden="true"/>
+            <dataField fieldName="Itm_id1DESCRP1" hidden="true"/>
+            <dataField fieldName="Itm_id2DESCRP1" hidden="true"/>
+            <dataField fieldName="Itm_id3DESCRP1" hidden="true"/>
+            <dataField fieldName="Itm_id4DESCRP1" hidden="true"/>
+            <dataField fieldName="Itm_id5DESCRP1" hidden="true"/>
+            <dataField fieldName="Itm_id6DESCRP1" hidden="true"/>
+            <dataField fieldName="Itm_id7DESCRP1" hidden="true"/>
+      </dataFields>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select"  />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New"  cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit"  />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+<businessRules>
+  
+    <rule id="r100" commandName="Insert" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@ln_no,@Itm_No]]></rule>
+    <rule id="r105" commandName="Insert" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname   @Doc_No,@ln_no,@Itm_No]]></rule>
+    <rule id="r101" commandName="Update" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname   @Doc_No,@ln_no,@Itm_No]]></rule>
+    <rule id="r102" commandName="Update" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname   @Doc_No,@ln_no,@Itm_No
+]]></rule>
+    <rule id="r103" commandName="Delete" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname   @Doc_No,@ln_no,@Itm_No]]></rule>
+    <rule id="r106" commandName="Delete" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname   @Doc_No,@ln_no,@Itm_No]]></rule>
+    <rule id="r107" commandName="Calculate" type="Sql" phase="Execute"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Execute'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@ln_no,@Itm_No]]></rule>
+  </businessRules>
+</dataController>

@@ -1,0 +1,726 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="ajrContracts" conflictDetection="overwriteChanges" label="ajr Contracts" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.contractshandler" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"ajrContracts"."ajrCntrctSr" "ajrCntrctSr"
+	,"ajrContracts"."sgm" "sgm"
+	,"ajrContracts"."CntctDate" "CntctDate"
+	,"ajrContracts"."Cstm_No" "Cstm_No"
+	,"Cstm_"."Cstm_Nm" "Cstm_Cstm_Nm"
+	,"Cstm_Area"."Area_name" "Cstm_AreaArea_name"
+	,"Cstm_Evaluation"."Evaluation_name" "Cstm_EvaluationEvaluation_name"
+	,"Cstm_acc_"."Acc_Nm" "Cstm_acc_Acc_Nm"
+	,"Cstm_acc_Clsacc_"."Acc_Nm" "Cstm_acc_Clsacc_Acc_Nm"
+	,"Cstm_acc_Acc_Bnd"."Acc_Nm" "Cstm_acc_Acc_BndAcc_Nm"
+	,"Cstm_Cntry_"."Cntry_Nm" "Cstm_Cntry_Cntry_Nm"
+	,"Cstm_curncy_"."Curncy_Nm" "Cstm_curncy_Curncy_Nm"
+	,"Cstm_TSNEF"."TSNEF_name" "Cstm_TSNEFTSNEF_name"
+	,"Cstm_TSNEFNO1"."TSNEF1_name" "Cstm_TSNEFNO1TSNEF1_name"
+	,"Cstm_Slm_"."Slm_Nm" "Cstm_Slm_Slm_Nm"
+	,"Cstm_Slm_masngerclass"."masngerclass" "Cstm_Slm_masngerclassmasngerclass"
+	,"ajrContracts"."plantypeid" "plantypeid"
+	,"plantype"."plantypeDesc" "plantypeplantypeDesc"
+	,"ajrContracts"."Car_No" "Car_No"
+	,"Car_"."PLAT_No" "Car_PLAT_No"
+	,"Car_Car_Type"."Styl_Nm" "Car_Car_TypeStyl_Nm"
+	,"Car_EMP_"."Emp_Nmdriver" "Car_EMP_Emp_Nmdriver"
+	,"Car_EMP_sgm"."sgm_Nm" "Car_EMP_sgmsgm_Nm"
+	,"Car_EMP_Emp_no1"."Emp_NOt" "Car_EMP_Emp_no1Emp_NOt"
+	,"Car_caseoperationdesc"."caseoperationdesc" "Car_caseoperationdesccaseoperationdesc"
+	,"Car_carclass"."carclassname" "Car_carclasscarclassname"
+	,"Car_Insu_Cmp"."Insu_Cmpname" "Car_Insu_CmpInsu_Cmpname"
+	,"Car_Insu_Cmp1"."Insu_Cmpname" "Car_Insu_Cmp1Insu_Cmpname"
+	,"Car_Insu_Cmp2"."Insu_Cmpname" "Car_Insu_Cmp2Insu_Cmpname"
+	,"Car_kind"."carkinddesc" "Car_kindcarkinddesc"
+	,"Car_kindStyl_"."Styl_Nm" "Car_kindStyl_Styl_Nm"
+	,"Car_carstutus_"."carstutus_name" "Car_carstutus_carstutus_name"
+	,"Car_Car_Colr"."Color_name" "Car_Car_ColrColor_name"
+	,"Car_fuelllevel"."FuellevelDisplayname" "Car_fuelllevelFuellevelDisplayname"
+	,"Car_sgm"."sgm_Nm" "Car_sgmsgm_Nm"
+	,"Car_sgmOpco"."OpcoName" "Car_sgmOpcoOpcoName"
+	,"Car_Guarantee"."Guaranteename" "Car_GuaranteeGuaranteename"
+	,"Car_Insurance_type"."Insurance_name" "Car_Insurance_typeInsurance_name"
+	,"Car_Car_Lik"."Like_name" "Car_Car_LikLike_name"
+	,"Car_padnatureway"."padnatureway" "Car_padnaturewaypadnatureway"
+	,"Car_Fbrct_Cntry"."Cntry_Nm" "Car_Fbrct_CntryCntry_Nm"
+	,"Car_Ownr_"."Ownr_ID" "Car_Ownr_Ownr_ID"
+	,"Car_Ownr_cmp_"."Grp_Nm" "Car_Ownr_cmp_Grp_Nm"
+	,"Car_Cstm_"."Cstm_Nm" "Car_Cstm_Cstm_Nm"
+	,"Car_Cstm_Area"."Area_name" "Car_Cstm_AreaArea_name"
+	,"Car_Cstm_Evaluation"."Evaluation_name" "Car_Cstm_EvaluationEvaluation_name"
+	,"Car_Cstm_acc_"."Acc_Nm" "Car_Cstm_acc_Acc_Nm"
+	,"Car_Cstm_Cntry_"."Cntry_Nm" "Car_Cstm_Cntry_Cntry_Nm"
+	,"Car_Cstm_curncy_"."Curncy_Nm" "Car_Cstm_curncy_Curncy_Nm"
+	,"Car_Cstm_TSNEF"."TSNEF_name" "Car_Cstm_TSNEFTSNEF_name"
+	,"Car_Cstm_TSNEFNO1"."TSNEF1_name" "Car_Cstm_TSNEFNO1TSNEF1_name"
+	,"Car_Cstm_Slm_"."Slm_Nm" "Car_Cstm_Slm_Slm_Nm"
+	,"Car_Sup_"."Sup_Nm" "Car_Sup_Sup_Nm"
+	,"Car_Sup_Acc_"."Acc_Nm" "Car_Sup_Acc_Acc_Nm"
+	,"Car_Sup_sgm"."sgm_Nm" "Car_Sup_sgmsgm_Nm"
+	,"Car_Sup_Cntry_"."Cntry_Nm" "Car_Sup_Cntry_Cntry_Nm"
+	,"Car_Sup_Curncy_"."Curncy_Nm" "Car_Sup_Curncy_Curncy_Nm"
+	,"Car_Tamweelreq"."Tamweeldeatails" "Car_TamweelreqTamweeldeatails"
+	,"Car_TamweelreqCurncy_"."Curncy_Nm" "Car_TamweelreqCurncy_Curncy_Nm"
+	,"Car_TamweelreqCstm_"."Cstm_Nm" "Car_TamweelreqCstm_Cstm_Nm"
+	,"Car_Tamweelreqtasedway"."tasedwayname" "Car_Tamweelreqtasedwaytasedwayname"
+	,"ajrContracts"."kmReading" "kmReading"
+	,"ajrContracts"."NOfDays" "NOfDays"
+	,"ajrContracts"."Discountpercentage" "Discountpercentage"
+	,"ajrContracts"."priceperunit" "priceperunit"
+	,"ajrContracts"."PricePerDay" "PricePerDay"
+	,"ajrContracts"."Fuel" "Fuel"
+	,"Fuel"."Fuellevelname" "FuelFuellevelname"
+	,"ajrContracts"."freekm" "freekm"
+	,"ajrContracts"."StartDate" "StartDate"
+	,"ajrContracts"."StartTime" "StartTime"
+	,"ajrContracts"."EndDate" "EndDate"
+	,"ajrContracts"."Endtime" "Endtime"
+	,"ajrContracts"."Notes" "Notes"
+	,"ajrContracts"."cntstcode" "cntstcode"
+	,"cntst"."status_name" "cntststatus_name"
+	,"ajrContracts"."RLEndDate" "RLEndDate"
+	,"ajrContracts"."RLEndtime" "RLEndtime"
+	,"ajrContracts"."Slm_No" "Slm_No"
+	,"Slm_"."Slm_Nm" "Slm_Slm_Nm"
+	,"Slm_masngerclass"."masngerclass" "Slm_masngerclassmasngerclass"
+	,"ajrContracts"."RtkmReading" "RtkmReading"
+	,"ajrContracts"."RtFuel" "RtFuel"
+	,"ajrContracts"."RTsgm" "RTsgm"
+	,"ajrContracts"."typcoid" "typcoid"
+	,"typco"."typcoDesc" "typcotypcoDesc"
+	,"ajrContracts"."prostermcode" "prostermcode"
+	,"prosterm"."ProgramStDesc" "prostermProgramStDesc"
+	,"prostermplantype"."plantypeDesc" "prostermplantypeplantypeDesc"
+	,"ajrContracts"."usingcod" "usingcod"
+	,"usingcod"."Cstm_Nm" "usingcodCstm_Nm"
+	,"usingcodArea"."Area_name" "usingcodAreaArea_name"
+	,"usingcodEvaluation"."Evaluation_name" "usingcodEvaluationEvaluation_name"
+	,"usingcodacc_"."Acc_Nm" "usingcodacc_Acc_Nm"
+	,"usingcodacc_Clsacc_"."Acc_Nm" "usingcodacc_Clsacc_Acc_Nm"
+	,"usingcodacc_Acc_Bnd"."Acc_Nm" "usingcodacc_Acc_BndAcc_Nm"
+	,"usingcodCntry_"."Cntry_Nm" "usingcodCntry_Cntry_Nm"
+	,"usingcodcurncy_"."Curncy_Nm" "usingcodcurncy_Curncy_Nm"
+	,"usingcodTSNEF"."TSNEF_name" "usingcodTSNEFTSNEF_name"
+	,"usingcodTSNEFNO1"."TSNEF1_name" "usingcodTSNEFNO1TSNEF1_name"
+	,"usingcodSlm_"."Slm_Nm" "usingcodSlm_Slm_Nm"
+	,"usingcodSlm_masngerclass"."masngerclass" "usingcodSlm_masngerclassmasngerclass"
+	,"ajrContracts"."usingcod1" "usingcod1"
+	,"usingcod1"."Cstm_Nm" "usingcod1Cstm_Nm"
+	,"usingcod1Area"."Area_name" "usingcod1AreaArea_name"
+	,"usingcod1Evaluation"."Evaluation_name" "usingcod1EvaluationEvaluation_name"
+	,"usingcod1acc_"."Acc_Nm" "usingcod1acc_Acc_Nm"
+	,"usingcod1acc_Clsacc_"."Acc_Nm" "usingcod1acc_Clsacc_Acc_Nm"
+	,"usingcod1acc_Acc_Bnd"."Acc_Nm" "usingcod1acc_Acc_BndAcc_Nm"
+	,"usingcod1Cntry_"."Cntry_Nm" "usingcod1Cntry_Cntry_Nm"
+	,"usingcod1curncy_"."Curncy_Nm" "usingcod1curncy_Curncy_Nm"
+	,"usingcod1TSNEF"."TSNEF_name" "usingcod1TSNEFTSNEF_name"
+	,"usingcod1TSNEFNO1"."TSNEF1_name" "usingcod1TSNEFNO1TSNEF1_name"
+	,"usingcod1Slm_"."Slm_Nm" "usingcod1Slm_Slm_Nm"
+	,"usingcod1Slm_masngerclass"."masngerclass" "usingcod1Slm_masngerclassmasngerclass"
+	,"ajrContracts"."RequestNumber" "RequestNumber"
+	,"ajrContracts"."deleviryservice" "deleviryservice"
+	,"ajrContracts"."ExtKm_Value" "ExtKm_Value"
+	,"ajrContracts"."lattype" "lattype"
+	,"ajrContracts"."latedayes" "latedayes"
+	,"ajrContracts"."latedhours" "latedhours"
+	,"ajrContracts"."latedprice" "latedprice"
+	,"ajrContracts"."latemoney" "latemoney"
+	,"ajrContracts"."Returnbroken" "Returnbroken"
+	,"ajrContracts"."ExtraMoney" "ExtraMoney"
+	,"ajrContracts"."contractanotat" "contractanotat"
+	,"ajrContracts"."pricebeforeDescountx" "pricebeforeDescountx"
+	,"ajrContracts"."pricebeforedescperunitx" "pricebeforedescperunitx"
+	,"ajrContracts"."Normalsumofcontractx" "Normalsumofcontractx"
+	,"ajrContracts"."NormalCounterreturnx" "NormalCounterreturnx"
+	,"ajrContracts"."Descountamountcalcx" "Descountamountcalcx"
+	,"ajrContracts"."Descountamountcalc1" "Descountamountcalc1"
+	,"ajrContracts"."Descountamountcalc2" "Descountamountcalc2"
+	,"ajrContracts"."Descountamountcalc3" "Descountamountcalc3"
+	,"ajrContracts"."Descountamountcalc4" "Descountamountcalc4"
+	,"ajrContracts"."Descountamountcalc5" "Descountamountcalc5"
+	,"ajrContracts"."Descountamountcalc6" "Descountamountcalc6"
+	,"ajrContracts"."ModifiedBy" "ModifiedBy"
+	,"ajrContracts"."ModifiedByUserId" "ModifiedByUserId"
+	,"ajrContracts"."ModifiedOn" "ModifiedOn"
+	,"ajrContracts"."CreatedBy" "CreatedBy"
+	,"ajrContracts"."CreatedById" "CreatedById"
+	,"ajrContracts"."CreatedOn" "CreatedOn"
+from "dbo"."ajrContracts" "ajrContracts"
+	left join "dbo"."Stcustmr" "Cstm_" on "ajrContracts"."Cstm_No" = "Cstm_"."Cstm_No"
+	left join "dbo"."AreaList" "Cstm_Area" on "Cstm_"."AreaNo" = "Cstm_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "Cstm_Evaluation" on "Cstm_"."EvaluationNO" = "Cstm_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "Cstm_acc_" on "Cstm_"."acc_no" = "Cstm_acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "Cstm_acc_Clsacc_" on "Cstm_acc_"."Clsacc_No" = "Cstm_acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Cstm_acc_Acc_Bnd" on "Cstm_acc_"."Acc_Bnd" = "Cstm_acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."PYCntry" "Cstm_Cntry_" on "Cstm_"."Cntry_No" = "Cstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "Cstm_curncy_" on "Cstm_"."curncy_no" = "Cstm_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "Cstm_TSNEF" on "Cstm_"."TSNEFNO" = "Cstm_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "Cstm_TSNEFNO1" on "Cstm_"."TSNEFNO1" = "Cstm_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "Cstm_Slm_" on "Cstm_"."Slm_No" = "Cstm_Slm_"."Slm_No"
+	left join "dbo"."masngerclass" "Cstm_Slm_masngerclass" on "Cstm_Slm_"."masngerclassid" = "Cstm_Slm_masngerclass"."masngerclassid"
+	left join "dbo"."Carplantypelist" "plantype" on "ajrContracts"."plantypeid" = "plantype"."plantypeid"
+	left join "dbo"."CarInfom" "Car_" on "ajrContracts"."Car_No" = "Car_"."Car_No"
+	left join "dbo"."CaCrstyl" "Car_Car_Type" on "Car_"."Car_Type" = "Car_Car_Type"."Styl_No"
+	left join "dbo"."Cadriver" "Car_EMP_" on "Car_"."EMP_NO" = "Car_EMP_"."Emp_No"
+	left join "dbo"."glmulcmp" "Car_EMP_sgm" on "Car_EMP_"."sgm" = "Car_EMP_sgm"."sgmid"
+	left join "dbo"."Pyempmfs" "Car_EMP_Emp_no1" on "Car_EMP_"."Emp_no1" = "Car_EMP_Emp_no1"."Emp_No"
+	left join "dbo"."carcaseoperationdesc" "Car_caseoperationdesc" on "Car_"."caseoperationdescid" = "Car_caseoperationdesc"."caseoperationdescid"
+	left join "dbo"."carclass" "Car_carclass" on "Car_"."carclass" = "Car_carclass"."carclass"
+	left join "dbo"."carInsuCmplist" "Car_Insu_Cmp" on "Car_"."Insu_Cmp" = "Car_Insu_Cmp"."Insu_Cmp"
+	left join "dbo"."carInsuCmplist" "Car_Insu_Cmp1" on "Car_"."Insu_Cmp1" = "Car_Insu_Cmp1"."Insu_Cmp"
+	left join "dbo"."carInsuCmplist" "Car_Insu_Cmp2" on "Car_"."Insu_Cmp2" = "Car_Insu_Cmp2"."Insu_Cmp"
+	left join "dbo"."carkindlist" "Car_kind" on "Car_"."kind" = "Car_kind"."carkindid"
+	left join "dbo"."CaCrstyl" "Car_kindStyl_" on "Car_kind"."Styl_No" = "Car_kindStyl_"."Styl_No"
+	left join "dbo"."carstutuslist" "Car_carstutus_" on "Car_"."carstutus_no" = "Car_carstutus_"."carstutus_no"
+	left join "dbo"."Colorlist" "Car_Car_Colr" on "Car_"."Car_Colr" = "Car_Car_Colr"."ColorNo"
+	left join "dbo"."FuellevelDisplay" "Car_fuelllevel" on "Car_"."fuelllevel" = "Car_fuelllevel"."FuellevelDisplayid"
+	left join "dbo"."glmulcmp" "Car_sgm" on "Car_"."sgm" = "Car_sgm"."sgmid"
+	left join "dbo"."OpCo" "Car_sgmOpco" on "Car_sgm"."OpcoID" = "Car_sgmOpco"."OpcoIDidentity"
+	left join "dbo"."Guaranteelist" "Car_Guarantee" on "Car_"."Guarantee" = "Car_Guarantee"."Guarantee"
+	left join "dbo"."Insurancetype" "Car_Insurance_type" on "Car_"."Insurance_type" = "Car_Insurance_type"."Insurance_type"
+	left join "dbo"."Likelist" "Car_Car_Lik" on "Car_"."Car_Lik" = "Car_Car_Lik"."LikeNo"
+	left join "dbo"."padnaturewaylist" "Car_padnatureway" on "Car_"."padnaturewayid" = "Car_padnatureway"."padnaturewayid"
+	left join "dbo"."PYCntry" "Car_Fbrct_Cntry" on "Car_"."Fbrct_Cntry" = "Car_Fbrct_Cntry"."Cntry_No"
+	left join "dbo"."Pyownrmf" "Car_Ownr_" on "Car_"."Ownr_No" = "Car_Ownr_"."Ownr_No"
+	left join "dbo"."Pycnstnt" "Car_Ownr_cmp_" on "Car_Ownr_"."cmp_no" = "Car_Ownr_cmp_"."Cmp_No"
+	left join "dbo"."Stcustmr" "Car_Cstm_" on "Car_"."Cstm_No" = "Car_Cstm_"."Cstm_No"
+	left join "dbo"."AreaList" "Car_Cstm_Area" on "Car_Cstm_"."AreaNo" = "Car_Cstm_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "Car_Cstm_Evaluation" on "Car_Cstm_"."EvaluationNO" = "Car_Cstm_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "Car_Cstm_acc_" on "Car_Cstm_"."acc_no" = "Car_Cstm_acc_"."Acc_No"
+	left join "dbo"."PYCntry" "Car_Cstm_Cntry_" on "Car_Cstm_"."Cntry_No" = "Car_Cstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "Car_Cstm_curncy_" on "Car_Cstm_"."curncy_no" = "Car_Cstm_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "Car_Cstm_TSNEF" on "Car_Cstm_"."TSNEFNO" = "Car_Cstm_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "Car_Cstm_TSNEFNO1" on "Car_Cstm_"."TSNEFNO1" = "Car_Cstm_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "Car_Cstm_Slm_" on "Car_Cstm_"."Slm_No" = "Car_Cstm_Slm_"."Slm_No"
+	left join "dbo"."Stsuplir" "Car_Sup_" on "Car_"."Sup_No" = "Car_Sup_"."Sup_No"
+	left join "dbo"."GLmstrfl" "Car_Sup_Acc_" on "Car_Sup_"."Acc_No" = "Car_Sup_Acc_"."Acc_No"
+	left join "dbo"."glmulcmp" "Car_Sup_sgm" on "Car_Sup_"."sgm" = "Car_Sup_sgm"."sgmid"
+	left join "dbo"."PYCntry" "Car_Sup_Cntry_" on "Car_Sup_"."Cntry_No" = "Car_Sup_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "Car_Sup_Curncy_" on "Car_Sup_"."Curncy_No" = "Car_Sup_Curncy_"."Curncy_No"
+	left join "dbo"."Tamweelrequest" "Car_Tamweelreq" on "Car_"."Tamweelreqid" = "Car_Tamweelreq"."Tamweelreqid"
+	left join "dbo"."Stcurncy" "Car_TamweelreqCurncy_" on "Car_Tamweelreq"."Curncy_No" = "Car_TamweelreqCurncy_"."Curncy_No"
+	left join "dbo"."Stcustmr" "Car_TamweelreqCstm_" on "Car_Tamweelreq"."Cstm_No" = "Car_TamweelreqCstm_"."Cstm_No"
+	left join "dbo"."tasedwaylist" "Car_Tamweelreqtasedway" on "Car_Tamweelreq"."tasedwayid" = "Car_Tamweelreqtasedway"."tasedwayid"
+	left join "dbo"."Fuellevel" "Fuel" on "ajrContracts"."Fuel" = "Fuel"."Fuellevelid"
+	left join "dbo"."contractstatus" "cntst" on "ajrContracts"."cntstcode" = "cntst"."cntstcode"
+	left join "dbo"."Stslsman" "Slm_" on "ajrContracts"."Slm_No" = "Slm_"."Slm_No"
+	left join "dbo"."masngerclass" "Slm_masngerclass" on "Slm_"."masngerclassid" = "Slm_masngerclass"."masngerclassid"
+	left join "dbo"."typecolist" "typco" on "ajrContracts"."typcoid" = "typco"."typcoid"
+	left join "dbo"."ProsTerm" "prosterm" on "ajrContracts"."prostermcode" = "prosterm"."prostermcode"
+	left join "dbo"."Carplantypelist" "prostermplantype" on "prosterm"."plantypeid" = "prostermplantype"."plantypeid"
+	left join "dbo"."Stcustmr" "usingcod" on "ajrContracts"."usingcod" = "usingcod"."Cstm_No"
+	left join "dbo"."AreaList" "usingcodArea" on "usingcod"."AreaNo" = "usingcodArea"."AreaNo"
+	left join "dbo"."EvaluationList" "usingcodEvaluation" on "usingcod"."EvaluationNO" = "usingcodEvaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "usingcodacc_" on "usingcod"."acc_no" = "usingcodacc_"."Acc_No"
+	left join "dbo"."GLmfbab" "usingcodacc_Clsacc_" on "usingcodacc_"."Clsacc_No" = "usingcodacc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "usingcodacc_Acc_Bnd" on "usingcodacc_"."Acc_Bnd" = "usingcodacc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."PYCntry" "usingcodCntry_" on "usingcod"."Cntry_No" = "usingcodCntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "usingcodcurncy_" on "usingcod"."curncy_no" = "usingcodcurncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "usingcodTSNEF" on "usingcod"."TSNEFNO" = "usingcodTSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "usingcodTSNEFNO1" on "usingcod"."TSNEFNO1" = "usingcodTSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "usingcodSlm_" on "usingcod"."Slm_No" = "usingcodSlm_"."Slm_No"
+	left join "dbo"."masngerclass" "usingcodSlm_masngerclass" on "usingcodSlm_"."masngerclassid" = "usingcodSlm_masngerclass"."masngerclassid"
+	left join "dbo"."Stcustmr" "usingcod1" on "ajrContracts"."usingcod1" = "usingcod1"."Cstm_No"
+	left join "dbo"."AreaList" "usingcod1Area" on "usingcod1"."AreaNo" = "usingcod1Area"."AreaNo"
+	left join "dbo"."EvaluationList" "usingcod1Evaluation" on "usingcod1"."EvaluationNO" = "usingcod1Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "usingcod1acc_" on "usingcod1"."acc_no" = "usingcod1acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "usingcod1acc_Clsacc_" on "usingcod1acc_"."Clsacc_No" = "usingcod1acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "usingcod1acc_Acc_Bnd" on "usingcod1acc_"."Acc_Bnd" = "usingcod1acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."PYCntry" "usingcod1Cntry_" on "usingcod1"."Cntry_No" = "usingcod1Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "usingcod1curncy_" on "usingcod1"."curncy_no" = "usingcod1curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "usingcod1TSNEF" on "usingcod1"."TSNEFNO" = "usingcod1TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "usingcod1TSNEFNO1" on "usingcod1"."TSNEFNO1" = "usingcod1TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "usingcod1Slm_" on "usingcod1"."Slm_No" = "usingcod1Slm_"."Slm_No"
+	left join "dbo"."masngerclass" "usingcod1Slm_masngerclass" on "usingcod1Slm_"."masngerclassid" = "usingcod1Slm_masngerclass"."masngerclassid"
+]]></text>
+    </command>
+    <command id="ajrCntrctSrIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ajrCntrctSr" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ajrCntrctSr" type="Int64" allowNulls="false" isPrimaryKey="true" label="ajr Cntrct Sr" readOnly="true" />
+    <field name="sgm" type="Int64" label="Sgm" showInSummary="true">
+      <items dataView="grid1" dataValueField="sgm" dataTextField="Acc_Nm" style="DropDownList" />
+    </field>
+    <field name="CntctDate" type="DateTime" default="(getdate())" label="Cntct Date" showInSummary="true" />
+    <field name="Cstm_No" type="Int64" label="Cstm No" showInSummary="true">
+      <items style="Lookup" dataController="Stcustmr" newDataView="createForm1" searchOnStart="false" dataView="searchgrid1" dataValueField="Cstm_No" dataTextField="Cstm_Nm" />
+    </field>
+    <field name="Cstm_Cstm_Nm" type="String" readOnly="true" label="Cstm Nm" length="155" />
+    <field name="Cstm_AreaArea_name" type="String" readOnly="true" label="Cstm Area name" length="150" />
+    <field name="Cstm_EvaluationEvaluation_name" type="String" readOnly="true" label="Cstm Evaluation name" length="150" />
+    <field name="Cstm_acc_Acc_Nm" type="String" readOnly="true" label="Cstm acc Acc Nm" length="255" />
+    <field name="Cstm_acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Cstm acc Clsacc Acc Nm" length="250" />
+    <field name="Cstm_acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Cstm acc Acc Bnd Acc Nm" length="50" />
+    <field name="Cstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="Cstm Cntry Nm" length="255" />
+    <field name="Cstm_curncy_Curncy_Nm" type="String" readOnly="true" label="Cstm curncy Curncy Nm" length="200" />
+    <field name="Cstm_TSNEFTSNEF_name" type="String" readOnly="true" label="Cstm TSNEFTSNEF name" length="150" />
+    <field name="Cstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="Cstm TSNEFNO1TSNEF1 name" length="150" />
+    <field name="Cstm_Slm_Slm_Nm" type="String" readOnly="true" label="Cstm Slm Nm" length="100" />
+    <field name="Cstm_Slm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Cstm Slm masngerclassmasngerclass" length="-1" />
+    <field name="plantypeid" type="Int64" label="Plantypeid" showInSummary="true">
+      <items style="Lookup" dataController="Carplantypelist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="plantypeplantypeDesc" type="String" readOnly="true" label="plantypeplantype Desc" length="50" />
+    <field name="Car_No" type="Int64" label="Car No" showInSummary="true">
+      <items searchOnStart="false" dataView="searchgrid1" />
+    </field>
+    <field name="Car_PLAT_No" type="String" readOnly="true" label="Car PLAT No" length="20" />
+    <field name="Car_Car_TypeStyl_Nm" type="String" readOnly="true" label="Car Type Styl Nm" length="60" />
+    <field name="Car_EMP_Emp_Nmdriver" type="String" readOnly="true" label="Car EMP Emp Nmdriver" length="60" />
+    <field name="Car_EMP_sgmsgm_Nm" type="String" readOnly="true" label="Car EMP sgmsgm Nm" length="255" />
+    <field name="Car_EMP_Emp_no1Emp_NOt" type="String" readOnly="true" label="Car EMP Emp no1 Emp N Ot" length="50" />
+    <field name="Car_caseoperationdesccaseoperationdesc" type="String" readOnly="true" label="Car caseoperationdesccaseoperationdesc" length="150" />
+    <field name="Car_carclasscarclassname" type="String" readOnly="true" label="Car carclasscarclassname" length="60" />
+    <field name="Car_Insu_CmpInsu_Cmpname" type="String" readOnly="true" label="Car Insu Cmp Insu Cmpname" length="150" />
+    <field name="Car_Insu_Cmp1Insu_Cmpname" type="String" readOnly="true" label="Car Insu Cmp1 Insu Cmpname" length="150" />
+    <field name="Car_Insu_Cmp2Insu_Cmpname" type="String" readOnly="true" label="Car Insu Cmp2 Insu Cmpname" length="150" />
+    <field name="Car_kindcarkinddesc" type="String" readOnly="true" label="Car kindcarkinddesc" length="150" />
+    <field name="Car_kindStyl_Styl_Nm" type="String" readOnly="true" label="Car kind Styl Nm" length="60" />
+    <field name="Car_carstutus_carstutus_name" type="String" readOnly="true" label="Car carstutus name" length="50" />
+    <field name="Car_Car_ColrColor_name" type="String" readOnly="true" label="Car Colr Color name" length="50" />
+    <field name="Car_fuelllevelFuellevelDisplayname" type="String" readOnly="true" label="Car fuelllevel Fuellevel Displayname" length="60" />
+    <field name="Car_sgmsgm_Nm" type="String" readOnly="true" label="Car sgmsgm Nm" length="255" />
+    <field name="Car_sgmOpcoOpcoName" type="String" readOnly="true" label="Car sgm Opco Name" length="50" />
+    <field name="Car_GuaranteeGuaranteename" type="String" readOnly="true" label="Car Guarantee Guaranteename" length="150" />
+    <field name="Car_Insurance_typeInsurance_name" type="String" readOnly="true" label="Car Insurance type Insurance name" length="150" />
+    <field name="Car_Car_LikLike_name" type="String" readOnly="true" label="Car Lik Like name" length="50" />
+    <field name="Car_padnaturewaypadnatureway" type="String" readOnly="true" label="Car padnaturewaypadnatureway" length="50" />
+    <field name="Car_Fbrct_CntryCntry_Nm" type="String" readOnly="true" label="Car Fbrct Cntry Nm" length="255" />
+    <field name="Car_Ownr_Ownr_ID" type="String" readOnly="true" label="Car Ownr#" length="15" />
+    <field name="Car_Ownr_cmp_Grp_Nm" type="String" readOnly="true" label="Car Ownr cmp Grp Nm" length="255" />
+    <field name="Car_Cstm_Cstm_Nm" type="String" readOnly="true" label="Car Cstm Nm" length="155" />
+    <field name="Car_Cstm_AreaArea_name" type="String" readOnly="true" label="Car Cstm Area name" length="150" />
+    <field name="Car_Cstm_EvaluationEvaluation_name" type="String" readOnly="true" label="Car Cstm Evaluation name" length="150" />
+    <field name="Car_Cstm_acc_Acc_Nm" type="String" readOnly="true" label="Car Cstm acc Acc Nm" length="255" />
+    <field name="Car_Cstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="Car Cstm Cntry Nm" length="255" />
+    <field name="Car_Cstm_curncy_Curncy_Nm" type="String" readOnly="true" label="Car Cstm curncy Curncy Nm" length="200" />
+    <field name="Car_Cstm_TSNEFTSNEF_name" type="String" readOnly="true" label="Car Cstm TSNEFTSNEF name" length="150" />
+    <field name="Car_Cstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="Car Cstm TSNEFNO1TSNEF1 name" length="150" />
+    <field name="Car_Cstm_Slm_Slm_Nm" type="String" readOnly="true" label="Car Cstm Slm Nm" length="100" />
+    <field name="Car_Sup_Sup_Nm" type="String" readOnly="true" label="Car Sup Nm" length="255" />
+    <field name="Car_Sup_Acc_Acc_Nm" type="String" readOnly="true" label="Car Sup Acc Nm" length="255" />
+    <field name="Car_Sup_sgmsgm_Nm" type="String" readOnly="true" label="Car Sup sgmsgm Nm" length="255" />
+    <field name="Car_Sup_Cntry_Cntry_Nm" type="String" readOnly="true" label="Car Sup Cntry Nm" length="255" />
+    <field name="Car_Sup_Curncy_Curncy_Nm" type="String" readOnly="true" label="Car Sup Curncy Nm" length="200" />
+    <field name="Car_TamweelreqTamweeldeatails" type="String" readOnly="true" label="Car Tamweelreq Tamweeldeatails" length="50" />
+    <field name="Car_TamweelreqCurncy_Curncy_Nm" type="String" readOnly="true" label="Car Tamweelreq Curncy Nm" length="200" />
+    <field name="Car_TamweelreqCstm_Cstm_Nm" type="String" readOnly="true" label="Car Tamweelreq Cstm Nm" length="155" />
+    <field name="Car_Tamweelreqtasedwaytasedwayname" type="String" readOnly="true" label="Car Tamweelreqtasedwaytasedwayname" length="50" />
+    <field name="kmReading" type="Decimal" label="km Reading" />
+    <field name="NOfDays" type="Decimal" label="N Of Days" />
+    <field name="Discountpercentage" type="Decimal" label="Discountpercentage" />
+    <field name="priceperunit" type="Decimal" label="Priceperunit" />
+    <field name="PricePerDay" type="Decimal" label="Price Per Day" />
+    <field name="Fuel" type="Int64" label="Fuel">
+      <items style="DropDownList" dataController="Fuellevel" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataValueField="Fuellevelid" dataTextField="Fuellevelname" />
+    </field>
+    <field name="FuelFuellevelname" type="String" readOnly="true" label="Fuel Fuellevelname" length="60" />
+    <field name="freekm" type="Decimal" label="Freekm" calculated="true" contextFields="prostermcode" />
+    <field name="StartDate" type="DateTime" label="Start Date" />
+    <field name="StartTime" type="String" label="Start Time" length="10" />
+    <field name="EndDate" type="DateTime" label="End Date" />
+    <field name="Endtime" type="String" label="Endtime" length="10" />
+    <field name="Notes" type="String" allowQBE="false" allowSorting="false" label="Notes" length="-1" />
+    <field name="cntstcode" type="Int64" default="((1))" label="Cntstcode">
+      <items searchOnStart="true" dataView="grid1" />
+    </field>
+    <field name="cntststatus_name" type="String" readOnly="true" label="Cntststatus Name" length="50" />
+    <field name="RLEndDate" type="DateTime" label="RL End Date" />
+    <field name="RLEndtime" type="String" label="RL Endtime" length="10" />
+    <field name="Slm_No" type="Int64" label="Slm No">
+      <items style="DropDownList" dataController="Stslsman" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataValueField="Slm_No" dataTextField="Slm_Nm" />
+    </field>
+    <field name="Slm_Slm_Nm" type="String" readOnly="true" label="Slm Nm" length="100" />
+    <field name="Slm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Slm masngerclassmasngerclass" length="-1" />
+    <field name="RtkmReading" type="Decimal" label="Rtkm Reading" />
+    <field name="RtFuel" type="Int64" label="Rt Fuel" />
+    <field name="RTsgm" type="Int64" default="((0))" label="R Tsgm" />
+    <field name="typcoid" type="Int64" label="Typcoid">
+      <items style="DropDownList" dataController="typecolist" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataValueField="typcoid" dataTextField="typcoDesc" />
+    </field>
+    <field name="typcotypcoDesc" type="String" readOnly="true" label="typcotypco Desc" length="150" />
+    <field name="prostermcode" type="Int64" label="Prostermcode">
+      <items style="Lookup" dataController="ProsTerm" newDataView="createForm1" searchOnStart="false" dataView="grid1" dataValueField="prostermcode" dataTextField="ProgramStDesc" />
+    </field>
+    <field name="prostermProgramStDesc" type="String" readOnly="true" label="prosterm Program St Desc" length="255" />
+    <field name="prostermplantypeplantypeDesc" type="String" readOnly="true" label="prostermplantypeplantype Desc" length="50" />
+    <field name="usingcod" type="Int64" label="Usingcod">
+      <items style="Lookup" dataController="Stcustmr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="usingcodCstm_Nm" type="String" readOnly="true" label="usingcod Cstm Nm" length="155" />
+    <field name="usingcodAreaArea_name" type="String" readOnly="true" label="usingcod Area name" length="150" />
+    <field name="usingcodEvaluationEvaluation_name" type="String" readOnly="true" label="usingcod Evaluation name" length="150" />
+    <field name="usingcodacc_Acc_Nm" type="String" readOnly="true" label="usingcodacc Acc Nm" length="255" />
+    <field name="usingcodacc_Clsacc_Acc_Nm" type="String" readOnly="true" label="usingcodacc Clsacc Acc Nm" length="250" />
+    <field name="usingcodacc_Acc_BndAcc_Nm" type="String" readOnly="true" label="usingcodacc Acc Bnd Acc Nm" length="50" />
+    <field name="usingcodCntry_Cntry_Nm" type="String" readOnly="true" label="usingcod Cntry Nm" length="255" />
+    <field name="usingcodcurncy_Curncy_Nm" type="String" readOnly="true" label="usingcodcurncy Curncy Nm" length="200" />
+    <field name="usingcodTSNEFTSNEF_name" type="String" readOnly="true" label="usingcod TSNEFTSNEF name" length="150" />
+    <field name="usingcodTSNEFNO1TSNEF1_name" type="String" readOnly="true" label="usingcod TSNEFNO1TSNEF1 name" length="150" />
+    <field name="usingcodSlm_Slm_Nm" type="String" readOnly="true" label="usingcod Slm Nm" length="100" />
+    <field name="usingcodSlm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="usingcod Slm masngerclassmasngerclass" length="-1" />
+    <field name="usingcod1" type="Int64" label="Usingcod1">
+      <items style="Lookup" dataController="Stcustmr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="usingcod1Cstm_Nm" type="String" readOnly="true" label="usingcod1 Cstm Nm" length="155" />
+    <field name="usingcod1AreaArea_name" type="String" readOnly="true" label="usingcod1 Area name" length="150" />
+    <field name="usingcod1EvaluationEvaluation_name" type="String" readOnly="true" label="usingcod1 Evaluation name" length="150" />
+    <field name="usingcod1acc_Acc_Nm" type="String" readOnly="true" label="usingcod1acc Acc Nm" length="255" />
+    <field name="usingcod1acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="usingcod1acc Clsacc Acc Nm" length="250" />
+    <field name="usingcod1acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="usingcod1acc Acc Bnd Acc Nm" length="50" />
+    <field name="usingcod1Cntry_Cntry_Nm" type="String" readOnly="true" label="usingcod1 Cntry Nm" length="255" />
+    <field name="usingcod1curncy_Curncy_Nm" type="String" readOnly="true" label="usingcod1curncy Curncy Nm" length="200" />
+    <field name="usingcod1TSNEFTSNEF_name" type="String" readOnly="true" label="usingcod1 TSNEFTSNEF name" length="150" />
+    <field name="usingcod1TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="usingcod1 TSNEFNO1TSNEF1 name" length="150" />
+    <field name="usingcod1Slm_Slm_Nm" type="String" readOnly="true" label="usingcod1 Slm Nm" length="100" />
+    <field name="usingcod1Slm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="usingcod1 Slm masngerclassmasngerclass" length="-1" />
+    <field name="RequestNumber" type="String" label="Request Number" length="50" />
+    <field name="deleviryservice" type="Boolean" label="Deleviryservice" />
+    <field name="ExtKm_Value" type="Decimal" label="Ext Km Value" />
+    <field name="lattype" type="Int64" label="Lattype" />
+    <field name="latedayes" type="Double" label="Latedayes" />
+    <field name="latedhours" type="Double" label="Latedhours" />
+    <field name="latedprice" type="Decimal" label="Latedprice" />
+    <field name="latemoney" type="Decimal" label="Latemoney" />
+    <field name="Returnbroken" type="Decimal" label="Returnbroken" />
+    <field name="ExtraMoney" type="Decimal" label="Extra Money" />
+    <field name="contractanotat" type="String" label="Contractanotat" length="255" />
+    <field name="pricebeforeDescountx" type="Decimal" label="pricebefore Descountx" />
+    <field name="pricebeforedescperunitx" type="Decimal" label="Pricebeforedescperunitx" />
+    <field name="Normalsumofcontractx" type="Decimal" label="Normalsumofcontractx" />
+    <field name="NormalCounterreturnx" type="Decimal" label="Normal Counterreturnx" />
+    <field name="Descountamountcalcx" type="Decimal" label="Descountamountcalcx" />
+    <field name="Descountamountcalc1" type="Decimal" label="Descountamountcalc1" />
+    <field name="Descountamountcalc2" type="Decimal" label="Descountamountcalc2" />
+    <field name="Descountamountcalc3" type="Decimal" label="Descountamountcalc3" />
+    <field name="Descountamountcalc4" type="Decimal" label="Descountamountcalc4" />
+    <field name="Descountamountcalc5" type="Decimal" label="Descountamountcalc5" />
+    <field name="Descountamountcalc6" type="Decimal" label="Descountamountcalc6" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedByUserId" type="Guid" label="Modified By User#" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedById" type="Guid" label="Created By#" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="ajr Contracts">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="ajrCntrctSr" hidden="false" />
+        <dataField fieldName="sgm" columns="15" />
+        <dataField fieldName="CntctDate" columns="10" />
+        <dataField fieldName="Cstm_No" aliasFieldName="Cstm_Cstm_Nm" hyperlinkFormatString="~/Pages/Stcustmr.aspx?Cstm_No={Cstm_No}&amp;_controller=Stcustmr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="plantypeid" aliasFieldName="plantypeplantypeDesc" hyperlinkFormatString="~/Pages/Carplantypelist.aspx?plantypeid={plantypeid}&amp;_controller=Carplantypelist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Car_No" aliasFieldName="Car_PLAT_No" hyperlinkFormatString="~/Pages/CarInfom.aspx?Car_No={Car_No}&amp;_controller=CarInfom&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="kmReading" columns="15" />
+        <dataField fieldName="NOfDays" columns="15" />
+        <dataField fieldName="Discountpercentage" columns="15" />
+        <dataField fieldName="priceperunit" dataFormatString="c" columns="15" />
+        <dataField fieldName="PricePerDay" dataFormatString="c" columns="15" />
+        <dataField fieldName="Fuel" aliasFieldName="FuelFuellevelname" hyperlinkFormatString="~/Pages/Fuellevel.aspx?Fuellevelid={Fuel}&amp;_controller=Fuellevel&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="freekm" columns="15" />
+        <dataField fieldName="StartDate" columns="10" />
+        <dataField fieldName="StartTime" columns="10" />
+        <dataField fieldName="EndDate" columns="10" />
+        <dataField fieldName="Endtime" columns="10" />
+        <dataField fieldName="Notes" rows="5" />
+        <dataField fieldName="cntstcode" aliasFieldName="cntststatus_name" hyperlinkFormatString="~/Pages/contractstatus.aspx?cntstcode={cntstcode}&amp;_controller=contractstatus&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="RLEndDate" columns="10" />
+        <dataField fieldName="RLEndtime" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review ajr Contracts">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="ajr Contracts" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ajrCntrctSr" hidden="false" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="typcoid" aliasFieldName="typcotypcoDesc" hyperlinkFormatString="~/Pages/typecolist.aspx?typcoid={typcoid}&amp;_controller=typecolist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="prostermcode" aliasFieldName="prostermProgramStDesc" hyperlinkFormatString="~/Pages/ProsTerm.aspx?prostermcode={prostermcode}&amp;_controller=ProsTerm&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="CntctDate" columns="10" />
+            <dataField fieldName="Cstm_No" aliasFieldName="Cstm_Cstm_Nm" hyperlinkFormatString="~/Pages/Stcustmr.aspx?Cstm_No={Cstm_No}&amp;_controller=Stcustmr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="plantypeid" aliasFieldName="plantypeplantypeDesc" hyperlinkFormatString="~/Pages/Carplantypelist.aspx?plantypeid={plantypeid}&amp;_controller=Carplantypelist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Car_No" aliasFieldName="Car_PLAT_No" hyperlinkFormatString="~/Pages/CarInfom.aspx?Car_No={Car_No}&amp;_controller=CarInfom&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="kmReading" columns="15" />
+            <dataField fieldName="NOfDays" columns="15" />
+            <dataField fieldName="Discountpercentage" columns="15" />
+            <dataField fieldName="priceperunit" dataFormatString="c" columns="15" />
+            <dataField fieldName="PricePerDay" dataFormatString="c" columns="15" />
+            <dataField fieldName="Fuel" aliasFieldName="FuelFuellevelname" hyperlinkFormatString="~/Pages/Fuellevel.aspx?Fuellevelid={Fuel}&amp;_controller=Fuellevel&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="freekm" columns="15" />
+            <dataField fieldName="StartDate" columns="10" />
+            <dataField fieldName="StartTime" columns="10" />
+            <dataField fieldName="EndDate" columns="10" />
+            <dataField fieldName="Endtime" columns="10" />
+            <dataField fieldName="cntstcode" aliasFieldName="cntststatus_name" hyperlinkFormatString="~/Pages/contractstatus.aspx?cntstcode={cntstcode}&amp;_controller=contractstatus&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="RLEndDate" columns="10" />
+            <dataField fieldName="RLEndtime" columns="10" />
+            <dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm" hyperlinkFormatString="~/Pages/Stslsman.aspx?Slm_No={Slm_No}&amp;_controller=Stslsman&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="RtkmReading" columns="15" />
+            <dataField fieldName="RtFuel" columns="15" />
+            <dataField fieldName="RTsgm" columns="15" />
+            <dataField fieldName="usingcod" aliasFieldName="usingcodCstm_Nm" hyperlinkFormatString="~/Pages/Stcustmr.aspx?Cstm_No={usingcod}&amp;_controller=Stcustmr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="usingcod1" aliasFieldName="usingcod1Cstm_Nm" hyperlinkFormatString="~/Pages/Stcustmr.aspx?Cstm_No={usingcod1}&amp;_controller=Stcustmr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="RequestNumber" columns="50" />
+            <dataField fieldName="deleviryservice" />
+            <dataField fieldName="ExtKm_Value" columns="15" />
+            <dataField fieldName="lattype" columns="15" />
+            <dataField fieldName="latedayes" columns="15" />
+            <dataField fieldName="latedhours" columns="15" />
+            <dataField fieldName="latedprice" columns="15" />
+            <dataField fieldName="latemoney" columns="15" />
+            <dataField fieldName="Returnbroken" columns="15" />
+            <dataField fieldName="ExtraMoney" columns="15" />
+            <dataField fieldName="contractanotat" />
+            <dataField fieldName="pricebeforeDescountx" columns="15" />
+            <dataField fieldName="pricebeforedescperunitx" columns="15" />
+            <dataField fieldName="Normalsumofcontractx" columns="15" />
+            <dataField fieldName="NormalCounterreturnx" columns="15" />
+            <dataField fieldName="Descountamountcalcx" columns="15" />
+            <dataField fieldName="Descountamountcalc1" columns="15" />
+            <dataField fieldName="Descountamountcalc2" columns="15" />
+            <dataField fieldName="Descountamountcalc3" columns="15" />
+            <dataField fieldName="Descountamountcalc4" columns="15" />
+            <dataField fieldName="Descountamountcalc5" columns="15" />
+            <dataField fieldName="Descountamountcalc6" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedByUserId" columns="15" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedById" columns="15" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="Notes" rows="5" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Cstm_AreaArea_name" />
+            <dataField fieldName="Cstm_EvaluationEvaluation_name" />
+            <dataField fieldName="Cstm_acc_Acc_Nm" />
+            <dataField fieldName="Cstm_acc_Clsacc_Acc_Nm" />
+            <dataField fieldName="Cstm_acc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="Cstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="Cstm_curncy_Curncy_Nm" />
+            <dataField fieldName="Cstm_TSNEFTSNEF_name" />
+            <dataField fieldName="Cstm_TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="Cstm_Slm_Slm_Nm" />
+            <dataField fieldName="Cstm_Slm_masngerclassmasngerclass" rows="5" />
+            <dataField fieldName="Car_Car_TypeStyl_Nm" />
+            <dataField fieldName="Car_EMP_Emp_Nmdriver" />
+            <dataField fieldName="Car_EMP_sgmsgm_Nm" />
+            <dataField fieldName="Car_EMP_Emp_no1Emp_NOt" columns="50" />
+            <dataField fieldName="Car_caseoperationdesccaseoperationdesc" />
+            <dataField fieldName="Car_carclasscarclassname" />
+            <dataField fieldName="Car_Insu_CmpInsu_Cmpname" />
+            <dataField fieldName="Car_Insu_Cmp1Insu_Cmpname" />
+            <dataField fieldName="Car_Insu_Cmp2Insu_Cmpname" />
+            <dataField fieldName="Car_kindcarkinddesc" />
+            <dataField fieldName="Car_kindStyl_Styl_Nm" />
+            <dataField fieldName="Car_carstutus_carstutus_name" columns="50" />
+            <dataField fieldName="Car_Car_ColrColor_name" columns="50" />
+            <dataField fieldName="Car_fuelllevelFuellevelDisplayname" />
+            <dataField fieldName="Car_sgmsgm_Nm" />
+            <dataField fieldName="Car_sgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="Car_GuaranteeGuaranteename" />
+            <dataField fieldName="Car_Insurance_typeInsurance_name" />
+            <dataField fieldName="Car_Car_LikLike_name" columns="50" />
+            <dataField fieldName="Car_padnaturewaypadnatureway" columns="50" />
+            <dataField fieldName="Car_Fbrct_CntryCntry_Nm" />
+            <dataField fieldName="Car_Ownr_Ownr_ID" columns="15" />
+            <dataField fieldName="Car_Ownr_cmp_Grp_Nm" />
+            <dataField fieldName="Car_Cstm_Cstm_Nm" />
+            <dataField fieldName="Car_Cstm_AreaArea_name" />
+            <dataField fieldName="Car_Cstm_EvaluationEvaluation_name" />
+            <dataField fieldName="Car_Cstm_acc_Acc_Nm" />
+            <dataField fieldName="Car_Cstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="Car_Cstm_curncy_Curncy_Nm" />
+            <dataField fieldName="Car_Cstm_TSNEFTSNEF_name" />
+            <dataField fieldName="Car_Cstm_TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="Car_Cstm_Slm_Slm_Nm" />
+            <dataField fieldName="Car_Sup_Sup_Nm" />
+            <dataField fieldName="Car_Sup_Acc_Acc_Nm" />
+            <dataField fieldName="Car_Sup_sgmsgm_Nm" />
+            <dataField fieldName="Car_Sup_Cntry_Cntry_Nm" />
+            <dataField fieldName="Car_Sup_Curncy_Curncy_Nm" />
+            <dataField fieldName="Car_TamweelreqTamweeldeatails" columns="50" />
+            <dataField fieldName="Car_TamweelreqCurncy_Curncy_Nm" />
+            <dataField fieldName="Car_TamweelreqCstm_Cstm_Nm" />
+            <dataField fieldName="Car_Tamweelreqtasedwaytasedwayname" columns="50" />
+            <dataField fieldName="Slm_masngerclassmasngerclass" rows="5" />
+            <dataField fieldName="prostermplantypeplantypeDesc" columns="50" />
+            <dataField fieldName="usingcodAreaArea_name" />
+            <dataField fieldName="usingcodEvaluationEvaluation_name" />
+            <dataField fieldName="usingcodacc_Acc_Nm" />
+            <dataField fieldName="usingcodacc_Clsacc_Acc_Nm" />
+            <dataField fieldName="usingcodacc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="usingcodCntry_Cntry_Nm" />
+            <dataField fieldName="usingcodcurncy_Curncy_Nm" />
+            <dataField fieldName="usingcodTSNEFTSNEF_name" />
+            <dataField fieldName="usingcodTSNEFNO1TSNEF1_name" />
+            <dataField fieldName="usingcodSlm_Slm_Nm" />
+            <dataField fieldName="usingcodSlm_masngerclassmasngerclass" rows="5" />
+            <dataField fieldName="usingcod1AreaArea_name" />
+            <dataField fieldName="usingcod1EvaluationEvaluation_name" />
+            <dataField fieldName="usingcod1acc_Acc_Nm" />
+            <dataField fieldName="usingcod1acc_Clsacc_Acc_Nm" />
+            <dataField fieldName="usingcod1acc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="usingcod1Cntry_Cntry_Nm" />
+            <dataField fieldName="usingcod1curncy_Curncy_Nm" />
+            <dataField fieldName="usingcod1TSNEFTSNEF_name" />
+            <dataField fieldName="usingcod1TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="usingcod1Slm_Slm_Nm" />
+            <dataField fieldName="usingcod1Slm_masngerclassmasngerclass" rows="5" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New ajr Contracts">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New ajr Contracts" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="typcoid" aliasFieldName="typcotypcoDesc" />
+            <dataField fieldName="prostermcode" aliasFieldName="prostermProgramStDesc" />
+            <dataField fieldName="CntctDate" columns="10" />
+            <dataField fieldName="Cstm_No" aliasFieldName="Cstm_Cstm_Nm" />
+            <dataField fieldName="plantypeid" aliasFieldName="plantypeplantypeDesc" />
+            <dataField fieldName="Car_No" aliasFieldName="Car_PLAT_No" />
+            <dataField fieldName="kmReading" columns="15" />
+            <dataField fieldName="NOfDays" columns="15" />
+            <dataField fieldName="Discountpercentage" columns="15" />
+            <dataField fieldName="priceperunit" dataFormatString="c" columns="15" />
+            <dataField fieldName="PricePerDay" dataFormatString="c" columns="15" />
+            <dataField fieldName="Fuel" aliasFieldName="FuelFuellevelname" />
+            <dataField fieldName="freekm" columns="15" />
+            <dataField fieldName="StartDate" columns="10" />
+            <dataField fieldName="StartTime" columns="10" />
+            <dataField fieldName="EndDate" columns="10" />
+            <dataField fieldName="Endtime" columns="10" />
+            <dataField fieldName="Notes" rows="5" />
+            <dataField fieldName="cntstcode" aliasFieldName="cntststatus_name" hidden="true" />
+            <dataField fieldName="RLEndDate" columns="10" hidden="true" />
+            <dataField fieldName="RLEndtime" columns="10" hidden="true" />
+            <dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm" />
+            <dataField fieldName="RtkmReading" columns="15" hidden="true" />
+            <dataField fieldName="RtFuel" columns="15" hidden="true" />
+            <dataField fieldName="RTsgm" columns="15" hidden="true" />
+            <dataField fieldName="usingcod" aliasFieldName="usingcodCstm_Nm" />
+            <dataField fieldName="usingcod1" aliasFieldName="usingcod1Cstm_Nm" />
+            <dataField fieldName="RequestNumber" columns="50" />
+            <dataField fieldName="deleviryservice" />
+            <dataField fieldName="ExtKm_Value" columns="15" />
+            <dataField fieldName="lattype" columns="15" />
+            <dataField fieldName="latedayes" columns="15" />
+            <dataField fieldName="latedhours" columns="15" />
+            <dataField fieldName="latedprice" columns="15" />
+            <dataField fieldName="latemoney" columns="15" />
+            <dataField fieldName="Returnbroken" columns="15" />
+            <dataField fieldName="ExtraMoney" columns="15" />
+            <dataField fieldName="contractanotat" />
+            <dataField fieldName="pricebeforeDescountx" columns="15" />
+            <dataField fieldName="pricebeforedescperunitx" columns="15" />
+            <dataField fieldName="Normalsumofcontractx" columns="15" />
+            <dataField fieldName="NormalCounterreturnx" columns="15" />
+            <dataField fieldName="Descountamountcalcx" columns="15" />
+            <dataField fieldName="Descountamountcalc1" columns="15" />
+            <dataField fieldName="Descountamountcalc2" columns="15" />
+            <dataField fieldName="Descountamountcalc3" columns="15" />
+            <dataField fieldName="Descountamountcalc4" columns="15" />
+            <dataField fieldName="Descountamountcalc5" columns="15" />
+            <dataField fieldName="Descountamountcalc6" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedByUserId" columns="15" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedById" columns="15" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+      <action id="a100" commandName="Custom" commandArgument="printcon" headerText="print con" causesValidation="true" whenLastCommandName="Edit" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+      <action id="a100" commandName="Custom" commandArgument="printcon" headerText="print con" causesValidation="true" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="EVOL_Memo" conflictDetection="overwriteChanges" label="EVOL Memo" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.EVOL_MemoBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"EVOL_Memo"."ID" "ID"
+	,"EVOL_Memo"."title" "title"
+	,"EVOL_Memo"."CategoryID" "CategoryID"
+	,"Category"."Categoryname" "CategoryCategoryname"
+	,"EVOL_Memo"."Notes" "Notes"
+	,"EVOL_Memo"."ModifiedBy" "ModifiedBy"
+	,"EVOL_Memo"."ModifiedOn" "ModifiedOn"
+	,"EVOL_Memo"."CreatedBy" "CreatedBy"
+	,"EVOL_Memo"."CreatedOn" "CreatedOn"
+	,"EVOL_Memo"."SendTo" "SendTo"
+	,"EVOL_Memo"."SendToEmail" "SendToEmail"
+	,"EVOL_Memo"."Urllink" "Urllink"
+from "dbo"."EVOL_Memo" "EVOL_Memo"
+	left join "dbo"."EVOL_MemoCategory" "Category" on "EVOL_Memo"."CategoryID" = "Category"."CategoryID"
+]]></text>
+    </command>
+    <command id="IDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Id" readOnly="true" />
+    <field name="title" type="String" label="Title" length="400" showInSummary="true" />
+    <field name="CategoryID" type="Int32" label="Category#" showInSummary="true">
+      <items style="Lookup" dataController="EVOL_MemoCategory" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="CategoryCategoryname" type="String" readOnly="true" label="Category Categoryname" length="100" />
+    <field name="Notes" type="String" allowQBE="false" allowSorting="false" label="Notes" showInSummary="true" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" showInSummary="true" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" showInSummary="true" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="SendTo" type="String" label="Send To" length="50">
+      <items style="Lookup" dataController="vwaspnetUsers" dataView="grid1" dataTextField="UserName" dataValueField="UserName" copy="SendToEmail=Email" />
+    </field>
+    <field name="SendToEmail" type="String" label="Send To Email" length="50" />
+    <field name="Urllink" type="String" allowQBE="false" allowSorting="false" label="Urllink" length="50" computed="true">
+      <formula>@BusinessRules_UserEmail</formula>
+    </field>
+    <field name="CurrentUserName" type="String" readOnly="true" label="Current User" allowQBE="false" allowSorting="false" computed="true" htmlEncode="false" hidden="false" length="40">
+      <items letters="false" />
+      <formula>@BusinessRules_UserName</formula>
+    </field>
+    <field name="userlist" type="String" allowNulls="false" label="userlist" allowQBE="false" allowSorting="false" computed="true" htmlEncode="false" hidden="false" length="50">
+      <items style="CheckBoxList" dataController="user_details" dataView="grid2" dataTextField="FirstName" dataValueField="UserName" targetController="EVOLMemo" letters="false" />
+      <formula>Null</formula>
+    </field>
+  </fields>
+  <views>
+    <view id="editForm1" type="Form" commandId="command1" label="Review EVOL Memo">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="EVOL Memo" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="title" />
+            <dataField fieldName="CategoryID" aliasFieldName="CategoryCategoryname" hyperlinkFormatString="~/Pages/EVOL_MemoCategory.aspx?CategoryID={CategoryID}&amp;_controller=EVOL_MemoCategory&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Notes" rows="5" textMode="RichText" columns="50" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="SendTo" columns="50" />
+            <dataField fieldName="SendToEmail" columns="50" />
+            <dataField fieldName="Urllink" rows="5" />
+            <dataField fieldName="CurrentUserName" columns="40" />
+            <dataField fieldName="userlist" columns="5" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New EVOL Memo">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New EVOL Memo" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="title" />
+            <dataField fieldName="CategoryID" aliasFieldName="CategoryCategoryname" />
+            <dataField fieldName="Notes" rows="5" columns="50" textMode="RichText" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="SendTo" columns="50" />
+            <dataField fieldName="SendToEmail" columns="50" />
+            <dataField fieldName="Urllink" rows="5" />
+            <dataField fieldName="CurrentUserName" columns="40" />
+            <dataField fieldName="userlist" columns="5" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="grid1" type="Grid" commandId="command1" label="EVOL Memo" sortExpression="ID desc">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="ID" />
+        <dataField fieldName="title" />
+        <dataField fieldName="CategoryID" aliasFieldName="CategoryCategoryname" hyperlinkFormatString="~/Pages/EVOL_MemoCategory.aspx?CategoryID={CategoryID}&amp;_controller=EVOL_MemoCategory&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="SendTo" columns="50" />
+        <dataField fieldName="SendToEmail" columns="50" />
+        <dataField fieldName="Urllink" rows="5" />
+        <dataField fieldName="CurrentUserName" columns="40" />
+      </dataFields>
+    </view>
+    <view id="Totalmessages" commandId="command1" type="Grid" label="ALL INBOX" sortExpression="ID">
+      <dataFields>
+        <dataField fieldName="ID" />
+        <dataField fieldName="title" />
+        <dataField fieldName="CategoryID" aliasFieldName="CategoryCategoryname" hyperlinkFormatString="~/Pages/EVOL_MemoCategory.aspx?CategoryID={CategoryID}&amp;_controller=EVOL_MemoCategory&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="SendTo" columns="50" />
+        <dataField fieldName="CurrentUserName" columns="40" />
+      </dataFields>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Update" commandArgument="Next" type="JavaScript" phase="After"><![CDATA[if (this.dataView()._continueAfterScript && this.validateInput()) { 
+this.preventDefault(); 
+this.dataView()._advance(1); 
+}]]></rule>
+    <rule id="r101" commandName="Update" commandArgument="previous" type="JavaScript" phase="After"><![CDATA[if (this.dataView()._continueAfterScript && this.validateInput()) { 
+this.preventDefault(); 
+this.dataView()._advance(-1); 
+}]]></rule>
+    <rule id="sendemailr102" commandName="Insert|Update" type="Code" phase="After" />
+    <rule id="r102" commandName="Custom" type="Email" phase="After" commandArgument="email"><![CDATA[From: "System Admin" < info@whitesky.ca>
+To:{SendToEmail}
+Cc:{Urllink}
+Subject: Memo Message "{title}" 
+
+<html>
+<body>
+Dear {SendTo},
+
+Kindly you have new memo .
+
+ 
+
+
+<a herf=http://s.alnajattschool.com/Pages/EVOL_Memo.aspx?id={ID}&_controller=EVOL_Memo&_commandName=Select&_commandArgument=editForm1><H1>if you need to reed it click Her </H1> <a>
+
+</body>
+</html>
+
+
+<attachment type="report">
+    <name>{title}</name>
+    <controller>EVOL_Memo</controller>
+    <view>editForm1</view>
+    <filter>
+        <item>
+            <field>id</field>
+            <operator>=</operator>
+            <value>{ID}</value>
+        </item>
+    </filter>
+</attachment>
+]]></rule>
+  </businessRules>
+</dataController>

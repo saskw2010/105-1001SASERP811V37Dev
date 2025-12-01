@@ -1,0 +1,50 @@
+# H→L Migration Playbook (Strangler-Fig)
+
+## Phase 0: Inventory & Contracts
+- Confirm callers of ASMX and REST (browser, server-side).
+- Freeze legacy contracts for H/J shapes (PageRequest, ViewPage, ActionArgs/Result).
+- Add per-function anchors in docs if missing.
+
+## Phase 1: Carve out H (Services)
+- Introduce ASP.NET Core 8 API (side-by-side or separate host).
+- Implement GET /api/{controller} and POST /api/{controller}/actions/{action} with DTOs.
+- Add auth (JWT/Cookies), FluentValidation, ProblemDetails.
+- Telemetry: log request ids, timings.
+
+Entry criteria: DTOs + OpenAPI published.
+Exit: Legacy clients can call new API with adapter.
+
+## Phase 2: Switch I (DAL)
+- Implement DbContext and repositories; map legacy filters to expression trees.
+- Add migrations; seed minimal data.
+- Introduce retry (Polly), transactions.
+
+Entry: API layer stable.
+Exit: Read paths served from EF Core; write actions transactional.
+
+## Phase 3: Implement J (Serialization)
+- System.Text.Json camelCase; remove JSONP.
+- ProblemDetails for errors; consistent date/times (UTC).
+
+Entry: Consumers prepared for JSON-only.
+Exit: JSON contract stable; tests passing.
+
+## Phase 4: Modern K (UI Binding)
+- Build React (Vite) or Blazor modules for key pages.
+- Replace server binding with client components; use React Query/SWR.
+- A11y and responsive UI.
+
+Entry: API endpoints cover needed scenarios.
+Exit: Users served by SPA for migrated screens.
+
+## Phase 5: Finalize L (Render)
+- Introduce SPA shell under legacy master/route or separate host.
+- Route mapping/hybrid hosting.
+- Decommission legacy paths when coverage >= 95%.
+
+Rollback Plan
+- Feature flags to flip traffic back to legacy.
+- Keep compatibility adapter for PageRequest/ViewPage until decommission.
+
+Telemetry
+- Add structured logs, metrics, tracing across API/DB/frontend.

@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="STsalhdr1002" conflictDetection="overwriteChanges" label="STsalhdr1002" plugIn="eZee.Data.AnnotationPlugIn"  xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text"  custom="true">
+      <text><![CDATA[
+SELECT [Brn_Nm]
+      ,[Brn_No]
+      ,[Doc_Dt]
+      ,[Cash]
+      ,[Knet]
+      ,[Tot_Cost1]
+      ,[Tot_Sal]
+      ,[Tot_Cost]
+      ,[Tot_Disc]
+      ,[Tot_Cost1sal]
+      ,[Tot_Salsal]
+      ,[Tot_Costsal]
+      ,[Tot_Discsal]
+      ,[Tot_Cost1ret]
+      ,[Tot_Salret]
+      ,[Tot_Costret]
+      ,[Tot_Discret]
+      ,[countdocsal]
+      ,[countdocret]
+  FROM  [dbo].[Qtotalsalchart1003]
+ ]]></text>
+    </command>
+    
+  </commands>
+  <fields>
+    
+    <field name="Brn_No" type="Int64" label="Brn No.  " allowNulls="false" showInSummary="true"/>
+     <field name="Brn_Nm" type="String" readOnly="true" label="Station" length="255" />
+     <field name="Doc_Dt" type="DateTime" label="RerportDate" showInSummary="true" />
+     <field name="Tot_Cost1" type="Double" label="Net Sales " />
+    <field name="Tot_Sal" type="Decimal" label="TotSal" />
+    <field name="Tot_Cost" type="Decimal" label="TotCost" />
+    <field name="Tot_Disc" type="Decimal" label="TotDisc" />
+<field name="Tot_Cost1sal" type="Decimal" label="Sales " />
+    <field name="Tot_Salsal" type="Double" label="Sales" />
+    <field name="Tot_Costsal" type="Decimal" label="TotCostsal" />
+    <field name="Tot_Discsal" type="Decimal" label="Disc." />
+<field name="Tot_Cost1ret" type="Decimal" label="Return  " />
+    <field name="Tot_Salret" type="Decimal" label="TotSalret" />
+    <field name="Tot_Costret" type="Decimal" label="TotCostret" />
+    <field name="Tot_Discret" type="Decimal" label="TotDiscret" />
+<field name="Cash" type="Decimal" label="Cash" />
+    <field name="Knet" type="Decimal" label="Knet" />
+    
+ <field name="countdocsal" type="Double" label="INV.# " />
+    <field name="countdocret" type="Double" label="Ret INV.# " />
+ 
+      
+
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="S Tsalhdr"   >
+     
+      <dataFields>
+        
+        <dataField fieldName="Brn_No"  />
+        <dataField fieldName="Brn_Nm"  />
+        <dataField fieldName="Doc_Dt" columns="10" />
+        <dataField fieldName="countdocsal" columns="20" aggregate="Sum" />
+        <dataField fieldName="countdocret" columns="20" aggregate="Sum" hidden="true"/> 
+        <dataField fieldName="Knet" columns="20" dataFormatString="n3" FormatOnClient="False" aggregate="Sum"/>
+        <dataField fieldName="Tot_Salsal" columns="20" dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="Tot_Discsal" columns="20" dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="Tot_Cost1ret" columns="20" dataFormatString="n3" FormatOnClient="False"  aggregate="Sum" />
+        <dataField fieldName="Tot_Cost1" columns="20" dataFormatString="n3" FormatOnClient="False"  aggregate="Sum"  />
+        <dataField fieldName="Tot_Sal" columns="20" dataFormatString="n3" FormatOnClient="False"  aggregate="Sum" hidden="true"/>
+        <dataField fieldName="Tot_Cost" columns="20" dataFormatString="n3" FormatOnClient="False"  aggregate="Sum" hidden="true"/>
+        <dataField fieldName="Tot_Disc" columns="20" dataFormatString="n3" FormatOnClient="False"  aggregate="Sum" hidden="true"/>
+        <dataField fieldName="Tot_Cost1sal" columns="20" dataFormatString="n3" FormatOnClient="False"  aggregate="Sum" hidden="true"/>
+            
+        
+        
+        <dataField fieldName="Tot_Salret" columns="20" dataFormatString="n3" FormatOnClient="False"  aggregate="Sum" hidden="true"/>
+        <dataField fieldName="Tot_Costret" columns="20" dataFormatString="n3" FormatOnClient="False"  aggregate="Sum" hidden="true"/>
+        <dataField fieldName="Tot_Discret" columns="20" dataFormatString="n3" FormatOnClient="False"  aggregate="Sum" hidden="true"/>
+        <dataField fieldName="Cash" columns="20" dataFormatString="n3" FormatOnClient="False"  aggregate="Sum" hidden="true"/>
+       
+          
+	
+
+
+
+      </dataFields>
+    </view>
+    <view id="editForm2" type="Form" commandId="command1" label="Review S Tsalhdr">
+     
+      <categories>
+        <category id="c1" headerText="New S Tsalhdr" flow="NewColumn"  newColumn="true">
+         
+          <dataFields>
+            <dataField fieldName="Brn_No" aliasFieldName="Brn_Brn_Nm" />
+            <dataField fieldName="Pym_No" aliasFieldName="Pym_Pymnt_Nm" />
+            <dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm" />
+            <dataField fieldName="Doc_Dt" columns="10" />
+            <dataField fieldName="typcmsup" aliasFieldName="typcmsupSubledgerDescrption" />
+            <dataField fieldName="Cstm_No" aliasFieldName="Cstm_Cstm_Nm" />
+            <dataField fieldName="curcode" aliasFieldName="curCurncy_Nm" />
+            <dataField fieldName="curprice" columns="15" />
+            <dataField fieldName="Doc_No" />
+          </dataFields>
+        </category>
+        <category headerText="Stockentring" id="c3" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="Refcode" columns="15" />
+            <dataField fieldName="Reftxt" />
+            <dataField fieldName="Cstm_NM" />
+            <dataField fieldName="Cstm_Add" />
+            <dataField fieldName="Cstm_Tel" />
+            <dataField fieldName="KETAA" columns="20" />
+            <dataField fieldName="STreet" columns="20" />
+            <dataField fieldName="gada" columns="20" />
+            <dataField fieldName="house" columns="20" />
+            <dataField fieldName="Door" columns="20"  hidden="true"/>
+            <dataField fieldName="flat" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New S Tsalhdr">
+     
+      <categories>
+        <category id="c1" headerText="New S Tsalhdr" flow="NewColumn"  newColumn="true">
+         
+          <dataFields>
+            <dataField fieldName="Brn_No" aliasFieldName="Brn_Brn_Nm" />
+            <dataField fieldName="Pym_No" aliasFieldName="Pym_Pymnt_Nm"  />
+            <dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm" />
+		<dataField fieldName="CreatedBy" columns="20"/>
+            <dataField fieldName="Doc_Dt" columns="10" textMode="Static" />
+            <dataField fieldName="typcmsup" aliasFieldName="typcmsupSubledgerDescrption" hidden="true" />
+          </dataFields>
+        </category>
+        <category headerText="MoreDetails" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+		   <dataField fieldName="Cstm_No" aliasFieldName="Cstm_Cstm_Nm" />
+		   <dataField fieldName="Cstm_NM" columns="10"/>
+            <dataField fieldName="Cstm_Add" columns="10"/>
+            <dataField fieldName="Cstm_Tel" columns="10"/>
+            <dataField fieldName="curcode" aliasFieldName="curCurncy_Nm" hidden="true" />
+            <dataField fieldName="curprice" columns="15" hidden="true" />
+            <dataField fieldName="Refcode" columns="15" hidden="true"/>
+            <dataField fieldName="Reftxt" hidden="true"/>
+            <dataField fieldName="Doc_ty" columns="15" hidden="true" textMode="Static" />
+            <dataField fieldName="Notes" columns="20" hidden="true"/>
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="editForm1" commandId="command1" type="Form" label="editform1">
+      <categories>
+<category id="c11" headerText="STsalhdr" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="typcmsup" aliasFieldName="typcmsupSubledgerDescrption" hidden="true"/>
+            <dataField fieldName="KETAA" columns="20" />
+            <dataField fieldName="STreet" columns="20" />
+           
+			<dataField fieldName="Tot_Cost" columns="10" hidden="true"/>
+			<dataField fieldName="Discpercent" columns="10" hidden="true"/>
+			
+	     	<dataField fieldName="madfoa" columns="10" />
+<dataField fieldName="house" columns="20"/>
+<dataField fieldName="gada" columns="20"/>
+    <dataField fieldName="rest" columns="10" />
+ 
+            
+          </dataFields>
+        </category>
+        <category id="c1" headerText="STsalhdr" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="Brn_No" aliasFieldName="Brn_Brn_Nm" />
+            <dataField fieldName="Pym_No" aliasFieldName="Pym_Pymnt_Nm" />
+            <dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm" hidden="true"/>
+
+            <dataField fieldName="Cstm_No" aliasFieldName="Cstm_Cstm_Nm" />
+			 <dataField fieldName="Cstm_NM" columns="20"/>
+ <dataField fieldName="Cstm_Tel" columns="20"/>
+            <dataField fieldName="Door" columns="20" />
+          </dataFields>
+        </category>
+		
+        <category headerText="Stockentring" id="c3" flow="NewColumn"  newColumn="true">
+          <dataFields>
+           	<dataField fieldName="CreatedOn" columns="20" hidden="true"/>
+            <dataField fieldName="CreatedBy" columns="20" />
+            <dataField fieldName="ModifiedOn" columns="20" hidden="true"/>
+			 <dataField fieldName="ModifiedBy" hidden="true"/>
+     		<dataField fieldName="Doc_No" />
+<dataField fieldName="wsl" textMode="Static" />
+
+            <dataField fieldName="curcode" aliasFieldName="curCurncy_Nm" hidden="true"/>
+            <dataField fieldName="curprice" columns="15" hidden="true"/>
+            <dataField fieldName="Doc_ty" columns="15" hidden="true"/>
+          
+           
+            <dataField fieldName="flat" columns="15" hidden="true"/>
+			<dataField fieldName="Refcode" columns="15" hidden="true"/>
+            <dataField fieldName="Reftxt" hidden="true"/>
+			<dataField fieldName="Doc_Dt" columns="10" textMode="Static" />
+			<dataField fieldName="Tot_Sal" columns="10" textMode="Static" hidden="true"/>
+			<dataField fieldName="Tot_Disc" columns="10" textMode="Static" />
+			<dataField fieldName="Tot_Cost1" columns="10"  textMode="Static"  hidden="true"/>
+                         
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select"  />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+   <actionGroup id="ag9" scope="ActionColumn">
+ <action commandName="SQL" headerText="ZERO BRANCH" confirmation="are you sure ?"  id="a101">
+        <data><![CDATA[
+exec [dbo].[zerosalesbranch] @Brn_No,@BusinessRules_UserName
+ ]]></data>
+      </action>
+
+    </actionGroup>
+    
+  </actions>
+  
+</dataController>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

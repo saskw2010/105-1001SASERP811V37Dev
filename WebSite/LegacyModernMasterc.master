@@ -1,0 +1,735 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeFile="LegacyModernMasterc.master.vb" Inherits="Main" %>
+
+<!DOCTYPE html>
+<html xml:lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>" lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SKYsaas - نظام إدارة الموارد المؤسسية الحديث</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="نظام إدارة الموارد المؤسسية المتطور - SKYsaas ERP" />
+
+    <!-- Modern CSS Framework -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Custom Stylesheets -->
+    <link rel="shortcut icon" href="/favicon.png" />
+    <link href="/css/pagemenubar.css" rel="stylesheet" type="text/css" />
+    <link href="/css/notifications.css" rel="stylesheet" type="text/css" />
+
+    <!-- Ultra Modern Design System -->
+    <style>
+        /* CSS Variables for Dynamic Theming */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --danger-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+
+            --shadow-soft: 0 2px 15px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            --header-height: 70px;
+            --sidebar-width: 280px;
+
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Global Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #334155;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Background */
+        .app-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: -2;
+        }
+
+        .app-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></svg>');
+            z-index: -1;
+        }
+
+        /* Membership Top Bar */
+        .membership-top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 45px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1001;
+            color: white;
+            font-size: 0.875rem;
+        }
+
+        .membership-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 0 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .welcome-text {
+            color: #94a3b8;
+        }
+
+        .username {
+            color: #67e8f9;
+            font-weight: 600;
+        }
+
+        .membership-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .membership-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            white-space: nowrap;
+        }
+
+        .membership-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .membership-btn i {
+            font-size: 0.8rem;
+        }
+
+        .language-selector {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-selector:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Ultra Modern Header - Adjusted for membership bar */
+        .ultra-header {
+            position: fixed;
+            top: 45px;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 0 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Brand Logo */
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .brand-logo:hover {
+            color: #667eea;
+            transform: scale(1.02);
+        }
+
+        .brand-logo i {
+            font-size: 1.8rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Header Actions */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-btn {
+            background: none;
+            border: 2px solid rgba(103, 126, 234, 0.3);
+            color: #667eea;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .header-btn:hover {
+            background: var(--primary-gradient);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .header-btn i {
+            font-size: 1rem;
+        }
+
+        /* Modern Menu Toggle Button */
+        .menu-toggle-btn {
+            position: fixed;
+            top: 60px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            color: #667eea;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-soft);
+            z-index: 1002;
+        }
+
+        .menu-toggle-btn:hover {
+            background: var(--primary-gradient);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-top: 115px;
+            margin-left: 0;
+            padding: 2rem;
+            min-height: calc(100vh - 115px);
+            transition: var(--transition);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .membership-content {
+                padding: 0 1rem;
+            }
+
+            .header-content {
+                padding: 0 1rem;
+            }
+
+            .main-content {
+                margin-top: 115px;
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .menu-toggle-btn {
+                left: 10px;
+                top: 55px;
+            }
+        }
+
+        /* Loading States */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .loaded {
+            opacity: 1;
+        }
+
+        /* Modern Menu System */
+        #ModernMenuHost {
+            position: fixed;
+            top: 115px;
+            left: 0;
+            width: 280px;
+            height: calc(100vh - 115px);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-right: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-medium);
+            z-index: 1000;
+            overflow-y: auto;
+            overflow-x: visible;
+            transition: var(--transition);
+        }
+
+        #ModernMenuHost .pm-header {
+            padding: 1.5rem 2rem;
+            background: var(--primary-gradient);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+            margin-bottom: 1rem;
+        }
+
+        #ModernMenuHost .pm-search {
+            margin: 0 2rem 1.5rem;
+            width: calc(100% - 4rem);
+        }
+
+        #ModernMenuHost .pm-list {
+            padding: 0 2rem 2rem;
+            overflow-x: visible;
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            #ModernMenuHost {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 9999;
+                pointer-events: none;
+                visibility: hidden;
+                opacity: 0;
+                transition: var(--transition);
+            }
+
+            #ModernMenuHost.active {
+                pointer-events: auto;
+                visibility: visible;
+                opacity: 1;
+            }
+
+            #ModernMenuHost .pm-panel {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 350px;
+                max-width: calc(100vw - 2rem);
+                height: 100vh;
+                background: var(--glass-bg);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-right: 1px solid var(--glass-border);
+                box-shadow: var(--shadow-strong);
+                transform: translateX(-100%);
+                transition: var(--transition);
+                z-index: 10000;
+                display: flex;
+                flex-direction: column;
+                overflow-y: auto;
+                overflow-x: visible;
+            }
+
+            #ModernMenuHost.active .pm-panel {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body id="Body" runat="server" class="ultra-modern-app">
+    <!-- Background Effects -->
+    <div class="app-background"></div>
+
+    <!-- Membership Top Bar -->
+    <div class="membership-top-bar">
+        <div class="membership-content">
+            <div class="user-info">
+                <span class="welcome-text">مرحبا،</span>
+                <span id="currentUserName" class="username">المستخدم</span>
+            </div>
+            <div class="membership-actions">
+                <button class="membership-btn" onclick="showUserProfile()" title="الملف الشخصي">
+                    <i class="fas fa-user"></i>
+                    الملف الشخصي
+                </button>
+                <button class="membership-btn" onclick="showNotifications()" title="الإشعارات">
+                    <i class="fas fa-bell"></i>
+                    الإشعارات
+                </button>
+                <button class="membership-btn" onclick="showSettings()" title="الإعدادات">
+                    <i class="fas fa-cog"></i>
+                    الإعدادات
+                </button>
+                <button class="membership-btn" onclick="logout()" title="تسجيل الخروج">
+                    <i class="fas fa-sign-out-alt"></i>
+                    خروج
+                </button>
+                <select class="language-selector" onchange="changeLanguage(this.value)">
+                    <option value="ar-SA">العربية</option>
+                    <option value="en-US">English</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ultra Modern Header -->
+    <header class="ultra-header">
+        <div class="header-content">
+            <div class="brand-section">
+                <a href="/Default.aspx" class="brand-logo">
+                    <i class="fas fa-cube"></i>
+                    <span>SKYsaas ERP</span>
+                </a>
+            </div>
+            <div class="header-actions">
+                <a href="/Pages/Dashboard.aspx" class="header-btn">
+                    <i class="fas fa-tachometer-alt"></i>
+                    لوحة التحكم
+                </a>
+                <button id="menuToggleBtn" class="menu-toggle-btn" onclick="toggleModernMenu()" title="القائمة">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Modern Menu System -->
+    <div id="ModernMenuHost" class="modern-menu-host">
+        <div class="pm-backdrop" data-close></div>
+        <div class="pm-panel">
+            <div class="pm-header">
+                <div class="pm-title">
+                    <i class="fas fa-cube"></i>
+                    <span>نظام SKYsaas</span>
+                </div>
+                <button class="pm-close" onclick="closeModernMenu()" title="إغلاق القائمة">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <input type="text" class="pm-search" placeholder="البحث في القوائم..." />
+            <div id="pm-list" class="pm-list">
+                <nav id="pm-nav" aria-label="Main Navigation">
+                    <!-- Menu items will be populated by JavaScript -->
+                </nav>
+            </div>
+            <div id="pm-tools-slot" class="pm-tools-slot"></div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <form id="Form1" runat="server">
+            <asp:ScriptManager ID="sm" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true" />
+            <asp:ContentPlaceHolder ID="PageContentPlaceHolder" runat="server" />
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"  />
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"  />
+           
+        </form>
+    </main>
+
+    <!-- Modern Menu JavaScript -->
+    <script src="/js/modern-menu-once.js"></script>
+    <script src="/js/pagemenubar-mobile.js"></script>
+
+    <script type="text/javascript">
+        // Modern Menu Toggle Functions
+        function toggleModernMenu() {
+            const menuHost = document.getElementById('ModernMenuHost');
+            const toggleBtn = document.getElementById('menuToggleBtn');
+
+            if (menuHost) {
+                const isActive = menuHost.classList.contains('active');
+                if (isActive) {
+                    closeModernMenu();
+                } else {
+                    openModernMenu();
+                }
+            }
+        }
+
+        function openModernMenu() {
+            const menuHost = document.getElementById('ModernMenuHost');
+            const mainContent = document.querySelector('.main-content');
+
+            if (menuHost) {
+                menuHost.classList.add('active');
+                menuHost.setAttribute('aria-hidden', 'false');
+
+                // Adjust main content for mobile
+                if (window.innerWidth <= 768) {
+                    if (mainContent) {
+                        mainContent.style.transform = 'translateX(350px)';
+                    }
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+        }
+
+        function closeModernMenu() {
+            const menuHost = document.getElementById('ModernMenuHost');
+            const mainContent = document.querySelector('.main-content');
+
+            if (menuHost) {
+                menuHost.classList.remove('active');
+                menuHost.setAttribute('aria-hidden', 'true');
+
+                // Reset main content
+                if (mainContent) {
+                    mainContent.style.transform = '';
+                }
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Language Change Function
+        function changeLanguage(culture) {
+            try {
+                if (typeof Web !== 'undefined' && Web.Globalization && Web.Globalization._instance) {
+                    const globalization = Web.Globalization._instance;
+                    if (globalization.changeCulture) {
+                        globalization.changeCulture(culture);
+                        return;
+                    }
+                }
+
+                // Fallback: reload page with new culture
+                const url = new URL(window.location);
+                url.searchParams.set('culture', culture);
+                window.location.href = url.toString();
+            } catch (e) {
+                console.error('Language change failed:', e);
+            }
+        }
+
+        // User Profile Functions
+        function showUserProfile() {
+            console.log('عرض الملف الشخصي');
+            try {
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.userProfile) {
+                        membership.userProfile();
+                        return;
+                    }
+                }
+                window.open('/Pages/Membership.aspx', '_blank');
+            } catch (e) {
+                console.error('User profile failed:', e);
+                alert('لا يمكن فتح الملف الشخصي في الوقت الحالي');
+            }
+        }
+
+        function showNotifications() {
+            console.log('عرض الإشعارات');
+            try {
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.notifications) {
+                        membership.notifications();
+                        return;
+                    }
+                }
+                window.open('/Pages/Notifications.aspx', '_blank');
+            } catch (e) {
+                console.error('Notifications failed:', e);
+                alert('لا يمكن عرض الإشعارات في الوقت الحالي');
+            }
+        }
+
+        function showSettings() {
+            console.log('عرض الإعدادات');
+            try {
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.help) {
+                        membership.help();
+                        return;
+                    }
+                }
+                window.location.href = '/Pages/Settings.aspx';
+            } catch (e) {
+                console.error('Settings failed:', e);
+                alert('لا يمكن فتح الإعدادات في الوقت الحالي');
+            }
+        }
+
+        function logout() {
+            try {
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.logout) {
+                        if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                            membership.logout();
+                        }
+                        return;
+                    }
+                }
+                if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                    window.location.href = '/logout.aspx';
+                }
+            } catch (e) {
+                console.error('Logout failed:', e);
+                if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                    window.location.href = '/Login.aspx';
+                }
+            }
+        }
+
+        // Real-time data bridge - Connect legacy system to modern UI
+        function initLegacyDataBridge() {
+            try {
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+
+                    if (membership.get_user) {
+                        const realUsername = membership.get_user();
+                        if (realUsername) {
+                            document.getElementById('currentUserName').textContent = realUsername;
+                        }
+                    }
+
+                    if (membership.get_isAuthenticated && membership.get_isAuthenticated()) {
+                        console.log('User is authenticated via legacy system');
+                        document.body.classList.add('user-authenticated');
+                    }
+
+                    if (membership.get_cultures && membership.get_cultures()) {
+                        updateLanguageSelector(membership.get_cultures());
+                    }
+
+                    console.log('Legacy data bridge initialized successfully');
+                } else {
+                    setTimeout(initLegacyDataBridge, 500);
+                }
+            } catch (e) {
+                console.log('Legacy data bridge initialization failed:', e);
+            }
+        }
+
+        function updateLanguageSelector(cultures) {
+            try {
+                const languageSelector = document.querySelector('.language-selector');
+                if (languageSelector && cultures) {
+                    languageSelector.innerHTML = '';
+
+                    const cultureArray = cultures.split(';');
+                    cultureArray.forEach(culture => {
+                        if (culture.trim()) {
+                            const parts = culture.split('|');
+                            if (parts.length >= 2) {
+                                const option = document.createElement('option');
+                                option.value = parts[0];
+                                option.textContent = parts[1];
+                                if (parts[2] === 'True') {
+                                    option.selected = true;
+                                }
+                                languageSelector.appendChild(option);
+                            }
+                        }
+                    });
+                }
+            } catch (e) {
+                console.log('Unable to update language selector:', e);
+            }
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initLegacyDataBridge();
+
+            setTimeout(() => {
+                initLegacyDataBridge();
+            }, 1000);
+
+            setInterval(() => {
+                // Update user info periodically
+            }, 5000);
+        });
+
+        // Performance optimization
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>

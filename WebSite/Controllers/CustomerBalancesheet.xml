@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="CustomerBalancesheet" conflictDetection="overwriteChanges" label="Customer Balancesheet" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"CustomerBalancesheet"."Frm_Dt" "Frm_Dt"
+	,"CustomerBalancesheet"."To_Dt" "To_Dt"
+	,"CustomerBalancesheet"."Acc_No" "Acc_No"
+	,"CustomerBalancesheet"."Acc_Nm" "Acc_Nm"
+	,"CustomerBalancesheet"."Acc_Nme" "Acc_Nme"
+	,"CustomerBalancesheet"."CSMSUP_No" "CSMSUP_No"
+	,"CustomerBalancesheet"."CSMSUP_NM" "CSMSUP_NM"
+	,"CustomerBalancesheet"."Cstm_tel" "Cstm_tel"
+	,"CustomerBalancesheet"."balnc1" "balnc1"
+	,"CustomerBalancesheet"."balancepositive" "balancepositive"
+	,"CustomerBalancesheet"."balancenegative" "balancenegative"
+from "dbo"."CustomerBalancesheet" "CustomerBalancesheet"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="Frm_Dt" type="String" label="Frm Dt" length="10" showInSummary="true" />
+    <field name="To_Dt" type="String" label="To Dt" length="10" showInSummary="true" />
+    <field name="Acc_No" type="Int64" label="Acc No" showInSummary="true" />
+    <field name="Acc_Nm" type="String" label="Acc Nm" length="255" showInSummary="true" />
+    <field name="Acc_Nme" type="String" label="Acc Nme" length="255" showInSummary="true" />
+    <field name="CSMSUP_No" type="Int64" label="CSMSUP No" />
+    <field name="CSMSUP_NM" type="String" allowQBE="false" allowSorting="false" label="Csmsup Nm" length="-1" />
+    <field name="Cstm_tel" type="String" label="Cstm tel" length="15" />
+    <field name="balnc1" type="Decimal" label="Balnc1" />
+    <field name="balancepositive" type="Decimal" label="Balancepositive" />
+    <field name="balancenegative" type="Decimal" label="Balancenegative" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Customer Balancesheet">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Frm_Dt" columns="10" />
+        <dataField fieldName="To_Dt" columns="10" />
+        <dataField fieldName="Acc_No" columns="15" />
+        <dataField fieldName="Acc_Nm" />
+        <dataField fieldName="Acc_Nme" />
+        <dataField fieldName="CSMSUP_No" columns="15" />
+        <dataField fieldName="CSMSUP_NM" rows="5" />
+        <dataField fieldName="Cstm_tel" columns="15" />
+        <dataField fieldName="balnc1" dataFormatString="c" columns="15" />
+        <dataField fieldName="balancepositive" dataFormatString="c" columns="15" />
+        <dataField fieldName="balancenegative" dataFormatString="c" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Customer Balancesheet">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Customer Balancesheet" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Frm_Dt" columns="10" />
+            <dataField fieldName="To_Dt" columns="10" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="Acc_Nm" />
+            <dataField fieldName="Acc_Nme" />
+            <dataField fieldName="CSMSUP_No" columns="15" />
+            <dataField fieldName="CSMSUP_NM" rows="5" />
+            <dataField fieldName="Cstm_tel" columns="15" />
+            <dataField fieldName="balnc1" dataFormatString="c" columns="15" />
+            <dataField fieldName="balancepositive" dataFormatString="c" columns="15" />
+            <dataField fieldName="balancenegative" dataFormatString="c" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Customer Balancesheet">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Customer Balancesheet" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Frm_Dt" columns="10" />
+            <dataField fieldName="To_Dt" columns="10" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="Acc_Nm" />
+            <dataField fieldName="Acc_Nme" />
+            <dataField fieldName="CSMSUP_No" columns="15" />
+            <dataField fieldName="CSMSUP_NM" rows="5" />
+            <dataField fieldName="Cstm_tel" columns="15" />
+            <dataField fieldName="balnc1" dataFormatString="c" columns="15" />
+            <dataField fieldName="balancepositive" dataFormatString="c" columns="15" />
+            <dataField fieldName="balancenegative" dataFormatString="c" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

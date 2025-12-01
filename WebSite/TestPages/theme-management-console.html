@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎛️ إدارة الثيمات المتقدمة - Theme Management Console</title>
+    
+    <!-- Theme Integration CSS -->
+    <link href="../ThemeCenter/CSS/theme-integration.css" rel="stylesheet" type="text/css" />
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Management Console Styles -->
+    <style>
+        body {
+            font-family: var(--font-family-primary);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        .management-console {
+            display: grid;
+            grid-template-areas: 
+                "header header"
+                "sidebar main";
+            grid-template-columns: 300px 1fr;
+            grid-template-rows: auto 1fr;
+            min-height: 100vh;
+        }
+        
+        .console-header {
+            grid-area: header;
+            background: var(--primary-gradient);
+            color: var(--text-inverse);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .console-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .console-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+        
+        .console-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-inverse);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-sm) var(--spacing-md);
+            cursor: pointer;
+            transition: var(--theme-transition-fast);
+            font-size: 0.875rem;
+        }
+        
+        .console-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+        
+        .console-sidebar {
+            grid-area: sidebar;
+            background: var(--bg-primary);
+            border-right: 1px solid var(--border-primary);
+            padding: var(--spacing-lg);
+            overflow-y: auto;
+        }
+        
+        .console-main {
+            grid-area: main;
+            padding: var(--spacing-lg);
+            overflow-y: auto;
+        }
+        
+        .nav-section {
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .nav-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--theme-transition-fast);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .nav-item:hover {
+            background: var(--bg-hover);
+        }
+        
+        .nav-item.active {
+            background: var(--primary);
+            color: var(--text-inverse);
+        }
+        
+        .content-panel {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .panel-hidden {
+            display: none;
+        }
+        
+        .panel-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: var(--theme-transition);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .theme-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            transition: var(--theme-transition);
+        }
+        
+        .theme-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .theme-preview {
+            width: 100%;
+            height: 80px;
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            overflow: hidden;
+        }
+        
+        .color-swatch {
+            flex: 1;
+            height: 100%;
+        }
+        
+        .theme-info {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .theme-name {
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .theme-meta {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .theme-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+        
+        .theme-btn {
+            background: var(--primary);
+            color: var(--text-inverse);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: var(--theme-transition-fast);
+        }
+        
+        .theme-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .theme-btn.secondary {
+            background: var(--secondary);
+        }
+        
+        .theme-btn.danger {
+            background: var(--danger);
+        }
+        
+        .form-grid {
+            display: grid;
+            gap: var(--spacing-lg);
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        
+        .form-input {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-sm);
+            color: var(--text-primary);
+            transition: var(--theme-transition-fast);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .color-picker-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+        }
+        
+        .color-input {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .color-input input[type="color"] {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+        }
+        
+        .analytics-chart {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+        
+        .history-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm);
+            border-bottom: 1px solid var(--border-primary);
+        }
+        
+        .history-item:last-child {
+            border-bottom: none;
+        }
+        
+        .recommendations-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+        
+        .recommendation-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .recommendation-info {
+            flex: 1;
+        }
+        
+        .recommendation-type {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .settings-section {
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 25px;
+            background: var(--border-primary);
+            border-radius: var(--border-radius-full);
+            cursor: pointer;
+            transition: var(--theme-transition-fast);
+        }
+        
+        .toggle-switch.active {
+            background: var(--primary);
+        }
+        
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 21px;
+            height: 21px;
+            background: white;
+            border-radius: 50%;
+            transition: var(--theme-transition-fast);
+        }
+        
+        .toggle-switch.active::after {
+            transform: translateX(25px);
+        }
+        
+        @media (max-width: 768px) {
+            .management-console {
+                grid-template-areas: 
+                    "header"
+                    "main";
+                grid-template-columns: 1fr;
+            }
+            
+            .console-sidebar {
+                display: none;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            
+            .theme-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="management-console">
+        <!-- Header -->
+        <header class="console-header">
+            <h1 class="console-title">
+                <i class="fas fa-palette"></i>
+                مركز إدارة الثيمات
+            </h1>
+            <div class="console-actions">
+                <button class="console-btn" onclick="exportAllData()">
+                    <i class="fas fa-download"></i>
+                    تصدير
+                </button>
+                <button class="console-btn" onclick="importData()">
+                    <i class="fas fa-upload"></i>
+                    استيراد
+                </button>
+                <button class="console-btn" onclick="refreshData()">
+                    <i class="fas fa-sync"></i>
+                    تحديث
+                </button>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="console-sidebar">
+            <nav>
+                <div class="nav-section">
+                    <div class="nav-title">عام</div>
+                    <div class="nav-item active" onclick="showPanel('dashboard')">
+                        <i class="fas fa-tachometer-alt"></i>
+                        لوحة التحكم
+                    </div>
+                    <div class="nav-item" onclick="showPanel('themes')">
+                        <i class="fas fa-palette"></i>
+                        إدارة الثيمات
+                    </div>
+                    <div class="nav-item" onclick="showPanel('creator')">
+                        <i class="fas fa-plus-circle"></i>
+                        إنشاء ثيم جديد
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-title">التحليلات</div>
+                    <div class="nav-item" onclick="showPanel('analytics')">
+                        <i class="fas fa-chart-bar"></i>
+                        الإحصائيات
+                    </div>
+                    <div class="nav-item" onclick="showPanel('history')">
+                        <i class="fas fa-history"></i>
+                        السجل
+                    </div>
+                    <div class="nav-item" onclick="showPanel('recommendations')">
+                        <i class="fas fa-lightbulb"></i>
+                        التوصيات
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-title">الإعدادات</div>
+                    <div class="nav-item" onclick="showPanel('settings')">
+                        <i class="fas fa-cog"></i>
+                        الإعدادات
+                    </div>
+                    <div class="nav-item" onclick="showPanel('performance')">
+                        <i class="fas fa-bolt"></i>
+                        الأداء
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="console-main">
+            <!-- Dashboard Panel -->
+            <section id="dashboard-panel" class="content-panel">
+                <h2 class="panel-title">
+                    <i class="fas fa-tachometer-alt"></i>
+                    لوحة التحكم الرئيسية
+                </h2>
+                
+                <div class="stats-grid" id="dashboard-stats">
+                    <!-- Stats will be populated by JavaScript -->
+                </div>
+                
+                <div class="analytics-chart">
+                    <div style="text-align: center;">
+                        <i class="fas fa-chart-line" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <p>مخطط استخدام الثيمات</p>
+                        <small>يتم تحديث البيانات في الوقت الفعلي</small>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Themes Management Panel -->
+            <section id="themes-panel" class="content-panel panel-hidden">
+                <h2 class="panel-title">
+                    <i class="fas fa-palette"></i>
+                    إدارة الثيمات
+                </h2>
+                
+                <div class="theme-grid" id="themes-grid">
+                    <!-- Themes will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Theme Creator Panel -->
+            <section id="creator-panel" class="content-panel panel-hidden">
+                <h2 class="panel-title">
+                    <i class="fas fa-plus-circle"></i>
+                    إنشاء ثيم جديد
+                </h2>
+                
+                <form class="form-grid" id="theme-creator-form">
+                    <div class="form-group">
+                        <label class="form-label">اسم الثيم</label>
+                        <input type="text" class="form-input" id="theme-name" placeholder="أدخل اسم الثيم">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">الألوان الأساسية</label>
+                        <div class="color-picker-group">
+                            <div class="color-input">
+                                <input type="color" id="primary-color" value="#3b82f6">
+                                <label>اللون الأساسي</label>
+                            </div>
+                            <div class="color-input">
+                                <input type="color" id="secondary-color" value="#64748b">
+                                <label>اللون الثانوي</label>
+                            </div>
+                            <div class="color-input">
+                                <input type="color" id="accent-color" value="#06d6a0">
+                                <label>لون التمييز</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">ألوان الخلفية</label>
+                        <div class="color-picker-group">
+                            <div class="color-input">
+                                <input type="color" id="bg-primary" value="#ffffff">
+                                <label>الخلفية الأساسية</label>
+                            </div>
+                            <div class="color-input">
+                                <input type="color" id="bg-secondary" value="#f8fafc">
+                                <label>الخلفية الثانوية</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">ألوان النص</label>
+                        <div class="color-picker-group">
+                            <div class="color-input">
+                                <input type="color" id="text-primary" value="#0f172a">
+                                <label>النص الأساسي</label>
+                            </div>
+                            <div class="color-input">
+                                <input type="color" id="text-secondary" value="#475569">
+                                <label>النص الثانوي</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: var(--spacing-md);">
+                        <button type="button" class="theme-btn" onclick="previewTheme()">
+                            <i class="fas fa-eye"></i>
+                            معاينة
+                        </button>
+                        <button type="button" class="theme-btn" onclick="createTheme()">
+                            <i class="fas fa-save"></i>
+                            حفظ الثيم
+                        </button>
+                        <button type="button" class="theme-btn secondary" onclick="clearPreview()">
+                            <i class="fas fa-times"></i>
+                            إلغاء المعاينة
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Analytics Panel -->
+            <section id="analytics-panel" class="content-panel panel-hidden">
+                <h2 class="panel-title">
+                    <i class="fas fa-chart-bar"></i>
+                    تحليلات الاستخدام
+                </h2>
+                
+                <div id="analytics-content">
+                    <!-- Analytics content will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- History Panel -->
+            <section id="history-panel" class="content-panel panel-hidden">
+                <h2 class="panel-title">
+                    <i class="fas fa-history"></i>
+                    سجل التبديلات
+                </h2>
+                
+                <div class="history-list" id="history-list">
+                    <!-- History items will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Recommendations Panel -->
+            <section id="recommendations-panel" class="content-panel panel-hidden">
+                <h2 class="panel-title">
+                    <i class="fas fa-lightbulb"></i>
+                    التوصيات الذكية
+                </h2>
+                
+                <div class="recommendations-list" id="recommendations-list">
+                    <!-- Recommendations will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Settings Panel -->
+            <section id="settings-panel" class="content-panel panel-hidden">
+                <h2 class="panel-title">
+                    <i class="fas fa-cog"></i>
+                    الإعدادات
+                </h2>
+                
+                <div class="settings-section">
+                    <h3>إعدادات النظام</h3>
+                    <div class="setting-item">
+                        <div>
+                            <strong>الحفظ التلقائي</strong>
+                            <div>حفظ التغييرات تلقائياً</div>
+                        </div>
+                        <div class="toggle-switch active" data-setting="autoSave"></div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <div>
+                            <strong>الحركات والتأثيرات</strong>
+                            <div>تفعيل الانتقالات السلسة</div>
+                        </div>
+                        <div class="toggle-switch active" data-setting="animationsEnabled"></div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <div>
+                            <strong>مزامنة تفضيلات النظام</strong>
+                            <div>اتباع إعدادات النظام تلقائياً</div>
+                        </div>
+                        <div class="toggle-switch active" data-setting="systemPreferenceSync"></div>
+                    </div>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>التحليلات والخصوصية</h3>
+                    <div class="setting-item">
+                        <div>
+                            <strong>تجميع الإحصائيات</strong>
+                            <div>تسجيل بيانات الاستخدام للتحليل</div>
+                        </div>
+                        <div class="toggle-switch active" data-setting="analyticsEnabled"></div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <div>
+                            <strong>مراقبة الأداء</strong>
+                            <div>تتبع أداء النظام</div>
+                        </div>
+                        <div class="toggle-switch active" data-setting="performanceMonitoring"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Performance Panel -->
+            <section id="performance-panel" class="content-panel panel-hidden">
+                <h2 class="panel-title">
+                    <i class="fas fa-bolt"></i>
+                    مراقبة الأداء
+                </h2>
+                
+                <div id="performance-content">
+                    <!-- Performance content will be populated by JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/theme-switcher.js"></script>
+    <script src="../js/theme-manager.js"></script>
+    
+    <script>
+        let currentPanel = 'dashboard';
+        
+        // Show specific panel
+        function showPanel(panelName) {
+            // Hide all panels
+            document.querySelectorAll('.content-panel').forEach(panel => {
+                panel.classList.add('panel-hidden');
+            });
+            
+            // Show target panel
+            document.getElementById(panelName + '-panel').classList.remove('panel-hidden');
+            
+            // Update navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            currentPanel = panelName;
+            
+            // Load panel data
+            loadPanelData(panelName);
+        }
+        
+        // Load data for specific panel
+        function loadPanelData(panelName) {
+            switch (panelName) {
+                case 'dashboard':
+                    loadDashboard();
+                    break;
+                case 'themes':
+                    loadThemes();
+                    break;
+                case 'analytics':
+                    loadAnalytics();
+                    break;
+                case 'history':
+                    loadHistory();
+                    break;
+                case 'recommendations':
+                    loadRecommendations();
+                    break;
+                case 'performance':
+                    loadPerformance();
+                    break;
+            }
+        }
+        
+        // Load dashboard data
+        function loadDashboard() {
+            const statsContainer = document.getElementById('dashboard-stats');
+            
+            if (window.themeManager) {
+                const stats = window.themeManager.getStatistics();
+                const info = window.themeManager.getInfo();
+                
+                statsContainer.innerHTML = `
+                    <div class="stat-card">
+                        <div class="stat-number">${stats.totalSwitches}</div>
+                        <div class="stat-label">إجمالي التبديلات</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${stats.customThemeCount}</div>
+                        <div class="stat-label">الثيمات المخصصة</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${stats.favoriteTheme || 'غير محدد'}</div>
+                        <div class="stat-label">الثيم المفضل</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${stats.averagePerformance || 'N/A'}ms</div>
+                        <div class="stat-label">متوسط الأداء</div>
+                    </div>
+                `;
+            }
+        }
+        
+        // Load themes
+        function loadThemes() {
+            const themesGrid = document.getElementById('themes-grid');
+            
+            if (window.advancedThemeSystem) {
+                const themes = window.advancedThemeSystem.getAvailableThemes();
+                
+                let html = '';
+                Object.entries(themes).forEach(([key, theme]) => {
+                    html += `
+                        <div class="theme-card">
+                            <div class="theme-preview">
+                                <div class="color-swatch" style="background: #3b82f6;"></div>
+                                <div class="color-swatch" style="background: #64748b;"></div>
+                                <div class="color-swatch" style="background: #06d6a0;"></div>
+                                <div class="color-swatch" style="background: #ffffff;"></div>
+                            </div>
+                            <div class="theme-info">
+                                <div class="theme-name">${theme.nameAr} (${theme.name})</div>
+                                <div class="theme-meta">${theme.description}</div>
+                            </div>
+                            <div class="theme-actions">
+                                <button class="theme-btn" onclick="applyTheme('${key}')">تطبيق</button>
+                                <button class="theme-btn secondary" onclick="previewThemeById('${key}')">معاينة</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                themesGrid.innerHTML = html;
+            }
+        }
+        
+        // Apply theme
+        function applyTheme(themeKey) {
+            if (window.advancedThemeSystem) {
+                window.advancedThemeSystem.setTheme(themeKey);
+            }
+        }
+        
+        // Preview theme by ID
+        function previewThemeById(themeKey) {
+            if (window.advancedThemeSystem) {
+                window.advancedThemeSystem.setTheme(themeKey);
+                setTimeout(() => {
+                    alert('تم تطبيق الثيم مؤقتاً. سيتم الحفظ تلقائياً.');
+                }, 300);
+            }
+        }
+        
+        // Preview custom theme
+        function previewTheme() {
+            const config = getThemeConfigFromForm();
+            if (window.themeManager) {
+                window.themeManager.previewCustomTheme(config);
+            }
+        }
+        
+        // Create new theme
+        function createTheme() {
+            const name = document.getElementById('theme-name').value;
+            const config = getThemeConfigFromForm();
+            
+            if (!name) {
+                alert('يرجى إدخال اسم للثيم');
+                return;
+            }
+            
+            if (window.themeManager) {
+                const result = window.themeManager.createCustomTheme(name, config);
+                if (result) {
+                    alert('تم إنشاء الثيم بنجاح!');
+                    clearThemeForm();
+                    loadThemes();
+                } else {
+                    alert('فشل في إنشاء الثيم');
+                }
+            }
+        }
+        
+        // Get theme config from form
+        function getThemeConfigFromForm() {
+            return {
+                '--primary': document.getElementById('primary-color').value,
+                '--secondary': document.getElementById('secondary-color').value,
+                '--accent': document.getElementById('accent-color').value,
+                '--bg-primary': document.getElementById('bg-primary').value,
+                '--bg-secondary': document.getElementById('bg-secondary').value,
+                '--text-primary': document.getElementById('text-primary').value,
+                '--text-secondary': document.getElementById('text-secondary').value
+            };
+        }
+        
+        // Clear theme form
+        function clearThemeForm() {
+            document.getElementById('theme-name').value = '';
+            // Reset color inputs to defaults
+        }
+        
+        // Clear preview
+        function clearPreview() {
+            if (window.themeManager) {
+                window.themeManager.clearPreview();
+            }
+        }
+        
+        // Load analytics
+        function loadAnalytics() {
+            const analyticsContent = document.getElementById('analytics-content');
+            
+            if (window.themeManager) {
+                const stats = window.themeManager.getStatistics();
+                
+                let html = '<div class="stats-grid">';
+                Object.entries(stats.themeUsage).forEach(([theme, count]) => {
+                    html += `
+                        <div class="stat-card">
+                            <div class="stat-number">${count}</div>
+                            <div class="stat-label">${theme}</div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+                
+                analyticsContent.innerHTML = html;
+            }
+        }
+        
+        // Load history
+        function loadHistory() {
+            const historyList = document.getElementById('history-list');
+            
+            if (window.themeManager) {
+                const stats = window.themeManager.getStatistics();
+                
+                let html = '';
+                stats.recentHistory.forEach(item => {
+                    const date = new Date(item.timestamp).toLocaleString('ar');
+                    html += `
+                        <div class="history-item">
+                            <div>
+                                <strong>${item.from}</strong> → <strong>${item.to}</strong>
+                            </div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">
+                                ${date}
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                historyList.innerHTML = html || '<p>لا يوجد سجل متاح</p>';
+            }
+        }
+        
+        // Load recommendations
+        function loadRecommendations() {
+            const recommendationsList = document.getElementById('recommendations-list');
+            
+            if (window.themeManager) {
+                const recommendations = window.themeManager.getRecommendations();
+                
+                let html = '';
+                recommendations.forEach(rec => {
+                    html += `
+                        <div class="recommendation-card">
+                            <div class="recommendation-info">
+                                <div class="recommendation-type">${rec.type}</div>
+                                <div><strong>${rec.theme}</strong></div>
+                                <div>${rec.reason}</div>
+                            </div>
+                            <button class="theme-btn" onclick="applyTheme('${rec.theme}')">
+                                تطبيق
+                            </button>
+                        </div>
+                    `;
+                });
+                
+                recommendationsList.innerHTML = html || '<p>لا توجد توصيات متاحة</p>';
+            }
+        }
+        
+        // Load performance data
+        function loadPerformance() {
+            const performanceContent = document.getElementById('performance-content');
+            
+            if (window.themeManager) {
+                const info = window.themeManager.getInfo();
+                
+                performanceContent.innerHTML = `
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">${info.version}</div>
+                            <div class="stat-label">إصدار النظام</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${Math.round(info.memoryUsage / 1024)}KB</div>
+                            <div class="stat-label">استخدام الذاكرة</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${info.customThemeCount}</div>
+                            <div class="stat-label">الثيمات المخصصة</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${info.totalSwitches}</div>
+                            <div class="stat-label">إجمالي التبديلات</div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // Export all data
+        function exportAllData() {
+            if (window.themeManager) {
+                const data = window.themeManager.exportAllThemes();
+                const blob = new Blob([JSON.stringify(data, null, 2)], {
+                    type: 'application/json'
+                });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `themes-backup-${Date.now()}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+            }
+        }
+        
+        // Import data
+        function importData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        try {
+                            const data = JSON.parse(e.target.result);
+                            if (window.themeManager) {
+                                const result = window.themeManager.importThemePackage(data);
+                                if (result.success) {
+                                    alert(`تم استيراد ${result.imported.length} ثيم بنجاح!`);
+                                    refreshData();
+                                } else {
+                                    alert('فشل في الاستيراد: ' + result.error);
+                                }
+                            }
+                        } catch (error) {
+                            alert('ملف غير صالح');
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+            input.click();
+        }
+        
+        // Refresh data
+        function refreshData() {
+            loadPanelData(currentPanel);
+        }
+        
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup toggle switches
+            document.querySelectorAll('.toggle-switch').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const setting = this.getAttribute('data-setting');
+                    if (window.themeManager && setting) {
+                        window.themeManager.settings[setting] = this.classList.contains('active');
+                        window.themeManager.saveSettings();
+                    }
+                });
+            });
+            
+            // Load initial data
+            setTimeout(() => {
+                loadDashboard();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

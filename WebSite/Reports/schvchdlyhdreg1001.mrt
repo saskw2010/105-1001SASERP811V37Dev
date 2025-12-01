@@ -1,0 +1,2352 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <mosConnection1 Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>mosConnection1</Alias>
+        <ConnectionStringEncrypted>9FT5SEQJQ9F7TJyAS0ykJ9EU2YlFUcKF4k3o8WkRrWfDeMFIZQqpzcthnNxOhKRexBp/SNdVUUnpT6GAb3GxY8Nw9ythTJPtQxPRveXYoi/feNXDY0xyhWlJ6IRObGVG+VrP409xGcjs</ConnectionStringEncrypted>
+        <Name>mosConnection1</Name>
+      </mosConnection1>
+    </Databases>
+    <DataSources isList="true" count="4">
+      <mosDataSource1 Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>mosDataSource1</Alias>
+        <Columns isList="true" count="36">
+          <value>schvchdlyhdregid,System.Int64</value>
+          <value>Trs_Dt,System.DateTime</value>
+          <value>Balance,System.Decimal</value>
+          <value>Notes,System.String</value>
+          <value>approved,System.Boolean</value>
+          <value>posted,System.Boolean</value>
+          <value>deleted,System.Boolean</value>
+          <value>havdetails,System.Boolean</value>
+          <value>ModifiedBy,System.String</value>
+          <value>ModifiedOn,System.DateTime</value>
+          <value>CreatedBy,System.String</value>
+          <value>CreatedOn,System.DateTime</value>
+          <value>IDregorg,System.Int64</value>
+          <value>IDregorgNAME_1,System.String</value>
+          <value>Delevername,System.String</value>
+          <value>Delevercivil,System.String</value>
+          <value>Thesgmsgm_Nm,System.String</value>
+          <value>sgmsgm_Nm,System.String</value>
+          <value>sgmOpcoOpcoName,System.String</value>
+          <value>branch,System.Int64</value>
+          <value>ThebranchDesc1,System.String</value>
+          <value>Thebranchsgmsgm_Nm,System.String</value>
+          <value>ThebranchsgmOpcoOpcoName,System.String</value>
+          <value>ThebranchGenderGender,System.String</value>
+          <value>ThebranchschtypschtypDesc,System.String</value>
+          <value>sgm,System.Int64</value>
+          <value>currencywords,System.String</value>
+          <value>currencywordsnew,System.String</value>
+          <value>moneypaidto,System.Decimal</value>
+          <value>ReferanceNo,System.Int64</value>
+          <value>DeleverTel,System.Int64</value>
+          <value>Pymnt_No,System.Int64</value>
+          <value>schBnk_No,System.Int64</value>
+          <value>checknumber,System.Decimal</value>
+          <value>Pymnt_Pymnt_Nm,System.String</value>
+          <value>schBnk_schBnk_Nm,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>mosDataSource1</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>parm1,,23,0</value>
+        </Parameters>
+        <SqlCommand>select
+"schvchdlyhdreg"."Pymnt_No" "Pymnt_No"	
+,"Pymnt_"."Pymnt_Nm" "Pymnt_Pymnt_Nm"
+
+,"schvchdlyhdreg"."schBnk_No" "schBnk_No"	
+,"schBnk_"."schBnk_Nm" "schBnk_schBnk_Nm"
+
+
+,"schvchdlyhdreg"."schvchdlyhdregid" "schvchdlyhdregid"
+	,"schvchdlyhdreg"."sgm" "sgm"
+           ,"schvchdlyhdreg"."Pymnt_No"
+            ,"schvchdlyhdreg"."schBnk_No"
+             ,"schvchdlyhdreg"."checknumber"
+            ,"schvchdlyhdreg"."moneypaidto" "moneypaidto" 
+	,"sgm"."sgm_Nm" "sgmsgm_Nm"
+	,"sgmOpco"."OpcoName" "sgmOpcoOpcoName"
+	,"schvchdlyhdreg"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"Thebranchsgm"."sgm_Nm" "Thebranchsgmsgm_Nm"
+	,"ThebranchsgmOpco"."OpcoName" "ThebranchsgmOpcoOpcoName"
+	,"ThebranchGender"."Gender" "ThebranchGenderGender"
+	,"Thebranchschtyp"."schtypDesc" "ThebranchschtypschtypDesc"
+	,"schvchdlyhdreg"."Trs_Dt" "Trs_Dt"
+	,"schvchdlyhdreg"."Balance" "Balance"
+	,"schvchdlyhdreg"."ReferanceNo" "ReferanceNo"
+	,"schvchdlyhdreg"."IDregorg" "IDregorg"
+	,"IDregorg"."NAME_1" "IDregorgNAME_1"
+	,"schvchdlyhdreg"."Delevername" "Delevername"
+	,"schvchdlyhdreg"."Delevercivil" "Delevercivil"
+	,"schvchdlyhdreg"."DeleverTel" "DeleverTel"
+	,"schvchdlyhdreg"."Notes" "Notes"
+	,"schvchdlyhdreg"."approved" "approved"
+	,"schvchdlyhdreg"."posted" "posted"
+	,"schvchdlyhdreg"."deleted" "deleted"
+	,"schvchdlyhdreg"."havdetails" "havdetails"
+	,"schvchdlyhdreg"."ModifiedBy" "ModifiedBy"
+	,"schvchdlyhdreg"."ModifiedOn" "ModifiedOn"
+	,"schvchdlyhdreg"."CreatedBy" "CreatedBy"
+	,"schvchdlyhdreg"."CreatedOn" "CreatedOn"
+,dbo.currency_conversion(schvchdlyhdreg.Balance) AS currencywords
+,[dbo].[DI_Tafkeet](schvchdlyhdreg.Balance) AS currencywordsnew
+from "dbo"."schvchdlyhdreg" "schvchdlyhdreg"
+
+left join "dbo"."Pymntype" "Pymnt_" on "schvchdlyhdreg"."Pymnt_No" = "Pymnt_"."Pymnt_No"
+
+left join "dbo"."schGLacnBnk" "schBnk_" on  "schvchdlyhdreg"."schBnk_No" = "schBnk_"."schBnk_No"
+
+
+	left join "dbo"."glmulcmp" "sgm" on "schvchdlyhdreg"."sgm" = "sgm"."sgmid"
+	left join "dbo"."OpCo" "sgmOpco" on "sgm"."OpcoID" = "sgmOpco"."OpcoIDidentity"
+	left join "dbo"."schBranch" "Thebranch" on "schvchdlyhdreg"."branch" = "Thebranch"."branch"
+	left join "dbo"."glmulcmp" "Thebranchsgm" on "Thebranch"."sgm" = "Thebranchsgm"."sgmid"
+	left join "dbo"."OpCo" "ThebranchsgmOpco" on "Thebranchsgm"."OpcoID" = "ThebranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "ThebranchGender" on "Thebranch"."Genderid" = "ThebranchGender"."Genderid"
+	left join "dbo"."schtyp" "Thebranchschtyp" on "Thebranch"."schtypid" = "Thebranchschtyp"."schtypid"
+	left join "dbo"."REG_ORGANIZATIONS" "IDregorg" on "schvchdlyhdreg"."IDregorg" = "IDregorg"."IDIDregorg"
+
+where "schvchdlyhdreg"."schvchdlyhdregid"=@parm1</SqlCommand>
+      </mosDataSource1>
+      <mosDataSource2 Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>mosDataSource2</Alias>
+        <Columns isList="true" count="130">
+          <value>Trs_No,System.Int64</value>
+          <value>schvchdlyhdregid,System.Int64</value>
+          <value>schvchdlyhdregNotes,System.String</value>
+          <value>branch,System.Int64</value>
+          <value>ThebranchDesc1,System.String</value>
+          <value>Thebranchsgmsgm_Nm,System.String</value>
+          <value>ThebranchsgmOpcoOpcoName,System.String</value>
+          <value>ThebranchopcoOpcoName,System.String</value>
+          <value>ThebranchschtypschtypDesc,System.String</value>
+          <value>acdcode,System.Int64</value>
+          <value>acdAcademicYear,System.String</value>
+          <value>StudentCode,System.Int64</value>
+          <value>StudentSchstCivilidnumber,System.String</value>
+          <value>FirstName1,System.String</value>
+          <value>FirstName2,System.String</value>
+          <value>schstEmail,System.String</value>
+          <value>StudentareaDesc1,System.String</value>
+          <value>StudentbranchDesc1,System.String</value>
+          <value>Studentbranchsgmsgm_Nm,System.String</value>
+          <value>StudentbranchopcoOpcoName,System.String</value>
+          <value>StudentbranchschtypschtypDesc,System.String</value>
+          <value>StudentCntry_Cntry_Nm,System.String</value>
+          <value>StudentGenderGender,System.String</value>
+          <value>StudentReligionReljan_nm,System.String</value>
+          <value>StudentstateState_Nm,System.String</value>
+          <value>Studentidname_1,System.String</value>
+          <value>StudentacdAcademicYear,System.String</value>
+          <value>StudentApplicationCodeautocivilidst,System.String</value>
+          <value>StudentApplicationCodeautoCntry_Cntry_Nm,System.String</value>
+          <value>StudentApplicationCodeautoAcademicYeartoAcademicYear,System.String</value>
+          <value>StudentApplicationCodeautobranchDesc1,System.String</value>
+          <value>StudentApplicationCodeautoGradeAppliedShortDesc1,System.String</value>
+          <value>StudentApplicationCodeautoStageAppliedtoShortDesc1,System.String</value>
+          <value>StudentClassClassDesc1,System.String</value>
+          <value>StudentSchclasskindSchclasskinddesc,System.String</value>
+          <value>StudentFatherfathfirstname1,System.String</value>
+          <value>StudentFatherMaritalStatusStatus_Nm,System.String</value>
+          <value>StudentFatherareaDesc1,System.String</value>
+          <value>StudentFatherCntry_Cntry_Nm,System.String</value>
+          <value>StudentFatherreligionReljan_nm,System.String</value>
+          <value>StudentFatherStateState_Nm,System.String</value>
+          <value>StudentFatherjob_job_desc,System.String</value>
+          <value>StudentGradeShortDesc1,System.String</value>
+          <value>StudentGradeacdAcademicYear,System.String</value>
+          <value>StudentMotherfirstname1,System.String</value>
+          <value>StudentMotherareaDesc1,System.String</value>
+          <value>StudentMotherCntry_Cntry_Nm,System.String</value>
+          <value>StudentMotherreligionReljan_nm,System.String</value>
+          <value>StudentMotherStateState_Nm,System.String</value>
+          <value>StudentMotherjob_job_desc,System.String</value>
+          <value>StudentStageShortDesc1,System.String</value>
+          <value>Studentschstatus_schstatus_name,System.String</value>
+          <value>StudentschstclasskinddmgschstclasskinddmgDesc,System.String</value>
+          <value>StudentschstsplschstsplDsc,System.String</value>
+          <value>StudentschsthlthcaseschsthlthcaseDesc,System.String</value>
+          <value>Studentstudentsefastudentsefaar,System.String</value>
+          <value>Studentschstudenttypschstudenttyp,System.String</value>
+          <value>StudentSchtransferSchtransferDesc,System.String</value>
+          <value>FatherCode,System.Int64</value>
+          <value>Fatherfathfirstname1,System.String</value>
+          <value>FatherMaritalStatusStatus_Nm,System.String</value>
+          <value>FatherareaDesc1,System.String</value>
+          <value>FatherCntry_Cntry_Nm,System.String</value>
+          <value>FatherreligionReljan_nm,System.String</value>
+          <value>FatherStateState_Nm,System.String</value>
+          <value>Fatherjob_job_desc,System.String</value>
+          <value>Trs_Dt,System.DateTime</value>
+          <value>schpaymenttypeid,System.Int64</value>
+          <value>schpaymenttypeschpaymenttypenm,System.String</value>
+          <value>schpaymenttypedebitaccountAcc_Nm,System.String</value>
+          <value>schpaymenttypedebitaccountClsacc_Acc_Nm,System.String</value>
+          <value>schpaymenttypedebitaccountsgmsgm_Nm,System.String</value>
+          <value>schpaymenttypecreditaccountAcc_Nm,System.String</value>
+          <value>schpaymenttypecreditaccountClsacc_Acc_Nm,System.String</value>
+          <value>schpaymenttypecreditaccountsgmsgm_Nm,System.String</value>
+          <value>Mony_Paid,System.Decimal</value>
+          <value>Voucherno,System.String</value>
+          <value>schpaymenttypedt,System.String</value>
+          <value>Notes,System.String</value>
+          <value>ModifiedBy,System.String</value>
+          <value>ModifiedByUserId,System.Guid</value>
+          <value>ModifiedOn,System.DateTime</value>
+          <value>CreatedBy,System.String</value>
+          <value>CreatedById,System.Guid</value>
+          <value>CreatedOn,System.DateTime</value>
+          <value>schvchdlyhdregsgmsgm_Nm,System.String</value>
+          <value>schvchdlyhdregsgmOpcoOpcoName,System.String</value>
+          <value>schvchdlyhdregIDregorgNAME_1,System.String</value>
+          <value>schpaymenttypedebitaccountAcc_BndAcc_Nm,System.String</value>
+          <value>schpaymenttypecreditaccountAcc_BndAcc_Nm,System.String</value>
+          <value>schvchdlyhdregbranchDesc1,System.String</value>
+          <value>schvchdlyhdregbranchsgmsgm_Nm,System.String</value>
+          <value>schvchdlyhdregbranchGenderGender,System.String</value>
+          <value>schvchdlyhdregbranchschtypschtypDesc,System.String</value>
+          <value>ThebranchGenderGender,System.String</value>
+          <value>acdGlFinperiodFin_period_info,System.String</value>
+          <value>StudentbranchGenderGender,System.String</value>
+          <value>StudentacdGlFinperiodFin_period_info,System.String</value>
+          <value>StudentApplicationCodeautoCntry_No2Cntry_Nm,System.String</value>
+          <value>StudentApplicationCodeautoCntry_No1Cntry_Nm,System.String</value>
+          <value>StudentApplicationCodeautoGenderGender,System.String</value>
+          <value>StudentApplicationCodeautostateState_Nm,System.String</value>
+          <value>StudentApplicationCodeautoidname_1,System.String</value>
+          <value>StudentApplicationCodeautoareaDesc1,System.String</value>
+          <value>StudentApplicationCodeautoClassClassDesc1,System.String</value>
+          <value>StudentApplicationCodeautoSchclasskindSchclasskinddesc,System.String</value>
+          <value>StudentApplicationCodeautofathercasejob_desc,System.String</value>
+          <value>StudentApplicationCodeautomothercasejob_desc,System.String</value>
+          <value>StudentApplicationCodeautosocialstatusschsocialstatuscaseDesc,System.String</value>
+          <value>StudentApplicationCodeautoschstatus_schstatus_name,System.String</value>
+          <value>StudentApplicationCodeautoschstclasskinddmgschstclasskinddmgDesc,System.String</value>
+          <value>StudentApplicationCodeautoschsthlthcaseschsthlthcaseDesc,System.String</value>
+          <value>StudentApplicationCodeautostudentsefastudentsefaar,System.String</value>
+          <value>StudentApplicationCodeautoschstudenttypschstudenttyp,System.String</value>
+          <value>StudentApplicationCodeautoSchtransferSchtransferDesc,System.String</value>
+          <value>StudentApplicationCodeautoschtrnsschtrnsDesc,System.String</value>
+          <value>StudentGradeStageShortDesc1,System.String</value>
+          <value>StudentstudentsefadebitaccountAcc_Nm,System.String</value>
+          <value>Trsd_Dt,System.DateTime</value>
+          <value>sgm,System.Int64</value>
+          <value>OpcoID,System.Int64</value>
+          <value>Delevername,System.String</value>
+          <value>Delevercivil,System.String</value>
+          <value>IDregorg,System.Int64</value>
+          <value>totalbalance,System.Decimal</value>
+          <value>Sumofdebitcal,System.Decimal</value>
+          <value>Sumofdebitcal1,System.Decimal</value>
+          <value>Sumofcerditcal,System.Decimal</value>
+          <value>totalbalance1,System.Decimal</value>
+          <value>DeleverTel,System.Int64</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>mosDataSource2</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>Parameter1,,23,0</value>
+        </Parameters>
+        <SqlCommand>SELECT 
+
+
+schvchdlydetailreg.totalbalance, schvchdlydetailreg.Sumofdebitcal, schvchdlydetailreg.Sumofdebitcal1,
+                       schvchdlydetailreg.Sumofcerditcal, schvchdlydetailreg.totalbalance1,
+
+schvchdlydetailreg.Trs_No Trs_No, schvchdlydetailreg.schvchdlyhdregid
+  schvchdlyhdregid, schvchdlyhdreg.ReferanceNo schvchdlyhdregReferanceNo,
+  schvchdlyhdregsgm.sgm_Nm schvchdlyhdregsgmsgm_Nm,
+  schvchdlyhdregsgmOpco.OpcoName schvchdlyhdregsgmOpcoOpcoName,
+  schvchdlyhdregIDregorg.NAME_1 schvchdlyhdregIDregorgNAME_1,
+  schvchdlyhdregbranch.Desc1 schvchdlyhdregbranchDesc1,
+  schvchdlyhdregbranchsgm.sgm_Nm schvchdlyhdregbranchsgmsgm_Nm,
+  schvchdlyhdregbranchGender.Gender schvchdlyhdregbranchGenderGender,
+  schvchdlyhdregbranchschtyp.schtypDesc schvchdlyhdregbranchschtypschtypDesc,
+  schvchdlydetailreg.branch branch, Thebranch.Desc1 ThebranchDesc1,
+  Thebranchsgm.sgm_Nm Thebranchsgmsgm_Nm, ThebranchsgmOpco.OpcoName
+  ThebranchsgmOpcoOpcoName, ThebranchGender.Gender ThebranchGenderGender,
+  Thebranchschtyp.schtypDesc ThebranchschtypschtypDesc,
+  schvchdlydetailreg.acdcode acdcode, acd.AcademicYear acdAcademicYear,
+  acdGlFinperiod.Fin_period_info acdGlFinperiodFin_period_info,
+  schvchdlydetailreg.StudentCode StudentCode, Student.SchstCivilidnumber
+  StudentSchstCivilidnumber, Studentarea.Desc1 StudentareaDesc1,
+  Studentbranch.Desc1 StudentbranchDesc1,
+  Studentbranchsgm.sgm_Nm Studentbranchsgmsgm_Nm,
+  StudentbranchGender.Gender StudentbranchGenderGender,
+  Studentbranchschtyp.schtypDesc StudentbranchschtypschtypDesc,
+  StudentCntry_.Cntry_Nm StudentCntry_Cntry_Nm,
+  StudentGender.Gender StudentGenderGender, StudentReligion.Reljan_nm
+  StudentReligionReljan_nm, Studentstate.State_Nm StudentstateState_Nm,
+  Studentid.name_1 Studentidname_1,
+  Studentacd.AcademicYear StudentacdAcademicYear,
+  StudentacdGlFinperiod.Fin_period_info StudentacdGlFinperiodFin_period_info,
+  StudentClass.ClassDesc1
+  StudentClassClassDesc1, StudentSchclasskind.Schclasskinddesc
+  StudentSchclasskindSchclasskinddesc, StudentFather.fathfirstname1
+  StudentFatherfathfirstname1, StudentFatherMaritalStatus.Status_Nm
+  StudentFatherMaritalStatusStatus_Nm,
+  StudentFatherarea.Desc1 StudentFatherareaDesc1, StudentFatherCntry_.Cntry_Nm
+  StudentFatherCntry_Cntry_Nm,
+  StudentFatherreligion.Reljan_nm StudentFatherreligionReljan_nm,
+  StudentFatherState.State_Nm StudentFatherStateState_Nm,
+  StudentFatherjob_.job_desc StudentFatherjob_job_desc,
+  StudentGrade.ShortDesc1 StudentGradeShortDesc1, StudentGradeacd.AcademicYear
+  StudentGradeacdAcademicYear,
+  StudentGradeStage.ShortDesc1 StudentGradeStageShortDesc1,
+  StudentMother.firstname1 StudentMotherfirstname1,
+  StudentMotherarea.Desc1 StudentMotherareaDesc1, StudentMotherCntry_.Cntry_Nm
+  StudentMotherCntry_Cntry_Nm,
+  StudentMotherreligion.Reljan_nm StudentMotherreligionReljan_nm,
+  StudentMotherState.State_Nm StudentMotherStateState_Nm,
+  StudentMotherjob_.job_desc StudentMotherjob_job_desc,
+  StudentStage.ShortDesc1 StudentStageShortDesc1,
+  Studentschstatus_.schstatus_name Studentschstatus_schstatus_name,
+  Studentschstclasskinddmg.schstclasskinddmgDesc
+  StudentschstclasskinddmgschstclasskinddmgDesc, Studentschstspl.schstsplDsc
+  StudentschstsplschstsplDsc, Studentschsthlthcase.schsthlthcaseDesc
+  StudentschsthlthcaseschsthlthcaseDesc, Studentstudentsefa.studentsefaar
+  Studentstudentsefastudentsefaar, Studentstudentsefadebitaccount.Acc_Nm
+  StudentstudentsefadebitaccountAcc_Nm, Studentschstudenttyp.schstudenttyp
+  Studentschstudenttypschstudenttyp, StudentSchtransfer.SchtransferDesc
+  StudentSchtransferSchtransferDesc, schvchdlydetailreg.FatherCode FatherCode,
+  Father.fathfirstname1 Fatherfathfirstname1, FatherMaritalStatus.Status_Nm
+  FatherMaritalStatusStatus_Nm, Fatherarea.Desc1 FatherareaDesc1,
+  FatherCntry_.Cntry_Nm FatherCntry_Cntry_Nm, Fatherreligion.Reljan_nm
+  FatherreligionReljan_nm, FatherState.State_Nm FatherStateState_Nm,
+  Fatherjob_.job_desc Fatherjob_job_desc, schvchdlydetailreg.Trsd_Dt Trsd_Dt,
+  schvchdlydetailreg.schpaymenttypeid schpaymenttypeid,
+  schpaymenttype.schpaymenttypenm schpaymenttypeschpaymenttypenm,
+  schpaymenttypedebitaccount.Acc_Nm schpaymenttypedebitaccountAcc_Nm,
+  schpaymenttypedebitaccountClsacc_.Acc_Nm
+  schpaymenttypedebitaccountClsacc_Acc_Nm,
+  schpaymenttypedebitaccountAcc_Bnd.Acc_Nm
+  schpaymenttypedebitaccountAcc_BndAcc_Nm, schpaymenttypecreditaccount.Acc_Nm
+  schpaymenttypecreditaccountAcc_Nm, schpaymenttypecreditaccountClsacc_.Acc_Nm
+  schpaymenttypecreditaccountClsacc_Acc_Nm,
+  schpaymenttypecreditaccountAcc_Bnd.Acc_Nm
+  schpaymenttypecreditaccountAcc_BndAcc_Nm, schvchdlydetailreg.Mony_Paid
+  Mony_Paid, schvchdlydetailreg.Notes Notes, schvchdlyhdreg.sgm,
+  schvchdlyhdregsgm.OpcoID, schvchdlyhdreg.Delevername,
+  schvchdlyhdreg.Delevercivil, schvchdlyhdreg.DeleverTel,
+  schvchdlyhdreg.IDregorg, Student.FirstName1, Student.schstEmail,
+  Student.FirstName2
+FROM dbo.schvchdlydetailreg schvchdlydetailreg LEFT JOIN
+  dbo.schvchdlyhdreg schvchdlyhdreg ON schvchdlydetailreg.schvchdlyhdregid =
+    schvchdlyhdreg.schvchdlyhdregid LEFT JOIN
+  dbo.glmulcmp schvchdlyhdregsgm ON schvchdlyhdreg.sgm = schvchdlyhdregsgm.sgmid
+  LEFT JOIN
+  dbo.OpCo schvchdlyhdregsgmOpco ON schvchdlyhdregsgm.OpcoID =
+    schvchdlyhdregsgmOpco.OpcoIDidentity LEFT JOIN
+  dbo.REG_ORGANIZATIONS schvchdlyhdregIDregorg ON schvchdlyhdreg.IDregorg =
+    schvchdlyhdregIDregorg.IDIDregorg LEFT JOIN
+  dbo.schBranch schvchdlyhdregbranch ON schvchdlyhdreg.branch =
+    schvchdlyhdregbranch.branch LEFT JOIN
+  dbo.glmulcmp schvchdlyhdregbranchsgm ON schvchdlyhdregbranch.sgm =
+    schvchdlyhdregbranchsgm.sgmid LEFT JOIN
+  dbo.PyGender schvchdlyhdregbranchGender ON schvchdlyhdregbranch.Genderid =
+    schvchdlyhdregbranchGender.Genderid LEFT JOIN
+  dbo.schtyp schvchdlyhdregbranchschtyp ON schvchdlyhdregbranch.schtypid =
+    schvchdlyhdregbranchschtyp.schtypid LEFT JOIN
+  dbo.schBranch Thebranch ON schvchdlydetailreg.branch = Thebranch.branch
+  LEFT JOIN
+  dbo.glmulcmp Thebranchsgm ON Thebranch.sgm = Thebranchsgm.sgmid LEFT JOIN
+  dbo.OpCo ThebranchsgmOpco ON Thebranchsgm.OpcoID =
+    ThebranchsgmOpco.OpcoIDidentity LEFT JOIN
+  dbo.PyGender ThebranchGender ON Thebranch.Genderid = ThebranchGender.Genderid
+  LEFT JOIN
+  dbo.schtyp Thebranchschtyp ON Thebranch.schtypid = Thebranchschtyp.schtypid
+  LEFT JOIN
+  dbo.schAcademicyear acd ON schvchdlydetailreg.acdcode = acd.Code LEFT JOIN
+  dbo.GlFinanceperiod acdGlFinperiod ON acd.GlFinperiodID =
+    acdGlFinperiod.GlFinperiodID LEFT JOIN
+  dbo.SchStudent Student ON schvchdlydetailreg.StudentCode = Student.StudentCode
+  LEFT JOIN
+  dbo.schArea Studentarea ON Student.area = Studentarea.Code LEFT JOIN
+  dbo.schBranch Studentbranch ON Student.branch = Studentbranch.branch LEFT JOIN
+  dbo.glmulcmp Studentbranchsgm ON Studentbranch.sgm = Studentbranchsgm.sgmid
+  LEFT JOIN
+  dbo.PyGender StudentbranchGender ON Studentbranch.Genderid =
+    StudentbranchGender.Genderid LEFT JOIN
+  dbo.schtyp Studentbranchschtyp ON Studentbranch.schtypid =
+    Studentbranchschtyp.schtypid LEFT JOIN
+  dbo.PYCntry StudentCntry_ ON Student.Cntry_No = StudentCntry_.Cntry_No
+  LEFT JOIN
+  dbo.PyGender StudentGender ON Student.Genderid = StudentGender.Genderid
+  LEFT JOIN
+  dbo.PyReljan StudentReligion ON Student.Religion = StudentReligion.reljan
+  LEFT JOIN
+  dbo.PyState Studentstate ON Student.state = Studentstate.State LEFT JOIN
+  dbo.reg_other_schools Studentid ON Student.id = Studentid.id LEFT JOIN
+  dbo.schAcademicyear Studentacd ON Student.acdcode = Studentacd.Code LEFT JOIN
+  dbo.GlFinanceperiod StudentacdGlFinperiod ON Studentacd.GlFinperiodID =
+    StudentacdGlFinperiod.GlFinperiodID LEFT JOIN
+    dbo.schClassConfig StudentClass ON Student.Class = StudentClass.classcode
+  LEFT JOIN
+  dbo.Schclasskindlist StudentSchclasskind ON Student.Schclasskindid =
+    StudentSchclasskind.Schclasskindid LEFT JOIN
+  dbo.schFather StudentFather ON Student.FatherCode = StudentFather.FatherCode
+  LEFT JOIN
+  dbo.PyStatus StudentFatherMaritalStatus ON StudentFather.MaritalStatus =
+    StudentFatherMaritalStatus.Status_Type LEFT JOIN
+  dbo.schArea StudentFatherarea ON StudentFather.area = StudentFatherarea.Code
+  LEFT JOIN
+  dbo.PYCntry StudentFatherCntry_ ON StudentFather.Cntry_No =
+    StudentFatherCntry_.Cntry_No LEFT JOIN
+  dbo.PyReljan StudentFatherreligion ON StudentFather.religion =
+    StudentFatherreligion.reljan LEFT JOIN
+  dbo.PyState StudentFatherState ON StudentFather.State =
+    StudentFatherState.State LEFT JOIN
+  dbo.SchFatherjob StudentFatherjob_ ON StudentFather.job_no =
+    StudentFatherjob_.job_no LEFT JOIN
+  dbo.schGrade StudentGrade ON Student.GradeCode = StudentGrade.GradeCode
+  LEFT JOIN
+  dbo.schAcademicyear StudentGradeacd ON StudentGrade.acdcode =
+    StudentGradeacd.Code LEFT JOIN
+  dbo.schStage StudentGradeStage ON StudentGrade.StageCode =
+    StudentGradeStage.Code LEFT JOIN
+  dbo.schMother StudentMother ON Student.MotherCode = StudentMother.MotherCode
+  LEFT JOIN
+  dbo.schArea StudentMotherarea ON StudentMother.area = StudentMotherarea.Code
+  LEFT JOIN
+  dbo.PYCntry StudentMotherCntry_ ON StudentMother.Cntry_No =
+    StudentMotherCntry_.Cntry_No LEFT JOIN
+  dbo.PyReljan StudentMotherreligion ON StudentMother.religion =
+    StudentMotherreligion.reljan LEFT JOIN
+  dbo.PyState StudentMotherState ON StudentMother.State =
+    StudentMotherState.State LEFT JOIN
+  dbo.SchMotherjob StudentMotherjob_ ON StudentMother.job_no =
+    StudentMotherjob_.job_no LEFT JOIN
+  dbo.schStage StudentStage ON Student.Stage = StudentStage.Code LEFT JOIN
+  dbo.schstatus Studentschstatus_ ON Student.schstatus_code =
+    Studentschstatus_.schstatus_code LEFT JOIN
+  dbo.schstclasskinddmg Studentschstclasskinddmg ON Student.schstclasskinddmgid
+    = Studentschstclasskinddmg.schstclasskinddmgid LEFT JOIN
+  dbo.schstespetialest Studentschstspl ON Student.schstsplid =
+    Studentschstspl.schstsplid LEFT JOIN
+  dbo.schsthealthcase Studentschsthlthcase ON Student.schsthlthcaseid =
+    Studentschsthlthcase.schsthlthcaseid LEFT JOIN
+  dbo.Schstudentsefa Studentstudentsefa ON Student.studentsefa =
+    Studentstudentsefa.studentsefaid LEFT JOIN
+  dbo.GLmstrfl Studentstudentsefadebitaccount ON Studentstudentsefa.debitaccount
+    = Studentstudentsefadebitaccount.Acc_No LEFT JOIN
+  dbo.schstudenttyp Studentschstudenttyp ON Student.schstudenttypid =
+    Studentschstudenttyp.schstudenttypid LEFT JOIN
+  dbo.Schtransferlist StudentSchtransfer ON Student.Schtransferid =
+    StudentSchtransfer.Schtransferid LEFT JOIN
+  dbo.schFather Father ON schvchdlydetailreg.FatherCode = Father.FatherCode
+  LEFT JOIN
+  dbo.PyStatus FatherMaritalStatus ON Father.MaritalStatus =
+    FatherMaritalStatus.Status_Type LEFT JOIN
+  dbo.schArea Fatherarea ON Father.area = Fatherarea.Code LEFT JOIN
+  dbo.PYCntry FatherCntry_ ON Father.Cntry_No = FatherCntry_.Cntry_No LEFT JOIN
+  dbo.PyReljan Fatherreligion ON Father.religion = Fatherreligion.reljan
+  LEFT JOIN
+  dbo.PyState FatherState ON Father.State = FatherState.State LEFT JOIN
+  dbo.SchFatherjob Fatherjob_ ON Father.job_no = Fatherjob_.job_no LEFT JOIN
+  dbo.schpaymenttype schpaymenttype ON schvchdlydetailreg.schpaymenttypeid =
+    schpaymenttype.schpaymenttypeid LEFT JOIN
+  dbo.GLmstrfl schpaymenttypedebitaccount ON schpaymenttype.debitaccount =
+    schpaymenttypedebitaccount.Acc_No LEFT JOIN
+  dbo.GLmfbab schpaymenttypedebitaccountClsacc_ ON
+    schpaymenttypedebitaccount.Clsacc_No =
+    schpaymenttypedebitaccountClsacc_.Acc_Bab LEFT JOIN
+  dbo.GLmfband schpaymenttypedebitaccountAcc_Bnd ON
+    schpaymenttypedebitaccount.Acc_Bnd =
+    schpaymenttypedebitaccountAcc_Bnd.Acc_Bnd LEFT JOIN
+  dbo.GLmstrfl schpaymenttypecreditaccount ON schpaymenttype.creditaccount =
+    schpaymenttypecreditaccount.Acc_No LEFT JOIN
+  dbo.GLmfbab schpaymenttypecreditaccountClsacc_ ON
+    schpaymenttypecreditaccount.Clsacc_No =
+    schpaymenttypecreditaccountClsacc_.Acc_Bab LEFT JOIN
+  dbo.GLmfband schpaymenttypecreditaccountAcc_Bnd ON
+    schpaymenttypecreditaccount.Acc_Bnd =
+    schpaymenttypecreditaccountAcc_Bnd.Acc_Bnd 
+
+
+WHERE schvchdlydetailreg.schvchdlyhdregid =  @Parameter1</SqlCommand>
+      </mosDataSource2>
+      <mosDataSource3 Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>mosDataSource3</Alias>
+        <Columns isList="true" count="32">
+          <value>Pymnt_Pymnt_Nm,System.String</value>
+          <value>Pymnt_pymnt_accAcc_Nm,System.String</value>
+          <value>Pymnt_pymnt_accClsacc_Acc_Nm,System.String</value>
+          <value>Pymnt_pymnt_accsgmsgm_Nm,System.String</value>
+          <value>pymentAcc_No,System.Int64</value>
+          <value>paymentwaynumber,System.String</value>
+          <value>schBnk_No,System.Int64</value>
+          <value>schBnk_schBnk_Nm,System.String</value>
+          <value>checkAccount,System.String</value>
+          <value>checkdate,System.DateTime</value>
+          <value>moneypaidto,System.Decimal</value>
+          <value>paymentnotes,System.String</value>
+          <value>ModifiedBy,System.String</value>
+          <value>ModifiedByUserId,System.Guid</value>
+          <value>ModifiedOn,System.DateTime</value>
+          <value>CreatedBy,System.String</value>
+          <value>CreatedById,System.Guid</value>
+          <value>CreatedOn,System.DateTime</value>
+          <value>schvchdlyhdregReferanceNo,System.String</value>
+          <value>schvchdlyhdregsgmsgm_Nm,System.String</value>
+          <value>schvchdlyhdregsgmOpcoOpcoName,System.String</value>
+          <value>Pymnt_pymnt_accAcc_BndAcc_Nm,System.String</value>
+          <value>Pymnt_sgmsgm_Nm,System.String</value>
+          <value>Pymnt_sgmOpcoOpcoName,System.String</value>
+          <value>schvchdlyhdregbranchDesc1,System.String</value>
+          <value>schvchdlyhdregbranchGenderGender,System.String</value>
+          <value>schvchdlyhdregbranchschtypschtypDesc,System.String</value>
+          <value>schvchdlydetailpaymentid,System.Int64</value>
+          <value>schvchdlyhdregid,System.Int64</value>
+          <value>schvchdlyhdregIDregorgNAME_1,System.String</value>
+          <value>schvchdlyhdregbranchsgmsgm_Nm,System.String</value>
+          <value>Pymnt_No,System.Int64</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>mosDataSource3</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>Parameter1,,23,0</value>
+        </Parameters>
+        <SqlCommand>select
+	"schvchdlydetailpayment"."schvchdlydetailpaymentid" "schvchdlydetailpaymentid"
+	,"schvchdlydetailpayment"."schvchdlyhdregid" "schvchdlyhdregid"
+	,"schvchdlyhdreg"."ReferanceNo" "schvchdlyhdregReferanceNo"
+	,"schvchdlyhdregsgm"."sgm_Nm" "schvchdlyhdregsgmsgm_Nm"
+	,"schvchdlyhdregsgmOpco"."OpcoName" "schvchdlyhdregsgmOpcoOpcoName"
+	,"schvchdlyhdregIDregorg"."NAME_1" "schvchdlyhdregIDregorgNAME_1"
+	,"schvchdlyhdregbranch"."Desc1" "schvchdlyhdregbranchDesc1"
+	,"schvchdlyhdregbranchsgm"."sgm_Nm" "schvchdlyhdregbranchsgmsgm_Nm"
+	,"schvchdlyhdregbranchGender"."Gender" "schvchdlyhdregbranchGenderGender"
+	,"schvchdlyhdregbranchschtyp"."schtypDesc" "schvchdlyhdregbranchschtypschtypDesc"
+	,"schvchdlydetailpayment"."Pymnt_No" "Pymnt_No"
+	,"Pymnt_"."Pymnt_Nm" "Pymnt_Pymnt_Nm"
+	,"Pymnt_pymnt_acc"."Acc_Nm" "Pymnt_pymnt_accAcc_Nm"
+	,"Pymnt_pymnt_accClsacc_"."Acc_Nm" "Pymnt_pymnt_accClsacc_Acc_Nm"
+	,"Pymnt_pymnt_accAcc_Bnd"."Acc_Nm" "Pymnt_pymnt_accAcc_BndAcc_Nm"
+	,"Pymnt_sgm"."sgm_Nm" "Pymnt_sgmsgm_Nm"
+	,"Pymnt_sgmOpco"."OpcoName" "Pymnt_sgmOpcoOpcoName"
+	,"schvchdlydetailpayment"."paymentwaynumber" "paymentwaynumber"
+	,"schvchdlydetailpayment"."schBnk_No" "schBnk_No"
+	,"schBnk_"."schBnk_Nm" "schBnk_schBnk_Nm"
+	,"schvchdlydetailpayment"."checkAccount" "checkAccount"
+	,"schvchdlydetailpayment"."checkdate" "checkdate"
+	,"schvchdlydetailpayment"."moneypaidto" "moneypaidto"
+	,"schvchdlydetailpayment"."paymentnotes" "paymentnotes"
+from "dbo"."schvchdlydetailpayment" "schvchdlydetailpayment"
+	left join "dbo"."schvchdlyhdreg" "schvchdlyhdreg" on "schvchdlydetailpayment"."schvchdlyhdregid" = "schvchdlyhdreg"."schvchdlyhdregid"
+	left join "dbo"."glmulcmp" "schvchdlyhdregsgm" on "schvchdlyhdreg"."sgm" = "schvchdlyhdregsgm"."sgmid"
+	left join "dbo"."OpCo" "schvchdlyhdregsgmOpco" on "schvchdlyhdregsgm"."OpcoID" = "schvchdlyhdregsgmOpco"."OpcoIDidentity"
+	left join "dbo"."REG_ORGANIZATIONS" "schvchdlyhdregIDregorg" on "schvchdlyhdreg"."IDregorg" = "schvchdlyhdregIDregorg"."IDIDregorg"
+	left join "dbo"."schBranch" "schvchdlyhdregbranch" on "schvchdlyhdreg"."branch" = "schvchdlyhdregbranch"."branch"
+	left join "dbo"."glmulcmp" "schvchdlyhdregbranchsgm" on "schvchdlyhdregbranch"."sgm" = "schvchdlyhdregbranchsgm"."sgmid"
+	left join "dbo"."PyGender" "schvchdlyhdregbranchGender" on "schvchdlyhdregbranch"."Genderid" = "schvchdlyhdregbranchGender"."Genderid"
+	left join "dbo"."schtyp" "schvchdlyhdregbranchschtyp" on "schvchdlyhdregbranch"."schtypid" = "schvchdlyhdregbranchschtyp"."schtypid"
+	left join "dbo"."Pymntype" "Pymnt_" on "schvchdlydetailpayment"."Pymnt_No" = "Pymnt_"."Pymnt_No"
+	left join "dbo"."GLmstrfl" "Pymnt_pymnt_acc" on "Pymnt_"."pymnt_acc" = "Pymnt_pymnt_acc"."Acc_No"
+	left join "dbo"."GLmfbab" "Pymnt_pymnt_accClsacc_" on "Pymnt_pymnt_acc"."Clsacc_No" = "Pymnt_pymnt_accClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Pymnt_pymnt_accAcc_Bnd" on "Pymnt_pymnt_acc"."Acc_Bnd" = "Pymnt_pymnt_accAcc_Bnd"."Acc_Bnd"
+	left join "dbo"."glmulcmp" "Pymnt_sgm" on "Pymnt_"."sgm" = "Pymnt_sgm"."sgmid"
+	left join "dbo"."OpCo" "Pymnt_sgmOpco" on "Pymnt_sgm"."OpcoID" = "Pymnt_sgmOpco"."OpcoIDidentity"
+	left join "dbo"."schGLacnBnk" "schBnk_" on "schvchdlydetailpayment"."schBnk_No" = "schBnk_"."schBnk_No"
+WHERE schvchdlydetailpayment.schvchdlyhdregid = @Parameter1</SqlCommand>
+      </mosDataSource3>
+      <DataSource4 Ref="6" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>DataSource4</Alias>
+        <Columns isList="true" count="135">
+          <value>StudentCode,System.Int64</value>
+          <value>SchstCivilidnumber,System.String</value>
+          <value>FirstName1,System.String</value>
+          <value>FirstName2,System.String</value>
+          <value>schstEmail,System.String</value>
+          <value>branch,System.Int64</value>
+          <value>ThebranchDesc1,System.String</value>
+          <value>Thebranchsgmsgm_Nm,System.String</value>
+          <value>ThebranchsgmOpcoOpcoName,System.String</value>
+          <value>ThebranchGenderGender,System.String</value>
+          <value>ThebranchstageShortDesc1,System.String</value>
+          <value>ThebranchschtypschtypDesc,System.String</value>
+          <value>FatherCode,System.Int32</value>
+          <value>Fatherfathfirstname1,System.String</value>
+          <value>FatherMaritalStatusStatus_Nm,System.String</value>
+          <value>FatherareaDesc1,System.String</value>
+          <value>FatherCntry_Cntry_Nm,System.String</value>
+          <value>FatherreligionReljan_nm,System.String</value>
+          <value>FatherStateState_Nm,System.String</value>
+          <value>Fatherjob_job_desc,System.String</value>
+          <value>MotherCode,System.Int64</value>
+          <value>Motherfirstname1,System.String</value>
+          <value>MotherareaDesc1,System.String</value>
+          <value>MotherCntry_Cntry_Nm,System.String</value>
+          <value>MotherreligionReljan_nm,System.String</value>
+          <value>MotherStateState_Nm,System.String</value>
+          <value>Motherjob_job_desc,System.String</value>
+          <value>Religion,System.Int64</value>
+          <value>ReligionReljan_nm,System.String</value>
+          <value>Cntry_No,System.Int64</value>
+          <value>Cntry_Cntry_Nm,System.String</value>
+          <value>Genderid,System.Int64</value>
+          <value>GenderGender,System.String</value>
+          <value>Joiningdate,System.DateTime</value>
+          <value>state,System.Int64</value>
+          <value>stateState_Nm,System.String</value>
+          <value>area,System.Int64</value>
+          <value>areaDesc1,System.String</value>
+          <value>blockno,System.String</value>
+          <value>streetno,System.String</value>
+          <value>gadah,System.String</value>
+          <value>houseno,System.String</value>
+          <value>addressdetail,System.String</value>
+          <value>EmergencyTelNo1,System.String</value>
+          <value>EmergencyTelNo2,System.String</value>
+          <value>EmergencyTelNo3,System.String</value>
+          <value>EmergencyTelNo4,System.String</value>
+          <value>acdcode,System.Int64</value>
+          <value>acdAcademicYear,System.String</value>
+          <value>acdGlFinperiodFin_period_info,System.String</value>
+          <value>acdGlFinperiodaccountnumberAcc_Nm,System.String</value>
+          <value>Stage,System.Int64</value>
+          <value>StageShortDesc1,System.String</value>
+          <value>GradeCode,System.Int64</value>
+          <value>GradeShortDesc1,System.String</value>
+          <value>GradeacdAcademicYear,System.String</value>
+          <value>GradeacdGlFinperiodFin_period_info,System.String</value>
+          <value>GradeStageShortDesc1,System.String</value>
+          <value>Classno,System.Int64</value>
+          <value>ClassClassDesc1,System.String</value>
+          <value>schstatus_code,System.Int64</value>
+          <value>schstatus_schstatus_name,System.String</value>
+          <value>schstudenttypid,System.Int64</value>
+          <value>schstudenttypschstudenttyp,System.String</value>
+          <value>BirthDate,System.DateTime</value>
+          <value>BirthDocNo,System.String</value>
+          <value>birthdocdate,System.DateTime</value>
+          <value>BirthDocPlace,System.String</value>
+          <value>BirthPlace,System.String</value>
+          <value>Residencenumber,System.String</value>
+          <value>ResidenceExpDate,System.DateTime</value>
+          <value>Residenceaddress,System.String</value>
+          <value>id,System.Int64</value>
+          <value>Theidname_1,System.String</value>
+          <value>joindate,System.DateTime</value>
+          <value>schstsplid,System.Int64</value>
+          <value>schstsplschstsplDsc,System.String</value>
+          <value>Schclasskindid,System.Int64</value>
+          <value>SchclasskindSchclasskinddesc,System.String</value>
+          <value>schstclasskinddmgid,System.Int64</value>
+          <value>schstclasskinddmgschstclasskinddmgDesc,System.String</value>
+          <value>Schtransferid,System.Int64</value>
+          <value>SchtransferSchtransferDesc,System.String</value>
+          <value>studentsefa,System.Int64</value>
+          <value>studentsefastudentsefaar,System.String</value>
+          <value>studentsefadebitaccountAcc_Nm,System.String</value>
+          <value>studentsefadebitaccountClsacc_Acc_Nm,System.String</value>
+          <value>studentsefadebitaccountAcc_BndAcc_Nm,System.String</value>
+          <value>schsthlthcaseid,System.Int64</value>
+          <value>schsthlthcaseschsthlthcaseDesc,System.String</value>
+          <value>Schtransferdate,System.DateTime</value>
+          <value>resigncases,System.String</value>
+          <value>CivilidExpDate,System.DateTime</value>
+          <value>Notes,System.String</value>
+          <value>PassportNumber,System.String</value>
+          <value>PassportPlace,System.String</value>
+          <value>PassportIssueDate,System.DateTime</value>
+          <value>PassportExpDate,System.DateTime</value>
+          <value>PhotoFileName,System.String</value>
+          <value>PhotoLength,System.Int32</value>
+          <value>PhotoContentType,System.String</value>
+          <value>Picture,System.Byte[]</value>
+          <value>PictureFileName,System.String</value>
+          <value>PictureContentType,System.String</value>
+          <value>PictureLength,System.Int32</value>
+          <value>ModifiedBy,System.String</value>
+          <value>ModifiedOn,System.DateTime</value>
+          <value>CreatedBy,System.String</value>
+          <value>CreatedOn,System.DateTime</value>
+          <value>accountnumber,System.Decimal</value>
+          <value>fatherrecord,System.Boolean</value>
+          <value>typ,System.Int64</value>
+          <value>ApplicationCodeauto,System.Int64</value>
+          <value>Rerecord,System.Decimal</value>
+          <value>StageAppliedto,System.Int64</value>
+          <value>GradeApplied,System.Int64</value>
+          <value>AcademicYearto,System.Int64</value>
+          <value>Classto,System.Int64</value>
+          <value>Calsstoorder,System.Int64</value>
+          <value>branchto,System.Int64</value>
+          <value>Cntry_No1,System.Int64</value>
+          <value>Cntry_No2,System.Int64</value>
+          <value>fathercase,System.Int64</value>
+          <value>mothercase,System.Int64</value>
+          <value>fathersocialstatus,System.Int64</value>
+          <value>fathername,System.String</value>
+          <value>fathercivilid,System.String</value>
+          <value>busid,System.Int64</value>
+          <value>BUSPAY,System.Decimal</value>
+          <value>AMT00,System.Decimal</value>
+          <value>TTLADV,System.Decimal</value>
+          <value>TTLDEP,System.Decimal</value>
+          <value>TTLPAY,System.Decimal</value>
+          <value>TTLOTH,System.Decimal</value>
+          <value>Amount,System.Decimal</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>DataSource4</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>SELECT     SchStudent.StudentCode, SchStudent.SchstCivilidnumber, SchStudent.FirstName1, SchStudent.FirstName2, SchStudent.schstEmail, SchStudent.branch, 
+                      Thebranch.Desc1 AS ThebranchDesc1, Thebranchsgm.sgm_Nm AS Thebranchsgmsgm_Nm, ThebranchsgmOpco.OpcoName AS ThebranchsgmOpcoOpcoName, 
+                      ThebranchGender.Gender AS ThebranchGenderGender, Thebranchstage.ShortDesc1 AS ThebranchstageShortDesc1, 
+                      Thebranchschtyp.schtypDesc AS ThebranchschtypschtypDesc, SchStudent.FatherCode, Father.fathfirstname1 AS Fatherfathfirstname1, 
+                      FatherMaritalStatus.Status_Nm AS FatherMaritalStatusStatus_Nm, Fatherarea.Desc1 AS FatherareaDesc1, FatherCntry_.Cntry_Nm AS FatherCntry_Cntry_Nm, 
+                      Fatherreligion.Reljan_nm AS FatherreligionReljan_nm, FatherState.State_Nm AS FatherStateState_Nm, Fatherjob_.job_desc AS Fatherjob_job_desc, 
+                      SchStudent.MotherCode, Mother.firstname1 AS Motherfirstname1, Motherarea.Desc1 AS MotherareaDesc1, MotherCntry_.Cntry_Nm AS MotherCntry_Cntry_Nm, 
+                      Motherreligion.Reljan_nm AS MotherreligionReljan_nm, MotherState.State_Nm AS MotherStateState_Nm, Motherjob_.job_desc AS Motherjob_job_desc, 
+                      SchStudent.Religion, Religion.Reljan_nm AS ReligionReljan_nm, SchStudent.Cntry_No, Cntry_.Cntry_Nm AS Cntry_Cntry_Nm, SchStudent.Genderid, 
+                      Gender.Gender AS GenderGender, SchStudent.Joiningdate, SchStudent.state, state.State_Nm AS stateState_Nm, SchStudent.area, area.Desc1 AS areaDesc1, 
+                      SchStudent.blockno, SchStudent.streetno, SchStudent.gadah, SchStudent.houseno, SchStudent.addressdetail, SchStudent.EmergencyTelNo1, 
+                      SchStudent.EmergencyTelNo2, SchStudent.EmergencyTelNo3, SchStudent.EmergencyTelNo4, SchStudent.acdcode, acd.AcademicYear AS acdAcademicYear, 
+                      acdGlFinperiod.Fin_period_info AS acdGlFinperiodFin_period_info, acdGlFinperiodaccountnumber.Acc_Nm AS acdGlFinperiodaccountnumberAcc_Nm, 
+                      SchStudent.Stage, Stage.ShortDesc1 AS StageShortDesc1, SchStudent.GradeCode, Grade.ShortDesc1 AS GradeShortDesc1, 
+                      Gradeacd.AcademicYear AS GradeacdAcademicYear, GradeacdGlFinperiod.Fin_period_info AS GradeacdGlFinperiodFin_period_info, 
+                      GradeStage.ShortDesc1 AS GradeStageShortDesc1, SchStudent.Class AS Classno, Class.ClassDesc1 AS ClassClassDesc1, SchStudent.schstatus_code, 
+                      schstatus_.schstatus_name AS schstatus_schstatus_name, SchStudent.schstudenttypid, schstudenttyp.schstudenttyp AS schstudenttypschstudenttyp, 
+                      SchStudent.BirthDate, SchStudent.BirthDocNo, SchStudent.birthdocdate, SchStudent.BirthDocPlace, SchStudent.BirthPlace, SchStudent.Residencenumber, 
+                      SchStudent.ResidenceExpDate, SchStudent.Residenceaddress, SchStudent.id, Theid.name_1 AS Theidname_1, SchStudent.joindate, SchStudent.schstsplid, 
+                      schstspl.schstsplDsc AS schstsplschstsplDsc, SchStudent.Schclasskindid, Schclasskind.Schclasskinddesc AS SchclasskindSchclasskinddesc, 
+                      SchStudent.schstclasskinddmgid, schstclasskinddmg.schstclasskinddmgDesc AS schstclasskinddmgschstclasskinddmgDesc, SchStudent.Schtransferid, 
+                      Schtransfer.SchtransferDesc AS SchtransferSchtransferDesc, SchStudent.studentsefa, studentsefa.studentsefaar AS studentsefastudentsefaar, 
+                      studentsefadebitaccount.Acc_Nm AS studentsefadebitaccountAcc_Nm, studentsefadebitaccountClsacc_.Acc_Nm AS studentsefadebitaccountClsacc_Acc_Nm, 
+                      studentsefadebitaccountAcc_Bnd.Acc_Nm AS studentsefadebitaccountAcc_BndAcc_Nm, SchStudent.schsthlthcaseid, 
+                      schsthlthcase.schsthlthcaseDesc AS schsthlthcaseschsthlthcaseDesc, SchStudent.Schtransferdate, SchStudent.resigncases, SchStudent.CivilidExpDate, 
+                      SchStudent.Notes, SchStudent.PassportNumber, SchStudent.PassportPlace, SchStudent.PassportIssueDate, SchStudent.PassportExpDate, 
+                      SchStudent.PhotoFileName, SchStudent.PhotoLength, SchStudent.PhotoContentType, SchStudent.Picture, SchStudent.PictureFileName, 
+                      SchStudent.PictureContentType, SchStudent.PictureLength, SchStudent.ModifiedBy, SchStudent.ModifiedOn, SchStudent.CreatedBy, SchStudent.CreatedOn, 
+                      SchStudent.accountnumber, SchStudent.fatherrecord, SchStudent.typ, SchStudent.ApplicationCodeauto, SchStudent.Rerecord, SchStudent.StageAppliedto, 
+                      SchStudent.GradeApplied, SchStudent.AcademicYearto, SchStudent.Classto, SchStudent.Calsstoorder, SchStudent.branchto, SchStudent.Cntry_No1, 
+                      SchStudent.Cntry_No2, SchStudent.fathercase, SchStudent.mothercase, SchStudent.fathersocialstatus, SchStudent.fathername, SchStudent.fathercivilid, 
+                      SchStudent.busid, SchStudent.BUSPAY, dbo.forschstudentpay.AMT00, SchStudent.TTLADV, SchStudent.TTLDEP, SchStudent.TTLPAY, SchStudent.TTLOTH, 
+                      dbo.stdamtdet.Amount
+FROM         dbo.SchStudent AS SchStudent LEFT OUTER JOIN
+                      dbo.forschstudentpay ON SchStudent.StudentCode = dbo.forschstudentpay.StudentCode AND SchStudent.acdcode = dbo.forschstudentpay.acdcode LEFT OUTER JOIN
+                      dbo.stdamtdet ON SchStudent.branch = dbo.stdamtdet.branch AND SchStudent.MotherCode = dbo.stdamtdet.acdcode AND 
+                      SchStudent.EmergencyTelNo3 = dbo.stdamtdet.GradeCode LEFT OUTER JOIN
+                      dbo.schBranch AS Thebranch ON SchStudent.branch = Thebranch.branch LEFT OUTER JOIN
+                      dbo.glmulcmp AS Thebranchsgm ON Thebranch.sgm = Thebranchsgm.sgmid LEFT OUTER JOIN
+                      dbo.OpCo AS ThebranchsgmOpco ON Thebranchsgm.OpcoID = ThebranchsgmOpco.OpcoIDidentity LEFT OUTER JOIN
+                      dbo.PyGender AS ThebranchGender ON Thebranch.Genderid = ThebranchGender.Genderid LEFT OUTER JOIN
+                      dbo.schStage AS Thebranchstage ON Thebranch.stagecode = Thebranchstage.Code LEFT OUTER JOIN
+                      dbo.schtyp AS Thebranchschtyp ON Thebranch.schtypid = Thebranchschtyp.schtypid LEFT OUTER JOIN
+                      dbo.schFather AS Father ON SchStudent.FatherCode = Father.FatherCode LEFT OUTER JOIN
+                      dbo.PyStatus AS FatherMaritalStatus ON Father.MaritalStatus = FatherMaritalStatus.Status_Type LEFT OUTER JOIN
+                      dbo.schArea AS Fatherarea ON Father.area = Fatherarea.Code LEFT OUTER JOIN
+                      dbo.PYCntry AS FatherCntry_ ON Father.Cntry_No = FatherCntry_.Cntry_No LEFT OUTER JOIN
+                      dbo.PyReljan AS Fatherreligion ON Father.religion = Fatherreligion.reljan LEFT OUTER JOIN
+                      dbo.PyState AS FatherState ON Father.State = FatherState.State LEFT OUTER JOIN
+                      dbo.SchFatherjob AS Fatherjob_ ON Father.job_no = Fatherjob_.job_no LEFT OUTER JOIN
+                      dbo.schMother AS Mother ON SchStudent.MotherCode = Mother.MotherCode LEFT OUTER JOIN
+                      dbo.schArea AS Motherarea ON Mother.area = Motherarea.Code LEFT OUTER JOIN
+                      dbo.PYCntry AS MotherCntry_ ON Mother.Cntry_No = MotherCntry_.Cntry_No LEFT OUTER JOIN
+                      dbo.PyReljan AS Motherreligion ON Mother.religion = Motherreligion.reljan LEFT OUTER JOIN
+                      dbo.PyState AS MotherState ON Mother.State = MotherState.State LEFT OUTER JOIN
+                      dbo.SchMotherjob AS Motherjob_ ON Mother.job_no = Motherjob_.job_no LEFT OUTER JOIN
+                      dbo.PyReljan AS Religion ON SchStudent.Religion = Religion.reljan LEFT OUTER JOIN
+                      dbo.PYCntry AS Cntry_ ON SchStudent.Cntry_No = Cntry_.Cntry_No LEFT OUTER JOIN
+                      dbo.PyGender AS Gender ON SchStudent.Genderid = Gender.Genderid LEFT OUTER JOIN
+                      dbo.PyState AS state ON SchStudent.state = state.State LEFT OUTER JOIN
+                      dbo.schArea AS area ON SchStudent.area = area.Code LEFT OUTER JOIN
+                      dbo.schAcademicyear AS acd ON SchStudent.acdcode = acd.Code LEFT OUTER JOIN
+                      dbo.GlFinanceperiod AS acdGlFinperiod ON acd.GlFinperiodID = acdGlFinperiod.GlFinperiodID LEFT OUTER JOIN
+                      dbo.GLmstrfl AS acdGlFinperiodaccountnumber ON acdGlFinperiod.accountnumber = acdGlFinperiodaccountnumber.Acc_No LEFT OUTER JOIN
+                      dbo.schStage AS Stage ON SchStudent.Stage = Stage.Code LEFT OUTER JOIN
+                      dbo.schGrade AS Grade ON SchStudent.GradeCode = Grade.GradeCode LEFT OUTER JOIN
+                      dbo.schAcademicyear AS Gradeacd ON Grade.acdcode = Gradeacd.Code LEFT OUTER JOIN
+                      dbo.GlFinanceperiod AS GradeacdGlFinperiod ON Gradeacd.GlFinperiodID = GradeacdGlFinperiod.GlFinperiodID LEFT OUTER JOIN
+                      dbo.schStage AS GradeStage ON Grade.StageCode = GradeStage.Code LEFT OUTER JOIN
+                      dbo.schClassConfig AS Class ON SchStudent.Class = Class.classcode LEFT OUTER JOIN
+                      dbo.schstatus AS schstatus_ ON SchStudent.schstatus_code = schstatus_.schstatus_code LEFT OUTER JOIN
+                      dbo.schstudenttyp AS schstudenttyp ON SchStudent.schstudenttypid = schstudenttyp.schstudenttypid LEFT OUTER JOIN
+                      dbo.reg_other_schools AS Theid ON SchStudent.id = Theid.id LEFT OUTER JOIN
+                      dbo.schstespetialest AS schstspl ON SchStudent.schstsplid = schstspl.schstsplid LEFT OUTER JOIN
+                      dbo.Schclasskindlist AS Schclasskind ON SchStudent.Schclasskindid = Schclasskind.Schclasskindid LEFT OUTER JOIN
+                      dbo.schstclasskinddmg AS schstclasskinddmg ON SchStudent.schstclasskinddmgid = schstclasskinddmg.schstclasskinddmgid LEFT OUTER JOIN
+                      dbo.Schtransferlist AS Schtransfer ON SchStudent.Schtransferid = Schtransfer.Schtransferid LEFT OUTER JOIN
+                      dbo.Schstudentsefa AS studentsefa ON SchStudent.studentsefa = studentsefa.studentsefaid LEFT OUTER JOIN
+                      dbo.GLmstrfl AS studentsefadebitaccount ON studentsefa.debitaccount = studentsefadebitaccount.Acc_No LEFT OUTER JOIN
+                      dbo.GLmfbab AS studentsefadebitaccountClsacc_ ON studentsefadebitaccount.Clsacc_No = studentsefadebitaccountClsacc_.Acc_Bab LEFT OUTER JOIN
+                      dbo.GLmfband AS studentsefadebitaccountAcc_Bnd ON studentsefadebitaccount.Acc_Bnd = studentsefadebitaccountAcc_Bnd.Acc_Bnd LEFT OUTER JOIN
+                      dbo.schsthealthcase AS schsthlthcase ON SchStudent.schsthlthcaseid = schsthlthcase.schsthlthcaseid</SqlCommand>
+      </DataSource4>
+    </DataSources>
+    <Relations isList="true" count="2">
+      <Rschvchdlydetailpaymentid Ref="7" type="DataRelation" isKey="true">
+        <Alias>Rschvchdlydetailpaymentid</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>schvchdlyhdregid</value>
+        </ChildColumns>
+        <ChildSource isRef="5" />
+        <Dictionary isRef="1" />
+        <Name>Rschvchdlydetailpaymentid</Name>
+        <NameInSource>Relation2</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>schvchdlyhdregid</value>
+        </ParentColumns>
+        <ParentSource isRef="3" />
+      </Rschvchdlydetailpaymentid>
+      <Relation1xx Ref="8" type="DataRelation" isKey="true">
+        <Alias>Relation1xx</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>FatherCode</value>
+        </ChildColumns>
+        <ChildSource isRef="6" />
+        <Dictionary isRef="1" />
+        <Name>Relation1xx</Name>
+        <NameInSource>Relation1xx</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>DeleverTel</value>
+        </ParentColumns>
+        <ParentSource isRef="3" />
+      </Relation1xx>
+    </Relations>
+    <Report isRef="0" />
+    <Resources isList="true" count="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="9" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="20">
+        <PageHeaderBand1 Ref="10" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,20.48,4.82</ClientRectangle>
+          <Components isList="true" count="6">
+            <Text48 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.02,2.06,4.04,0.62</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,18,Bold</Font>
+              <Guid>3d9eb5846720d4c6abc9876aebe5411e</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text48</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{mosDataSource1.moneypaidto}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="12" type="CurrencyFormat" isKey="true">
+                <DecimalDigits>3</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>5</NegativePattern>
+                <PositivePattern>1</PositivePattern>
+                <Symbol />
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text48>
+            <Text19 Ref="13" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>8.44,0.6,4.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,20,Bold</Font>
+              <Guid>2ac63086d3db160aa80787bf3d70de2a</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource1.schvchdlyhdregid}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text19>
+            <Text14 Ref="14" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>13,2.4,6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,16,Bold</Font>
+              <Guid>f5f6a2e05bae2a6f346789352e8dbb65</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource1.Trs_Dt}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="15" type="DateFormat" isKey="true">
+                <StringFormat>dd/MM/yyyy</StringFormat>
+              </TextFormat>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text14>
+            <Text15 Ref="16" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3,3.2,4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,16,Bold</Font>
+              <Guid>e909510c07fd417e416d89352e8d4d3c</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{mosDataSource1.DeleverTel}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text15>
+            <Text10 Ref="17" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>13.2,4,4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,16,Bold</Font>
+              <Guid>79a637dcdc12d922e32489352e8df08c</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{mosDataSource1.Notes}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>DataColumn</Type>
+            </Text10>
+            <Text16 Ref="18" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>9.6,3.2,7.6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,16,Bold</Font>
+              <Guid>72985a5668035a535ca489352e8dc898</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="9" />
+              <Parent isRef="10" />
+              <Text>{mosDataSource1.Delevername}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text16>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageHeaderBand1</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+        </PageHeaderBand1>
+        <PageFooterBand1 Ref="19" type="PageFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,14.6,20.48,3.6</ClientRectangle>
+          <Components isList="true" count="10">
+            <Text30 Ref="20" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>17,2.8,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>ef0291a8d80dd531ec9d0e84c43f5d12</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text30</Name>
+              <Page isRef="9" />
+              <Parent isRef="19" />
+              <Text>{SumIf(DataBand3,mosDataSource2.Sumofdebitcal1,mosDataSource2.schpaymenttypeid=2)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="21" type="CurrencyFormat" isKey="true">
+                <DecimalDigits>3</DecimalDigits>
+                <GroupSeparator />
+                <NegativePattern>5</NegativePattern>
+                <PositivePattern>1</PositivePattern>
+                <Symbol />
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text30>
+            <Text3 Ref="22" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>14.6,2.8,2.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>f4fa0f6b91b5bd3efe3c0e84c43f20e3</Guid>
+              <HideZeros>True</HideZeros>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="9" />
+              <Parent isRef="19" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{SumIf(DataBand3,mosDataSource2.Sumofcerditcal,mosDataSource2.schpaymenttypeid=2)}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <TextFormat Ref="23" type="CurrencyFormat" isKey="true">
+                <DecimalDigits>3</DecimalDigits>
+                <GroupSeparator />
+                <NegativePattern>5</NegativePattern>
+                <PositivePattern>1</PositivePattern>
+                <Symbol />
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>Totals</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text3>
+            <Text2 Ref="24" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>11.4,2.8,2.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>85dac94bc7a7a42c10740e84c43f990c</Guid>
+              <HideZeros>True</HideZeros>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="9" />
+              <Parent isRef="19" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{SumIf(DataBand3,mosDataSource2.totalbalance1,mosDataSource2.schpaymenttypeid=2)}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <TextFormat Ref="25" type="CurrencyFormat" isKey="true">
+                <DecimalDigits>3</DecimalDigits>
+                <GroupSeparator />
+                <NegativePattern>5</NegativePattern>
+                <PositivePattern>1</PositivePattern>
+                <Symbol />
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>Totals</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text2>
+            <Text33 Ref="26" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>8.6,2.8,2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>b21ed8313c51c08b9a840e84c43fa59f</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text33</Name>
+              <Page isRef="9" />
+              <Parent isRef="19" />
+              <Text>{SumIf(DataBand3,mosDataSource2.Sumofdebitcal1,mosDataSource2.schpaymenttypeid=4)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="27" type="CurrencyFormat" isKey="true">
+                <DecimalDigits>3</DecimalDigits>
+                <GroupSeparator />
+                <NegativePattern>5</NegativePattern>
+                <PositivePattern>1</PositivePattern>
+                <Symbol />
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text33>
+            <Text32 Ref="28" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>6.2,2.8,2.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>45fe1538e8f2319f248f0e84c43fa33c</Guid>
+              <HideZeros>True</HideZeros>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text32</Name>
+              <Page isRef="9" />
+              <Parent isRef="19" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{SumIf(DataBand3,mosDataSource2.Sumofcerditcal,mosDataSource2.schpaymenttypeid=4)}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <TextFormat Ref="29" type="CurrencyFormat" isKey="true">
+                <DecimalDigits>3</DecimalDigits>
+                <GroupSeparator />
+                <NegativePattern>5</NegativePattern>
+                <PositivePattern>1</PositivePattern>
+                <Symbol />
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text32>
+            <Text5 Ref="30" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>4,2.8,2.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>1564b17439369ad4779c0e84c43fe927</Guid>
+              <HideZeros>True</HideZeros>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="9" />
+              <Parent isRef="19" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{SumIf(DataBand3,mosDataSource2.totalbalance1,mosDataSource2.schpaymenttypeid=4)}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <TextFormat Ref="31" type="CurrencyFormat" isKey="true">
+                <DecimalDigits>3</DecimalDigits>
+                <GroupSeparator />
+                <NegativePattern>5</NegativePattern>
+                <PositivePattern>1</PositivePattern>
+                <Symbol />
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text5>
+            <Text29 Ref="32" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>13.6,0.6,6.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>8a9e3dbce1edefd159b10ef5f62ac378</Guid>
+              <HideZeros>True</HideZeros>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text29</Name>
+              <Page isRef="9" />
+              <Parent isRef="19" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource1.Pymnt_Pymnt_Nm}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <TextFormat Ref="33" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>0</GroupSize>
+                <NegativePattern>0</NegativePattern>
+                <UseGroupSeparator>False</UseGroupSeparator>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text29>
+            <Text6 Ref="34" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>13.6,0,6.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>5a1dfe24c9718fa28a530ef5f62aab2f</Guid>
+              <HideZeros>True</HideZeros>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="9" />
+              <Parent isRef="19" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <TextBrush>[0:0:0]</TextBrush>
+              <TextFormat Ref="35" type="NumberFormat" isKey="true">
+                <DecimalDigits>3</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>0</GroupSize>
+                <NegativePattern>0</NegativePattern>
+                <UseGroupSeparator>False</UseGroupSeparator>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text6>
+            <Text12 Ref="36" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>8.2,0.6,4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>ad052eb3a60fc41714ab0ef5f62aed60</Guid>
+              <HideZeros>True</HideZeros>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="9" />
+              <Parent isRef="19" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource1.schBnk_schBnk_Nm}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <TextFormat Ref="37" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>0</GroupSize>
+                <NegativePattern>0</NegativePattern>
+                <UseGroupSeparator>False</UseGroupSeparator>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text12>
+            <Text17 Ref="38" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>2.4,0.6,3,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>3e6405b9f2d1907ef1b00ef5f62a1b6c</Guid>
+              <HideZeros>True</HideZeros>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="9" />
+              <Parent isRef="19" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource1.checknumber}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <TextFormat Ref="39" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <GroupSize>0</GroupSize>
+                <NegativePattern>0</NegativePattern>
+                <UseGroupSeparator>False</UseGroupSeparator>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text17>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageFooterBand1</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+        </PageFooterBand1>
+        <Text25 Ref="40" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>21.84,0.51,2.54,0.76</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,8</Font>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text25</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Text>Parameter1</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text25>
+        <Text24 Ref="41" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>21.84,2.29,2.54,0.76</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,8</Font>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text24</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Text>{mosDataSource1.Parameters("Parameter1").ParameterValue}</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>DataColumn</Type>
+          <VertAlignment>Center</VertAlignment>
+        </Text24>
+        <Text65 Ref="42" type="Text" isKey="true">
+          <Border>None;[138:138:138];1;Solid;True;4;Black</Border>
+          <Brush>[255:255:255]</Brush>
+          <ClientRectangle>21.34,20.83,3.56,0.51</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,10,Bold</Font>
+          <Guid>abab6a2196c986e42d45651c026c94ea</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text65</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Text>سند القبض</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text65>
+        <Text39 Ref="43" type="Text" isKey="true">
+          <Border>None;Black;1;Solid;True;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>30.48,21.84,2.29,0.51</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,10</Font>
+          <Guid>5fe771334a99b782a002651c026c8d27</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text39</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Text>رقم الايصال</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text39>
+        <Text52 Ref="44" type="Text" isKey="true">
+          <Border>None;Black;1;Solid;True;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>30.48,22.61,2.29,0.51</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,10</Font>
+          <Guid>1d70be768587e59063b9651c026d5d52</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text52</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Text>رقم الحساب</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text52>
+        <Text53 Ref="45" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>30.48,26.42,2.03,0.51</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,10,Bold</Font>
+          <Guid>4b4aa38574b31c68ce6b651c026d1bd5</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text53</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Text>نوع الرسوم</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text53>
+        <Text54 Ref="46" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>30.23,23.37,2.29,0.51</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <Guid>c7240d1daaddc62433be651c026ddad6</Guid>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text54</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Text>وصلنا من السيد</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text54>
+        <Text55 Ref="47" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>29.72,23.37,0.51,0.51</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,10,Bold</Font>
+          <Guid>0ec5e99e1ceae79f9ecb651c026d5e15</Guid>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text55</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Text>/</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text55>
+        <Text57 Ref="48" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>29.72,25.15,2.79,0.51</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <Guid>45f2f5a4d718998fc641651c026d2fbe</Guid>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text57</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Text>المبلغ الرقوم اعلاه</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text57>
+        <Text58 Ref="49" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>27.18,25.15,2.29,0.51</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <Guid>ce64920643283707f97f651c026d3414</Guid>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text58</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Text>بشيك رقم</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text58>
+        <Text59 Ref="50" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>22.86,25.15,0.76,0.51</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <Guid>ae16f7f472194d34598c651c026da6cb</Guid>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text59</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Text>بنك</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text59>
+        <Text61 Ref="51" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>29.72,24.13,2.79,0.51</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <Guid>4e86a13b294209301e50651c026d22eb</Guid>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text61</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Text>عن التلميذ</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text61>
+        <Text62 Ref="52" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>25.15,23.88,1.02,0.51</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <Guid>df4a85340ae6fc453c8e651c026da209</Guid>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text62</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Text>الصف</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text62>
+        <Text63 Ref="53" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>21.08,23.88,1.02,0.51</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,12,Bold</Font>
+          <Guid>55da9e87f0fbbfaad8ac651c026dcdec</Guid>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text63</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Text>الشعبة</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text63>
+        <DataBand2 Ref="54" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,6.02,20.48,0.6</ClientRectangle>
+          <Components isList="true" count="7">
+            <Text18 Ref="55" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>18.03,-0.02,1.78,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>5524fed8e84c894811fe87de4ff79817</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="9" />
+              <Parent isRef="54" />
+              <Text>تسلسل</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text18>
+            <Text20 Ref="56" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>14.99,-0.02,2.79,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>c7ce252f4708987a4a6a87df2dc50d18</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="9" />
+              <Parent isRef="54" />
+              <Text>اسم الطالب</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text20>
+            <Text21 Ref="57" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>11.94,-0.02,2.79,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>75cb5cfd1d7c17ae7a4e87df99ae4e97</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="9" />
+              <Parent isRef="54" />
+              <Text>الصف</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text21>
+            <Text22 Ref="58" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>9.14,-0.02,2.54,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>bb2f45367b0e8ef6a6e187dfe6473069</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="9" />
+              <Parent isRef="54" />
+              <Text>شعبة</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text22>
+            <Text23 Ref="59" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.1,-0.02,2.79,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>113b0b08d769d16ad77387e02004f116</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="9" />
+              <Parent isRef="54" />
+              <Text>الرسوم</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text23>
+            <Text27 Ref="60" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.05,-0.02,2.79,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>49cd7bdb9b5c04c477b187e0f0c26040</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="9" />
+              <Parent isRef="54" />
+              <Text>الباص</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text27>
+            <Text26 Ref="61" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.25,-0.02,2.54,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>e18e41c5649d87835c6b87ea0b059bbb</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="9" />
+              <Parent isRef="54" />
+              <Text>الرسوم</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text26>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataSourceName>mosDataSource1</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand2</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand2>
+        <DataBand4 Ref="62" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,7.42,20.48,0.61</ClientRectangle>
+          <Components isList="true" count="7">
+            <Text13 Ref="63" type="Text" isKey="true">
+              <Border>None;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>18,0,1.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>38d0eec9aa856e16a17c892fa09deef6</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="9" />
+              <Parent isRef="62" />
+              <Text>{Line}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>SystemVariables</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text13>
+            <Text1 Ref="64" type="Text" isKey="true">
+              <Border>None;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>15,0,2.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>a6ec703be04f88ee46f2892fa09d3e75</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="9" />
+              <Parent isRef="62" />
+              <Text>{DataSource4.FirstName1}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+            <Text4 Ref="65" type="Text" isKey="true">
+              <Border>None;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>12,0,2.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>e4d1a71cbab5834b753a892fa09de21d</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="9" />
+              <Parent isRef="62" />
+              <Text>{DataSource4.GradeShortDesc1}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text4>
+            <Text7 Ref="66" type="Text" isKey="true">
+              <Border>None;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>9.2,0,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>48f84274002b75886fed892fa09d058c</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="9" />
+              <Parent isRef="62" />
+              <Text>{DataSource4.ClassClassDesc1}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text7>
+            <Text8 Ref="67" type="Text" isKey="true">
+              <Border>None;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,0,2.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>726884f32e53994e6038892fa09d669b</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="9" />
+              <Parent isRef="62" />
+              <Text>{DataSource4.AMT00}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text8>
+            <Text9 Ref="68" type="Text" isKey="true">
+              <Border>None;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3,0,2.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>99feb184fd2345cdb075892fa09d792c</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="9" />
+              <Parent isRef="62" />
+              <Text>{DataSource4.busid}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text9>
+            <Text11 Ref="69" type="Text" isKey="true">
+              <Border>None;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>6bcd05c3c91d8ddb0ced892fa09d2ad0</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="9" />
+              <Parent isRef="62" />
+              <Text>{DataSource4.BUSPAY}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text11>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName>Relation1xx</DataRelationName>
+          <DataSourceName>DataSource4</DataSourceName>
+          <Filters isList="true" count="1">
+            <value>FatherCode,EqualTo,,,Numeric</value>
+          </Filters>
+          <MasterComponent isRef="54" />
+          <Name>DataBand4</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand4>
+        <DataBand5 Ref="70" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,8.83,20.48,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <DataSourceName>mosDataSource1</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Guid>1d9c09b3ad7c24ecf56b0ef51a72475d</Guid>
+          <MinRowsInColumn>3</MinRowsInColumn>
+          <Name>DataBand5</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand5>
+        <DataBand3 Ref="71" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,9.63,20.48,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <DataSourceName>mosDataSource2</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand3</Name>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Sort isList="true" count="0" />
+        </DataBand3>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>8038ee44c7ab4799b130ae92f225461c</Guid>
+      <LargeHeightFactor>1</LargeHeightFactor>
+      <Margins>0.508,0.508,1.5,0.5</Margins>
+      <Name>Page1</Name>
+      <PageHeight>15</PageHeight>
+      <PageWidth>21.5</PageWidth>
+      <Report isRef="0" />
+      <StretchToPrintArea>True</StretchToPrintArea>
+      <Watermark Ref="72" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="73" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true">
+    <Copies>2</Copies>
+  </PrinterSettings>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>schvchdlyhdreg1001</ReportAlias>
+  <ReportChanged>9/20/2016 12:39:27 PM</ReportChanged>
+  <ReportCreated>8/18/2013 8:22:02 AM</ReportCreated>
+  <ReportFile />
+  <ReportGuid>7e05abbbe4894981b3f1d206231d545a</ReportGuid>
+  <ReportImage isNull="true" />
+  <ReportName>schvchdlyhdreg1001</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2016.3.0</ReportVersion>
+  <Script>Imports System
+Imports System.Drawing
+Imports System.Windows.Forms
+Imports System.Data
+Imports Stimulsoft.Controls
+Imports Stimulsoft.Base.Drawing
+Imports Stimulsoft.Report
+Imports Stimulsoft.Report.Dialogs
+Imports Stimulsoft.Report.Components
+
+Namespace Reports
+    
+    Public Class Report
+        Inherits Stimulsoft.Report.StiReport
+        
+        Public Sub New()
+            MyBase.New
+            Me.InitializeComponent
+        End Sub
+        #Region "StiReport Designer generated code - do not modify"
+		#End Region 'StiReport Designer generated code - do not modify
+    End Class
+End Namespace</Script>
+  <ScriptLanguage>VB</ScriptLanguage>
+  <Styles isList="true" count="34">
+    <Collection_Report_Title1 Ref="74" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <Border>None;[0:0:35];1;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item60 Ref="75" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>ReportTitle</Placement>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item60>
+      </Conditions>
+      <Font>Arial,14,Bold</Font>
+      <Name>Collection_Report_Title1</Name>
+      <TextBrush>[69:98:135]</TextBrush>
+    </Collection_Report_Title1>
+    <Collection_Report_Title2 Ref="76" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <Border>None;[0:0:35];1;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item62 Ref="77" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <OperationPlacementNestedLevel>GreaterThanOrEqualTo</OperationPlacementNestedLevel>
+          <Placement>ReportTitle</Placement>
+          <PlacementNestedLevel>2</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item62>
+      </Conditions>
+      <Font>Arial,10,Bold</Font>
+      <Name>Collection_Report_Title2</Name>
+      <TextBrush>[69:98:135]</TextBrush>
+    </Collection_Report_Title2>
+    <Collection_Report_Summary1 Ref="78" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <Border>None;[0:0:35];1;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item64 Ref="79" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>ReportSummary</Placement>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item64>
+      </Conditions>
+      <Font>Arial,12,Bold</Font>
+      <Name>Collection_Report_Summary1</Name>
+      <TextBrush>[69:98:135]</TextBrush>
+    </Collection_Report_Summary1>
+    <Collection_Report_Summary2 Ref="80" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <Border>None;[0:0:35];1;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item66 Ref="81" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <OperationPlacementNestedLevel>GreaterThanOrEqualTo</OperationPlacementNestedLevel>
+          <Placement>ReportSummary</Placement>
+          <PlacementNestedLevel>2</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item66>
+      </Conditions>
+      <Font>Arial,10,Bold</Font>
+      <Name>Collection_Report_Summary2</Name>
+      <TextBrush>[69:98:135]</TextBrush>
+    </Collection_Report_Summary2>
+    <Collection_Page_Header Ref="82" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <Border>None;[0:0:35];1;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item68 Ref="83" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>PageHeader</Placement>
+          <Type>ComponentType, Placement</Type>
+        </Item68>
+      </Conditions>
+      <Font>Arial,10</Font>
+      <Name>Collection_Page_Header</Name>
+      <TextBrush>[69:98:135]</TextBrush>
+    </Collection_Page_Header>
+    <Collection_Page_Footer Ref="84" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <Border>None;[0:0:35];1;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item70 Ref="85" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>PageFooter</Placement>
+          <Type>ComponentType, Placement</Type>
+        </Item70>
+      </Conditions>
+      <Font>Arial,10</Font>
+      <Name>Collection_Page_Footer</Name>
+      <TextBrush>[69:98:135]</TextBrush>
+    </Collection_Page_Footer>
+    <Collection_Group_Header1 Ref="86" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item72 Ref="87" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>GroupHeader</Placement>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item72>
+      </Conditions>
+      <Font>Arial,13,Bold</Font>
+      <Name>Collection_Group_Header1</Name>
+      <TextBrush>[69:98:135]</TextBrush>
+    </Collection_Group_Header1>
+    <Collection_Group_Header2 Ref="88" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item74 Ref="89" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>GroupHeader</Placement>
+          <PlacementNestedLevel>2</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item74>
+      </Conditions>
+      <Font>Arial,12,Bold</Font>
+      <Name>Collection_Group_Header2</Name>
+      <TextBrush>[69:98:135]</TextBrush>
+    </Collection_Group_Header2>
+    <Collection_Group_Header3 Ref="90" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item76 Ref="91" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>GroupHeader</Placement>
+          <PlacementNestedLevel>3</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item76>
+      </Conditions>
+      <Font>Arial,11,Bold</Font>
+      <Name>Collection_Group_Header3</Name>
+      <TextBrush>[69:98:135]</TextBrush>
+    </Collection_Group_Header3>
+    <Collection_Group_Header4 Ref="92" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item78 Ref="93" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <OperationPlacementNestedLevel>GreaterThanOrEqualTo</OperationPlacementNestedLevel>
+          <Placement>GroupHeader</Placement>
+          <PlacementNestedLevel>4</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item78>
+      </Conditions>
+      <Font>Arial,10,Bold</Font>
+      <Name>Collection_Group_Header4</Name>
+      <TextBrush>[69:98:135]</TextBrush>
+    </Collection_Group_Header4>
+    <Collection_Group_Footer1 Ref="94" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item80 Ref="95" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>GroupFooter</Placement>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item80>
+      </Conditions>
+      <Font>Arial,13,Bold</Font>
+      <Name>Collection_Group_Footer1</Name>
+      <TextBrush>[69:98:135]</TextBrush>
+    </Collection_Group_Footer1>
+    <Collection_Group_Footer2 Ref="96" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item82 Ref="97" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>GroupFooter</Placement>
+          <PlacementNestedLevel>2</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item82>
+      </Conditions>
+      <Font>Arial,12,Bold</Font>
+      <Name>Collection_Group_Footer2</Name>
+      <TextBrush>[69:98:135]</TextBrush>
+    </Collection_Group_Footer2>
+    <Collection_Group_Footer3 Ref="98" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item84 Ref="99" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>GroupFooter</Placement>
+          <PlacementNestedLevel>3</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item84>
+      </Conditions>
+      <Font>Arial,11,Bold</Font>
+      <Name>Collection_Group_Footer3</Name>
+      <TextBrush>[69:98:135]</TextBrush>
+    </Collection_Group_Footer3>
+    <Collection_Group_Footer4 Ref="100" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item86 Ref="101" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>GroupFooter</Placement>
+          <PlacementNestedLevel>4</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item86>
+      </Conditions>
+      <Font>Arial,10,Bold</Font>
+      <Name>Collection_Group_Footer4</Name>
+      <TextBrush>[69:98:135]</TextBrush>
+    </Collection_Group_Footer4>
+    <Collection_Header1 Ref="102" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[69:98:135]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item88 Ref="103" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>Header</Placement>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item88>
+      </Conditions>
+      <Font>Arial,8,Bold</Font>
+      <Name>Collection_Header1</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Header1>
+    <Collection_Header2 Ref="104" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[94:123:160]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item90 Ref="105" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>Header</Placement>
+          <PlacementNestedLevel>2</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item90>
+      </Conditions>
+      <Font>Arial,8,Bold</Font>
+      <Name>Collection_Header2</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Header2>
+    <Collection_Header3 Ref="106" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[119:148:185]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item92 Ref="107" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>Header</Placement>
+          <PlacementNestedLevel>3</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item92>
+      </Conditions>
+      <Font>Arial,8,Bold</Font>
+      <Name>Collection_Header3</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Header3>
+    <Collection_Header4 Ref="108" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[144:173:210]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item94 Ref="109" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <OperationPlacementNestedLevel>GreaterThanOrEqualTo</OperationPlacementNestedLevel>
+          <Placement>Header</Placement>
+          <PlacementNestedLevel>4</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item94>
+      </Conditions>
+      <Font>Arial,8,Bold</Font>
+      <Name>Collection_Header4</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Header4>
+    <Collection_Data1 Ref="110" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item96 Ref="111" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>Data</Placement>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item96>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Data1</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Data1>
+    <Collection_Data1_Odd_x0020_Style Ref="112" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[219:248:255]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item98 Ref="113" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <Placement>DataOddStyle</Placement>
+          <Type>Placement, PlacementNestedLevel</Type>
+        </Item98>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Data1_Odd Style</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Data1_Odd_x0020_Style>
+    <Collection_Data1_Even_x0020_Style Ref="114" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[144:173:210]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item100 Ref="115" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <Placement>DataEvenStyle</Placement>
+          <Type>Placement, PlacementNestedLevel</Type>
+        </Item100>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Data1_Even Style</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Data1_Even_x0020_Style>
+    <Collection_Data2 Ref="116" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item102 Ref="117" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>Data</Placement>
+          <PlacementNestedLevel>2</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item102>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Data2</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Data2>
+    <Collection_Data2_Odd_x0020_Style Ref="118" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[234:255:255]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item104 Ref="119" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <Placement>DataOddStyle</Placement>
+          <PlacementNestedLevel>2</PlacementNestedLevel>
+          <Type>Placement, PlacementNestedLevel</Type>
+        </Item104>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Data2_Odd Style</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Data2_Odd_x0020_Style>
+    <Collection_Data2_Even_x0020_Style Ref="120" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[151:180:217]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item106 Ref="121" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <Placement>DataEvenStyle</Placement>
+          <PlacementNestedLevel>2</PlacementNestedLevel>
+          <Type>Placement, PlacementNestedLevel</Type>
+        </Item106>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Data2_Even Style</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Data2_Even_x0020_Style>
+    <Collection_Data3 Ref="122" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item108 Ref="123" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>Data</Placement>
+          <PlacementNestedLevel>3</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item108>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Data3</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Data3>
+    <Collection_Data3_Odd_x0020_Style Ref="124" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[249:255:255]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item110 Ref="125" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <Placement>DataOddStyle</Placement>
+          <PlacementNestedLevel>3</PlacementNestedLevel>
+          <Type>Placement, PlacementNestedLevel</Type>
+        </Item110>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Data3_Odd Style</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Data3_Odd_x0020_Style>
+    <Collection_Data3_Even_x0020_Style Ref="126" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[159:188:225]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item112 Ref="127" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <Placement>DataEvenStyle</Placement>
+          <PlacementNestedLevel>3</PlacementNestedLevel>
+          <Type>Placement, PlacementNestedLevel</Type>
+        </Item112>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Data3_Even Style</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Data3_Even_x0020_Style>
+    <Collection_Data4 Ref="128" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>Transparent</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item114 Ref="129" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <OperationPlacementNestedLevel>GreaterThanOrEqualTo</OperationPlacementNestedLevel>
+          <Placement>Data</Placement>
+          <PlacementNestedLevel>4</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item114>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Data4</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Data4>
+    <Collection_Data4_Odd_x0020_Style Ref="130" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[255:255:255]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item116 Ref="131" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <OperationPlacementNestedLevel>GreaterThanOrEqualTo</OperationPlacementNestedLevel>
+          <Placement>DataOddStyle</Placement>
+          <PlacementNestedLevel>4</PlacementNestedLevel>
+          <Type>Placement, PlacementNestedLevel</Type>
+        </Item116>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Data4_Odd Style</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Data4_Odd_x0020_Style>
+    <Collection_Data4_Even_x0020_Style Ref="132" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[166:195:232]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item118 Ref="133" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <OperationPlacementNestedLevel>GreaterThanOrEqualTo</OperationPlacementNestedLevel>
+          <Placement>DataEvenStyle</Placement>
+          <PlacementNestedLevel>4</PlacementNestedLevel>
+          <Type>Placement, PlacementNestedLevel</Type>
+        </Item118>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Data4_Even Style</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Data4_Even_x0020_Style>
+    <Collection_Footer1 Ref="134" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[89:118:155]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item120 Ref="135" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>Footer</Placement>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item120>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Footer1</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Footer1>
+    <Collection_Footer2 Ref="136" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[114:143:180]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item122 Ref="137" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>Footer</Placement>
+          <PlacementNestedLevel>2</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item122>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Footer2</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Footer2>
+    <Collection_Footer3 Ref="138" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[139:168:205]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item124 Ref="139" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>Footer</Placement>
+          <PlacementNestedLevel>3</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item124>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Footer3</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Footer3>
+    <Collection_Footer4 Ref="140" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <AllowUseBorderSidesFromLocation>True</AllowUseBorderSidesFromLocation>
+      <Border>None;[0:0:35];1;Solid;False;4;Black;True</Border>
+      <Brush>[164:193:230]</Brush>
+      <CollectionName>Collection</CollectionName>
+      <Conditions isList="true" count="1">
+        <Item126 Ref="141" type="Stimulsoft.Report.StiStyleCondition" isKey="true">
+          <ComponentType>Text, Primitive, Image</ComponentType>
+          <Placement>Footer</Placement>
+          <PlacementNestedLevel>4</PlacementNestedLevel>
+          <Type>ComponentType, Placement, PlacementNestedLevel</Type>
+        </Item126>
+      </Conditions>
+      <Font>Arial,8</Font>
+      <Name>Collection_Footer4</Name>
+      <TextBrush>[0:0:0]</TextBrush>
+    </Collection_Footer4>
+  </Styles>
+</StiSerializer>

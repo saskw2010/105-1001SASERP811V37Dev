@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="vwaspnetRoles" conflictDetection="overwriteChanges" label="vwaspnet Roles" connectionStringName="LocalSqlServer" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text"  tableName="aspnet_Roles" custom="true">
+      <text><![CDATA[
+select
+	"vwaspnetRoles"."ApplicationId" "ApplicationId"
+	,"vwaspnetRoles"."RoleId" "RoleId"
+	,"vwaspnetRoles"."RoleName" "RoleName"
+	,"vwaspnetRoles"."LoweredRoleName" "LoweredRoleName"
+	,"vwaspnetRoles"."Category" "Category"
+,"vwaspnetRoles"."Category1" "Category1"
+,"vwaspnetRoles"."mainCategory" "mainCategory"
+,"vwaspnetRoles"."mainCategory1" "mainCategory1"
+,"vwaspnetRoles"."Description" "Description"
+
+
+from "dbo"."vwaspnetRoles" "vwaspnetRoles"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="ApplicationId" type="Guid" allowNulls="false" label="Application#" showInSummary="true" />
+    <field name="RoleId" type="Guid" allowNulls="false" label="Role#" isPrimaryKey="true" showInSummary="true" />
+    <field name="RoleName" type="String" allowNulls="false"  label="Role Name" length="256" showInSummary="true" />
+    <field name="LoweredRoleName" type="String" allowNulls="false"  label="Lowered Role Name" length="256" showInSummary="true" />
+    <field name="Description" type="String" label="Description" length="256" showInSummary="true" />
+ <field name="Category1" type="String" label="Category1" length="256" showInSummary="true" />
+ <field name="Category" type="String" label="Category" length="256" showInSummary="true" />
+ <field name="mainCategory1" type="String" label="mainCategory1" length="256" showInSummary="true" />
+ <field name="mainCategory" type="String" label="mainCategory" length="256" showInSummary="true" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="vwaspnet Roles">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+	   <dataField fieldName="ApplicationId" />
+       <dataField fieldName="RoleName" />
+        <dataField fieldName="LoweredRoleName" />
+        <dataField fieldName="Description" />
+<dataField fieldName="Category1" />
+<dataField fieldName="Category" />
+<dataField fieldName="mainCategory1" />
+<dataField fieldName="mainCategory" />
+
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review vwaspnet Roles">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="vwaspnet Roles" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="RoleName" />
+            <dataField fieldName="LoweredRoleName" />
+            <dataField fieldName="Description" />
+			
+<dataField fieldName="Category1" />
+<dataField fieldName="Category" />
+<dataField fieldName="mainCategory1" />
+<dataField fieldName="mainCategory" />
+
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New vwaspnet Roles">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New vwaspnet Roles" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+           
+		    <dataField fieldName="ApplicationId" />
+            <dataField fieldName="RoleName" />
+            <dataField fieldName="LoweredRoleName" />
+            <dataField fieldName="Description" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      
+      <action id="a6" />
+     
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+     
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+     
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+	   <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+     
+    </actionGroup>
+  </actions>
+</dataController>

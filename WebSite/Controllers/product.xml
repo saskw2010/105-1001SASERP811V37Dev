@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="product" conflictDetection="overwriteChanges" label="Product" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"product"."product_id" "product_id"
+	,"product"."category_id" "category_id"
+	,"product"."product_name" "product_name"
+	,"product"."product_desc" "product_desc"
+	,"product"."product_specification" "product_specification"
+	,"product"."product_price_KD" "product_price_KD"
+	,"product"."product_photo" "product_photo"
+	,"product"."product_homepage" "product_homepage"
+	,"product"."product_offer" "product_offer"
+	,"product"."avlq" "avlq"
+from "dbo"."product" "product"
+]]></text>
+    </command>
+    <command id="product_idIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="product_id" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="product_id" type="Int32" allowNulls="false" isPrimaryKey="true" label="Product#" readOnly="true" />
+    <field name="category_id" type="Int32" allowNulls="false" label="Category#" showInSummary="true" />
+    <field name="product_name" type="String" label="Product Name" length="50" showInSummary="true" />
+    <field name="product_desc" type="String" allowQBE="false" allowSorting="false" label="Product Desc" length="-1" showInSummary="true" />
+    <field name="product_specification" type="String" allowQBE="false" allowSorting="false" label="Product Specification" length="-1" showInSummary="true" />
+    <field name="product_price_KD" type="Decimal" label="product price KD" showInSummary="true" />
+    <field name="product_photo" type="String" label="Product Photo" length="50" />
+    <field name="product_homepage" type="Byte" label="Product Homepage" />
+    <field name="product_offer" type="Byte" label="Product Offer" />
+    <field name="avlq" type="Double" label="Avlq" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Product">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="category_id" columns="15" />
+        <dataField fieldName="product_name" columns="50" />
+        <dataField fieldName="product_desc" rows="5" />
+        <dataField fieldName="product_specification" rows="5" />
+        <dataField fieldName="product_price_KD" columns="15" />
+        <dataField fieldName="product_photo" columns="50" />
+        <dataField fieldName="product_homepage" columns="15" />
+        <dataField fieldName="product_offer" columns="15" />
+        <dataField fieldName="avlq" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Product">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Product" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="category_id" columns="15" />
+            <dataField fieldName="product_name" columns="50" />
+            <dataField fieldName="product_desc" rows="5" />
+            <dataField fieldName="product_specification" rows="5" />
+            <dataField fieldName="product_price_KD" columns="15" />
+            <dataField fieldName="product_photo" columns="50" />
+            <dataField fieldName="product_homepage" columns="15" />
+            <dataField fieldName="product_offer" columns="15" />
+            <dataField fieldName="avlq" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Product">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Product" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="category_id" columns="15" />
+            <dataField fieldName="product_name" columns="50" />
+            <dataField fieldName="product_desc" rows="5" />
+            <dataField fieldName="product_specification" rows="5" />
+            <dataField fieldName="product_price_KD" columns="15" />
+            <dataField fieldName="product_photo" columns="50" />
+            <dataField fieldName="product_homepage" columns="15" />
+            <dataField fieldName="product_offer" columns="15" />
+            <dataField fieldName="avlq" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

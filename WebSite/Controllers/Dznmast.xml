@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Dznmast" conflictDetection="overwriteChanges" label="Dznmast" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Dznmast"."countrd" "countrd"
+	,"Dznmast"."countrdus" "countrdus"
+	,"Dznmast"."Brn_No" "Brn_No"
+	,"Brn_"."Brn_Nm" "Brn_Brn_Nm"
+	,"Brn_Branch"."Desc1" "Brn_BranchDesc1"
+	,"Brn_Branchsgm"."sgm_Nm" "Brn_Branchsgmsgm_Nm"
+	,"Brn_BranchGender"."Gender" "Brn_BranchGenderGender"
+	,"Brn_Branchstage"."ShortDesc1" "Brn_BranchstageShortDesc1"
+	,"Brn_Branchschtyp"."schtypDesc" "Brn_BranchschtypschtypDesc"
+	,"Dznmast"."ID_USERM" "ID_USERM"
+	,"Dznmast"."subject" "subject"
+	,"Dznmast"."azndate" "azndate"
+	,"Dznmast"."aznegmaly" "aznegmaly"
+	,"Dznmast"."Tarhel" "Tarhel"
+	,"Dznmast"."sgm" "sgm"
+	,"sgm"."sgm_Nm" "sgmsgm_Nm"
+	,"sgmOpco"."OpcoName" "sgmOpcoOpcoName"
+	,"Dznmast"."ModifiedBy" "ModifiedBy"
+	,"Dznmast"."ModifiedOn" "ModifiedOn"
+	,"Dznmast"."CreatedBy" "CreatedBy"
+	,"Dznmast"."CreatedOn" "CreatedOn"
+	,"Dznmast"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"Thebranchsgm"."sgm_Nm" "Thebranchsgmsgm_Nm"
+	,"ThebranchsgmOpco"."OpcoName" "ThebranchsgmOpcoOpcoName"
+	,"ThebranchGender"."Gender" "ThebranchGenderGender"
+	,"Thebranchstage"."ShortDesc1" "ThebranchstageShortDesc1"
+	,"Thebranchschtyp"."schtypDesc" "ThebranchschtypschtypDesc"
+	,"Dznmast"."ID_comp" "ID_comp"
+	,"TheID_comp"."ID_USER" "TheID_compID_USER"
+	,"TheID_compIDGROUP"."ID_USER" "TheID_compIDGROUPID_USER"
+	,"TheID_compSup_"."Item_name" "TheID_compSup_Item_name"
+	,"TheID_compid1"."DESCRP1" "TheID_compid1DESCRP1"
+	,"TheID_compid2"."DESCRP1" "TheID_compid2DESCRP1"
+	,"TheID_compid3"."DESCRP1" "TheID_compid3DESCRP1"
+	,"TheID_compid4"."DESCRP1" "TheID_compid4DESCRP1"
+	,"TheID_compid5"."DESCRP1" "TheID_compid5DESCRP1"
+	,"TheID_compid6"."DESCRP1" "TheID_compid6DESCRP1"
+	,"TheID_compid7"."DESCRP1" "TheID_compid7DESCRP1"
+
+
+	,"Dznmast"."Unit_No" "Unit_No"
+	,"Unit_"."Unit_Nm" "Unit_Unit_Nm"	
+	,"Dznmast"."Quantity" "Quantity"
+	,"Dznmast"."Itm_Cost" "Itm_Cost"	
+	,"Dznmast"."Itemprice" "Itemprice"	
+from "dbo"."Dznmast" "Dznmast"
+	left join "dbo"."Branchcnst" "Brn_" on "Dznmast"."Brn_No" = "Brn_"."Brn_No"
+	left join "dbo"."schBranch" "Brn_Branch" on "Brn_"."Branch" = "Brn_Branch"."branch"
+	left join "dbo"."glmulcmp" "Brn_Branchsgm" on "Brn_Branch"."sgm" = "Brn_Branchsgm"."sgmid"
+	left join "dbo"."PyGender" "Brn_BranchGender" on "Brn_Branch"."Genderid" = "Brn_BranchGender"."Genderid"
+	left join "dbo"."schStage" "Brn_Branchstage" on "Brn_Branch"."stagecode" = "Brn_Branchstage"."Code"
+	left join "dbo"."schtyp" "Brn_Branchschtyp" on "Brn_Branch"."schtypid" = "Brn_Branchschtyp"."schtypid"
+	left join "dbo"."glmulcmp" "sgm" on "Dznmast"."sgm" = "sgm"."sgmid"
+	left join "dbo"."OpCo" "sgmOpco" on "sgm"."OpcoID" = "sgmOpco"."OpcoIDidentity"
+	left join "dbo"."schBranch" "Thebranch" on "Dznmast"."branch" = "Thebranch"."branch"
+	left join "dbo"."glmulcmp" "Thebranchsgm" on "Thebranch"."sgm" = "Thebranchsgm"."sgmid"
+	left join "dbo"."OpCo" "ThebranchsgmOpco" on "Thebranchsgm"."OpcoID" = "ThebranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "ThebranchGender" on "Thebranch"."Genderid" = "ThebranchGender"."Genderid"
+	left join "dbo"."schStage" "Thebranchstage" on "Thebranch"."stagecode" = "Thebranchstage"."Code"
+	left join "dbo"."schtyp" "Thebranchschtyp" on "Thebranch"."schtypid" = "Thebranchschtyp"."schtypid"
+	left join "dbo"."ITEMS" "TheID_comp" on "Dznmast"."ID_comp" = "TheID_comp"."ID_comp"
+	left join "dbo"."GROUPStk" "TheID_compIDGROUP" on "TheID_comp"."IDGROUP" = "TheID_compIDGROUP"."IDGROUP"
+	left join "dbo"."ItemList" "TheID_compSup_" on "TheID_comp"."Sup_No" = "TheID_compSup_"."ItemNo"
+	left join "dbo"."PYHldtypsv1" "TheID_compid1" on "TheID_comp"."id1" = "TheID_compid1"."ID1"
+	left join "dbo"."PYHldtypsv2" "TheID_compid2" on "TheID_comp"."id2" = "TheID_compid2"."ID2"
+	left join "dbo"."PYHldtypsv3" "TheID_compid3" on "TheID_comp"."id3" = "TheID_compid3"."id3"
+	left join "dbo"."PYHldtypsv4" "TheID_compid4" on "TheID_comp"."id4" = "TheID_compid4"."id4"
+	left join "dbo"."PYHldtypsv5" "TheID_compid5" on "TheID_comp"."id5" = "TheID_compid5"."id5"
+	left join "dbo"."PYHldtypsv6" "TheID_compid6" on "TheID_comp"."id6" = "TheID_compid6"."id6"
+	left join "dbo"."PYHldtypsv7" "TheID_compid7" on "TheID_comp"."id7" = "TheID_compid7"."id7"
+	left join "dbo"."Stunit" "Unit_" on "Dznmast"."Unit_No" = "Unit_"."Unit_No"	
+]]></text>
+    </command>
+    <command id="countrdIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="countrd" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="countrd" type="Int64" allowNulls="false" isPrimaryKey="true" label="Countrd" readOnly="true" />
+    <field name="countrdus" type="String" allowNulls="false" label="Countrdus" length="50" showInSummary="true" />
+    <field name="Brn_No" type="Int64" allowNulls="false" default="((0))" label="Brn No" showInSummary="true">
+      <items style="Lookup" dataController="Branchcnst" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Brn_Brn_Nm" type="String" readOnly="true" label="Brn Nm" length="255" />
+    <field name="Brn_BranchDesc1" type="String" readOnly="true" label="Brn Branch Desc1" length="50" />
+    <field name="Brn_Branchsgmsgm_Nm" type="String" readOnly="true" label="Brn Branchsgmsgm Nm" length="255" />
+    <field name="Brn_BranchGenderGender" type="String" readOnly="true" label="Brn Branch Gender" length="100" />
+    <field name="Brn_BranchstageShortDesc1" type="String" readOnly="true" label="Brn Branchstage Short Desc1" length="50" />
+    <field name="Brn_BranchschtypschtypDesc" type="String" readOnly="true" label="Brn Branchschtypschtyp Desc" length="150" />
+    <field name="ID_USERM" type="String" label="Id Userm" length="255" showInSummary="true" />
+    <field name="subject" type="String" label="Subject" length="255" showInSummary="true" />
+    <field name="azndate" type="DateTime" label="Azndate" showInSummary="true" />
+    <field name="aznegmaly" type="Double" label="Aznegmaly" />
+    <field name="Tarhel" type="Int64" label="Tarhel" />
+    <field name="sgm" type="Int64" label="Sgm">
+      <items style="Lookup" dataController="glmulcmp" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sgmsgm_Nm" type="String" readOnly="true" label="sgmsgm Nm" length="255" />
+    <field name="sgmOpcoOpcoName" type="String" readOnly="true" label="sgm Opco Name" length="50" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="branch" type="Int64" label="Branch">
+      <items style="Lookup" dataController="schBranch" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ThebranchDesc1" type="String" readOnly="true" label="Thebranch Desc1" length="50" />
+    <field name="Thebranchsgmsgm_Nm" type="String" readOnly="true" label="Thebranchsgmsgm Nm" length="255" />
+    <field name="ThebranchsgmOpcoOpcoName" type="String" readOnly="true" label="Thebranchsgm Opco Name" length="50" />
+    <field name="ThebranchGenderGender" type="String" readOnly="true" label="Thebranch Gender" length="100" />
+    <field name="ThebranchstageShortDesc1" type="String" readOnly="true" label="Thebranchstage Short Desc1" length="50" />
+    <field name="ThebranchschtypschtypDesc" type="String" readOnly="true" label="Thebranchschtypschtyp Desc" length="150" />
+    <field name="ID_comp" type="Int64" label="ID comp">
+	  <items style="Lookup" dataController="itemrelsiq" dataView="grid1" dataTextField="ID_comp" dataValueField="ID_comp" copy="ID_USERM=ITEM" />
+    </field>	
+    <field name="TheID_compID_USER" type="String" readOnly="true" label="ID comp ID USER" length="50" />
+    <field name="TheID_compIDGROUPID_USER" type="String" readOnly="true" label="ID comp IDGROUPID USER" length="50" />
+    <field name="TheID_compSup_Item_name" type="String" readOnly="true" label="ID comp Sup Item name" length="150" />
+    <field name="TheID_compid1DESCRP1" type="String" readOnly="true" label="ID compid1 DESCRP1" length="255" />
+    <field name="TheID_compid2DESCRP1" type="String" readOnly="true" label="ID compid2 DESCRP1" length="255" />
+    <field name="TheID_compid3DESCRP1" type="String" readOnly="true" label="ID compid3 DESCRP1" length="255" />
+    <field name="TheID_compid4DESCRP1" type="String" readOnly="true" label="ID compid4 DESCRP1" length="255" />
+    <field name="TheID_compid5DESCRP1" type="String" readOnly="true" label="ID compid5 DESCRP1" length="255" />
+    <field name="TheID_compid6DESCRP1" type="String" readOnly="true" label="ID compid6 DESCRP1" length="255" />
+    <field name="TheID_compid7DESCRP1" type="String" readOnly="true" label="ID compid7 DESCRP1" length="255" />
+    <field name="Wastage" type="Single" label="Wastage" />
+
+    <field name="Unit_No" type="Int64" label="Unit No" showInSummary="true">
+      <items style="DropDownList" dataController="Stunit" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Unit_Unit_Nm" type="String" readOnly="true" label="Unit Nm" length="255" />
+    <field name="Quantity" type="Decimal" label="Quantity" />
+    <field name="Itm_Cost" type="Decimal" label="Itm Cost" />
+    <field name="Itemprice" type="Decimal" label="Itemprice" />
+
+	
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Dznmast">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="countrdus" columns="50" />
+		<dataField fieldName="ID_comp" aliasFieldName="TheID_compID_USER" hyperlinkFormatString="~/Pages/ITEMS.aspx?ID_comp={ID_comp}&amp;_controller=ITEMS&amp;_commandName=Select&amp;_commandArgument=editForm1" />		
+        <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" hyperlinkFormatString="~/Pages/glmulcmp.aspx?sgmid={sgm}&amp;_controller=glmulcmp&amp;_commandName=Select&amp;_commandArgument=editForm1" hidden="true" />      
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+		<dataField fieldName="Brn_No" aliasFieldName="Brn_Brn_Nm" hyperlinkFormatString="~/Pages/Branchcnst.aspx?Brn_No={Brn_No}&amp;_controller=Branchcnst&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ID_USERM" />
+        <dataField fieldName="subject" />
+        <dataField fieldName="azndate" columns="10" />
+        <dataField fieldName="aznegmaly" columns="15" />
+        <dataField fieldName="Tarhel" columns="15" />
+
+        <dataField fieldName="ModifiedBy" columns="50" hidden="true" />
+        <dataField fieldName="ModifiedOn" columns="10" hidden="true" />
+        <dataField fieldName="CreatedBy" columns="50" hidden="true" />
+        <dataField fieldName="CreatedOn" columns="10" hidden="true" />
+
+        
+        <dataField fieldName="Wastage" columns="10" />
+        <dataField fieldName="Brn_BranchDesc1" columns="50" hidden="true" />
+        <dataField fieldName="Brn_Branchsgmsgm_Nm" hidden="true" />
+        <dataField fieldName="Brn_BranchGenderGender" hidden="true" />
+        <dataField fieldName="Brn_BranchstageShortDesc1" columns="50" hidden="true" />
+        <dataField fieldName="Brn_BranchschtypschtypDesc" hidden="true" />
+
+        <dataField fieldName="Unit_No" textMode="Static" />
+        <dataField fieldName="Unit_Unit_Nm" hidden="true" />
+        <dataField fieldName="Quantity"  columns="10"  dataFormatString="n3"/>		
+        <dataField fieldName="Itm_Cost"  columns="10" />
+        <dataField fieldName="Itemprice"  columns="10" />
+		
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Dznmast">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Dznmast" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="countrdus" columns="50"  hidden="true" />
+
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" hyperlinkFormatString="~/Pages/glmulcmp.aspx?sgmid={sgm}&amp;_controller=glmulcmp&amp;_commandName=Select&amp;_commandArgument=editForm1" hidden="true" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Brn_No" aliasFieldName="Brn_Brn_Nm" hyperlinkFormatString="~/Pages/Branchcnst.aspx?Brn_No={Brn_No}&amp;_controller=Branchcnst&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+
+			<dataField fieldName="ID_comp" aliasFieldName="TheID_compID_USER" hyperlinkFormatString="~/Pages/ITEMS.aspx?ID_comp={ID_comp}&amp;_controller=ITEMS&amp;_commandName=Select&amp;_commandArgument=editForm1" />			
+            <dataField fieldName="ID_USERM" />
+			<dataField fieldName="Unit_No"  />
+			<dataField fieldName="Unit_Unit_Nm" hidden="true" />
+			<dataField fieldName="Quantity"  columns="10"  dataFormatString="n3"/>		
+		
+            <dataField fieldName="ModifiedBy" columns="50"  hidden="true" />
+            <dataField fieldName="ModifiedOn" columns="10"  hidden="true" />
+            <dataField fieldName="CreatedBy" columns="50"  hidden="true" />
+            <dataField fieldName="CreatedOn" columns="10"  hidden="true" />
+
+            
+
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="subject"  hidden="true" />	
+            <dataField fieldName="azndate" columns="10" />
+            <dataField fieldName="aznegmaly" columns="15"  hidden="true" />	
+            <dataField fieldName="Tarhel" columns="15"  hidden="true" />
+			<dataField fieldName="Itemprice"  columns="10" />			
+			<dataField fieldName="Itm_Cost"  columns="10" />				
+            <dataField fieldName="Wastage" columns="15" />
+			
+            <dataField fieldName="Brn_BranchDesc1" columns="50" hidden="true" />
+            <dataField fieldName="Brn_Branchsgmsgm_Nm" hidden="true" />
+            <dataField fieldName="Brn_BranchGenderGender" hidden="true" />
+            <dataField fieldName="Brn_BranchstageShortDesc1" columns="50" hidden="true" />
+            <dataField fieldName="Brn_BranchschtypschtypDesc" hidden="true" />
+            <dataField fieldName="sgmOpcoOpcoName" columns="50" hidden="true" />
+            <dataField fieldName="Thebranchsgmsgm_Nm" hidden="true" />
+            <dataField fieldName="ThebranchsgmOpcoOpcoName" columns="50" hidden="true" />
+            <dataField fieldName="ThebranchGenderGender" hidden="true" />
+            <dataField fieldName="ThebranchstageShortDesc1" columns="50" hidden="true" />
+            <dataField fieldName="ThebranchschtypschtypDesc" hidden="true" />
+            <dataField fieldName="TheID_compIDGROUPID_USER" columns="50" hidden="true" />
+            <dataField fieldName="TheID_compSup_Item_name" hidden="true" />
+            <dataField fieldName="TheID_compid1DESCRP1" hidden="true" />
+            <dataField fieldName="TheID_compid2DESCRP1" hidden="true" />
+            <dataField fieldName="TheID_compid3DESCRP1" hidden="true" />
+            <dataField fieldName="TheID_compid4DESCRP1" hidden="true" />
+            <dataField fieldName="TheID_compid5DESCRP1" hidden="true" />
+            <dataField fieldName="TheID_compid6DESCRP1" hidden="true" />
+            <dataField fieldName="TheID_compid7DESCRP1" hidden="true" />
+				
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Dznmast">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Dznmast" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="countrdus" columns="50"  hidden="true" />
+
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" hyperlinkFormatString="~/Pages/glmulcmp.aspx?sgmid={sgm}&amp;_controller=glmulcmp&amp;_commandName=Select&amp;_commandArgument=editForm1" hidden="true" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Brn_No" aliasFieldName="Brn_Brn_Nm" hyperlinkFormatString="~/Pages/Branchcnst.aspx?Brn_No={Brn_No}&amp;_controller=Branchcnst&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+
+			<dataField fieldName="ID_comp" aliasFieldName="TheID_compID_USER" hyperlinkFormatString="~/Pages/ITEMS.aspx?ID_comp={ID_comp}&amp;_controller=ITEMS&amp;_commandName=Select&amp;_commandArgument=editForm1" />			
+            <dataField fieldName="ID_USERM" />
+			<dataField fieldName="Unit_No"  />
+			<dataField fieldName="Unit_Unit_Nm" hidden="true" />
+			<dataField fieldName="Quantity"  columns="10"  dataFormatString="n3"/>		
+		
+            <dataField fieldName="ModifiedBy" columns="50"  hidden="true" />
+            <dataField fieldName="ModifiedOn" columns="10"  hidden="true" />
+            <dataField fieldName="CreatedBy" columns="50"  hidden="true" />
+            <dataField fieldName="CreatedOn" columns="10"  hidden="true" />
+
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="subject"  hidden="true" />	
+            <dataField fieldName="azndate" columns="10" />
+            <dataField fieldName="aznegmaly" columns="15"  hidden="true" />	
+            <dataField fieldName="Tarhel" columns="15"  hidden="true" />
+			<dataField fieldName="Itemprice"  columns="10" />				
+			<dataField fieldName="Itm_Cost"  columns="10" />				
+            <dataField fieldName="Wastage" columns="10" />
+			
+            <dataField fieldName="Brn_BranchDesc1" columns="50" hidden="true" />
+            <dataField fieldName="Brn_Branchsgmsgm_Nm" hidden="true" />
+            <dataField fieldName="Brn_BranchGenderGender" hidden="true" />
+            <dataField fieldName="Brn_BranchstageShortDesc1" columns="50" hidden="true" />
+            <dataField fieldName="Brn_BranchschtypschtypDesc" hidden="true" />
+            <dataField fieldName="sgmOpcoOpcoName" columns="50" hidden="true" />
+            <dataField fieldName="Thebranchsgmsgm_Nm" hidden="true" />
+            <dataField fieldName="ThebranchsgmOpcoOpcoName" columns="50" hidden="true" />
+            <dataField fieldName="ThebranchGenderGender" hidden="true" />
+            <dataField fieldName="ThebranchstageShortDesc1" columns="50" hidden="true" />
+            <dataField fieldName="ThebranchschtypschtypDesc" hidden="true" />
+            <dataField fieldName="TheID_compIDGROUPID_USER" columns="50" hidden="true" />
+            <dataField fieldName="TheID_compSup_Item_name" hidden="true" />
+            <dataField fieldName="TheID_compid1DESCRP1" hidden="true" />
+            <dataField fieldName="TheID_compid2DESCRP1" hidden="true" />
+            <dataField fieldName="TheID_compid3DESCRP1" hidden="true" />
+            <dataField fieldName="TheID_compid4DESCRP1" hidden="true" />
+            <dataField fieldName="TheID_compid5DESCRP1" hidden="true" />
+            <dataField fieldName="TheID_compid6DESCRP1" hidden="true" />
+            <dataField fieldName="TheID_compid7DESCRP1" hidden="true" />
+				
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update"  commandArgument="OK" headerText="Save" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r102" commandName="Update" type="Sql" phase="After"  commandArgument="OK"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @countrd,@Brn_No,@branch
+set @Result_NavigateUrl = 'webreportviwer.aspx?reportquery=' + @Arguments_Controller    + '&idfilter=' + cast(@countrd as nvarchar) ]]></rule>  
+  </businessRules>
+  </dataController>

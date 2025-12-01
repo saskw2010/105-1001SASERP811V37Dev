@@ -1,0 +1,6 @@
+# Folder: Services
+
+Purpose: ASMX services and supporting code under App_Code/Services.
+- DataControllerService.asmx (+ .vb): ScriptService exposing CRUD/auth.
+
+Back to hub: ../index.md | TOC: ../TOC.md

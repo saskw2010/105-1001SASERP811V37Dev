@@ -1,0 +1,44 @@
+/* Layout */
+:root{
+  --bg:#ffffff; --fg:#0f172a; --muted:#475569; --border:#e5e7eb; --accent:#0d6efd; --sidebar:#f8fafc;
+  --code-bg:#0b1220; --code-fg:#e5e7eb;
+}
+
+html[data-theme="dark"]{ --bg:#0b1220; --fg:#e6edf3; --muted:#9aa4b2; --border:#273449; --accent:#60a5fa; --sidebar:#0f172a; --code-bg:#0f172a; --code-fg:#e6edf3; }
+
+*{ box-sizing:border-box }
+body{ margin:0; color:var(--fg); background:var(--bg); font:14px/1.5 system-ui,Segoe UI,Roboto,Arial }
+
+.app-header{ position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 16px; border-bottom:1px solid var(--border); background:var(--bg) }
+.brand{ font-weight:700 }
+.tools{ display:flex; gap:8px; align-items:center }
+.tools input[type=search]{ border:1px solid var(--border); border-radius:8px; padding:6px 10px; min-width:260px; background:transparent; color:inherit }
+.tools button, .tools a{ border:1px solid var(--border); border-radius:8px; padding:6px 10px; background:transparent; color:inherit; text-decoration:none }
+
+.layout{ display:grid; grid-template-columns: 300px 1fr; height: calc(100vh - 52px) }
+.sidebar{ border-right:1px solid var(--border); background:var(--sidebar); overflow:auto }
+.content{ overflow:auto }
+
+#toc{ padding:10px }
+#toc .group{ margin:6px 0 }
+#toc .group-title{ font-weight:600; color:var(--muted); margin:12px 6px 4px }
+#toc a{ display:block; padding:6px 8px; border-radius:6px; color:inherit; text-decoration:none }
+#toc a:hover{ background: color-mix(in srgb, var(--accent) 10%, transparent) }
+#toc .active{ background: color-mix(in srgb, var(--accent) 18%, transparent) }
+
+#doc{ padding: 22px 28px; max-width: 1100px }
+.doc-banner{ display:flex; align-items:center; justify-content:space-between; gap:8px; padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:color-mix(in srgb, var(--accent) 6%, var(--bg)) }
+.doc-body{ margin-top:16px }
+
+/* Content styles */
+.doc-body h1{ font-size: 1.8rem; margin: 14px 0 }
+.doc-body h2{ font-size: 1.4rem; margin: 14px 0 }
+.doc-body h3{ font-size: 1.15rem; margin: 12px 0 }
+.doc-body p, .doc-body li{ color: var(--fg) }
+.doc-body pre{ background: var(--code-bg); color: var(--code-fg); padding:10px 12px; border-radius:8px; overflow:auto }
+.doc-body code{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace }
+.doc-body table{ border-collapse: collapse; width:100%; margin:12px 0 }
+.doc-body th, .doc-body td{ border:1px solid var(--border); padding:6px 8px; text-align:left }
+
+/* Responsive */
+@media (max-width: 900px){ .layout{ grid-template-columns: 1fr } .sidebar{ display:none } }

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug JavaScript Functions</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .debug-section { background: white; padding: 20px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .error { color: red; background: #ffebee; padding: 10px; border-radius: 4px; margin: 5px 0; }
+        .success { color: green; background: #e8f5e8; padding: 10px; border-radius: 4px; margin: 5px 0; }
+        button { padding: 10px 20px; margin: 5px; background: #2196F3; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #1976D2; }
+        #output { background: #f9f9f9; padding: 15px; border-radius: 4px; margin: 10px 0; white-space: pre-wrap; font-family: monospace; max-height: 300px; overflow-y: auto; }
+    </style>
+</head>
+<body>
+    <h1>🔧 JavaScript Function Debug Test</h1>
+    
+    <div class="debug-section">
+        <h2>Function Test Results:</h2>
+        <div id="results"></div>
+        
+        <h3>Test Functions:</h3>
+        <button onclick="testInitLegacyDataBridge()">Test initLegacyDataBridge</button>
+        <button onclick="testExtractLegacyMenuData()">Test extractLegacyMenuData</button>
+        <button onclick="testTryConnectLegacyData()">Test tryConnectLegacyData</button>
+        <button onclick="testLocalStorageFunctions()">Test LocalStorage Functions</button>
+        <button onclick="clearOutput()">Clear Output</button>
+        
+        <h3>Output Log:</h3>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        // Capture console.log for display
+        const originalLog = console.log;
+        const originalError = console.error;
+        const output = document.getElementById('output');
+        const results = document.getElementById('results');
+        
+        function addToOutput(message, type = 'log') {
+            const timestamp = new Date().toLocaleTimeString();
+            const color = type === 'error' ? 'red' : type === 'warn' ? 'orange' : 'black';
+            output.innerHTML += `<span style="color: ${color}">[${timestamp}] ${message}</span>\n`;
+            output.scrollTop = output.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addToOutput(args.join(' '), 'log');
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addToOutput(args.join(' '), 'error');
+        };
+        
+        console.warn = function(...args) {
+            originalError.apply(console, args);
+            addToOutput(args.join(' '), 'warn');
+        };
+        
+        function addResult(testName, success, message) {
+            const resultDiv = document.createElement('div');
+            resultDiv.className = success ? 'success' : 'error';
+            resultDiv.innerHTML = `<strong>${testName}:</strong> ${message}`;
+            results.appendChild(resultDiv);
+        }
+        
+        function testInitLegacyDataBridge() {
+            try {
+                if (typeof initLegacyDataBridge === 'function') {
+                    addResult('initLegacyDataBridge', true, 'Function exists and is callable');
+                    initLegacyDataBridge();
+                } else {
+                    addResult('initLegacyDataBridge', false, 'Function not defined or not a function');
+                }
+            } catch (error) {
+                addResult('initLegacyDataBridge', false, `Error: ${error.message}`);
+            }
+        }
+        
+        function testExtractLegacyMenuData() {
+            try {
+                if (typeof extractLegacyMenuData === 'function') {
+                    addResult('extractLegacyMenuData', true, 'Function exists and is callable');
+                    const result = extractLegacyMenuData();
+                    console.log('extractLegacyMenuData result:', result);
+                } else {
+                    addResult('extractLegacyMenuData', false, 'Function not defined or not a function');
+                }
+            } catch (error) {
+                addResult('extractLegacyMenuData', false, `Error: ${error.message}`);
+            }
+        }
+        
+        function testTryConnectLegacyData() {
+            try {
+                if (typeof tryConnectLegacyData === 'function') {
+                    addResult('tryConnectLegacyData', true, 'Function exists and is callable');
+                    tryConnectLegacyData();
+                } else {
+                    addResult('tryConnectLegacyData', false, 'Function not defined or not a function');
+                }
+            } catch (error) {
+                addResult('tryConnectLegacyData', false, `Error: ${error.message}`);
+            }
+        }
+        
+        function testLocalStorageFunctions() {
+            try {
+                const testData = [
+                    { id: 'test1', title: 'Test Item 1', level: 1, children: [] },
+                    { id: 'test2', title: 'Test Item 2', level: 1, children: [] }
+                ];
+                
+                if (typeof saveMenuToLocalStorage === 'function') {
+                    saveMenuToLocalStorage(testData);
+                    addResult('saveMenuToLocalStorage', true, 'Function executed successfully');
+                } else {
+                    addResult('saveMenuToLocalStorage', false, 'Function not defined');
+                }
+                
+                if (typeof loadMenuFromLocalStorage === 'function') {
+                    const loaded = loadMenuFromLocalStorage();
+                    addResult('loadMenuFromLocalStorage', true, `Function executed, returned ${loaded ? loaded.length : 0} items`);
+                } else {
+                    addResult('loadMenuFromLocalStorage', false, 'Function not defined');
+                }
+                
+            } catch (error) {
+                addResult('LocalStorage Functions', false, `Error: ${error.message}`);
+            }
+        }
+        
+        function clearOutput() {
+            output.innerHTML = '';
+            results.innerHTML = '';
+        }
+        
+        // Test function availability on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 Debug page loaded, checking function availability...');
+            
+            const functionsToCheck = [
+                'initLegacyDataBridge',
+                'extractLegacyMenuData', 
+                'tryConnectLegacyData',
+                'saveMenuToLocalStorage',
+                'loadMenuFromLocalStorage',
+                'analyzeMenuStructure'
+            ];
+            
+            functionsToCheck.forEach(funcName => {
+                if (typeof window[funcName] === 'function') {
+                    console.log(`✅ ${funcName} is available`);
+                } else {
+                    console.error(`❌ ${funcName} is NOT available`);
+                }
+            });
+        });
+        
+        // Mock functions for testing
+        function initLegacyDataBridge() {
+            console.log('📋 Mock initLegacyDataBridge called');
+        }
+        
+        function extractLegacyMenuData() {
+            console.log('📋 Mock extractLegacyMenuData called');
+            return [];
+        }
+        
+        function tryConnectLegacyData() {
+            console.log('🔗 Mock tryConnectLegacyData called');
+        }
+        
+        function saveMenuToLocalStorage(data) {
+            console.log('💾 Mock saveMenuToLocalStorage called with:', data);
+        }
+        
+        function loadMenuFromLocalStorage() {
+            console.log('💾 Mock loadMenuFromLocalStorage called');
+            return [];
+        }
+        
+        function analyzeMenuStructure(data) {
+            console.log('📊 Mock analyzeMenuStructure called with:', data);
+        }
+    </script>
+</body>
+</html>

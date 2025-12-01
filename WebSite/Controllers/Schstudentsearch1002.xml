@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Schstudentsearch1002" conflictDetection="overwriteChanges" label="Schstudentsearch1002" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Schstudentsearch1002"."acdcode" "acdcode"
+	,"Schstudentsearch1002"."acdAcademicYear" "acdAcademicYear"
+	,"Schstudentsearch1002"."Thebranchsgmsgm_Nm" "Thebranchsgmsgm_Nm"
+	,"Schstudentsearch1002"."ThebranchschtypschtypDesc" "ThebranchschtypschtypDesc"
+	,"Schstudentsearch1002"."ThebranchDesc1" "ThebranchDesc1"
+	,"Schstudentsearch1002"."branch" "branch"
+	,"Schstudentsearch1002"."StageShortDesc1" "StageShortDesc1"
+	,"Schstudentsearch1002"."GradeCode" "GradeCode"
+	,"Schstudentsearch1002"."GradeShortDesc1" "GradeShortDesc1"
+	,"Schstudentsearch1002"."ReligionReljan_nm" "ReligionReljan_nm"
+	,"Schstudentsearch1002"."Cntry_Cntry_Nm" "Cntry_Cntry_Nm"
+	,"Schstudentsearch1002"."GenderGender" "GenderGender"
+	,"Schstudentsearch1002"."studentsefastudentsefaar" "studentsefastudentsefaar"
+	,"Schstudentsearch1002"."SchtransferSchtransferDesc" "SchtransferSchtransferDesc"
+	,"Schstudentsearch1002"."schstsplschstsplDsc" "schstsplschstsplDsc"
+	,"Schstudentsearch1002"."schstudenttypschstudenttyp" "schstudenttypschstudenttyp"
+	,"Schstudentsearch1002"."schstatus_schstatus_name" "schstatus_schstatus_name"
+	,"Schstudentsearch1002"."Class" "Class"
+	,"Schstudentsearch1002"."ClassClassDesc1" "ClassClassDesc1"
+	,"Schstudentsearch1002"."StudentCode" "StudentCode"
+	,"Schstudentsearch1002"."SchstCivilidnumber" "SchstCivilidnumber"
+	,"Schstudentsearch1002"."FirstName1" "FirstName1"
+	,"Schstudentsearch1002"."Rosomcr" "Rosomcr"
+	,"Schstudentsearch1002"."Rosomdb" "Rosomdb"
+	,"Schstudentsearch1002"."RosomBalance" "RosomBalance"
+	,"Schstudentsearch1002"."bookcr" "bookcr"
+	,"Schstudentsearch1002"."ASbookdb" "ASbookdb"
+	,"Schstudentsearch1002"."bookBalance" "bookBalance"
+	,"Schstudentsearch1002"."transcr" "transcr"
+	,"Schstudentsearch1002"."transdb" "transdb"
+	,"Schstudentsearch1002"."transBalance" "transBalance"
+	,"Schstudentsearch1002"."othercr" "othercr"
+	,"Schstudentsearch1002"."otherdb" "otherdb"
+	,"Schstudentsearch1002"."otherBalance" "otherBalance"
+	,"Schstudentsearch1002"."trcr1" "trcr1"
+	,"Schstudentsearch1002"."Trdb1" "Trdb1"
+	,"Schstudentsearch1002"."Balance" "Balance"
+from "dbo"."Schstudentsearch1002" "Schstudentsearch1002"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="acdcode" type="Int64" allowNulls="false" label="Acdcode" showInSummary="true">
+      <items style="DropDownList" dataController="schAcademicyear" dataView="grid1" dataTextField="AcademicYear" dataValueField="Code" />
+    </field>
+    <field name="acdAcademicYear" type="String" label="acd Academic Year" length="150" showInSummary="true" />
+    <field name="Thebranchsgmsgm_Nm" type="String" label="Thebranchsgmsgm Nm" length="255" showInSummary="true" />
+    <field name="ThebranchschtypschtypDesc" type="String" label="Thebranchschtypschtyp Desc" length="150" showInSummary="true" />
+    <field name="ThebranchDesc1" type="String" label="Thebranch Desc1" length="50" showInSummary="true" />
+    <field name="branch" type="Int64" label="Branch">
+      <items style="DropDownList" dataController="schBranch" dataView="grid1" dataTextField="Desc1" dataValueField="branch" />
+    </field>
+    <field name="StageShortDesc1" type="String" label="Stage Short Desc1" length="50" />
+    <field name="GradeCode" type="Int64" label="Grade Code">
+      <items style="DropDownList" dataController="schGrade" dataView="grid1" dataTextField="ShortDesc1" dataValueField="GradeCode" />
+    </field>
+    <field name="GradeShortDesc1" type="String" label="Grade Short Desc1" length="50" />
+    <field name="ReligionReljan_nm" type="String" label="Religion Reljan nm" length="50" />
+    <field name="Cntry_Cntry_Nm" type="String" label="Cntry Nm" length="255" />
+    <field name="GenderGender" type="String" label="Gender" length="100" />
+    <field name="studentsefastudentsefaar" type="String" label="Studentsefastudentsefaar" length="150" />
+    <field name="SchtransferSchtransferDesc" type="String" label="Schtransfer Desc" length="150" />
+    <field name="schstsplschstsplDsc" type="String" label="schstsplschstspl Dsc" length="150" />
+    <field name="schstudenttypschstudenttyp" type="String" label="Schstudenttypschstudenttyp" length="50" />
+    <field name="schstatus_schstatus_name" type="String" label="Schstatus Name" length="50" />
+    <field name="Class" type="Int64" label="Class" />
+    <field name="ClassClassDesc1" type="String" label="Class Desc1" length="15" />
+    <field name="StudentCode" type="Int64" allowNulls="false" label="Student Code" isPrimaryKey="true" />
+    <field name="SchstCivilidnumber" type="String" label="Schst Civilidnumber" length="50" />
+    <field name="FirstName1" type="String" label="First Name1" length="150" />
+    <field name="Rosomcr" type="Decimal" label="Rosomcr" />
+    <field name="Rosomdb" type="Decimal" label="Rosomdb" />
+    <field name="RosomBalance" type="Decimal" label="Rosom Balance" />
+    <field name="bookcr" type="Decimal" label="Bookcr" />
+    <field name="ASbookdb" type="Decimal" label="A Sbookdb" />
+    <field name="bookBalance" type="Decimal" label="book Balance" />
+    <field name="transcr" type="Decimal" label="Transcr" />
+    <field name="transdb" type="Decimal" label="Transdb" />
+    <field name="transBalance" type="Decimal" label="trans Balance" />
+    <field name="othercr" type="Decimal" label="Othercr" />
+    <field name="otherdb" type="Decimal" label="Otherdb" />
+    <field name="otherBalance" type="Decimal" label="other Balance" />
+    <field name="trcr1" type="Decimal" label="Trcr1" />
+    <field name="Trdb1" type="Decimal" label="Trdb1" />
+    <field name="Balance" type="Decimal" label="Balance" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Schstudentsearch1002">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="acdcode" columns="15" search="Suggested" />
+        <dataField fieldName="branch" columns="15" search="Suggested" />
+        <dataField fieldName="GradeCode" columns="15" search="Suggested" />
+        <dataField fieldName="FirstName1" search="Suggested" />
+        <dataField fieldName="StudentCode" columns="15" />
+        <dataField fieldName="Class" columns="15" />
+        <dataField fieldName="Rosomcr" columns="15" aggregate="Sum" />
+        <dataField fieldName="Rosomdb" columns="15" aggregate="Sum" />
+        <dataField fieldName="RosomBalance" columns="15" aggregate="Sum" />
+        <dataField fieldName="bookcr" columns="15" aggregate="Sum" />
+        <dataField fieldName="ASbookdb" columns="15" aggregate="Sum" />
+        <dataField fieldName="bookBalance" columns="15" aggregate="Sum" />
+        <dataField fieldName="transcr" columns="15" aggregate="Sum" />
+        <dataField fieldName="transdb" columns="15" aggregate="Sum" />
+        <dataField fieldName="transBalance" columns="15" aggregate="Sum" />
+        <dataField fieldName="othercr" columns="15" aggregate="Sum" />
+        <dataField fieldName="otherdb" columns="15" aggregate="Sum" />
+        <dataField fieldName="otherBalance" columns="15" aggregate="Sum" />
+        <dataField fieldName="trcr1" columns="15" aggregate="Sum" />
+        <dataField fieldName="Trdb1" columns="15" aggregate="Sum" />
+        <dataField fieldName="Balance" columns="15" />
+        <dataField fieldName="ThebranchschtypschtypDesc" />
+        <dataField fieldName="Thebranchsgmsgm_Nm" search="Suggested" />
+        <dataField fieldName="ThebranchDesc1" columns="50" search="Suggested" />
+        <dataField fieldName="ReligionReljan_nm" columns="50" />
+        <dataField fieldName="Cntry_Cntry_Nm" />
+        <dataField fieldName="GenderGender" />
+        <dataField fieldName="studentsefastudentsefaar" />
+        <dataField fieldName="SchtransferSchtransferDesc" />
+        <dataField fieldName="schstsplschstsplDsc" />
+        <dataField fieldName="schstudenttypschstudenttyp" columns="50" />
+        <dataField fieldName="schstatus_schstatus_name" columns="50" />
+        <dataField fieldName="ClassClassDesc1" columns="15" search="Suggested" />
+        <dataField fieldName="GradeShortDesc1" columns="50" search="Suggested" />
+        <dataField fieldName="StageShortDesc1" columns="50" />
+        <dataField fieldName="acdAcademicYear" search="Suggested" />
+        <dataField fieldName="SchstCivilidnumber" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Schstudentsearch1002">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Schstudentsearch1002" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="acdAcademicYear" />
+            <dataField fieldName="Thebranchsgmsgm_Nm" />
+            <dataField fieldName="ThebranchschtypschtypDesc" />
+            <dataField fieldName="ThebranchDesc1" columns="50" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="StageShortDesc1" columns="50" />
+            <dataField fieldName="GradeCode" columns="15" />
+            <dataField fieldName="GradeShortDesc1" columns="50" />
+            <dataField fieldName="ReligionReljan_nm" columns="50" />
+            <dataField fieldName="Cntry_Cntry_Nm" />
+            <dataField fieldName="GenderGender" />
+            <dataField fieldName="studentsefastudentsefaar" />
+            <dataField fieldName="SchtransferSchtransferDesc" />
+            <dataField fieldName="schstsplschstsplDsc" />
+            <dataField fieldName="schstudenttypschstudenttyp" columns="50" />
+            <dataField fieldName="schstatus_schstatus_name" columns="50" />
+            <dataField fieldName="Class" columns="15" />
+            <dataField fieldName="ClassClassDesc1" columns="15" />
+            <dataField fieldName="StudentCode" columns="15" />
+            <dataField fieldName="SchstCivilidnumber" columns="50" />
+            <dataField fieldName="FirstName1" />
+            <dataField fieldName="Rosomcr" columns="15" />
+            <dataField fieldName="Rosomdb" columns="15" />
+            <dataField fieldName="RosomBalance" columns="15" />
+            <dataField fieldName="bookcr" columns="15" />
+            <dataField fieldName="ASbookdb" columns="15" />
+            <dataField fieldName="bookBalance" columns="15" />
+            <dataField fieldName="transcr" columns="15" />
+            <dataField fieldName="transdb" columns="15" />
+            <dataField fieldName="transBalance" columns="15" />
+            <dataField fieldName="othercr" columns="15" />
+            <dataField fieldName="otherdb" columns="15" />
+            <dataField fieldName="otherBalance" columns="15" />
+            <dataField fieldName="trcr1" columns="15" />
+            <dataField fieldName="Trdb1" columns="15" />
+            <dataField fieldName="Balance" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Schstudentsearch1002">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Schstudentsearch1002" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="acdAcademicYear" />
+            <dataField fieldName="Thebranchsgmsgm_Nm" />
+            <dataField fieldName="ThebranchschtypschtypDesc" />
+            <dataField fieldName="ThebranchDesc1" columns="50" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="StageShortDesc1" columns="50" />
+            <dataField fieldName="GradeCode" columns="15" />
+            <dataField fieldName="GradeShortDesc1" columns="50" />
+            <dataField fieldName="ReligionReljan_nm" columns="50" />
+            <dataField fieldName="Cntry_Cntry_Nm" />
+            <dataField fieldName="GenderGender" />
+            <dataField fieldName="studentsefastudentsefaar" />
+            <dataField fieldName="SchtransferSchtransferDesc" />
+            <dataField fieldName="schstsplschstsplDsc" />
+            <dataField fieldName="schstudenttypschstudenttyp" columns="50" />
+            <dataField fieldName="schstatus_schstatus_name" columns="50" />
+            <dataField fieldName="Class" columns="15" />
+            <dataField fieldName="ClassClassDesc1" columns="15" />
+            <dataField fieldName="StudentCode" columns="15" />
+            <dataField fieldName="SchstCivilidnumber" columns="50" />
+            <dataField fieldName="FirstName1" />
+            <dataField fieldName="Rosomcr" columns="15" />
+            <dataField fieldName="Rosomdb" columns="15" />
+            <dataField fieldName="RosomBalance" columns="15" />
+            <dataField fieldName="bookcr" columns="15" />
+            <dataField fieldName="ASbookdb" columns="15" />
+            <dataField fieldName="bookBalance" columns="15" />
+            <dataField fieldName="transcr" columns="15" />
+            <dataField fieldName="transdb" columns="15" />
+            <dataField fieldName="transBalance" columns="15" />
+            <dataField fieldName="othercr" columns="15" />
+            <dataField fieldName="otherdb" columns="15" />
+            <dataField fieldName="otherBalance" columns="15" />
+            <dataField fieldName="trcr1" columns="15" />
+            <dataField fieldName="Trdb1" columns="15" />
+            <dataField fieldName="Balance" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

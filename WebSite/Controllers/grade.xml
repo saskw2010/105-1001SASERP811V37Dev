@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="grade" conflictDetection="overwriteChanges" label="Grade" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"grade"."grade_code" "grade_code"
+	,"grade"."grade_desc_a" "grade_desc_a"
+	,"grade"."low_boundary" "low_boundary"
+	,"grade"."high_boundary" "high_boundary"
+	,"grade"."min_spent_years" "min_spent_years"
+	,"grade"."mariege_allow_single" "mariege_allow_single"
+	,"grade"."mariege_allow_married" "mariege_allow_married"
+	,"grade"."work_allow_prcnt" "work_allow_prcnt"
+	,"grade"."work_allow_amount" "work_allow_amount"
+	,"grade"."represent_allow_prcnt" "represent_allow_prcnt"
+	,"grade"."represent_allow_amount" "represent_allow_amount"
+	,"grade"."annual_allow_value" "annual_allow_value"
+	,"grade"."annual_allow_times" "annual_allow_times"
+	,"grade"."co_code" "co_code"
+	,"grade"."user_no" "user_no"
+	,"grade"."op_date" "op_date"
+	,"grade"."Earning_No" "Earning_No"
+	,"Earning_"."Earning_Nm" "Earning_Earning_Nm"
+	,"grade"."ModifiedBy" "ModifiedBy"
+	,"grade"."ModifiedOn" "ModifiedOn"
+	,"grade"."CreatedBy" "CreatedBy"
+	,"grade"."CreatedOn" "CreatedOn"
+from "dbo"."grade" "grade"
+	left join "dbo"."Pyerntsalyp1" "Earning_" on "grade"."Earning_No" = "Earning_"."Earning_No"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="grade_code" type="Int64" allowNulls="false" isPrimaryKey="true" label="Grade Code" />
+    <field name="grade_desc_a" type="String" label="Grade Desc A" length="20" showInSummary="true" />
+    <field name="low_boundary" type="Double" label="Low Boundary" showInSummary="true" />
+    <field name="high_boundary" type="Double" label="High Boundary" showInSummary="true" />
+    <field name="min_spent_years" type="Double" label="Min Spent Years" showInSummary="true" />
+    <field name="mariege_allow_single" type="Double" label="Mariege Allow Single" showInSummary="true" />
+    <field name="mariege_allow_married" type="Double" label="Mariege Allow Married" />
+    <field name="work_allow_prcnt" type="Double" label="Work Allow Prcnt" />
+    <field name="work_allow_amount" type="Double" label="Work Allow Amount" />
+    <field name="represent_allow_prcnt" type="Double" label="Represent Allow Prcnt" />
+    <field name="represent_allow_amount" type="Double" label="Represent Allow Amount" />
+    <field name="annual_allow_value" type="Double" label="Annual Allow Value" />
+    <field name="annual_allow_times" type="Double" label="Annual Allow Times" />
+    <field name="co_code" type="String" label="Co Code" length="255" />
+    <field name="user_no" type="Double" label="User No" />
+    <field name="op_date" type="DateTime" label="Op Date" />
+    <field name="Earning_No" type="Int64" label="Earning No">
+      <items style="Lookup" dataController="Pyerntsalyp1" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Earning_Earning_Nm" type="String" readOnly="true" label="Earning Nm" length="255" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Grade">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="grade_desc_a" columns="20" />
+        <dataField fieldName="low_boundary" columns="15" />
+        <dataField fieldName="high_boundary" columns="15" />
+        <dataField fieldName="min_spent_years" columns="15" />
+        <dataField fieldName="mariege_allow_single" columns="15" />
+        <dataField fieldName="mariege_allow_married" columns="15" />
+        <dataField fieldName="work_allow_prcnt" columns="15" />
+        <dataField fieldName="work_allow_amount" columns="15" />
+        <dataField fieldName="represent_allow_prcnt" columns="15" />
+        <dataField fieldName="represent_allow_amount" columns="15" />
+        <dataField fieldName="annual_allow_value" columns="15" />
+        <dataField fieldName="annual_allow_times" columns="15" />
+        <dataField fieldName="co_code" />
+        <dataField fieldName="user_no" columns="15" />
+        <dataField fieldName="op_date" columns="10" />
+        <dataField fieldName="Earning_No" aliasFieldName="Earning_Earning_Nm" hyperlinkFormatString="~/Pages/Pyerntsalyp1.aspx?Earning_No={Earning_No}&amp;_controller=Pyerntsalyp1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Grade">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Grade" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="grade_desc_a" columns="20" />
+            <dataField fieldName="low_boundary" columns="15" />
+            <dataField fieldName="high_boundary" columns="15" />
+            <dataField fieldName="min_spent_years" columns="15" />
+            <dataField fieldName="mariege_allow_single" columns="15" />
+            <dataField fieldName="mariege_allow_married" columns="15" />
+            <dataField fieldName="work_allow_prcnt" columns="15" />
+            <dataField fieldName="work_allow_amount" columns="15" />
+            <dataField fieldName="represent_allow_prcnt" columns="15" />
+            <dataField fieldName="represent_allow_amount" columns="15" />
+            <dataField fieldName="annual_allow_value" columns="15" />
+            <dataField fieldName="annual_allow_times" columns="15" />
+            <dataField fieldName="co_code" />
+            <dataField fieldName="user_no" columns="15" />
+            <dataField fieldName="op_date" columns="10" />
+            <dataField fieldName="Earning_No" aliasFieldName="Earning_Earning_Nm" hyperlinkFormatString="~/Pages/Pyerntsalyp1.aspx?Earning_No={Earning_No}&amp;_controller=Pyerntsalyp1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Grade">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Grade" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="grade_code" columns="15" />
+            <dataField fieldName="grade_desc_a" columns="20" />
+            <dataField fieldName="low_boundary" columns="15" />
+            <dataField fieldName="high_boundary" columns="15" />
+            <dataField fieldName="min_spent_years" columns="15" />
+            <dataField fieldName="mariege_allow_single" columns="15" />
+            <dataField fieldName="mariege_allow_married" columns="15" />
+            <dataField fieldName="work_allow_prcnt" columns="15" />
+            <dataField fieldName="work_allow_amount" columns="15" />
+            <dataField fieldName="represent_allow_prcnt" columns="15" />
+            <dataField fieldName="represent_allow_amount" columns="15" />
+            <dataField fieldName="annual_allow_value" columns="15" />
+            <dataField fieldName="annual_allow_times" columns="15" />
+            <dataField fieldName="co_code" />
+            <dataField fieldName="user_no" columns="15" />
+            <dataField fieldName="op_date" columns="10" />
+            <dataField fieldName="Earning_No" aliasFieldName="Earning_Earning_Nm" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

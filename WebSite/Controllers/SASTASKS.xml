@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="SASTASKS" conflictDetection="overwriteChanges" label="Sastasks" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"SASTASKS"."Taskid" "Taskid"
+	,"SASTASKS"."Modid" "Modid"
+	,"Mod"."MODAr" "ModMODAr"
+	,"SASTASKS"."TakleefID" "TakleefID"
+	,"Takleef"."sprpersonname" "Takleefsprpersonname"
+	,"Takleefsprjob"."sprjobdesc" "Takleefsprjobsprjobdesc"
+	,"SASTASKS"."TaskDesc" "TaskDesc"
+	,"SASTASKS"."TaskType" "TaskType"
+	,"TaskType"."TasktypeDesc" "TaskTypeTasktypeDesc"
+	,"SASTASKS"."Taskpriortyid" "Taskpriortyid"
+	,"Taskpriorty"."Taskpriortydsc" "TaskpriortyTaskpriortydsc"
+	,"SASTASKS"."Statusid" "Statusid"
+	,"Status"."StatusDesc" "StatusStatusDesc"
+	,"SASTASKS"."TaskRecommenddate" "TaskRecommenddate"
+	,"SASTASKS"."TaskDelvery" "TaskDelvery"
+	,"SASTASKS"."Notes" "Notes"
+	,"SASTASKS"."Detailes" "Detailes"
+	,"SASTASKS"."ModifiedBy" "ModifiedBy"
+	,"SASTASKS"."ModifiedOn" "ModifiedOn"
+	,"SASTASKS"."CreatedBy" "CreatedBy"
+	,"SASTASKS"."CreatedOn" "CreatedOn"
+	,"SASTASKS"."sprModuleid" "sprModuleid"
+	,"sprModule"."sprModuleDesc" "sprModulesprModuleDesc"
+	,"sprModulesprModulecat"."sprModulecatDesc" "sprModulesprModulecatsprModulecatDesc"
+	,"SASTASKS"."sprModulecatid" "sprModulecatid"
+	,"sprModulecat"."sprModulecatDesc" "sprModulecatsprModulecatDesc"
+	,"SASTASKS"."MenuID" "MenuID"
+	,"Menu"."MenuAr" "MenuMenuAr"
+	,"MenuIDGroup"."GroupAr" "MenuIDGroupGroupAr"
+	,"MenuIDGroupMOD"."MODAr" "MenuIDGroupMODMODAr"
+	,"SASTASKS"."GroupID" "GroupID"
+	,"Group"."GroupAr" "GroupGroupAr"
+	,"GroupMOD"."MODAr" "GroupMODMODAr"
+	,"SASTASKS"."sprid" "sprid"
+	,"spr"."sprnotes" "sprsprnotes"
+	,"sprsprcustm"."sprcustomername" "sprsprcustmsprcustomername"
+	,"sprsprcustmsprcustomerclass1"."sprcustomerclass1Desc" "sprsprcustmsprcustomerclass1sprcustomerclass1Desc"
+	,"sprsprcustmsprcustomerclass2"."sprcustomerclass2Desc" "sprsprcustmsprcustomerclass2sprcustomerclass2Desc"
+	,"sprsprcustmsprcustomerclass3"."sprcustomerclass3Desc" "sprsprcustmsprcustomerclass3sprcustomerclass3Desc"
+	,"sprsprcustmsprcustomerclass4"."sprcustomerclass4Desc" "sprsprcustmsprcustomerclass4sprcustomerclass4Desc"
+	,"sprsprslm"."sprpersonname" "sprsprslmsprpersonname"
+	,"sprsprslmsprjob"."sprjobdesc" "sprsprslmsprjobsprjobdesc"
+	,"sprsprleader"."sprpersonname" "sprsprleadersprpersonname"
+	,"sprsprleadersprjob"."sprjobdesc" "sprsprleadersprjobsprjobdesc"
+	,"sprsprdesigner"."sprpersonname" "sprsprdesignersprpersonname"
+	,"sprsprdesignersprjob"."sprjobdesc" "sprsprdesignersprjobsprjobdesc"
+	,"sprsprtype"."sprtypeDesc" "sprsprtypesprtypeDesc"
+	,"SASTASKS"."softwareprojecttid" "softwareprojecttid"
+	,"softwareprojectt"."sprpersonname" "softwareprojecttsprpersonname"
+	,"softwareprojecttsprjob"."sprjobdesc" "softwareprojecttsprjobsprjobdesc"
+from "dbo"."SASTASKS" "SASTASKS"
+	left join "dbo"."MODMaster" "Mod" on "SASTASKS"."Modid" = "Mod"."MODID"
+	left join "dbo"."softwareprojectsteam" "Takleef" on "SASTASKS"."TakleefID" = "Takleef"."softwareprojecttid"
+	left join "dbo"."sprjobs" "Takleefsprjob" on "Takleef"."sprjob" = "Takleefsprjob"."sprjobid"
+	left join "dbo"."SASTasktype" "TaskType" on "SASTASKS"."TaskType" = "TaskType"."Tasktypeid"
+	left join "dbo"."SASTASKPRIORTY" "Taskpriorty" on "SASTASKS"."Taskpriortyid" = "Taskpriorty"."Taskpriortyid"
+	left join "dbo"."SASTASKSsatatus" "Status" on "SASTASKS"."Statusid" = "Status"."Statusid"
+	left join "dbo"."SoftwareModuleslist" "sprModule" on "SASTASKS"."sprModuleid" = "sprModule"."sprModuleid"
+	left join "dbo"."SoftwareModulescatlist" "sprModulesprModulecat" on "sprModule"."sprModulecatid" = "sprModulesprModulecat"."sprModulecatid"
+	left join "dbo"."SoftwareModulescatlist" "sprModulecat" on "SASTASKS"."sprModulecatid" = "sprModulecat"."sprModulecatid"
+	left join "dbo"."MenuMaster" "Menu" on "SASTASKS"."MenuID" = "Menu"."MenuID"
+	left join "dbo"."GroupMaster" "MenuIDGroup" on "Menu"."IDGroup" = "MenuIDGroup"."GroupID"
+	left join "dbo"."MODMaster" "MenuIDGroupMOD" on "MenuIDGroup"."MODID" = "MenuIDGroupMOD"."MODID"
+	left join "dbo"."GroupMaster" "Group" on "SASTASKS"."GroupID" = "Group"."GroupID"
+	left join "dbo"."MODMaster" "GroupMOD" on "Group"."MODID" = "GroupMOD"."MODID"
+	left join "dbo"."SoftwareProjects" "spr" on "SASTASKS"."sprid" = "spr"."sprid"
+	left join "dbo"."Softwareprojectcustomers" "sprsprcustm" on "spr"."sprcustmno" = "sprsprcustm"."sprcustmno"
+	left join "dbo"."softwareprojectcustomerclass1" "sprsprcustmsprcustomerclass1" on "sprsprcustm"."sprcustomerclass1id" = "sprsprcustmsprcustomerclass1"."sprcustomerclass1id"
+	left join "dbo"."softwareprojectcustomerclass2" "sprsprcustmsprcustomerclass2" on "sprsprcustm"."sprcustomerclass2id" = "sprsprcustmsprcustomerclass2"."sprcustomerclass2id"
+	left join "dbo"."softwareprojectcustomerclass3" "sprsprcustmsprcustomerclass3" on "sprsprcustm"."sprcustomerclass3id" = "sprsprcustmsprcustomerclass3"."sprcustomerclass3id"
+	left join "dbo"."softwareprojectcustomerclass4" "sprsprcustmsprcustomerclass4" on "sprsprcustm"."sprcustomerclass4id" = "sprsprcustmsprcustomerclass4"."sprcustomerclass4id"
+	left join "dbo"."softwareprojectsteam" "sprsprslm" on "spr"."sprslmno" = "sprsprslm"."softwareprojecttid"
+	left join "dbo"."sprjobs" "sprsprslmsprjob" on "sprsprslm"."sprjob" = "sprsprslmsprjob"."sprjobid"
+	left join "dbo"."softwareprojectsteam" "sprsprleader" on "spr"."sprleader" = "sprsprleader"."softwareprojecttid"
+	left join "dbo"."sprjobs" "sprsprleadersprjob" on "sprsprleader"."sprjob" = "sprsprleadersprjob"."sprjobid"
+	left join "dbo"."softwareprojectsteam" "sprsprdesigner" on "spr"."sprdesigner" = "sprsprdesigner"."softwareprojecttid"
+	left join "dbo"."sprjobs" "sprsprdesignersprjob" on "sprsprdesigner"."sprjob" = "sprsprdesignersprjob"."sprjobid"
+	left join "dbo"."softwareprojecttype" "sprsprtype" on "spr"."sprtype" = "sprsprtype"."sprtypeid"
+	left join "dbo"."softwareprojectsteam" "softwareprojectt" on "SASTASKS"."softwareprojecttid" = "softwareprojectt"."softwareprojecttid"
+	left join "dbo"."sprjobs" "softwareprojecttsprjob" on "softwareprojectt"."sprjob" = "softwareprojecttsprjob"."sprjobid"
+]]></text>
+    </command>
+    <command id="TaskidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Taskid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Taskid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Taskid" readOnly="true" />
+    <field name="Modid" type="Int64" allowNulls="false" label="Modid" showInSummary="true">
+      <items style="Lookup" dataController="MODMaster" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ModMODAr" type="String" readOnly="true" label="Mod MOD Ar" length="50" />
+    <field name="TakleefID" type="Int64" allowNulls="false" label="Takleef#" showInSummary="true">
+      <items style="Lookup" dataController="softwareprojectsteam" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Takleefsprpersonname" type="String" readOnly="true" label="Takleefsprpersonname" length="150" />
+    <field name="Takleefsprjobsprjobdesc" type="String" readOnly="true" label="Takleefsprjobsprjobdesc" length="150" />
+    <field name="TaskDesc" type="String" allowQBE="false" allowSorting="false" label="Task Desc" length="-1" showInSummary="true" />
+    <field name="TaskType" type="Int64" label="Task Type" showInSummary="true">
+      <items style="Lookup" dataController="SASTasktype" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TaskTypeTasktypeDesc" type="String" readOnly="true" label="Task Type Tasktype Desc" length="50" />
+    <field name="Taskpriortyid" type="Int64" label="Taskpriortyid" showInSummary="true">
+      <items style="Lookup" dataController="SASTASKPRIORTY" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TaskpriortyTaskpriortydsc" type="String" readOnly="true" label="Taskpriorty Taskpriortydsc" length="50" />
+    <field name="Statusid" type="Int64" label="Statusid">
+      <items style="Lookup" dataController="SASTASKSsatatus" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="StatusStatusDesc" type="String" readOnly="true" label="Status Desc" length="50" />
+    <field name="TaskRecommenddate" type="DateTime" label="Task Recommenddate" />
+    <field name="TaskDelvery" type="DateTime" label="Task Delvery" />
+    <field name="Notes" type="String" label="Notes" length="255" />
+    <field name="Detailes" type="String" label="Detailes" length="255" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="sprModuleid" type="Int64" label="spr Moduleid">
+      <items style="Lookup" dataController="SoftwareModuleslist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sprModulesprModuleDesc" type="String" readOnly="true" label="spr Modulespr Module Desc" length="50" />
+    <field name="sprModulesprModulecatsprModulecatDesc" type="String" readOnly="true" label="spr Modulespr Modulecatspr Modulecat Desc" length="50" />
+    <field name="sprModulecatid" type="Int64" label="spr Modulecatid">
+      <items style="Lookup" dataController="SoftwareModulescatlist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sprModulecatsprModulecatDesc" type="String" readOnly="true" label="spr Modulecatspr Modulecat Desc" length="50" />
+    <field name="MenuID" type="Int64" label="Menu#">
+      <items style="Lookup" dataController="MenuMaster" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="MenuMenuAr" type="String" readOnly="true" label="Menu Ar" length="50" />
+    <field name="MenuIDGroupGroupAr" type="String" readOnly="true" label="Menu ID Group Ar" length="50" />
+    <field name="MenuIDGroupMODMODAr" type="String" readOnly="true" label="Menu ID Group MODMOD Ar" length="50" />
+    <field name="GroupID" type="Int64" label="Group#">
+      <items style="Lookup" dataController="GroupMaster" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="GroupGroupAr" type="String" readOnly="true" label="Group Ar" length="50" />
+    <field name="GroupMODMODAr" type="String" readOnly="true" label="Group MODMOD Ar" length="50" />
+    <field name="sprid" type="Int64" label="Sprid">
+      <items style="Lookup" dataController="SoftwareProjects" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sprsprnotes" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Sprsprnotes" length="-1" />
+    <field name="sprsprcustmsprcustomername" type="String" readOnly="true" label="Sprsprcustmsprcustomername" length="150" />
+    <field name="sprsprcustmsprcustomerclass1sprcustomerclass1Desc" type="String" readOnly="true" label="sprsprcustmsprcustomerclass1sprcustomerclass1 Desc" length="150" />
+    <field name="sprsprcustmsprcustomerclass2sprcustomerclass2Desc" type="String" readOnly="true" label="sprsprcustmsprcustomerclass2sprcustomerclass2 Desc" length="150" />
+    <field name="sprsprcustmsprcustomerclass3sprcustomerclass3Desc" type="String" readOnly="true" label="sprsprcustmsprcustomerclass3sprcustomerclass3 Desc" length="150" />
+    <field name="sprsprcustmsprcustomerclass4sprcustomerclass4Desc" type="String" readOnly="true" label="sprsprcustmsprcustomerclass4sprcustomerclass4 Desc" length="150" />
+    <field name="sprsprslmsprpersonname" type="String" readOnly="true" label="Sprsprslmsprpersonname" length="150" />
+    <field name="sprsprslmsprjobsprjobdesc" type="String" readOnly="true" label="Sprsprslmsprjobsprjobdesc" length="150" />
+    <field name="sprsprleadersprpersonname" type="String" readOnly="true" label="Sprsprleadersprpersonname" length="150" />
+    <field name="sprsprleadersprjobsprjobdesc" type="String" readOnly="true" label="Sprsprleadersprjobsprjobdesc" length="150" />
+    <field name="sprsprdesignersprpersonname" type="String" readOnly="true" label="Sprsprdesignersprpersonname" length="150" />
+    <field name="sprsprdesignersprjobsprjobdesc" type="String" readOnly="true" label="Sprsprdesignersprjobsprjobdesc" length="150" />
+    <field name="sprsprtypesprtypeDesc" type="String" readOnly="true" label="sprsprtypesprtype Desc" length="150" />
+    <field name="softwareprojecttid" type="Int64" label="Softwareprojecttid">
+      <items style="Lookup" dataController="softwareprojectsteam" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="softwareprojecttsprpersonname" type="String" readOnly="true" label="Softwareprojecttsprpersonname" length="150" />
+    <field name="softwareprojecttsprjobsprjobdesc" type="String" readOnly="true" label="Softwareprojecttsprjobsprjobdesc" length="150" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Sastasks">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Modid" aliasFieldName="ModMODAr" />
+        <dataField fieldName="TakleefID" aliasFieldName="Takleefsprpersonname" hyperlinkFormatString="~/Pages/softwareprojectsteam.aspx?softwareprojecttid={TakleefID}&amp;_controller=softwareprojectsteam&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="TaskDesc" rows="5" />
+        <dataField fieldName="TaskType" aliasFieldName="TaskTypeTasktypeDesc" hyperlinkFormatString="~/Pages/SASTasktype.aspx?Tasktypeid={TaskType}&amp;_controller=SASTasktype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Taskpriortyid" aliasFieldName="TaskpriortyTaskpriortydsc" hyperlinkFormatString="~/Pages/SASTASKPRIORTY.aspx?Taskpriortyid={Taskpriortyid}&amp;_controller=SASTASKPRIORTY&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Statusid" aliasFieldName="StatusStatusDesc" hyperlinkFormatString="~/Pages/SASTASKSsatatus.aspx?Statusid={Statusid}&amp;_controller=SASTASKSsatatus&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="TaskRecommenddate" columns="10" />
+        <dataField fieldName="TaskDelvery" columns="10" />
+        <dataField fieldName="Notes" />
+        <dataField fieldName="Detailes" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="sprModuleid" aliasFieldName="sprModulesprModuleDesc" hyperlinkFormatString="~/Pages/SoftwareModuleslist.aspx?sprModuleid={sprModuleid}&amp;_controller=SoftwareModuleslist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="sprModulecatid" aliasFieldName="sprModulecatsprModulecatDesc" hyperlinkFormatString="~/Pages/SoftwareModulescatlist.aspx?sprModulecatid={sprModulecatid}&amp;_controller=SoftwareModulescatlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="MenuID" aliasFieldName="MenuMenuAr" hyperlinkFormatString="~/Pages/MenuMaster.aspx?MenuID={MenuID}&amp;_controller=MenuMaster&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="GroupID" aliasFieldName="GroupGroupAr" hyperlinkFormatString="~/Pages/GroupMaster.aspx?GroupID={GroupID}&amp;_controller=GroupMaster&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="sprid" aliasFieldName="sprsprnotes" hyperlinkFormatString="~/Pages/SoftwareProjects.aspx?sprid={sprid}&amp;_controller=SoftwareProjects&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="softwareprojecttid" aliasFieldName="softwareprojecttsprpersonname" hyperlinkFormatString="~/Pages/softwareprojectsteam.aspx?softwareprojecttid={softwareprojecttid}&amp;_controller=softwareprojectsteam&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Sastasks">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Sastasks" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Modid" aliasFieldName="ModMODAr" hyperlinkFormatString="~/Pages/MODMaster.aspx?MODID={Modid}&amp;_controller=MODMaster&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="TakleefID" aliasFieldName="Takleefsprpersonname" hyperlinkFormatString="~/Pages/softwareprojectsteam.aspx?softwareprojecttid={TakleefID}&amp;_controller=softwareprojectsteam&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="TaskDesc" rows="5" />
+            <dataField fieldName="TaskType" aliasFieldName="TaskTypeTasktypeDesc" hyperlinkFormatString="~/Pages/SASTasktype.aspx?Tasktypeid={TaskType}&amp;_controller=SASTasktype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Taskpriortyid" aliasFieldName="TaskpriortyTaskpriortydsc" hyperlinkFormatString="~/Pages/SASTASKPRIORTY.aspx?Taskpriortyid={Taskpriortyid}&amp;_controller=SASTASKPRIORTY&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Statusid" aliasFieldName="StatusStatusDesc" hyperlinkFormatString="~/Pages/SASTASKSsatatus.aspx?Statusid={Statusid}&amp;_controller=SASTASKSsatatus&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="TaskRecommenddate" columns="10" />
+            <dataField fieldName="TaskDelvery" columns="10" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="Detailes" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="sprModuleid" aliasFieldName="sprModulesprModuleDesc" hyperlinkFormatString="~/Pages/SoftwareModuleslist.aspx?sprModuleid={sprModuleid}&amp;_controller=SoftwareModuleslist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="sprModulecatid" aliasFieldName="sprModulecatsprModulecatDesc" hyperlinkFormatString="~/Pages/SoftwareModulescatlist.aspx?sprModulecatid={sprModulecatid}&amp;_controller=SoftwareModulescatlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="MenuID" aliasFieldName="MenuMenuAr" hyperlinkFormatString="~/Pages/MenuMaster.aspx?MenuID={MenuID}&amp;_controller=MenuMaster&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="GroupID" aliasFieldName="GroupGroupAr" hyperlinkFormatString="~/Pages/GroupMaster.aspx?GroupID={GroupID}&amp;_controller=GroupMaster&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="sprid" aliasFieldName="sprsprnotes" hyperlinkFormatString="~/Pages/SoftwareProjects.aspx?sprid={sprid}&amp;_controller=SoftwareProjects&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="softwareprojecttid" aliasFieldName="softwareprojecttsprpersonname" hyperlinkFormatString="~/Pages/softwareprojectsteam.aspx?softwareprojecttid={softwareprojecttid}&amp;_controller=softwareprojectsteam&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Takleefsprjobsprjobdesc" />
+            <dataField fieldName="sprModulesprModulecatsprModulecatDesc" columns="50" />
+            <dataField fieldName="MenuIDGroupGroupAr" columns="50" />
+            <dataField fieldName="MenuIDGroupMODMODAr" columns="50" />
+            <dataField fieldName="GroupMODMODAr" columns="50" />
+            <dataField fieldName="sprsprcustmsprcustomername" />
+            <dataField fieldName="sprsprcustmsprcustomerclass1sprcustomerclass1Desc" />
+            <dataField fieldName="sprsprcustmsprcustomerclass2sprcustomerclass2Desc" />
+            <dataField fieldName="sprsprcustmsprcustomerclass3sprcustomerclass3Desc" />
+            <dataField fieldName="sprsprcustmsprcustomerclass4sprcustomerclass4Desc" />
+            <dataField fieldName="sprsprslmsprpersonname" />
+            <dataField fieldName="sprsprslmsprjobsprjobdesc" />
+            <dataField fieldName="sprsprleadersprpersonname" />
+            <dataField fieldName="sprsprleadersprjobsprjobdesc" />
+            <dataField fieldName="sprsprdesignersprpersonname" />
+            <dataField fieldName="sprsprdesignersprjobsprjobdesc" />
+            <dataField fieldName="sprsprtypesprtypeDesc" />
+            <dataField fieldName="softwareprojecttsprjobsprjobdesc" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Sastasks">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Sastasks" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Modid" aliasFieldName="ModMODAr" />
+            <dataField fieldName="TakleefID" aliasFieldName="Takleefsprpersonname" />
+            <dataField fieldName="TaskDesc" rows="5" />
+            <dataField fieldName="TaskType" aliasFieldName="TaskTypeTasktypeDesc" />
+            <dataField fieldName="Taskpriortyid" aliasFieldName="TaskpriortyTaskpriortydsc" />
+            <dataField fieldName="Statusid" aliasFieldName="StatusStatusDesc" />
+            <dataField fieldName="TaskRecommenddate" columns="10" />
+            <dataField fieldName="TaskDelvery" columns="10" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="Detailes" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="sprModuleid" aliasFieldName="sprModulesprModuleDesc" />
+            <dataField fieldName="sprModulecatid" aliasFieldName="sprModulecatsprModulecatDesc" />
+            <dataField fieldName="MenuID" aliasFieldName="MenuMenuAr" />
+            <dataField fieldName="GroupID" aliasFieldName="GroupGroupAr" />
+            <dataField fieldName="sprid" aliasFieldName="sprsprnotes" />
+            <dataField fieldName="softwareprojecttid" aliasFieldName="softwareprojecttsprpersonname" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

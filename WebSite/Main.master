@@ -1,0 +1,1463 @@
+<%@ Master Language="VB" AutoEventWireup="false" CodeFile="Main.master.vb" Inherits="Main" %>
+<!DOCTYPE html>
+<html xml:lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>" lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>" dir="<%= If(System.Threading.Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft, "rtl", "ltr") %>">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SKYsaas - نظام إدارة الموارد المؤسسية الحديث</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="نظام إدارة الموارد المؤسسية المتطور - SKYsaas ERP" />
+    
+    <!-- Modern CSS Framework -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <!-- Custom Stylesheets -->
+    <link rel="shortcut icon" href="/favicon.png" />
+    <!-- Bootstrap 5.3.2 (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <!-- Font Awesome 6 (CDN) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" referrerpolicy="no-referrer" />
+    <!-- Consolidated App Styles -->
+    <link href="/css/stylesheet.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Ultra Modern Design System moved to external stylesheet: /css/ultra-main.css -->
+    
+    <!-- Layout Spacing Fix -->
+    <style>
+        /* Fix excessive top spacing between header and content */
+        .app-container {
+            margin-top: 45px !important; /* Only membership bar height, remove ultra-header spacing */
+            min-height: calc(100vh - 45px) !important;
+        }
+        
+        /* Hide or minimize ultra-header if not needed */
+        .ultra-header {
+            display: none !important; /* Remove the extra 70px header */
+        }
+        
+        /* Reduce main content padding for tighter layout */
+        .main-content {
+            padding: 1rem 2rem !important; /* Reduced from 2rem */
+        }
+        
+        /* Ensure membership bar stays compact */
+        .membership-top-bar {
+            height: 45px !important;
+            min-height: 45px !important;
+        }
+        
+        /* Remove any additional spacing from content placeholders */
+        #PageContentPlaceHolder,
+        #ContentPlaceHolder1 {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+    </style>
+    
+    <!-- Scripts -->
+    <!-- Menu configuration: ensure 3-level depth -->
+    <script>
+        window.ModernMenuConfig = Object.assign({}, window.ModernMenuConfig || {}, { maxDepth: 3, rtl: document.documentElement.dir === 'rtl' });
+    </script>
+    <style>
+        /* CRITICAL: Remove ALL hiding/background classes from MembershipBar */
+        .MembershipBar,
+        #Membership_Login,
+        #mb,
+        [id*="mb"],
+        [id*="Membership"] {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: relative !important;
+            z-index: 10000 !important;
+            background: transparent !important;
+            left: auto !important;
+            top: auto !important;
+            width: auto !important;
+            height: auto !important;
+            overflow: visible !important;
+            clip: auto !important;
+            clip-path: none !important;
+        }
+        
+        /* Force all children to be visible */
+        .MembershipBar,
+        .MembershipBar *,
+        #Membership_Login,
+        #Membership_Login *,
+        .CultureLink,
+        .CultureLink *,
+        .HelpLink,
+        .HelpLink *,
+        .LoginDialog,
+        .LoginDialog *,
+        .LoginDialog td,
+        .LoginDialog a {
+            visibility: visible !important;
+            opacity: 1 !important;
+            display: inline !important;
+            color: inherit !important;
+            background: transparent !important;
+        }
+        
+        /* Specific fixes for CultureLink */
+        .CultureLink {
+            display: inline-block !important;
+            float: right !important;
+            margin: 0 5px !important;
+        }
+        
+        .CultureLink a {
+            display: inline !important;
+            color: #fff !important;
+            text-decoration: underline !important;
+        }
+        
+        /* Remove legacy-hidden class effects */
+        .legacy-hidden .MembershipBar,
+        .legacy-hidden #Membership_Login,
+        .legacy-hidden #mb {
+            position: relative !important;
+            left: auto !important;
+            top: auto !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+    </style>
+    <style>
+        /* Legacy PageMenuBar theming to match MembershipBar */
+        #PageMenuBar,
+        .AspNet-Menu,
+        .AspNet-Menu-Horizontal,
+        .modern-menu-wrapper .AspNet-Menu,
+        .modern-menu-wrapper .AspNet-Menu-Horizontal {
+            background: rgba(15, 23, 42, 0.95) !important; /* same as .membership-top-bar */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        #PageMenuBar a,
+        .AspNet-Menu a,
+        .AspNet-Menu-Horizontal a {
+            color: #cbd5e1 !important; /* slate-300 */
+            text-decoration: none;
+        }
+        #PageMenuBar a:hover,
+        .AspNet-Menu a:hover,
+        .AspNet-Menu-Horizontal a:hover,
+        .AspNet-Menu .AspNet-Menu-Hover a,
+        .AspNet-Menu .AspNet-Menu-Selected a {
+            color: #ffffff !important;
+            background: rgba(255, 255, 255, 0.08) !important;
+        }
+        .AspNet-Menu .AspNet-Menu-SubMenu,
+        .AspNet-Menu-Horizontal .AspNet-Menu-SubMenu {
+            background: rgba(15, 23, 42, 0.98) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+        .AspNet-Menu .AspNet-Menu-Separator,
+        .AspNet-Menu-Horizontal .AspNet-Menu-Separator {
+            border-color: rgba(255, 255, 255, 0.08) !important;
+        }
+        #PageMenuBar i,
+        .AspNet-Menu i { color: #94a3b8 !important; }
+    </style>
+    <script src="/Scripts/MicrosoftAjax.js"></script>
+    <script src="/Scripts/MicrosoftAjaxWebForms.js"></script>
+    
+    <!-- Suppress missing resource errors -->
+    <script>
+        // Suppress 404 errors for optional resources
+        (function() {
+            const originalError = console.error;
+            console.error = function(...args) {
+                const msg = args.join(' ');
+                // Filter out known 404s for optional resources
+                if (msg.includes('main1.js') || msg.includes('main2.js') || 
+                    msg.includes('main3.js') || msg.includes('main4.js') || 
+                    msg.includes('main.js') || msg.includes('component.css') ||
+                    msg.includes('DropArrow.gif')) {
+                    return; // Suppress these errors
+                }
+                originalError.apply(console, args);
+            };
+        })();
+    </script>
+    <!-- Global console logging controller: disabled by default. Enable with debugMenu(true) in console. -->
+    <script>
+        (function () {
+            try {
+                // Preserve originals once
+                window._origConsole = window._origConsole || {
+                    log: console.log ? console.log.bind(console) : function () { },
+                    debug: console.debug ? console.debug.bind(console) : (console.log ? console.log.bind(console) : function () { }),
+                    info: console.info ? console.info.bind(console) : (console.log ? console.log.bind(console) : function () { }),
+                    warn: console.warn ? console.warn.bind(console) : (console.log ? console.log.bind(console) : function () { }),
+                    error: console.error ? console.error.bind(console) : (console.log ? console.log.bind(console) : function () { })
+                };
+
+                var _debugEnabled = true; // default ON per user request
+
+                function applyConsoleState() {
+                    if (!_debugEnabled) {
+                        console.log = function () { };
+                        console.debug = function () { };
+                        console.info = function () { };
+                        // Keep warnings/errors visible in production
+                        console.warn = window._origConsole.warn;
+                        console.error = window._origConsole.error;
+                        window._origConsole.info('%cℹ Debug logs are DISABLED. To enable: debugMenu(true). To disable again: debugMenu(false).', 'color:#2962ff');
+                    } else {
+                        console.log = window._origConsole.log;
+                        console.debug = window._origConsole.debug;
+                        console.info = window._origConsole.info;
+                        console.warn = window._origConsole.warn;
+                        console.error = window._origConsole.error;
+                        console.info('%c✅ Debug logs ENABLED. Use debugMenu(false) to silence.', 'color:#2e7d32');
+                    }
+                }
+
+                // Public toggle API from console
+                window.debugMenu = function (value) {
+                    _debugEnabled = (value === true);
+                    applyConsoleState();
+                    return _debugEnabled;
+                };
+
+                // Apply initial state (disabled)
+                applyConsoleState();
+            } catch (e) {
+                // If anything fails, do nothing rather than break the page
+            }
+        })();
+    </script>
+    <script src="/Scripts/daf-membership.js"></script>
+    <script>
+        // Enable slide-in Modern Menu on mobile/desktop for Main.master
+        document.addEventListener('DOMContentLoaded', function() {
+            const host = document.getElementById('ModernMenuHost');
+            const openBtn = document.getElementById('menuToggleBtn') || document.querySelector('.mobile-menu-toggle');
+            if (!host || !openBtn) return;
+
+            const backdrop = host.querySelector('.pm-backdrop');
+            const closeBtn = host.querySelector('.pm-close');
+
+            function openMenu() { host.classList.add('open'); }
+            function closeMenu() { host.classList.remove('open'); }
+            function toggleMenu() { host.classList.toggle('open'); }
+
+            openBtn.addEventListener('click', toggleMenu);
+            if (backdrop) backdrop.addEventListener('click', closeMenu);
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMenu(); });
+        });
+    </script>
+</head>
+<body id="Body" runat="server" class="ultra-modern-app">
+    <form id="form1" runat="server">
+        <!-- Background Effects -->
+        <div class="app-background"></div>
+        
+        <!-- ASP.NET Essential Controls -->
+        <act:ToolkitScriptManager ID="sm" runat="server" ScriptMode="Release" EnableScriptGlobalization="True" OnResolveScriptReference="sm_ResolveScriptReference" />
+        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+        
+        <!-- Membership Top Bar -->
+        <div class="membership-top-bar">
+            <div class="membership-content">
+                <div class="user-info">
+                    <span class="welcome-text">مرحباً،</span>
+                    <span class="username" id="currentUserName">المستخدم</span>
+                </div>
+                <div class="membership-actions">
+                    <!-- Burger inside top bar (single header) -->
+                    <button type="button" class="membership-btn" id="menuToggleBtn" aria-label="القائمة" aria-controls="ModernMenuHost" aria-expanded="false" title="القائمة">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    
+                    <!-- Root Sidebar Button (New) -->
+                    <button type="button" class="membership-btn" id="rootSidebarToggleBtn" title="القائمة الرئيسية">
+                        <i class="fas fa-layer-group"></i>
+                    </button>
+                    
+                    <!-- MembershipBar visible by default (no debug wrapper) -->
+                    <aquarium:MembershipBar ID="mb" runat="server" RememberMeSet="False" DisplayLogin="True" IdleUserTimeout="15000" EnableHistory="True" EnablePermalinks="True" />
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <!-- Legacy Data Bridge - Hidden but accessible for data extraction -->
+        <div id="LegacyDataBridge" style="position: absolute; left: -9999px; top: -9999px; visibility: hidden; opacity: 0;">
+            <!-- This will be populated by the legacy membership system -->
+        </div>
+        
+        <!-- Unified Menu Host (moved out of extra header) -->
+        <div id="ModernMenuHost">
+            <div class="pm-backdrop" data-close="1"></div>
+            <aside class="pm-panel" role="dialog" aria-modal="true" aria-label="Application Menu">
+                <div class="pm-header">
+                    <div class="pm-title">
+                        <i class="fas fa-layer-group"></i>
+                        <span>التطبيقات</span>
+                    </div>
+                    <button type="button" class="pm-close" data-close="1" aria-label="إغلاق القائمة">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="pm-tools-slot"></div>
+                <ul class="pm-list" id="pm-list" role="tree"></ul>
+            </aside>
+        </div>
+
+        <!-- Root Sidebar Host (New) -->
+        <div id="rootSidebarHost" aria-hidden="true">
+            <div class="rb" data-close="1"></div>
+            <div id="rootSidebarPanel">
+                <div class="hd">
+                    <div class="ttl">القائمة الرئيسية</div>
+                    <button class="x" type="button">إغلاق</button>
+                </div>
+                <ul id="rootSidebarList"></ul>
+            </div>
+        </div>
+
+        <!-- Main App Container -->
+        <div class="app-container">
+            <main class="main-content animate-fade-in-up">
+                <asp:ContentPlaceHolder ID="PageContentPlaceHolder" runat="server" />
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+            </main>
+        </div>
+
+        <!-- Legacy Elements (Hidden but Functional) -->
+        <div class="legacy-hidden" aria-hidden="true">
+            <div id="PageMenuBar" runat="server" class="PageMenuBar"></div>
+            <aquarium:MenuExtender ID="Menu1" runat="server"
+                DataSourceID="SiteMapDataSource1"
+                TargetControlID="PageMenuBar"
+                HoverStyle="Auto"
+                PopupPosition="Left"
+                ShowSiteActions="False" />
+            
+            <asp:ContentPlaceHolder ID="PageTitleContentPlaceHolder" runat="server">الصفحة الرئيسية</asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="SideBarPlaceHolder" runat="server" />
+            <asp:ContentPlaceHolder ID="PageHeaderContentPlaceHolder" runat="server">SKYsaas ERP</asp:ContentPlaceHolder>
+            <asp:Label ID="lblDomainName" runat="server" />
+            <asp:HiddenField ID="AsmxBaseField" runat="server" />
+        </div>
+    </form>
+
+    <!-- Ultra Modern JavaScript -->
+    <script src="/js/modern-menu-once.js"></script>
+    <script src="/Vuejs/menu-data-bridge.js"></script>
+    <script src="/js/pro-sidebar.js"></script>
+    <script src="/js/pro-modal-menu.js"></script>
+    <script src="/Vuejs/menu-integration-test.js"></script>
+    <script>
+        // Modern App Initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize smooth scrolling
+            document.documentElement.style.scrollBehavior = 'smooth';
+            
+            // Auto-initialize menu system for all screens
+            if (window.initModernMenuOnce) {
+                setTimeout(() => window.initModernMenuOnce(), 100);
+            }
+            
+            // Universal menu functionality (works for all screen sizes)
+            const toggleBtn = document.getElementById('menuToggleBtn');
+            const menuHost = document.getElementById('ModernMenuHost');
+            
+            console.log("🔧 Menu initialization:", {
+                toggleBtn: !!toggleBtn,
+                menuHost: !!menuHost,
+                screenWidth: window.innerWidth,
+                userAgent: navigator.userAgent.substring(0, 50)
+            });
+            
+            if (toggleBtn && menuHost) {
+                console.log("✅ Setting up menu toggle functionality");
+                // Focus management for accessibility
+                let lastFocusedEl = null;
+                const panel = menuHost.querySelector('.pm-panel');
+                const getFocusable = () => panel ? panel.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])') : [];
+
+                toggleBtn.addEventListener('click', function() {
+                    console.log("🎯 Burger button clicked!");
+                    
+                    if (!window.modernMenuInitialized && window.initModernMenuOnce) {
+                        console.log("📊 Initializing menu for first time");
+                        window.initModernMenuOnce();
+                    }
+                    
+                    // Toggle menu visibility
+                    const isActive = menuHost.classList.contains('active');
+                    
+                    console.log("📊 Menu state before toggle:", {
+                        isActive: isActive,
+                        menuClasses: Array.from(menuHost.classList),
+                        menuDisplay: window.getComputedStyle(menuHost).display
+                    });
+                    
+                    if (isActive) {
+                        menuHost.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                        if (lastFocusedEl) { try { lastFocusedEl.focus(); } catch(e) {} lastFocusedEl = null; }
+                        console.log("✅ Menu closed");
+                    } else {
+                        menuHost.classList.add('active');
+                        document.body.classList.add('menu-open');
+                        toggleBtn.setAttribute('aria-expanded', 'true');
+                        lastFocusedEl = document.activeElement;
+                        const focusables = getFocusable();
+                        if (focusables && focusables.length) { try { focusables[0].focus(); } catch(e) {} }
+                        console.log("✅ Menu opened");
+                    }
+                    
+                    console.log("📊 Menu state after toggle:", {
+                        isActive: menuHost.classList.contains('active'),
+                        menuClasses: Array.from(menuHost.classList)
+                    });
+                });
+
+                // Close menu on backdrop click
+                const backdrop = menuHost.querySelector('.pm-backdrop');
+                if (backdrop) {
+                    backdrop.addEventListener('click', function() {
+                        menuHost.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                        // restore focus
+                        if (lastFocusedEl) { try { lastFocusedEl.focus(); } catch(e) {} lastFocusedEl = null; }
+                    });
+                }
+                
+                // Close menu on close button click
+                const closeBtn = menuHost.querySelector('.pm-close');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function() {
+                        menuHost.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                        if (lastFocusedEl) { try { lastFocusedEl.focus(); } catch(e) {} lastFocusedEl = null; }
+                    });
+                }
+                
+                // Close menu on ESC key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && menuHost.classList.contains('active')) {
+                        menuHost.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                        if (lastFocusedEl) { try { lastFocusedEl.focus(); } catch(e) {} lastFocusedEl = null; }
+                    }
+                });
+
+                // ✅ Menu rendering now handled by external pro-modal-menu.js
+                // This inline code has been removed to avoid conflicts
+                console.log("✅ Menu rendering delegated to pro-modal-menu.js");
+
+                // ✅ Keyboard navigation now handled by pro-modal-menu.js
+            }
+            
+            // Add loading states and animations
+            const content = document.querySelector('.main-content');
+            if (content) {
+                content.style.opacity = '0';
+                content.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    content.style.transition = 'all 0.6s ease-out';
+                    content.style.opacity = '1';
+                    content.style.transform = 'translateY(0)';
+                }, 100);
+            }
+            
+            // Header scroll effect
+            let lastScrollY = window.scrollY;
+            const header = document.querySelector('.ultra-header');
+            
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    const currentScrollY = window.scrollY;
+                    
+                    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                        header.style.transform = 'translateY(-100%)';
+                    } else {
+                        header.style.transform = 'translateY(0)';
+                    }
+                    
+                    lastScrollY = currentScrollY;
+                });
+            }
+            
+            // Notification click handler
+            const notificationBtn = document.querySelector('.notification-btn');
+            if (notificationBtn) {
+                notificationBtn.addEventListener('click', function() {
+                    // Add notification functionality here
+                    console.log('Notifications clicked');
+                });
+            }
+            
+            // User button click handler
+            const userBtn = document.querySelector('.user-btn');
+            if (userBtn) {
+                userBtn.addEventListener('click', function() {
+                    // Add user menu functionality here
+                    console.log('User menu clicked');
+                });
+            }
+            
+            console.log('🚀 SKYsaas Ultra Modern UI Initialized');
+        });
+        
+        // Enhanced Language Change Functions - Direct MembershipBar Integration
+        function changeLanguage(lang) {
+            console.log('🌐 تغيير اللغة إلى:', lang);
+            try {
+                // Method 1: Direct MembershipBar culture link click
+                const membershipBar = document.getElementById('Membership_Login') || document.querySelector('.MembershipBar');
+                if (membershipBar) {
+                    const cultureLink = membershipBar.querySelector('.CultureLink a') || 
+                                      membershipBar.querySelector('a[title*="Change your language"]') ||
+                                      membershipBar.querySelector('a[onclick*="toggleHover"]');
+                    
+                    if (cultureLink) {
+                        console.log('✅ Found MembershipBar culture link, clicking directly');
+                        cultureLink.click();
+                        
+                        // Wait a moment for the dropdown to appear, then select language
+                        setTimeout(() => {
+                            selectLanguageFromDropdown(lang);
+                        }, 100);
+                        return;
+                    }
+                }
+                
+                // Method 2: Find and click the actual MembershipBar language button
+                const membershipLanguageButtons = findMembershipLanguageButtons();
+                if (membershipLanguageButtons.length > 0) {
+                    console.log('✅ Found MembershipBar language buttons, clicking directly');
+                    const targetButton = membershipLanguageButtons.find(btn => 
+                        btn.textContent.toLowerCase().includes(lang.toLowerCase()) ||
+                        btn.getAttribute('onclick')?.includes(lang) ||
+                        btn.getAttribute('href')?.includes(lang)
+                    );
+                    
+                    if (targetButton) {
+                        console.log('✅ Clicking MembershipBar language button:', targetButton);
+                        targetButton.click();
+                        return;
+                    }
+                }
+                
+                // Method 2: Try legacy membership changeCulture function
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.changeCulture) {
+                        console.log('✅ Using Web.Membership.changeCulture');
+                        membership.changeCulture(lang);
+                        return;
+                    }
+                }
+                
+                // Method 3: Try direct server postback (if available)
+                if (typeof __doPostBack !== 'undefined') {
+                    console.log('✅ Using __doPostBack for language change');
+                    // Try different possible control IDs
+                    const possibleIds = [
+                        'ctl00$mb$LanguageSelector',
+                        'ctl00$mb$CultureSelector', 
+                        'ctl00$mb',
+                        'mb$LanguageSelector'
+                    ];
+                    
+                    for (const id of possibleIds) {
+                        try {
+                            __doPostBack(id, lang);
+                            return;
+                        } catch (e) {
+                            console.log('Failed postback with ID:', id);
+                        }
+                    }
+                }
+                
+                // Method 4: Cookie-based approach with immediate reload
+                console.log('✅ Using cookie-based language change');
+                const date = new Date();
+                date.setDate(date.getDate() + 30); // 30 days
+                document.cookie = `.COTCULTURE=${lang}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
+                
+                // Also set ASPNET culture cookie
+                document.cookie = `ASP.NET_SessionId_Culture=${lang}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
+                
+                // Force reload to apply changes
+                window.location.reload(true);
+                
+            } catch (e) {
+                console.error('❌ Language change failed:', e);
+                // Emergency fallback - at least change direction
+                if (lang === 'ar' || lang === 'ar-SA') {
+                    document.documentElement.setAttribute('dir', 'rtl');
+                    document.documentElement.setAttribute('lang', 'ar');
+                } else {
+                    document.documentElement.setAttribute('dir', 'ltr');
+                    document.documentElement.setAttribute('lang', lang);
+                }
+                
+                // Show user feedback
+                alert('تم تغيير اتجاه النص. يرجى إعادة تحميل الصفحة لتطبيق التغييرات كاملة.');
+            }
+        }
+        
+        // Find MembershipBar language buttons - Enhanced Detection
+        function findMembershipLanguageButtons() {
+            const buttons = [];
+            
+            // Method 1: Look for the specific MembershipBar language link
+            const membershipBar = document.getElementById('Membership_Login') || document.querySelector('.MembershipBar');
+            if (membershipBar) {
+                // Find the culture link specifically
+                const cultureLink = membershipBar.querySelector('.CultureLink a') || 
+                                  membershipBar.querySelector('a[title*="Change your language"]') ||
+                                  membershipBar.querySelector('a[title*="language"]') ||
+                                  membershipBar.querySelector('a[onclick*="toggleHover"]');
+                
+                if (cultureLink) {
+                    buttons.push(cultureLink);
+                    console.log('✅ Found MembershipBar culture link:', cultureLink);
+                }
+            }
+            
+            // Method 2: Look for language buttons in various possible locations
+            const selectors = [
+                'a[href*="Culture"]',
+                'a[href*="culture"]', 
+                'a[onclick*="Culture"]',
+                'a[onclick*="culture"]',
+                'a[onclick*="changeCulture"]',
+                'a[onclick*="toggleHover"]',
+                'a[title*="Change your language"]',
+                'a[title*="language"]',
+                'select[id*="Culture"] option',
+                'select[id*="Language"] option',
+                '.membership-bar a',
+                '.MembershipBar a',
+                '#mb a',
+                '[id*="mb"] a',
+                '[class*="membership"] a',
+                '[id*="Membership"] a'
+            ];
+            
+            selectors.forEach(selector => {
+                try {
+                    const elements = document.querySelectorAll(selector);
+                    elements.forEach(el => {
+                        // Check text content OR attributes for language indicators
+                        const hasLanguageText = el.textContent.match(/عربي|العربية|english|français|ar|en|fr/i);
+                        const hasLanguageOnClick = el.getAttribute('onclick')?.match(/ar|en|fr|culture|language|toggleHover/i);
+                        const hasLanguageHref = el.getAttribute('href')?.match(/culture|language/i);
+                        const hasLanguageTitle = el.getAttribute('title')?.match(/language|culture/i);
+                        const hasLanguageClass = el.className?.match(/culture|language/i);
+                        
+                        if (hasLanguageText || hasLanguageOnClick || hasLanguageHref || hasLanguageTitle || hasLanguageClass) {
+                            if (!buttons.includes(el)) {
+                                buttons.push(el);
+                            }
+                        }
+                    });
+                } catch (e) {
+                    console.log('Selector failed:', selector);
+                }
+            });
+            
+            console.log('🔍 Found potential language buttons:', buttons);
+            return buttons;
+        }
+        
+        // Debug function to inspect MembershipBar
+        function debugMembershipBar() {
+            console.log('🔍 Debugging MembershipBar...');
+            
+            // Find the MembershipBar element
+            const mb = document.getElementById('mb') || document.querySelector('[id*="mb"]');
+            if (mb) {
+                console.log('✅ Found MembershipBar element:', mb);
+                console.log('📋 MembershipBar HTML:', mb.outerHTML);
+                
+                // Look for any language-related elements
+                const languageElements = mb.querySelectorAll('a, select, option, span, div');
+                languageElements.forEach((el, index) => {
+                    if (el.textContent.match(/عربي|العربية|english|français|ar|en|fr|culture|language/i) ||
+                        el.getAttribute('onclick')?.match(/culture|language|ar|en|fr/i) ||
+                        el.getAttribute('href')?.match(/culture|language/i)) {
+                        console.log(`🌐 Language element ${index}:`, el);
+                        console.log(`   Text: "${el.textContent}"`);
+                        console.log(`   OnClick: "${el.getAttribute('onclick')}"`);
+                        console.log(`   Href: "${el.getAttribute('href')}"`);
+                    }
+                });
+            } else {
+                console.log('❌ MembershipBar element not found');
+            }
+            
+            // Check for Web.Membership object
+            if (typeof Web !== 'undefined' && Web.Membership) {
+                console.log('✅ Web.Membership object found:', Web.Membership);
+                if (Web.Membership._instance) {
+                    console.log('✅ Web.Membership._instance found:', Web.Membership._instance);
+                    const instance = Web.Membership._instance;
+                    console.log('📋 Available methods:', Object.getOwnPropertyNames(instance));
+                }
+            } else {
+                console.log('❌ Web.Membership object not found');
+            }
+            
+            // Look for any postback functions
+            if (typeof __doPostBack !== 'undefined') {
+                console.log('✅ __doPostBack function available');
+            } else {
+                console.log('❌ __doPostBack function not available');
+            }
+            
+            return {
+                membershipBar: mb,
+                webMembership: typeof Web !== 'undefined' ? Web.Membership : null,
+                doPostBack: typeof __doPostBack !== 'undefined',
+                languageButtons: findMembershipLanguageButtons()
+            };
+        }
+        
+        // Function to select language from dropdown after it appears
+        function selectLanguageFromDropdown(lang) {
+            console.log('🔍 Looking for language dropdown after culture link click...');
+            
+            // Look for culture selector dropdown that might have appeared
+            const possibleSelectors = [
+                '#Membership\\$Cultures',
+                '[id*="Cultures"]',
+                '[id*="CultureSelector"]',
+                '.culture-dropdown',
+                '.language-dropdown',
+                '[class*="culture"]',
+                '[class*="language"]'
+            ];
+            
+            let dropdown = null;
+            for (const selector of possibleSelectors) {
+                try {
+                    dropdown = document.querySelector(selector);
+                    if (dropdown && (dropdown.offsetWidth > 0 || dropdown.offsetHeight > 0)) {
+                        console.log('✅ Found visible dropdown:', dropdown);
+                        break;
+                    }
+                } catch (e) {
+                    console.log('Selector failed:', selector);
+                }
+            }
+            
+            if (dropdown) {
+                // Look for language links in the dropdown
+                const languageLinks = dropdown.querySelectorAll('a, option, span, div');
+                for (const link of languageLinks) {
+                    const text = link.textContent.toLowerCase();
+                    const onclick = link.getAttribute('onclick') || '';
+                    const href = link.getAttribute('href') || '';
+                    
+                    // Check if this link matches the desired language
+                    if ((lang === 'ar' && (text.includes('عربي') || text.includes('arabic') || onclick.includes('ar') || href.includes('ar'))) ||
+                        (lang === 'en' && (text.includes('english') || text.includes('en') || onclick.includes('en') || href.includes('en'))) ||
+                        (lang === 'fr' && (text.includes('français') || text.includes('french') || onclick.includes('fr') || href.includes('fr')))) {
+                        
+                        console.log('✅ Found matching language link, clicking:', link);
+                        link.click();
+                        return true;
+                    }
+                }
+            } else {
+                console.log('❌ No dropdown found, trying alternative methods...');
+                
+                // Try to call the membership changeCulture function directly
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.changeCulture) {
+                        console.log('✅ Calling Web.Membership changeCulture directly');
+                        membership.changeCulture(lang);
+                        return true;
+                    }
+                }
+            }
+            
+            return false;
+        }
+        
+        // Test function to directly trigger MembershipBar language change
+        function testMembershipLanguageChange(lang) {
+            console.log('🧪 Testing MembershipBar language change for:', lang);
+            
+            // Try multiple approaches
+            const approaches = [
+                // Approach 1: Direct culture link click
+                () => {
+                    const cultureLink = document.querySelector('.CultureLink a, a[title*="Change your language"], a[onclick*="toggleHover"]');
+                    if (cultureLink) {
+                        console.log('🎯 Approach 1: Clicking culture link');
+                        cultureLink.click();
+                        return true;
+                    }
+                    return false;
+                },
+                
+                // Approach 2: Call Web.Membership changeCulture
+                () => {
+                    if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance && Web.Membership._instance.changeCulture) {
+                        console.log('🎯 Approach 2: Using Web.Membership.changeCulture');
+                        Web.Membership._instance.changeCulture(lang);
+                        return true;
+                    }
+                    return false;
+                },
+                
+                // Approach 3: Trigger hover functions
+                () => {
+                    if (typeof $showHover !== 'undefined' && typeof $toggleHover !== 'undefined') {
+                        console.log('🎯 Approach 3: Using $toggleHover function');
+                        $toggleHover();
+                        return true;
+                    }
+                    return false;
+                },
+                
+                // Approach 4: Cookie + reload
+                () => {
+                    console.log('🎯 Approach 4: Setting cookie and reloading');
+                    const date = new Date();
+                    date.setDate(date.getDate() + 30);
+                    document.cookie = `.COTCULTURE=${lang}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
+                    window.location.reload(true);
+                    return true;
+                }
+            ];
+            
+            // Try each approach
+            for (let i = 0; i < approaches.length; i++) {
+                try {
+                    if (approaches[i]()) {
+                        console.log(`✅ Approach ${i + 1} succeeded`);
+                        return true;
+                    }
+                } catch (e) {
+                    console.log(`❌ Approach ${i + 1} failed:`, e);
+                }
+            }
+            
+            console.log('❌ All approaches failed');
+            return false;
+        }
+        
+        // Expose functions globally for testing
+        window.debugMembershipBar = debugMembershipBar;
+        window.testMembershipLanguageChange = testMembershipLanguageChange;
+        window.changeLanguage = changeLanguage;
+
+        // Language dropdown interactions
+        function toggleLanguageDropdown() {
+            const dd = document.getElementById('languageDropdown');
+            if (!dd) return;
+            dd.classList.toggle('show');
+            // close when clicking outside
+            const handler = (e) => {
+                if (!dd.contains(e.target)) {
+                    dd.classList.remove('show');
+                    document.removeEventListener('click', handler);
+                }
+            };
+            setTimeout(() => document.addEventListener('click', handler), 0);
+        }
+
+        function selectLanguage(code, shortLabel, el) {
+            try {
+                // Update UI selection
+                const dd = document.getElementById('languageDropdown');
+                const current = document.getElementById('currentLangCode');
+                if (current) current.textContent = shortLabel;
+                if (dd) {
+                    dd.querySelectorAll('.language-option').forEach(x => x.classList.remove('active'));
+                    if (el) el.classList.add('active');
+                    dd.classList.remove('show');
+                }
+                // Apply language via existing function
+                changeLanguage(code);
+            } catch (e) {
+                console.error('selectLanguage failed', e);
+            }
+        }
+        
+        function showUserProfile() {
+            console.log('عرض الملف الشخصي');
+            try {
+                // Use legacy membership myAccount function
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.myAccount) {
+                        membership.myAccount();
+                        return;
+                    }
+                }
+                
+                // Fallback: open membership page
+                window.open('/Pages/Membership.aspx', '_blank');
+            } catch (e) {
+                console.error('User profile failed:', e);
+                alert('لا يمكن فتح الملف الشخصي في الوقت الحالي');
+            }
+        }
+        
+        function showSettings() {
+            console.log('عرض الإعدادات');
+            try {
+                // Try to open settings or preferences
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.help) {
+                        membership.help();
+                        return;
+                    }
+                }
+                
+                // Fallback: navigate to settings page
+                window.location.href = '/Pages/Settings.aspx';
+            } catch (e) {
+                console.error('Settings failed:', e);
+                alert('لا يمكن فتح الإعدادات في الوقت الحالي');
+            }
+        }
+        
+        function logout() {
+            try {
+                // Use legacy membership logout function
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.logout) {
+                        if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                            membership.logout();
+                        }
+                        return;
+                    }
+                }
+                
+                // Fallback logout
+                if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                    window.location.href = '/Logout.aspx';
+                }
+            } catch (e) {
+                console.error('Logout failed:', e);
+                if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                    window.location.href = '/Logout.aspx';
+                }
+            }
+        }
+        
+        // Add history and help functions
+        function showHistory() {
+            try {
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.showHistory) {
+                        membership.showHistory();
+                        return;
+                    }
+                }
+                alert('ميزة السجل غير متاحة حالياً');
+            } catch (e) {
+                console.error('History failed:', e);
+                alert('لا يمكن عرض السجل في الوقت الحالي');
+            }
+        }
+        
+        function showHelp() {
+            try {
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.help) {
+                        membership.help();
+                        return;
+                    }
+                }
+                // Fallback: open help in new window
+                window.open('/help/', '_blank');
+            } catch (e) {
+                console.error('Help failed:', e);
+                alert('لا يمكن فتح المساعدة في الوقت الحالي');
+            }
+        }
+        
+        // Get current user name from membership bar
+        function updateUserName() {
+            try {
+                // Try to get username from legacy membership bar
+                const legacyMembershipBar = document.getElementById('Membership_Login');
+                const userNameElement = document.getElementById('currentUserName');
+                
+                if (legacyMembershipBar && userNameElement) {
+                    // Extract username from legacy membership bar
+                    const welcomeText = legacyMembershipBar.innerText || legacyMembershipBar.textContent;
+                    let username = 'المستخدم';
+                    
+                    // Try different patterns to extract username
+                    if (welcomeText) {
+                        // Pattern 1: "Welcome, username"
+                        const welcomeMatch = welcomeText.match(/Welcome[,\s]+([^|]+)/i);
+                        if (welcomeMatch) {
+                            username = welcomeMatch[1].trim();
+                        }
+                        // Pattern 2: Arabic welcome patterns
+                        const arabicMatch = welcomeText.match(/مرحبا[ً،\s]+([^|]+)/);
+                        if (arabicMatch) {
+                            username = arabicMatch[1].trim();
+                        }
+                        // Pattern 3: Extract from any text before pipe or logout
+                        const beforePipeMatch = welcomeText.match(/^([^|]+)/);
+                        if (beforePipeMatch && beforePipeMatch[1].trim() && !beforePipeMatch[1].includes('Welcome')) {
+                            username = beforePipeMatch[1].trim();
+                        }
+                    }
+                    
+                    userNameElement.textContent = username;
+                }
+                
+                // Also try to get from server-side if available
+                if (typeof __username !== 'undefined' && __username) {
+                    document.getElementById('currentUserName').textContent = __username;
+                } else if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membershipInstance = Web.Membership._instance;
+                    if (membershipInstance.get_user && membershipInstance.get_user()) {
+                        document.getElementById('currentUserName').textContent = membershipInstance.get_user();
+                    }
+                }
+            } catch (e) {
+                console.log('Unable to update username:', e);
+            }
+        }
+        
+        // Real-time data bridge - Connect legacy system to modern UI
+        function initLegacyDataBridge() {
+            try {
+                // Wait for legacy membership to initialize
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    
+                    // Get real username
+                    if (membership.get_user) {
+                        const realUsername = membership.get_user();
+                        if (realUsername) {
+                            document.getElementById('currentUserName').textContent = realUsername;
+                        }
+                    }
+                    
+                    // Check if user is authenticated
+                    if (membership.get_isAuthenticated && membership.get_isAuthenticated()) {
+                        console.log('User is authenticated via legacy system');
+                        document.body.classList.add('user-authenticated');
+                    }
+                    
+                    // Get available cultures/languages
+                    if (membership.get_cultures && membership.get_cultures()) {
+                        updateLanguageSelector(membership.get_cultures());
+                    }
+                    
+                    console.log('Legacy data bridge initialized successfully');
+                } else {
+                    // Retry after a short delay
+                    setTimeout(initLegacyDataBridge, 500);
+                }
+            } catch (e) {
+                console.log('Legacy data bridge initialization failed:', e);
+            }
+        }
+        
+        // Update language selector with real data
+        function updateLanguageSelector(cultures) {
+            try {
+                const languageSelector = document.querySelector('.language-selector');
+                if (languageSelector && cultures) {
+                    languageSelector.innerHTML = '';
+                    
+                    const cultureArray = cultures.split(';');
+                    cultureArray.forEach(culture => {
+                        if (culture.trim()) {
+                            const parts = culture.split('|');
+                            if (parts.length >= 2) {
+                                const option = document.createElement('option');
+                                option.value = parts[0];
+                                option.textContent = parts[1];
+                                if (parts[2] === 'True') {
+                                    option.selected = true;
+                                }
+                                languageSelector.appendChild(option);
+                            }
+                        }
+                    });
+                }
+            } catch (e) {
+                console.log('Unable to update language selector:', e);
+            }
+        }
+        
+        // Initialize user info when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize legacy data bridge
+            initLegacyDataBridge();
+            
+            // Update username with real data
+            updateUserName();
+            
+            // Try to update after legacy system loads
+            setTimeout(() => {
+                updateUserName();
+                initLegacyDataBridge();
+            }, 1000);
+            
+            // Check periodically for updates
+            setInterval(() => {
+                updateUserName();
+            }, 5000);
+            
+            // Auto-debug MembershipBar after page loads
+            setTimeout(() => {
+                console.log('🔍 Auto-debugging MembershipBar...');
+                debugMembershipBar();
+            }, 2000);
+        });
+        
+        // Performance optimization
+        window.addEventListener('load', function() {
+            // Remove any loading states
+            document.body.classList.add('loaded');
+            try {
+                // Move header icons next to welcome username in MembershipBar
+                const membership = document.getElementById('Membership_Login') || document.querySelector('.MembershipBar');
+                if (membership) {
+                    let group = membership.querySelector('.header-icon-group');
+                    if (!group) {
+                        group = document.createElement('span');
+                        group.className = 'header-icon-group center';
+                        group.style.display = 'inline-flex';
+                        group.style.gap = '.25rem';
+                    }
+
+                    // Ensure MembershipBar container is visible and laid out correctly (especially RTL)
+                    try {
+                        membership.style.visibility = 'visible';
+                        membership.style.opacity = '1';
+                        const mc = membership.querySelector('.membership-content');
+                        if (mc) {
+                            mc.style.display = 'flex';
+                            mc.style.alignItems = 'center';
+                            // Prefer space-between to keep items spread
+                            if (!mc.style.justifyContent) mc.style.justifyContent = 'space-between';
+                            // In RTL, keep natural order but allow row-reverse if needed
+                            const dir = document.documentElement.getAttribute('dir') || 'ltr';
+                            console.info('🧭 Membership layout dir:', dir);
+                            if (dir === 'ar' || dir === 'ar-SA' || dir === 'rtl') {
+                                // normalize to rtl attribute
+                                document.documentElement.setAttribute('dir', 'rtl');
+                                // Optional: mc.style.flexDirection = 'row-reverse'; // enable only if needed
+                            }
+                        }
+                    } catch (e) { console.warn('Membership layout guard failed', e); }
+
+                    // Keep only one modal menu icon
+                    const menuButtons = Array.from(document.querySelectorAll('#menuToggleBtn, .mobile-menu-toggle'));
+                    let btnMenu = menuButtons.find(Boolean) || null;
+                    if (menuButtons.length > 1) {
+                        menuButtons.slice(1).forEach(b => { if (b && b.parentElement) b.parentElement.removeChild(b); });
+                    }
+                    const help = membership.querySelector('.HelpLink');
+                    const culture = membership.querySelector('.CultureLink');
+
+                    // Append existing controls if present (exclude menu from center group)
+                    if (help) {
+                        try {
+                            // Remove any leading pipe and surrounding spaces: "| ", " |", or " | "
+                            help.innerHTML = help.innerHTML.replace(/^\s*\|\s*/, '');
+                            // Also remove a leading text node that is only a pipe
+                            while (help.firstChild && help.firstChild.nodeType === 3 /* TEXT_NODE */ && /^\s*\|\s*$/.test(help.firstChild.nodeValue)) {
+                                help.removeChild(help.firstChild);
+                            }
+                        } catch (e) { /* noop */ }
+                        if (help.parentElement !== group) group.appendChild(help);
+                    }
+
+                    // Clean CultureLink leading pipe if present (kept in original location)
+                    if (culture) {
+                        try {
+                            culture.innerHTML = culture.innerHTML.replace(/^\s*\|\s*/, '');
+                            while (culture.firstChild && culture.firstChild.nodeType === 3 /* TEXT_NODE */ && /^\s*\|\s*$/.test(culture.firstChild.nodeValue)) {
+                                culture.removeChild(culture.firstChild);
+                            }
+                        } catch (e) { /* noop */ }
+                        // Move culture link into the center group inside membership-top-bar
+                        if (culture.parentElement !== group) group.appendChild(culture);
+                    }
+
+                    // Floating icons adjacent to menu button (language + notifications)
+                    try {
+                        if (btnMenu && btnMenu.parentElement) {
+                            // Language button
+                            let btnLang = document.getElementById('languageToggleBtn');
+                            if (!btnLang) {
+                                btnLang = document.createElement('button');
+                                btnLang.id = 'languageToggleBtn';
+                                btnLang.type = 'button';
+                                btnLang.className = 'membership-btn floating-btn';
+                                btnLang.title = 'اللغة';
+                                btnLang.innerHTML = '<i class="fas fa-globe"></i>';
+                                btnLang.onclick = function(){ if (typeof toggleMembershipLanguage === 'function') toggleMembershipLanguage(); else if (typeof $toggleHover === 'function') $toggleHover(); };
+                                btnMenu.insertAdjacentElement('afterend', btnLang);
+                            }
+
+                            // Notifications button
+                            let notifBtn = document.getElementById('headerNotifBtn');
+                            if (!notifBtn) {
+                                notifBtn = document.createElement('button');
+                                notifBtn.id = 'headerNotifBtn';
+                                notifBtn.type = 'button';
+                                notifBtn.className = 'membership-btn floating-btn';
+                                notifBtn.title = 'Notifications';
+                                notifBtn.innerHTML = '<i class="fas fa-bell"></i>';
+                                const ref = document.getElementById('languageToggleBtn') || btnMenu;
+                                ref.insertAdjacentElement('afterend', notifBtn);
+                            }
+
+                            // Notifications dropdown (simple)
+                            let notifDrop = document.getElementById('headerNotifDropdown');
+                            if (!notifDrop) {
+                                notifDrop = document.createElement('div');
+                                notifDrop.id = 'headerNotifDropdown';
+                                notifDrop.className = 'header-dropdown';
+                                notifDrop.innerHTML = '<div class="dropdown-title">Notifications</div>' +
+                                    '<div class="dropdown-item">No new notifications</div>';
+                                document.body.appendChild(notifDrop);
+                            }
+                            function closeDrops(){ notifDrop.classList.remove('open'); }
+                            document.getElementById('headerNotifBtn')?.addEventListener('click', function(e){
+                                e.stopPropagation();
+                                const isOpen = notifDrop.classList.contains('open');
+                                closeDrops();
+                                if (!isOpen) notifDrop.classList.add('open');
+                            });
+                            document.addEventListener('click', closeDrops);
+                            window.addEventListener('resize', closeDrops);
+                        }
+                    } catch (e) { console.warn('Floating icons init failed', e); }
+
+                    // Duplicate brand creation removed - using existing HTML structure
+
+                    // Position icons in membership-content area beside system-brand
+                    const membershipContent = membership.querySelector('.membership-content');
+                    const systemBrand = membership.querySelector('.system-brand, .brand, .logo');
+                    
+                    if (membershipContent && systemBrand) {
+                        // Insert after system-brand within membership-content
+                        systemBrand.insertAdjacentElement('afterend', group);
+                    } else if (membershipContent) {
+                        // Insert at beginning of membership-content
+                        membershipContent.insertBefore(group, membershipContent.firstChild);
+                    } else {
+                        // Fallback: create membership-content structure
+                        const contentDiv = document.createElement('div');
+                        contentDiv.className = 'membership-content';
+                        contentDiv.style.display = 'flex';
+                        contentDiv.style.alignItems = 'center';
+                        contentDiv.style.justifyContent = 'space-between';
+                        
+                        // Move existing content to new structure
+                        while (membership.firstChild) {
+                            contentDiv.appendChild(membership.firstChild);
+                        }
+                        
+                        // Add the group at the end
+                        contentDiv.appendChild(group);
+                        membership.appendChild(contentDiv);
+                    }
+                }
+                // Ensure membership-actions block is centered if present
+                const ma = document.querySelector('.membership-actions');
+                if (ma && !ma.classList.contains('center')) ma.classList.add('center');
+            } catch (e) { console && console.warn && console.warn('Header icon relocation skipped:', e); }
+        });
+        
+        // Language Toggle Function - Code On Time Framework Compatible
+        function toggleMembershipLanguage() {
+            try {
+                console.log('🌐 Attempting to toggle language...');
+                
+                // Method 1: Use Code On Time Web.Membership API
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    console.log('✅ Found Web.Membership instance');
+                    
+                    // Try to find and trigger the culture selector
+                    const cultureSelector = document.getElementById('Membership$Cultures');
+                    if (cultureSelector) {
+                        console.log('✅ Found culture selector, showing it');
+                        // Trigger the hover event to show culture options
+                        if (typeof $showHover === 'function') {
+                            const cultureLinkElement = document.querySelector('.CultureLink a');
+                            if (cultureLinkElement) {
+                                $showHover(cultureLinkElement, 'Membership$Cultures', 'CultureSelector', 1);
+                                return;
+                            }
+                        }
+                    }
+                }
+                
+                // Method 2: Direct click on CultureLink
+                const cultureLink = document.querySelector('.CultureLink a');
+                if (cultureLink) {
+                    console.log('✅ Found CultureLink, clicking it');
+                    // Simulate mouse events to trigger the hover menu
+                    const mouseOverEvent = new MouseEvent('mouseover', { bubbles: true, cancelable: true });
+                    const clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true });
+                    cultureLink.dispatchEvent(mouseOverEvent);
+                    setTimeout(() => cultureLink.dispatchEvent(clickEvent), 50);
+                    return;
+                }
+                
+                // Method 3: Try to find the culture selector dropdown
+                const membershipBar = document.getElementById('Membership_Login');
+                if (membershipBar) {
+                    const langLink = membershipBar.querySelector('a[title*="language"], a[onclick*="toggleHover"]');
+                    if (langLink) {
+                        console.log('✅ Found language link via fallback');
+                        langLink.click();
+                        return;
+                    }
+                }
+                
+                console.warn('⚠️ No language selector method worked');
+            } catch (e) {
+                console.error('❌ Error toggling language:', e);
+            }
+        }
+    </script>
+    
+    <!-- Root Sidebar Styles -->
+    <style>
+        /* Ensure all buttons are visible */
+        #menuToggleBtn,
+        #rootSidebarToggleBtn,
+        #languageToggleBtn,
+        #headerNotifBtn {
+            display: inline-flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        /* Distinguish the new root sidebar button */
+        #rootSidebarToggleBtn {
+            background: linear-gradient(135deg, #10b981, #059669) !important;
+            color: #ffffff !important;
+            margin-left: 5px;
+        }
+
+        #rootSidebarToggleBtn:hover {
+            background: linear-gradient(135deg, #059669, #047857) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Keep original button styling */
+        #menuToggleBtn {
+            background: linear-gradient(135deg, #1e40af, #1d4ed8) !important;
+            color: #ffffff !important;
+        }
+
+        #menuToggleBtn:hover {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Root Sidebar Close Button */
+        #rootSidebarHost .x {
+            background: #ef4444 !important;
+            color: white !important;
+            border: none !important;
+            padding: 8px 12px !important;
+            border-radius: 6px !important;
+            cursor: pointer !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+        }
+
+        #rootSidebarHost .x:hover {
+            background: #dc2626 !important;
+            transform: scale(1.05);
+        }
+
+        /* Root Sidebar Panel Styling - Simple */
+        #rootSidebarHost.open {
+            display: block !important;
+        }
+
+        #rootSidebarHost {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #rootSidebarHost .rb {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(4, 40, 61, 0.5);
+        }
+
+        #rootSidebarHost #rootSidebarPanel {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background:rgba(17, 113, 210, 0.43);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        #rootSidebarHost.open #rootSidebarPanel {
+            transform: translateX(0);
+        }
+
+        #rootSidebarHost .hd {
+            padding: 20px;
+            background: #343a40;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #rootSidebarHost .ttl {
+            font-size: 18px;
+            font-weight: 600;
+        }
+    </style>
+    
+    <!-- Root Sidebar Script - Site-wide -->
+    <script src="/js/modern-root-sidebar.js?v=1"></script>
+    
+</body>
+</html>

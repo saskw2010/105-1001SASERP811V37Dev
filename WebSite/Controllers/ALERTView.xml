@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="ALERTView" conflictDetection="overwriteChanges" label="ALERT View" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"ALERTView"."AlertEmailsID" "AlertEmailsID"
+	,"ALERTView"."AlertEmails" "AlertEmails"
+	,"ALERTView"."EmailOwner" "EmailOwner"
+	,"ALERTView"."Emailnotes" "Emailnotes"
+	,"ALERTView"."AlertID" "AlertID"
+	,"ALERTView"."AlertLevelDesc" "AlertLevelDesc"
+	,"ALERTView"."AlertAmount" "AlertAmount"
+	,"ALERTView"."Curncy_No" "Curncy_No"
+	,"ALERTView"."OpcoID" "OpcoID"
+	,"ALERTView"."OpcoName" "OpcoName"
+	,"ALERTView"."OpcoNameE" "OpcoNameE"
+	,"ALERTView"."Curncy_Nm" "Curncy_Nm"
+	,"ALERTView"."Curncy_Nme" "Curncy_Nme"
+	,"ALERTView"."OpcoIDidentity" "OpcoIDidentity"
+from "dbo"."ALERTView" "ALERTView"
+]]></text>
+    </command>
+    <command id="AlertIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="AlertID" />
+      </output>
+    </command>
+    <command id="Curncy_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Curncy_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="AlertEmailsID" type="Int64" allowNulls="false" label="Alert Emails#" showInSummary="true" />
+    <field name="AlertEmails" type="String" label="Alert Emails" length="50" showInSummary="true" />
+    <field name="EmailOwner" type="String" label="Email Owner" length="50" showInSummary="true" />
+    <field name="Emailnotes" type="String" allowQBE="false" allowSorting="false" label="Emailnotes" length="-1" showInSummary="true" />
+    <field name="AlertID" type="Int64" allowNulls="false" label="Alert#" readOnly="true" showInSummary="true" />
+    <field name="AlertLevelDesc" type="String" label="Alert Level Desc" length="50" />
+    <field name="AlertAmount" type="Decimal" label="Alert Amount" />
+    <field name="Curncy_No" type="Int64" label="Curncy No" readOnly="true" />
+    <field name="OpcoID" type="Int64" label="Opco#" />
+    <field name="OpcoName" type="String" label="Opco Name" length="50" />
+    <field name="OpcoNameE" type="String" label="Opco Name E" length="50" />
+    <field name="Curncy_Nm" type="String" label="Curncy Nm" length="200" />
+    <field name="Curncy_Nme" type="String" label="Curncy Nme" length="255" />
+    <field name="OpcoIDidentity" type="Int64" label="Opco I Didentity" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="ALERT View">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="AlertEmailsID" columns="15" />
+        <dataField fieldName="AlertEmails" columns="50" />
+        <dataField fieldName="EmailOwner" columns="50" />
+        <dataField fieldName="Emailnotes" rows="5" />
+        <dataField fieldName="AlertID" columns="15" />
+        <dataField fieldName="AlertLevelDesc" columns="50" />
+        <dataField fieldName="AlertAmount" columns="15" />
+        <dataField fieldName="Curncy_No" columns="15" />
+        <dataField fieldName="OpcoID" columns="15" />
+        <dataField fieldName="OpcoName" columns="50" />
+        <dataField fieldName="OpcoNameE" columns="50" />
+        <dataField fieldName="Curncy_Nm" />
+        <dataField fieldName="Curncy_Nme" />
+        <dataField fieldName="OpcoIDidentity" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review ALERT View">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="ALERT View" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="AlertEmailsID" columns="15" />
+            <dataField fieldName="AlertEmails" columns="50" />
+            <dataField fieldName="EmailOwner" columns="50" />
+            <dataField fieldName="Emailnotes" rows="5" />
+            <dataField fieldName="AlertID" columns="15" />
+            <dataField fieldName="AlertLevelDesc" columns="50" />
+            <dataField fieldName="AlertAmount" columns="15" />
+            <dataField fieldName="Curncy_No" columns="15" />
+            <dataField fieldName="OpcoID" columns="15" />
+            <dataField fieldName="OpcoName" columns="50" />
+            <dataField fieldName="OpcoNameE" columns="50" />
+            <dataField fieldName="Curncy_Nm" />
+            <dataField fieldName="Curncy_Nme" />
+            <dataField fieldName="OpcoIDidentity" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New ALERT View">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New ALERT View" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="AlertEmailsID" columns="15" />
+            <dataField fieldName="AlertEmails" columns="50" />
+            <dataField fieldName="EmailOwner" columns="50" />
+            <dataField fieldName="Emailnotes" rows="5" />
+            <dataField fieldName="AlertLevelDesc" columns="50" />
+            <dataField fieldName="AlertAmount" columns="15" />
+            <dataField fieldName="OpcoID" columns="15" />
+            <dataField fieldName="OpcoName" columns="50" />
+            <dataField fieldName="OpcoNameE" columns="50" />
+            <dataField fieldName="Curncy_Nm" />
+            <dataField fieldName="Curncy_Nme" />
+            <dataField fieldName="OpcoIDidentity" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

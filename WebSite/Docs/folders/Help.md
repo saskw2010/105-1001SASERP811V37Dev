@@ -1,0 +1,5 @@
+# Folder: Help
+
+Purpose: help files and guides.
+
+Back to hub: ../index.md | TOC: ../TOC.md

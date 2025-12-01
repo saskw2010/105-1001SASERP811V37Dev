@@ -1,0 +1,152 @@
+/* Responsive DataView - Professional Screen Fit Solution
+   Handles wide DataGrids that exceed screen width
+   Makes the system professional and user-friendly
+*/
+
+/* ===== DataView Container Responsive ===== */
+/* Simple horizontal scroll solution that doesn't break functionality */
+
+.DataViewContainer {
+    width: 100% !important;
+    overflow-x: auto !important;
+    
+    /* Professional scrollbar styling */
+    scrollbar-width: thin !important;
+    scrollbar-color: #cbd5e1 #f1f5f9 !important;
+}
+
+/* Webkit scrollbar styling for professional look */
+.DataViewContainer::-webkit-scrollbar {
+    height: 8px !important;
+    background: #f1f5f9 !important;
+}
+
+.DataViewContainer::-webkit-scrollbar-thumb {
+    background: #cbd5e1 !important;
+    border-radius: 4px !important;
+}
+
+.DataViewContainer::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8 !important;
+}
+
+.DataViewContainer::-webkit-scrollbar-track {
+    background: #f8fafc !important;
+    border-radius: 4px !important;
+}
+
+/* ===== Search Buttons Fix ===== */
+/* Fix for Search and Clear buttons positioning in both English and Arabic layouts */
+
+.SearchBarCell div.SearchButtons {
+    height: 65px !important;
+    float: left !important;
+    padding-left: 8px !important;
+}
+
+/* Arabic (RTL) Layout Fix */
+[dir="rtl"] .SearchBarCell div.SearchButtons,
+html[dir="rtl"] .SearchBarCell div.SearchButtons,
+body[dir="rtl"] .SearchBarCell div.SearchButtons {
+    float: right !important;
+    padding-left: 0 !important;
+    padding-right: 8px !important;
+}
+
+/* Alternative RTL detection methods */
+.rtl .SearchBarCell div.SearchButtons,
+body.rtl .SearchBarCell div.SearchButtons {
+    float: right !important;
+    padding-left: 0 !important;
+    padding-right: 8px !important;
+}
+
+/* ===== Root Sidebar Button Positioning ===== */
+/* Position rootSidebarToggleBtn in membership bar area */
+
+#rootSidebarToggleBtn {
+    /* Position in membership bar - first position */
+    position: fixed !important;
+    top: 5px !important; /* Top of membership bar */
+    left: 10px !important; /* First position on left for LTR */
+    z-index: 1001 !important; /* Above membership bar */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Arabic (RTL) Layout - first position on right */
+[dir="rtl"] #rootSidebarToggleBtn,
+html[dir="rtl"] #rootSidebarToggleBtn,
+body[dir="rtl"] #rootSidebarToggleBtn {
+    left: auto !important;
+    right: 10px !important; /* First position on right for RTL */
+}
+
+/* Alternative RTL detection for button */
+.rtl #rootSidebarToggleBtn,
+body.rtl #rootSidebarToggleBtn {
+    left: auto !important;
+    right: 10px !important;
+}
+
+/* ===== Language and Notification Icons Positioning ===== */
+/* Target the header-icon-group container and its buttons */
+
+.MembershipBar .header-icon-group {
+    /* Position the entire icon group container */
+    position: absolute !important;
+    top: 5px !important;
+    right: 10px !important; /* Position on right for English */
+    display: inline-flex !important;
+    gap: 0.25rem !important;
+    z-index: 1000 !important;
+}
+
+.MembershipBar .header-icon-group #languageToggleBtn,
+.MembershipBar .header-icon-group #headerNotifBtn {
+    /* Position inside membership-content container */
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 100 !important; /* Lower z-index to stay within container */
+    vertical-align: middle !important;
+}
+
+/* Arabic (RTL) Layout - move entire group to left */
+[dir="rtl"] .MembershipBar .header-icon-group,
+html[dir="rtl"] .MembershipBar .header-icon-group,
+body[dir="rtl"] .MembershipBar .header-icon-group {
+    right: auto !important;
+    left: 10px !important; /* Position on left for Arabic */
+}
+
+/* Alternative RTL detection */
+.rtl .MembershipBar .header-icon-group,
+body.rtl .MembershipBar .header-icon-group {
+    right: auto !important;
+    left: 10px !important;
+}
+
+/* Arabic (RTL) Layout - position on left side of membership-content */
+[dir="rtl"] .membership-top-bar .membership-content #languageToggleBtn,
+[dir="rtl"] .membership-top-bar .membership-content #headerNotifBtn,
+html[dir="rtl"] .membership-top-bar .membership-content #languageToggleBtn,
+html[dir="rtl"] .membership-top-bar .membership-content #headerNotifBtn,
+body[dir="rtl"] .membership-top-bar .membership-content #languageToggleBtn,
+body[dir="rtl"] .membership-top-bar .membership-content #headerNotifBtn {
+    margin-left: 5px !important;
+    margin-right: auto !important;
+    order: 2 !important;
+}
+
+/* Alternative RTL detection for icons */
+.rtl .membership-top-bar .membership-content #languageToggleBtn,
+.rtl .membership-top-bar .membership-content #headerNotifBtn,
+body.rtl .membership-top-bar .membership-content #languageToggleBtn,
+ body.rtl .membership-top-bar .membership-content #headerNotifBtn {
+     margin-left: 5px !important;
+     margin-right: auto !important;
+     order: 2 !important;
+ }

@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="BarcodeCreate" conflictDetection="overwriteChanges" label="Barcode Create" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"BarcodeCreate"."autoid" "autoid"
+	,"BarcodeCreate"."ModifiedBy" "ModifiedBy"
+	,"BarcodeCreate"."CreatedBy" "CreatedBy"
+	,"BarcodeCreate"."CreatedOn" "CreatedOn"
+	,"BarcodeCreate"."ModifiedOn" "ModifiedOn"
+	,"BarcodeCreate"."ID_Comp" "ID_Comp"
+	,"ID_Comp"."ID_USER" "ID_CompID_USER"
+	,"ID_CompIDGROUP"."ID_USER" "ID_CompIDGROUPID_USER"
+	,"ID_CompSup_"."Item_name" "ID_CompSup_Item_name"
+	,"ID_Compid1"."DESCRP1" "ID_Compid1DESCRP1"
+	,"ID_Compid2"."DESCRP1" "ID_Compid2DESCRP1"
+	,"ID_Compid3"."DESCRP1" "ID_Compid3DESCRP1"
+	,"ID_Compid4"."DESCRP1" "ID_Compid4DESCRP1"
+	,"ID_Compid5"."DESCRP1" "ID_Compid5DESCRP1"
+	,"ID_Compid6"."DESCRP1" "ID_Compid6DESCRP1"
+	,"ID_Compid7"."DESCRP1" "ID_Compid7DESCRP1"
+	,"BarcodeCreate"."ID_user" "ID_user"
+	,"BarcodeCreate"."Batchid" "Batchid"
+	,"Batch"."Barcodubatch" "BatchBarcodubatch"
+	,"BatchID_comp"."ID_USER" "BatchID_compID_USER"
+	,"BatchID_compIDGROUP"."ID_USER" "BatchID_compIDGROUPID_USER"
+	,"BatchID_compSup_"."Item_name" "BatchID_compSup_Item_name"
+	,"BatchID_compid1"."DESCRP1" "BatchID_compid1DESCRP1"
+	,"BatchID_compid2"."DESCRP1" "BatchID_compid2DESCRP1"
+	,"BatchID_compid3"."DESCRP1" "BatchID_compid3DESCRP1"
+	,"BatchID_compid4"."DESCRP1" "BatchID_compid4DESCRP1"
+	,"BatchID_compid5"."DESCRP1" "BatchID_compid5DESCRP1"
+	,"BatchID_compid6"."DESCRP1" "BatchID_compid6DESCRP1"
+	,"BatchID_compid7"."DESCRP1" "BatchID_compid7DESCRP1"
+	,"BarcodeCreate"."Batchcode" "Batchcode"
+	,"BarcodeCreate"."usercashid" "usercashid"
+from "dbo"."BarcodeCreate" "BarcodeCreate"
+	left join "dbo"."ITEMS" "ID_Comp" on "BarcodeCreate"."ID_Comp" = "ID_Comp"."ID_comp"
+	left join "dbo"."GROUPStk" "ID_CompIDGROUP" on "ID_Comp"."IDGROUP" = "ID_CompIDGROUP"."IDGROUP"
+	left join "dbo"."ItemList" "ID_CompSup_" on "ID_Comp"."Sup_No" = "ID_CompSup_"."ItemNo"
+	left join "dbo"."PYHldtypsv1" "ID_Compid1" on "ID_Comp"."id1" = "ID_Compid1"."ID1"
+	left join "dbo"."PYHldtypsv2" "ID_Compid2" on "ID_Comp"."id2" = "ID_Compid2"."ID2"
+	left join "dbo"."PYHldtypsv3" "ID_Compid3" on "ID_Comp"."id3" = "ID_Compid3"."id3"
+	left join "dbo"."PYHldtypsv4" "ID_Compid4" on "ID_Comp"."id4" = "ID_Compid4"."id4"
+	left join "dbo"."PYHldtypsv5" "ID_Compid5" on "ID_Comp"."id5" = "ID_Compid5"."id5"
+	left join "dbo"."PYHldtypsv6" "ID_Compid6" on "ID_Comp"."id6" = "ID_Compid6"."id6"
+	left join "dbo"."PYHldtypsv7" "ID_Compid7" on "ID_Comp"."id7" = "ID_Compid7"."id7"
+	left join "dbo"."itembatch" "Batch" on "BarcodeCreate"."Batchid" = "Batch"."Batchid"
+	left join "dbo"."ITEMS" "BatchID_comp" on "Batch"."ID_comp" = "BatchID_comp"."ID_comp"
+	left join "dbo"."GROUPStk" "BatchID_compIDGROUP" on "BatchID_comp"."IDGROUP" = "BatchID_compIDGROUP"."IDGROUP"
+	left join "dbo"."ItemList" "BatchID_compSup_" on "BatchID_comp"."Sup_No" = "BatchID_compSup_"."ItemNo"
+	left join "dbo"."PYHldtypsv1" "BatchID_compid1" on "BatchID_comp"."id1" = "BatchID_compid1"."ID1"
+	left join "dbo"."PYHldtypsv2" "BatchID_compid2" on "BatchID_comp"."id2" = "BatchID_compid2"."ID2"
+	left join "dbo"."PYHldtypsv3" "BatchID_compid3" on "BatchID_comp"."id3" = "BatchID_compid3"."id3"
+	left join "dbo"."PYHldtypsv4" "BatchID_compid4" on "BatchID_comp"."id4" = "BatchID_compid4"."id4"
+	left join "dbo"."PYHldtypsv5" "BatchID_compid5" on "BatchID_comp"."id5" = "BatchID_compid5"."id5"
+	left join "dbo"."PYHldtypsv6" "BatchID_compid6" on "BatchID_comp"."id6" = "BatchID_compid6"."id6"
+	left join "dbo"."PYHldtypsv7" "BatchID_compid7" on "BatchID_comp"."id7" = "BatchID_compid7"."id7"
+]]></text>
+    </command>
+    <command id="autoidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="autoid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="autoid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Autoid" readOnly="true" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" showInSummary="true" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" showInSummary="true" />
+    <field name="CreatedOn" type="DateTime" label="Created On" showInSummary="true" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" showInSummary="true" />
+    <field name="ID_Comp" type="Int64" label="ID Comp" showInSummary="true">
+      <items style="Lookup" dataController="ITEMS" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ID_CompID_USER" type="String" readOnly="true" label="ID Comp ID USER" length="50" />
+    <field name="ID_CompIDGROUPID_USER" type="String" readOnly="true" label="ID Comp IDGROUPID USER" length="50" />
+    <field name="ID_CompSup_Item_name" type="String" readOnly="true" label="ID Comp Sup Item name" length="150" />
+    <field name="ID_Compid1DESCRP1" type="String" readOnly="true" label="ID Compid1 DESCRP1" length="255" />
+    <field name="ID_Compid2DESCRP1" type="String" readOnly="true" label="ID Compid2 DESCRP1" length="255" />
+    <field name="ID_Compid3DESCRP1" type="String" readOnly="true" label="ID Compid3 DESCRP1" length="255" />
+    <field name="ID_Compid4DESCRP1" type="String" readOnly="true" label="ID Compid4 DESCRP1" length="255" />
+    <field name="ID_Compid5DESCRP1" type="String" readOnly="true" label="ID Compid5 DESCRP1" length="255" />
+    <field name="ID_Compid6DESCRP1" type="String" readOnly="true" label="ID Compid6 DESCRP1" length="255" />
+    <field name="ID_Compid7DESCRP1" type="String" readOnly="true" label="ID Compid7 DESCRP1" length="255" />
+    <field name="ID_user" type="String" label="ID user" length="50" />
+    <field name="Batchid" type="Int64" label="Batchid">
+      <items style="Lookup" dataController="itembatch" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="BatchBarcodubatch" type="String" readOnly="true" label="Batch Barcodubatch" length="50" />
+    <field name="BatchID_compID_USER" type="String" readOnly="true" label="Batch ID comp ID USER" length="50" />
+    <field name="BatchID_compIDGROUPID_USER" type="String" readOnly="true" label="Batch ID comp IDGROUPID USER" length="50" />
+    <field name="BatchID_compSup_Item_name" type="String" readOnly="true" label="Batch ID comp Sup Item name" length="150" />
+    <field name="BatchID_compid1DESCRP1" type="String" readOnly="true" label="Batch ID compid1 DESCRP1" length="255" />
+    <field name="BatchID_compid2DESCRP1" type="String" readOnly="true" label="Batch ID compid2 DESCRP1" length="255" />
+    <field name="BatchID_compid3DESCRP1" type="String" readOnly="true" label="Batch ID compid3 DESCRP1" length="255" />
+    <field name="BatchID_compid4DESCRP1" type="String" readOnly="true" label="Batch ID compid4 DESCRP1" length="255" />
+    <field name="BatchID_compid5DESCRP1" type="String" readOnly="true" label="Batch ID compid5 DESCRP1" length="255" />
+    <field name="BatchID_compid6DESCRP1" type="String" readOnly="true" label="Batch ID compid6 DESCRP1" length="255" />
+    <field name="BatchID_compid7DESCRP1" type="String" readOnly="true" label="Batch ID compid7 DESCRP1" length="255" />
+    <field name="Batchcode" type="String" label="Batchcode" length="50" />
+    <field name="usercashid" type="Int64" default="((30))" label="Usercashid" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Barcode Create">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+
+	<dataField fieldName="autoid" columns="50" />
+        <dataField fieldName="ID_Comp" aliasFieldName="ID_CompID_USER"  />
+         <dataField fieldName="Batchid" aliasFieldName="BatchBarcodubatch"  />
+         <dataField fieldName="usercashid" columns="15" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Barcode Create">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Barcode Create" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="ID_Comp" aliasFieldName="ID_CompID_USER" hyperlinkFormatString="~/Pages/ITEMS.aspx?ID_comp={ID_Comp}&amp;_controller=ITEMS&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ID_user" columns="50" />
+            <dataField fieldName="Batchid" aliasFieldName="BatchBarcodubatch" hyperlinkFormatString="~/Pages/itembatch.aspx?Batchid={Batchid}&amp;_controller=itembatch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Batchcode" columns="50" />
+            <dataField fieldName="usercashid" columns="15" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ID_CompIDGROUPID_USER" columns="50" />
+            <dataField fieldName="ID_CompSup_Item_name" />
+            <dataField fieldName="ID_Compid1DESCRP1" />
+            <dataField fieldName="ID_Compid2DESCRP1" />
+            <dataField fieldName="ID_Compid3DESCRP1" />
+            <dataField fieldName="ID_Compid4DESCRP1" />
+            <dataField fieldName="ID_Compid5DESCRP1" />
+            <dataField fieldName="ID_Compid6DESCRP1" />
+            <dataField fieldName="ID_Compid7DESCRP1" />
+            <dataField fieldName="BatchID_compID_USER" columns="50" />
+            <dataField fieldName="BatchID_compIDGROUPID_USER" columns="50" />
+            <dataField fieldName="BatchID_compSup_Item_name" />
+            <dataField fieldName="BatchID_compid1DESCRP1" />
+            <dataField fieldName="BatchID_compid2DESCRP1" />
+            <dataField fieldName="BatchID_compid3DESCRP1" />
+            <dataField fieldName="BatchID_compid4DESCRP1" />
+            <dataField fieldName="BatchID_compid5DESCRP1" />
+            <dataField fieldName="BatchID_compid6DESCRP1" />
+            <dataField fieldName="BatchID_compid7DESCRP1" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Barcode Create">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Barcode Create" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="ID_Comp" aliasFieldName="ID_CompID_USER" />
+            <dataField fieldName="ID_user" columns="50" />
+            <dataField fieldName="Batchid" aliasFieldName="BatchBarcodubatch" />
+            <dataField fieldName="Batchcode" columns="50" />
+            <dataField fieldName="usercashid" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Select " view="grid1" type="Sql" phase="Before"><![CDATA[delete from Barcodeitem   where   Modifiedon=dateadd(day,-1,getdate()) and    ModifiedBy = @BusinessRules_UserName
+]]></rule>
+    <rule id="r101" commandName="Insert|Update" type="Sql" phase="After"><![CDATA[exec CreateBatchPrint @autoid,@ID_Comp,@Batchid,@usercashid]]></rule>
+    <rule id="r102" commandName="Delete" type="Sql" phase="After"><![CDATA[delete from Barcodeitem where autoid=@autoid]]></rule>
+  </businessRules>
+</dataController>

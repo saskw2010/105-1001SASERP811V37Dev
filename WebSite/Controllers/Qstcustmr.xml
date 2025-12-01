@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Qstcustmr" conflictDetection="overwriteChanges" label="Qstcustmr" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Qstcustmr"."Cstm_No" "Cstm_No"
+	,"Qstcustmr"."sgm" "sgm"
+	,"Qstcustmr"."Cstm_Nm" "Cstm_Nm"
+	,"Qstcustmr"."Cstm_Nme" "Cstm_Nme"
+	,"Qstcustmr"."Cntry_No" "Cntry_No"
+	,"Qstcustmr"."TSNEFNO" "TSNEFNO"
+	,"Qstcustmr"."AreaNo" "AreaNo"
+	,"Qstcustmr"."TSNEFNO1" "TSNEFNO1"
+	,"Qstcustmr"."blacklist" "blacklist"
+	,"Qstcustmr"."EvaluationNO" "EvaluationNO"
+	,"Qstcustmr"."acc_no" "acc_no"
+	,"Qstcustmr"."curncy_no" "curncy_no"
+	,"Qstcustmr"."Slm_No" "Slm_No"
+	,"Qstcustmr"."Cstm_Adr" "Cstm_Adr"
+	,"Qstcustmr"."workadress" "workadress"
+	,"Qstcustmr"."Cstm_Rsp" "Cstm_Rsp"
+	,"Qstcustmr"."Cstm_Email" "Cstm_Email"
+	,"Qstcustmr"."Cstm_Tel" "Cstm_Tel"
+	,"Qstcustmr"."Cstm_Tel1" "Cstm_Tel1"
+	,"Qstcustmr"."Cstm_Tel2" "Cstm_Tel2"
+	,"Qstcustmr"."Cstm_Fax" "Cstm_Fax"
+	,"Qstcustmr"."Cmp_code" "Cmp_code"
+	,"Qstcustmr"."Cstm_Othr" "Cstm_Othr"
+	,"Qstcustmr"."CivilID" "CivilID"
+	,"Qstcustmr"."CivilEnddate" "CivilEnddate"
+	,"Qstcustmr"."BirthDate" "BirthDate"
+	,"Qstcustmr"."LicenceNumber" "LicenceNumber"
+	,"Qstcustmr"."LicenceEnddate" "LicenceEnddate"
+	,"Qstcustmr"."LicenceEnddatehijry" "LicenceEnddatehijry"
+	,"Qstcustmr"."Cstm_Limt" "Cstm_Limt"
+	,"Qstcustmr"."Cstm_Limtperiod" "Cstm_Limtperiod"
+from "dbo"."Qstcustmr" "Qstcustmr"
+]]></text>
+    </command>
+    <command id="Cstm_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Cstm_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Cstm_No" type="Int64" allowNulls="false" label="Cstm No" readOnly="true" showInSummary="true" />
+    <field name="sgm" type="Int64" label="Sgm" showInSummary="true" />
+    <field name="Cstm_Nm" type="String" label="Cstm Nm" length="155" showInSummary="true" />
+    <field name="Cstm_Nme" type="String" label="Cstm Nme" length="155" showInSummary="true" />
+    <field name="Cntry_No" type="Int64" label="Cntry No" showInSummary="true" />
+    <field name="TSNEFNO" type="Int64" label="Tsnefno" />
+    <field name="AreaNo" type="Int64" label="Area No" />
+    <field name="TSNEFNO1" type="Int64" label="Tsnefno1" />
+    <field name="blacklist" type="Boolean" label="Blacklist" />
+    <field name="EvaluationNO" type="Int64" label="Evaluation NO" />
+    <field name="acc_no" type="Int64" label="Acc No" />
+    <field name="curncy_no" type="Int64" label="Curncy No" />
+    <field name="Slm_No" type="Int64" label="Slm No" />
+    <field name="Cstm_Adr" type="String" label="Cstm Adr" length="155" />
+    <field name="workadress" type="String" label="Workadress" length="155" />
+    <field name="Cstm_Rsp" type="String" label="Cstm Rsp" length="155" />
+    <field name="Cstm_Email" type="String" label="Cstm Email" length="155" />
+    <field name="Cstm_Tel" type="String" label="Cstm Tel" length="8" />
+    <field name="Cstm_Tel1" type="String" label="Cstm Tel1" length="8" />
+    <field name="Cstm_Tel2" type="String" label="Cstm Tel2" length="8" />
+    <field name="Cstm_Fax" type="String" label="Cstm Fax" length="8" />
+    <field name="Cmp_code" type="String" label="Cmp code" length="50" />
+    <field name="Cstm_Othr" type="String" label="Cstm Othr" length="155" />
+    <field name="CivilID" type="String" label="Civil#" length="12" />
+    <field name="CivilEnddate" type="DateTime" label="Civil Enddate" />
+    <field name="BirthDate" type="DateTime" label="Birth Date" />
+    <field name="LicenceNumber" type="String" label="Licence Number" length="12" />
+    <field name="LicenceEnddate" type="DateTime" label="Licence Enddate" />
+    <field name="LicenceEnddatehijry" type="DateTime" label="Licence Enddatehijry" />
+    <field name="Cstm_Limt" type="Decimal" label="Cstm Limt" />
+    <field name="Cstm_Limtperiod" type="Int64" label="Cstm Limtperiod" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Qstcustmr">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Cstm_No" columns="15" />
+        <dataField fieldName="sgm" columns="15" />
+        <dataField fieldName="Cstm_Nm" />
+        <dataField fieldName="Cstm_Nme" />
+        <dataField fieldName="Cntry_No" columns="15" />
+        <dataField fieldName="TSNEFNO" columns="15" />
+        <dataField fieldName="AreaNo" columns="15" />
+        <dataField fieldName="TSNEFNO1" columns="15" />
+        <dataField fieldName="blacklist" />
+        <dataField fieldName="EvaluationNO" columns="15" />
+        <dataField fieldName="acc_no" columns="15" />
+        <dataField fieldName="curncy_no" columns="15" />
+        <dataField fieldName="Slm_No" columns="15" />
+        <dataField fieldName="Cstm_Adr" />
+        <dataField fieldName="workadress" />
+        <dataField fieldName="Cstm_Rsp" />
+        <dataField fieldName="Cstm_Email" />
+        <dataField fieldName="Cstm_Tel" columns="8" />
+        <dataField fieldName="Cstm_Tel1" columns="8" />
+        <dataField fieldName="Cstm_Tel2" columns="8" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Qstcustmr">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Qstcustmr" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="Cstm_Nm" />
+            <dataField fieldName="Cstm_Nme" />
+            <dataField fieldName="Cntry_No" columns="15" />
+            <dataField fieldName="TSNEFNO" columns="15" />
+            <dataField fieldName="AreaNo" columns="15" />
+            <dataField fieldName="TSNEFNO1" columns="15" />
+            <dataField fieldName="blacklist" />
+            <dataField fieldName="EvaluationNO" columns="15" />
+            <dataField fieldName="acc_no" columns="15" />
+            <dataField fieldName="curncy_no" columns="15" />
+            <dataField fieldName="Slm_No" columns="15" />
+            <dataField fieldName="Cstm_Adr" />
+            <dataField fieldName="workadress" />
+            <dataField fieldName="Cstm_Rsp" />
+            <dataField fieldName="Cstm_Email" />
+            <dataField fieldName="Cstm_Tel" columns="8" />
+            <dataField fieldName="Cstm_Tel1" columns="8" />
+            <dataField fieldName="Cstm_Tel2" columns="8" />
+            <dataField fieldName="Cstm_Fax" columns="8" />
+            <dataField fieldName="Cmp_code" columns="50" />
+            <dataField fieldName="Cstm_Othr" />
+            <dataField fieldName="CivilID" columns="12" />
+            <dataField fieldName="CivilEnddate" columns="10" />
+            <dataField fieldName="BirthDate" columns="10" />
+            <dataField fieldName="LicenceNumber" columns="12" />
+            <dataField fieldName="LicenceEnddate" columns="10" />
+            <dataField fieldName="LicenceEnddatehijry" columns="10" />
+            <dataField fieldName="Cstm_Limt" dataFormatString="c" columns="15" />
+            <dataField fieldName="Cstm_Limtperiod" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Qstcustmr">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Qstcustmr" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="Cstm_Nm" />
+            <dataField fieldName="Cstm_Nme" />
+            <dataField fieldName="Cntry_No" columns="15" />
+            <dataField fieldName="TSNEFNO" columns="15" />
+            <dataField fieldName="AreaNo" columns="15" />
+            <dataField fieldName="TSNEFNO1" columns="15" />
+            <dataField fieldName="blacklist" />
+            <dataField fieldName="EvaluationNO" columns="15" />
+            <dataField fieldName="acc_no" columns="15" />
+            <dataField fieldName="curncy_no" columns="15" />
+            <dataField fieldName="Slm_No" columns="15" />
+            <dataField fieldName="Cstm_Adr" />
+            <dataField fieldName="workadress" />
+            <dataField fieldName="Cstm_Rsp" />
+            <dataField fieldName="Cstm_Email" />
+            <dataField fieldName="Cstm_Tel" columns="8" />
+            <dataField fieldName="Cstm_Tel1" columns="8" />
+            <dataField fieldName="Cstm_Tel2" columns="8" />
+            <dataField fieldName="Cstm_Fax" columns="8" />
+            <dataField fieldName="Cmp_code" columns="50" />
+            <dataField fieldName="Cstm_Othr" />
+            <dataField fieldName="CivilID" columns="12" />
+            <dataField fieldName="CivilEnddate" columns="10" />
+            <dataField fieldName="BirthDate" columns="10" />
+            <dataField fieldName="LicenceNumber" columns="12" />
+            <dataField fieldName="LicenceEnddate" columns="10" />
+            <dataField fieldName="LicenceEnddatehijry" columns="10" />
+            <dataField fieldName="Cstm_Limt" dataFormatString="c" columns="15" />
+            <dataField fieldName="Cstm_Limtperiod" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🔗 اختبار سريع للنظام</title>
+    <meta charset="utf-8" />
+    
+    <!-- ملفات النظام -->
+    <script src="../js/mainmaster-simple.js"></script>
+    <script src="../js/saserp-links-reference.js"></script>
+    <script src="../js/navigation-vue-components.js"></script>
+    
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            padding: 20px; direction: rtl; background: #f5f5f5; 
+        }
+        .container { 
+            max-width: 800px; margin: 0 auto; background: white; 
+            padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        }
+        h1 { color: #2c3e50; text-align: center; margin-bottom: 30px; }
+        .status { 
+            padding: 15px; margin: 20px 0; border-radius: 8px; 
+            font-weight: bold; text-align: center; 
+        }
+        .status.success { background: #d4edda; color: #155724; border: 2px solid #c3e6cb; }
+        .status.error { background: #f8d7da; color: #721c24; border: 2px solid #f5c6cb; }
+        .status.warning { background: #fff3cd; color: #856404; border: 2px solid #ffeaa7; }
+        .btn { 
+            padding: 12px 20px; margin: 10px; background: #3498db; color: white; 
+            border: none; border-radius: 6px; cursor: pointer; font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        .btn:hover { background: #2980b9; }
+        .btn.success { background: #27ae60; }
+        .btn.success:hover { background: #219a52; }
+        .test-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 15px; margin: 20px 0; 
+        }
+        .code { 
+            background: #f8f9fa; padding: 10px; border-radius: 4px; 
+            font-family: 'Courier New', monospace; margin: 10px 0; 
+        }
+        .features { 
+            background: #e8f4fd; padding: 20px; border-radius: 8px; margin: 20px 0; 
+        }
+        .features h3 { color: #2980b9; margin-top: 0; }
+        .features ul { list-style-type: none; padding: 0; }
+        .features li { padding: 5px 0; }
+        .features li:before { content: "✅ "; color: #27ae60; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 اختبار سريع للنظام - SASERP V37</h1>
+        
+        <div id="system-status" class="status warning">
+            🔄 جاري فحص النظام...
+        </div>
+
+        <div class="features">
+            <h3>🎯 ميزات النظام المتاحة:</h3>
+            <ul>
+                <li><strong>66 رابط</strong> منظم في فئات واضحة</li>
+                <li><strong>النظام الهرمي:</strong> mainmaster.pages.*.*.()</li>
+                <li><strong>الوصول السريع:</strong> QuickNav.*()</li>
+                <li><strong>تصميم متجاوب</strong> Mobile-First</li>
+                <li><strong>قائمة برجر موحدة</strong> في جميع الصفحات</li>
+                <li><strong>4 لوحات تحكم</strong> تفاعلية</li>
+                <li><strong>تكامل Vue.js</strong> مع JavaScript عادي</li>
+            </ul>
+        </div>
+
+        <div class="test-grid">
+            <button class="btn success" onclick="testQuickAccess()">🚀 اختبار الوصول السريع</button>
+            <button class="btn success" onclick="testMainSystem()">🏠 اختبار النظام الرئيسي</button>
+            <button class="btn success" onclick="testFinancial()">💰 اختبار المحاسبة</button>
+            <button class="btn success" onclick="testHR()">👥 اختبار الموارد البشرية</button>
+            <button class="btn success" onclick="testStock()">📦 اختبار المخزون</button>
+            <button class="btn success" onclick="testReports()">📊 اختبار التقارير</button>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <button class="btn" onclick="openFullGuide()">📖 فتح الدليل الشامل</button>
+            <button class="btn" onclick="openAdvancedTesting()">🧪 الاختبار المتقدم</button>
+        </div>
+
+        <div class="code">
+            <strong>🔧 أوامر سريعة للتجربة:</strong><br>
+            QuickNav.linksGuide() // دليل الروابط<br>
+            QuickNav.systemInfo() // معلومات النظام<br>
+            mainmaster.pages.financial.accounts() // خطة الحسابات<br>
+            mainmaster.pages.test.linksTesting() // صفحة الاختبار
+        </div>
+
+        <div id="test-results"></div>
+    </div>
+
+    <script>
+        let allTestsPassed = 0;
+        let totalTests = 0;
+
+        function updateStatus(message, type = 'warning') {
+            const status = document.getElementById('system-status');
+            status.className = `status ${type}`;
+            status.innerHTML = message;
+        }
+
+        function addResult(message, type = 'info') {
+            const results = document.getElementById('test-results');
+            const div = document.createElement('div');
+            div.className = `status ${type}`;
+            div.style.margin = '10px 0';
+            div.style.padding = '10px';
+            div.innerHTML = message;
+            results.appendChild(div);
+        }
+
+        function checkSystem() {
+            totalTests = 4;
+            allTestsPassed = 0;
+
+            // فحص mainmaster
+            if (typeof mainmaster !== 'undefined') {
+                allTestsPassed++;
+                addResult('✅ mainmaster-vue-framework.js محمل بنجاح', 'success');
+                
+                if (mainmaster.pages) {
+                    addResult('✅ نظام mainmaster.pages متاح', 'success');
+                } else {
+                    addResult('⚠️ نظام mainmaster.pages غير مكتمل', 'warning');
+                }
+            } else {
+                addResult('❌ mainmaster-vue-framework.js غير محمل', 'error');
+            }
+
+            // فحص QuickNav
+            if (typeof QuickNav !== 'undefined') {
+                allTestsPassed++;
+                addResult(`✅ QuickNav متاح مع ${Object.keys(QuickNav).length} دالة`, 'success');
+            } else {
+                addResult('❌ QuickNav غير متاح', 'error');
+            }
+
+            // فحص SASERP_LINKS
+            if (typeof SASERP_LINKS !== 'undefined') {
+                allTestsPassed++;
+                addResult(`✅ SASERP_LINKS متاح مع ${Object.keys(SASERP_LINKS).length} فئة`, 'success');
+            } else {
+                addResult('❌ SASERP_LINKS غير متاح', 'error');
+            }
+
+            // فحص Vue.js
+            if (typeof Vue !== 'undefined') {
+                allTestsPassed++;
+                addResult('✅ Vue.js متاح (اختياري)', 'success');
+            } else {
+                addResult('⚠️ Vue.js غير متاح (لا يؤثر على الوظائف الأساسية)', 'warning');
+            }
+
+            // تقييم النتيجة النهائية
+            setTimeout(() => {
+                if (allTestsPassed >= 3) {
+                    updateStatus(`🎉 النظام يعمل بشكل ممتاز! (${allTestsPassed}/${totalTests} اختبارات نجحت)`, 'success');
+                } else if (allTestsPassed >= 2) {
+                    updateStatus(`⚠️ النظام يعمل مع بعض التحذيرات (${allTestsPassed}/${totalTests})`, 'warning');
+                } else {
+                    updateStatus(`❌ النظام يحتاج إصلاح (${allTestsPassed}/${totalTests})`, 'error');
+                }
+            }, 1000);
+        }
+
+        function testQuickAccess() {
+            if (typeof QuickNav !== 'undefined') {
+                addResult('🚀 تجربة الوصول السريع...', 'success');
+                console.log('Testing QuickNav functions...');
+                
+                // اختبار بعض الدوال
+                try {
+                    const info = QuickNav.systemInfo();
+                    addResult('✅ دالة systemInfo تعمل بنجاح', 'success');
+                } catch (error) {
+                    addResult('❌ خطأ في دالة systemInfo: ' + error.message, 'error');
+                }
+            } else {
+                addResult('❌ QuickNav غير متاح للاختبار', 'error');
+            }
+        }
+
+        function testMainSystem() {
+            if (typeof mainmaster !== 'undefined' && mainmaster.pages) {
+                addResult('🏠 اختبار النظام الرئيسي...', 'success');
+                
+                // اختبار الصفحات الرئيسية
+                const mainPages = ['home', 'dashboard', 'profile', 'settings'];
+                let workingPages = 0;
+                
+                mainPages.forEach(page => {
+                    if (typeof mainmaster.pages[page] === 'function') {
+                        workingPages++;
+                    }
+                });
+                
+                addResult(`✅ ${workingPages}/${mainPages.length} صفحات رئيسية متاحة`, 'success');
+            } else {
+                addResult('❌ النظام الرئيسي غير متاح', 'error');
+            }
+        }
+
+        function testFinancial() {
+            if (typeof mainmaster !== 'undefined' && mainmaster.pages && mainmaster.pages.financial) {
+                addResult('💰 اختبار نظام المحاسبة...', 'success');
+                
+                const financialPages = Object.keys(mainmaster.pages.financial);
+                addResult(`✅ ${financialPages.length} صفحة محاسبة متاحة: ${financialPages.join(', ')}`, 'success');
+            } else {
+                addResult('❌ نظام المحاسبة غير متاح', 'error');
+            }
+        }
+
+        function testHR() {
+            if (typeof mainmaster !== 'undefined' && mainmaster.pages && mainmaster.pages.hr) {
+                addResult('👥 اختبار نظام الموارد البشرية...', 'success');
+                
+                const hrPages = Object.keys(mainmaster.pages.hr);
+                addResult(`✅ ${hrPages.length} صفحة موارد بشرية متاحة: ${hrPages.join(', ')}`, 'success');
+            } else {
+                addResult('❌ نظام الموارد البشرية غير متاح', 'error');
+            }
+        }
+
+        function testStock() {
+            if (typeof mainmaster !== 'undefined' && mainmaster.pages && mainmaster.pages.stock) {
+                addResult('📦 اختبار نظام المخزون...', 'success');
+                
+                const stockPages = Object.keys(mainmaster.pages.stock);
+                addResult(`✅ ${stockPages.length} صفحة مخزون متاحة: ${stockPages.join(', ')}`, 'success');
+            } else {
+                addResult('❌ نظام المخزون غير متاح', 'error');
+            }
+        }
+
+        function testReports() {
+            if (typeof mainmaster !== 'undefined' && mainmaster.pages && mainmaster.pages.reports) {
+                addResult('📊 اختبار نظام التقارير...', 'success');
+                
+                const reportPages = Object.keys(mainmaster.pages.reports);
+                addResult(`✅ ${reportPages.length} صفحة تقارير متاحة: ${reportPages.join(', ')}`, 'success');
+            } else {
+                addResult('❌ نظام التقارير غير متاح', 'error');
+            }
+        }
+
+        function openFullGuide() {
+            if (typeof QuickNav !== 'undefined' && QuickNav.linksGuide) {
+                QuickNav.linksGuide();
+            } else {
+                window.open('SystemLinksGuide.aspx', '_blank');
+            }
+        }
+
+        function openAdvancedTesting() {
+            if (typeof QuickNav !== 'undefined' && QuickNav.linksTesting) {
+                QuickNav.linksTesting();
+            } else {
+                window.open('LinksTestingPage.html', '_blank');
+            }
+        }
+
+        // بدء الفحص عند تحميل الصفحة
+        window.addEventListener('load', function() {
+            setTimeout(checkSystem, 500);
+        });
+    </script>
+</body>
+</html>

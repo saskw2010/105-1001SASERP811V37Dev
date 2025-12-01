@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="ACCODE1" conflictDetection="overwriteChanges" label="Accode1" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"ACCODE1"."ACCODE1ID" "ACCODE1ID"
+	,"ACCODE1"."code_no" "code_no"
+	,"code_"."code_nm" "code_code_nm"
+	,"ACCODE1"."ACC_NO" "ACC_NO"
+	,"ACC_"."Acc_Nm" "ACC_Acc_Nm"
+	,"ACC_Clsacc_"."Acc_Nm" "ACC_Clsacc_Acc_Nm"
+	,"ACC_Acc_Bnd"."Acc_Nm" "ACC_Acc_BndAcc_Nm"
+	,"ACC_Acc_Bndaccclass"."accountclass" "ACC_Acc_Bndaccclassaccountclass"
+	,"ACC_Acc_BndAcc_Bab"."Acc_Nm" "ACC_Acc_BndAcc_BabAcc_Nm"
+	,"ACCODE1"."ACC_Nm" "ACC_Nm"
+	,"ACCODE1"."lvl" "lvl"
+	,"ACCODE1"."ModifiedBy" "ModifiedBy"
+	,"ACCODE1"."ModifiedOn" "ModifiedOn"
+	,"ACCODE1"."CreatedBy" "CreatedBy"
+	,"ACCODE1"."CreatedOn" "CreatedOn"
+	,"ACCODE1"."code_nm" "code_nm"
+	,"ACCODE1"."sgm" "sgm"
+	,"ACCODE1"."sncode" "sncode"
+	,"ACCODE1"."DCBtype" "DCBtype"
+	,"ACCODE1"."groupinglist" "groupinglist"
+	,"ACCODE1"."groupinglist1" "groupinglist1"
+	,"ACCODE1"."groupinglist2" "groupinglist2"
+	,"ACCODE1"."groupinglist3" "groupinglist3"
+	,"ACCODE1"."groupinglist4" "groupinglist4"
+	,"ACCODE1"."groupinglist5" "groupinglist5"
+	,"ACCODE1"."groupinglist6" "groupinglist6"
+	,"ACCODE1"."groupinglist7" "groupinglist7"
+	,"ACCODE1"."groupinglist8" "groupinglist8"
+	,"ACCODE1"."groupinglist9" "groupinglist9"
+from "dbo"."ACCODE1" "ACCODE1"
+	left join "dbo"."ACCODEMASTER1" "code_" on "ACCODE1"."code_no" = "code_"."code_no"
+	left join "dbo"."GLmstrfl" "ACC_" on "ACCODE1"."ACC_NO" = "ACC_"."Acc_No"
+	left join "dbo"."GLmfbab" "ACC_Clsacc_" on "ACC_"."Clsacc_No" = "ACC_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "ACC_Acc_Bnd" on "ACC_"."Acc_Bnd" = "ACC_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "ACC_Acc_Bndaccclass" on "ACC_Acc_Bnd"."accclass" = "ACC_Acc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "ACC_Acc_BndAcc_Bab" on "ACC_Acc_Bnd"."Acc_Bab" = "ACC_Acc_BndAcc_Bab"."Acc_Bab"
+]]></text>
+    </command>
+    <command id="ACCODE1IDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ACCODE1ID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ACCODE1ID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Accode1id" readOnly="true" />
+    <field name="code_no" type="Int64" allowNulls="false" label="Code No" showInSummary="true">
+      <items style="Lookup" dataController="ACCODEMASTER1"  searchOnStart="true" />
+    </field>
+    <field name="code_code_nm" type="String" readOnly="true" label="Code Nm" length="255" />
+    <field name="ACC_NO" type="Int64" allowNulls="false" label="Acc No" showInSummary="true">
+      <items style="Lookup" dataController="Qglmfbandviewtree" copy="lvl=lvl&#xD;&#xA;ACC_Nm=Acc_Nm&#xD;&#xA;" searchOnStart="true" dataTextField="Acc_Nm" dataValueField="Acc_Bnd"/>
+    </field>
+    <field name="ACC_Acc_Nm" type="String" readOnly="true" label="ACC Acc Nm" length="255" />
+    <field name="ACC_Clsacc_Acc_Nm" type="String" readOnly="true" label="ACC Clsacc Acc Nm" length="250" />
+    <field name="ACC_Acc_BndAcc_Nm" type="String" readOnly="true" label="ACC Acc Bnd Acc Nm" length="50" />
+    <field name="ACC_Acc_Bndaccclassaccountclass" type="String" readOnly="true" label="ACC Acc Bndaccclassaccountclass" length="100" />
+    <field name="ACC_Acc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="ACC Acc Bnd Acc Bab Acc Nm" length="250" />
+    <field name="ACC_Nm" type="String" label="ACC Nm" length="255" showInSummary="true" />
+    <field name="lvl" type="Int64" label="Lvl" showInSummary="true" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" showInSummary="true" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="code_nm" type="String" label="Code Nm" length="255" />
+    <field name="sgm" type="Int64" label="Sgm" />
+    <field name="sncode" type="Int64" label="Sncode" />
+    <field name="DCBtype" type="Int64" label="DC Btype" >
+	<items style="DropDownList">
+        <item value="1" text="Balance" />
+        <item value="2" text="DB Balance" />
+		 <item value="3" text="CR Balance" />
+      </items>
+    </field>
+    <field name="groupinglist" type="String" label="Groupinglist" length="50" />
+    <field name="groupinglist1" type="String" label="Groupinglist1" length="50" />
+    <field name="groupinglist2" type="String" label="Groupinglist2" length="50" />
+    <field name="groupinglist3" type="String" label="Groupinglist3" length="50" />
+    <field name="groupinglist4" type="String" label="Groupinglist4" length="50" />
+    <field name="groupinglist5" type="String" label="Groupinglist5" length="50" />
+    <field name="groupinglist6" type="String" label="Groupinglist6" length="50" />
+    <field name="groupinglist7" type="String" label="Groupinglist7" length="50" />
+    <field name="groupinglist8" type="String" label="Groupinglist8" length="50" />
+    <field name="groupinglist9" type="String" label="Groupinglist9" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="DataSheet" commandId="command1" label="Accode1">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="code_no" aliasFieldName="code_code_nm" />
+        <dataField fieldName="ACC_NO"   />
+        <dataField fieldName="ACC_Nm" textMode="Static"/>
+        <dataField fieldName="lvl" columns="15" textMode="Static"/>
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="code_nm" hidden="true"/>
+        <dataField fieldName="sgm" columns="15" hidden="true"/>
+        <dataField fieldName="sncode" columns="15" />
+        <dataField fieldName="DCBtype" columns="15" />
+		
+        <dataField fieldName="groupinglist" columns="50" />
+        <dataField fieldName="groupinglist1" columns="50" />
+        <dataField fieldName="groupinglist2" columns="50" />
+        <dataField fieldName="groupinglist3" columns="50" />
+        <dataField fieldName="groupinglist4" columns="50" />
+        <dataField fieldName="groupinglist5" columns="50" />
+        <dataField fieldName="groupinglist6" columns="50" />
+        <dataField fieldName="groupinglist7" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Accode1">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Accode1" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="code_no" aliasFieldName="code_code_nm" hyperlinkFormatString="~/Pages/ACCODEMASTER1.aspx?code_no={code_no}&amp;_controller=ACCODEMASTER1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ACC_NO" aliasFieldName="ACC_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={ACC_NO}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ACC_Nm" />
+            <dataField fieldName="lvl" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="code_nm" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="sncode" columns="15" />
+            <dataField fieldName="DCBtype" columns="15" />
+            <dataField fieldName="groupinglist" columns="50" />
+            <dataField fieldName="groupinglist1" columns="50" />
+            <dataField fieldName="groupinglist2" columns="50" />
+            <dataField fieldName="groupinglist3" columns="50" />
+            <dataField fieldName="groupinglist4" columns="50" />
+            <dataField fieldName="groupinglist5" columns="50" />
+            <dataField fieldName="groupinglist6" columns="50" />
+            <dataField fieldName="groupinglist7" columns="50" />
+            <dataField fieldName="groupinglist8" columns="50" />
+            <dataField fieldName="groupinglist9" columns="50" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ACC_Clsacc_Acc_Nm" />
+            <dataField fieldName="ACC_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="ACC_Acc_Bndaccclassaccountclass" />
+            <dataField fieldName="ACC_Acc_BndAcc_BabAcc_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Accode1">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Accode1" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="code_no" aliasFieldName="code_code_nm" />
+            <dataField fieldName="ACC_NO" aliasFieldName="ACC_Acc_Nm" />
+            <dataField fieldName="ACC_Nm" />
+            <dataField fieldName="lvl" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="code_nm" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="sncode" columns="15" />
+            <dataField fieldName="DCBtype" columns="15" />
+            <dataField fieldName="groupinglist" columns="50" />
+            <dataField fieldName="groupinglist1" columns="50" />
+            <dataField fieldName="groupinglist2" columns="50" />
+            <dataField fieldName="groupinglist3" columns="50" />
+            <dataField fieldName="groupinglist4" columns="50" />
+            <dataField fieldName="groupinglist5" columns="50" />
+            <dataField fieldName="groupinglist6" columns="50" />
+            <dataField fieldName="groupinglist7" columns="50" />
+            <dataField fieldName="groupinglist8" columns="50" />
+            <dataField fieldName="groupinglist9" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

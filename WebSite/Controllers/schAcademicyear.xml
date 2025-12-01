@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="schAcademicyear" conflictDetection="overwriteChanges" label="sch Academicyear" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"schAcademicyear"."Code" "Code"
+	,"schAcademicyear"."AcademicYear" "AcademicYear"
+	,"schAcademicyear"."startdate" "startdate"
+	,"schAcademicyear"."enddate" "enddate"
+	,"schAcademicyear"."GlFinperiodID" "GlFinperiodID"
+	,"GlFinperiod"."Fin_period_info" "GlFinperiodFin_period_info"
+	,"GlFinperiodaccountnumber"."Acc_Nm" "GlFinperiodaccountnumberAcc_Nm"
+	,"GlFinperiodaccountnumberClsacc_"."Acc_Nm" "GlFinperiodaccountnumberClsacc_Acc_Nm"
+	,"GlFinperiodaccountnumberAcc_Bnd"."Acc_Nm" "GlFinperiodaccountnumberAcc_BndAcc_Nm"
+	,"schAcademicyear"."startdatein" "startdatein"
+	,"schAcademicyear"."startdatepaystart" "startdatepaystart"
+	,"schAcademicyear"."notes" "notes"
+	,"schAcademicyear"."ModifiedBy" "ModifiedBy"
+	,"schAcademicyear"."ModifiedOn" "ModifiedOn"
+	,"schAcademicyear"."CreatedBy" "CreatedBy"
+	,"schAcademicyear"."CreatedOn" "CreatedOn"
+	,"schAcademicyear"."Agecalculatedate" "Agecalculatedate"
+from "dbo"."schAcademicyear" "schAcademicyear"
+	left join "dbo"."GlFinanceperiod" "GlFinperiod" on "schAcademicyear"."GlFinperiodID" = "GlFinperiod"."GlFinperiodID"
+	left join "dbo"."GLmstrfl" "GlFinperiodaccountnumber" on "GlFinperiod"."accountnumber" = "GlFinperiodaccountnumber"."Acc_No"
+	left join "dbo"."GLmfbab" "GlFinperiodaccountnumberClsacc_" on "GlFinperiodaccountnumber"."Clsacc_No" = "GlFinperiodaccountnumberClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "GlFinperiodaccountnumberAcc_Bnd" on "GlFinperiodaccountnumber"."Acc_Bnd" = "GlFinperiodaccountnumberAcc_Bnd"."Acc_Bnd"
+]]></text>
+    </command>
+    <command id="CodeIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Code" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Code" type="Int64" allowNulls="false" isPrimaryKey="true" label="Code" readOnly="true" />
+    <field name="AcademicYear" type="String" allowNulls="false" label="Academic Year" length="150" showInSummary="true" />
+    <field name="startdate" type="DateTime" label="Startdate" showInSummary="true" />
+    <field name="enddate" type="DateTime" label="Enddate" showInSummary="true" />
+    <field name="GlFinperiodID" type="Int64" label="Gl Finperiod#" showInSummary="true">
+      <items style="Lookup" dataController="GlFinanceperiod" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="GlFinperiodFin_period_info" type="String" readOnly="true" label="Gl Finperiod Fin period info" length="150" />
+    <field name="GlFinperiodaccountnumberAcc_Nm" type="String" readOnly="true" label="Gl Finperiodaccountnumber Acc Nm" length="255" />
+    <field name="GlFinperiodaccountnumberClsacc_Acc_Nm" type="String" readOnly="true" label="Gl Finperiodaccountnumber Clsacc Acc Nm" length="250" />
+    <field name="GlFinperiodaccountnumberAcc_BndAcc_Nm" type="String" readOnly="true" label="Gl Finperiodaccountnumber Acc Bnd Acc Nm" length="50" />
+    <field name="startdatein" type="DateTime" label="Startdatein" showInSummary="true" />
+    <field name="startdatepaystart" type="DateTime" label="Startdatepaystart" />
+    <field name="notes" type="String" label="Notes" length="50" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="Agecalculatedate" type="DateTime" label="Agecalculatedate" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="sch Academicyear" sortExpression="Code DESC">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="AcademicYear" />
+        <dataField fieldName="Code" />
+        <dataField fieldName="startdate" columns="10" />
+        <dataField fieldName="enddate" columns="10" />
+        <dataField fieldName="GlFinperiodID" aliasFieldName="GlFinperiodFin_period_info" hyperlinkFormatString="~/Pages/GlFinanceperiod.aspx?GlFinperiodID={GlFinperiodID}&amp;_controller=GlFinanceperiod&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="startdatein" columns="10" />
+        <dataField fieldName="startdatepaystart" columns="10" />
+        <dataField fieldName="notes" columns="50" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="Agecalculatedate" columns="10" />
+        <dataField fieldName="GlFinperiodaccountnumberAcc_Nm" />
+        <dataField fieldName="GlFinperiodaccountnumberClsacc_Acc_Nm" />
+        <dataField fieldName="GlFinperiodaccountnumberAcc_BndAcc_Nm" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review sch Academicyear">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="sch Academicyear" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="AcademicYear" />
+            <dataField fieldName="startdate" columns="10" />
+            <dataField fieldName="enddate" columns="10" />
+            <dataField fieldName="GlFinperiodID" aliasFieldName="GlFinperiodFin_period_info" hyperlinkFormatString="~/Pages/GlFinanceperiod.aspx?GlFinperiodID={GlFinperiodID}&amp;_controller=GlFinanceperiod&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="startdatein" columns="10" />
+            <dataField fieldName="startdatepaystart" columns="10" />
+            <dataField fieldName="notes" columns="50" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="Agecalculatedate" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="GlFinperiodaccountnumberAcc_Nm" />
+            <dataField fieldName="GlFinperiodaccountnumberClsacc_Acc_Nm" />
+            <dataField fieldName="GlFinperiodaccountnumberAcc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="Code" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New sch Academicyear">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New sch Academicyear" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="AcademicYear" />
+            <dataField fieldName="startdate" columns="10" />
+            <dataField fieldName="enddate" columns="10" />
+            <dataField fieldName="GlFinperiodID" aliasFieldName="GlFinperiodFin_period_info" />
+            <dataField fieldName="startdatein" columns="10" />
+            <dataField fieldName="startdatepaystart" columns="10" />
+            <dataField fieldName="notes" columns="50" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="Agecalculatedate" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+   <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" roles="GL,ADMINGL" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" roles="GL,ADMINGL" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" roles="GL,ADMINGL" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" roles="GL,ADMINGL" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" roles="GL,ADMINGL" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Edit" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" roles="GL,ADMINGL" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" roles="GL,ADMINGL" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" roles="GL,ADMINGL" />
+      <action id="a8" commandName="Grid" roles="GL,ADMINGL" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" roles="GL,ADMINGL" />
+      <action id="a2" commandName="Delete" roles="GL,ADMINGL" />
+    </actionGroup>
+  </actions>
+</dataController>

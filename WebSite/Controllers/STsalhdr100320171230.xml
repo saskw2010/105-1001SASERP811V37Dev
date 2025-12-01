@@ -1,0 +1,629 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="STsalhdr" conflictDetection="overwriteChanges" label="S Tsalhdr" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.STsalhdrBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+SELECT        STsalhdr.Doc_No, STsalhdr.Brn_No, Brn_.Brn_Nm AS Brn_Brn_Nm, Brn_.Branch, Brn_Cmp_.Grp_Nm AS Brn_Cmp_Grp_Nm, Brn_Cmp_Grp_.Grp_Nm AS Brn_Cmp_Grp_Grp_Nm, STsalhdr.Pym_No, 
+                         Pym_.Pymnt_Nm AS Pym_Pymnt_Nm, Pym_pymnt_acc.Acc_Nm AS Pym_pymnt_accAcc_Nm, Pym_pymnt_accClsacc_.Acc_Nm AS Pym_pymnt_accClsacc_Acc_Nm, 
+                         Pym_pymnt_accAcc_Bnd.Acc_Nm AS Pym_pymnt_accAcc_BndAcc_Nm, Pym_sgm.sgm_Nm AS Pym_sgmsgm_Nm, Pym_sgmOpco.OpcoName AS Pym_sgmOpcoOpcoName, STsalhdr.Slm_No, 
+                         Slm_.Slm_Nm AS Slm_Slm_Nm, Slm_masngerclass.masngerclass AS Slm_masngerclassmasngerclass, STsalhdr.Doc_Dt, STsalhdr.Doc_ty, STsalhdr.typcmsup, 
+                         typcmsup.SubledgerDescrption AS typcmsupSubledgerDescrption, STsalhdr.Cstm_No, Cstm_.Cstm_Nm AS Cstm_Cstm_Nm, Cstm_.Cstm_Nme, Cstm_Area.Area_name AS Cstm_AreaArea_name, 
+                         Cstm_Evaluation.Evaluation_name AS Cstm_EvaluationEvaluation_name, Cstm_acc_.Acc_Nm AS Cstm_acc_Acc_Nm, Cstm_acc_Clsacc_.Acc_Nm AS Cstm_acc_Clsacc_Acc_Nm, 
+                         Cstm_acc_Acc_Bnd.Acc_Nm AS Cstm_acc_Acc_BndAcc_Nm, Cstm_Cntry_.Cntry_Nm AS Cstm_Cntry_Cntry_Nm, Cstm_curncy_.Curncy_Nm AS Cstm_curncy_Curncy_Nm, 
+                         Cstm_TSNEF.TSNEF_name AS Cstm_TSNEFTSNEF_name, Cstm_TSNEFNO1.TSNEF1_name AS Cstm_TSNEFNO1TSNEF1_name, Cstm_Slm_.Slm_Nm AS Cstm_Slm_Slm_Nm, 
+                         Cstm_Slm_masngerclass.masngerclass AS Cstm_Slm_masngerclassmasngerclass, STsalhdr.curcode, cur.Curncy_Nm AS curCurncy_Nm, STsalhdr.curprice, STsalhdr.Post, STsalhdr.reqq_no, STsalhdr.contt_no, STsalhdr.Notes, STsalhdr.Cstm_NM, 
+                         STsalhdr.Cstm_Add, STsalhdr.Cstm_Tel, STsalhdr.Cstm_Tel1, STsalhdr.Cstm_Tel2, STsalhdr.KETAA, STsalhdr.STreet, STsalhdr.gada, STsalhdr.house, STsalhdr.Door, STsalhdr.flat, STsalhdr.keed, STsalhdr.wsl, STsalhdr.submit, STsalhdr.carno, 
+                         STsalhdr.locno, STsalhdr.Refcode, STsalhdr.Reftxt, STsalhdr.whhus, STsalhdr.rest, STsalhdr.madfoa, STsalhdr.tafmadfoa, STsalhdr.tafrest, STsalhdr.taftotal, STsalhdr.Discpercent, STsalhdr.Tot_Cost1, 
+                         STsalhdr.Tot_Sal,STsalhdr.snd_flag, STsalhdr.Tot_Cost, STsalhdr.Tot_Disc, STsalhdr.ModifiedBy, STsalhdr.ModifiedOn, STsalhdr.CreatedBy, STsalhdr.CreatedOn, STsalhdr.quantity, dbo.pyhldtypsl1.Req_NM , STsalhdr.UnitPrice, STsalhdr.reqq_no1
+FROM            dbo.STsalhdr AS STsalhdr LEFT OUTER JOIN
+                         dbo.pyhldtypsl1 ON STsalhdr.flat = dbo.pyhldtypsl1.Req_Typ LEFT OUTER JOIN
+                         dbo.Branchcnst AS Brn_ ON STsalhdr.Brn_No = Brn_.Brn_No LEFT OUTER JOIN
+                         dbo.Pycnstnt AS Brn_Cmp_ ON Brn_.Cmp_code = Brn_Cmp_.Cmp_No LEFT OUTER JOIN
+                         dbo.Groupcnst AS Brn_Cmp_Grp_ ON Brn_Cmp_.Grp_No = Brn_Cmp_Grp_.Grp_No LEFT OUTER JOIN
+                         dbo.Pymntype AS Pym_ ON STsalhdr.Pym_No = Pym_.Pymnt_No LEFT OUTER JOIN
+                         dbo.GLmstrfl AS Pym_pymnt_acc ON Pym_.pymnt_acc = Pym_pymnt_acc.Acc_No LEFT OUTER JOIN
+                         dbo.GLmfbab AS Pym_pymnt_accClsacc_ ON Pym_pymnt_acc.Clsacc_No = Pym_pymnt_accClsacc_.Acc_Bab LEFT OUTER JOIN
+                         dbo.GLmfband AS Pym_pymnt_accAcc_Bnd ON Pym_pymnt_acc.Acc_Bnd = Pym_pymnt_accAcc_Bnd.Acc_Bnd LEFT OUTER JOIN
+                         dbo.glmulcmp AS Pym_sgm ON Pym_.sgm = Pym_sgm.sgmid LEFT OUTER JOIN
+                         dbo.OpCo AS Pym_sgmOpco ON Pym_sgm.OpcoID = Pym_sgmOpco.OpcoIDidentity LEFT OUTER JOIN
+                         dbo.Stslsman AS Slm_ ON STsalhdr.Slm_No = Slm_.Slm_No LEFT OUTER JOIN
+                         dbo.masngerclass AS Slm_masngerclass ON Slm_.masngerclassid = Slm_masngerclass.masngerclassid LEFT OUTER JOIN
+                         dbo.GLSubledgertyplist AS typcmsup ON STsalhdr.typcmsup = typcmsup.Subledgerid LEFT OUTER JOIN
+                         dbo.Stcustmr AS Cstm_ ON STsalhdr.Cstm_No = Cstm_.Cstm_No LEFT OUTER JOIN
+                         dbo.AreaList AS Cstm_Area ON Cstm_.AreaNo = Cstm_Area.AreaNo LEFT OUTER JOIN
+                         dbo.EvaluationList AS Cstm_Evaluation ON Cstm_.EvaluationNO = Cstm_Evaluation.EvaluationNO LEFT OUTER JOIN
+                         dbo.GLmstrfl AS Cstm_acc_ ON Cstm_.acc_no = Cstm_acc_.Acc_No LEFT OUTER JOIN
+                         dbo.GLmfbab AS Cstm_acc_Clsacc_ ON Cstm_acc_.Clsacc_No = Cstm_acc_Clsacc_.Acc_Bab LEFT OUTER JOIN
+                         dbo.GLmfband AS Cstm_acc_Acc_Bnd ON Cstm_acc_.Acc_Bnd = Cstm_acc_Acc_Bnd.Acc_Bnd LEFT OUTER JOIN
+                         dbo.PYCntry AS Cstm_Cntry_ ON Cstm_.Cntry_No = Cstm_Cntry_.Cntry_No LEFT OUTER JOIN
+                         dbo.Stcurncy AS Cstm_curncy_ ON Cstm_.curncy_no = Cstm_curncy_.Curncy_No LEFT OUTER JOIN
+                         dbo.stcustmrtasnef AS Cstm_TSNEF ON Cstm_.TSNEFNO = Cstm_TSNEF.TSNEFNO LEFT OUTER JOIN
+                         dbo.stcustmrtasnef1 AS Cstm_TSNEFNO1 ON Cstm_.TSNEFNO1 = Cstm_TSNEFNO1.TSNEFNO1 LEFT OUTER JOIN
+                         dbo.Stslsman AS Cstm_Slm_ ON Cstm_.Slm_No = Cstm_Slm_.Slm_No LEFT OUTER JOIN
+                         dbo.masngerclass AS Cstm_Slm_masngerclass ON Cstm_Slm_.masngerclassid = Cstm_Slm_masngerclass.masngerclassid LEFT OUTER JOIN
+                         dbo.Stcurncy AS cur ON STsalhdr.curcode = cur.Curncy_No
+ ]]></text>
+    </command>
+    <command id="Doc_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Doc_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Doc_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Doc No" readOnly="true" />
+    <field name="branch" type="Int64" label="branch" showInSummary="true" />
+    <field name="Brn_No" type="Int64" label="Brn No" allowNulls="false" showInSummary="true">
+      <items style="DropDownList" dataController="Branchcnst" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Brn_Brn_Nm" type="String" readOnly="true" label="Brn Nm" length="255" />
+    <field name="Brn_Cmp_Grp_Nm" type="String" readOnly="true" label="Brn Cmp Grp Nm" length="255" />
+    <field name="Brn_Cmp_Grp_Grp_Nm" type="String" readOnly="true" label="Brn Cmp Grp Nm" length="200" />
+    <field name="Pym_No" type="Int64" label="Pym No" showInSummary="true">
+      <items style="DropDownList" dataController="Pymntype" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Pym_Pymnt_Nm" type="String" readOnly="true" label="Pym Pymnt Nm" length="255" />
+    <field name="Pym_pymnt_accAcc_Nm" type="String" readOnly="true" label="Pym pymnt acc Acc Nm" length="255" />
+    <field name="Pym_pymnt_accClsacc_Acc_Nm" type="String" readOnly="true" label="Pym pymnt acc Clsacc Acc Nm" length="220" />
+    <field name="Pym_pymnt_accAcc_BndAcc_Nm" type="String" readOnly="true" label="Pym pymnt acc Acc Bnd Acc Nm" length="20" />
+    <field name="Pym_sgmsgm_Nm" type="String" readOnly="true" label="Pym sgmsgm Nm" length="255" />
+    <field name="Pym_sgmOpcoOpcoName" type="String" readOnly="true" label="Pym sgm Opco Name" length="20" />
+    <field name="Slm_No" type="Int64" label="Slm No" showInSummary="true">
+      <items style="DropDownList" dataController="Stslsman" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Slm_Slm_Nm" type="String" readOnly="true" label="Slm Nm" length="100" />
+    <field name="Slm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Slm masngerclassmasngerclass" length="-1" />
+    <field name="Doc_Dt" type="DateTime" label="Doc Dt" showInSummary="true" />
+    <field name="Doc_ty" type="Int64" label="Doc ty" showInSummary="true" />
+    <field name="typcmsup" type="Int64" label="Typcmsup">
+      <items style="DropDownList" dataController="GLSubledgertyplist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="typcmsupSubledgerDescrption" type="String" readOnly="true" label="typcmsup Subledger Descrption" length="20" />
+    <field name="Cstm_No" type="Int64" allowNulls="false" label="Cstm No">
+      <items style="Lookup" dataController="Stcustmr" newDataView="createForm1" searchOnStart="true" copy="Cstm_Add=Cstm_Adr,Cstm_Tel=Cstm_Tel,Cstm_Tel1=Cstm_Tel1,Cstm_Tel2=Cstm_Tel2," />
+    </field>
+    <field name="Cstm_Cstm_Nm" type="String" readOnly="true" label="Cstm Nm" length="155" />
+
+    <field name="Cstm_AreaArea_name" type="String" readOnly="true" label="Cstm Area name" length="120" />
+    <field name="Cstm_EvaluationEvaluation_name" type="String" readOnly="true" label="Cstm Evaluation name" length="120" />
+    <field name="Cstm_acc_Acc_Nm" type="String" readOnly="true" label="Cstm acc Acc Nm" length="255" />
+    <field name="Cstm_acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Cstm acc Clsacc Acc Nm" length="220" />
+    <field name="Cstm_acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Cstm acc Acc Bnd Acc Nm" length="20" />
+    <field name="Cstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="Cstm Cntry Nm" length="255" />
+    <field name="Cstm_curncy_Curncy_Nm" type="String" readOnly="true" label="Cstm curncy Curncy Nm" length="200" />
+    <field name="Cstm_TSNEFTSNEF_name" type="String" readOnly="true" label="Cstm TSNEFTSNEF name" length="120" />
+    <field name="Cstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="Cstm TSNEFNO1TSNEF1 name" length="120" />
+    <field name="Cstm_Slm_Slm_Nm" type="String" readOnly="true" label="Cstm Slm Nm" length="100" />
+    <field name="Cstm_Slm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Cstm Slm masngerclassmasngerclass" length="-1" />
+    <field name="curcode" type="Int64" label="Curcode">
+      <items style="DropDownList" dataController="Stcurncy" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="curCurncy_Nm" type="String" readOnly="true" label="cur Curncy Nm" length="200" />
+    <field name="curprice" type="Decimal" label="Curprice" />
+    <field name="Post" type="Byte" label="Post" />
+    <field name="Notes" type="String" label="Notes" length="20" />
+    <field name="Cstm_NM" type="String" label="Cstm NM" length="255" />
+    <field name="Cstm_NMe" type="String" label="Cstm NMe" length="255" />	
+    <field name="Cstm_Add" type="String" label="Cstm Add" length="255" />
+    <field name="Cstm_Tel" type="Int64" label="Cstm Tel" length="8" />
+	<field name="Cstm_Tel1" type="Int64" label="Cstm Tel1" length="8" /> 
+	<field name="Cstm_Tel2" type="Int64" label="Cstm Tel2" length="8" /> 
+<field name="KETAA" type="String" label="Ketaa_1" length="20"  />    
+ <field name="STreet" type="String" label="STreet_1" length="50" />
+      
+    <field name="gada" type="String" label="Gada_1" length="20" />
+    <field name="house" type="String" label="House" length="20" />
+    <field name="Door" type="Double" label="Door"   contextFields="Stsaldtl" calculated="true"/>
+    <field name="flat" type="Int64" label="Flat" contextFields="Cstm_No=Cstm_No"  >
+     <items style="DropDownList" dataController="pyhldtypsl1" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="keed" type="Int64" label="Keed" />
+	<field name="reqq_no" type="String" label="reqq_no" />
+	<field name="contt_no" type="String" label="contt_no" />
+	<field name="reqq_no1" type="String" label="reqq_no1" />
+    <field name="wsl" type="Int64" label="Wsl" />
+    <field name="submit" type="Int64" label="Submit" />
+    <field name="carno" type="Int64" label="Doc No" />
+    <field name="locno" type="Int64" label="Locno" />
+<field name="Refcode" type="Int64" label="Refcode"  >
+      <items style="Lookup" dataController="GLcostcntr" newDataView="createForm1"     copy="Cstm_No=CostCntr_acc&#xD;&#xA;Cstm_NM=Acc_Nm" searchOnStart="true" />
+    </field>
+    <field name="Reftxt" type="String" label="Reftxt" length="255" />
+    <field name="whhus" type="Int64" label="Whhus" />
+    <field name="tafmadfoa" type="String" label="Tafmadfoa" length="255" />
+    <field name="tafrest" type="String" label="Tafrest" length="255" />
+    <field name="taftotal" type="String" label="Taftotal" length="255" />
+    <field name="Discpercent" type="Double" label="Discpercent" />
+    <field name="Tot_Cost1" type="Decimal" label="Tot Cost1" />
+    <field name="Tot_Sal" type="Decimal" label="Tot Sal" />
+    <field name="Tot_Cost" type="Decimal" label="Tot Cost" />
+    <field name="Tot_Disc" type="Decimal" label="Tot Disc" />
+     <field name="rest" type="Decimal" label="Rest" contextFields="madfoa,house" calculated="true"/>/>
+    <field name="madfoa" type="Decimal" label="Madfoa" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="20" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="20" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+	<field name="quantity" type="Int64" label="Quantity" /> 
+	 <field name="Req_NM" type="String" label="Req NM" length="20" />
+	 	<field name="UnitPrice" type="Int64" label="UnitPrice" /> 
+		<field name="snd_flag" type="Boolean" label="snd_flag" /> 
+	
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="S Tsalhdr"  filter="Doc_ty=1" >
+     
+      <dataFields>
+        <dataField fieldName="Doc_No" />
+
+        <dataField fieldName="wsl" />
+		<dataField fieldName="reqq_no"  />
+		<dataField fieldName="reqq_no1"  />
+        <dataField fieldName="branch"  />
+        <dataField fieldName="Pym_No" aliasFieldName="Pym_Pymnt_Nm" />
+        <dataField fieldName="Brn_No" aliasFieldName="Brn_Brn_Nm" />
+        <dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm"  hidden="true"/>
+        <dataField fieldName="Slm_Slm_Nm" columns="10" />
+        <dataField fieldName="Doc_Dt" columns="10" />
+        <dataField fieldName="Doc_ty" columns="15" hidden="true"/>
+        <dataField fieldName="typcmsup" aliasFieldName="typcmsupSubledgerDescrption"  hidden="true"/>
+        <dataField fieldName="Cstm_No" aliasFieldName="Cstm_Cstm_Nm"  />
+        <dataField fieldName="curcode" aliasFieldName="curCurncy_Nm"  hidden="true"/>
+		         <dataField fieldName="Refcode" columns="15" hidden="true" />
+        <dataField fieldName="curprice" columns="15" hidden="true"/>
+        <dataField fieldName="Post" columns="15" hidden="true"/>
+        <dataField fieldName="Notes" columns="20" hidden="true"/>
+        <dataField fieldName="Cstm_NM" hidden="true"/>
+<dataField fieldName="Cstm_NMe" hidden="true"/>
+	   <dataField fieldName="UnitPrice" hidden="true" />
+	   <dataField fieldName="snd_flag" hidden="true" />
+	   
+		        
+							<dataField fieldName="flat"  aliasFieldName="Req_NM" hidden="true"/>	
+        <dataField fieldName="Cstm_Add" hidden="true"/>
+        <dataField fieldName="Cstm_Tel" hidden="true"/>
+		<dataField fieldName="Cstm_Tel1" hidden="true"/>
+		<dataField fieldName="Cstm_Tel2" hidden="true"/>
+		<dataField fieldName="Tot_Sal" columns="20" aggregate="Sum" />
+      	<dataField fieldName="Discpercent" columns="20" />
+        <dataField fieldName="Tot_Cost1" columns="20" aggregate="Sum" />
+        
+        <dataField fieldName="Tot_Cost" columns="20" aggregate="Sum" hidden="true"/>
+        <dataField fieldName="Tot_Disc" columns="20" aggregate="Sum" hidden="true"/>
+      <dataField fieldName="house" columns="20" hidden="true"/>
+	<dataField fieldName="madfoa" columns="20" hidden="true"/>
+            <dataField fieldName="CreatedBy" columns="20"/>
+            <dataField fieldName="ModifiedOn" columns="20" />
+			 <dataField fieldName="ModifiedBy" />
+			 
+			 
+	
+	
+      </dataFields>
+    </view>
+    <view id="editForm2" type="Form" commandId="command1" label="Review S Tsalhdr">
+     
+      <categories>
+        <category id="c1" headerText="New S Tsalhdr" flow="NewColumn"  newColumn="true">
+         
+          <dataFields>
+            <dataField fieldName="Brn_No" aliasFieldName="Brn_Brn_Nm" />
+            <dataField fieldName="Pym_No" aliasFieldName="Pym_Pymnt_Nm" />
+            <dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm" />
+            <dataField fieldName="Doc_Dt" columns="10" />
+            <dataField fieldName="typcmsup" aliasFieldName="typcmsupSubledgerDescrption" />
+            <dataField fieldName="Cstm_No" aliasFieldName="Cstm_Cstm_Nm" />
+            <dataField fieldName="curcode" aliasFieldName="curCurncy_Nm" />
+            <dataField fieldName="curprice" columns="15" />
+            <dataField fieldName="Doc_No" />
+
+			<dataField fieldName="reqq_no" />
+			<dataField fieldName="reqq_no1"  />
+			<dataField fieldName="contt_no" />
+			
+          </dataFields>
+        </category>
+        <category headerText="Stockentring" id="c3" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="Refcode" columns="15" hidden="true" />
+            <dataField fieldName="Reftxt" />
+            <dataField fieldName="Cstm_NM" hidden="true"/>
+			<dataField fieldName="Cstm_NMe" hidden="true"/>
+            <dataField fieldName="Cstm_Add" columns="50"/>
+            <dataField fieldName="Cstm_Tel" />
+			<dataField fieldName="Cstm_Tel1" />
+			<dataField fieldName="Cstm_Tel2" />
+		<dataField fieldName="quantity" columns="20" />
+            <dataField fieldName="KETAA" columns="20" />
+            <dataField fieldName="STreet" columns="20" />
+            <dataField fieldName="gada" columns="20" />
+            <dataField fieldName="house" columns="20" />
+		<dataField fieldName="UnitPrice" columns="20" />
+			
+            <dataField fieldName="Door" columns="20"  hidden="true"/>
+  <dataField fieldName="flat"  aliasFieldName="Req_NM" hidden="true"/>	
+  <dataField fieldName="snd_flag" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New S Tsalhdr">
+     
+      <categories>
+        <category id="c1" headerText="New S Tsalhdr" flow="NewColumn"  newColumn="true">
+         
+          <dataFields>
+
+            <dataField fieldName="Brn_No" aliasFieldName="Brn_Brn_Nm" />
+            <dataField fieldName="Pym_No" aliasFieldName="Pym_Pymnt_Nm"  />
+            <dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm" />
+			<dataField fieldName="wsl" columns="10"/>
+			<dataField fieldName="reqq_no" columns="10"/>
+			<dataField fieldName="reqq_no1"  />
+			<dataField fieldName="contt_no" columns="10"/>
+			<dataField fieldName="Doc_Dt" columns="10" textMode="Static" />
+            <dataField fieldName="typcmsup" aliasFieldName="typcmsupSubledgerDescrption" hidden="true" />
+          </dataFields>
+        </category>
+        <category headerText="MoreDetails" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+		   <dataField fieldName="Cstm_No" aliasFieldName="Cstm_Cstm_Nm" />
+		   <dataField fieldName="Cstm_NM" columns="10" hidden="true"/>
+		   	<dataField fieldName="Cstm_NMe" hidden="true"/>
+            <dataField fieldName="Cstm_Add" columns="50"/>
+            <dataField fieldName="Cstm_Tel" columns="10"/>
+			<dataField fieldName="Cstm_Tel1" columns="10"/>
+			<dataField fieldName="Cstm_Tel2" columns="10"/>
+            <dataField fieldName="curcode" aliasFieldName="curCurncy_Nm" hidden="true" />
+            <dataField fieldName="curprice" columns="15" hidden="true" />
+            <dataField fieldName="Refcode" columns="15" hidden="true" />
+			<dataField fieldName="flat"  aliasFieldName="Req_NM" hidden="true"/>	
+            <dataField fieldName="Reftxt" hidden="true"/>
+            <dataField fieldName="Doc_ty" columns="15" hidden="true" textMode="Static" />
+            <dataField fieldName="Notes" columns="50"/>
+			<dataField fieldName="CreatedBy" columns="20"/>
+
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="editForm1" commandId="command1" type="Form" label="editform1">
+      <categories>
+<category id="c11" headerText="STsalhdr" flow="NewColumn"  newColumn="true">
+          <dataFields>
+			<dataField fieldName="Brn_No" aliasFieldName="Brn_Brn_Nm" />
+			<dataField fieldName="Pym_No" aliasFieldName="Pym_Pymnt_Nm" />
+			<dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm" />
+			<dataField fieldName="Doc_No" />
+
+			<dataField fieldName="wsl" textMode="Static" />
+			<dataField fieldName="reqq_no" textMode="Static"/>
+			<dataField fieldName="reqq_no1" textMode="Static"/>
+			<dataField fieldName="contt_no" columns="10" />
+            <dataField fieldName="typcmsup" aliasFieldName="typcmsupSubledgerDescrption" hidden="true"/>
+		    <dataField fieldName="quantity" columns="20" hidden="true" />
+            
+			 <dataField fieldName="Tot_Cost" columns="10" hidden="true"/>
+			 <dataField fieldName="Tot_Sal" columns="10" textMode="Static" />
+			 <dataField fieldName="Discpercent" columns="10" />
+	     	 <dataField fieldName="madfoa" columns="10" hidden="true"/>
+		<dataField fieldName="UnitPrice" columns="20" hidden="true" />
+             <dataField fieldName="house" columns="20" hidden="true"/>
+             
+             <dataField fieldName="rest" columns="10" hidden="true"/>
+		     <dataField fieldName="Tot_Disc" columns="10" hidden="true"/>
+			 
+			<dataField fieldName="Tot_Cost1" columns="10"  textMode="Static"  />
+			<dataField fieldName="Doc_Dt" columns="10" textMode="Static" />
+			
+             <dataField fieldName="Door" columns="20" hidden="true"/>
+          </dataFields>
+        </category>
+        <category id="c1" headerText="STsalhdr" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            
+            
+            
+            <dataField fieldName="Cstm_No" aliasFieldName="Cstm_Cstm_Nm" />
+			 <dataField fieldName="Cstm_NM" columns="20" hidden="true"/>
+			 <dataField fieldName="Cstm_NMe" hidden="true"/>
+			 <dataField fieldName="Cstm_Add" columns="50"/>
+             <dataField fieldName="Cstm_Tel" columns="20"/>
+			 <dataField fieldName="Cstm_Tel1" columns="20"/>
+			 <dataField fieldName="Cstm_Tel2" columns="20"/>
+
+           	
+     		
+           
+		   
+
+            <dataField fieldName="curcode" aliasFieldName="curCurncy_Nm" hidden="true"/>
+            <dataField fieldName="curprice" columns="15" hidden="true"/>
+            <dataField fieldName="Doc_ty" columns="15" hidden="true"/>
+          
+	<dataField fieldName="Refcode" columns="15" hidden="true"/>
+            <dataField fieldName="flat" columns="15" hidden="true"/>
+
+            <dataField fieldName="Reftxt" hidden="true"/>
+			
+<dataField fieldName="Notes" columns="50"/>
+			<dataField fieldName="CreatedOn" columns="20" hidden="true"/>
+            <dataField fieldName="CreatedBy" columns="20" />
+            <dataField fieldName="ModifiedOn" columns="20" hidden="true"/>
+			 <dataField fieldName="ModifiedBy" hidden="true"/>
+			 <dataField fieldName="KETAA" columns="20"  />
+            <dataField fieldName="STreet" columns="20"  />
+			<dataField fieldName="gada" columns="20" />
+            <dataField fieldName="snd_flag" />
+			
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="OK" headerText="Save" />
+	  <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="receive" headerText="سند صرف" />
+      <action id="a100" whenLastCommandName="Edit" commandName="Update" commandArgument="withpdf" headerText="Save-pdf" />
+      <action id="a101" whenLastCommandName="Edit" commandName="Update" commandArgument="SaveAndNew" headerText="JustSaveAndNew" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Edit" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+
+    <!-- modified actions -->
+    
+     <action whenLastCommandName="Update" whenLastCommandArgument="SaveAndNew" 
+            commandName="Insert" commandArgument="createForm1"/>
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+    <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    <action id="a19" commandName="Custom" commandArgument="createForm1" cssClass="NewIcon"  headerText="test"/>
+
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" roles="ReportAsExcel"/>
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+<action commandName="SQL" headerText="Print"  id="a100">
+        <data><![CDATA[
+set @Result_NavigateUrl = 'webreportviwer.aspx?reportquery=' + @Arguments_Controller    + '&sosoname=300' + cast(@Brn_No as nvarchar) + '&idfilter=' + cast(@Doc_No as nvarchar)  
+ ]]></data>
+      </action>
+<!-- <action commandName="SQL" headerText="PrintA4"  id="a101">
+        <data><![CDATA[
+set @Result_NavigateUrl = 'webreportviwer.aspx?reportquery=' + @Arguments_Controller    + '&sosoname=400' + cast(@Brn_No as nvarchar) + '&idfilter=' + cast(@Doc_No as nvarchar) 
+ ]]></data>
+      </action> -->
+    </actionGroup>
+  </actions>
+  <businessRules>
+<rule id="r101" commandName="Update" type="JavaScript" phase="After"  commandArgument="SaveAndNew">
+      <![CDATA[
+
+      var win = window.open('http://stackoverflow.com/', '_blank');
+if(win){
+    //Browser has allowed it to be opened
+    win.focus();
+}else{
+    //Broswer has blocked it
+    alert('Please allow popups for this site');
+}
+
+
+
+]]>
+    </rule>
+
+    <rule id="r100" commandName="Insert" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@Brn_No]]></rule>
+    <rule id="r105" commandName="Insert" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@Brn_No
+]]></rule>
+    <rule id="r101" commandName="Update" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@Brn_No]]></rule>
+    <rule id="r102" commandName="Update" type="Sql" phase="After"  commandArgument="OK"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@Brn_No
+update [dbo].[STsalhdr] set [Tot_Cost1] = [Tot_Sal] - [Discpercent] where [Doc_No] = @Doc_No
+set @Result_NavigateUrl = 'webreportviwer.aspx?reportquery=' + @Arguments_Controller    + '&idfilter=' + cast(@Doc_No as nvarchar) +  '&sosoname=' + cast(@Brn_No as nvarchar)
+]]></rule>
+<rule id="r102" commandName="Update" type="Sql" phase="After"  commandArgument="receive"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@Brn_No
+update [dbo].[STsalhdr] set [Tot_Cost1] = [Tot_Sal] - [Discpercent] where [Doc_No] = @Doc_No
+if @snd_flag=1
+begin
+set @Result_NavigateUrl = 'webreportviwer.aspx?reportquery=' + @Arguments_Controller    + '&idfilter=' + cast(@Doc_No as nvarchar) +  '&sosoname=112'
+end
+]]></rule>
+
+<rule id="r102" commandName="Update" type="Sql" phase="After"  commandArgument="withpdf"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@Brn_No
+update [dbo].[STsalhdr] set [Tot_Cost1] = [Tot_Sal] - [Discpercent] where [Doc_No] = @Doc_No
+set @Result_NavigateUrl = '_blank:webreportviwerpdf.aspx?reportquery=' + @Arguments_Controller    + '&idfilter=' + cast(@Doc_No as nvarchar) +  '&sosoname=' + cast(@Brn_No as nvarchar)]]></rule>
+<rule id="r102" commandName="Update" type="Sql" phase="After"  commandArgument="SaveAndNew"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@Brn_No
+update [dbo].[STsalhdr] set [Tot_Cost1] = [Tot_Sal] - [Discpercent] where [Doc_No] = @Doc_No
+INSERT INTO [dbo].[STsalhdr]
+           ([Brn_No]
+           ,[Pym_No]
+           ,[Doc_Dt]
+           ,[Doc_ty]
+           ,[typcmsup]
+           ,[Cstm_No]
+           ,[curcode]
+           ,[curprice]
+           ,[ModifiedBy]
+           ,[ModifiedOn]
+           ,[CreatedBy]
+           ,[CreatedOn])
+     VALUES
+           (@Brn_No,1,getdate(),1,1,1,1,1,@BusinessRules_UserName,getdate(),@BusinessRules_UserName,getdate())
+-- find ID of duplicated order
+declare @newschvchdlyhdregid int;
+select @newschvchdlyhdregid = @@IDENTITY;
+exec [dbo].[STsalhdrInsertAfter] @@IDENTITY,@Brn_No
+set @Result_NavigateUrl = '~/Pages/STsalhdr.aspx?Doc_No=' + cast( @newschvchdlyhdregid  as nvarchar)
+                          + '&_controller=STsalhdr&_commandName=Edit&_commandArgument=editForm1'
+ 
+set @Result_Focus = 'KETAA'
+]]></rule>
+
+    <rule id="r103" commandName="Delete" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@Brn_No]]></rule>
+    <rule id="r106" commandName="Delete" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@Brn_No]]></rule>
+    <rule id="r107" commandName="Calculate" type="Sql" phase="Execute">
+  <![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Execute'
+exec ValidateRequestPost   @execname
+exec  @execname  @Doc_No,@Brn_No
+
+declare @sumtotal money
+-- execute stored procedure
+if @KETAA is not null  and len(@KETAA) > 1
+begin
+exec Stsalhdrdetailinsert @Doc_No,@KETAA,
+@sumtotal= @sumtotal output
+-- check the freight
+set @KETAA=0
+
+end
+
+if @house is  null  
+begin
+set @house=0
+end
+
+if @madfoa is  null  
+begin
+set @madfoa=0
+end
+set @Door=(select  SUM(paplcprc) FROM STSALDTL   WHERE DOC_NO=@Doc_No)
+set @rest=@house+@madfoa-@Door
+set @Result_RefreshChildren=1
+
+]]></rule>
+
+<rule id="r110" commandName="Edit" commandArgument="editForm1" type="Sql" phase="Before"><![CDATA[
+set @Result_Focus = 'KETAA'
+ ]]></rule>
+  </businessRules>
+</dataController>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

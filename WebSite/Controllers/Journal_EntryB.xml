@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Journal_EntryB" conflictDetection="overwriteChanges" label="Journal Entry B" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Journal_EntryB"."Journal Entry ID" "JournalEntryID"
+	,"Journal_EntryB"."Amount" "Amount"
+	,"Journal_EntryB"."Comments" "Comments"
+	,"Journal_EntryB"."Journal Entry Type ID" "JournalEntryTypeID"
+	,"Journal_EntryB"."Jrty_Nm" "Jrty_Nm"
+	,"Journal_EntryB"."Jrty_Nme" "Jrty_Nme"
+	,"Journal_EntryB"."Date" "Date"
+	,"Journal_EntryB"."Monthtrs" "Monthtrs"
+	,"Journal_EntryB"."YEARTRS" "YEARTRS"
+	,"Journal_EntryB"."Account Number" "AccountNumber"
+	,"Journal_EntryB"."Account Name" "AccountName"
+	,"Journal_EntryB"."Account Name1" "AccountName1"
+	,"Journal_EntryB"."accgroupid" "accgroupid"
+	,"Journal_EntryB"."accgroup" "accgroup"
+	,"Journal_EntryB"."accgroup1" "accgroup1"
+	,"Journal_EntryB"."Account Class ID" "AccountClassID"
+	,"Journal_EntryB"."accclass" "accclass"
+	,"Journal_EntryB"."accclass1" "accclass1"
+	,"Journal_EntryB"."Account Heading Number" "AccountHeadingNumber"
+	,"Journal_EntryB"."Account Heading Name" "AccountHeadingName"
+	,"Journal_EntryB"."Account Heading Name1" "AccountHeadingName1"
+	,"Journal_EntryB"."Account Type ID" "AccountTypeID"
+	,"Journal_EntryB"."Account Type" "AccountType"
+	,"Journal_EntryB"."Account Type1" "AccountType1"
+	,"Journal_EntryB"."Tr_db" "Tr_db"
+	,"Journal_EntryB"."tr_cr" "tr_cr"
+	,"Journal_EntryB"."Ln_No" "Ln_No"
+	,"Journal_EntryB"."ID Number" "IDNumber"
+	,"Journal_EntryB"."Debit Or Credit" "DebitOrCredit"
+	,"Journal_EntryB"."Balncetype" "Balncetype"
+	,"Journal_EntryB"."Balncetypename" "Balncetypename"
+	,"Journal_EntryB"."Balncetypename2" "Balncetypename2"
+	,"Journal_EntryB"."incometype" "incometype"
+	,"Journal_EntryB"."incometypename" "incometypename"
+	,"Journal_EntryB"."incometypename2" "incometypename2"
+from "dbo"."Journal_EntryB" "Journal_EntryB"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="JournalEntryID" type="Int64" label="Journal Entry#" showInSummary="true" />
+    <field name="Amount" type="Decimal" label="Amount" readOnly="true" showInSummary="true" />
+    <field name="Comments" type="String" label="Comments" length="255" showInSummary="true" />
+    <field name="JournalEntryTypeID" type="Int64" label="Journal Entry Type#" showInSummary="true" />
+    <field name="Jrty_Nm" type="String" label="Jrty Nm" length="255" showInSummary="true" />
+    <field name="Jrty_Nme" type="String" label="Jrty Nme" length="255" />
+    <field name="Date" type="DateTime" label="Date" />
+    <field name="Monthtrs" type="String" label="Monthtrs" readOnly="true" length="2" />
+    <field name="YEARTRS" type="String" label="Yeartrs" readOnly="true" length="4" />
+    <field name="AccountNumber" type="Int64" label="Account Number" />
+    <field name="AccountName" type="String" label="Account Name" length="255" />
+    <field name="AccountName1" type="String" label="Account Name1" length="255" />
+    <field name="accgroupid" type="Int64" label="Accgroupid" />
+    <field name="accgroup" type="String" label="Accgroup" length="50" />
+    <field name="accgroup1" type="String" label="Accgroup1" length="255" />
+    <field name="AccountClassID" type="Int64" label="Account Class#" />
+    <field name="accclass" type="String" label="Accclass" length="50" />
+    <field name="accclass1" type="String" label="Accclass1" length="255" />
+    <field name="AccountHeadingNumber" type="String" label="Account Heading Number" readOnly="true" length="2" />
+    <field name="AccountHeadingName" type="String" label="Account Heading Name" length="50" />
+    <field name="AccountHeadingName1" type="String" label="Account Heading Name1" length="255" />
+    <field name="AccountTypeID" type="Int64" label="Account Type#" />
+    <field name="AccountType" type="String" label="Account Type" length="255" />
+    <field name="AccountType1" type="String" label="Account Type1" length="250" />
+    <field name="Tr_db" type="Decimal" label="Tr db" readOnly="true" />
+    <field name="tr_cr" type="Decimal" label="Tr Cr" readOnly="true" />
+    <field name="Ln_No" type="Int64" label="Ln No" />
+    <field name="IDNumber" type="Int64" label="ID Number" />
+    <field name="DebitOrCredit" type="String" allowNulls="false" label="Debit Or Credit" readOnly="true" length="6" />
+    <field name="Balncetype" type="Int32" label="Balncetype" readOnly="true" />
+    <field name="Balncetypename" type="String" label="Balncetypename" readOnly="true" length="9" />
+    <field name="Balncetypename2" type="String" label="Balncetypename2" readOnly="true" length="9" />
+    <field name="incometype" type="Int64" label="Incometype" readOnly="true" />
+    <field name="incometypename" type="String" label="Incometypename" readOnly="true" length="250" />
+    <field name="incometypename2" type="String" label="Incometypename2" readOnly="true" length="255" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Journal Entry B">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="DebitOrCredit" columns="6" />
+        <dataField fieldName="JournalEntryID" columns="15" />
+        <dataField fieldName="Amount" dataFormatString="c" columns="15" />
+        <dataField fieldName="Comments" />
+        <dataField fieldName="JournalEntryTypeID" columns="15" />
+        <dataField fieldName="Jrty_Nm" />
+        <dataField fieldName="Jrty_Nme" />
+        <dataField fieldName="Date" columns="10" />
+        <dataField fieldName="Monthtrs" columns="2" />
+        <dataField fieldName="YEARTRS" columns="4" />
+        <dataField fieldName="AccountNumber" columns="15" />
+        <dataField fieldName="AccountName" />
+        <dataField fieldName="AccountName1" />
+        <dataField fieldName="accgroupid" columns="15" />
+        <dataField fieldName="accgroup" columns="50" />
+        <dataField fieldName="accgroup1" />
+        <dataField fieldName="AccountClassID" columns="15" />
+        <dataField fieldName="accclass" columns="50" />
+        <dataField fieldName="accclass1" />
+        <dataField fieldName="AccountHeadingNumber" columns="2" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Journal Entry B">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Journal Entry B" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="JournalEntryID" columns="15" />
+            <dataField fieldName="Amount" dataFormatString="c" columns="15" />
+            <dataField fieldName="Comments" />
+            <dataField fieldName="JournalEntryTypeID" columns="15" />
+            <dataField fieldName="Jrty_Nm" />
+            <dataField fieldName="Jrty_Nme" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="Monthtrs" columns="2" />
+            <dataField fieldName="YEARTRS" columns="4" />
+            <dataField fieldName="AccountNumber" columns="15" />
+            <dataField fieldName="AccountName" />
+            <dataField fieldName="AccountName1" />
+            <dataField fieldName="accgroupid" columns="15" />
+            <dataField fieldName="accgroup" columns="50" />
+            <dataField fieldName="accgroup1" />
+            <dataField fieldName="AccountClassID" columns="15" />
+            <dataField fieldName="accclass" columns="50" />
+            <dataField fieldName="accclass1" />
+            <dataField fieldName="AccountHeadingNumber" columns="2" />
+            <dataField fieldName="AccountHeadingName" columns="50" />
+            <dataField fieldName="AccountHeadingName1" />
+            <dataField fieldName="AccountTypeID" columns="15" />
+            <dataField fieldName="AccountType" />
+            <dataField fieldName="AccountType1" />
+            <dataField fieldName="Tr_db" dataFormatString="c" columns="15" />
+            <dataField fieldName="tr_cr" dataFormatString="c" columns="15" />
+            <dataField fieldName="Ln_No" columns="15" />
+            <dataField fieldName="IDNumber" columns="15" />
+            <dataField fieldName="DebitOrCredit" columns="6" />
+            <dataField fieldName="Balncetype" columns="15" />
+            <dataField fieldName="Balncetypename" columns="9" />
+            <dataField fieldName="Balncetypename2" columns="9" />
+            <dataField fieldName="incometype" columns="15" />
+            <dataField fieldName="incometypename" />
+            <dataField fieldName="incometypename2" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Journal Entry B">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Journal Entry B" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="JournalEntryID" columns="15" />
+            <dataField fieldName="Comments" />
+            <dataField fieldName="JournalEntryTypeID" columns="15" />
+            <dataField fieldName="Jrty_Nm" />
+            <dataField fieldName="Jrty_Nme" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="AccountNumber" columns="15" />
+            <dataField fieldName="AccountName" />
+            <dataField fieldName="AccountName1" />
+            <dataField fieldName="accgroupid" columns="15" />
+            <dataField fieldName="accgroup" columns="50" />
+            <dataField fieldName="accgroup1" />
+            <dataField fieldName="AccountClassID" columns="15" />
+            <dataField fieldName="accclass" columns="50" />
+            <dataField fieldName="accclass1" />
+            <dataField fieldName="AccountHeadingName" columns="50" />
+            <dataField fieldName="AccountHeadingName1" />
+            <dataField fieldName="AccountTypeID" columns="15" />
+            <dataField fieldName="AccountType" />
+            <dataField fieldName="AccountType1" />
+            <dataField fieldName="Ln_No" columns="15" />
+            <dataField fieldName="IDNumber" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

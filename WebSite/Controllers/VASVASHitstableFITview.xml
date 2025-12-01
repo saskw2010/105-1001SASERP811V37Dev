@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="VASVASHitstableFITview" conflictDetection="overwriteChanges" label="VASVAS Hitstable FI Tview" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"VASVASHitstableFITview"."YearTRS" "YearTRS"
+	,"VASVASHitstableFITview"."Monthtrs" "Monthtrs"
+	,"VASVASHitstableFITview"."VASHitstablecode" "VASHitstablecode"
+	,"VASVASHitstableFITview"."MobileNumber" "MobileNumber"
+	,"VASVASHitstableFITview"."Messagecontent" "Messagecontent"
+	,"VASVASHitstableFITview"."shortcode" "shortcode"
+	,"VASVASHitstableFITview"."language" "language"
+	,"VASVASHitstableFITview"."Recivingdate" "Recivingdate"
+	,"VASVASHitstableFITview"."status" "status"
+	,"VASVASHitstableFITview"."Time" "Time"
+	,"VASVASHitstableFITview"."notes10011" "notes10011"
+	,"VASVASHitstableFITview"."notes10012" "notes10012"
+	,"VASVASHitstableFITview"."notes10013" "notes10013"
+	,"VASVASHitstableFITview"."Hits" "Hits"
+from "dbo"."VASVASHitstableFITview" "VASVASHitstableFITview"
+]]></text>
+    </command>
+    <command id="VASHitstablecodeIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="VASHitstablecode" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="YearTRS" type="Int32" label="Year TRS" readOnly="true" showInSummary="true" />
+    <field name="Monthtrs" type="Int32" label="Monthtrs" readOnly="true" showInSummary="true" />
+    <field name="VASHitstablecode" type="Int64" allowNulls="false" label="VAS Hitstablecode" readOnly="true" showInSummary="true" />
+    <field name="MobileNumber" type="String" label="Mobile Number" length="50" showInSummary="true" />
+    <field name="Messagecontent" type="String" allowQBE="false" allowSorting="false" label="Messagecontent" length="-1" showInSummary="true" />
+    <field name="shortcode" type="Int64" label="Shortcode" />
+    <field name="language" type="String" label="Language" length="150" />
+    <field name="Recivingdate" type="DateTime" label="Recivingdate" />
+    <field name="status" type="String" label="Status" length="50" />
+    <field name="Time" type="TimeSpan" label="Time" />
+    <field name="notes10011" type="String" label="Notes10011" length="50" />
+    <field name="notes10012" type="String" label="Notes10012" length="50" />
+    <field name="notes10013" type="String" label="Notes10013" length="50" />
+    <field name="Hits" type="Int32" allowNulls="false" label="Hits" readOnly="true" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="VASVAS Hitstable FI Tview">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="VASHitstablecode" columns="15" />
+        <dataField fieldName="YearTRS" columns="15" />
+        <dataField fieldName="Monthtrs" columns="15" />
+        <dataField fieldName="MobileNumber" columns="50" />
+        <dataField fieldName="Messagecontent" rows="5" />
+        <dataField fieldName="shortcode" columns="15" />
+        <dataField fieldName="language" />
+        <dataField fieldName="Recivingdate" columns="10" />
+        <dataField fieldName="status" columns="50" />
+        <dataField fieldName="Time" columns="15" />
+        <dataField fieldName="notes10011" columns="50" />
+        <dataField fieldName="notes10012" columns="50" />
+        <dataField fieldName="notes10013" columns="50" />
+        <dataField fieldName="Hits" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review VASVAS Hitstable FI Tview">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="VASVAS Hitstable FI Tview" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="YearTRS" columns="15" />
+            <dataField fieldName="Monthtrs" columns="15" />
+            <dataField fieldName="VASHitstablecode" columns="15" />
+            <dataField fieldName="MobileNumber" columns="50" />
+            <dataField fieldName="Messagecontent" rows="5" />
+            <dataField fieldName="shortcode" columns="15" />
+            <dataField fieldName="language" />
+            <dataField fieldName="Recivingdate" columns="10" />
+            <dataField fieldName="status" columns="50" />
+            <dataField fieldName="Time" columns="15" />
+            <dataField fieldName="notes10011" columns="50" />
+            <dataField fieldName="notes10012" columns="50" />
+            <dataField fieldName="notes10013" columns="50" />
+            <dataField fieldName="Hits" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New VASVAS Hitstable FI Tview">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New VASVAS Hitstable FI Tview" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="MobileNumber" columns="50" />
+            <dataField fieldName="Messagecontent" rows="5" />
+            <dataField fieldName="shortcode" columns="15" />
+            <dataField fieldName="language" />
+            <dataField fieldName="Recivingdate" columns="10" />
+            <dataField fieldName="status" columns="50" />
+            <dataField fieldName="Time" columns="15" />
+            <dataField fieldName="notes10011" columns="50" />
+            <dataField fieldName="notes10012" columns="50" />
+            <dataField fieldName="notes10013" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

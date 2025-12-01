@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="TransorderDetail" conflictDetection="overwriteChanges" label="Transorder Detail" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"TransorderDetail"."TransorderLnID" "TransorderLnID"
+	,"TransorderDetail"."TransorderID" "TransorderID"
+	,"Transorder"."TransorderInform" "TransorderTransorderInform"
+	,"TransorderCstm_"."Cstm_Nm" "TransorderCstm_Cstm_Nm"
+	,"TransorderCstm_Area"."Area_name" "TransorderCstm_AreaArea_name"
+	,"TransorderCstm_Evaluation"."Evaluation_name" "TransorderCstm_EvaluationEvaluation_name"
+	,"TransorderCstm_acc_"."Acc_Nm" "TransorderCstm_acc_Acc_Nm"
+	,"TransorderCstm_Cntry_"."Cntry_Nm" "TransorderCstm_Cntry_Cntry_Nm"
+	,"TransorderCstm_curncy_"."Curncy_Nm" "TransorderCstm_curncy_Curncy_Nm"
+	,"TransorderCstm_TSNEF"."TSNEF_name" "TransorderCstm_TSNEFTSNEF_name"
+	,"TransorderCstm_TSNEFNO1"."TSNEF1_name" "TransorderCstm_TSNEFNO1TSNEF1_name"
+	,"TransorderCstm_Slm_"."Slm_Nm" "TransorderCstm_Slm_Slm_Nm"
+	,"Transordertranscurrent"."transcurrentdesc" "Transordertranscurrenttranscurrentdesc"
+	,"TransordertransloadingDest"."transloadingDestdesc" "TransordertransloadingDesttransloadingDestdesc"
+	,"Transorderloadingtype"."loadingtypedesc" "Transorderloadingtypeloadingtypedesc"
+	,"Transordertrnsdilv"."trnsdilvdesc" "Transordertrnsdilvtrnsdilvdesc"
+	,"TransorderDetail"."CardriverNo" "CardriverNo"
+	,"Cardriver"."Emp_Nmdriver" "CardriverEmp_Nmdriver"
+	,"Cardriversgm"."sgm_Nm" "Cardriversgmsgm_Nm"
+	,"CardriversgmOpco"."OpcoName" "CardriversgmOpcoOpcoName"
+	,"CardriverEmp_no1"."Emp_NOt" "CardriverEmp_no1Emp_NOt"
+	,"CardriverEmp_no1sgm"."sgm_Nm" "CardriverEmp_no1sgmsgm_Nm"
+	,"CardriverEmp_no1salrycat"."grade_desc_a" "CardriverEmp_no1salrycatgrade_desc_a"
+	,"CardriverEmp_no1Blood_Type"."ModifiedBy" "CardriverEmp_no1Blood_TypeModifiedBy"
+	,"CardriverEmp_no1Bnk_"."Bnk_Acc" "CardriverEmp_no1Bnk_Bnk_Acc"
+	,"CardriverEmp_no1Sub_Bnk"."Bnk_Acc" "CardriverEmp_no1Sub_BnkBnk_Acc"
+	,"CardriverEmp_no1Cntry_"."Cntry_Nm" "CardriverEmp_no1Cntry_Cntry_Nm"
+	,"CardriverEmp_no1Depm_"."Depm_Nm" "CardriverEmp_no1Depm_Depm_Nm"
+	,"CardriverEmp_no1Educt_Type"."Educt_Nm" "CardriverEmp_no1Educt_TypeEduct_Nm"
+	,"CardriverEmp_no1Job_Stu"."Emp_Stunm" "CardriverEmp_no1Job_StuEmp_Stunm"
+	,"CardriverEmp_no1Earning_"."Earning_Nm" "CardriverEmp_no1Earning_Earning_Nm"
+	,"CardriverEmp_no1Job_"."Job_Nm" "CardriverEmp_no1Job_Job_Nm"
+	,"CardriverEmp_no1Ownr_"."Ownr_ID" "CardriverEmp_no1Ownr_Ownr_ID"
+	,"CardriverEmp_no1Reljan"."Reljan_nm" "CardriverEmp_no1ReljanReljan_nm"
+	,"CardriverEmp_no1Status_Type"."Status_Nm" "CardriverEmp_no1Status_TypeStatus_Nm"
+	,"CardriverEmp_no1branch"."Desc1" "CardriverEmp_no1branchDesc1"
+	,"TransorderDetail"."Car_no" "Car_no"
+	,"Car_"."PLAT_No" "Car_PLAT_No"
+	,"Car_Car_Type"."Styl_Nm" "Car_Car_TypeStyl_Nm"
+	,"Car_carclass"."carclassname" "Car_carclasscarclassname"
+	,"Car_carstutus_"."carstutus_name" "Car_carstutus_carstutus_name"
+	,"Car_Car_Colr"."Color_name" "Car_Car_ColrColor_name"
+	,"Car_sgm"."sgm_Nm" "Car_sgmsgm_Nm"
+	,"Car_sgmOpco"."OpcoName" "Car_sgmOpcoOpcoName"
+	,"Car_Insurance_type"."Insurance_name" "Car_Insurance_typeInsurance_name"
+	,"Car_Car_Lik"."Like_name" "Car_Car_LikLike_name"
+	,"Car_Fbrct_Cntry"."Cntry_Nm" "Car_Fbrct_CntryCntry_Nm"
+	,"Car_Ownr_"."Ownr_ID" "Car_Ownr_Ownr_ID"
+	,"Car_Ownr_cmp_"."Grp_Nm" "Car_Ownr_cmp_Grp_Nm"
+	,"Car_Trfc_Dpm"."State_Nm" "Car_Trfc_DpmState_Nm"
+	,"Car_Sup_"."Sup_Nm" "Car_Sup_Sup_Nm"
+	,"Car_Sup_Acc_"."Acc_Nm" "Car_Sup_Acc_Acc_Nm"
+	,"Car_Sup_Cntry_"."Cntry_Nm" "Car_Sup_Cntry_Cntry_Nm"
+	,"Car_Sup_Curncy_"."Curncy_Nm" "Car_Sup_Curncy_Curncy_Nm"
+	,"TransorderDetail"."Carweight" "Carweight"
+	,"TransorderDetail"."Notes" "Notes"
+	,"TransorderDetail"."carstutus_no" "carstutus_no"
+	,"carstutus_"."carstutus_name" "carstutus_carstutus_name"
+	,"TransorderDetail"."offloadingdate" "offloadingdate"
+	,"TransorderDetail"."ModifiedBy" "ModifiedBy"
+	,"TransorderDetail"."ModifiedOn" "ModifiedOn"
+	,"TransorderDetail"."CreatedBy" "CreatedBy"
+	,"TransorderDetail"."CreatedOn" "CreatedOn"
+from "dbo"."TransorderDetail" "TransorderDetail"
+	left join "dbo"."Transorder" "Transorder" on "TransorderDetail"."TransorderID" = "Transorder"."TransorderID"
+	left join "dbo"."Stcustmr" "TransorderCstm_" on "Transorder"."Cstm_no" = "TransorderCstm_"."Cstm_No"
+	left join "dbo"."AreaList" "TransorderCstm_Area" on "TransorderCstm_"."AreaNo" = "TransorderCstm_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "TransorderCstm_Evaluation" on "TransorderCstm_"."EvaluationNO" = "TransorderCstm_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "TransorderCstm_acc_" on "TransorderCstm_"."acc_no" = "TransorderCstm_acc_"."Acc_No"
+	left join "dbo"."PYCntry" "TransorderCstm_Cntry_" on "TransorderCstm_"."Cntry_No" = "TransorderCstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "TransorderCstm_curncy_" on "TransorderCstm_"."curncy_no" = "TransorderCstm_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "TransorderCstm_TSNEF" on "TransorderCstm_"."TSNEFNO" = "TransorderCstm_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "TransorderCstm_TSNEFNO1" on "TransorderCstm_"."TSNEFNO1" = "TransorderCstm_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "TransorderCstm_Slm_" on "TransorderCstm_"."Slm_No" = "TransorderCstm_Slm_"."Slm_No"
+	left join "dbo"."transcurrentlocation" "Transordertranscurrent" on "Transorder"."transcurrentid" = "Transordertranscurrent"."transcurrentid"
+	left join "dbo"."transloadingDest" "TransordertransloadingDest" on "Transorder"."transloadingDestid" = "TransordertransloadingDest"."transloadingDestid"
+	left join "dbo"."transloadingtype" "Transorderloadingtype" on "Transorder"."loadingtypeid" = "Transorderloadingtype"."loadingtypeid"
+	left join "dbo"."trnsdilvtype" "Transordertrnsdilv" on "Transorder"."trnsdilvno" = "Transordertrnsdilv"."trnsdilvno"
+	left join "dbo"."Cadriver" "Cardriver" on "TransorderDetail"."CardriverNo" = "Cardriver"."Emp_No"
+	left join "dbo"."glmulcmp" "Cardriversgm" on "Cardriver"."sgm" = "Cardriversgm"."sgmid"
+	left join "dbo"."OpCo" "CardriversgmOpco" on "Cardriversgm"."OpcoID" = "CardriversgmOpco"."OpcoIDidentity"
+	left join "dbo"."Pyempmfs" "CardriverEmp_no1" on "Cardriver"."Emp_no1" = "CardriverEmp_no1"."Emp_No"
+	left join "dbo"."glmulcmp" "CardriverEmp_no1sgm" on "CardriverEmp_no1"."sgm" = "CardriverEmp_no1sgm"."sgmid"
+	left join "dbo"."grade" "CardriverEmp_no1salrycat" on "CardriverEmp_no1"."salrycat" = "CardriverEmp_no1salrycat"."grade_code"
+	left join "dbo"."pyBlood" "CardriverEmp_no1Blood_Type" on "CardriverEmp_no1"."Blood_Type" = "CardriverEmp_no1Blood_Type"."Blood_Type"
+	left join "dbo"."PybnkAcc" "CardriverEmp_no1Bnk_" on "CardriverEmp_no1"."Bnk_No" = "CardriverEmp_no1Bnk_"."Bnk_No"
+	left join "dbo"."PybnkAcc" "CardriverEmp_no1Sub_Bnk" on "CardriverEmp_no1"."Sub_Bnk" = "CardriverEmp_no1Sub_Bnk"."Bnk_No"
+	left join "dbo"."PYCntry" "CardriverEmp_no1Cntry_" on "CardriverEmp_no1"."Cntry_No" = "CardriverEmp_no1Cntry_"."Cntry_No"
+	left join "dbo"."Pydepm" "CardriverEmp_no1Depm_" on "CardriverEmp_no1"."Depm_No" = "CardriverEmp_no1Depm_"."Depm_No"
+	left join "dbo"."PyempEdu" "CardriverEmp_no1Educt_Type" on "CardriverEmp_no1"."Educt_Type" = "CardriverEmp_no1Educt_Type"."Educt_Type"
+	left join "dbo"."Pyempstu" "CardriverEmp_no1Job_Stu" on "CardriverEmp_no1"."Job_Stu" = "CardriverEmp_no1Job_Stu"."Emp_stu"
+	left join "dbo"."Pyerntsalyp1" "CardriverEmp_no1Earning_" on "CardriverEmp_no1"."Earning_no" = "CardriverEmp_no1Earning_"."Earning_No"
+	left join "dbo"."Pyjobs" "CardriverEmp_no1Job_" on "CardriverEmp_no1"."Job_No" = "CardriverEmp_no1Job_"."Job_No"
+	left join "dbo"."Pyownrmf" "CardriverEmp_no1Ownr_" on "CardriverEmp_no1"."Ownr_No" = "CardriverEmp_no1Ownr_"."Ownr_No"
+	left join "dbo"."PyReljan" "CardriverEmp_no1Reljan" on "CardriverEmp_no1"."Reljan" = "CardriverEmp_no1Reljan"."reljan"
+	left join "dbo"."PyStatus" "CardriverEmp_no1Status_Type" on "CardriverEmp_no1"."Status_Type" = "CardriverEmp_no1Status_Type"."Status_Type"
+	left join "dbo"."schBranch" "CardriverEmp_no1branch" on "CardriverEmp_no1"."branch" = "CardriverEmp_no1branch"."branch"
+	left join "dbo"."CarInfom" "Car_" on "TransorderDetail"."Car_no" = "Car_"."Car_No"
+	left join "dbo"."CaCrstyl" "Car_Car_Type" on "Car_"."Car_Type" = "Car_Car_Type"."Styl_No"
+	left join "dbo"."carclass" "Car_carclass" on "Car_"."carclass" = "Car_carclass"."carclass"
+	left join "dbo"."carstutuslist" "Car_carstutus_" on "Car_"."carstutus_no" = "Car_carstutus_"."carstutus_no"
+	left join "dbo"."Colorlist" "Car_Car_Colr" on "Car_"."Car_Colr" = "Car_Car_Colr"."ColorNo"
+	left join "dbo"."glmulcmp" "Car_sgm" on "Car_"."sgm" = "Car_sgm"."sgmid"
+	left join "dbo"."OpCo" "Car_sgmOpco" on "Car_sgm"."OpcoID" = "Car_sgmOpco"."OpcoIDidentity"
+	left join "dbo"."Insurancetype" "Car_Insurance_type" on "Car_"."Insurance_type" = "Car_Insurance_type"."Insurance_type"
+	left join "dbo"."Likelist" "Car_Car_Lik" on "Car_"."Car_Lik" = "Car_Car_Lik"."LikeNo"
+	left join "dbo"."PYCntry" "Car_Fbrct_Cntry" on "Car_"."Fbrct_Cntry" = "Car_Fbrct_Cntry"."Cntry_No"
+	left join "dbo"."Pyownrmf" "Car_Ownr_" on "Car_"."Ownr_No" = "Car_Ownr_"."Ownr_No"
+	left join "dbo"."Pycnstnt" "Car_Ownr_cmp_" on "Car_Ownr_"."cmp_no" = "Car_Ownr_cmp_"."Cmp_No"
+	left join "dbo"."PyState" "Car_Trfc_Dpm" on "Car_"."Trfc_Dpm" = "Car_Trfc_Dpm"."State"
+	left join "dbo"."Stsuplir" "Car_Sup_" on "Car_"."Sup_No" = "Car_Sup_"."Sup_No"
+	left join "dbo"."GLmstrfl" "Car_Sup_Acc_" on "Car_Sup_"."Acc_No" = "Car_Sup_Acc_"."Acc_No"
+	left join "dbo"."PYCntry" "Car_Sup_Cntry_" on "Car_Sup_"."Cntry_No" = "Car_Sup_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "Car_Sup_Curncy_" on "Car_Sup_"."Curncy_No" = "Car_Sup_Curncy_"."Curncy_No"
+	left join "dbo"."carstutuslist" "carstutus_" on "TransorderDetail"."carstutus_no" = "carstutus_"."carstutus_no"
+]]></text>
+    </command>
+    <command id="TransorderLnIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="TransorderLnID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="TransorderLnID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Transorder Ln#" readOnly="true" />
+    <field name="TransorderID" type="Int64" allowNulls="false" label="Transorder#" showInSummary="true">
+      <items style="Lookup" dataController="Transorder" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TransorderTransorderInform" type="String" readOnly="true" label="Transorder Inform" length="160" />
+    <field name="TransorderCstm_Cstm_Nm" type="String" readOnly="true" label="Transorder Cstm Nm" length="155" />
+    <field name="TransorderCstm_AreaArea_name" type="String" readOnly="true" label="Transorder Cstm Area name" length="150" />
+    <field name="TransorderCstm_EvaluationEvaluation_name" type="String" readOnly="true" label="Transorder Cstm Evaluation name" length="150" />
+    <field name="TransorderCstm_acc_Acc_Nm" type="String" readOnly="true" label="Transorder Cstm acc Acc Nm" length="255" />
+    <field name="TransorderCstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="Transorder Cstm Cntry Nm" length="255" />
+    <field name="TransorderCstm_curncy_Curncy_Nm" type="String" readOnly="true" label="Transorder Cstm curncy Curncy Nm" length="200" />
+    <field name="TransorderCstm_TSNEFTSNEF_name" type="String" readOnly="true" label="Transorder Cstm TSNEFTSNEF name" length="150" />
+    <field name="TransorderCstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="Transorder Cstm TSNEFNO1TSNEF1 name" length="150" />
+    <field name="TransorderCstm_Slm_Slm_Nm" type="String" readOnly="true" label="Transorder Cstm Slm Nm" length="100" />
+    <field name="Transordertranscurrenttranscurrentdesc" type="String" readOnly="true" label="Transordertranscurrenttranscurrentdesc" length="250" />
+    <field name="TransordertransloadingDesttransloadingDestdesc" type="String" readOnly="true" label="Transordertransloading Desttransloading Destdesc" length="250" />
+    <field name="Transorderloadingtypeloadingtypedesc" type="String" readOnly="true" label="Transorderloadingtypeloadingtypedesc" length="250" />
+    <field name="Transordertrnsdilvtrnsdilvdesc" type="String" readOnly="true" label="Transordertrnsdilvtrnsdilvdesc" length="250" />
+    <field name="CardriverNo" type="Int64" allowNulls="false" label="Cardriver No" showInSummary="true">
+      <items searchOnStart="true" />
+    </field>
+    <field name="CardriverEmp_Nmdriver" type="String" readOnly="true" label="Cardriver Emp Nmdriver" length="60" />
+    <field name="Cardriversgmsgm_Nm" type="String" readOnly="true" label="Cardriversgmsgm Nm" length="255" />
+    <field name="CardriversgmOpcoOpcoName" type="String" readOnly="true" label="Cardriversgm Opco Name" length="50" />
+    <field name="CardriverEmp_no1Emp_NOt" type="String" readOnly="true" label="Cardriver Emp no1 Emp N Ot" length="50" />
+    <field name="CardriverEmp_no1sgmsgm_Nm" type="String" readOnly="true" label="Cardriver Emp no1sgmsgm Nm" length="255" />
+    <field name="CardriverEmp_no1salrycatgrade_desc_a" type="String" readOnly="true" label="Cardriver Emp no1salrycatgrade desc a" length="20" />
+    <field name="CardriverEmp_no1Blood_TypeModifiedBy" type="String" readOnly="true" label="Cardriver Emp no1 Blood Type Modified By" length="50" />
+    <field name="CardriverEmp_no1Bnk_Bnk_Acc" type="String" readOnly="true" label="Cardriver Emp no1 Bnk Acc" length="20" />
+    <field name="CardriverEmp_no1Sub_BnkBnk_Acc" type="String" readOnly="true" label="Cardriver Emp no1 Sub Bnk Acc" length="20" />
+    <field name="CardriverEmp_no1Cntry_Cntry_Nm" type="String" readOnly="true" label="Cardriver Emp no1 Cntry Nm" length="255" />
+    <field name="CardriverEmp_no1Depm_Depm_Nm" type="String" readOnly="true" label="Cardriver Emp no1 Depm Nm" length="255" />
+    <field name="CardriverEmp_no1Educt_TypeEduct_Nm" type="String" readOnly="true" label="Cardriver Emp no1 Educt Type Educt Nm" length="15" />
+    <field name="CardriverEmp_no1Job_StuEmp_Stunm" type="String" readOnly="true" label="Cardriver Emp no1 Job Stu Emp Stunm" length="255" />
+    <field name="CardriverEmp_no1Earning_Earning_Nm" type="String" readOnly="true" label="Cardriver Emp no1 Earning Nm" length="255" />
+    <field name="CardriverEmp_no1Job_Job_Nm" type="String" readOnly="true" label="Cardriver Emp no1 Job Nm" length="255" />
+    <field name="CardriverEmp_no1Ownr_Ownr_ID" type="String" readOnly="true" label="Cardriver Emp no1 Ownr#" length="15" />
+    <field name="CardriverEmp_no1ReljanReljan_nm" type="String" readOnly="true" label="Cardriver Emp no1 Reljan nm" length="50" />
+    <field name="CardriverEmp_no1Status_TypeStatus_Nm" type="String" readOnly="true" label="Cardriver Emp no1 Status Type Status Nm" length="255" />
+    <field name="CardriverEmp_no1branchDesc1" type="String" readOnly="true" label="Cardriver Emp no1branch Desc1" length="50" />
+    <field name="Car_no" type="Int64" allowNulls="false" label="Car no" showInSummary="true">
+      <items searchOnStart="true" />
+    </field>
+    <field name="Car_PLAT_No" type="String" readOnly="true" label="Car PLAT No" length="20" />
+    <field name="Car_Car_TypeStyl_Nm" type="String" readOnly="true" label="Car Type Styl Nm" length="60" />
+    <field name="Car_carclasscarclassname" type="String" readOnly="true" label="Car carclasscarclassname" length="60" />
+    <field name="Car_carstutus_carstutus_name" type="String" readOnly="true" label="Car carstutus name" length="50" />
+    <field name="Car_Car_ColrColor_name" type="String" readOnly="true" label="Car Colr Color name" length="50" />
+    <field name="Car_sgmsgm_Nm" type="String" readOnly="true" label="Car sgmsgm Nm" length="255" />
+    <field name="Car_sgmOpcoOpcoName" type="String" readOnly="true" label="Car sgm Opco Name" length="50" />
+    <field name="Car_Insurance_typeInsurance_name" type="String" readOnly="true" label="Car Insurance type Insurance name" length="150" />
+    <field name="Car_Car_LikLike_name" type="String" readOnly="true" label="Car Lik Like name" length="50" />
+    <field name="Car_Fbrct_CntryCntry_Nm" type="String" readOnly="true" label="Car Fbrct Cntry Nm" length="255" />
+    <field name="Car_Ownr_Ownr_ID" type="String" readOnly="true" label="Car Ownr#" length="15" />
+    <field name="Car_Ownr_cmp_Grp_Nm" type="String" readOnly="true" label="Car Ownr cmp Grp Nm" length="255" />
+    <field name="Car_Trfc_DpmState_Nm" type="String" readOnly="true" label="Car Trfc Dpm State Nm" length="60" />
+    <field name="Car_Sup_Sup_Nm" type="String" readOnly="true" label="Car Sup Nm" length="255" />
+    <field name="Car_Sup_Acc_Acc_Nm" type="String" readOnly="true" label="Car Sup Acc Nm" length="255" />
+    <field name="Car_Sup_Cntry_Cntry_Nm" type="String" readOnly="true" label="Car Sup Cntry Nm" length="255" />
+    <field name="Car_Sup_Curncy_Curncy_Nm" type="String" readOnly="true" label="Car Sup Curncy Nm" length="200" />
+    <field name="Carweight" type="String" label="Carweight" length="50" showInSummary="true" />
+    <field name="Notes" type="String" label="Notes" length="160" showInSummary="true" />
+    <field name="carstutus_no" type="Int64" label="Carstutus No">
+      <items searchOnStart="true" />
+    </field>
+    <field name="carstutus_carstutus_name" type="String" readOnly="true" label="Carstutus Name" length="50" />
+    <field name="offloadingdate" type="DateTime" label="Offloadingdate" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Transorder Detail">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="TransorderID" aliasFieldName="TransorderTransorderInform" />
+        <dataField fieldName="CardriverNo" aliasFieldName="CardriverEmp_Nmdriver" hyperlinkFormatString="~/Pages/Cadriver.aspx?Emp_No={CardriverNo}&amp;_controller=Cadriver&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Car_no" aliasFieldName="Car_PLAT_No" hyperlinkFormatString="~/Pages/CarInfom.aspx?Car_No={Car_no}&amp;_controller=CarInfom&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Carweight" columns="50" />
+        <dataField fieldName="Notes" />
+        <dataField fieldName="carstutus_no" aliasFieldName="carstutus_carstutus_name" hyperlinkFormatString="~/Pages/carstutuslist.aspx?carstutus_no={carstutus_no}&amp;_controller=carstutuslist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="offloadingdate" columns="10" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="TransorderCstm_Cstm_Nm" />
+        <dataField fieldName="TransorderCstm_AreaArea_name" />
+        <dataField fieldName="TransorderCstm_EvaluationEvaluation_name" />
+        <dataField fieldName="TransorderCstm_acc_Acc_Nm" />
+        <dataField fieldName="TransorderCstm_Cntry_Cntry_Nm" />
+        <dataField fieldName="TransorderCstm_curncy_Curncy_Nm" />
+        <dataField fieldName="TransorderCstm_TSNEFTSNEF_name" />
+        <dataField fieldName="TransorderCstm_TSNEFNO1TSNEF1_name" />
+        <dataField fieldName="TransorderCstm_Slm_Slm_Nm" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Transorder Detail">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Transorder Detail" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="TransorderID" aliasFieldName="TransorderTransorderInform" hyperlinkFormatString="~/Pages/Transorder.aspx?TransorderID={TransorderID}&amp;_controller=Transorder&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="CardriverNo" aliasFieldName="CardriverEmp_Nmdriver" hyperlinkFormatString="~/Pages/Cadriver.aspx?Emp_No={CardriverNo}&amp;_controller=Cadriver&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Car_no" aliasFieldName="Car_PLAT_No" hyperlinkFormatString="~/Pages/CarInfom.aspx?Car_No={Car_no}&amp;_controller=CarInfom&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Carweight" columns="50" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="carstutus_no" aliasFieldName="carstutus_carstutus_name" hyperlinkFormatString="~/Pages/carstutuslist.aspx?carstutus_no={carstutus_no}&amp;_controller=carstutuslist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="offloadingdate" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="TransorderCstm_Cstm_Nm" />
+            <dataField fieldName="TransorderCstm_AreaArea_name" />
+            <dataField fieldName="TransorderCstm_EvaluationEvaluation_name" />
+            <dataField fieldName="TransorderCstm_acc_Acc_Nm" />
+            <dataField fieldName="TransorderCstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="TransorderCstm_curncy_Curncy_Nm" />
+            <dataField fieldName="TransorderCstm_TSNEFTSNEF_name" />
+            <dataField fieldName="TransorderCstm_TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="TransorderCstm_Slm_Slm_Nm" />
+            <dataField fieldName="Transordertranscurrenttranscurrentdesc" />
+            <dataField fieldName="TransordertransloadingDesttransloadingDestdesc" />
+            <dataField fieldName="Transorderloadingtypeloadingtypedesc" />
+            <dataField fieldName="Transordertrnsdilvtrnsdilvdesc" />
+            <dataField fieldName="Cardriversgmsgm_Nm" />
+            <dataField fieldName="CardriversgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="CardriverEmp_no1Emp_NOt" columns="50" />
+            <dataField fieldName="CardriverEmp_no1sgmsgm_Nm" />
+            <dataField fieldName="CardriverEmp_no1salrycatgrade_desc_a" columns="20" />
+            <dataField fieldName="CardriverEmp_no1Blood_TypeModifiedBy" columns="50" />
+            <dataField fieldName="CardriverEmp_no1Bnk_Bnk_Acc" columns="20" />
+            <dataField fieldName="CardriverEmp_no1Sub_BnkBnk_Acc" columns="20" />
+            <dataField fieldName="CardriverEmp_no1Cntry_Cntry_Nm" />
+            <dataField fieldName="CardriverEmp_no1Depm_Depm_Nm" />
+            <dataField fieldName="CardriverEmp_no1Educt_TypeEduct_Nm" columns="15" />
+            <dataField fieldName="CardriverEmp_no1Job_StuEmp_Stunm" />
+            <dataField fieldName="CardriverEmp_no1Earning_Earning_Nm" />
+            <dataField fieldName="CardriverEmp_no1Job_Job_Nm" />
+            <dataField fieldName="CardriverEmp_no1Ownr_Ownr_ID" columns="15" />
+            <dataField fieldName="CardriverEmp_no1ReljanReljan_nm" columns="50" />
+            <dataField fieldName="CardriverEmp_no1Status_TypeStatus_Nm" />
+            <dataField fieldName="CardriverEmp_no1branchDesc1" columns="50" />
+            <dataField fieldName="Car_Car_TypeStyl_Nm" />
+            <dataField fieldName="Car_carclasscarclassname" />
+            <dataField fieldName="Car_carstutus_carstutus_name" columns="50" />
+            <dataField fieldName="Car_Car_ColrColor_name" columns="50" />
+            <dataField fieldName="Car_sgmsgm_Nm" />
+            <dataField fieldName="Car_sgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="Car_Insurance_typeInsurance_name" />
+            <dataField fieldName="Car_Car_LikLike_name" columns="50" />
+            <dataField fieldName="Car_Fbrct_CntryCntry_Nm" />
+            <dataField fieldName="Car_Ownr_Ownr_ID" columns="15" />
+            <dataField fieldName="Car_Ownr_cmp_Grp_Nm" />
+            <dataField fieldName="Car_Trfc_DpmState_Nm" />
+            <dataField fieldName="Car_Sup_Sup_Nm" />
+            <dataField fieldName="Car_Sup_Acc_Acc_Nm" />
+            <dataField fieldName="Car_Sup_Cntry_Cntry_Nm" />
+            <dataField fieldName="Car_Sup_Curncy_Curncy_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Transorder Detail">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Transorder Detail" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="TransorderID" aliasFieldName="TransorderTransorderInform" />
+            <dataField fieldName="CardriverNo" aliasFieldName="CardriverEmp_Nmdriver" />
+            <dataField fieldName="Car_no" aliasFieldName="Car_PLAT_No" />
+            <dataField fieldName="Carweight" columns="50" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="carstutus_no" aliasFieldName="carstutus_carstutus_name" />
+            <dataField fieldName="offloadingdate" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

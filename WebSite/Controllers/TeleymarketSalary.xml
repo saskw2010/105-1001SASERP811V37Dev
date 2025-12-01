@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="TeleymarketSalary" conflictDetection="overwriteChanges" label="Teleymarket Salary" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"TeleymarketSalary"."codeNumber" "codeNumber"
+	,"TeleymarketSalary"."Yearofdateapp" "Yearofdateapp"
+	,"TeleymarketSalary"."Monthofdateapp" "Monthofdateapp"
+	,"TeleymarketSalary"."Tele_Mark_Sec" "Tele_Mark_Sec"
+	,"TeleymarketSalary"."Totalard" "Totalard"
+	,"TeleymarketSalary"."Ardcommistion" "Ardcommistion"
+	,"TeleymarketSalary"."Sales" "Sales"
+	,"TeleymarketSalary"."salescommistion" "salescommistion"
+	,"TeleymarketSalary"."calc1" "calc1"
+	,"TeleymarketSalary"."calc2" "calc2"
+	,"TeleymarketSalary"."TotalCommistion" "TotalCommistion"
+from "dbo"."TeleymarketSalary" "TeleymarketSalary"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="codeNumber" type="Int64" label="code Number" showInSummary="true" allowNulls="false" isPrimaryKey="true" />
+    <field name="Yearofdateapp" type="Int32" label="Yearofdateapp" showInSummary="true" />
+    <field name="Monthofdateapp" type="Int32" label="Monthofdateapp" showInSummary="true" />
+    <field name="Tele_Mark_Sec" type="String" label="Tele Mark Sec" length="50" showInSummary="true" />
+    <field name="Totalard" type="Int32" label="Totalard" showInSummary="true" />
+    <field name="Ardcommistion" type="Decimal" label="Ardcommistion" readOnly="true" />
+    <field name="Sales" type="Int32" label="Sales" />
+    <field name="salescommistion" type="Decimal" label="Salescommistion" readOnly="true" />
+    <field name="calc1" type="Int32" allowNulls="false" label="Calc1" readOnly="true" />
+    <field name="calc2" type="Int32" allowNulls="false" label="Calc2" readOnly="true" />
+    <field name="TotalCommistion" type="Decimal" label="Total Commistion" readOnly="true" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Teleymarket Salary">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="codeNumber" columns="15" />
+        <dataField fieldName="Yearofdateapp" columns="15" />
+        <dataField fieldName="Monthofdateapp" columns="15" />
+        <dataField fieldName="Tele_Mark_Sec" columns="50" />
+        <dataField fieldName="Totalard" columns="15" aggregate="Sum" />
+        <dataField fieldName="Ardcommistion" columns="15" aggregate="Sum" />
+        <dataField fieldName="Sales" columns="15" aggregate="Sum" />
+        <dataField fieldName="salescommistion" columns="15" aggregate="Sum" />
+        <dataField fieldName="TotalCommistion" columns="15" aggregate="Sum" />
+        <dataField fieldName="calc1" columns="15" hidden="true" />
+        <dataField fieldName="calc2" columns="15" hidden="true" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Teleymarket Salary">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Teleymarket Salary" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="codeNumber" columns="15" />
+            <dataField fieldName="Yearofdateapp" columns="15" />
+            <dataField fieldName="Monthofdateapp" columns="15" />
+            <dataField fieldName="Tele_Mark_Sec" columns="50" />
+            <dataField fieldName="Totalard" columns="15" />
+            <dataField fieldName="Ardcommistion" columns="15" />
+            <dataField fieldName="Sales" columns="15" />
+            <dataField fieldName="salescommistion" columns="15" />
+            <dataField fieldName="TotalCommistion" columns="15" />
+            <dataField fieldName="calc2" columns="15" hidden="true" />
+            <dataField fieldName="calc1" columns="15" hidden="true" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Teleymarket Salary">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Teleymarket Salary" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="codeNumber" columns="15" />
+            <dataField fieldName="Yearofdateapp" columns="15" />
+            <dataField fieldName="Monthofdateapp" columns="15" />
+            <dataField fieldName="Tele_Mark_Sec" columns="50" />
+            <dataField fieldName="Totalard" columns="15" />
+            <dataField fieldName="Sales" columns="15" />
+            <dataField fieldName="calc2" columns="15" />
+            <dataField fieldName="calc1" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid" />
+    <actionGroup id="ag2" scope="Form" />
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true" />
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true" />
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions" />
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record" />
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row" />
+    <actionGroup id="ag9" scope="ActionColumn" />
+  </actions>
+</dataController>

@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="SalaryTbl" conflictDetection="overwriteChanges" label="Salary Tbl" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"SalaryTbl"."SalaryID" "SalaryID"
+	,"SalaryTbl"."salaryyear" "salaryyear"
+	,"SalaryTbl"."salaryMonth" "salaryMonth"
+	,"SalaryTbl"."DealerID" "DealerID"
+	,"SalaryTbl"."Dealer_name" "Dealer_name"
+	,"SalaryTbl"."MDID" "MDID"
+	,"SalaryTbl"."activeflageD" "activeflageD"
+	,"SalaryTbl"."Dealer_name1" "Dealer_name1"
+	,"SalaryTbl"."joindate" "joindate"
+	,"SalaryTbl"."usercodename" "usercodename"
+	,"SalaryTbl"."Basicsalary" "Basicsalary"
+	,"SalaryTbl"."democount" "democount"
+	,"SalaryTbl"."recruting" "recruting"
+	,"SalaryTbl"."commstion" "commstion"
+	,"SalaryTbl"."cashcommstion" "cashcommstion"
+	,"SalaryTbl"."DealerID1" "DealerID1"
+	,"SalaryTbl"."TLdemo" "TLdemo"
+	,"SalaryTbl"."OKdemo" "OKdemo"
+	,"SalaryTbl"."pending" "pending"
+	,"SalaryTbl"."Recrutamount" "Recrutamount"
+	,"SalaryTbl"."Other" "Other"
+	,"SalaryTbl"."BankDep" "BankDep"
+	,"SalaryTbl"."deductloan" "deductloan"
+	,"SalaryTbl"."deductgift" "deductgift"
+	,"SalaryTbl"."deductsupply" "deductsupply"
+from "dbo"."SalaryTbl" "SalaryTbl"
+]]></text>
+    </command>
+    <command id="SalaryIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="SalaryID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="SalaryID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Salary#" readOnly="true" />
+    <field name="salaryyear" type="Int64" allowNulls="false" label="Salaryyear" showInSummary="true" />
+    <field name="salaryMonth" type="Int64" allowNulls="false" label="salary Month" showInSummary="true" />
+    <field name="DealerID" type="Int64" allowNulls="false" label="Dealer#" showInSummary="true" />
+    <field name="Dealer_name" type="String" allowNulls="false" label="Dealer name" length="50" showInSummary="true" />
+    <field name="MDID" type="Int64" label="Mdid" showInSummary="true" />
+    <field name="activeflageD" type="Boolean" default="((1))" label="activeflage D" />
+    <field name="Dealer_name1" type="String" label="Dealer name1" length="50" />
+    <field name="joindate" type="DateTime" label="Joindate" />
+    <field name="usercodename" type="String" label="Usercodename" length="50" />
+    <field name="Basicsalary" type="Single" default="((0))" label="Basicsalary" />
+    <field name="democount" type="Single" default="((0))" label="Democount" />
+    <field name="recruting" type="Single" default="((0))" label="Recruting" />
+    <field name="commstion" type="Single" default="((90))" label="Commstion" />
+    <field name="cashcommstion" type="Single" default="((110))" label="Cashcommstion" />
+    <field name="DealerID1" type="Int64" label="Dealer ID1" />
+    <field name="TLdemo" type="Int64" label="T Ldemo" />
+    <field name="OKdemo" type="Int64" label="O Kdemo" />
+    <field name="pending" type="Single" label="Pending" />
+    <field name="Recrutamount" type="Single" label="Recrutamount" />
+    <field name="Other" type="Single" label="Other" />
+    <field name="BankDep" type="Single" label="Bank Dep" />
+    <field name="deductloan" type="Single" label="Deductloan" />
+    <field name="deductgift" type="Single" label="Deductgift" />
+    <field name="deductsupply" type="Single" label="Deductsupply" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Salary Tbl">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="salaryyear" columns="15" />
+        <dataField fieldName="salaryMonth" columns="15" />
+        <dataField fieldName="DealerID" columns="15" />
+        <dataField fieldName="Dealer_name" columns="50" />
+        <dataField fieldName="MDID" columns="15" />
+        <dataField fieldName="activeflageD" />
+        <dataField fieldName="Dealer_name1" columns="50" />
+        <dataField fieldName="joindate" columns="10" />
+        <dataField fieldName="usercodename" columns="50" />
+        <dataField fieldName="Basicsalary" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Salary Tbl">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Salary Tbl" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="salaryyear" columns="15" />
+            <dataField fieldName="salaryMonth" columns="15" />
+            <dataField fieldName="DealerID" columns="15" />
+            <dataField fieldName="Dealer_name" columns="50" />
+            <dataField fieldName="MDID" columns="15" />
+            <dataField fieldName="activeflageD" />
+            <dataField fieldName="Dealer_name1" columns="50" />
+            <dataField fieldName="joindate" columns="10" />
+            <dataField fieldName="usercodename" columns="50" />
+            <dataField fieldName="Basicsalary" columns="15" />
+            <dataField fieldName="democount" columns="15" />
+            <dataField fieldName="recruting" columns="15" />
+            <dataField fieldName="commstion" columns="15" />
+            <dataField fieldName="cashcommstion" columns="15" />
+            <dataField fieldName="DealerID1" columns="15" />
+            <dataField fieldName="TLdemo" columns="15" />
+            <dataField fieldName="OKdemo" columns="15" />
+            <dataField fieldName="pending" columns="15" />
+            <dataField fieldName="Recrutamount" columns="15" />
+            <dataField fieldName="Other" columns="15" />
+            <dataField fieldName="BankDep" columns="15" />
+            <dataField fieldName="deductloan" columns="15" />
+            <dataField fieldName="deductgift" columns="15" />
+            <dataField fieldName="deductsupply" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Salary Tbl">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Salary Tbl" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="salaryyear" columns="15" />
+            <dataField fieldName="salaryMonth" columns="15" />
+            <dataField fieldName="DealerID" columns="15" />
+            <dataField fieldName="Dealer_name" columns="50" />
+            <dataField fieldName="MDID" columns="15" />
+            <dataField fieldName="activeflageD" />
+            <dataField fieldName="Dealer_name1" columns="50" />
+            <dataField fieldName="joindate" columns="10" />
+            <dataField fieldName="usercodename" columns="50" />
+            <dataField fieldName="Basicsalary" columns="15" />
+            <dataField fieldName="democount" columns="15" />
+            <dataField fieldName="recruting" columns="15" />
+            <dataField fieldName="commstion" columns="15" />
+            <dataField fieldName="cashcommstion" columns="15" />
+            <dataField fieldName="DealerID1" columns="15" />
+            <dataField fieldName="TLdemo" columns="15" />
+            <dataField fieldName="OKdemo" columns="15" />
+            <dataField fieldName="pending" columns="15" />
+            <dataField fieldName="Recrutamount" columns="15" />
+            <dataField fieldName="Other" columns="15" />
+            <dataField fieldName="BankDep" columns="15" />
+            <dataField fieldName="deductloan" columns="15" />
+            <dataField fieldName="deductgift" columns="15" />
+            <dataField fieldName="deductsupply" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="GLacnchr" conflictDetection="overwriteChanges" label="G Lacnchr" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"GLacnchr"."Account_No" "Account_No"
+	,"GLacnchr"."Acc_Nm" "Acc_Nm"
+	,"GLacnchr"."Acc_No" "Acc_No"
+	,"Acc_"."Acc_Nm" "Acc_Acc_Nm"
+	,"Acc_Clsacc_"."Acc_Nm" "Acc_Clsacc_Acc_Nm"
+	,"Acc_Acc_Bnd"."Acc_Nm" "Acc_Acc_BndAcc_Nm"
+	,"Acc_Acc_Bndaccclass"."accountclass" "Acc_Acc_Bndaccclassaccountclass"
+	,"Acc_Acc_BndAcc_Bab"."Acc_Nm" "Acc_Acc_BndAcc_BabAcc_Nm"
+	,"GLacnchr"."sgm" "sgm"
+	,"sgm"."sgm_Nm" "sgmsgm_Nm"
+	,"sgmOpco"."OpcoName" "sgmOpcoOpcoName"
+	,"GLacnchr"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"Thebranchsgm"."sgm_Nm" "Thebranchsgmsgm_Nm"
+	,"ThebranchsgmOpco"."OpcoName" "ThebranchsgmOpcoOpcoName"
+	,"ThebranchGender"."Gender" "ThebranchGenderGender"
+	,"Thebranchstage"."ShortDesc1" "ThebranchstageShortDesc1"
+	,"Thebranchschtyp"."schtypDesc" "ThebranchschtypschtypDesc"
+	,"GLacnchr"."pronsabilites" "pronsabilites"
+	,"GLacnchr"."ModifiedBy" "ModifiedBy"
+	,"GLacnchr"."ModifiedOn" "ModifiedOn"
+	,"GLacnchr"."CreatedBy" "CreatedBy"
+	,"GLacnchr"."CreatedOn" "CreatedOn"
+from "dbo"."GLacnchr" "GLacnchr"
+	left join "dbo"."GLmstrfl" "Acc_" on "GLacnchr"."Acc_No" = "Acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "Acc_Clsacc_" on "Acc_"."Clsacc_No" = "Acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Acc_Acc_Bnd" on "Acc_"."Acc_Bnd" = "Acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "Acc_Acc_Bndaccclass" on "Acc_Acc_Bnd"."accclass" = "Acc_Acc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "Acc_Acc_BndAcc_Bab" on "Acc_Acc_Bnd"."Acc_Bab" = "Acc_Acc_BndAcc_Bab"."Acc_Bab"
+	left join "dbo"."glmulcmp" "sgm" on "GLacnchr"."sgm" = "sgm"."sgmid"
+	left join "dbo"."OpCo" "sgmOpco" on "sgm"."OpcoID" = "sgmOpco"."OpcoIDidentity"
+	left join "dbo"."schBranch" "Thebranch" on "GLacnchr"."branch" = "Thebranch"."branch"
+	left join "dbo"."glmulcmp" "Thebranchsgm" on "Thebranch"."sgm" = "Thebranchsgm"."sgmid"
+	left join "dbo"."OpCo" "ThebranchsgmOpco" on "Thebranchsgm"."OpcoID" = "ThebranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "ThebranchGender" on "Thebranch"."Genderid" = "ThebranchGender"."Genderid"
+	left join "dbo"."schStage" "Thebranchstage" on "Thebranch"."stagecode" = "Thebranchstage"."Code"
+	left join "dbo"."schtyp" "Thebranchschtyp" on "Thebranch"."schtypid" = "Thebranchschtyp"."schtypid"
+]]></text>
+    </command>
+    <command id="Account_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Account_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Account_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Account No" readOnly="true" />
+    <field name="Acc_Nm" type="String" label="Acc Nm" length="255" showInSummary="true" />
+    <field name="Acc_No" type="Int64" allowNulls="false" label="Acc No" showInSummary="true">
+      <items style="Lookup" dataController="GLmstrfl" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Acc_Acc_Nm" type="String" readOnly="true" label="Acc Nm" length="255" />
+    <field name="Acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Acc Clsacc Acc Nm" length="250" />
+    <field name="Acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Nm" length="50" />
+    <field name="Acc_Acc_Bndaccclassaccountclass" type="String" readOnly="true" label="Acc Bndaccclassaccountclass" length="100" />
+    <field name="Acc_Acc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Bab Acc Nm" length="250" />
+    <field name="sgm" type="Int64" label="Sgm" showInSummary="true">
+      <items style="Lookup" dataController="glmulcmp" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sgmsgm_Nm" type="String" readOnly="true" label="sgmsgm Nm" length="255" />
+    <field name="sgmOpcoOpcoName" type="String" readOnly="true" label="sgm Opco Name" length="50" />
+    <field name="branch" type="Int64" label="Branch" showInSummary="true">
+      <items style="Lookup" dataController="schBranch" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ThebranchDesc1" type="String" readOnly="true" label="Thebranch Desc1" length="50" />
+    <field name="Thebranchsgmsgm_Nm" type="String" readOnly="true" label="Thebranchsgmsgm Nm" length="255" />
+    <field name="ThebranchsgmOpcoOpcoName" type="String" readOnly="true" label="Thebranchsgm Opco Name" length="50" />
+    <field name="ThebranchGenderGender" type="String" readOnly="true" label="Thebranch Gender" length="100" />
+    <field name="ThebranchstageShortDesc1" type="String" readOnly="true" label="Thebranchstage Short Desc1" length="50" />
+    <field name="ThebranchschtypschtypDesc" type="String" readOnly="true" label="Thebranchschtypschtyp Desc" length="150" />
+    <field name="pronsabilites" type="String" label="Pronsabilites" length="150" showInSummary="true" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="G Lacnchr">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Acc_No" aliasFieldName="Acc_Acc_Nm" />
+        <dataField fieldName="Acc_Nm" />
+        <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" hyperlinkFormatString="~/Pages/glmulcmp.aspx?sgmid={sgm}&amp;_controller=glmulcmp&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="pronsabilites" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="Acc_Clsacc_Acc_Nm" />
+        <dataField fieldName="Acc_Acc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="Acc_Acc_Bndaccclassaccountclass" />
+        <dataField fieldName="Acc_Acc_BndAcc_BabAcc_Nm" />
+        <dataField fieldName="sgmOpcoOpcoName" columns="50" />
+        <dataField fieldName="Thebranchsgmsgm_Nm" />
+        <dataField fieldName="ThebranchsgmOpcoOpcoName" columns="50" />
+        <dataField fieldName="ThebranchGenderGender" />
+        <dataField fieldName="ThebranchstageShortDesc1" columns="50" />
+        <dataField fieldName="ThebranchschtypschtypDesc" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review G Lacnchr">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="G Lacnchr" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Acc_Nm" />
+            <dataField fieldName="Acc_No" aliasFieldName="Acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={Acc_No}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" hyperlinkFormatString="~/Pages/glmulcmp.aspx?sgmid={sgm}&amp;_controller=glmulcmp&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="pronsabilites" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Acc_Clsacc_Acc_Nm" />
+            <dataField fieldName="Acc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="Acc_Acc_Bndaccclassaccountclass" />
+            <dataField fieldName="Acc_Acc_BndAcc_BabAcc_Nm" />
+            <dataField fieldName="sgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="Thebranchsgmsgm_Nm" />
+            <dataField fieldName="ThebranchsgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="ThebranchGenderGender" />
+            <dataField fieldName="ThebranchstageShortDesc1" columns="50" />
+            <dataField fieldName="ThebranchschtypschtypDesc" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New G Lacnchr">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New G Lacnchr" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Acc_Nm" />
+            <dataField fieldName="Acc_No" aliasFieldName="Acc_Acc_Nm" />
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />
+            <dataField fieldName="pronsabilites" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

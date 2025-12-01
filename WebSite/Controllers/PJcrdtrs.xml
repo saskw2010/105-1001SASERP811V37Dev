@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="PJcrdtrs" conflictDetection="overwriteChanges" label="P Jcrdtrs" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"PJcrdtrs"."Trs_Typ" "Trs_Typ"
+	,"PJcrdtrs"."Trs_No" "Trs_No"
+	,"PJcrdtrs"."Trs_Dt" "Trs_Dt"
+	,"PJcrdtrs"."Emp_No" "Emp_No"
+	,"PJcrdtrs"."Depm_No" "Depm_No"
+	,"PJcrdtrs"."Job_No" "Job_No"
+	,"PJcrdtrs"."Earning_No" "Earning_No"
+	,"PJcrdtrs"."Deduc_No" "Deduc_No"
+	,"PJcrdtrs"."Trs_Stdt" "Trs_Stdt"
+	,"PJcrdtrs"."Trs_Endt" "Trs_Endt"
+	,"PJcrdtrs"."Nof_Days" "Nof_Days"
+	,"PJcrdtrs"."Nof_Hour" "Nof_Hour"
+	,"PJcrdtrs"."Cost_Day" "Cost_Day"
+	,"PJcrdtrs"."Cost_Hour" "Cost_Hour"
+	,"PJcrdtrs"."Tcost_Day" "Tcost_Day"
+	,"PJcrdtrs"."Tcost_Hour" "Tcost_Hour"
+	,"PJcrdtrs"."Deduc_Othr" "Deduc_Othr"
+	,"PJcrdtrs"."Erning_Othr" "Erning_Othr"
+	,"PJcrdtrs"."Erning_Amount" "Erning_Amount"
+	,"PJcrdtrs"."Deduc_Amount" "Deduc_Amount"
+	,"PJcrdtrs"."Notes1" "Notes1"
+	,"PJcrdtrs"."Notes2" "Notes2"
+	,"PJcrdtrs"."Vctn_Amount" "Vctn_Amount"
+	,"PJcrdtrs"."Vctn_Salary1" "Vctn_Salary1"
+	,"PJcrdtrs"."Vctn_Salary2" "Vctn_Salary2"
+	,"PJcrdtrs"."Vctn_Salary3" "Vctn_Salary3"
+	,"PJcrdtrs"."Slry_Pst" "Slry_Pst"
+	,"PJcrdtrs"."sgm" "sgm"
+	,"PJcrdtrs"."ModifiedBy" "ModifiedBy"
+	,"PJcrdtrs"."ModifiedOn" "ModifiedOn"
+	,"PJcrdtrs"."CreatedBy" "CreatedBy"
+	,"PJcrdtrs"."CreatedOn" "CreatedOn"
+from "dbo"."PJcrdtrs" "PJcrdtrs"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="Trs_Typ" type="Int16" isPrimaryKey="true" label="Trs Typ" />
+    <field name="Trs_No" type="Int32" label="Trs No" showInSummary="true" />
+    <field name="Trs_Dt" type="String" label="Trs Dt" length="10" showInSummary="true" />
+    <field name="Emp_No" type="Int32" label="Emp No" showInSummary="true" />
+    <field name="Depm_No" type="Int16" label="Depm No" showInSummary="true" />
+    <field name="Job_No" type="Int16" label="Job No" showInSummary="true" />
+    <field name="Earning_No" type="Int16" label="Earning No" />
+    <field name="Deduc_No" type="Int16" label="Deduc No" />
+    <field name="Trs_Stdt" type="String" label="Trs Stdt" length="10" />
+    <field name="Trs_Endt" type="String" label="Trs Endt" length="10" />
+    <field name="Nof_Days" type="Decimal" label="Nof Days" />
+    <field name="Nof_Hour" type="Decimal" label="Nof Hour" />
+    <field name="Cost_Day" type="Decimal" label="Cost Day" />
+    <field name="Cost_Hour" type="Decimal" label="Cost Hour" />
+    <field name="Tcost_Day" type="Decimal" label="Tcost Day" />
+    <field name="Tcost_Hour" type="Decimal" label="Tcost Hour" />
+    <field name="Deduc_Othr" type="Decimal" label="Deduc Othr" />
+    <field name="Erning_Othr" type="Decimal" label="Erning Othr" />
+    <field name="Erning_Amount" type="Decimal" label="Erning Amount" />
+    <field name="Deduc_Amount" type="Decimal" label="Deduc Amount" />
+    <field name="Notes1" type="String" label="Notes1" length="50" />
+    <field name="Notes2" type="String" label="Notes2" length="50" />
+    <field name="Vctn_Amount" type="Decimal" label="Vctn Amount" />
+    <field name="Vctn_Salary1" type="Decimal" label="Vctn Salary1" />
+    <field name="Vctn_Salary2" type="Decimal" label="Vctn Salary2" />
+    <field name="Vctn_Salary3" type="Decimal" label="Vctn Salary3" />
+    <field name="Slry_Pst" type="Boolean" allowNulls="false" label="Slry Pst" />
+    <field name="sgm" type="Int64" label="Sgm" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="P Jcrdtrs">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Slry_Pst" />
+        <dataField fieldName="Trs_No" columns="15" />
+        <dataField fieldName="Trs_Dt" columns="10" />
+        <dataField fieldName="Emp_No" columns="15" />
+        <dataField fieldName="Depm_No" columns="15" />
+        <dataField fieldName="Job_No" columns="15" />
+        <dataField fieldName="Earning_No" columns="15" />
+        <dataField fieldName="Deduc_No" columns="15" />
+        <dataField fieldName="Trs_Stdt" columns="10" />
+        <dataField fieldName="Trs_Endt" columns="10" />
+        <dataField fieldName="Nof_Days" dataFormatString="c" columns="15" />
+        <dataField fieldName="Nof_Hour" dataFormatString="c" columns="15" />
+        <dataField fieldName="Cost_Day" dataFormatString="c" columns="15" />
+        <dataField fieldName="Cost_Hour" dataFormatString="c" columns="15" />
+        <dataField fieldName="Tcost_Day" dataFormatString="c" columns="15" />
+        <dataField fieldName="Tcost_Hour" dataFormatString="c" columns="15" />
+        <dataField fieldName="Deduc_Othr" dataFormatString="c" columns="15" />
+        <dataField fieldName="Erning_Othr" dataFormatString="c" columns="15" />
+        <dataField fieldName="Erning_Amount" dataFormatString="c" columns="15" />
+        <dataField fieldName="Deduc_Amount" dataFormatString="c" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review P Jcrdtrs">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="P Jcrdtrs" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Trs_No" columns="15" />
+            <dataField fieldName="Trs_Dt" columns="10" />
+            <dataField fieldName="Emp_No" columns="15" />
+            <dataField fieldName="Depm_No" columns="15" />
+            <dataField fieldName="Job_No" columns="15" />
+            <dataField fieldName="Earning_No" columns="15" />
+            <dataField fieldName="Deduc_No" columns="15" />
+            <dataField fieldName="Trs_Stdt" columns="10" />
+            <dataField fieldName="Trs_Endt" columns="10" />
+            <dataField fieldName="Nof_Days" dataFormatString="c" columns="15" />
+            <dataField fieldName="Nof_Hour" dataFormatString="c" columns="15" />
+            <dataField fieldName="Cost_Day" dataFormatString="c" columns="15" />
+            <dataField fieldName="Cost_Hour" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tcost_Day" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tcost_Hour" dataFormatString="c" columns="15" />
+            <dataField fieldName="Deduc_Othr" dataFormatString="c" columns="15" />
+            <dataField fieldName="Erning_Othr" dataFormatString="c" columns="15" />
+            <dataField fieldName="Erning_Amount" dataFormatString="c" columns="15" />
+            <dataField fieldName="Deduc_Amount" dataFormatString="c" columns="15" />
+            <dataField fieldName="Notes1" columns="50" />
+            <dataField fieldName="Notes2" columns="50" />
+            <dataField fieldName="Vctn_Amount" dataFormatString="c" columns="15" />
+            <dataField fieldName="Vctn_Salary1" dataFormatString="c" columns="15" />
+            <dataField fieldName="Vctn_Salary2" dataFormatString="c" columns="15" />
+            <dataField fieldName="Vctn_Salary3" dataFormatString="c" columns="15" />
+            <dataField fieldName="Slry_Pst" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New P Jcrdtrs">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New P Jcrdtrs" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Trs_Typ" columns="15" />
+            <dataField fieldName="Trs_No" columns="15" />
+            <dataField fieldName="Trs_Dt" columns="10" />
+            <dataField fieldName="Emp_No" columns="15" />
+            <dataField fieldName="Depm_No" columns="15" />
+            <dataField fieldName="Job_No" columns="15" />
+            <dataField fieldName="Earning_No" columns="15" />
+            <dataField fieldName="Deduc_No" columns="15" />
+            <dataField fieldName="Trs_Stdt" columns="10" />
+            <dataField fieldName="Trs_Endt" columns="10" />
+            <dataField fieldName="Nof_Days" dataFormatString="c" columns="15" />
+            <dataField fieldName="Nof_Hour" dataFormatString="c" columns="15" />
+            <dataField fieldName="Cost_Day" dataFormatString="c" columns="15" />
+            <dataField fieldName="Cost_Hour" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tcost_Day" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tcost_Hour" dataFormatString="c" columns="15" />
+            <dataField fieldName="Deduc_Othr" dataFormatString="c" columns="15" />
+            <dataField fieldName="Erning_Othr" dataFormatString="c" columns="15" />
+            <dataField fieldName="Erning_Amount" dataFormatString="c" columns="15" />
+            <dataField fieldName="Deduc_Amount" dataFormatString="c" columns="15" />
+            <dataField fieldName="Notes1" columns="50" />
+            <dataField fieldName="Notes2" columns="50" />
+            <dataField fieldName="Vctn_Amount" dataFormatString="c" columns="15" />
+            <dataField fieldName="Vctn_Salary1" dataFormatString="c" columns="15" />
+            <dataField fieldName="Vctn_Salary2" dataFormatString="c" columns="15" />
+            <dataField fieldName="Vctn_Salary3" dataFormatString="c" columns="15" />
+            <dataField fieldName="Slry_Pst" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,5 @@
+# Folder: themeEngine
+
+Purpose: theme runtime switching and engine scripts.
+
+Back to hub: ../index.md | TOC: ../TOC.md

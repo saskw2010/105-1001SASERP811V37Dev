@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="GLschassmentBalance" conflictDetection="overwriteChanges" label="G Lschassment Balance" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[select
+	"GLschassmentBalance"."branch" "branchcode"
+	,"GLschassmentBalance"."StudentCode" "StudentCode"
+	,"GLschassmentBalance"."acdcode" "acdcode"
+	,"GLschassmentBalance"."schpaymenttypeid" "schpaymenttypeid"
+	,"GLschassmentBalance"."schpaymenttypenm" "schpaymenttypenm"
+	,"GLschassmentBalance"."debitaccount" "debitaccount"
+	,"GLschassmentBalance"."trdb0" "trdb0"
+	,"GLschassmentBalance"."trcr1" "trcr1"
+	,"GLschassmentBalance"."trdb1" "trdb1"
+	,"GLschassmentBalance"."Balance" "Balance"
+from "dbo"."GLschassmentBalance" "GLschassmentBalance"
+]]></text>
+    </command>
+    <command id="schpaymenttypeidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="schpaymenttypeid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="branchcode" type="Int64" label="Branchcode" showInSummary="true" />
+    <field name="StudentCode" type="Int64" label="Student Code" showInSummary="true" />
+    <field name="acdcode" type="Int64" label="Acdcode" showInSummary="true" />
+    <field name="schpaymenttypeid" type="Int64" label="Schpaymenttypeid" readOnly="true" showInSummary="true" />
+    <field name="schpaymenttypenm" type="String" label="Schpaymenttypenm" length="50" showInSummary="true" />
+    <field name="debitaccount" type="Int64" label="Debitaccount" />
+    <field name="trdb0" type="Int32" allowNulls="false" label="Trdb0" readOnly="true" />
+    <field name="trcr1" type="Decimal" allowNulls="false" label="Trcr1" readOnly="true" />
+    <field name="trdb1" type="Decimal" allowNulls="false" label="Trdb1" readOnly="true" />
+    <field name="Balance" type="Decimal" label="Balance" readOnly="true" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="G Lschassment Balance">
+     
+      <dataFields>
+        <dataField fieldName="branchcode" columns="15" />
+        <dataField fieldName="StudentCode" columns="15" />
+        <dataField fieldName="acdcode" columns="15" />
+        <dataField fieldName="schpaymenttypeid" columns="15" />
+        <dataField fieldName="schpaymenttypenm" columns="50" />
+        <dataField fieldName="debitaccount" columns="15" />
+        <dataField fieldName="trcr1" columns="15" aggregate="Sum" />
+        <dataField fieldName="trdb0" columns="15" aggregate="Sum" />
+        <dataField fieldName="trdb1" columns="15" aggregate="Sum" />
+        <dataField fieldName="Balance" columns="15" aggregate="Sum" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review G Lschassment Balance">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="G Lschassment Balance" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="StudentCode" columns="15" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="schpaymenttypeid" columns="15" />
+            <dataField fieldName="schpaymenttypenm" columns="50" />
+            <dataField fieldName="debitaccount" columns="15" />
+            <dataField fieldName="trdb0" columns="15" />
+            <dataField fieldName="trcr1" columns="15" />
+            <dataField fieldName="trdb1" columns="15" />
+            <dataField fieldName="Balance" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New G Lschassment Balance">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New G Lschassment Balance" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="StudentCode" columns="15" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="schpaymenttypenm" columns="50" />
+            <dataField fieldName="debitaccount" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+  </actions>
+</dataController>

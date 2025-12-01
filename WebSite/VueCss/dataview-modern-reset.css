@@ -1,0 +1,774 @@
+/* =======================================================================
+   DATAVIEW MODERN RESET V3 - Professional Grid System with Enhanced UX
+   إعادة تصميم شبكات DataView بشكل احترافي عصري محسن
+   Created: 2025 - Enhanced Professional Design with Icons & Better UX
+   ======================================================================= */
+
+/* Phase 1: Complete CSS Reset for DataView Components */
+/* ================================================== */
+
+/* Reset all DataView containers */
+.DataViewContainer,
+.DataViewContainer *,
+table.DataView,
+table.DataView *,
+.DataViewHeader,
+.DataViewHeader *,
+.DataViewRow,
+.DataViewRow *,
+.DataViewAlternatingRow,
+.DataViewAlternatingRow *,
+.DataViewSelectedRow,
+.DataViewSelectedRow *,
+.DataViewPager,
+.DataViewPager *,
+.DataViewFooter,
+.DataViewFooter * {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Reset table elements specifically */
+table.DataView {
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: auto;
+    width: 100%;
+}
+
+table.DataView th,
+table.DataView td {
+    vertical-align: middle;
+    text-align: left;
+    border: none;
+    background: none;
+}
+
+/* Reset form elements in DataView */
+.DataView input,
+.DataView select,
+.DataView textarea,
+.DataView button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    color: inherit;
+}
+
+/* Phase 2: Enhanced Modern Professional Design */
+/* ============================================= */
+
+/* Enhanced Color Palette */
+:root {
+    /* Primary Colors - أزرق احترافي */
+    --dv-primary: #2563eb;
+    --dv-primary-light: #3b82f6;
+    --dv-primary-dark: #1d4ed8;
+    --dv-primary-50: #eff6ff;
+    --dv-primary-100: #dbeafe;
+    
+    /* Secondary Colors - رمادي أنيق */
+    --dv-secondary: #64748b;
+    --dv-secondary-light: #94a3b8;
+    --dv-secondary-dark: #475569;
+    
+    /* Status Colors */
+    --dv-success: #059669;
+    --dv-success-light: #10b981;
+    --dv-success-dark: #047857;
+    --dv-warning: #d97706;
+    --dv-warning-light: #f59e0b;
+    --dv-warning-dark: #b45309;
+    --dv-danger: #dc2626;
+    --dv-danger-light: #ef4444;
+    --dv-danger-dark: #b91c1c;
+    
+    /* Neutral Colors */
+    --dv-white: #ffffff;
+    --dv-gray-50: #f8fafc;
+    --dv-gray-100: #f1f5f9;
+    --dv-gray-200: #e2e8f0;
+    --dv-gray-300: #cbd5e1;
+    --dv-gray-400: #94a3b8;
+    --dv-gray-500: #64748b;
+    --dv-gray-600: #475569;
+    --dv-gray-700: #334155;
+    --dv-gray-800: #1e293b;
+    --dv-gray-900: #0f172a;
+    
+    /* Shadows & Effects */
+    --dv-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --dv-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --dv-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --dv-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --dv-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Border & Radius */
+    --dv-border-radius: 8px;
+    --dv-border-radius-sm: 4px;
+    --dv-border-radius-lg: 12px;
+    
+    /* Transitions */
+    --dv-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --dv-transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Typography */
+    --dv-font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --dv-font-size-xs: 0.75rem;
+    --dv-font-size-sm: 0.875rem;
+    --dv-font-size-base: 1rem;
+    --dv-font-size-lg: 1.125rem;
+}
+
+/* Main DataView Container */
+.DataViewContainer {
+    background: var(--dv-white);
+    border-radius: var(--dv-border-radius-lg);
+    box-shadow: var(--dv-shadow-lg);
+    overflow: hidden;
+    margin: 24px 0;
+    border: 1px solid var(--dv-gray-200);
+    position: relative;
+}
+
+/* DataView Table */
+table.DataView {
+    width: 100%;
+    background: var(--dv-white);
+    font-family: var(--dv-font-family);
+    font-size: var(--dv-font-size-sm);
+    line-height: 1.6;
+}
+
+/* Enhanced Header Styling */
+.DataViewHeader th {
+    background: linear-gradient(135deg, var(--dv-gray-50) 0%, var(--dv-gray-100) 100%);
+    color: var(--dv-gray-800);
+    font-weight: 600;
+    padding: 18px 16px;
+    border-bottom: 3px solid var(--dv-primary);
+    position: relative;
+    text-transform: uppercase;
+    font-size: var(--dv-font-size-xs);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.DataViewHeader th:not(:last-child) {
+    border-right: 1px solid var(--dv-gray-200);
+}
+
+.DataViewHeader th:first-child {
+    border-top-left-radius: var(--dv-border-radius-lg);
+}
+
+.DataViewHeader th:last-child {
+    border-top-right-radius: var(--dv-border-radius-lg);
+}
+
+/* Enhanced Row Styling */
+.DataViewRow td,
+.DataViewAlternatingRow td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--dv-gray-100);
+    transition: var(--dv-transition);
+    vertical-align: middle;
+}
+
+.DataViewRow {
+    background: var(--dv-white);
+}
+
+.DataViewAlternatingRow {
+    background: var(--dv-gray-50);
+}
+
+.DataViewRow:hover,
+.DataViewAlternatingRow:hover {
+    background: var(--dv-primary-50);
+    transform: translateY(-1px);
+    box-shadow: var(--dv-shadow-md);
+    cursor: pointer;
+}
+
+/* Enhanced Selected Row */
+.DataViewSelectedRow td {
+    background: linear-gradient(135deg, var(--dv-primary-100) 0%, var(--dv-primary-50) 100%);
+    color: var(--dv-primary-dark);
+    border-color: var(--dv-primary);
+    font-weight: 500;
+}
+
+/* Enhanced Action Buttons with Icons */
+.DataView a,
+.DataView input[type="button"],
+.DataView input[type="submit"],
+.DataView button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 16px;
+    margin: 3px 2px;
+    background: var(--dv-primary);
+    color: var(--dv-white);
+    border-radius: var(--dv-border-radius);
+    font-size: var(--dv-font-size-sm);
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: var(--dv-transition);
+    min-width: 90px;
+    height: 40px;
+    box-shadow: var(--dv-shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.DataView a::before,
+.DataView input[type="button"]::before,
+.DataView input[type="submit"]::before,
+.DataView button::before {
+    font-family: 'Segoe UI Symbol', 'Segoe UI', system-ui;
+    font-size: 14px;
+    margin-right: 4px;
+}
+
+.DataView a:hover,
+.DataView input[type="button"]:hover,
+.DataView input[type="submit"]:hover,
+.DataView button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--dv-shadow-lg);
+}
+
+.DataView a:active,
+.DataView input[type="button"]:active,
+.DataView input[type="submit"]:active,
+.DataView button:active {
+    transform: translateY(0);
+    box-shadow: var(--dv-shadow);
+}
+
+/* Enhanced Button Types with Icons */
+/* Edit Button */
+a[href*="Edit"]::before,
+input[value*="Edit"]::before,
+button[title*="Edit"]::before,
+a[onclick*="Edit"]::before {
+    content: "✏️";
+}
+
+a[href*="Edit"],
+input[value*="Edit"],
+button[title*="Edit"],
+a[onclick*="Edit"] {
+    background: var(--dv-warning);
+    border-color: var(--dv-warning-dark);
+}
+
+a[href*="Edit"]:hover,
+input[value*="Edit"]:hover,
+button[title*="Edit"]:hover,
+a[onclick*="Edit"]:hover {
+    background: var(--dv-warning-dark);
+}
+
+/* Delete Button */
+a[href*="Delete"]::before,
+input[value*="Delete"]::before,
+button[title*="Delete"]::before,
+a[onclick*="Delete"]::before {
+    content: "🗑️";
+}
+
+a[href*="Delete"],
+input[value*="Delete"],
+button[title*="Delete"],
+a[onclick*="Delete"] {
+    background: var(--dv-danger);
+    border-color: var(--dv-danger-dark);
+}
+
+a[href*="Delete"]:hover,
+input[value*="Delete"]:hover,
+button[title*="Delete"]:hover,
+a[onclick*="Delete"]:hover {
+    background: var(--dv-danger-dark);
+}
+
+/* View Button */
+a[href*="View"]::before,
+input[value*="View"]::before,
+button[title*="View"]::before,
+a[onclick*="View"]::before {
+    content: "👁️";
+}
+
+a[href*="View"],
+input[value*="View"],
+button[title*="View"],
+a[onclick*="View"] {
+    background: var(--dv-secondary);
+    border-color: var(--dv-secondary-dark);
+}
+
+a[href*="View"]:hover,
+input[value*="View"]:hover,
+button[title*="View"]:hover,
+a[onclick*="View"]:hover {
+    background: var(--dv-secondary-dark);
+}
+
+/* Add/New Button */
+a[href*="New"]::before,
+a[href*="Add"]::before,
+input[value*="New"]::before,
+input[value*="Add"]::before,
+button[title*="New"]::before,
+button[title*="Add"]::before {
+    content: "➕";
+}
+
+a[href*="New"],
+a[href*="Add"],
+input[value*="New"],
+input[value*="Add"],
+button[title*="New"],
+button[title*="Add"] {
+    background: var(--dv-success);
+    border-color: var(--dv-success-dark);
+}
+
+a[href*="New"]:hover,
+a[href*="Add"]:hover,
+input[value*="New"]:hover,
+input[value*="Add"]:hover,
+button[title*="New"]:hover,
+button[title*="Add"]:hover {
+    background: var(--dv-success-dark);
+}
+
+/* Enhanced Input Fields */
+.DataView input[type="text"],
+.DataView input[type="email"],
+.DataView input[type="number"],
+.DataView input[type="password"],
+.DataView input[type="date"],
+.DataView input[type="time"],
+.DataView textarea,
+.DataView select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid var(--dv-gray-200);
+    border-radius: var(--dv-border-radius);
+    font-size: var(--dv-font-size-sm);
+    background: var(--dv-white);
+    color: var(--dv-gray-800);
+    transition: var(--dv-transition);
+    box-shadow: var(--dv-shadow-sm);
+}
+
+.DataView input[type="text"]:focus,
+.DataView input[type="email"]:focus,
+.DataView input[type="number"]:focus,
+.DataView input[type="password"]:focus,
+.DataView input[type="date"]:focus,
+.DataView input[type="time"]:focus,
+.DataView textarea:focus,
+.DataView select:focus {
+    outline: none;
+    border-color: var(--dv-primary);
+    box-shadow: var(--dv-shadow), 0 0 0 3px rgba(37, 99, 235, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Enhanced Checkbox Styling - Critical Fix */
+.DataView input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px !important;
+    border: 2px solid var(--dv-gray-300) !important;
+    border-radius: var(--dv-border-radius-sm) !important;
+    background: var(--dv-white) !important;
+    cursor: pointer !important;
+    position: relative !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    transition: var(--dv-transition) !important;
+    box-shadow: var(--dv-shadow-sm) !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    margin: 2px !important;
+}
+
+.DataView input[type="checkbox"]:hover {
+    border-color: var(--dv-primary) !important;
+    box-shadow: var(--dv-shadow) !important;
+}
+
+.DataView input[type="checkbox"]:checked {
+    background: var(--dv-primary) !important;
+    border-color: var(--dv-primary) !important;
+    box-shadow: var(--dv-shadow-md) !important;
+}
+
+.DataView input[type="checkbox"]:checked::after {
+    content: '✓' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    color: var(--dv-white) !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.DataView input[type="checkbox"]:focus {
+    outline: none !important;
+    box-shadow: var(--dv-shadow), 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+}
+
+/* Enhanced Icons for Special Elements - Critical Fix */
+.FlatGroupIcon,
+.EditIcon,
+img[src*="Group"],
+img[src*="Edit"],
+img[src*="Delete"],
+img[src*="View"] {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: var(--dv-border-radius-sm) !important;
+    transition: var(--dv-transition) !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    box-shadow: var(--dv-shadow-sm) !important;
+    background: var(--dv-primary) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.FlatGroupIcon:hover,
+.EditIcon:hover,
+img[src*="Group"]:hover,
+img[src*="Edit"]:hover,
+img[src*="Delete"]:hover,
+img[src*="View"]:hover {
+    transform: scale(1.1) !important;
+    box-shadow: var(--dv-shadow-md) !important;
+}
+
+/* Fallback for missing icons */
+.FlatGroupIcon::after,
+.EditIcon::after {
+    content: "📊" !important;
+    color: var(--dv-white) !important;
+    font-size: 12px !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.EditIcon::after {
+    content: "✏️" !important;
+}
+
+/* Enhanced Pager Styling */
+.DataViewPager {
+    background: linear-gradient(135deg, var(--dv-gray-50) 0%, var(--dv-gray-100) 100%);
+    padding: 20px;
+    border-top: 1px solid var(--dv-gray-200);
+    text-align: center;
+}
+
+.DataViewPager table {
+    margin: 0 auto;
+}
+
+.DataViewPager a,
+.DataViewPager span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    margin: 0 2px;
+    border-radius: var(--dv-border-radius);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--dv-transition);
+    min-width: 40px;
+    height: 40px;
+    box-shadow: var(--dv-shadow-sm);
+}
+
+.DataViewPager a {
+    background: var(--dv-white);
+    color: var(--dv-primary);
+    border: 2px solid var(--dv-gray-200);
+}
+
+.DataViewPager a:hover {
+    background: var(--dv-primary);
+    color: var(--dv-white);
+    border-color: var(--dv-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--dv-shadow-md);
+}
+
+.DataViewPager span {
+    background: var(--dv-primary);
+    color: var(--dv-white);
+    border: 2px solid var(--dv-primary);
+    box-shadow: var(--dv-shadow-md);
+}
+
+/* Enhanced Footer Styling */
+.DataViewFooter {
+    background: linear-gradient(135deg, var(--dv-gray-100) 0%, var(--dv-gray-200) 100%);
+    padding: 16px 20px;
+    border-top: 1px solid var(--dv-gray-200);
+    font-size: var(--dv-font-size-sm);
+    color: var(--dv-secondary);
+    font-weight: 500;
+}
+
+/* Enhanced Dark Mode Support */
+.dark-mode,
+[data-theme="dark"] {
+    --dv-white: #1e293b;
+    --dv-gray-50: #334155;
+    --dv-gray-100: #475569;
+    --dv-gray-200: #64748b;
+    --dv-gray-300: #94a3b8;
+    --dv-gray-800: #f1f5f9;
+    --dv-gray-900: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+    .DataViewContainer {
+        background: #1e293b !important;
+        border-color: #475569 !important;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4) !important;
+    }
+    
+    table.DataView {
+        background: #1e293b !important;
+        color: #f1f5f9 !important;
+    }
+    
+    .DataViewHeader th {
+        background: linear-gradient(135deg, #334155 0%, #475569 100%) !important;
+        color: #f1f5f9 !important;
+        border-bottom-color: #3b82f6 !important;
+    }
+    
+    .DataViewRow {
+        background: #1e293b !important;
+    }
+    
+    .DataViewAlternatingRow {
+        background: #334155 !important;
+    }
+    
+    .DataViewRow:hover,
+    .DataViewAlternatingRow:hover {
+        background: #1e3a8a !important;
+    }
+    
+    .DataView input[type="text"],
+    .DataView input[type="email"],
+    .DataView input[type="number"],
+    .DataView input[type="password"],
+    .DataView input[type="date"],
+    .DataView input[type="time"],
+    .DataView textarea,
+    .DataView select {
+        background: #334155 !important;
+        border-color: #64748b !important;
+        color: #f1f5f9 !important;
+    }
+    
+    .DataView input[type="checkbox"] {
+        border-color: #64748b !important;
+        background: #334155 !important;
+    }
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 1024px) {
+    .DataViewContainer {
+        margin: 16px 0;
+        border-radius: var(--dv-border-radius);
+    }
+}
+
+@media (max-width: 768px) {
+    .DataViewContainer {
+        margin: 12px 0;
+        border-radius: var(--dv-border-radius-sm);
+    }
+    
+    table.DataView {
+        font-size: var(--dv-font-size-xs);
+    }
+    
+    .DataViewHeader th,
+    .DataViewRow td,
+    .DataViewAlternatingRow td {
+        padding: 10px 8px;
+    }
+    
+    .DataView a,
+    .DataView input[type="button"],
+    .DataView input[type="submit"],
+    .DataView button {
+        padding: 8px 12px;
+        font-size: var(--dv-font-size-xs);
+        min-width: 70px;
+        height: 36px;
+    }
+    
+    .DataView input[type="checkbox"] {
+        width: 18px !important;
+        height: 18px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .DataViewHeader th,
+    .DataViewRow td,
+    .DataViewAlternatingRow td {
+        padding: 8px 6px;
+    }
+    
+    .DataView a,
+    .DataView input[type="button"],
+    .DataView input[type="submit"],
+    .DataView button {
+        padding: 6px 10px;
+        min-width: 60px;
+        height: 32px;
+        font-size: 10px;
+    }
+}
+
+/* Enhanced Loading States */
+.DataView.loading {
+    opacity: 0.7;
+    pointer-events: none;
+    position: relative;
+}
+
+.DataView.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    margin: -16px 0 0 -16px;
+    border: 3px solid var(--dv-gray-200);
+    border-top: 3px solid var(--dv-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1000;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Focus States */
+.DataView *:focus-visible {
+    outline: 2px solid var(--dv-primary);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* Enhanced Print Styles */
+@media print {
+    .DataViewContainer {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+    
+    .DataView a,
+    .DataView input[type="button"],
+    .DataView input[type="submit"],
+    .DataView button {
+        display: none;
+    }
+    
+    .DataViewHeader th {
+        background: #f5f5f5 !important;
+        color: #000 !important;
+    }
+    
+    .DataViewRow,
+    .DataViewAlternatingRow {
+        background: #fff !important;
+    }
+}
+
+/* Animation Enhancements */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.DataViewContainer {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.DataViewRow,
+.DataViewAlternatingRow {
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* Accessibility Enhancements */
+.DataView [aria-hidden="true"] {
+    display: none;
+}
+
+.DataView [role="button"]:focus,
+.DataView [role="link"]:focus {
+    outline: 2px solid var(--dv-primary);
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .DataViewContainer {
+        border-width: 2px;
+        border-color: #000;
+    }
+    
+    .DataView a,
+    .DataView input[type="button"],
+    .DataView input[type="submit"],
+    .DataView button {
+        border: 2px solid;
+    }
+    
+    .DataView input[type="checkbox"] {
+        border-width: 3px !important;
+    }
+}

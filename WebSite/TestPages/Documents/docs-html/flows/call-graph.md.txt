@@ -1,0 +1,39 @@
+﻿# Flows and Call Graph (Initial)
+
+Entry points:
+- Global.asax: ApplicationServices.Initialize(); Session hooks
+- Master pages: Main.master, UniversalNavMaster.master (layout, menu)
+- Default.aspx (home)
+- Services/DataControllerService.asmx (ScriptService WebMethods)
+- Pages/MenuApi.aspx (WebMethod GetMenuTree)
+- Numerous ASPX/ASCX pages under Pages/ with code-behind events
+
+Generic lifecycle:
+- Request -> Global.asax -> Authenticate (Forms) -> Authorization (<location>) -> Master Page Init/Load -> Page_Init/Page_Load -> controls lifecycle -> render -> client JS
+
+Menu JSON path:
+- Client click toggle -> js/modern-menu-once.js -> POST /Pages/MenuApi.aspx/GetMenuTree -> MenuApi.GetMenuTree() -> SiteMap.RootNode children -> BuildNode() recursive -> CacheDependency(web.sitemap) -> JSON -> renderTree()
+
+Data service path:
+- Client script -> ASMX -> ControllerFactory.* -> eZee.Data controllers -> DB
+
+Call graph sketch:
+- Global.asax
+  - Application_Start -> eZee.Services.ApplicationServices.Initialize()
+  - Session_Start -> Session.Add("wcp","started")
+  - Session_End -> OnlineActiveUsers.OnlineUsersInstance.OnlineUsers.UpdateForUserLeave()
+
+- Pages/MenuApi.aspx.vb
+  - GetMenuTree() -> GetMenuVersion(HttpContext) -> BuildNode(SiteMapNode, HttpContext) -> SafeAttr(node, key)
+
+- App_Code/Services/DataControllerService.vb
+  - GetPage/GetListOfValues/Execute -> ControllerFactory.CreateDataController()
+  - GetCompletionList -> ControllerFactory.CreateAutoCompleteManager()
+  - Login/Logout/Roles -> ApplicationServices.*
+
+Implementation notes for per-function links:
+- In every per-file doc under /docs/files/*.md, add sections using "### Function: <Name>".
+- The builder outputs anchors id="function-<Name>" in the HTML mirrors.
+- In flows, provide a fallback "Function Links" table under each diagram with columns: Node, File, Function, Link.
+- Update search.json to include function-level entries so users can jump directly to a function via search.
+

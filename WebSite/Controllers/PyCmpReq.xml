@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="PyCmpReq" conflictDetection="overwriteChanges" label="Py Cmp Req" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"PyCmpReq"."Ownr_No" "Ownr_No"
+	,"Ownr_"."Ownr_ID" "Ownr_Ownr_ID"
+	,"Ownr_cmp_"."Grp_Nm" "Ownr_cmp_Grp_Nm"
+	,"Ownr_cmp_Grp_"."Grp_Nm" "Ownr_cmp_Grp_Grp_Nm"
+	,"PyCmpReq"."Cmp_Nm" "Cmp_Nm"
+	,"PyCmpReq"."Cmp_NmE" "Cmp_NmE"
+	,"PyCmpReq"."Cmp_Actv" "Cmp_Actv"
+	,"PyCmpReq"."Cmp_ActvE" "Cmp_ActvE"
+	,"PyCmpReq"."Cmp_Adrs" "Cmp_Adrs"
+	,"PyCmpReq"."Cmp_AdrsE" "Cmp_AdrsE"
+	,"PyCmpReq"."Cmp_Mngr" "Cmp_Mngr"
+	,"PyCmpReq"."Cmp_Typ" "Cmp_Typ"
+	,"PyCmpReq"."Main_Cmp" "Main_Cmp"
+	,"PyCmpReq"."Cmp_Cost" "Cmp_Cost"
+	,"PyCmpReq"."Cmp_Expns" "Cmp_Expns"
+	,"PyCmpReq"."No_Of_Prtnr" "No_Of_Prtnr"
+	,"PyCmpReq"."Ext_Emp" "Ext_Emp"
+	,"PyCmpReq"."Int_Emp" "Int_Emp"
+	,"PyCmpReq"."Land_Ownr" "Land_Ownr"
+	,"PyCmpReq"."Pay_Value" "Pay_Value"
+	,"PyCmpReq"."Pay_Typ" "Pay_Typ"
+	,"PyCmpReq"."St_Dt" "St_Dt"
+	,"PyCmpReq"."Ed_Dt" "Ed_Dt"
+	,"PyCmpReq"."Pay_Dt" "Pay_Dt"
+	,"PyCmpReq"."Entr_Dt" "Entr_Dt"
+	,"PyCmpReq"."Cmp_Aprv" "Cmp_Aprv"
+	,"PyCmpReq"."Cmp_Place" "Cmp_Place"
+	,"PyCmpReq"."Cmp_Status" "Cmp_Status"
+	,"PyCmpReq"."Cmp_CLasfic" "Cmp_CLasfic"
+	,"PyCmpReq"."Rec_State" "Rec_State"
+	,"PyCmpReq"."Cmp_Cntry_No" "Cmp_Cntry_No"
+	,"PyCmpReq"."Tot_Capital" "Tot_Capital"
+	,"PyCmpReq"."Cash_Capital" "Cash_Capital"
+	,"PyCmpReq"."Soild_Capital" "Soild_Capital"
+	,"PyCmpReq"."Creator_No" "Creator_No"
+	,"PyCmpReq"."Start_Paid" "Start_Paid"
+	,"PyCmpReq"."Stocks_Val" "Stocks_Val"
+	,"PyCmpReq"."Stocks_Num" "Stocks_Num"
+	,"PyCmpReq"."sgm" "sgm"
+	,"PyCmpReq"."ModifiedBy" "ModifiedBy"
+	,"PyCmpReq"."ModifiedOn" "ModifiedOn"
+	,"PyCmpReq"."CreatedBy" "CreatedBy"
+	,"PyCmpReq"."CreatedOn" "CreatedOn"
+from "dbo"."PyCmpReq" "PyCmpReq"
+	left join "dbo"."Pyownrmf" "Ownr_" on "PyCmpReq"."Ownr_No" = "Ownr_"."Ownr_No"
+	left join "dbo"."Pycnstnt" "Ownr_cmp_" on "Ownr_"."cmp_no" = "Ownr_cmp_"."Cmp_No"
+	left join "dbo"."Groupcnst" "Ownr_cmp_Grp_" on "Ownr_cmp_"."Grp_No" = "Ownr_cmp_Grp_"."Grp_No"
+]]></text>
+    </command>
+    <command id="Ownr_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Ownr_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Ownr_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Ownr No" readOnly="true" showInSummary="true">
+      <items style="Lookup" dataController="Pyownrmf" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Ownr_Ownr_ID" type="String" readOnly="true" oneToOne="Ownr_ID" label="Ownr#" length="15" />
+    <field name="Ownr_cmp_Grp_Nm" type="String" readOnly="true" label="Ownr cmp Grp Nm" length="255" />
+    <field name="Ownr_cmp_Grp_Grp_Nm" type="String" readOnly="true" label="Ownr cmp Grp Nm" length="200" />
+    <field name="Cmp_Nm" type="String" label="Cmp Nm" length="100" showInSummary="true" />
+    <field name="Cmp_NmE" type="String" label="Cmp Nm E" length="100" showInSummary="true" />
+    <field name="Cmp_Actv" type="String" label="Cmp Actv" length="200" showInSummary="true" />
+    <field name="Cmp_ActvE" type="String" label="Cmp Actv E" length="200" showInSummary="true" />
+    <field name="Cmp_Adrs" type="String" label="Cmp Adrs" length="100" />
+    <field name="Cmp_AdrsE" type="String" label="Cmp Adrs E" length="100" />
+    <field name="Cmp_Mngr" type="Int64" label="Cmp Mngr" />
+    <field name="Cmp_Typ" type="Int64" label="Cmp Typ" />
+    <field name="Main_Cmp" type="Int64" label="Main Cmp" />
+    <field name="Cmp_Cost" type="Decimal" label="Cmp Cost" />
+    <field name="Cmp_Expns" type="Decimal" label="Cmp Expns" />
+    <field name="No_Of_Prtnr" type="Int64" label="No Of Prtnr" />
+    <field name="Ext_Emp" type="Int64" label="Ext Emp" />
+    <field name="Int_Emp" type="Int64" label="Int Emp" />
+    <field name="Land_Ownr" type="Int64" label="Land Ownr" />
+    <field name="Pay_Value" type="Decimal" label="Pay Value" />
+    <field name="Pay_Typ" type="Int64" label="Pay Typ" />
+    <field name="St_Dt" type="DateTime" label="St Dt" />
+    <field name="Ed_Dt" type="DateTime" label="Ed Dt" />
+    <field name="Pay_Dt" type="DateTime" label="Pay Dt" />
+    <field name="Entr_Dt" type="DateTime" label="Entr Dt" />
+    <field name="Cmp_Aprv" type="String" label="Cmp Aprv" length="5" />
+    <field name="Cmp_Place" type="Int64" label="Cmp Place" />
+    <field name="Cmp_Status" type="Int64" label="Cmp Status" />
+    <field name="Cmp_CLasfic" type="Int64" label="Cmp C Lasfic" />
+    <field name="Rec_State" type="Boolean" label="Rec State" />
+    <field name="Cmp_Cntry_No" type="Int64" label="Cmp Cntry No" />
+    <field name="Tot_Capital" type="Decimal" label="Tot Capital" />
+    <field name="Cash_Capital" type="Decimal" label="Cash Capital" />
+    <field name="Soild_Capital" type="Decimal" label="Soild Capital" />
+    <field name="Creator_No" type="Int64" label="Creator No" />
+    <field name="Start_Paid" type="Decimal" label="Start Paid" />
+    <field name="Stocks_Val" type="Decimal" label="Stocks Val" />
+    <field name="Stocks_Num" type="Int64" label="Stocks Num" />
+    <field name="sgm" type="Int64" label="Sgm" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Py Cmp Req">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Ownr_No" aliasFieldName="Ownr_Ownr_ID" />
+        <dataField fieldName="Cmp_Nm" />
+        <dataField fieldName="Cmp_NmE" />
+        <dataField fieldName="Cmp_Actv" />
+        <dataField fieldName="Cmp_ActvE" />
+        <dataField fieldName="Cmp_Adrs" />
+        <dataField fieldName="Cmp_AdrsE" />
+        <dataField fieldName="Cmp_Mngr" columns="15" />
+        <dataField fieldName="Cmp_Typ" columns="15" />
+        <dataField fieldName="Main_Cmp" columns="15" />
+        <dataField fieldName="Cmp_Cost" dataFormatString="c" columns="15" />
+        <dataField fieldName="Cmp_Expns" dataFormatString="c" columns="15" />
+        <dataField fieldName="No_Of_Prtnr" columns="15" />
+        <dataField fieldName="Ext_Emp" columns="15" />
+        <dataField fieldName="Int_Emp" columns="15" />
+        <dataField fieldName="Land_Ownr" columns="15" />
+        <dataField fieldName="Pay_Value" dataFormatString="c" columns="15" />
+        <dataField fieldName="Pay_Typ" columns="15" />
+        <dataField fieldName="St_Dt" columns="10" />
+        <dataField fieldName="Ed_Dt" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Py Cmp Req">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Py Cmp Req" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Ownr_No" aliasFieldName="Ownr_Ownr_ID" hyperlinkFormatString="~/Pages/Pyownrmf.aspx?Ownr_No={Ownr_No}&amp;_controller=Pyownrmf&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Cmp_Nm" />
+            <dataField fieldName="Cmp_NmE" />
+            <dataField fieldName="Cmp_Actv" />
+            <dataField fieldName="Cmp_ActvE" />
+            <dataField fieldName="Cmp_Adrs" />
+            <dataField fieldName="Cmp_AdrsE" />
+            <dataField fieldName="Cmp_Mngr" columns="15" />
+            <dataField fieldName="Cmp_Typ" columns="15" />
+            <dataField fieldName="Main_Cmp" columns="15" />
+            <dataField fieldName="Cmp_Cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="Cmp_Expns" dataFormatString="c" columns="15" />
+            <dataField fieldName="No_Of_Prtnr" columns="15" />
+            <dataField fieldName="Ext_Emp" columns="15" />
+            <dataField fieldName="Int_Emp" columns="15" />
+            <dataField fieldName="Land_Ownr" columns="15" />
+            <dataField fieldName="Pay_Value" dataFormatString="c" columns="15" />
+            <dataField fieldName="Pay_Typ" columns="15" />
+            <dataField fieldName="St_Dt" columns="10" />
+            <dataField fieldName="Ed_Dt" columns="10" />
+            <dataField fieldName="Pay_Dt" columns="10" />
+            <dataField fieldName="Entr_Dt" columns="10" />
+            <dataField fieldName="Cmp_Aprv" columns="5" />
+            <dataField fieldName="Cmp_Place" columns="15" />
+            <dataField fieldName="Cmp_Status" columns="15" />
+            <dataField fieldName="Cmp_CLasfic" columns="15" />
+            <dataField fieldName="Rec_State" />
+            <dataField fieldName="Cmp_Cntry_No" columns="15" />
+            <dataField fieldName="Tot_Capital" dataFormatString="c" columns="15" />
+            <dataField fieldName="Cash_Capital" dataFormatString="c" columns="15" />
+            <dataField fieldName="Soild_Capital" dataFormatString="c" columns="15" />
+            <dataField fieldName="Creator_No" columns="15" />
+            <dataField fieldName="Start_Paid" dataFormatString="c" columns="15" />
+            <dataField fieldName="Stocks_Val" dataFormatString="c" columns="15" />
+            <dataField fieldName="Stocks_Num" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Ownr_cmp_Grp_Nm" />
+            <dataField fieldName="Ownr_cmp_Grp_Grp_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Py Cmp Req">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Py Cmp Req" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Cmp_Nm" />
+            <dataField fieldName="Cmp_NmE" />
+            <dataField fieldName="Cmp_Actv" />
+            <dataField fieldName="Cmp_ActvE" />
+            <dataField fieldName="Cmp_Adrs" />
+            <dataField fieldName="Cmp_AdrsE" />
+            <dataField fieldName="Cmp_Mngr" columns="15" />
+            <dataField fieldName="Cmp_Typ" columns="15" />
+            <dataField fieldName="Main_Cmp" columns="15" />
+            <dataField fieldName="Cmp_Cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="Cmp_Expns" dataFormatString="c" columns="15" />
+            <dataField fieldName="No_Of_Prtnr" columns="15" />
+            <dataField fieldName="Ext_Emp" columns="15" />
+            <dataField fieldName="Int_Emp" columns="15" />
+            <dataField fieldName="Land_Ownr" columns="15" />
+            <dataField fieldName="Pay_Value" dataFormatString="c" columns="15" />
+            <dataField fieldName="Pay_Typ" columns="15" />
+            <dataField fieldName="St_Dt" columns="10" />
+            <dataField fieldName="Ed_Dt" columns="10" />
+            <dataField fieldName="Pay_Dt" columns="10" />
+            <dataField fieldName="Entr_Dt" columns="10" />
+            <dataField fieldName="Cmp_Aprv" columns="5" />
+            <dataField fieldName="Cmp_Place" columns="15" />
+            <dataField fieldName="Cmp_Status" columns="15" />
+            <dataField fieldName="Cmp_CLasfic" columns="15" />
+            <dataField fieldName="Rec_State" />
+            <dataField fieldName="Cmp_Cntry_No" columns="15" />
+            <dataField fieldName="Tot_Capital" dataFormatString="c" columns="15" />
+            <dataField fieldName="Cash_Capital" dataFormatString="c" columns="15" />
+            <dataField fieldName="Soild_Capital" dataFormatString="c" columns="15" />
+            <dataField fieldName="Creator_No" columns="15" />
+            <dataField fieldName="Start_Paid" dataFormatString="c" columns="15" />
+            <dataField fieldName="Stocks_Val" dataFormatString="c" columns="15" />
+            <dataField fieldName="Stocks_Num" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="ITEMS" conflictDetection="overwriteChanges" label="Items" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text" tableName="ITEMS" custom="true">
+      <text><![CDATA[select
+	"ITEMS"."ID_comp" "ID_comp"
+	,"ITEMS"."IDGROUP" "IDGROUP"
+	,"TheIDGROUP"."ID_USER" "TheIDGROUPID_USER"
+	,"ITEMS"."ID_USER" "ID_USER"
+	,"ITEMS"."Description" "Description"
+	,"ITEMS"."ITEM" "ITEM"
+	,"ITEMS"."ITEME" "ITEME"
+	,"ITEMS"."Sup_No" "Sup_No"
+	,"Sup_"."Item_name" "Sup_Item_name"
+	,"ITEMS"."Unit_No" "Unit_No"
+	,"ITEMS"."Itm_Pur" "Itm_Pur"
+	,"ITEMS"."Itm_COst" "Itm_COst"
+	,"ITEMS"."Itm_Sal1" "Itm_Sal1"
+	,"ITEMS"."Itm_Sal2" "Itm_Sal2"
+	,"ITEMS"."Itm_Othr" "Itm_Othr"
+	,"ITEMS"."Itm_size" "Itm_size"
+	,"ITEMS"."Itm_colr" "Itm_colr"
+	,"ITEMS"."Barcod1" "Barcod1"
+	,"ITEMS"."Barcod2" "Barcod2"
+	,"ITEMS"."combin" "combin"
+	,"ITEMS"."openblnc" "openblnc"
+	,"ITEMS"."talbhad" "talbhad"
+	,"ITEMS"."sarfhad" "sarfhad"
+	,"ITEMS"."notes" "notes"
+	,"ITEMS"."id1" "id1"
+	,"id1"."DESCRP1" "id1DESCRP1"
+	,"ITEMS"."id2" "id2"
+	,"id2"."DESCRP1" "id2DESCRP1"
+	,"ITEMS"."id3" "id3"
+	,"Theid3"."DESCRP1" "Theid3DESCRP1"
+	,"ITEMS"."id4" "id4"
+	,"Theid4"."DESCRP1" "Theid4DESCRP1"
+	,"ITEMS"."id5" "id5"
+	,"Theid5"."DESCRP1" "Theid5DESCRP1"
+	,"ITEMS"."id6" "id6"
+	,"Theid6"."DESCRP1" "Theid6DESCRP1"
+	,"ITEMS"."id7" "id7"
+	,"Theid7"."DESCRP1" "Theid7DESCRP1"
+	,"ITEMS"."wid" "wid"
+	,"ITEMS"."len" "len"
+	,"ITEMS"."ModifiedBy" "ModifiedBy"
+	,"ITEMS"."ModifiedOn" "ModifiedOn"
+	,"ITEMS"."CreatedBy" "CreatedBy"
+	,"ITEMS"."CreatedOn" "CreatedOn"
+, TheIDGROUP.GROUPA
+from "dbo"."ITEMS" "ITEMS"
+
+	left join "dbo"."GROUPStk" "TheIDGROUP" on "ITEMS"."IDGROUP" = "TheIDGROUP"."IDGROUP"
+	left join "dbo"."ItemList" "Sup_" on "ITEMS"."Sup_No" = "Sup_"."ItemNo"
+	left join "dbo"."PYHldtypsv1" "id1" on "ITEMS"."id1" = "id1"."ID1"
+	left join "dbo"."PYHldtypsv2" "id2" on "ITEMS"."id2" = "id2"."ID2"
+	left join "dbo"."PYHldtypsv3" "Theid3" on "ITEMS"."id3" = "Theid3"."id3"
+	left join "dbo"."PYHldtypsv4" "Theid4" on "ITEMS"."id4" = "Theid4"."id4"
+	left join "dbo"."PYHldtypsv5" "Theid5" on "ITEMS"."id5" = "Theid5"."id5"
+	left join "dbo"."PYHldtypsv6" "Theid6" on "ITEMS"."id6" = "Theid6"."id6"
+	left join "dbo"."PYHldtypsv7" "Theid7" on "ITEMS"."id7" = "Theid7"."id7"
+]]></text>
+    </command>
+    <command id="ID_compIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID_comp" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ID_comp" type="Int64" allowNulls="false" isPrimaryKey="true" label="ID comp" readOnly="true" />
+    <field name="IDGROUP" type="Int64" label="Idgroup" showInSummary="true">
+      <items style="Lookup" dataController="GROUPStk" dataView="grid1" dataTextField="GROUPA" dataValueField="IDGROUP" />
+    </field>
+    <field name="TheIDGROUPID_USER" type="String" readOnly="true" label="IDGROUPID USER" length="50" />
+    <field name="ID_USER" type="String" label="Id User" length="50" showInSummary="true" contextFields="IDGROUP" calculated="true"/>
+    <field name="Description" type="String" allowQBE="false" allowSorting="false" label="Description" showInSummary="true" />
+    <field name="ITEM" type="String" label="Item" length="255" showInSummary="true" />
+    <field name="ITEME" type="String" label="Iteme" length="255" showInSummary="true" />
+    <field name="Sup_No" type="Int64" label="Sup No">
+      <items style="DropDownList" dataController="ItemList" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Sup_Item_name" type="String" readOnly="true" label="Sup Item name" length="150" />
+    <field name="Unit_No" type="String" label="Unit No" length="50">
+      <items style="DropDownList" dataController="Stunit" dataView="grid1" dataTextField="Unit_Nm" dataValueField="Unit_No" />
+    </field>
+    <field name="Itm_Pur" type="Single" label="lastprice"  roles="itemadmin"/> 
+    <field name="Itm_COst" type="Single" label="Itm COst" roles="itemadmin"/>
+    <field name="Itm_Sal1" type="Single" label="Itm Sal1" />
+    <field name="Itm_Sal2" type="Single" label="Itm Sal2" />
+    <field name="Itm_Othr" type="String" label="Itm Othr" length="40" />
+    <field name="Itm_size" type="String" label="Itm size" length="50" />
+    <field name="Itm_colr" type="String" label="Itm colr" length="50" />
+    <field name="Barcod1" type="String" label="Barcod1" length="50" />
+    <field name="Barcod2" type="String" label="Barcod2" length="50" />
+    <field name="combin" type="Boolean" label="Combin" />
+    <field name="openblnc" type="Single" label="Openblnc" />
+    <field name="talbhad" type="Single" label="Talbhad" />
+
+    <field name="wid" type="Decimal" label="wid" />
+    <field name="len" type="Decimal" label="len" />
+
+    <field name="notes" type="String" label="Notes" length="255" />
+    <field name="id1" type="Int64" label="Id1">
+      <items style="Lookup" dataController="PYHldtypsv1" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="id1DESCRP1" type="String" readOnly="true" label="id1 DESCRP1" length="255" />
+    <field name="id2" type="Int64" label="Id2">
+      <items style="Lookup" dataController="PYHldtypsv2" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="id2DESCRP1" type="String" readOnly="true" label="id2 DESCRP1" length="255" />
+    <field name="id3" type="Int64" label="Id3">
+      <items style="Lookup" dataController="PYHldtypsv3" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Theid3DESCRP1" type="String" readOnly="true" label="Theid3 DESCRP1" length="255" />
+    <field name="id4" type="Int64" label="Id4">
+      <items style="Lookup" dataController="PYHldtypsv4" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Theid4DESCRP1" type="String" readOnly="true" label="Theid4 DESCRP1" length="255" />
+    <field name="id5" type="Int64" label="Id5">
+      <items style="Lookup" dataController="PYHldtypsv5" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Theid5DESCRP1" type="String" readOnly="true" label="Theid5 DESCRP1" length="255" />
+    <field name="id6" type="Int64" label="Id6">
+      <items style="Lookup" dataController="PYHldtypsv6" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Theid6DESCRP1" type="String" readOnly="true" label="Theid6 DESCRP1" length="255" />
+    <field name="id7" type="Int64" label="Id7">
+      <items style="Lookup" dataController="PYHldtypsv7" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Theid7DESCRP1" type="String" readOnly="true" label="Theid7 DESCRP1" length="255" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+   
+    <field name="GROUPA" type="String" readOnly="true" label="GROUPA" hidden="false" length="150">
+         </field>
+   
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Items">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IDGROUP" aliasFieldName="GROUPA" />
+        <dataField fieldName="ID_USER" columns="50" />
+        <dataField fieldName="Description" rows="5" hidden="true" />
+        <dataField fieldName="ITEM" />
+
+        <dataField fieldName="wid" />
+        <dataField fieldName="len" />
+
+        <dataField fieldName="ITEME" hidden="true" />
+        <dataField fieldName="Unit_No" columns="50" />
+        <dataField fieldName="GROUPA"  />
+        <dataField fieldName="Itm_Sal1" columns="15" />
+        <dataField fieldName="Itm_Sal2" columns="15"  hidden="true" />
+        <dataField fieldName="Itm_Othr" columns="40" hidden="true" />
+        <dataField fieldName="Itm_colr" columns="50" hidden="true" />
+        <dataField fieldName="Itm_size" columns="50" hidden="true" />
+        <dataField fieldName="Barcod1" columns="50"  />
+        <dataField fieldName="Barcod2" columns="50" hidden="true" />
+        <dataField fieldName="combin" hidden="true" />
+        <dataField fieldName="openblnc" columns="15" hidden="true" />
+        <dataField fieldName="talbhad" columns="15" hidden="true" />
+        <dataField fieldName="sarfhad" columns="15"  hidden="true" />
+        <dataField fieldName="notes" hidden="true" />
+        <dataField fieldName="ID_comp"  />
+        <dataField fieldName="Sup_No" aliasFieldName="Sup_Item_name" hidden="true" />
+        <dataField fieldName="Itm_Pur" columns="15"  />
+        <dataField fieldName="Itm_COst" columns="15" />
+        <dataField fieldName="id1" aliasFieldName="id1DESCRP1" />
+        <dataField fieldName="id1DESCRP1" columns="15" hidden="true" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Items">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Items" flow="NewColumn"  newColumn="true">
+          <description />
+          <dataFields>
+            <dataField fieldName="IDGROUP" aliasFieldName="GROUPA" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="Description" rows="5" hidden="true" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="ITEME" />
+            <dataField fieldName="Sup_No" aliasFieldName="Sup_Item_name" />
+            <dataField fieldName="Unit_No" columns="50" />
+            <dataField fieldName="Itm_Pur" columns="15" />
+            <dataField fieldName="Itm_COst" columns="15" />
+            <dataField fieldName="Itm_Sal1" columns="15" />
+            <dataField fieldName="Itm_Sal2" columns="15" hidden="true" />
+            <dataField fieldName="Itm_Othr" columns="40" hidden="true" />
+            <dataField fieldName="Itm_size" columns="50" hidden="true" />
+            <dataField fieldName="Itm_colr" columns="50" hidden="true" />
+            <dataField fieldName="Barcod1" columns="50" />
+            <dataField fieldName="Barcod2" columns="50"  />
+            <dataField fieldName="ID_comp" />
+        <dataField fieldName="wid" />
+        <dataField fieldName="len" />
+          </dataFields>
+        </category>
+        <category headerText="More Detailes" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="combin" />
+            <dataField fieldName="openblnc" columns="15" hidden="true" />
+            <dataField fieldName="talbhad" columns="15" hidden="true" />
+            <dataField fieldName="sarfhad" columns="15" hidden="true" />
+            <dataField fieldName="notes"  hidden="true" />
+            <dataField fieldName="id1" aliasFieldName="id1DESCRP1" />
+            <dataField fieldName="id2" aliasFieldName="id2DESCRP1" />
+            <dataField fieldName="id3" aliasFieldName="Theid3DESCRP1" />
+            <dataField fieldName="id4" aliasFieldName="Theid4DESCRP1" />
+            <dataField fieldName="id5" aliasFieldName="Theid5DESCRP1" />
+            <dataField fieldName="id6" aliasFieldName="Theid6DESCRP1" />
+            <dataField fieldName="id7" aliasFieldName="Theid7DESCRP1" />
+            <dataField fieldName="ModifiedBy" columns="50" hidden="true" />
+            <dataField fieldName="ModifiedOn" columns="10" hidden="true" />
+            <dataField fieldName="CreatedBy" columns="50" hidden="true" />
+            <dataField fieldName="CreatedOn" columns="10" hidden="true" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Items">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Items" flow="NewColumn"  newColumn="true">
+          <description />
+          <dataFields>
+            <dataField fieldName="IDGROUP" aliasFieldName="GROUPA" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="Description" rows="5"  hidden="true" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="ITEME" />
+            <dataField fieldName="Sup_No" aliasFieldName="Sup_Item_name" />
+            <dataField fieldName="Unit_No" columns="50" />
+            <dataField fieldName="Itm_Pur" columns="15" />
+            <dataField fieldName="Itm_COst" columns="15" />
+            <dataField fieldName="Itm_Sal1" columns="15" />
+            <dataField fieldName="Itm_Sal2" columns="15" hidden="true" />
+            <dataField fieldName="Itm_Othr" columns="40" hidden="true" />
+            <dataField fieldName="Itm_size" columns="50" hidden="true" />
+            <dataField fieldName="Itm_colr" columns="50" hidden="true" />
+            <dataField fieldName="Barcod1" columns="50" />
+            <dataField fieldName="Barcod2" columns="50"  />
+        <dataField fieldName="wid" />
+        <dataField fieldName="len" />
+          </dataFields>
+        </category>
+        <category headerText="More Detailes" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="combin" />
+            <dataField fieldName="openblnc" columns="15" hidden="true" />
+            <dataField fieldName="talbhad" columns="15" hidden="true" />
+            <dataField fieldName="sarfhad" columns="15" hidden="true" />
+            <dataField fieldName="notes" />
+            <dataField fieldName="id1" aliasFieldName="id1DESCRP1" />
+            <dataField fieldName="id2" aliasFieldName="id2DESCRP1" />
+            <dataField fieldName="id3" aliasFieldName="Theid3DESCRP1" />
+            <dataField fieldName="id4" aliasFieldName="Theid4DESCRP1" />
+            <dataField fieldName="id5" aliasFieldName="Theid5DESCRP1" />
+            <dataField fieldName="id6" aliasFieldName="Theid6DESCRP1" />
+            <dataField fieldName="id7" aliasFieldName="Theid7DESCRP1" />
+            <dataField fieldName="ModifiedBy" columns="50" hidden="true" />
+            <dataField fieldName="ModifiedOn" columns="10" hidden="true" />
+            <dataField fieldName="CreatedBy" columns="50" hidden="true" />
+            <dataField fieldName="CreatedOn" columns="10" hidden="true" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+<action commandName="SQL" headerText="SetBouns" confirmation="_controller=Bounsupdate&#xD;&#xA;_width=500&#xD;&#xA;_title=Insert bouns&#xD;&#xA;_shortcut=true&#xD;&#xA;_view=createForm2&#xD;&#xA;" id="a102" >
+        <data><![CDATA[
+update items set  Barcod1=@Parameters_Recalldateagain where id1= @Parameters_id1
+ ]]></data> </action>
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+<businessRules>
+ <rule id="r107" commandName="Calculate" type="Sql" phase="Execute">
+  <![CDATA[
+--declare @sumtotal money
+-- execute stored procedure
+if @IDGROUP is not null  
+begin
+if @ID_USER is null  or len(@ID_USER)= 1
+begin
+set @ID_USER=0
+declare @maxidusre bigint
+declare @itmcount bigint=0 
+Set @itmcount=(select  count(*) FROM items WHERE IDGROUP=@IDGROUP)
+if @itmcount>0
+begin
+set @maxidusre=(select  max(ID_USER) FROM items WHERE IDGROUP=@IDGROUP)
+set @maxidusre=@maxidusre+1
+set @ID_USER= @maxidusre
+end
+if @itmcount=0
+begin
+set @ID_USER= (select  concat(@IDGROUP,'0001'))
+
+
+end 
+end
+end
+
+--if @house is  null  
+--begin
+set @Unit_No=1
+Set @Sup_No=1
+--end
+
+--if @madfoa is  null  
+--begin
+--set @madfoa=0
+--end
+--set @Door=(select  SUM(paplcprc) FROM STSALDTL   WHERE DOC_NO=@Doc_No)
+--set @rest=@house+@madfoa-@Door
+
+set @Result_RefreshChildren=1
+
+]]></rule>
+
+<rule id="r110" commandName="Edit" commandArgument="editForm1" type="Sql" phase="Before"><![CDATA[
+set @Result_Focus = 'KETAA'
+ ]]></rule>
+<rule id="r102" commandName="Insert|Update" type="Sql" phase="After" ><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @ID_comp,@ID_USER,0
+
+]]></rule>
+  </businessRules>
+
+</dataController>
+

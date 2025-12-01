@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="QschStudent" conflictDetection="overwriteChanges" label="Qsch Student" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"QschStudent"."Cstm_No" "Cstm_No"
+	,"QschStudent"."displayname" "displayname"
+	,"QschStudent"."Cstm_Nm" "Cstm_Nm"
+	,"QschStudent"."Cstm_Nme" "Cstm_Nme"
+	,"QschStudent"."Cstm_Adr" "Cstm_Adr"
+	,"QschStudent"."Cstm_Rsp" "Cstm_Rsp"
+	,"QschStudent"."Cstm_Email" "Cstm_Email"
+	,"QschStudent"."Cstm_Tel" "Cstm_Tel"
+	,"QschStudent"."Cstm_Fax" "Cstm_Fax"
+	,"QschStudent"."Cstm_Limt" "Cstm_Limt"
+	,"QschStudent"."Fbal_CR" "Fbal_CR"
+	,"QschStudent"."Fbal_Db" "Fbal_Db"
+	,"QschStudent"."acdcode" "acdcode"
+	,"QschStudent"."Stage" "Stage"
+	,"QschStudent"."GradeCode" "GradeCode"
+	,"QschStudent"."Class" "Class"
+	,"QschStudent"."schstatus_code" "schstatus_code"
+	,"QschStudent"."schstudenttypid" "schstudenttypid"
+	,"QschStudent"."SchstCivilidnumber" "SchstCivilidnumber"
+	,"QschStudent"."branch" "branch"
+from "dbo"."QschStudent" "QschStudent"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="Cstm_No" type="Int64" allowNulls="false" label="Cstm No" showInSummary="true" />
+    <field name="displayname" type="String" label="Displayname" length="150" showInSummary="true" />
+    <field name="Cstm_Nm" type="String" label="Cstm Nm" length="150" showInSummary="true" />
+    <field name="Cstm_Nme" type="String" label="Cstm Nme" length="100" showInSummary="true" />
+    <field name="Cstm_Adr" type="String" label="Cstm Adr" length="150" showInSummary="true" />
+    <field name="Cstm_Rsp" type="String" label="Cstm Rsp" length="255" />
+    <field name="Cstm_Email" type="String" label="Cstm Email" length="50" />
+    <field name="Cstm_Tel" type="String" label="Cstm Tel" length="8" />
+    <field name="Cstm_Fax" type="Int32" allowNulls="false" label="Cstm Fax" readOnly="true" />
+    <field name="Cstm_Limt" type="Int32" allowNulls="false" label="Cstm Limt" readOnly="true" />
+    <field name="Fbal_CR" type="Int32" allowNulls="false" label="Fbal CR" readOnly="true" />
+    <field name="Fbal_Db" type="Int32" allowNulls="false" label="Fbal Db" readOnly="true" />
+    <field name="acdcode" type="Int64" label="Acdcode" />
+    <field name="Stage" type="Int64" label="Stage" />
+    <field name="GradeCode" type="Int64" label="Grade Code" />
+    <field name="Class" type="Int64" label="Class" />
+    <field name="schstatus_code" type="Int64" label="Schstatus Code" />
+    <field name="schstudenttypid" type="Int64" label="Schstudenttypid" />
+    <field name="SchstCivilidnumber" type="String" label="Schst Civilidnumber" length="50" />
+    <field name="branch" type="Int64" label="Branch" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Qsch Student">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Cstm_No" columns="15" />
+        <dataField fieldName="displayname" />
+        <dataField fieldName="Cstm_Nm" />
+        <dataField fieldName="Cstm_Nme" />
+        <dataField fieldName="Cstm_Adr" />
+        <dataField fieldName="Cstm_Rsp" />
+        <dataField fieldName="Cstm_Email" columns="50" />
+        <dataField fieldName="Cstm_Tel" columns="8" />
+        <dataField fieldName="Cstm_Fax" columns="15" />
+        <dataField fieldName="Cstm_Limt" columns="15" />
+        <dataField fieldName="Fbal_CR" columns="15" />
+        <dataField fieldName="Fbal_Db" columns="15" />
+        <dataField fieldName="acdcode" columns="15" />
+        <dataField fieldName="Stage" columns="15" />
+        <dataField fieldName="GradeCode" columns="15" />
+        <dataField fieldName="Class" columns="15" />
+        <dataField fieldName="schstatus_code" columns="15" />
+        <dataField fieldName="schstudenttypid" columns="15" />
+        <dataField fieldName="SchstCivilidnumber" columns="50" />
+        <dataField fieldName="branch" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Qsch Student">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Qsch Student" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="displayname" />
+            <dataField fieldName="Cstm_Nm" />
+            <dataField fieldName="Cstm_Nme" />
+            <dataField fieldName="Cstm_Adr" />
+            <dataField fieldName="Cstm_Rsp" />
+            <dataField fieldName="Cstm_Email" columns="50" />
+            <dataField fieldName="Cstm_Tel" columns="8" />
+            <dataField fieldName="Cstm_Fax" columns="15" />
+            <dataField fieldName="Cstm_Limt" columns="15" />
+            <dataField fieldName="Fbal_CR" columns="15" />
+            <dataField fieldName="Fbal_Db" columns="15" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="Stage" columns="15" />
+            <dataField fieldName="GradeCode" columns="15" />
+            <dataField fieldName="Class" columns="15" />
+            <dataField fieldName="schstatus_code" columns="15" />
+            <dataField fieldName="schstudenttypid" columns="15" />
+            <dataField fieldName="SchstCivilidnumber" columns="50" />
+            <dataField fieldName="branch" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Qsch Student">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Qsch Student" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="displayname" />
+            <dataField fieldName="Cstm_Nm" />
+            <dataField fieldName="Cstm_Nme" />
+            <dataField fieldName="Cstm_Adr" />
+            <dataField fieldName="Cstm_Rsp" />
+            <dataField fieldName="Cstm_Email" columns="50" />
+            <dataField fieldName="Cstm_Tel" columns="8" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="Stage" columns="15" />
+            <dataField fieldName="GradeCode" columns="15" />
+            <dataField fieldName="Class" columns="15" />
+            <dataField fieldName="schstatus_code" columns="15" />
+            <dataField fieldName="schstudenttypid" columns="15" />
+            <dataField fieldName="SchstCivilidnumber" columns="50" />
+            <dataField fieldName="branch" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,141 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeFile="Mainme.master.vb" Inherits="Mainme" %>
+<!DOCTYPE html >
+<html xml:lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>" lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SKYsaas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, shrink-to-fit=yes" />
+    
+    <!-- Vendor CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+   
+    <!-- Existing JS/CSS (سيبهم زي ما هم) -->
+    <script src="/js/pagemenubar-mobile.js"></script>
+    <link rel="shortcut icon" href="/favicon.png" />
+    <link href="/css/footer-styles.css" rel="stylesheet" type="text/css" />
+    <link href="/css/notifications.css" rel="stylesheet" type="text/css" />
+    <link href="/css/pagemenubar.css" rel="stylesheet" type="text/css" />
+
+    <!-- Modern Menu styles (جديد) -->
+    <link href="/css/modern-menu.css" rel="stylesheet" type="text/css" />
+
+    <!-- Existing scripts -->
+    <script src="/js/notifications.js"></script>
+</head>
+<body id="Body" runat="server" data-menu-toggle-all="true" data-menu-collapse-on-load="true">
+    <form id="form1" runat="server">
+        <div>
+            <!-- Essential ASP.NET Controls -->
+            <act:ToolkitScriptManager ID="sm" runat="server" ScriptMode="Release" EnableScriptGlobalization="True" OnResolveScriptReference="sm_ResolveScriptReference" />
+            <aquarium:MembershipBar ID="mb" runat="server" RememberMeSet="False" DisplayLogin="False" IdleUserTimeout="15000" EnableHistory="False" EnablePermalinks="False" />
+            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+            
+            <!-- Mobile Toggle Button for PageMenuBar (هستخدمه لفتح الدروار برضه) -->
+            <button type="button" class="pagemenu-mobile-toggle advanced-button outline enhanced" id="menuToggleBtn" aria-label="Toggle PageMenuBar">
+                <i class="fas fa-bars"></i>
+                <span class="ripple-effect"></span>
+            </button>
+            
+            <!-- PageMenuBar - Legacy (موجود ومش هيتشال) -->
+            <div id="PageMenuBar" runat="server" class="PageMenuBar">
+                <!-- Hidden legacy menu -->
+            </div>
+
+            <!-- اخفاء الـ PageMenuBar زي الجدول المخفي (موجود بس مش ظاهر) hashed by mostafa -->
+            <style>
+              #<%= PageMenuBar.ClientID %> {
+                position: absolute !important;
+                left: -99999px !important;
+                top: -99999px !important;
+                visibility: visible !important;
+              }
+            </style>
+
+            <!-- Modern Menu Drawer (مضاف تحته) -->
+            <div id="ModernMenuHost" aria-hidden="true">
+              <div class="pm-backdrop" data-close="1"></div>
+              <aside class="pm-panel" role="dialog" aria-modal="true" aria-label="Application Menu">
+                <div class="pm-header">
+                  <div class="pm-title">Application Menu</div>
+                  <button type="button" class="pm-close" data-close="1" aria-label="Close Menu"><i class="fas fa-times"></i></button>
+                </div>
+                <input type="search" class="pm-search" placeholder="Filter…" aria-label="Filter menu" />
+                <div id="pm-tools-slot"></div>
+                <ul class="pm-list" id="pm-list" role="tree"></ul>
+              </aside>
+            </div>
+
+            <!-- Main Page Content -->
+            <div id="PageContent">
+                <asp:ContentPlaceHolder ID="PageContentPlaceHolder" runat="server" />
+            </div>
+
+            <!-- Menu Extender القديم (سيبه زي ما هو) -->
+            <aquarium:MenuExtender ID="Menu1" runat="server"
+                DataSourceID="SiteMapDataSource1"
+                TargetControlID="PageMenuBar"
+                HoverStyle="Auto"
+                PopupPosition="Left"
+                ShowSiteActions="False" />
+
+            <!-- Clear fix -->
+            <div class="clearfix"></div>
+
+            <!-- Additional Content Placeholder -->
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+            
+            <!-- Hidden label for domain name -->
+            <asp:Label ID="lblDomainName" runat="server" style="display: none;"></asp:Label>
+            <!-- Canonical ASMX base (published by code-behind) -->
+            <asp:HiddenField ID="AsmxBaseField" runat="server" />
+
+            <!-- Original PageBody Table - Keep for compatibility -->
+            <table id="PageBody" style="display: none">
+              <tr>
+                <td id="PageHeaderSideBar">
+                  <asp:Image ID="Image5" runat="server" SkinID="PageLogo" CssClass="PageLogo" />
+                </td>
+                <td id="PageHeaderLeftSide"></td>
+                <td id="PageHeaderContent">
+                  <div class="Header">
+                    <asp:SiteMapPath ID="SiteMapPath1" runat="server" SkinID="SiteMapPath" />
+                    <div class="Title">
+                      <asp:ContentPlaceHolder ID="PageTitleContentPlaceHolder" runat="server">Page Title</asp:ContentPlaceHolder>
+                    </div>
+                  </div>
+                </td>
+                <td id="PageHeaderRightSide"></td>
+              </tr>
+              <tr>
+                <td id="PageContentSideBar">
+                  <div class="SideBarBody">
+                    <asp:ContentPlaceHolder ID="SideBarPlaceHolder" runat="server" />
+                  </div>
+                  <div id="PageHeaderBar">
+                      <asp:ContentPlaceHolder ID="PageHeaderContentPlaceHolder" runat="server">SKY ERP</asp:ContentPlaceHolder>
+                  </div>
+                </td>
+                <td id="PageContentLeftSide"></td>
+                <td></td>
+                <td id="PageContentRightSide"></td>
+              </tr>
+              <tr>
+                <td id="PageFooterSideBar"></td>
+                <td id="PageFooterLeftSide"></td>
+                <td id="PageFooterContent"></td>
+                <td id="PageFooterRightSide"></td>
+              </tr>
+            </table>
+        </div>
+    </form>
+
+    <!-- Modern Menu JS (يجلب المنيو من MenuApi.aspx ويرندرها كشجرة + بادجات) -->
+    <script src="/js/modern-menu-once.js"></script>
+    <script>
+        // أول ضغطة على الزر هتعمل تحميل وبعدين تفتح الدروار
+        // لو عايز تجهّز المنيو من وقت تحميل الصفحة بدل أول ضغطة:
+        // window.addEventListener('load', function(){ window.initModernMenuOnce && window.initModernMenuOnce(); });
+    </script>
+</body>
+</html>

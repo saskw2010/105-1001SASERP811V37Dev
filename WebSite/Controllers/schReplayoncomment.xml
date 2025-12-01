@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="schReplayoncomment" conflictDetection="overwriteChanges" label="sch Replayoncomment" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"schReplayoncomment"."schReplayoncommentid" "schReplayoncommentid"
+	,"schReplayoncomment"."schCommentId" "schCommentId"
+	,"schComment"."schCommentEvent" "schCommentschCommentEvent"
+	,"schCommentbranch"."Desc1" "schCommentbranchDesc1"
+	,"schCommentbranchsgm"."sgm_Nm" "schCommentbranchsgmsgm_Nm"
+	,"schCommentbranchGender"."Gender" "schCommentbranchGenderGender"
+	,"schCommentbranchstage"."ShortDesc1" "schCommentbranchstageShortDesc1"
+	,"schCommentbranchschtyp"."schtypDesc" "schCommentbranchschtypschtypDesc"
+	,"schCommentacd"."AcademicYear" "schCommentacdAcademicYear"
+	,"schCommentacdGlFinperiod"."Fin_period_info" "schCommentacdGlFinperiodFin_period_info"
+	,"schCommentacdcode1"."AcademicYear" "schCommentacdcode1AcademicYear"
+	,"schCommentacdcode1GlFinperiod"."Fin_period_info" "schCommentacdcode1GlFinperiodFin_period_info"
+	,"schCommentClass"."ClassDesc1" "schCommentClassClassDesc1"
+	,"schCommentGrade"."ShortDesc1" "schCommentGradeShortDesc1"
+	,"schCommentGradeacd"."AcademicYear" "schCommentGradeacdAcademicYear"
+	,"schCommentGradeStage"."ShortDesc1" "schCommentGradeStageShortDesc1"
+	,"schCommentStudent"."SchstCivilidnumber" "schCommentStudentSchstCivilidnumber"
+	,"schCommentStudentarea"."Desc1" "schCommentStudentareaDesc1"
+	,"schCommentStudentbranch"."Desc1" "schCommentStudentbranchDesc1"
+	,"schCommentStudentCntry_"."Cntry_Nm" "schCommentStudentCntry_Cntry_Nm"
+	,"schCommentStudentGender"."Gender" "schCommentStudentGenderGender"
+	,"schCommentStudentReligion"."Reljan_nm" "schCommentStudentReligionReljan_nm"
+	,"schCommentStudentstate"."State_Nm" "schCommentStudentstateState_Nm"
+	,"schCommentStudentid"."name_1" "schCommentStudentidname_1"
+	,"schCommentStudentacd"."AcademicYear" "schCommentStudentacdAcademicYear"
+	,"schCommentStudentClass"."ClassDesc1" "schCommentStudentClassClassDesc1"
+	,"schCommentStudentSchclasskind"."Schclasskinddesc" "schCommentStudentSchclasskindSchclasskinddesc"
+	,"schCommentStudentFather"."fathfirstname1" "schCommentStudentFatherfathfirstname1"
+	,"schCommentStudentGrade"."ShortDesc1" "schCommentStudentGradeShortDesc1"
+	,"schCommentStudentMother"."firstname1" "schCommentStudentMotherfirstname1"
+	,"schCommentStudentStage"."ShortDesc1" "schCommentStudentStageShortDesc1"
+	,"schCommentStudentschstatus_"."schstatus_name" "schCommentStudentschstatus_schstatus_name"
+	,"schCommentStudentschstclasskinddmg"."schstclasskinddmgDesc" "schCommentStudentschstclasskinddmgschstclasskinddmgDesc"
+	,"schCommentStudentschstspl"."schstsplDsc" "schCommentStudentschstsplschstsplDsc"
+	,"schCommentStudentschsthlthcase"."schsthlthcaseDesc" "schCommentStudentschsthlthcaseschsthlthcaseDesc"
+	,"schCommentStudentstudentsefa"."studentsefaar" "schCommentStudentstudentsefastudentsefaar"
+	,"schCommentStudentschstudenttyp"."schstudenttyp" "schCommentStudentschstudenttypschstudenttyp"
+	,"schCommentStudentSchtransfer"."SchtransferDesc" "schCommentStudentSchtransferSchtransferDesc"
+	,"schReplayoncomment"."schReplayoncomment" "schReplayoncomment"
+	,"schReplayoncomment"."ModifiedBy" "ModifiedBy"
+	,"schReplayoncomment"."ModifiedOn" "ModifiedOn"
+	,"schReplayoncomment"."CreatedBy" "CreatedBy"
+	,"schReplayoncomment"."CreatedOn" "CreatedOn"
+from "dbo"."schReplayoncomment" "schReplayoncomment"
+	left join "dbo"."schComments" "schComment" on "schReplayoncomment"."schCommentId" = "schComment"."schCommentId"
+	left join "dbo"."schBranch" "schCommentbranch" on "schComment"."branch" = "schCommentbranch"."branch"
+	left join "dbo"."glmulcmp" "schCommentbranchsgm" on "schCommentbranch"."sgm" = "schCommentbranchsgm"."sgmid"
+	left join "dbo"."PyGender" "schCommentbranchGender" on "schCommentbranch"."Genderid" = "schCommentbranchGender"."Genderid"
+	left join "dbo"."schStage" "schCommentbranchstage" on "schCommentbranch"."stagecode" = "schCommentbranchstage"."Code"
+	left join "dbo"."schtyp" "schCommentbranchschtyp" on "schCommentbranch"."schtypid" = "schCommentbranchschtyp"."schtypid"
+	left join "dbo"."schAcademicyear" "schCommentacd" on "schComment"."acdcode" = "schCommentacd"."Code"
+	left join "dbo"."GlFinanceperiod" "schCommentacdGlFinperiod" on "schCommentacd"."GlFinperiodID" = "schCommentacdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."schAcademicyear" "schCommentacdcode1" on "schComment"."acdcode1" = "schCommentacdcode1"."Code"
+	left join "dbo"."GlFinanceperiod" "schCommentacdcode1GlFinperiod" on "schCommentacdcode1"."GlFinperiodID" = "schCommentacdcode1GlFinperiod"."GlFinperiodID"
+	left join "dbo"."schClassConfig" "schCommentClass" on "schComment"."Class" = "schCommentClass"."classcode"
+	left join "dbo"."schGrade" "schCommentGrade" on "schComment"."GradeCode" = "schCommentGrade"."GradeCode"
+	left join "dbo"."schAcademicyear" "schCommentGradeacd" on "schCommentGrade"."acdcode" = "schCommentGradeacd"."Code"
+	left join "dbo"."schStage" "schCommentGradeStage" on "schCommentGrade"."StageCode" = "schCommentGradeStage"."Code"
+	left join "dbo"."SchStudent" "schCommentStudent" on "schComment"."StudentCode" = "schCommentStudent"."StudentCode"
+	left join "dbo"."schArea" "schCommentStudentarea" on "schCommentStudent"."area" = "schCommentStudentarea"."Code"
+	left join "dbo"."schBranch" "schCommentStudentbranch" on "schCommentStudent"."branch" = "schCommentStudentbranch"."branch"
+	left join "dbo"."PYCntry" "schCommentStudentCntry_" on "schCommentStudent"."Cntry_No" = "schCommentStudentCntry_"."Cntry_No"
+	left join "dbo"."PyGender" "schCommentStudentGender" on "schCommentStudent"."Genderid" = "schCommentStudentGender"."Genderid"
+	left join "dbo"."PyReljan" "schCommentStudentReligion" on "schCommentStudent"."Religion" = "schCommentStudentReligion"."reljan"
+	left join "dbo"."PyState" "schCommentStudentstate" on "schCommentStudent"."state" = "schCommentStudentstate"."State"
+	left join "dbo"."reg_other_schools" "schCommentStudentid" on "schCommentStudent"."id" = "schCommentStudentid"."id"
+	left join "dbo"."schAcademicyear" "schCommentStudentacd" on "schCommentStudent"."acdcode" = "schCommentStudentacd"."Code"
+	left join "dbo"."schClassConfig" "schCommentStudentClass" on "schCommentStudent"."Class" = "schCommentStudentClass"."classcode"
+	left join "dbo"."Schclasskindlist" "schCommentStudentSchclasskind" on "schCommentStudent"."Schclasskindid" = "schCommentStudentSchclasskind"."Schclasskindid"
+	left join "dbo"."schFather" "schCommentStudentFather" on "schCommentStudent"."FatherCode" = "schCommentStudentFather"."FatherCode"
+	left join "dbo"."schGrade" "schCommentStudentGrade" on "schCommentStudent"."GradeCode" = "schCommentStudentGrade"."GradeCode"
+	left join "dbo"."schMother" "schCommentStudentMother" on "schCommentStudent"."MotherCode" = "schCommentStudentMother"."MotherCode"
+	left join "dbo"."schStage" "schCommentStudentStage" on "schCommentStudent"."Stage" = "schCommentStudentStage"."Code"
+	left join "dbo"."schstatus" "schCommentStudentschstatus_" on "schCommentStudent"."schstatus_code" = "schCommentStudentschstatus_"."schstatus_code"
+	left join "dbo"."schstclasskinddmg" "schCommentStudentschstclasskinddmg" on "schCommentStudent"."schstclasskinddmgid" = "schCommentStudentschstclasskinddmg"."schstclasskinddmgid"
+	left join "dbo"."schstespetialest" "schCommentStudentschstspl" on "schCommentStudent"."schstsplid" = "schCommentStudentschstspl"."schstsplid"
+	left join "dbo"."schsthealthcase" "schCommentStudentschsthlthcase" on "schCommentStudent"."schsthlthcaseid" = "schCommentStudentschsthlthcase"."schsthlthcaseid"
+	left join "dbo"."Schstudentsefa" "schCommentStudentstudentsefa" on "schCommentStudent"."studentsefa" = "schCommentStudentstudentsefa"."studentsefaid"
+	left join "dbo"."schstudenttyp" "schCommentStudentschstudenttyp" on "schCommentStudent"."schstudenttypid" = "schCommentStudentschstudenttyp"."schstudenttypid"
+	left join "dbo"."Schtransferlist" "schCommentStudentSchtransfer" on "schCommentStudent"."Schtransferid" = "schCommentStudentSchtransfer"."Schtransferid"
+]]></text>
+    </command>
+    <command id="schReplayoncommentidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="schReplayoncommentid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="schReplayoncommentid" type="Int64" allowNulls="false" isPrimaryKey="true" label="sch Replayoncommentid" readOnly="true" />
+    <field name="schCommentId" type="Int64" allowNulls="false" label="sch Comment#" showInSummary="true">
+      <items style="Lookup" dataController="schComments" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="schCommentschCommentEvent" type="String" readOnly="true" label="sch Commentsch Comment Event" length="500" />
+    <field name="schCommentbranchDesc1" type="String" readOnly="true" label="sch Commentbranch Desc1" length="50" />
+    <field name="schCommentbranchsgmsgm_Nm" type="String" readOnly="true" label="sch Commentbranchsgmsgm Nm" length="255" />
+    <field name="schCommentbranchGenderGender" type="String" readOnly="true" label="sch Commentbranch Gender" length="100" />
+    <field name="schCommentbranchstageShortDesc1" type="String" readOnly="true" label="sch Commentbranchstage Short Desc1" length="50" />
+    <field name="schCommentbranchschtypschtypDesc" type="String" readOnly="true" label="sch Commentbranchschtypschtyp Desc" length="150" />
+    <field name="schCommentacdAcademicYear" type="String" readOnly="true" label="sch Commentacd Academic Year" length="150" />
+    <field name="schCommentacdGlFinperiodFin_period_info" type="String" readOnly="true" label="sch Commentacd Gl Finperiod Fin period info" length="150" />
+    <field name="schCommentacdcode1AcademicYear" type="String" readOnly="true" label="sch Commentacdcode1 Academic Year" length="150" />
+    <field name="schCommentacdcode1GlFinperiodFin_period_info" type="String" readOnly="true" label="sch Commentacdcode1 Gl Finperiod Fin period info" length="150" />
+    <field name="schCommentClassClassDesc1" type="String" readOnly="true" label="sch Comment Class Desc1" length="15" />
+    <field name="schCommentGradeShortDesc1" type="String" readOnly="true" label="sch Comment Grade Short Desc1" length="50" />
+    <field name="schCommentGradeacdAcademicYear" type="String" readOnly="true" label="sch Comment Gradeacd Academic Year" length="150" />
+    <field name="schCommentGradeStageShortDesc1" type="String" readOnly="true" label="sch Comment Grade Stage Short Desc1" length="50" />
+    <field name="schCommentStudentSchstCivilidnumber" type="String" readOnly="true" label="sch Comment Student Schst Civilidnumber" length="50" />
+    <field name="schCommentStudentareaDesc1" type="String" readOnly="true" label="sch Comment Studentarea Desc1" length="40" />
+    <field name="schCommentStudentbranchDesc1" type="String" readOnly="true" label="sch Comment Studentbranch Desc1" length="50" />
+    <field name="schCommentStudentCntry_Cntry_Nm" type="String" readOnly="true" label="sch Comment Student Cntry Nm" length="255" />
+    <field name="schCommentStudentGenderGender" type="String" readOnly="true" label="sch Comment Student Gender" length="100" />
+    <field name="schCommentStudentReligionReljan_nm" type="String" readOnly="true" label="sch Comment Student Religion Reljan nm" length="50" />
+    <field name="schCommentStudentstateState_Nm" type="String" readOnly="true" label="sch Comment Studentstate State Nm" length="60" />
+    <field name="schCommentStudentidname_1" type="String" readOnly="true" label="sch Comment Studentidname 1" length="50" />
+    <field name="schCommentStudentacdAcademicYear" type="String" readOnly="true" label="sch Comment Studentacd Academic Year" length="150" />
+    <field name="schCommentStudentClassClassDesc1" type="String" readOnly="true" label="sch Comment Student Class Desc1" length="15" />
+    <field name="schCommentStudentSchclasskindSchclasskinddesc" type="String" readOnly="true" label="sch Comment Student Schclasskind Schclasskinddesc" length="255" />
+    <field name="schCommentStudentFatherfathfirstname1" type="String" readOnly="true" label="sch Comment Student Fatherfathfirstname1" length="255" />
+    <field name="schCommentStudentGradeShortDesc1" type="String" readOnly="true" label="sch Comment Student Grade Short Desc1" length="50" />
+    <field name="schCommentStudentMotherfirstname1" type="String" readOnly="true" label="sch Comment Student Motherfirstname1" length="50" />
+    <field name="schCommentStudentStageShortDesc1" type="String" readOnly="true" label="sch Comment Student Stage Short Desc1" length="50" />
+    <field name="schCommentStudentschstatus_schstatus_name" type="String" readOnly="true" label="sch Comment Studentschstatus schstatus name" length="50" />
+    <field name="schCommentStudentschstclasskinddmgschstclasskinddmgDesc" type="String" readOnly="true" label="sch Comment Studentschstclasskinddmgschstclasskinddmg Desc" length="150" />
+    <field name="schCommentStudentschstsplschstsplDsc" type="String" readOnly="true" label="sch Comment Studentschstsplschstspl Dsc" length="150" />
+    <field name="schCommentStudentschsthlthcaseschsthlthcaseDesc" type="String" readOnly="true" label="sch Comment Studentschsthlthcaseschsthlthcase Desc" length="150" />
+    <field name="schCommentStudentstudentsefastudentsefaar" type="String" readOnly="true" label="sch Comment Studentstudentsefastudentsefaar" length="150" />
+    <field name="schCommentStudentschstudenttypschstudenttyp" type="String" readOnly="true" label="sch Comment Studentschstudenttypschstudenttyp" length="50" />
+    <field name="schCommentStudentSchtransferSchtransferDesc" type="String" readOnly="true" label="sch Comment Student Schtransfer Desc" length="150" />
+    <field name="schReplayoncomment" type="String" allowQBE="false" allowSorting="false" label="sch Replayoncomment" showInSummary="true" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" showInSummary="true" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" showInSummary="true" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" showInSummary="true" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="sch Replayoncomment">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="schCommentId" aliasFieldName="schCommentschCommentEvent" />
+        <dataField fieldName="schReplayoncomment" rows="5" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="schCommentbranchDesc1" columns="50" />
+        <dataField fieldName="schCommentbranchsgmsgm_Nm" />
+        <dataField fieldName="schCommentbranchGenderGender" />
+        <dataField fieldName="schCommentbranchstageShortDesc1" columns="50" />
+        <dataField fieldName="schCommentbranchschtypschtypDesc" />
+        <dataField fieldName="schCommentacdAcademicYear" />
+        <dataField fieldName="schCommentacdGlFinperiodFin_period_info" />
+        <dataField fieldName="schCommentacdcode1AcademicYear" />
+        <dataField fieldName="schCommentacdcode1GlFinperiodFin_period_info" />
+        <dataField fieldName="schCommentClassClassDesc1" columns="15" />
+        <dataField fieldName="schCommentGradeShortDesc1" columns="50" />
+        <dataField fieldName="schCommentGradeacdAcademicYear" />
+        <dataField fieldName="schCommentGradeStageShortDesc1" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review sch Replayoncomment">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="sch Replayoncomment" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="schCommentId" aliasFieldName="schCommentschCommentEvent" hyperlinkFormatString="~/Pages/schComments.aspx?schCommentId={schCommentId}&amp;_controller=schComments&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="schReplayoncomment" rows="5" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="schCommentbranchDesc1" columns="50" />
+            <dataField fieldName="schCommentbranchsgmsgm_Nm" />
+            <dataField fieldName="schCommentbranchGenderGender" />
+            <dataField fieldName="schCommentbranchstageShortDesc1" columns="50" />
+            <dataField fieldName="schCommentbranchschtypschtypDesc" />
+            <dataField fieldName="schCommentacdAcademicYear" />
+            <dataField fieldName="schCommentacdGlFinperiodFin_period_info" />
+            <dataField fieldName="schCommentacdcode1AcademicYear" />
+            <dataField fieldName="schCommentacdcode1GlFinperiodFin_period_info" />
+            <dataField fieldName="schCommentClassClassDesc1" columns="15" />
+            <dataField fieldName="schCommentGradeShortDesc1" columns="50" />
+            <dataField fieldName="schCommentGradeacdAcademicYear" />
+            <dataField fieldName="schCommentGradeStageShortDesc1" columns="50" />
+            <dataField fieldName="schCommentStudentSchstCivilidnumber" columns="50" />
+            <dataField fieldName="schCommentStudentareaDesc1" columns="40" />
+            <dataField fieldName="schCommentStudentbranchDesc1" columns="50" />
+            <dataField fieldName="schCommentStudentCntry_Cntry_Nm" />
+            <dataField fieldName="schCommentStudentGenderGender" />
+            <dataField fieldName="schCommentStudentReligionReljan_nm" columns="50" />
+            <dataField fieldName="schCommentStudentstateState_Nm" />
+            <dataField fieldName="schCommentStudentidname_1" columns="50" />
+            <dataField fieldName="schCommentStudentacdAcademicYear" />
+            <dataField fieldName="schCommentStudentClassClassDesc1" columns="15" />
+            <dataField fieldName="schCommentStudentSchclasskindSchclasskinddesc" />
+            <dataField fieldName="schCommentStudentFatherfathfirstname1" />
+            <dataField fieldName="schCommentStudentGradeShortDesc1" columns="50" />
+            <dataField fieldName="schCommentStudentMotherfirstname1" columns="50" />
+            <dataField fieldName="schCommentStudentStageShortDesc1" columns="50" />
+            <dataField fieldName="schCommentStudentschstatus_schstatus_name" columns="50" />
+            <dataField fieldName="schCommentStudentschstclasskinddmgschstclasskinddmgDesc" />
+            <dataField fieldName="schCommentStudentschstsplschstsplDsc" />
+            <dataField fieldName="schCommentStudentschsthlthcaseschsthlthcaseDesc" />
+            <dataField fieldName="schCommentStudentstudentsefastudentsefaar" />
+            <dataField fieldName="schCommentStudentschstudenttypschstudenttyp" columns="50" />
+            <dataField fieldName="schCommentStudentSchtransferSchtransferDesc" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New sch Replayoncomment">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New sch Replayoncomment" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="schCommentId" aliasFieldName="schCommentschCommentEvent" />
+            <dataField fieldName="schReplayoncomment" rows="5" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid" />
+    <actionGroup id="ag2" scope="Form" />
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true" />
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true" />
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record" />
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row" />
+    <actionGroup id="ag9" scope="ActionColumn" />
+  </actions>
+</dataController>

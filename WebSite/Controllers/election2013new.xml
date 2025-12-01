@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="election2013new" conflictDetection="overwriteChanges" label="Election2013new" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"election2013new"."abslutecode" "abslutecode"
+	,"election2013new"."Genderid" "Genderid"
+	,"Gender"."electiogenderdesc" "Genderelectiogenderdesc"
+	,"election2013new"."Gadwalcode" "Gadwalcode"
+	,"Gadwal"."gadwalname" "Gadwalgadwalname"
+	,"Gadwaldwaer"."dwaername" "Gadwaldwaerdwaername"
+	,"election2013new"."dwaercode" "dwaercode"
+	,"dwaer"."dwaername" "dwaerdwaername"
+	,"election2013new"."keedno" "keedno"
+	,"election2013new"."keeddate" "keeddate"
+	,"election2013new"."keedharf" "keedharf"
+	,"election2013new"."gensiyano" "gensiyano"
+	,"election2013new"."madanyno" "madanyno"
+	,"election2013new"."firstname" "firstname"
+	,"election2013new"."secondname" "secondname"
+	,"election2013new"."theridname" "theridname"
+	,"election2013new"."forthname" "forthname"
+	,"election2013new"."familyname" "familyname"
+	,"election2013new"."fulname" "fulname"
+	,"election2013new"."birthdate" "birthdate"
+	,"election2013new"."electionjobid" "electionjobid"
+	,"electionjob"."electionjobDesc" "electionjobelectionjobDesc"
+	,"election2013new"."dwaerbaldicode" "dwaerbaldicode"
+	,"dwaerbaldi"."اسم الدائرة" "dwaerbaldiاسمالدائرة"
+	,"election2013new"."Gadwalcodebaldi" "Gadwalcodebaldi"
+	,"TheGadwalcodebaldi"."اسم الجدول" "TheGadwalcodebaldiاسمالجدول"
+	,"TheGadwalcodebaldiرقمالدائرة"."اسم الدائرة" "TheGadwalcodebaldiرقمالدائرةاسمالدائرة"
+	,"election2013new"."Mobile" "Mobile"
+	,"election2013new"."Telphone2" "Telphone2"
+	,"election2013new"."adress" "adress"
+	,"election2013new"."halabayan" "halabayan"
+	,"election2013new"."mawkof" "mawkof"
+	,"election2013new"."Age" "Age"
+	,"election2013new"."ModifiedBy" "ModifiedBy"
+	,"election2013new"."ModifiedOn" "ModifiedOn"
+	,"election2013new"."CreatedBy" "CreatedBy"
+	,"election2013new"."CreatedOn" "CreatedOn"
+from "dbo"."election2013new" "election2013new"
+	left join "dbo"."electiongender" "Gender" on "election2013new"."Genderid" = "Gender"."Genderid"
+	left join "dbo"."ELectionGadwal" "Gadwal" on "election2013new"."Gadwalcode" = "Gadwal"."Gadwalcode"
+	left join "dbo"."ELectionDAWAER" "Gadwaldwaer" on "Gadwal"."dwaercode" = "Gadwaldwaer"."dwaercode"
+	left join "dbo"."ELectionDAWAER" "dwaer" on "election2013new"."dwaercode" = "dwaer"."dwaercode"
+	left join "dbo"."electionjob" "electionjob" on "election2013new"."electionjobid" = "electionjob"."electionjobid"
+	left join "dbo"."ELectionDAWAERbaldi" "dwaerbaldi" on "election2013new"."dwaerbaldicode" = "dwaerbaldi"."رقم الدائرة"
+	left join "dbo"."ELectionGadwalbaldi" "TheGadwalcodebaldi" on "election2013new"."Gadwalcodebaldi" = "TheGadwalcodebaldi"."Gadwalcodebaldi"
+	left join "dbo"."ELectionDAWAERbaldi" "TheGadwalcodebaldiرقمالدائرة" on "TheGadwalcodebaldi"."رقم الدائرة" = "TheGadwalcodebaldiرقمالدائرة"."رقم الدائرة"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="abslutecode" type="Int64" allowNulls="false" isPrimaryKey="true" label="Abslutecode" />
+    <field name="Genderid" type="Int64" label="Genderid" showInSummary="true">
+      <items style="Lookup" dataController="electiongender" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Genderelectiogenderdesc" type="String" readOnly="true" label="Genderelectiogenderdesc" length="50" />
+    <field name="Gadwalcode" type="Int64" label="Gadwalcode" showInSummary="true">
+      <items style="Lookup" dataController="ELectionGadwal" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Gadwalgadwalname" type="String" readOnly="true" label="Gadwalgadwalname" length="255" />
+    <field name="Gadwaldwaerdwaername" type="String" readOnly="true" label="Gadwaldwaerdwaername" length="255" />
+    <field name="dwaercode" type="Int64" label="Dwaercode" showInSummary="true">
+      <items style="Lookup" dataController="ELectionDAWAER" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="dwaerdwaername" type="String" readOnly="true" label="Dwaerdwaername" length="255" />
+    <field name="keedno" type="String" label="Keedno" length="50" showInSummary="true" />
+    <field name="keeddate" type="String" label="Keeddate" length="50" showInSummary="true" />
+    <field name="keedharf" type="String" label="Keedharf" length="255" />
+    <field name="gensiyano" type="String" label="Gensiyano" length="50" />
+    <field name="madanyno" type="String" label="Madanyno" length="50" />
+    <field name="firstname" type="String" label="Firstname" length="255" />
+    <field name="secondname" type="String" label="Secondname" length="255" />
+    <field name="theridname" type="String" label="Theridname" length="255" />
+    <field name="forthname" type="String" label="Forthname" length="255" />
+    <field name="familyname" type="String" label="Familyname" length="255" />
+    <field name="fulname" type="String" label="Fulname" length="255" />
+    <field name="birthdate" type="DateTime" label="Birthdate" />
+    <field name="electionjobid" type="Int64" label="Electionjobid">
+      <items style="Lookup" dataController="electionjob" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="electionjobelectionjobDesc" type="String" readOnly="true" label="electionjobelectionjob Desc" length="150" />
+    <field name="dwaerbaldicode" type="Int64" label="Dwaerbaldicode">
+      <items style="Lookup" dataController="ELectionDAWAERbaldi" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="dwaerbaldiاسمالدائرة" type="String" readOnly="true" label="Dwaerbaldi" length="255" />
+    <field name="Gadwalcodebaldi" type="Int64" label="Gadwalcodebaldi">
+      <items style="Lookup" dataController="ELectionGadwalbaldi" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheGadwalcodebaldiاسمالجدول" type="String" readOnly="true" label="Gadwalcodebaldi" length="255" />
+    <field name="TheGadwalcodebaldiرقمالدائرةاسمالدائرة" type="String" readOnly="true" label="Gadwalcodebaldi" length="255" />
+    <field name="Mobile" type="String" label="Mobile" length="8" />
+    <field name="Telphone2" type="String" label="Telphone2" length="8" />
+    <field name="adress" type="String" label="Adress" length="255" />
+    <field name="halabayan" type="String" label="Halabayan" length="255" />
+    <field name="mawkof" type="String" label="Mawkof" length="255" />
+    <field name="Age" type="String" label="Age" length="255" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Election2013new">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Genderid" aliasFieldName="Genderelectiogenderdesc" />
+        <dataField fieldName="Gadwalcode" aliasFieldName="Gadwalgadwalname" hyperlinkFormatString="~/Pages/ELectionGadwal.aspx?Gadwalcode={Gadwalcode}&amp;_controller=ELectionGadwal&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="dwaercode" aliasFieldName="dwaerdwaername" hyperlinkFormatString="~/Pages/ELectionDAWAER.aspx?dwaercode={dwaercode}&amp;_controller=ELectionDAWAER&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="keedno" columns="50" />
+        <dataField fieldName="keeddate" columns="50" />
+        <dataField fieldName="keedharf" />
+        <dataField fieldName="gensiyano" columns="50" />
+        <dataField fieldName="madanyno" columns="50" />
+        <dataField fieldName="firstname" />
+        <dataField fieldName="secondname" />
+        <dataField fieldName="theridname" />
+        <dataField fieldName="forthname" />
+        <dataField fieldName="familyname" />
+        <dataField fieldName="fulname" />
+        <dataField fieldName="birthdate" columns="10" />
+        <dataField fieldName="electionjobid" aliasFieldName="electionjobelectionjobDesc" hyperlinkFormatString="~/Pages/electionjob.aspx?electionjobid={electionjobid}&amp;_controller=electionjob&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="dwaerbaldicode" aliasFieldName="dwaerbaldiاسمالدائرة" hyperlinkFormatString="~/Pages/ELectionDAWAERbaldi.aspx?رقمالدائرة={dwaerbaldicode}&amp;_controller=ELectionDAWAERbaldi&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Gadwalcodebaldi" aliasFieldName="TheGadwalcodebaldiاسمالجدول" hyperlinkFormatString="~/Pages/ELectionGadwalbaldi.aspx?Gadwalcodebaldi={Gadwalcodebaldi}&amp;_controller=ELectionGadwalbaldi&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Mobile" columns="8" />
+        <dataField fieldName="Telphone2" columns="8" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Election2013new">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Election2013new" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Genderid" aliasFieldName="Genderelectiogenderdesc" hyperlinkFormatString="~/Pages/electiongender.aspx?Genderid={Genderid}&amp;_controller=electiongender&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Gadwalcode" aliasFieldName="Gadwalgadwalname" hyperlinkFormatString="~/Pages/ELectionGadwal.aspx?Gadwalcode={Gadwalcode}&amp;_controller=ELectionGadwal&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="dwaercode" aliasFieldName="dwaerdwaername" hyperlinkFormatString="~/Pages/ELectionDAWAER.aspx?dwaercode={dwaercode}&amp;_controller=ELectionDAWAER&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="keedno" columns="50" />
+            <dataField fieldName="keeddate" columns="50" />
+            <dataField fieldName="keedharf" />
+            <dataField fieldName="gensiyano" columns="50" />
+            <dataField fieldName="madanyno" columns="50" />
+            <dataField fieldName="firstname" />
+            <dataField fieldName="secondname" />
+            <dataField fieldName="theridname" />
+            <dataField fieldName="forthname" />
+            <dataField fieldName="familyname" />
+            <dataField fieldName="fulname" />
+            <dataField fieldName="birthdate" columns="10" />
+            <dataField fieldName="electionjobid" aliasFieldName="electionjobelectionjobDesc" hyperlinkFormatString="~/Pages/electionjob.aspx?electionjobid={electionjobid}&amp;_controller=electionjob&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="dwaerbaldicode" aliasFieldName="dwaerbaldiاسمالدائرة" hyperlinkFormatString="~/Pages/ELectionDAWAERbaldi.aspx?رقمالدائرة={dwaerbaldicode}&amp;_controller=ELectionDAWAERbaldi&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Gadwalcodebaldi" aliasFieldName="TheGadwalcodebaldiاسمالجدول" hyperlinkFormatString="~/Pages/ELectionGadwalbaldi.aspx?Gadwalcodebaldi={Gadwalcodebaldi}&amp;_controller=ELectionGadwalbaldi&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Mobile" columns="8" />
+            <dataField fieldName="Telphone2" columns="8" />
+            <dataField fieldName="adress" />
+            <dataField fieldName="halabayan" />
+            <dataField fieldName="mawkof" />
+            <dataField fieldName="Age" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Gadwaldwaerdwaername" />
+            <dataField fieldName="TheGadwalcodebaldiرقمالدائرةاسمالدائرة" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Election2013new">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Election2013new" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="abslutecode" columns="15" />
+            <dataField fieldName="Genderid" aliasFieldName="Genderelectiogenderdesc" />
+            <dataField fieldName="Gadwalcode" aliasFieldName="Gadwalgadwalname" />
+            <dataField fieldName="dwaercode" aliasFieldName="dwaerdwaername" />
+            <dataField fieldName="keedno" columns="50" />
+            <dataField fieldName="keeddate" columns="50" />
+            <dataField fieldName="keedharf" />
+            <dataField fieldName="gensiyano" columns="50" />
+            <dataField fieldName="madanyno" columns="50" />
+            <dataField fieldName="firstname" />
+            <dataField fieldName="secondname" />
+            <dataField fieldName="theridname" />
+            <dataField fieldName="forthname" />
+            <dataField fieldName="familyname" />
+            <dataField fieldName="fulname" />
+            <dataField fieldName="birthdate" columns="10" />
+            <dataField fieldName="electionjobid" aliasFieldName="electionjobelectionjobDesc" />
+            <dataField fieldName="dwaerbaldicode" aliasFieldName="dwaerbaldiاسمالدائرة" />
+            <dataField fieldName="Gadwalcodebaldi" aliasFieldName="TheGadwalcodebaldiاسمالجدول" />
+            <dataField fieldName="Mobile" columns="8" />
+            <dataField fieldName="Telphone2" columns="8" />
+            <dataField fieldName="adress" />
+            <dataField fieldName="halabayan" />
+            <dataField fieldName="mawkof" />
+            <dataField fieldName="Age" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

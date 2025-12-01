@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="importschstudentlisttmp" conflictDetection="overwriteChanges" label="Importschstudentlisttmp" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"importschstudentlisttmp"."sn" "sn"
+	,"importschstudentlisttmp"."sgm" "sgm"
+	,"importschstudentlisttmp"."branch" "branch"
+	,"importschstudentlisttmp"."stage" "stage"
+	,"importschstudentlisttmp"."Grade" "Grade"
+	,"importschstudentlisttmp"."Gradeold" "Gradeold"
+	,"importschstudentlisttmp"."class" "class"
+	,"importschstudentlisttmp"."classold" "classold"
+	,"importschstudentlisttmp"."acdmicyear" "acdmicyear"
+	,"importschstudentlisttmp"."name" "name"
+	,"importschstudentlisttmp"."cid" "cid"
+	,"importschstudentlisttmp"."pycntry" "pycntry"
+	,"importschstudentlisttmp"."sex" "sex"
+	,"importschstudentlisttmp"."relegion" "relegion"
+	,"importschstudentlisttmp"."yearofbirth" "yearofbirth"
+	,"importschstudentlisttmp"."fathercase" "fathercase"
+	,"importschstudentlisttmp"."Fatherpycntry" "Fatherpycntry"
+	,"importschstudentlisttmp"."mothercase" "mothercase"
+	,"importschstudentlisttmp"."motherpycntry" "motherpycntry"
+	,"importschstudentlisttmp"."healthcase" "healthcase"
+	,"importschstudentlisttmp"."sutdykind" "sutdykind"
+	,"importschstudentlisttmp"."studycase" "studycase"
+	,"importschstudentlisttmp"."transfercase" "transfercase"
+	,"importschstudentlisttmp"."area" "area"
+	,"importschstudentlisttmp"."blok" "blok"
+	,"importschstudentlisttmp"."gada" "gada"
+	,"importschstudentlisttmp"."housno" "housno"
+	,"importschstudentlisttmp"."addressdetails" "addressdetails"
+	,"importschstudentlisttmp"."sefa" "sefa"
+	,"importschstudentlisttmp"."Birthplace" "Birthplace"
+	,"importschstudentlisttmp"."certicationno" "certicationno"
+	,"importschstudentlisttmp"."certficationdate" "certficationdate"
+	,"importschstudentlisttmp"."isueplace" "isueplace"
+	,"importschstudentlisttmp"."birthdate" "birthdate"
+	,"importschstudentlisttmp"."joindate" "joindate"
+	,"importschstudentlisttmp"."calssjoin" "calssjoin"
+	,"importschstudentlisttmp"."schooltransfer" "schooltransfer"
+	,"importschstudentlisttmp"."resigndate" "resigndate"
+	,"importschstudentlisttmp"."resigncause" "resigncause"
+	,"importschstudentlisttmp"."residentno" "residentno"
+	,"importschstudentlisttmp"."residantedate" "residantedate"
+	,"importschstudentlisttmp"."residentexpiredate" "residentexpiredate"
+	,"importschstudentlisttmp"."accounnumber" "accounnumber"
+	,"importschstudentlisttmp"."birthdate2" "birthdate2"
+	,"importschstudentlisttmp"."moshageb" "moshageb"
+	,"importschstudentlisttmp"."zema" "zema"
+	,"importschstudentlisttmp"."housedetails" "housedetails"
+	,"importschstudentlisttmp"."mostagad" "mostagad"
+	,"importschstudentlisttmp"."remostagad" "remostagad"
+	,"importschstudentlisttmp"."street" "street"
+	,"importschstudentlisttmp"."telphon" "telphon"
+	,"importschstudentlisttmp"."modabakaa" "modabakaa"
+from "dbo"."importschstudentlisttmp" "importschstudentlisttmp"
+]]></text>
+    </command>
+    <command id="snIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="sn" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="sn" type="Int64" allowNulls="false" isPrimaryKey="true" label="Sn" readOnly="true" />
+    <field name="sgm" type="Int64" label="Sgm" showInSummary="true" />
+    <field name="branch" type="Int64" label="Branch" showInSummary="true" />
+    <field name="stage" type="String" label="Stage" length="255" showInSummary="true" />
+    <field name="Grade" type="String" label="Grade" length="50" showInSummary="true" />
+    <field name="Gradeold" type="String" label="Gradeold" length="255" showInSummary="true" />
+    <field name="class" type="String" label="Class" length="50" />
+    <field name="classold" type="String" label="Classold" length="255" />
+    <field name="acdmicyear" type="String" label="Acdmicyear" length="50" />
+    <field name="name" type="String" label="Name" length="255" />
+    <field name="cid" type="String" label="Cid" length="50" />
+    <field name="pycntry" type="String" label="Pycntry" length="255" />
+    <field name="sex" type="String" label="Sex" length="255" />
+    <field name="relegion" type="String" label="Relegion" length="255" />
+    <field name="yearofbirth" type="Double" label="Yearofbirth" />
+    <field name="fathercase" type="String" label="Fathercase" length="255" />
+    <field name="Fatherpycntry" type="String" label="Fatherpycntry" length="255" />
+    <field name="mothercase" type="String" label="Mothercase" length="255" />
+    <field name="motherpycntry" type="String" label="Motherpycntry" length="255" />
+    <field name="healthcase" type="String" label="Healthcase" length="255" />
+    <field name="sutdykind" type="String" label="Sutdykind" length="255" />
+    <field name="studycase" type="String" label="Studycase" length="255" />
+    <field name="transfercase" type="String" label="Transfercase" length="255" />
+    <field name="area" type="String" label="Area" length="255" />
+    <field name="blok" type="String" label="Blok" length="150" />
+    <field name="gada" type="Double" label="Gada" />
+    <field name="housno" type="Double" label="Housno" />
+    <field name="addressdetails" type="String" label="Addressdetails" length="255" />
+    <field name="sefa" type="String" label="Sefa" length="255" />
+    <field name="Birthplace" type="String" label="Birthplace" length="255" />
+    <field name="certicationno" type="String" label="Certicationno" length="255" />
+    <field name="certficationdate" type="String" label="Certficationdate" length="50" />
+    <field name="isueplace" type="String" label="Isueplace" length="255" />
+    <field name="birthdate" type="String" label="Birthdate" length="50" />
+    <field name="joindate" type="String" label="Joindate" length="50" />
+    <field name="calssjoin" type="String" label="Calssjoin" length="255" />
+    <field name="schooltransfer" type="String" label="Schooltransfer" length="255" />
+    <field name="resigndate" type="String" label="Resigndate" length="50" />
+    <field name="resigncause" type="String" label="Resigncause" length="255" />
+    <field name="residentno" type="Double" label="Residentno" />
+    <field name="residantedate" type="String" label="Residantedate" length="50" />
+    <field name="residentexpiredate" type="String" label="Residentexpiredate" length="50" />
+    <field name="accounnumber" type="Int64" label="Accounnumber" />
+    <field name="birthdate2" type="String" label="Birthdate2" length="50" />
+    <field name="moshageb" type="Boolean" label="Moshageb" />
+    <field name="zema" type="Boolean" label="Zema" />
+    <field name="housedetails" type="String" allowQBE="false" allowSorting="false" label="Housedetails" />
+    <field name="mostagad" type="Boolean" label="Mostagad" />
+    <field name="remostagad" type="Boolean" label="Remostagad" />
+    <field name="street" type="String" label="Street" length="250" />
+    <field name="telphon" type="String" label="Telphon" length="50" />
+    <field name="modabakaa" type="String" label="Modabakaa" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Importschstudentlisttmp">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="sn" />
+        <dataField fieldName="sgm" columns="15" />
+        <dataField fieldName="branch" columns="15" />
+        <dataField fieldName="stage" />
+        <dataField fieldName="Grade" columns="50" />
+        <dataField fieldName="Gradeold" />
+        <dataField fieldName="class" columns="50" />
+        <dataField fieldName="classold" />
+        <dataField fieldName="acdmicyear" columns="50" />
+        <dataField fieldName="name" />
+        <dataField fieldName="cid" columns="50" />
+        <dataField fieldName="pycntry" />
+        <dataField fieldName="sex" />
+        <dataField fieldName="relegion" />
+        <dataField fieldName="yearofbirth" columns="15" />
+        <dataField fieldName="fathercase" />
+        <dataField fieldName="Fatherpycntry" />
+        <dataField fieldName="mothercase" />
+        <dataField fieldName="motherpycntry" />
+        <dataField fieldName="healthcase" />
+        <dataField fieldName="sutdykind" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Importschstudentlisttmp">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Importschstudentlisttmp" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="stage" />
+            <dataField fieldName="Grade" columns="50" />
+            <dataField fieldName="Gradeold" />
+            <dataField fieldName="class" columns="50" />
+            <dataField fieldName="classold" />
+            <dataField fieldName="acdmicyear" columns="50" />
+            <dataField fieldName="name" />
+            <dataField fieldName="cid" columns="50" />
+            <dataField fieldName="pycntry" />
+            <dataField fieldName="sex" />
+            <dataField fieldName="relegion" />
+            <dataField fieldName="yearofbirth" columns="15" />
+            <dataField fieldName="fathercase" />
+            <dataField fieldName="Fatherpycntry" />
+            <dataField fieldName="mothercase" />
+            <dataField fieldName="motherpycntry" />
+            <dataField fieldName="healthcase" />
+            <dataField fieldName="sutdykind" />
+            <dataField fieldName="studycase" />
+            <dataField fieldName="transfercase" />
+            <dataField fieldName="area" />
+            <dataField fieldName="blok" />
+            <dataField fieldName="gada" columns="15" />
+            <dataField fieldName="housno" columns="15" />
+            <dataField fieldName="addressdetails" />
+            <dataField fieldName="sefa" />
+            <dataField fieldName="Birthplace" />
+            <dataField fieldName="certicationno" />
+            <dataField fieldName="certficationdate" columns="50" />
+            <dataField fieldName="isueplace" />
+            <dataField fieldName="birthdate" columns="50" />
+            <dataField fieldName="joindate" columns="50" />
+            <dataField fieldName="calssjoin" />
+            <dataField fieldName="schooltransfer" />
+            <dataField fieldName="resigndate" columns="50" />
+            <dataField fieldName="resigncause" />
+            <dataField fieldName="residentno" columns="15" />
+            <dataField fieldName="residantedate" columns="50" />
+            <dataField fieldName="residentexpiredate" columns="50" />
+            <dataField fieldName="accounnumber" columns="15" />
+            <dataField fieldName="birthdate2" columns="50" />
+            <dataField fieldName="moshageb" />
+            <dataField fieldName="zema" />
+            <dataField fieldName="housedetails" rows="5" />
+            <dataField fieldName="mostagad" />
+            <dataField fieldName="remostagad" />
+            <dataField fieldName="street" />
+            <dataField fieldName="telphon" columns="50" />
+            <dataField fieldName="modabakaa" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Importschstudentlisttmp">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Importschstudentlisttmp" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="stage" />
+            <dataField fieldName="Grade" columns="50" />
+            <dataField fieldName="Gradeold" />
+            <dataField fieldName="class" columns="50" />
+            <dataField fieldName="classold" />
+            <dataField fieldName="acdmicyear" columns="50" />
+            <dataField fieldName="name" />
+            <dataField fieldName="cid" columns="50" />
+            <dataField fieldName="pycntry" />
+            <dataField fieldName="sex" />
+            <dataField fieldName="relegion" />
+            <dataField fieldName="yearofbirth" columns="15" />
+            <dataField fieldName="fathercase" />
+            <dataField fieldName="Fatherpycntry" />
+            <dataField fieldName="mothercase" />
+            <dataField fieldName="motherpycntry" />
+            <dataField fieldName="healthcase" />
+            <dataField fieldName="sutdykind" />
+            <dataField fieldName="studycase" />
+            <dataField fieldName="transfercase" />
+            <dataField fieldName="area" />
+            <dataField fieldName="blok" />
+            <dataField fieldName="gada" columns="15" />
+            <dataField fieldName="housno" columns="15" />
+            <dataField fieldName="addressdetails" />
+            <dataField fieldName="sefa" />
+            <dataField fieldName="Birthplace" />
+            <dataField fieldName="certicationno" />
+            <dataField fieldName="certficationdate" columns="50" />
+            <dataField fieldName="isueplace" />
+            <dataField fieldName="birthdate" columns="50" />
+            <dataField fieldName="joindate" columns="50" />
+            <dataField fieldName="calssjoin" />
+            <dataField fieldName="schooltransfer" />
+            <dataField fieldName="resigndate" columns="50" />
+            <dataField fieldName="resigncause" />
+            <dataField fieldName="residentno" columns="15" />
+            <dataField fieldName="residantedate" columns="50" />
+            <dataField fieldName="residentexpiredate" columns="50" />
+            <dataField fieldName="accounnumber" columns="15" />
+            <dataField fieldName="birthdate2" columns="50" />
+            <dataField fieldName="moshageb" />
+            <dataField fieldName="zema" />
+            <dataField fieldName="housedetails" rows="5" />
+            <dataField fieldName="mostagad" />
+            <dataField fieldName="remostagad" />
+            <dataField fieldName="street" />
+            <dataField fieldName="telphon" columns="50" />
+            <dataField fieldName="modabakaa" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

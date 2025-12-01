@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="schClassConfig" conflictDetection="overwriteChanges" label="sch Class Config" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.schClassConfigBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"schClassConfig"."classcode" "classcode"
+	,"schClassConfig"."ClassDesc1" "ClassDesc1"
+	,"schClassConfig"."ClassDesc2" "ClassDesc2"
+	,"schClassConfig"."ModifiedBy" "ModifiedBy"
+	,"schClassConfig"."ModifiedOn" "ModifiedOn"
+	,"schClassConfig"."CreatedBy" "CreatedBy"
+	,"schClassConfig"."CreatedOn" "CreatedOn"
+	,"schClassConfig"."Appointment1" "Appointment1"
+	,"schClassConfig"."Appointment" "Appointment"
+	,"schClassConfig"."SchoolDay1" "SchoolDay1"
+	,"schClassConfig"."SchoolDay" "SchoolDay"
+	,"schClassConfig"."ClassStatus" "ClassStatus"
+	,"schClassConfig"."ClassLoction" "ClassLoction"
+	,"schClassConfig"."Gradecode" "Gradecode"
+	,"Grade"."ShortDesc1" "GradeShortDesc1"
+	,"schClassConfig"."Teacher" "Teacher"
+	,"schClassConfig"."ClassType" "ClassType"
+	,"schClassConfig"."Branch" "Branch"
+	,"Branch"."Desc1" "BranchDesc1"
+	,"Branchsgm"."sgm_Nm" "Branchsgmsgm_Nm"
+	,"BranchsgmOpco"."OpcoName" "BranchsgmOpcoOpcoName"
+	,"BranchGender"."Gender" "BranchGenderGender"
+	,"Branchstage"."ShortDesc1" "BranchstageShortDesc1"
+	,"Branchschtyp"."schtypDesc" "BranchschtypschtypDesc"
+	,"schClassConfig"."Teacherid" "Teacherid"
+	,"Teacher"."Emp_NOt" "TeacherEmp_NOt"
+	,"TeacherHld_Ern"."Req_NM" "TeacherHld_ErnReq_NM"
+	,"Teachersgm"."sgm_Nm" "Teachersgmsgm_Nm"
+	,"TeachersgmOpco"."OpcoName" "TeachersgmOpcoOpcoName"
+	,"Teachersalrycat"."grade_desc_a" "Teachersalrycatgrade_desc_a"
+	,"TeachersalrycatEarning_"."Earning_Nm" "TeachersalrycatEarning_Earning_Nm"
+	,"TeacherBlood_Type"."ModifiedBy" "TeacherBlood_TypeModifiedBy"
+	,"TeacherBnk_"."Bnk_Acc" "TeacherBnk_Bnk_Acc"
+	,"TeacherSub_Bnk"."Bnk_Acc" "TeacherSub_BnkBnk_Acc"
+	,"TeacherCntry_"."Cntry_Nm" "TeacherCntry_Cntry_Nm"
+	,"TeacherDepm_"."Depm_Nm" "TeacherDepm_Depm_Nm"
+	,"TeacherEduct_Type"."Educt_Nm" "TeacherEduct_TypeEduct_Nm"
+	,"TeacherJob_Stu"."Emp_Stunm" "TeacherJob_StuEmp_Stunm"
+	,"TeacherEarning_"."Earning_Nm" "TeacherEarning_Earning_Nm"
+	,"TeacherGender"."Gender" "TeacherGenderGender"
+	,"TeacherJob_"."Job_Nm" "TeacherJob_Job_Nm"
+	,"TeacherLoc_"."Loc_Nm" "TeacherLoc_Loc_Nm"
+	,"TeacherOwnr_"."Ownr_ID" "TeacherOwnr_Ownr_ID"
+	,"TeacherOwnr_cmp_"."Grp_Nm" "TeacherOwnr_cmp_Grp_Nm"
+	,"TeacherReljan"."Reljan_nm" "TeacherReljanReljan_nm"
+	,"TeacherStatus_Type"."Status_Nm" "TeacherStatus_TypeStatus_Nm"
+	,"Teacherbranch"."Desc1" "TeacherbranchDesc1"
+	,"Teacherbranchsgm"."sgm_Nm" "Teacherbranchsgmsgm_Nm"
+	,"TeacherbranchGender"."Gender" "TeacherbranchGenderGender"
+	,"Teacherbranchstage"."ShortDesc1" "TeacherbranchstageShortDesc1"
+	,"Teacherbranchschtyp"."schtypDesc" "TeacherbranchschtypschtypDesc"
+	,"TeacherUniq_"."BADGENUMBER" "TeacherUniq_BADGENUMBER"
+	,"schClassConfig"."Remarks" "Remarks"
+from "dbo"."schClassConfig" "schClassConfig"
+	left join "dbo"."schStage" "Grade" on "schClassConfig"."Gradecode" = "Grade"."Code"
+	left join "dbo"."schBranch" "Branch" on "schClassConfig"."Branch" = "Branch"."branch"
+	left join "dbo"."glmulcmp" "Branchsgm" on "Branch"."sgm" = "Branchsgm"."sgmid"
+	left join "dbo"."OpCo" "BranchsgmOpco" on "Branchsgm"."OpcoID" = "BranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "BranchGender" on "Branch"."Genderid" = "BranchGender"."Genderid"
+	left join "dbo"."schStage" "Branchstage" on "Branch"."stagecode" = "Branchstage"."Code"
+	left join "dbo"."schtyp" "Branchschtyp" on "Branch"."schtypid" = "Branchschtyp"."schtypid"
+	left join "dbo"."Pyempmfs" "Teacher" on "schClassConfig"."Teacherid" = "Teacher"."Emp_No"
+	left join "dbo"."AstvHldTyp" "TeacherHld_Ern" on "Teacher"."Hld_Ern" = "TeacherHld_Ern"."Req_Typ"
+	left join "dbo"."glmulcmp" "Teachersgm" on "Teacher"."sgm" = "Teachersgm"."sgmid"
+	left join "dbo"."OpCo" "TeachersgmOpco" on "Teachersgm"."OpcoID" = "TeachersgmOpco"."OpcoIDidentity"
+	left join "dbo"."grade" "Teachersalrycat" on "Teacher"."salrycat" = "Teachersalrycat"."grade_code"
+	left join "dbo"."Pyerntsalyp1" "TeachersalrycatEarning_" on "Teachersalrycat"."Earning_No" = "TeachersalrycatEarning_"."Earning_No"
+	left join "dbo"."pyBlood" "TeacherBlood_Type" on "Teacher"."Blood_Type" = "TeacherBlood_Type"."Blood_Type"
+	left join "dbo"."PybnkAcc" "TeacherBnk_" on "Teacher"."Bnk_No" = "TeacherBnk_"."Bnk_No"
+	left join "dbo"."PybnkAcc" "TeacherSub_Bnk" on "Teacher"."Sub_Bnk" = "TeacherSub_Bnk"."Bnk_No"
+	left join "dbo"."PYCntry" "TeacherCntry_" on "Teacher"."Cntry_No" = "TeacherCntry_"."Cntry_No"
+	left join "dbo"."Pydepm" "TeacherDepm_" on "Teacher"."Depm_No" = "TeacherDepm_"."Depm_No"
+	left join "dbo"."PyempEdu" "TeacherEduct_Type" on "Teacher"."Educt_Type" = "TeacherEduct_Type"."Educt_Type"
+	left join "dbo"."Pyempstu" "TeacherJob_Stu" on "Teacher"."Job_Stu" = "TeacherJob_Stu"."Emp_stu"
+	left join "dbo"."Pyerntsalyp1" "TeacherEarning_" on "Teacher"."Earning_no" = "TeacherEarning_"."Earning_No"
+	left join "dbo"."PyGender" "TeacherGender" on "Teacher"."Genderid" = "TeacherGender"."Genderid"
+	left join "dbo"."Pyjobs" "TeacherJob_" on "Teacher"."Job_No" = "TeacherJob_"."Job_No"
+	left join "dbo"."PyLocation" "TeacherLoc_" on "Teacher"."Loc_No" = "TeacherLoc_"."loc_No"
+	left join "dbo"."Pyownrmf" "TeacherOwnr_" on "Teacher"."Ownr_No" = "TeacherOwnr_"."Ownr_No"
+	left join "dbo"."Pycnstnt" "TeacherOwnr_cmp_" on "TeacherOwnr_"."cmp_no" = "TeacherOwnr_cmp_"."Cmp_No"
+	left join "dbo"."PyReljan" "TeacherReljan" on "Teacher"."Reljan" = "TeacherReljan"."reljan"
+	left join "dbo"."PyStatus" "TeacherStatus_Type" on "Teacher"."Status_Type" = "TeacherStatus_Type"."Status_Type"
+	left join "dbo"."schBranch" "Teacherbranch" on "Teacher"."branch" = "Teacherbranch"."branch"
+	left join "dbo"."glmulcmp" "Teacherbranchsgm" on "Teacherbranch"."sgm" = "Teacherbranchsgm"."sgmid"
+	left join "dbo"."PyGender" "TeacherbranchGender" on "Teacherbranch"."Genderid" = "TeacherbranchGender"."Genderid"
+	left join "dbo"."schStage" "Teacherbranchstage" on "Teacherbranch"."stagecode" = "Teacherbranchstage"."Code"
+	left join "dbo"."schtyp" "Teacherbranchschtyp" on "Teacherbranch"."schtypid" = "Teacherbranchschtyp"."schtypid"
+	left join "dbo"."USERINFO" "TeacherUniq_" on "Teacher"."Uniq_no" = "TeacherUniq_"."USERID"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="classcode" type="Int64" allowNulls="false" isPrimaryKey="true" label="Classcode" />
+    <field name="ClassDesc1" type="String" label="Class Desc1" length="30" showInSummary="true" />
+    <field name="ClassDesc2" type="String" label="Class Desc2" length="30" showInSummary="true" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" showInSummary="true" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" showInSummary="true" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" showInSummary="true" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="Appointment1" type="String" label="Appointment1" length="10" />
+    <field name="Appointment" type="String" label="Appointment" length="10" />
+    <field name="SchoolDay1" type="DateTime" label="School Day1" />
+    <field name="SchoolDay" type="DateTime" label="School Day" />
+    <field name="ClassStatus" type="Boolean" label="Class Status" />
+    <field name="ClassLoction" type="String" label="Class Loction" length="30" />
+    <field name="Gradecode" type="Int64" label="Gradecode">
+      <items style="Lookup" dataController="schStage" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="GradeShortDesc1" type="String" readOnly="true" label="Grade Short Desc1" length="50" />
+    <field name="Teacher" type="String" label="Teacher" length="30" />
+    <field name="ClassType" type="String" label="Class Type" length="30" />
+    <field name="Branch" type="Int64" label="Branch">
+      <items style="Lookup" dataController="schBranch" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="BranchDesc1" type="String" readOnly="true" label="Branch Desc1" length="50" />
+    <field name="Branchsgmsgm_Nm" type="String" readOnly="true" label="Branchsgmsgm Nm" length="255" />
+    <field name="BranchsgmOpcoOpcoName" type="String" readOnly="true" label="Branchsgm Opco Name" length="50" />
+    <field name="BranchGenderGender" type="String" readOnly="true" label="Branch Gender" length="100" />
+    <field name="BranchstageShortDesc1" type="String" readOnly="true" label="Branchstage Short Desc1" length="50" />
+    <field name="BranchschtypschtypDesc" type="String" readOnly="true" label="Branchschtypschtyp Desc" length="150" />
+    <field name="Teacherid" type="Int64" label="Teacherid">
+      <items style="Lookup" dataController="Pyempmfs" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TeacherEmp_NOt" type="String" readOnly="true" label="Teacher Emp N Ot" length="50" />
+    <field name="TeacherHld_ErnReq_NM" type="String" readOnly="true" label="Teacher Hld Ern Req NM" length="50" />
+    <field name="Teachersgmsgm_Nm" type="String" readOnly="true" label="Teachersgmsgm Nm" length="255" />
+    <field name="TeachersgmOpcoOpcoName" type="String" readOnly="true" label="Teachersgm Opco Name" length="50" />
+    <field name="Teachersalrycatgrade_desc_a" type="String" readOnly="true" label="Teachersalrycatgrade desc a" length="20" />
+    <field name="TeachersalrycatEarning_Earning_Nm" type="String" readOnly="true" label="Teachersalrycat Earning Nm" length="255" />
+    <field name="TeacherBlood_TypeModifiedBy" type="String" readOnly="true" label="Teacher Blood Type Modified By" length="50" />
+    <field name="TeacherBnk_Bnk_Acc" type="String" readOnly="true" label="Teacher Bnk Acc" length="20" />
+    <field name="TeacherSub_BnkBnk_Acc" type="String" readOnly="true" label="Teacher Sub Bnk Acc" length="20" />
+    <field name="TeacherCntry_Cntry_Nm" type="String" readOnly="true" label="Teacher Cntry Nm" length="255" />
+    <field name="TeacherDepm_Depm_Nm" type="String" readOnly="true" label="Teacher Depm Nm" length="255" />
+    <field name="TeacherEduct_TypeEduct_Nm" type="String" readOnly="true" label="Teacher Educt Type Educt Nm" length="15" />
+    <field name="TeacherJob_StuEmp_Stunm" type="String" readOnly="true" label="Teacher Job Stu Emp Stunm" length="255" />
+    <field name="TeacherEarning_Earning_Nm" type="String" readOnly="true" label="Teacher Earning Nm" length="255" />
+    <field name="TeacherGenderGender" type="String" readOnly="true" label="Teacher Gender" length="100" />
+    <field name="TeacherJob_Job_Nm" type="String" readOnly="true" label="Teacher Job Nm" length="255" />
+    <field name="TeacherLoc_Loc_Nm" type="String" readOnly="true" label="Teacher Loc Nm" length="50" />
+    <field name="TeacherOwnr_Ownr_ID" type="String" readOnly="true" label="Teacher Ownr#" length="15" />
+    <field name="TeacherOwnr_cmp_Grp_Nm" type="String" readOnly="true" label="Teacher Ownr cmp Grp Nm" length="255" />
+    <field name="TeacherReljanReljan_nm" type="String" readOnly="true" label="Teacher Reljan nm" length="50" />
+    <field name="TeacherStatus_TypeStatus_Nm" type="String" readOnly="true" label="Teacher Status Type Status Nm" length="255" />
+    <field name="TeacherbranchDesc1" type="String" readOnly="true" label="Teacherbranch Desc1" length="50" />
+    <field name="Teacherbranchsgmsgm_Nm" type="String" readOnly="true" label="Teacherbranchsgmsgm Nm" length="255" />
+    <field name="TeacherbranchGenderGender" type="String" readOnly="true" label="Teacherbranch Gender" length="100" />
+    <field name="TeacherbranchstageShortDesc1" type="String" readOnly="true" label="Teacherbranchstage Short Desc1" length="50" />
+    <field name="TeacherbranchschtypschtypDesc" type="String" readOnly="true" label="Teacherbranchschtypschtyp Desc" length="150" />
+    <field name="TeacherUniq_BADGENUMBER" type="String" readOnly="true" label="Teacher Uniq BADGENUMBER" length="24" />
+    <field name="Remarks" type="String" label="Remarks" length="50" />
+    <field name="studydays" type="String" label="studydays" allowQBE="false" allowSorting="false" computed="true" htmlEncode="false" hidden="false" readOnly="true">
+      <items style="CheckBoxList" dataController="WEEKDAYN" dataView="grid1" dataTextField="ARABICNM" dataValueField="serial" targetController="schClassstudy" letters="false" />
+      <formula>NULL</formula>
+    </field>
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="sch Class Config">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="ClassDesc1" columns="30" />
+        <dataField fieldName="ClassDesc2" columns="30" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="Appointment1" columns="10" />
+        <dataField fieldName="Appointment" columns="10" />
+        <dataField fieldName="SchoolDay1" columns="10" />
+        <dataField fieldName="SchoolDay" columns="10" />
+        <dataField fieldName="ClassStatus" />
+        <dataField fieldName="ClassLoction" columns="30" />
+        <dataField fieldName="Gradecode" aliasFieldName="GradeShortDesc1" hyperlinkFormatString="~/Pages/schStage.aspx?Code={Gradecode}&amp;_controller=schStage&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Teacher" columns="30" />
+        <dataField fieldName="ClassType" columns="30" />
+        <dataField fieldName="Branch" aliasFieldName="BranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={Branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Teacherid" aliasFieldName="TeacherEmp_NOt" hyperlinkFormatString="~/Pages/Pyempmfs.aspx?Emp_No={Teacherid}&amp;_controller=Pyempmfs&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Remarks" columns="50" />
+        <dataField fieldName="Branchsgmsgm_Nm" />
+        <dataField fieldName="BranchsgmOpcoOpcoName" columns="50" />
+        <dataField fieldName="classcode" columns="15" />
+        <dataField fieldName="studydays" columns="3" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review sch Class Config">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="sch Class Config" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ClassDesc1" columns="30" />
+            <dataField fieldName="ClassDesc2" columns="30" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="Appointment1" columns="10" />
+            <dataField fieldName="Appointment" columns="10" />
+            <dataField fieldName="SchoolDay1" columns="10" />
+            <dataField fieldName="SchoolDay" columns="10" />
+            <dataField fieldName="ClassStatus" />
+            <dataField fieldName="ClassLoction" columns="30" />
+            <dataField fieldName="Gradecode" aliasFieldName="GradeShortDesc1" hyperlinkFormatString="~/Pages/schStage.aspx?Code={Gradecode}&amp;_controller=schStage&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Teacher" columns="30" />
+            <dataField fieldName="ClassType" columns="30" />
+            <dataField fieldName="Branch" aliasFieldName="BranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={Branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Teacherid" aliasFieldName="TeacherEmp_NOt" hyperlinkFormatString="~/Pages/Pyempmfs.aspx?Emp_No={Teacherid}&amp;_controller=Pyempmfs&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Remarks" columns="50" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Branchsgmsgm_Nm" />
+            <dataField fieldName="BranchsgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="BranchGenderGender" />
+            <dataField fieldName="BranchstageShortDesc1" columns="50" />
+            <dataField fieldName="BranchschtypschtypDesc" />
+            <dataField fieldName="TeacherHld_ErnReq_NM" columns="50" />
+            <dataField fieldName="Teachersgmsgm_Nm" />
+            <dataField fieldName="TeachersgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="Teachersalrycatgrade_desc_a" columns="20" />
+            <dataField fieldName="TeachersalrycatEarning_Earning_Nm" />
+            <dataField fieldName="TeacherBlood_TypeModifiedBy" columns="50" />
+            <dataField fieldName="TeacherBnk_Bnk_Acc" columns="20" />
+            <dataField fieldName="TeacherSub_BnkBnk_Acc" columns="20" />
+            <dataField fieldName="TeacherCntry_Cntry_Nm" />
+            <dataField fieldName="TeacherDepm_Depm_Nm" />
+            <dataField fieldName="TeacherEduct_TypeEduct_Nm" columns="15" />
+            <dataField fieldName="TeacherJob_StuEmp_Stunm" />
+            <dataField fieldName="TeacherEarning_Earning_Nm" />
+            <dataField fieldName="TeacherGenderGender" />
+            <dataField fieldName="TeacherJob_Job_Nm" />
+            <dataField fieldName="TeacherLoc_Loc_Nm" columns="50" />
+            <dataField fieldName="TeacherOwnr_Ownr_ID" columns="15" />
+            <dataField fieldName="TeacherOwnr_cmp_Grp_Nm" />
+            <dataField fieldName="TeacherReljanReljan_nm" columns="50" />
+            <dataField fieldName="TeacherStatus_TypeStatus_Nm" />
+            <dataField fieldName="TeacherbranchDesc1" columns="50" />
+            <dataField fieldName="Teacherbranchsgmsgm_Nm" />
+            <dataField fieldName="TeacherbranchGenderGender" />
+            <dataField fieldName="TeacherbranchstageShortDesc1" columns="50" />
+            <dataField fieldName="TeacherbranchschtypschtypDesc" />
+            <dataField fieldName="TeacherUniq_BADGENUMBER" columns="24" />
+            <dataField fieldName="studydays" columns="3" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New sch Class Config">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New sch Class Config" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="classcode" columns="15" />
+            <dataField fieldName="ClassDesc1" columns="30" />
+            <dataField fieldName="ClassDesc2" columns="30" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="Appointment1" columns="10" />
+            <dataField fieldName="Appointment" columns="10" />
+            <dataField fieldName="SchoolDay1" columns="10" />
+            <dataField fieldName="SchoolDay" columns="10" />
+            <dataField fieldName="ClassStatus" />
+            <dataField fieldName="ClassLoction" columns="30" />
+            <dataField fieldName="Gradecode" aliasFieldName="GradeShortDesc1" />
+            <dataField fieldName="Teacher" columns="30" />
+            <dataField fieldName="ClassType" columns="30" />
+            <dataField fieldName="Branch" aliasFieldName="BranchDesc1" />
+            <dataField fieldName="Teacherid" aliasFieldName="TeacherEmp_NOt" />
+            <dataField fieldName="Remarks" columns="50" />
+            <dataField fieldName="studydays" columns="3" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

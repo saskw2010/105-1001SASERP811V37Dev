@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Electionmorashheensoot" conflictDetection="overwriteChanges" label="Electionmorashheensoot" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Electionmorashheensoot"."electionpersonslistid" "electionpersonslistid"
+	,"Electionmorashheensoot"."elecleganid" "elecleganid"
+	,"eleclegan"."mandobname" "elecleganmandobname"
+	,"elecleganlagnahkind"."eleclgankind" "elecleganlagnahkindeleclgankind"
+	,"elecleganGadwal"."gadwalname" "elecleganGadwalgadwalname"
+	,"elecleganGadwaldwaer"."dwaername" "elecleganGadwaldwaerdwaername"
+	,"elecleganGender"."electiogenderdesc" "elecleganGenderelectiogenderdesc"
+	,"Electionmorashheensoot"."Electionmorashheenid" "Electionmorashheenid"
+	,"Electionmorashheen"."Electionmorashheenname" "ElectionmorashheenElectionmorashheenname"
+	,"Electionmorashheensoot"."soot" "soot"
+	,"Electionmorashheensoot"."ModifiedBy" "ModifiedBy"
+	,"Electionmorashheensoot"."ModifiedOn" "ModifiedOn"
+	,"Electionmorashheensoot"."CreatedBy" "CreatedBy"
+	,"Electionmorashheensoot"."CreatedOn" "CreatedOn"
+from "dbo"."Electionmorashheensoot" "Electionmorashheensoot"
+	left join "dbo"."electionlegantable" "eleclegan" on "Electionmorashheensoot"."elecleganid" = "eleclegan"."eleclganid"
+	left join "dbo"."eleclgankind" "elecleganlagnahkind" on "eleclegan"."lagnahkind" = "elecleganlagnahkind"."eleclgankindid"
+	left join "dbo"."ELectionGadwal" "elecleganGadwal" on "eleclegan"."Gadwalcode" = "elecleganGadwal"."Gadwalcode"
+	left join "dbo"."ELectionDAWAER" "elecleganGadwaldwaer" on "elecleganGadwal"."dwaercode" = "elecleganGadwaldwaer"."dwaercode"
+	left join "dbo"."electiongender" "elecleganGender" on "eleclegan"."Genderid" = "elecleganGender"."Genderid"
+	left join "dbo"."Electionmorashheen" "Electionmorashheen" on "Electionmorashheensoot"."Electionmorashheenid" = "Electionmorashheen"."Electionmorashheenid"
+]]></text>
+    </command>
+    <command id="electionpersonslistidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="electionpersonslistid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="electionpersonslistid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Electionpersonslistid" readOnly="true" />
+    <field name="elecleganid" type="Int64" label="Elecleganid" showInSummary="true">
+      <items style="Lookup" dataController="electionlegantable" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="elecleganmandobname" type="String" readOnly="true" label="Elecleganmandobname" length="150" />
+    <field name="elecleganlagnahkindeleclgankind" type="String" readOnly="true" label="Elecleganlagnahkindeleclgankind" length="50" />
+    <field name="elecleganGadwalgadwalname" type="String" readOnly="true" label="eleclegan Gadwalgadwalname" length="255" />
+    <field name="elecleganGadwaldwaerdwaername" type="String" readOnly="true" label="eleclegan Gadwaldwaerdwaername" length="255" />
+    <field name="elecleganGenderelectiogenderdesc" type="String" readOnly="true" label="eleclegan Genderelectiogenderdesc" length="50" />
+    <field name="Electionmorashheenid" type="Int64" label="Electionmorashheenid" showInSummary="true">
+      <items style="Lookup" dataController="Electionmorashheen" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ElectionmorashheenElectionmorashheenname" type="String" readOnly="true" label="Electionmorashheen Electionmorashheenname" length="150" />
+    <field name="soot" type="Int64" label="Soot" showInSummary="true" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" showInSummary="true" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" showInSummary="true" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Electionmorashheensoot">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="elecleganid" aliasFieldName="elecleganmandobname" />
+        <dataField fieldName="Electionmorashheenid" aliasFieldName="ElectionmorashheenElectionmorashheenname" hyperlinkFormatString="~/Pages/Electionmorashheen.aspx?Electionmorashheenid={Electionmorashheenid}&amp;_controller=Electionmorashheen&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="soot" columns="15" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="elecleganlagnahkindeleclgankind" columns="50" />
+        <dataField fieldName="elecleganGadwalgadwalname" />
+        <dataField fieldName="elecleganGadwaldwaerdwaername" />
+        <dataField fieldName="elecleganGenderelectiogenderdesc" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Electionmorashheensoot">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Electionmorashheensoot" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="elecleganid" aliasFieldName="elecleganmandobname" hyperlinkFormatString="~/Pages/electionlegantable.aspx?eleclganid={elecleganid}&amp;_controller=electionlegantable&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Electionmorashheenid" aliasFieldName="ElectionmorashheenElectionmorashheenname" hyperlinkFormatString="~/Pages/Electionmorashheen.aspx?Electionmorashheenid={Electionmorashheenid}&amp;_controller=Electionmorashheen&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="soot" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="elecleganlagnahkindeleclgankind" columns="50" />
+            <dataField fieldName="elecleganGadwalgadwalname" />
+            <dataField fieldName="elecleganGadwaldwaerdwaername" />
+            <dataField fieldName="elecleganGenderelectiogenderdesc" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Electionmorashheensoot">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Electionmorashheensoot" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="elecleganid" aliasFieldName="elecleganmandobname" />
+            <dataField fieldName="Electionmorashheenid" aliasFieldName="ElectionmorashheenElectionmorashheenname" />
+            <dataField fieldName="soot" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

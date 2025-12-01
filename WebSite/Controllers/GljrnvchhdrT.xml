@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="GljrnvchhdrT" conflictDetection="overwriteChanges" label="Gljrnvchhdr T" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.GljrnvchhdrTBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[select
+	"GljrnvchhdrT"."Tr_No" "Tr_No"
+	,"GljrnvchhdrT"."sgm" "sgm"
+	,"sgm"."sgm_Nm" "sgmsgm_Nm"
+	,"sgmOpco"."OpcoName" "sgmOpcoOpcoName"
+	,"GljrnvchhdrT"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"Thebranchsgm"."sgm_Nm" "Thebranchsgmsgm_Nm"
+	,"ThebranchsgmOpco"."OpcoName" "ThebranchsgmOpcoOpcoName"
+	,"ThebranchGender"."Gender" "ThebranchGenderGender"
+	,"Thebranchstage"."ShortDesc1" "ThebranchstageShortDesc1"
+	,"Thebranchschtyp"."schtypDesc" "ThebranchschtypschtypDesc"
+	,"GljrnvchhdrT"."Jr_Ty" "Jr_Ty"
+	,"TheJr_Ty"."Jrty_Nme" "TheJr_TyJrty_Nme"
+	,"GljrnvchhdrT"."GlFinperiodID" "GlFinperiodID"
+	,"GlFinperiod"."Fin_period_info" "GlFinperiodFin_period_info"
+	,"GlFinperiodaccountnumber"."Acc_Nm" "GlFinperiodaccountnumberAcc_Nm"
+	,"GlFinperiodaccountnumberClsacc_"."Acc_Nm" "GlFinperiodaccountnumberClsacc_Acc_Nm"
+	,"GlFinperiodaccountnumberAcc_Bnd"."Acc_Nm" "GlFinperiodaccountnumberAcc_BndAcc_Nm"
+	,"GljrnvchhdrT"."Trs_Dt" "Trs_Dt"
+	,"GljrnvchhdrT"."Manualcode" "Manualcode"
+	,"GljrnvchhdrT"."Tr_Ds" "Tr_Ds"
+	,"GljrnvchhdrT"."Balance" "Balance"
+	,"GljrnvchhdrT"."Notes" "Notes"
+	,"GljrnvchhdrT"."approved" "approved"
+	,"GljrnvchhdrT"."posted" "posted"
+	,"GljrnvchhdrT"."deleted" "deleted"
+	,"GljrnvchhdrT"."havdetails" "havdetails"
+	,"GljrnvchhdrT"."ModifiedBy" "ModifiedBy"
+	,"GljrnvchhdrT"."ModifiedOn" "ModifiedOn"
+	,"GljrnvchhdrT"."CreatedBy" "CreatedBy"
+	,"GljrnvchhdrT"."CreatedOn" "CreatedOn"
+from "dbo"."GljrnvchhdrT" "GljrnvchhdrT"
+	left join "dbo"."glmulcmp" "sgm" on "GljrnvchhdrT"."sgm" = "sgm"."sgmid"
+	left join "dbo"."OpCo" "sgmOpco" on "sgm"."OpcoID" = "sgmOpco"."OpcoIDidentity"
+	left join "dbo"."schBranch" "Thebranch" on "GljrnvchhdrT"."branch" = "Thebranch"."branch"
+	left join "dbo"."glmulcmp" "Thebranchsgm" on "Thebranch"."sgm" = "Thebranchsgm"."sgmid"
+	left join "dbo"."OpCo" "ThebranchsgmOpco" on "Thebranchsgm"."OpcoID" = "ThebranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "ThebranchGender" on "Thebranch"."Genderid" = "ThebranchGender"."Genderid"
+	left join "dbo"."schStage" "Thebranchstage" on "Thebranch"."stagecode" = "Thebranchstage"."Code"
+	left join "dbo"."schtyp" "Thebranchschtyp" on "Thebranch"."schtypid" = "Thebranchschtyp"."schtypid"
+	left join "dbo"."GLjrntyp" "TheJr_Ty" on "GljrnvchhdrT"."Jr_Ty" = "TheJr_Ty"."Jr_Ty"
+	left join "dbo"."GlFinanceperiod" "GlFinperiod" on "GljrnvchhdrT"."GlFinperiodID" = "GlFinperiod"."GlFinperiodID"
+	left join "dbo"."GLmstrfl" "GlFinperiodaccountnumber" on "GlFinperiod"."accountnumber" = "GlFinperiodaccountnumber"."Acc_No"
+	left join "dbo"."GLmfbab" "GlFinperiodaccountnumberClsacc_" on "GlFinperiodaccountnumber"."Clsacc_No" = "GlFinperiodaccountnumberClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "GlFinperiodaccountnumberAcc_Bnd" on "GlFinperiodaccountnumber"."Acc_Bnd" = "GlFinperiodaccountnumberAcc_Bnd"."Acc_Bnd"
+]]></text>
+    </command>
+    <command id="Tr_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Tr_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Tr_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Tr No" readOnly="true" />
+    <field name="sgm" type="Int64" allowNulls="false" label="Sgm" showInSummary="true">
+      <items style="DropDownList" dataController="glmulcmp" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sgmsgm_Nm" type="String" readOnly="true" label="sgmsgm Nm" length="255" />
+    <field name="sgmOpcoOpcoName" type="String" readOnly="true" label="sgm Opco Name" length="50" />
+    <field name="branch" type="Int64" label="Branch" showInSummary="true">
+      <items style="DropDownList" dataController="schBranch" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Desc1" dataValueField="branch" copy="sgm=sgm" />
+    </field>
+    <field name="ThebranchDesc1" type="String" readOnly="true" label="Thebranch Desc1" length="50" />
+    <field name="Thebranchsgmsgm_Nm" type="String" readOnly="true" label="Thebranchsgmsgm Nm" length="255" />
+    <field name="ThebranchsgmOpcoOpcoName" type="String" readOnly="true" label="Thebranchsgm Opco Name" length="50" />
+    <field name="ThebranchGenderGender" type="String" readOnly="true" label="Thebranch Gender" length="100" />
+    <field name="ThebranchstageShortDesc1" type="String" readOnly="true" label="Thebranchstage Short Desc1" length="50" />
+    <field name="ThebranchschtypschtypDesc" type="String" readOnly="true" label="Thebranchschtypschtyp Desc" length="150" />
+    <field name="Jr_Ty" type="Int64" allowNulls="false" default="((101))" label="Jr Ty" showInSummary="true">
+      <items style="DropDownList" dataController="GLjrntyp" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheJr_TyJrty_Nme" type="String" readOnly="true" label="Jr Ty Jrty Nme" length="255" />
+    <field name="GlFinperiodID" type="Int64" allowNulls="false" label="Gl Finperiod#" showInSummary="true">
+      <items style="DropDownList" dataController="GlFinanceperiod" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Fin_period_info" dataValueField="GlFinperiodID" />
+    </field>
+    <field name="GlFinperiodFin_period_info" type="String" readOnly="true" label="Gl Finperiod Fin period info" length="150" />
+    <field name="GlFinperiodaccountnumberAcc_Nm" type="String" readOnly="true" label="Gl Finperiodaccountnumber Acc Nm" length="255" />
+    <field name="GlFinperiodaccountnumberClsacc_Acc_Nm" type="String" readOnly="true" label="Gl Finperiodaccountnumber Clsacc Acc Nm" length="250" />
+    <field name="GlFinperiodaccountnumberAcc_BndAcc_Nm" type="String" readOnly="true" label="Gl Finperiodaccountnumber Acc Bnd Acc Nm" length="50" />
+    <field name="Trs_Dt" type="DateTime" default="(getdate())" label="Trs Dt" showInSummary="true" />
+    <field name="Manualcode" type="String" label="Manualcode" length="50" />
+    <field name="Tr_Ds" type="String" label="Tr Ds" length="255" />
+    <field name="Balance" type="Decimal" label="Balance" />
+    <field name="Notes" type="String" label="Notes" length="60" />
+    <field name="approved" type="Boolean" default="((0))" label="Approved" />
+    <field name="posted" type="Boolean" default="((0))" label="Posted" />
+    <field name="deleted" type="Boolean" default="((0))" label="Deleted" />
+    <field name="havdetails" type="Boolean" default="((0))" label="Havdetails" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Gljrnvchhdr T">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Tr_No" />
+        <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" />
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Jr_Ty" aliasFieldName="TheJr_TyJrty_Nme" hyperlinkFormatString="~/Pages/GLjrntyp.aspx?Jr_Ty={Jr_Ty}&amp;_controller=GLjrntyp&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="GlFinperiodID" aliasFieldName="GlFinperiodFin_period_info" hyperlinkFormatString="~/Pages/GlFinanceperiod.aspx?GlFinperiodID={GlFinperiodID}&amp;_controller=GlFinanceperiod&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Trs_Dt" columns="10" />
+        <dataField fieldName="Manualcode" columns="50" />
+        <dataField fieldName="Tr_Ds" />
+        <dataField fieldName="Balance" columns="15" />
+        <dataField fieldName="approved" />
+        <dataField fieldName="posted" />
+        <dataField fieldName="deleted" />
+        <dataField fieldName="havdetails" />
+        <dataField fieldName="sgmOpcoOpcoName" columns="50" />
+        <dataField fieldName="Thebranchsgmsgm_Nm" />
+        <dataField fieldName="ThebranchsgmOpcoOpcoName" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Gljrnvchhdr T">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Gljrnvchhdr T" flow="NewColumn"  newColumn="true">
+          <description />
+          <dataFields>
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" hyperlinkFormatString="~/Pages/glmulcmp.aspx?sgmid={sgm}&amp;_controller=glmulcmp&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Jr_Ty" aliasFieldName="TheJr_TyJrty_Nme" hyperlinkFormatString="~/Pages/GLjrntyp.aspx?Jr_Ty={Jr_Ty}&amp;_controller=GLjrntyp&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="GlFinperiodID" aliasFieldName="GlFinperiodFin_period_info" hyperlinkFormatString="~/Pages/GlFinanceperiod.aspx?GlFinperiodID={GlFinperiodID}&amp;_controller=GlFinanceperiod&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Trs_Dt" columns="10" />
+            <dataField fieldName="Tr_Ds" />
+            <dataField fieldName="Notes" />
+          </dataFields>
+        </category>
+        <category headerText="c3" id="c3" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="sgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="Thebranchsgmsgm_Nm" />
+            <dataField fieldName="ThebranchsgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="ThebranchGenderGender" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="ThebranchschtypschtypDesc" />
+            <dataField fieldName="Balance" columns="15" />
+            <dataField fieldName="Manualcode" columns="50" />
+            <dataField fieldName="approved" />
+            <dataField fieldName="posted" />
+            <dataField fieldName="deleted" />
+            <dataField fieldName="havdetails" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Gljrnvchhdr T">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Gljrnvchhdr T" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" />
+            <dataField fieldName="Jr_Ty" aliasFieldName="TheJr_TyJrty_Nme" />
+            <dataField fieldName="GlFinperiodID" aliasFieldName="GlFinperiodFin_period_info" />
+            <dataField fieldName="Trs_Dt" columns="10" />
+            <dataField fieldName="Tr_Ds" />
+            <dataField fieldName="Notes" />
+          </dataFields>
+        </category>
+        <category headerText="More Details" id="c2" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[More Details]]></description>
+          <dataFields>
+            <dataField fieldName="Balance" columns="15" />
+            <dataField fieldName="Manualcode" columns="50" />
+            <dataField fieldName="approved" />
+            <dataField fieldName="posted" />
+            <dataField fieldName="deleted" />
+            <dataField fieldName="havdetails" />
+            <dataField fieldName="Thebranchsgmsgm_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+      <action commandName="Custom" commandArgument="FullDuplicatewithDetails" headerText="FullDuplicatewithDetails" confirmation="Are you sure you want to duplicate ?" id="a100" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Edit" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action commandName="New" commandArgument="createForm1" id="a100" headerText="NewForm" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="GLjrnvchhdrTr100" commandName="Update" type="Code" phase="Before" />
+    <rule id="deletedGLjrnvchhdrT" commandName="Delete" type="Code" phase="Before" />
+    <rule id="GLjrnvchhdrT100" commandName="Update" type="Code" phase="After" />
+    <rule id="r101" commandName="Custom" commandArgument="FullDuplicatewithDetails" type="Sql" phase="Execute"><![CDATA[-- duplicate the order
+INSERT INTO [dbo].[GljrnvchhdrT]
+           ([sgm]
+           ,[branch]
+           ,[Jr_Ty]
+           ,[GlFinperiodID]
+           ,[Trs_Dt]
+           ,[Manualcode]
+           ,[Tr_Ds]
+           ,[Balance]
+           ,[Notes]
+           ,[approved]
+           ,[posted]
+           ,[deleted]
+           ,[havdetails]
+           ,[ModifiedBy]
+           ,[ModifiedOn]
+           ,[CreatedBy]
+           ,[CreatedOn])
+select      [sgm]
+           ,[branch]
+           ,[Jr_Ty]
+           ,[GlFinperiodID]
+           ,[Trs_Dt]
+           ,[Manualcode]
+           ,[Tr_Ds]
+           ,[Balance]
+           ,[Notes]
+           ,[approved]
+           ,[posted]
+           ,[deleted]
+           ,[havdetails]
+           ,[ModifiedBy]
+           ,[ModifiedOn]
+           ,[CreatedBy]
+           ,[CreatedOn]
+from [dbo].[GljrnvchhdrT]
+where Tr_No = @Tr_No
+
+-- find ID of duplicated order
+declare @newschvchdlyhdregid int;
+select @newschvchdlyhdregid = @@IDENTITY;
+
+-- duplicate  details
+INSERT INTO [dbo].[GLjrnvchT]
+           ([Tr_No]
+           ,[Dc_No]
+           ,[Tr_Dsc1]
+           ,[Tr_Dt]
+           ,[Acc_No]
+           ,[StudentCode]
+           ,[branch]
+           ,[acdcode]
+           ,[schpaymenttypeid]
+           ,[Tr_Db]
+           ,[Tr_Cr]
+           ,[ModifiedBy]
+           ,[ModifiedOn]
+           ,[CreatedBy]
+           ,[CreatedOn]
+           ,[Clsacc_No]
+           ,[Costcntr_No]
+           ,[docrelno]
+           ,[docreltyp]
+           ,[curno]
+           ,[curprice]
+           ,[curvalue]
+           ,[Chq_No]
+           ,[Bnk_Nm]
+           ,[Rcpt_By]
+           ,[Pymnt_No]
+           ,[trs_dt1]
+           ,[studentsefaid]
+           ,[cstyp_NO])
+SELECT 
+@newschvchdlyhdregid 
+           ,[Dc_No]
+           ,[Tr_Dsc1]
+           ,[Tr_Dt]
+           ,[Acc_No]
+           ,[StudentCode]
+           ,[branch]
+           ,[acdcode]
+           ,[schpaymenttypeid]
+           ,[Tr_Db]
+           ,[Tr_Cr]
+           ,[ModifiedBy]
+           ,[ModifiedOn]
+           ,[CreatedBy]
+           ,[CreatedOn]
+           ,[Clsacc_No]
+           ,[Costcntr_No]
+           ,[docrelno]
+           ,[docreltyp]
+           ,[curno]
+           ,[curprice]
+           ,[curvalue]
+           ,[Chq_No]
+           ,[Bnk_Nm]
+           ,[Rcpt_By]
+           ,[Pymnt_No]
+           ,[trs_dt1]
+           ,[studentsefaid]
+           ,[cstyp_NO]
+
+from [dbo].[GLjrnvchT]
+where Tr_No = @Tr_No
+--
+-- open edit form for duplicate order
+set @Result_NavigateUrl = 'GljrnvchhdrT.aspx?Tr_No=' + cast( @newschvchdlyhdregid  as nvarchar)
+                          + '&_controller=GljrnvchhdrT&_commandName=Edit'
+                          + '&_commandArgument=editForm1']]></rule>
+  </businessRules>
+</dataController>

@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="QardON" conflictDetection="overwriteChanges" label="Qard ON" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"QardON"."Brn_No" "Brn_No"
+	,"QardON"."doc_typ" "doc_typ"
+	,"QardON"."countrdus" "countrdus"
+	,"QardON"."nasmok" "nasmok"
+	,"QardON"."note" "note"
+	,"QardON"."naslat" "naslat"
+	,"QardON"."wazefet" "wazefet"
+	,"QardON"."Esmsaheb" "Esmsaheb"
+	,"QardON"."arddate" "arddate"
+	,"QardON"."Cstm_No" "Cstm_No"
+	,"QardON"."Cstm_Nm" "Cstm_Nm"
+	,"QardON"."Slm_Nm" "Slm_Nm"
+	,"QardON"."Tarhel" "Tarhel"
+	,"QardON"."ID_USER" "ID_USER"
+	,"QardON"."ID_comp" "ID_comp"
+	,"QardON"."ITEM" "ITEM"
+	,"QardON"."Unit_No" "Unit_No"
+	,"QardON"."cost" "cost"
+	,"QardON"."quantity" "quantity"
+	,"QardON"."egmaly" "egmaly"
+	,"QardON"."Itm_Sal1" "Itm_Sal1"
+	,"QardON"."currncy" "currncy"
+	,"QardON"."ln_no" "ln_no"
+	,"QardON"."posted" "posted"
+	,"QardON"."closed" "closed"
+	,"QardON"."arvdate" "arvdate"
+	,"QardON"."Description" "Description"
+	,"QardON"."countrd" "countrd"
+from "dbo"."QardON" "QardON"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="Brn_No" type="Int64" allowNulls="false" label="Brn No" showInSummary="true" />
+    <field name="doc_typ" type="Int64" allowNulls="false" label="Doc Typ" showInSummary="true" />
+    <field name="countrdus" type="String" allowNulls="false" label="Countrdus" length="50" showInSummary="true" />
+    <field name="nasmok" type="String" label="Nasmok" length="255" showInSummary="true" />
+    <field name="note" type="String" allowQBE="false" allowSorting="false" label="Note" showInSummary="true" />
+    <field name="naslat" type="String" allowQBE="false" allowSorting="false" label="Naslat" />
+    <field name="wazefet" type="String" label="Wazefet" length="255" />
+    <field name="Esmsaheb" type="String" label="Esmsaheb" length="255" />
+    <field name="arddate" type="DateTime" label="Arddate" />
+    <field name="Cstm_No" type="Int64" label="Cstm No" />
+    <field name="Cstm_Nm" type="String" label="Cstm Nm" length="50" />
+    <field name="Slm_Nm" type="String" label="Slm Nm" length="255" />
+    <field name="Tarhel" type="Double" label="Tarhel" />
+    <field name="ID_USER" type="String" label="Id User" length="50" />
+    <field name="ID_comp" type="String" label="ID comp" length="255" />
+    <field name="ITEM" type="String" label="Item" length="255" />
+    <field name="Unit_No" type="String" label="Unit No" length="50" />
+    <field name="cost" type="Decimal" label="Cost" />
+    <field name="quantity" type="Double" label="Quantity" />
+    <field name="egmaly" type="Double" label="Egmaly" />
+    <field name="Itm_Sal1" type="Decimal" label="Itm Sal1" />
+    <field name="currncy" type="String" label="Currncy" length="50" />
+    <field name="ln_no" type="Int64" label="Ln No" />
+    <field name="posted" type="Int32" label="Posted" />
+    <field name="closed" type="Int32" label="Closed" />
+    <field name="arvdate" type="String" label="Arvdate" length="10" />
+    <field name="Description" type="String" label="Description" readOnly="true" length="307" />
+    <field name="countrd" type="String" allowNulls="false" label="Countrd" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Qard ON">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Brn_No" columns="15" />
+        <dataField fieldName="doc_typ" columns="15" />
+        <dataField fieldName="countrdus" columns="50" />
+        <dataField fieldName="nasmok" />
+        <dataField fieldName="note" rows="5" />
+        <dataField fieldName="naslat" rows="5" />
+        <dataField fieldName="wazefet" />
+        <dataField fieldName="Esmsaheb" />
+        <dataField fieldName="arddate" columns="10" />
+        <dataField fieldName="Cstm_No" columns="15" />
+        <dataField fieldName="Cstm_Nm" columns="50" />
+        <dataField fieldName="Slm_Nm" />
+        <dataField fieldName="Tarhel" columns="15" />
+        <dataField fieldName="ID_USER" columns="50" />
+        <dataField fieldName="ID_comp" />
+        <dataField fieldName="ITEM" />
+        <dataField fieldName="Unit_No" columns="50" />
+        <dataField fieldName="cost" dataFormatString="c" columns="15" />
+        <dataField fieldName="quantity" columns="15" />
+        <dataField fieldName="egmaly" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Qard ON">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Qard ON" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Brn_No" columns="15" />
+            <dataField fieldName="doc_typ" columns="15" />
+            <dataField fieldName="countrdus" columns="50" />
+            <dataField fieldName="nasmok" />
+            <dataField fieldName="note" rows="5" />
+            <dataField fieldName="naslat" rows="5" />
+            <dataField fieldName="wazefet" />
+            <dataField fieldName="Esmsaheb" />
+            <dataField fieldName="arddate" columns="10" />
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="Cstm_Nm" columns="50" />
+            <dataField fieldName="Slm_Nm" />
+            <dataField fieldName="Tarhel" columns="15" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="ID_comp" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="Unit_No" columns="50" />
+            <dataField fieldName="cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="quantity" columns="15" />
+            <dataField fieldName="egmaly" columns="15" />
+            <dataField fieldName="Itm_Sal1" dataFormatString="c" columns="15" />
+            <dataField fieldName="currncy" columns="50" />
+            <dataField fieldName="ln_no" columns="15" />
+            <dataField fieldName="posted" columns="15" />
+            <dataField fieldName="closed" columns="15" />
+            <dataField fieldName="arvdate" columns="10" />
+            <dataField fieldName="Description" />
+            <dataField fieldName="countrd" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Qard ON">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Qard ON" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Brn_No" columns="15" />
+            <dataField fieldName="doc_typ" columns="15" />
+            <dataField fieldName="countrdus" columns="50" />
+            <dataField fieldName="nasmok" />
+            <dataField fieldName="note" rows="5" />
+            <dataField fieldName="naslat" rows="5" />
+            <dataField fieldName="wazefet" />
+            <dataField fieldName="Esmsaheb" />
+            <dataField fieldName="arddate" columns="10" />
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="Cstm_Nm" columns="50" />
+            <dataField fieldName="Slm_Nm" />
+            <dataField fieldName="Tarhel" columns="15" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="ID_comp" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="Unit_No" columns="50" />
+            <dataField fieldName="cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="quantity" columns="15" />
+            <dataField fieldName="egmaly" columns="15" />
+            <dataField fieldName="Itm_Sal1" dataFormatString="c" columns="15" />
+            <dataField fieldName="currncy" columns="50" />
+            <dataField fieldName="ln_no" columns="15" />
+            <dataField fieldName="posted" columns="15" />
+            <dataField fieldName="closed" columns="15" />
+            <dataField fieldName="arvdate" columns="10" />
+            <dataField fieldName="countrd" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

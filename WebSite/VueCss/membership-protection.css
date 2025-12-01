@@ -1,0 +1,99 @@
+/* Membership Protection CSS - Ensure Citrus.css styles work properly */
+
+/* Reset any conflicting membership styles from other CSS files */
+.MembershipBarPlaceholder,
+.MembershipBar,
+.LoginDialog,
+.LoginDialogCollapsed,
+table.LoginDialog,
+table.LoginDialogCollapsed {
+    /* Remove any conflicting modern styles */
+    border-radius: initial !important;
+    box-shadow: initial !important;
+    backdrop-filter: initial !important;
+    transform: initial !important;
+    transition: initial !important;
+    position: initial !important;
+    top: initial !important;
+    left: initial !important;
+    right: initial !important;
+    z-index: initial !important;
+    
+    /* Let Citrus.css handle all styling */
+}
+
+/* Ensure membership bar displays properly */
+.MembershipBarPlaceholder {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.MembershipBar {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+table.LoginDialog,
+table.LoginDialogCollapsed {
+    display: table !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Ensure login details are visible */
+.LoginDialog td,
+.LoginDialogCollapsed td,
+.MembershipBar *,
+.MembershipBarPlaceholder * {
+    color: inherit !important;
+    background: inherit !important;
+    border: inherit !important;
+}
+
+/* Remove any enhanced theme interference */
+.MembershipBarPlaceholder *,
+.MembershipBar *,
+.LoginDialog *,
+.LoginDialogCollapsed * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+}
+
+/* Ensure proper text visibility in membership areas */
+div.MembershipBar a,
+table.LoginDialog a,
+table.LoginDialogCollapsed a,
+.HelpLink,
+.CultureLink {
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+
+/* Remove any modern button styling from membership elements */
+.MembershipBar button,
+.LoginDialog button,
+.LoginDialog input[type="submit"],
+.LoginDialog input[type="button"] {
+    border-radius: initial !important;
+    box-shadow: initial !important;
+    background: initial !important;
+    border: initial !important;
+    color: initial !important;
+    padding: initial !important;
+    margin: initial !important;
+    font-size: initial !important;
+    font-weight: initial !important;
+}
+
+/* Ensure membership content is not hidden by enhanced theme */
+body:not(.enhanced-membership-hidden) .MembershipBarPlaceholder,
+body:not(.enhanced-membership-hidden) .MembershipBar,
+body:not(.enhanced-membership-hidden) .LoginDialog,
+body:not(.enhanced-membership-hidden) .LoginDialogCollapsed {
+    display: block !important;
+}

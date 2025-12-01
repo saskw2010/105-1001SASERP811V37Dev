@@ -1,0 +1,182 @@
+<%@ Master Language="VB" AutoEventWireup="false" CodeFile="UniversalNavMaster.master.vb" Inherits="UniversalNavMaster" %>
+<%@ Register Src="~/Controls/UniversalHamburgerMenu.ascx" TagName="UniversalHamburgerMenu" TagPrefix="uc" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="rtl" lang="ar">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContentPlaceHolder" runat="server">SASERP V37</asp:ContentPlaceHolder>
+    </title>
+    
+    <!-- Base CSS Framework -->
+    <link href="~/VueCss/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/VueCss/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Universal Navigation CSS -->
+    <link href="~/VueCss/universal-hamburger-menu.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Application CSS -->
+    <link href="~/VueCss/app-styles.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Page Specific CSS -->
+    <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+    
+    <!-- Vue.js Framework -->
+    <script src="~/Vuejs/vue.global.prod.js" type="text/javascript"></script>
+    
+</head>
+<body class="mobile-first-navigation" data-theme="light">
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableCdn="true">
+            <Scripts>
+                <asp:ScriptReference Path="~/js/jquery.min.js" />
+                <asp:ScriptReference Path="~/js/bootstrap.min.js" />
+                <asp:ScriptReference Path="~/js/mainmaster-vue-framework.js" />
+                <asp:ScriptReference Path="~/js/navigation-vue-components.js" />
+            </Scripts>
+        </asp:ScriptManager>
+
+        <!-- Universal Hamburger Menu - يظهر في كل الصفحات -->
+        <uc:UniversalHamburgerMenu ID="UniversalMenu" runat="server" />
+
+        <!-- Main Content Area -->
+        <main id="mainContent" class="main-content-wrapper">
+            
+            <!-- Page Header (اختياري) -->
+            <asp:ContentPlaceHolder ID="PageHeaderPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+            
+            <!-- Primary Content -->
+            <div class="container-fluid">
+                <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder ID="PageContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+                
+            </div>
+            
+            <!-- Page Footer (اختياري) -->
+            <asp:ContentPlaceHolder ID="PageFooterPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+            
+        </main>
+
+        <!-- App Footer -->
+        <footer class="app-footer d-none d-md-block">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2025 SASERP V37 - نظام إدارة موارد المؤسسات</p>
+                    </div>
+                    <div class="col-md-6 text-left">
+                        <p>الإصدار 1.1.37</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Loading Overlay -->
+        <div id="globalLoadingOverlay" class="loading-overlay" style="display: none;">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>جارٍ التحميل...</p>
+            </div>
+        </div>
+
+        <!-- Error Toast Container -->
+        <div id="errorToastContainer" class="toast-container"></div>
+
+        <!-- JavaScript Initialization -->
+        <script type="text/javascript">
+            // تهيئة النظام بعد تحميل الصفحة
+            document.addEventListener('DOMContentLoaded', function() {
+                // تهيئة mainmaster framework
+                if (typeof mainmaster !== 'undefined') {
+                    // تهيئة نظام التنقل
+                    if (mainmaster.navigation) {
+                        mainmaster.navigation.init();
+                    }
+                    
+                    // تهيئة نظام الثيمات
+                    if (mainmaster.theme) {
+                        mainmaster.theme.init();
+                    }
+                    
+                    // تهيئة utilities عامة
+                    if (mainmaster.utils) {
+                        mainmaster.utils.init();
+                    }
+
+                    console.log('✅ تم تهيئة SASERP Universal Navigation System');
+                } else {
+                    console.warn('⚠️ mainmaster framework غير متوفر');
+                }
+
+                // إخفاء Loading overlay
+                setTimeout(function() {
+                    const loadingOverlay = document.getElementById('globalLoadingOverlay');
+                    if (loadingOverlay) {
+                        loadingOverlay.style.display = 'none';
+                    }
+                }, 500);
+            });
+
+            // Global error handler
+            window.addEventListener('error', function(e) {
+                console.error('Global Error:', e.error);
+                if (typeof mainmaster !== 'undefined' && mainmaster.utils && mainmaster.utils.showError) {
+                    mainmaster.utils.showError('حدث خطأ في النظام: ' + e.message);
+                }
+            });
+
+            // Service Worker Registration (للأداء)
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('/sw.js')
+                        .then(function(registration) {
+                            console.log('SW registered: ', registration);
+                        })
+                        .catch(function(registrationError) {
+                            console.log('SW registration failed: ', registrationError);
+                        });
+                });
+            }
+        </script>
+        <!-- Original PageBody Table - Keep for compatibility -->
+<table id="PageBody" style="display: none">
+  <tr>
+    <td id="PageHeaderSideBar">
+      <asp:Image ID="Image5" runat="server" SkinID="PageLogo" CssClass="PageLogo" />
+    </td>
+    <td id="PageHeaderLeftSide"></td>
+    <td id="PageHeaderContent">
+      <div class="Header">
+        <asp:SiteMapPath ID="SiteMapPath1" runat="server" SkinID="SiteMapPath" />
+        <div class="Title">
+          <asp:ContentPlaceHolder ID="PageTitleContentPlaceHolder" runat="server">Page Title</asp:ContentPlaceHolder>
+        </div>
+      </div>
+    </td>
+    <td id="PageHeaderRightSide"></td>
+  </tr>
+  <tr>
+    <td id="PageContentSideBar">
+      <div class="SideBarBody">
+        <asp:ContentPlaceHolder ID="SideBarPlaceHolder" runat="server" />
+      </div>
+      <div id="PageHeaderBar">
+          <asp:ContentPlaceHolder ID="PageHeaderContentPlaceHolder" runat="server">SKY ERP</asp:ContentPlaceHolder>
+      </div>
+    </td>
+    <td id="PageContentLeftSide"></td>
+    <td></td>
+    <td id="PageContentRightSide"></td>
+  </tr>
+  <tr>
+    <td id="PageFooterSideBar"></td>
+    <td id="PageFooterLeftSide"></td>
+    <td id="PageFooterContent"></td>
+    <td id="PageFooterRightSide"></td>
+  </tr>
+</table>
+    </form>
+</body>
+</html>

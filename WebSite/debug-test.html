@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JS Debug Test</title>
+</head>
+<body>
+    <h1>JavaScript Debug Test</h1>
+    <button onclick="testFunctions()">Test Functions</button>
+    <div id="output"></div>
+    
+    <script src="js/modern-sidebar-enhanced.js"></script>
+    
+    <script>
+        function testFunctions() {
+            var output = document.getElementById('output');
+            var html = '<h3>Function Test Results:</h3>';
+            
+            html += '<p>toggleLegacyMenu: ' + (typeof window.toggleLegacyMenu) + '</p>';
+            html += '<p>extractMenuFromPageMenuBar: ' + (typeof window.extractMenuFromPageMenuBar) + '</p>';
+            html += '<p>initializeSidebar: ' + (typeof window.initializeSidebar) + '</p>';
+            html += '<p>debugSidebar: ' + (typeof window.debugSidebar) + '</p>';
+            html += '<p>EnhancedModernSidebar: ' + (typeof window.EnhancedModernSidebar) + '</p>';
+            
+            // Check console for errors
+            html += '<p>Check browser console for any JavaScript errors.</p>';
+            
+            output.innerHTML = html;
+            
+            console.log('=== Debug Test ===');
+            console.log('toggleLegacyMenu:', typeof window.toggleLegacyMenu);
+            console.log('extractMenuFromPageMenuBar:', typeof window.extractMenuFromPageMenuBar);
+            console.log('initializeSidebar:', typeof window.initializeSidebar);
+            console.log('debugSidebar:', typeof window.debugSidebar);
+            console.log('EnhancedModernSidebar:', typeof window.EnhancedModernSidebar);
+        }
+        
+        // Auto-test after a delay
+        setTimeout(function() {
+            console.log('Auto-testing after 2 seconds...');
+            testFunctions();
+        }, 2000);
+    </script>
+</body>
+</html>

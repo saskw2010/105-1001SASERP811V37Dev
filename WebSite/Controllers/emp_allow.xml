@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="emp_allow" conflictDetection="overwriteChanges" label="Emp Allow" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"emp_allow"."Srlcode" "Srlcode"
+	,"emp_allow"."Emp_NO" "Emp_NO"
+	,"Emp_"."Emp_No" "Emp_Emp_No"
+	,"Emp_salrycat"."grade_desc_a" "Emp_salrycatgrade_desc_a"
+	,"Emp_salrycatEarning_"."Earning_Nm" "Emp_salrycatEarning_Earning_Nm"
+	,"Emp_Bnk_"."Bnk_Acc" "Emp_Bnk_Bnk_Acc"
+	,"Emp_Sub_Bnk"."Bnk_Acc" "Emp_Sub_BnkBnk_Acc"
+	,"Emp_Emp_"."Emp_NOt" "Emp_Emp_Emp_NOt"
+	,"Emp_Emp_sgm"."sgm_Nm" "Emp_Emp_sgmsgm_Nm"
+	,"Emp_Emp_salrycat"."grade_desc_a" "Emp_Emp_salrycatgrade_desc_a"
+	,"Emp_Emp_Blood_Type"."ModifiedBy" "Emp_Emp_Blood_TypeModifiedBy"
+	,"Emp_Emp_Bnk_"."Bnk_Acc" "Emp_Emp_Bnk_Bnk_Acc"
+	,"Emp_Emp_Sub_Bnk"."Bnk_Acc" "Emp_Emp_Sub_BnkBnk_Acc"
+	,"Emp_Emp_Cntry_"."Cntry_Nm" "Emp_Emp_Cntry_Cntry_Nm"
+	,"Emp_Emp_Depm_"."Depm_Nm" "Emp_Emp_Depm_Depm_Nm"
+	,"Emp_Emp_Educt_Type"."Educt_Nm" "Emp_Emp_Educt_TypeEduct_Nm"
+	,"Emp_Emp_Job_Stu"."Emp_Stunm" "Emp_Emp_Job_StuEmp_Stunm"
+	,"Emp_Emp_Earning_"."Earning_Nm" "Emp_Emp_Earning_Earning_Nm"
+	,"Emp_Emp_Job_"."Job_Nm" "Emp_Emp_Job_Job_Nm"
+	,"Emp_Emp_Ownr_"."Ownr_ID" "Emp_Emp_Ownr_Ownr_ID"
+	,"Emp_Emp_Reljan"."Reljan_nm" "Emp_Emp_ReljanReljan_nm"
+	,"Emp_Emp_Status_Type"."Status_Nm" "Emp_Emp_Status_TypeStatus_Nm"
+	,"Emp_Emp_branch"."Desc1" "Emp_Emp_branchDesc1"
+	,"Emp_Earning_"."Earning_Nm" "Emp_Earning_Earning_Nm"
+	,"emp_allow"."allow_no" "allow_no"
+	,"allow_"."allow_desc_a" "allow_allow_desc_a"
+	,"emp_allow"."amount" "amount"
+	,"emp_allow"."ModifiedBy" "ModifiedBy"
+	,"emp_allow"."ModifiedOn" "ModifiedOn"
+	,"emp_allow"."CreatedBy" "CreatedBy"
+	,"emp_allow"."CreatedOn" "CreatedOn"
+from "dbo"."emp_allow" "emp_allow"
+	left join "dbo"."Pyempcnt" "Emp_" on "emp_allow"."Emp_NO" = "Emp_"."Emp_No"
+	left join "dbo"."grade" "Emp_salrycat" on "Emp_"."salrycat" = "Emp_salrycat"."grade_code"
+	left join "dbo"."Pyerntsalyp1" "Emp_salrycatEarning_" on "Emp_salrycat"."Earning_No" = "Emp_salrycatEarning_"."Earning_No"
+	left join "dbo"."PybnkAcc" "Emp_Bnk_" on "Emp_"."Bnk_No" = "Emp_Bnk_"."Bnk_No"
+	left join "dbo"."PybnkAcc" "Emp_Sub_Bnk" on "Emp_"."Sub_Bnk" = "Emp_Sub_Bnk"."Bnk_No"
+	left join "dbo"."Pyempmfs" "Emp_Emp_" on "Emp_"."Emp_No" = "Emp_Emp_"."Emp_No"
+	left join "dbo"."glmulcmp" "Emp_Emp_sgm" on "Emp_Emp_"."sgm" = "Emp_Emp_sgm"."sgmid"
+	left join "dbo"."grade" "Emp_Emp_salrycat" on "Emp_Emp_"."salrycat" = "Emp_Emp_salrycat"."grade_code"
+	left join "dbo"."pyBlood" "Emp_Emp_Blood_Type" on "Emp_Emp_"."Blood_Type" = "Emp_Emp_Blood_Type"."Blood_Type"
+	left join "dbo"."PybnkAcc" "Emp_Emp_Bnk_" on "Emp_Emp_"."Bnk_No" = "Emp_Emp_Bnk_"."Bnk_No"
+	left join "dbo"."PybnkAcc" "Emp_Emp_Sub_Bnk" on "Emp_Emp_"."Sub_Bnk" = "Emp_Emp_Sub_Bnk"."Bnk_No"
+	left join "dbo"."PYCntry" "Emp_Emp_Cntry_" on "Emp_Emp_"."Cntry_No" = "Emp_Emp_Cntry_"."Cntry_No"
+	left join "dbo"."Pydepm" "Emp_Emp_Depm_" on "Emp_Emp_"."Depm_No" = "Emp_Emp_Depm_"."Depm_No"
+	left join "dbo"."PyempEdu" "Emp_Emp_Educt_Type" on "Emp_Emp_"."Educt_Type" = "Emp_Emp_Educt_Type"."Educt_Type"
+	left join "dbo"."Pyempstu" "Emp_Emp_Job_Stu" on "Emp_Emp_"."Job_Stu" = "Emp_Emp_Job_Stu"."Emp_stu"
+	left join "dbo"."Pyerntsalyp1" "Emp_Emp_Earning_" on "Emp_Emp_"."Earning_no" = "Emp_Emp_Earning_"."Earning_No"
+	left join "dbo"."Pyjobs" "Emp_Emp_Job_" on "Emp_Emp_"."Job_No" = "Emp_Emp_Job_"."Job_No"
+	left join "dbo"."Pyownrmf" "Emp_Emp_Ownr_" on "Emp_Emp_"."Ownr_No" = "Emp_Emp_Ownr_"."Ownr_No"
+	left join "dbo"."PyReljan" "Emp_Emp_Reljan" on "Emp_Emp_"."Reljan" = "Emp_Emp_Reljan"."reljan"
+	left join "dbo"."PyStatus" "Emp_Emp_Status_Type" on "Emp_Emp_"."Status_Type" = "Emp_Emp_Status_Type"."Status_Type"
+	left join "dbo"."schBranch" "Emp_Emp_branch" on "Emp_Emp_"."branch" = "Emp_Emp_branch"."branch"
+	left join "dbo"."Pyerntsalyp1" "Emp_Earning_" on "Emp_"."Earning_no" = "Emp_Earning_"."Earning_No"
+	left join "dbo"."allowance" "allow_" on "emp_allow"."allow_no" = "allow_"."allow_no"
+]]></text>
+    </command>
+    <command id="SrlcodeIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Srlcode" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Srlcode" type="Int64" allowNulls="false" isPrimaryKey="true" label="Srlcode" readOnly="true" />
+    <field name="Emp_NO" type="Int64" allowNulls="false" label="Emp NO" showInSummary="true">
+      <items style="Lookup" dataController="Pyempcnt" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Emp_Emp_No" type="Int64" readOnly="true" label="Emp No">
+      <items style="Lookup" dataController="Pyempmfs" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Emp_salrycatgrade_desc_a" type="String" readOnly="true" oneToOne="grade_desc_a" label="Emp salrycatgrade desc a" length="20" />
+    <field name="Emp_salrycatEarning_Earning_Nm" type="String" readOnly="true" label="Emp salrycat Earning Nm" length="255" />
+    <field name="Emp_Bnk_Bnk_Acc" type="String" readOnly="true" oneToOne="Bnk_Acc" label="Emp Bnk Acc" length="20" />
+    <field name="Emp_Sub_BnkBnk_Acc" type="String" readOnly="true" oneToOne="Bnk_Acc" label="Emp Sub Bnk Acc" length="20" />
+    <field name="Emp_Emp_Emp_NOt" type="String" readOnly="true" oneToOne="Emp_NOt" label="Emp N Ot" length="50" />
+    <field name="Emp_Emp_sgmsgm_Nm" type="String" readOnly="true" label="Emp sgmsgm Nm" length="255" />
+    <field name="Emp_Emp_salrycatgrade_desc_a" type="String" readOnly="true" label="Emp salrycatgrade desc a" length="20" />
+    <field name="Emp_Emp_Blood_TypeModifiedBy" type="String" readOnly="true" label="Emp Blood Type Modified By" length="50" />
+    <field name="Emp_Emp_Bnk_Bnk_Acc" type="String" readOnly="true" label="Emp Bnk Acc" length="20" />
+    <field name="Emp_Emp_Sub_BnkBnk_Acc" type="String" readOnly="true" label="Emp Sub Bnk Acc" length="20" />
+    <field name="Emp_Emp_Cntry_Cntry_Nm" type="String" readOnly="true" label="Emp Cntry Nm" length="255" />
+    <field name="Emp_Emp_Depm_Depm_Nm" type="String" readOnly="true" label="Emp Depm Nm" length="255" />
+    <field name="Emp_Emp_Educt_TypeEduct_Nm" type="String" readOnly="true" label="Emp Educt Type Educt Nm" length="15" />
+    <field name="Emp_Emp_Job_StuEmp_Stunm" type="String" readOnly="true" label="Emp Job Stu Emp Stunm" length="255" />
+    <field name="Emp_Emp_Earning_Earning_Nm" type="String" readOnly="true" label="Emp Earning Nm" length="255" />
+    <field name="Emp_Emp_Job_Job_Nm" type="String" readOnly="true" label="Emp Job Nm" length="255" />
+    <field name="Emp_Emp_Ownr_Ownr_ID" type="String" readOnly="true" label="Emp Ownr#" length="15" />
+    <field name="Emp_Emp_ReljanReljan_nm" type="String" readOnly="true" label="Emp Reljan nm" length="50" />
+    <field name="Emp_Emp_Status_TypeStatus_Nm" type="String" readOnly="true" label="Emp Status Type Status Nm" length="255" />
+    <field name="Emp_Emp_branchDesc1" type="String" readOnly="true" label="Emp branch Desc1" length="50" />
+    <field name="Emp_Earning_Earning_Nm" type="String" readOnly="true" oneToOne="Earning_Nm" label="Emp Earning Nm" length="255" />
+    <field name="allow_no" type="Int64" allowNulls="false" label="Allow No" showInSummary="true">
+      <items style="Lookup" dataController="allowance" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="allow_allow_desc_a" type="String" readOnly="true" label="Allow Desc A" length="255" />
+    <field name="amount" type="Decimal" allowNulls="false" label="Amount" showInSummary="true" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" showInSummary="true" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" showInSummary="true" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Emp Allow">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Emp_NO" aliasFieldName="Emp_Emp_No" />
+        <dataField fieldName="allow_no" aliasFieldName="allow_allow_desc_a" hyperlinkFormatString="~/Pages/allowance.aspx?allow_no={allow_no}&amp;_controller=allowance&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="amount" dataFormatString="c" columns="15" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="Emp_salrycatgrade_desc_a" columns="20" />
+        <dataField fieldName="Emp_salrycatEarning_Earning_Nm" />
+        <dataField fieldName="Emp_Bnk_Bnk_Acc" columns="20" />
+        <dataField fieldName="Emp_Sub_BnkBnk_Acc" columns="20" />
+        <dataField fieldName="Emp_Emp_Emp_NOt" columns="50" />
+        <dataField fieldName="Emp_Emp_sgmsgm_Nm" />
+        <dataField fieldName="Emp_Emp_salrycatgrade_desc_a" columns="20" />
+        <dataField fieldName="Emp_Emp_Blood_TypeModifiedBy" columns="50" />
+        <dataField fieldName="Emp_Emp_Bnk_Bnk_Acc" columns="20" />
+        <dataField fieldName="Emp_Emp_Sub_BnkBnk_Acc" columns="20" />
+        <dataField fieldName="Emp_Emp_Cntry_Cntry_Nm" />
+        <dataField fieldName="Emp_Emp_Depm_Depm_Nm" />
+        <dataField fieldName="Emp_Emp_Educt_TypeEduct_Nm" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Emp Allow">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Emp Allow" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_NO" aliasFieldName="Emp_Emp_No" hyperlinkFormatString="~/Pages/Pyempcnt.aspx?Emp_No={Emp_NO}&amp;_controller=Pyempcnt&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="allow_no" aliasFieldName="allow_allow_desc_a" hyperlinkFormatString="~/Pages/allowance.aspx?allow_no={allow_no}&amp;_controller=allowance&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="amount" dataFormatString="c" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_salrycatgrade_desc_a" columns="20" />
+            <dataField fieldName="Emp_salrycatEarning_Earning_Nm" />
+            <dataField fieldName="Emp_Bnk_Bnk_Acc" columns="20" />
+            <dataField fieldName="Emp_Sub_BnkBnk_Acc" columns="20" />
+            <dataField fieldName="Emp_Emp_Emp_NOt" columns="50" />
+            <dataField fieldName="Emp_Emp_sgmsgm_Nm" />
+            <dataField fieldName="Emp_Emp_salrycatgrade_desc_a" columns="20" />
+            <dataField fieldName="Emp_Emp_Blood_TypeModifiedBy" columns="50" />
+            <dataField fieldName="Emp_Emp_Bnk_Bnk_Acc" columns="20" />
+            <dataField fieldName="Emp_Emp_Sub_BnkBnk_Acc" columns="20" />
+            <dataField fieldName="Emp_Emp_Cntry_Cntry_Nm" />
+            <dataField fieldName="Emp_Emp_Depm_Depm_Nm" />
+            <dataField fieldName="Emp_Emp_Educt_TypeEduct_Nm" columns="15" />
+            <dataField fieldName="Emp_Emp_Job_StuEmp_Stunm" />
+            <dataField fieldName="Emp_Emp_Earning_Earning_Nm" />
+            <dataField fieldName="Emp_Emp_Job_Job_Nm" />
+            <dataField fieldName="Emp_Emp_Ownr_Ownr_ID" columns="15" />
+            <dataField fieldName="Emp_Emp_ReljanReljan_nm" columns="50" />
+            <dataField fieldName="Emp_Emp_Status_TypeStatus_Nm" />
+            <dataField fieldName="Emp_Emp_branchDesc1" columns="50" />
+            <dataField fieldName="Emp_Earning_Earning_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Emp Allow">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Emp Allow" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_NO" aliasFieldName="Emp_Emp_No" />
+            <dataField fieldName="allow_no" aliasFieldName="allow_allow_desc_a" />
+            <dataField fieldName="amount" dataFormatString="c" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="schFather" conflictDetection="overwriteChanges" label="sch Father" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"schFather"."FatherCode" "FatherCode"
+	,"schFather"."fathfirstname1" "fathfirstname1"
+	,"schFather"."fathfirstname2" "fathfirstname2"
+	,"schFather"."job_no" "job_no"
+	,"job_"."job_desc" "job_job_desc"
+	,"schFather"."Cntry_No" "Cntry_No"
+	,"Cntry_"."Cntry_Nm" "Cntry_Cntry_Nm"
+	,"schFather"."MaritalStatus" "MaritalStatus"
+	,"MaritalStatus"."Status_Nm" "MaritalStatusStatus_Nm"
+	,"schFather"."religion" "religion"
+	,"religion"."Reljan_nm" "religionReljan_nm"
+	,"schFather"."State" "State"
+	,"TheState"."State_Nm" "TheStateState_Nm"
+	,"schFather"."area" "area"
+	,"area"."Desc1" "areaDesc1"
+	,"schFather"."residenceaddress1" "residenceaddress1"
+	,"schFather"."ResidenceTel1" "ResidenceTel1"
+	,"schFather"."ResidenceTel2" "ResidenceTel2"
+	,"schFather"."ResidenceTel3" "ResidenceTel3"
+	,"schFather"."companyname1" "companyname1"
+	,"schFather"."companyname2" "companyname2"
+	,"schFather"."WorkTel1" "WorkTel1"
+	,"schFather"."WorkTel2" "WorkTel2"
+	,"schFather"."WorkTel3" "WorkTel3"
+	,"schFather"."KuwaitnationalityNo" "KuwaitnationalityNo"
+	,"schFather"."KuwaitnationalityDate" "KuwaitnationalityDate"
+	,"schFather"."PassportNumber" "PassportNumber"
+	,"schFather"."PassportPlace" "PassportPlace"
+	,"schFather"."PassportissueDate" "PassportissueDate"
+	,"schFather"."PassportExpDate" "PassportExpDate"
+	,"schFather"."Residencenumber" "Residencenumber"
+	,"schFather"."ResidenceExpDate" "ResidenceExpDate"
+	,"schFather"."fathCivilidNumber" "fathCivilidNumber"
+	,"schFather"."CivilidExpDate" "CivilidExpDate"
+	,"schFather"."MobileNumber1" "MobileNumber1"
+	,"schFather"."MobileNumber2" "MobileNumber2"
+	,"schFather"."PagerNumber1" "PagerNumber1"
+	,"schFather"."PagerNumber2" "PagerNumber2"
+	,"schFather"."Email1" "Email1"
+	,"schFather"."Email2" "Email2"
+	,"schFather"."PoBox" "PoBox"
+	,"schFather"."webusername" "webusername"
+	,"schFather"."webpassword" "webpassword"
+	,"schFather"."webblocking" "webblocking"
+	,"schFather"."ModifiedBy" "ModifiedBy"
+	,"schFather"."ModifiedOn" "ModifiedOn"
+	,"schFather"."CreatedBy" "CreatedBy"
+	,"schFather"."CreatedOn" "CreatedOn"
+	,"schFather"."typ" "typ"
+from "dbo"."schFather" "schFather"
+	left join "dbo"."SchFatherjob" "job_" on "schFather"."job_no" = "job_"."job_no"
+	left join "dbo"."PYCntry" "Cntry_" on "schFather"."Cntry_No" = "Cntry_"."Cntry_No"
+	left join "dbo"."PyStatus" "MaritalStatus" on "schFather"."MaritalStatus" = "MaritalStatus"."Status_Type"
+	left join "dbo"."PyReljan" "religion" on "schFather"."religion" = "religion"."reljan"
+	left join "dbo"."PyState" "TheState" on "schFather"."State" = "TheState"."State"
+	left join "dbo"."schArea" "area" on "schFather"."area" = "area"."Code"
+]]></text>
+    </command>
+    <command id="FatherCodeIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="FatherCode" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="FatherCode" type="Int64" allowNulls="false" isPrimaryKey="true" label="Father Code" readOnly="true" />
+    <field name="fathfirstname1" type="String" label="Fathfirstname1" length="255" showInSummary="true" />
+    <field name="fathfirstname2" type="String" label="Fathfirstname2" length="255" showInSummary="true" />
+    <field name="job_no" type="Int64" label="Job No" showInSummary="true">
+      <items style="DropDownList" dataController="SchFatherjob" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="job_job_desc" type="String" readOnly="true" label="Job Desc" length="150" />
+    <field name="Cntry_No" type="Int64" label="Cntry No" showInSummary="true">
+      <items style="DropDownList" dataController="PYCntry" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Cntry_Cntry_Nm" type="String" readOnly="true" label="Cntry Nm" length="255" />
+    <field name="MaritalStatus" type="Int64" label="Marital Status" showInSummary="true">
+      <items style="DropDownList" dataController="PyStatus" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="MaritalStatusStatus_Nm" type="String" readOnly="true" label="Marital Status Nm" length="255" />
+    <field name="religion" type="Int64" label="Religion">
+      <items style="DropDownList" dataController="PyReljan" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="religionReljan_nm" type="String" readOnly="true" label="religion Reljan nm" length="50" />
+    <field name="State" type="Int64" label="State">
+      <items style="DropDownList" dataController="PyState" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheStateState_Nm" type="String" readOnly="true" label="State Nm" length="60" />
+    <field name="area" type="Int64" label="Area">
+      <items style="DropDownList" dataController="schArea" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="areaDesc1" type="String" readOnly="true" label="area Desc1" length="40" />
+    <field name="residenceaddress1" type="String" label="Residenceaddress1" length="255" />
+    <field name="ResidenceTel1" type="String" label="Residence Tel1" length="8" />
+    <field name="ResidenceTel2" type="String" label="Residence Tel2" length="8" />
+    <field name="ResidenceTel3" type="String" label="Residence Tel3" length="8" />
+    <field name="companyname1" type="String" label="Companyname1" length="50" />
+    <field name="companyname2" type="String" label="Companyname2" length="50" />
+    <field name="WorkTel1" type="String" label="Work Tel1" length="8" />
+    <field name="WorkTel2" type="String" label="Work Tel2" length="8" />
+    <field name="WorkTel3" type="String" label="Work Tel3" length="8" />
+    <field name="KuwaitnationalityNo" type="String" label="Kuwaitnationality No" length="50" />
+    <field name="KuwaitnationalityDate" type="DateTime" label="Kuwaitnationality Date" />
+    <field name="PassportNumber" type="String" label="Passport Number" length="20" />
+    <field name="PassportPlace" type="String" label="Passport Place" length="200" />
+    <field name="PassportissueDate" type="DateTime" label="Passportissue Date" />
+    <field name="PassportExpDate" type="DateTime" label="Passport Exp Date" />
+    <field name="Residencenumber" type="String" label="Residencenumber" length="20" />
+    <field name="ResidenceExpDate" type="DateTime" label="Residence Exp Date" />
+    <field name="fathCivilidNumber" type="String" label="fath Civilid Number" length="12" />
+    <field name="CivilidExpDate" type="DateTime" label="Civilid Exp Date" />
+    <field name="MobileNumber1" type="String" label="Mobile Number1" length="15" />
+    <field name="MobileNumber2" type="String" label="Mobile Number2" length="15" />
+    <field name="PagerNumber1" type="String" label="Pager Number1" length="15" />
+    <field name="PagerNumber2" type="String" label="Pager Number2" length="15" />
+    <field name="Email1" type="String" label="Email1" length="50" />
+    <field name="Email2" type="String" label="Email2" length="50" />
+    <field name="PoBox" type="String" label="Po Box" length="25" />
+    <field name="webusername" type="String" label="Webusername" length="30" />
+    <field name="webpassword" type="String" label="Webpassword" length="150" />
+    <field name="webblocking" type="Boolean" label="Webblocking" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="typ" type="Int64" default="((4))" label="Typ" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="sch Father">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="fathfirstname1" />
+        <dataField fieldName="fathfirstname2" />
+        <dataField fieldName="fathCivilidNumber" columns="12" />
+        <dataField fieldName="job_no" aliasFieldName="job_job_desc"  />
+        <dataField fieldName="Cntry_No" aliasFieldName="Cntry_Cntry_Nm"  />
+        <dataField fieldName="MaritalStatus" aliasFieldName="MaritalStatusStatus_Nm"  />
+        <dataField fieldName="religion" aliasFieldName="religionReljan_nm"  />
+        <dataField fieldName="State" aliasFieldName="TheStateState_Nm"  />
+        <dataField fieldName="area" aliasFieldName="areaDesc1"  />
+        <dataField fieldName="residenceaddress1" />
+        <dataField fieldName="ResidenceTel1" columns="8" />
+        <dataField fieldName="ResidenceTel2" columns="8" />
+        <dataField fieldName="ResidenceTel3" columns="8" />
+        <dataField fieldName="companyname1" columns="50" />
+        <dataField fieldName="companyname2" columns="50" />
+        <dataField fieldName="WorkTel1" columns="8" />
+        <dataField fieldName="WorkTel2" columns="8" />
+        <dataField fieldName="WorkTel3" columns="8" />
+        <dataField fieldName="KuwaitnationalityNo" columns="50" />
+        <dataField fieldName="KuwaitnationalityDate" columns="10" />
+        <dataField fieldName="PassportNumber" columns="20" />
+        <dataField fieldName="PassportPlace" />
+        <dataField fieldName="PassportissueDate" columns="10" />
+        <dataField fieldName="PassportExpDate" columns="10" />
+        <dataField fieldName="Residencenumber" columns="20" />
+        <dataField fieldName="ResidenceExpDate" columns="10" />
+        <dataField fieldName="CivilidExpDate" columns="10" />
+        <dataField fieldName="MobileNumber1" columns="15" />
+        <dataField fieldName="MobileNumber2" columns="15" />
+        <dataField fieldName="PagerNumber1" columns="15" />
+        <dataField fieldName="PagerNumber2" columns="15" />
+        <dataField fieldName="Email1" columns="50" />
+        <dataField fieldName="Email2" columns="50" />
+        <dataField fieldName="PoBox" columns="25" />
+        <dataField fieldName="webusername" columns="30" />
+        <dataField fieldName="webpassword" />
+        <dataField fieldName="webblocking" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="typ" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review sch Father">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="sch Father" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="fathfirstname1" />
+            <dataField fieldName="fathfirstname2" />
+            <dataField fieldName="job_no" aliasFieldName="job_job_desc" hyperlinkFormatString="~/Pages/SchFatherjob.aspx?job_no={job_no}&amp;_controller=SchFatherjob&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Cntry_No" aliasFieldName="Cntry_Cntry_Nm" hyperlinkFormatString="~/Pages/PYCntry.aspx?Cntry_No={Cntry_No}&amp;_controller=PYCntry&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="MaritalStatus" aliasFieldName="MaritalStatusStatus_Nm" hyperlinkFormatString="~/Pages/PyStatus.aspx?Status_Type={MaritalStatus}&amp;_controller=PyStatus&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="religion" aliasFieldName="religionReljan_nm" hyperlinkFormatString="~/Pages/PyReljan.aspx?reljan={religion}&amp;_controller=PyReljan&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="State" aliasFieldName="TheStateState_Nm" hyperlinkFormatString="~/Pages/PyState.aspx?State={State}&amp;_controller=PyState&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="area" aliasFieldName="areaDesc1" hyperlinkFormatString="~/Pages/schArea.aspx?Code={area}&amp;_controller=schArea&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="residenceaddress1" />
+            <dataField fieldName="ResidenceTel1" columns="8" />
+            <dataField fieldName="ResidenceTel2" columns="8" />
+            <dataField fieldName="ResidenceTel3" columns="8" />
+            <dataField fieldName="companyname1" columns="50" />
+            <dataField fieldName="companyname2" columns="50" />
+            <dataField fieldName="WorkTel1" columns="8" />
+            <dataField fieldName="WorkTel2" columns="8" />
+            <dataField fieldName="WorkTel3" columns="8" />
+            <dataField fieldName="KuwaitnationalityNo" columns="50" />
+            <dataField fieldName="KuwaitnationalityDate" columns="10" />
+            <dataField fieldName="PassportNumber" columns="20" />
+            <dataField fieldName="PassportPlace" />
+            <dataField fieldName="PassportissueDate" columns="10" />
+            <dataField fieldName="PassportExpDate" columns="10" />
+            <dataField fieldName="Residencenumber" columns="20" />
+            <dataField fieldName="ResidenceExpDate" columns="10" />
+            <dataField fieldName="fathCivilidNumber" columns="12" />
+            <dataField fieldName="CivilidExpDate" columns="10" />
+            <dataField fieldName="MobileNumber1" columns="15" />
+            <dataField fieldName="MobileNumber2" columns="15" />
+            <dataField fieldName="PagerNumber1" columns="15" />
+            <dataField fieldName="PagerNumber2" columns="15" />
+            <dataField fieldName="Email1" columns="50" />
+            <dataField fieldName="Email2" columns="50" />
+            <dataField fieldName="PoBox" columns="25" />
+            <dataField fieldName="webusername" columns="30" />
+            <dataField fieldName="webpassword" />
+            <dataField fieldName="webblocking" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="typ" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New sch Father">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New sch Father" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="fathfirstname1" />
+            <dataField fieldName="fathfirstname2" />
+            <dataField fieldName="job_no" aliasFieldName="job_job_desc" />
+            <dataField fieldName="Cntry_No" aliasFieldName="Cntry_Cntry_Nm" />
+            <dataField fieldName="MaritalStatus" aliasFieldName="MaritalStatusStatus_Nm" />
+            <dataField fieldName="religion" aliasFieldName="religionReljan_nm" />
+            <dataField fieldName="State" aliasFieldName="TheStateState_Nm" />
+            <dataField fieldName="area" aliasFieldName="areaDesc1" />
+            <dataField fieldName="residenceaddress1" />
+            <dataField fieldName="ResidenceTel1" columns="8" />
+            <dataField fieldName="ResidenceTel2" columns="8" />
+            <dataField fieldName="ResidenceTel3" columns="8" />
+            <dataField fieldName="companyname1" columns="50" />
+            <dataField fieldName="companyname2" columns="50" />
+            <dataField fieldName="WorkTel1" columns="8" />
+            <dataField fieldName="WorkTel2" columns="8" />
+            <dataField fieldName="WorkTel3" columns="8" />
+            <dataField fieldName="KuwaitnationalityNo" columns="50" />
+            <dataField fieldName="KuwaitnationalityDate" columns="10" />
+            <dataField fieldName="PassportNumber" columns="20" />
+            <dataField fieldName="PassportPlace" />
+            <dataField fieldName="PassportissueDate" columns="10" />
+            <dataField fieldName="PassportExpDate" columns="10" />
+            <dataField fieldName="Residencenumber" columns="20" />
+            <dataField fieldName="ResidenceExpDate" columns="10" />
+            <dataField fieldName="fathCivilidNumber" columns="12" />
+            <dataField fieldName="CivilidExpDate" columns="10" />
+            <dataField fieldName="MobileNumber1" columns="15" />
+            <dataField fieldName="MobileNumber2" columns="15" />
+            <dataField fieldName="PagerNumber1" columns="15" />
+            <dataField fieldName="PagerNumber2" columns="15" />
+            <dataField fieldName="Email1" columns="50" />
+            <dataField fieldName="Email2" columns="50" />
+            <dataField fieldName="PoBox" columns="25" />
+            <dataField fieldName="webusername" columns="30" />
+            <dataField fieldName="webpassword" />
+            <dataField fieldName="webblocking" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="typ" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

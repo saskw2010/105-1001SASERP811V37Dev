@@ -1,0 +1,59 @@
+# File: App_Code/Services/RepresentationalStateTransfer.vb
+
+Implements a custom REST/JSON/JSONP gateway for controllers/views, handling GET/POST/PUT/DELETE, content negotiation (JSON/XML), compression, and parameter→filter mapping.
+
+## Overview
+- Namespace: eZee.Services
+- Core types:
+  - `UriRestConfig` — parses <restConfig> and request constraints
+  - `RepresentationalStateTransfer`/`RepresentationalStateTransferBase` — IHttpHandler that processes REST requests
+
+---
+
+### Function: PerformRequest
+- Signature: Private Sub PerformRequest(context As HttpContext, output As Stream, json As Boolean, controllerName As String)
+- Purpose: Resolve controller/view/action from route/query, authorize, build filters, and dispatch to GET/Action handlers.
+- Params/Returns: Writes response to `output` (JSON or XML); sets HTTP status codes (404/400) on failures.
+- Calls:
+  - `DataControllerBase.CreateConfigurationInstance`
+  - `AuthorizeRequest`
+  - `AnalyzeRouteValues`
+  - `ExecuteHttpGetRequest` or `ExecuteActionRequest`
+- Called by: `IHttpHandler.ProcessRequest`
+- Links:
+  - Calls → ExecuteHttpGetRequest, ExecuteActionRequest
+
+### Function: ExecuteHttpGetRequest
+- Signature: Protected Overridable Sub ExecuteHttpGetRequest(request As HttpRequest, response As HttpResponse, output As Stream, json As Boolean, controllerName As String, view As String, filter As List(Of String), keyIsAvailable As Boolean)
+- Purpose: Build PageRequest from query, call IDataController.GetPage, and stream JSON/XML (with optional JSONP padding).
+- HTTP: GET
+- Serialization: Manual writer; dates via ConvertDateToJSON; optional JSONP via callback/_instance.
+- Calls: `ControllerFactory.CreateDataController().GetPage`, `BeginResponsePadding`, `WriteJSONValue`, `EndResponsePadding`.
+- Returns: Writes a JSON object `{ totalRowCount, pageSize, pageIndex, rowCount, [controllerName]: [...] }` or XML `<items>`.
+
+### Function: ExecuteActionRequest
+- Signature: Private Sub ExecuteActionRequest(request As HttpRequest, response As HttpResponse, output As Stream, json As Boolean, config As ControllerConfiguration, controllerName As String, view As String, key As String, filter As List(Of String), actionGroupId As String, actionId As String)
+- Purpose: Build ActionArgs from request/form, execute Insert/Update/Delete/Custom, and serialize ActionResult (JSON or XML).
+- HTTP: POST/PUT/DELETE (also GET with query in some paths)
+- Calls: `ControllerFactory.CreateDataController().Execute`
+- Serialization: Manual JSON writer, includes rowsAffected, errors[], clientScript, navigateUrl, and returned values.
+
+### Function: CombineScripts
+- Signature: Protected Overridable Sub CombineScripts(context As HttpContext, isSaaS As Boolean, scriptName As String, culture As String, version As String)
+- Purpose: Script combiner for SaaS/combined resources; injects CSS links and culture JS when needed.
+- Notes: Not core to H–L but part of the same handler.
+
+### Function: InvokeControllerMethod
+- Signature: Protected Overridable Sub InvokeControllerMethod(context As HttpContext)
+- Purpose: JSONP invoker for GetPage/GetListOfValues/Execute using args payload; used under `_invoke` route.
+
+### Function: BeginResponsePadding / EndResponsePadding
+- Purpose: JSONP/callback wrapping for GET responses.
+
+---
+
+### Function Links
+- Node | File | Function | Link
+- H/J | App_Code/Services/RepresentationalStateTransfer.vb | ExecuteHttpGetRequest | /TestPages/Documents/docs-html/files/App_Code_Services_RepresentationalStateTransfer.vb.html#function-ExecuteHttpGetRequest
+- H/J | App_Code/Services/RepresentationalStateTransfer.vb | ExecuteActionRequest | /TestPages/Documents/docs-html/files/App_Code_Services_RepresentationalStateTransfer.vb.html#function-ExecuteActionRequest
+- H/J | App_Code/Services/RepresentationalStateTransfer.vb | PerformRequest | /TestPages/Documents/docs-html/files/App_Code_Services_RepresentationalStateTransfer.vb.html#function-PerformRequest

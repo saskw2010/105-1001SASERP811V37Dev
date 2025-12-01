@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Dependanceylist2" conflictDetection="overwriteChanges" label="Dependanceylist2" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Dependanceylist2"."referencing_entity_name" "referencing_entity_name"
+	,"Dependanceylist2"."referencing_desciption" "referencing_desciption"
+	,"Dependanceylist2"."referencing_minor_id" "referencing_minor_id"
+	,"Dependanceylist2"."referencing_class_desc" "referencing_class_desc"
+	,"Dependanceylist2"."referenced_class_desc" "referenced_class_desc"
+	,"Dependanceylist2"."referenced_server_name" "referenced_server_name"
+	,"Dependanceylist2"."referenced_database_name" "referenced_database_name"
+	,"Dependanceylist2"."referenced_schema_name" "referenced_schema_name"
+	,"Dependanceylist2"."referenced_entity_name" "referenced_entity_name"
+	,"Dependanceylist2"."referenced_column_name" "referenced_column_name"
+	,"Dependanceylist2"."is_caller_dependent" "is_caller_dependent"
+	,"Dependanceylist2"."is_ambiguous" "is_ambiguous"
+from "dbo"."Dependanceylist2" "Dependanceylist2"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="referencing_entity_name" type="String" label="Referencing Entity Name" readOnly="true" length="128" showInSummary="true" />
+    <field name="referencing_desciption" type="String" label="Referencing Desciption" length="60" showInSummary="true" />
+    <field name="referencing_minor_id" type="String" label="Referencing Minor#" readOnly="true" length="128" showInSummary="true" />
+    <field name="referencing_class_desc" type="String" label="Referencing Class Desc" length="60" showInSummary="true" />
+    <field name="referenced_class_desc" type="String" label="Referenced Class Desc" length="60" showInSummary="true" />
+    <field name="referenced_server_name" type="String" label="Referenced Server Name" length="128" />
+    <field name="referenced_database_name" type="String" label="Referenced Database Name" length="128" />
+    <field name="referenced_schema_name" type="String" label="Referenced Schema Name" length="128" />
+    <field name="referenced_entity_name" type="String" label="Referenced Entity Name" length="128" />
+    <field name="referenced_column_name" type="String" label="Referenced Column Name" readOnly="true" length="128" />
+    <field name="is_caller_dependent" type="Boolean" allowNulls="false" label="Is Caller Dependent" />
+    <field name="is_ambiguous" type="Boolean" allowNulls="false" label="Is Ambiguous" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Dependanceylist2">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="is_caller_dependent" />
+        <dataField fieldName="referencing_entity_name" />
+        <dataField fieldName="referencing_desciption" />
+        <dataField fieldName="referencing_minor_id" />
+        <dataField fieldName="referencing_class_desc" />
+        <dataField fieldName="referenced_class_desc" />
+        <dataField fieldName="referenced_server_name" />
+        <dataField fieldName="referenced_database_name" />
+        <dataField fieldName="referenced_schema_name" />
+        <dataField fieldName="referenced_entity_name" />
+        <dataField fieldName="referenced_column_name" />
+        <dataField fieldName="is_ambiguous" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Dependanceylist2">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Dependanceylist2" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="referencing_entity_name" />
+            <dataField fieldName="referencing_desciption" />
+            <dataField fieldName="referencing_minor_id" />
+            <dataField fieldName="referencing_class_desc" />
+            <dataField fieldName="referenced_class_desc" />
+            <dataField fieldName="referenced_server_name" />
+            <dataField fieldName="referenced_database_name" />
+            <dataField fieldName="referenced_schema_name" />
+            <dataField fieldName="referenced_entity_name" />
+            <dataField fieldName="referenced_column_name" />
+            <dataField fieldName="is_caller_dependent" />
+            <dataField fieldName="is_ambiguous" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Dependanceylist2">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Dependanceylist2" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="referencing_desciption" />
+            <dataField fieldName="referencing_class_desc" />
+            <dataField fieldName="referenced_class_desc" />
+            <dataField fieldName="referenced_server_name" />
+            <dataField fieldName="referenced_database_name" />
+            <dataField fieldName="referenced_schema_name" />
+            <dataField fieldName="referenced_entity_name" />
+            <dataField fieldName="is_caller_dependent" />
+            <dataField fieldName="is_ambiguous" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

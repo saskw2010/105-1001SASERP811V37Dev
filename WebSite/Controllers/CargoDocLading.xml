@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="CargoDocLading" conflictDetection="overwriteChanges" label="Cargo Doc Lading" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"CargoDocLading"."DoumentrequierdID" "DoumentrequierdID"
+	,"CargoDocLading"."BillofladingAutoID" "BillofladingAutoID"
+	,"BillofladingAuto"."BillOFLading" "BillofladingAutoBillOFLading"
+	,"BillofladingAutoShip_"."Ship_nm" "BillofladingAutoShip_Ship_nm"
+	,"BillofladingAutoConsignee_"."Consignee" "BillofladingAutoConsignee_Consignee"
+	,"BillofladingAutoSizetype"."SizetypeDesc" "BillofladingAutoSizetypeSizetypeDesc"
+	,"BillofladingAutoTrneed"."Docdesc" "BillofladingAutoTrneedDocdesc"
+	,"BillofladingAutoTmessage"."Docdesc" "BillofladingAutoTmessageDocdesc"
+	,"BillofladingAutoTerminalofRelease"."Docdesc" "BillofladingAutoTerminalofReleaseDocdesc"
+	,"BillofladingAutoPlaceofDchage"."Docdesc" "BillofladingAutoPlaceofDchageDocdesc"
+	,"BillofladingAutorequiredFollowup"."Docdesc" "BillofladingAutorequiredFollowupDocdesc"
+	,"BillofladingAutocourier"."Docdesc" "BillofladingAutocourierDocdesc"
+	,"BillofladingAutoCargoInfo"."CargoInfoDesc" "BillofladingAutoCargoInfoCargoInfoDesc"
+	,"BillofladingAutoCstm_"."Cstm_Nm" "BillofladingAutoCstm_Cstm_Nm"
+	,"BillofladingAutoCstm_Area"."Area_name" "BillofladingAutoCstm_AreaArea_name"
+	,"BillofladingAutoCstm_Evaluation"."Evaluation_name" "BillofladingAutoCstm_EvaluationEvaluation_name"
+	,"BillofladingAutoCstm_acc_"."Acc_Nm" "BillofladingAutoCstm_acc_Acc_Nm"
+	,"BillofladingAutoCstm_Cntry_"."Cntry_Nm" "BillofladingAutoCstm_Cntry_Cntry_Nm"
+	,"BillofladingAutoCstm_curncy_"."Curncy_Nm" "BillofladingAutoCstm_curncy_Curncy_Nm"
+	,"BillofladingAutoCstm_TSNEF"."TSNEF_name" "BillofladingAutoCstm_TSNEFTSNEF_name"
+	,"BillofladingAutoCstm_TSNEFNO1"."TSNEF1_name" "BillofladingAutoCstm_TSNEFNO1TSNEF1_name"
+	,"BillofladingAutoCstm_Slm_"."Slm_Nm" "BillofladingAutoCstm_Slm_Slm_Nm"
+	,"BillofladingAutoLineagent_"."Sup_Nm" "BillofladingAutoLineagent_Sup_Nm"
+	,"BillofladingAutoLineagent_Acc_"."Acc_Nm" "BillofladingAutoLineagent_Acc_Acc_Nm"
+	,"BillofladingAutoLineagent_Cntry_"."Cntry_Nm" "BillofladingAutoLineagent_Cntry_Cntry_Nm"
+	,"BillofladingAutoLineagent_Curncy_"."Curncy_Nm" "BillofladingAutoLineagent_Curncy_Curncy_Nm"
+	,"CargoDocLading"."Doumenttyp" "Doumenttyp"
+	,"TheDoumenttyp"."Doumenttypdesc" "TheDoumenttypDoumenttypdesc"
+	,"CargoDocLading"."documetNature" "documetNature"
+	,"ThedocumetNature"."documetNaturedesc" "ThedocumetNaturedocumetNaturedesc"
+	,"CargoDocLading"."ModifiedBy" "ModifiedBy"
+	,"CargoDocLading"."ModifiedOn" "ModifiedOn"
+	,"CargoDocLading"."CreatedBy" "CreatedBy"
+	,"CargoDocLading"."CreatedOn" "CreatedOn"
+from "dbo"."CargoDocLading" "CargoDocLading"
+	left join "dbo"."CargoBillOFLading" "BillofladingAuto" on "CargoDocLading"."BillofladingAutoID" = "BillofladingAuto"."BillofladingAutoID"
+	left join "dbo"."CargoDocList" "BillofladingAutoShip_" on "BillofladingAuto"."Ship_no" = "BillofladingAutoShip_"."Ship_no"
+	left join "dbo"."CargoDocList1" "BillofladingAutoConsignee_" on "BillofladingAuto"."Consignee_no" = "BillofladingAutoConsignee_"."Consigneeid"
+	left join "dbo"."CargoDocList2" "BillofladingAutoSizetype" on "BillofladingAuto"."Sizetype" = "BillofladingAutoSizetype"."SizetypeID"
+	left join "dbo"."CargoDocList3" "BillofladingAutoTrneed" on "BillofladingAuto"."Trneed" = "BillofladingAutoTrneed"."DocID"
+	left join "dbo"."CargoDocList4" "BillofladingAutoTmessage" on "BillofladingAuto"."Tmessage" = "BillofladingAutoTmessage"."DocID"
+	left join "dbo"."CargoDocList5" "BillofladingAutoTerminalofRelease" on "BillofladingAuto"."TerminalofRelease" = "BillofladingAutoTerminalofRelease"."DocID"
+	left join "dbo"."CargoDocList6" "BillofladingAutoPlaceofDchage" on "BillofladingAuto"."PlaceofDchage" = "BillofladingAutoPlaceofDchage"."DocID"
+	left join "dbo"."CargoDocList7" "BillofladingAutorequiredFollowup" on "BillofladingAuto"."requiredFollowup" = "BillofladingAutorequiredFollowup"."DocID"
+	left join "dbo"."CargoDocList8" "BillofladingAutocourier" on "BillofladingAuto"."courier" = "BillofladingAutocourier"."DocID"
+	left join "dbo"."CargoInfo" "BillofladingAutoCargoInfo" on "BillofladingAuto"."CargoInfoID" = "BillofladingAutoCargoInfo"."CargoInfoID"
+	left join "dbo"."Stcustmr" "BillofladingAutoCstm_" on "BillofladingAuto"."Cstm_no" = "BillofladingAutoCstm_"."Cstm_No"
+	left join "dbo"."AreaList" "BillofladingAutoCstm_Area" on "BillofladingAutoCstm_"."AreaNo" = "BillofladingAutoCstm_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "BillofladingAutoCstm_Evaluation" on "BillofladingAutoCstm_"."EvaluationNO" = "BillofladingAutoCstm_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "BillofladingAutoCstm_acc_" on "BillofladingAutoCstm_"."acc_no" = "BillofladingAutoCstm_acc_"."Acc_No"
+	left join "dbo"."PYCntry" "BillofladingAutoCstm_Cntry_" on "BillofladingAutoCstm_"."Cntry_No" = "BillofladingAutoCstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "BillofladingAutoCstm_curncy_" on "BillofladingAutoCstm_"."curncy_no" = "BillofladingAutoCstm_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "BillofladingAutoCstm_TSNEF" on "BillofladingAutoCstm_"."TSNEFNO" = "BillofladingAutoCstm_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "BillofladingAutoCstm_TSNEFNO1" on "BillofladingAutoCstm_"."TSNEFNO1" = "BillofladingAutoCstm_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "BillofladingAutoCstm_Slm_" on "BillofladingAutoCstm_"."Slm_No" = "BillofladingAutoCstm_Slm_"."Slm_No"
+	left join "dbo"."Stsuplir" "BillofladingAutoLineagent_" on "BillofladingAuto"."Lineagent_no" = "BillofladingAutoLineagent_"."Sup_No"
+	left join "dbo"."GLmstrfl" "BillofladingAutoLineagent_Acc_" on "BillofladingAutoLineagent_"."Acc_No" = "BillofladingAutoLineagent_Acc_"."Acc_No"
+	left join "dbo"."PYCntry" "BillofladingAutoLineagent_Cntry_" on "BillofladingAutoLineagent_"."Cntry_No" = "BillofladingAutoLineagent_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "BillofladingAutoLineagent_Curncy_" on "BillofladingAutoLineagent_"."Curncy_No" = "BillofladingAutoLineagent_Curncy_"."Curncy_No"
+	left join "dbo"."CargoDocList9" "TheDoumenttyp" on "CargoDocLading"."Doumenttyp" = "TheDoumenttyp"."Doumenttyp"
+	left join "dbo"."CargoDocList11" "ThedocumetNature" on "CargoDocLading"."documetNature" = "ThedocumetNature"."documetNature"
+]]></text>
+    </command>
+    <command id="DoumentrequierdIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="DoumentrequierdID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="DoumentrequierdID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Doumentrequierd#" readOnly="true" />
+    <field name="BillofladingAutoID" type="Int64" allowNulls="false" label="Billoflading Auto#" showInSummary="true">
+      <items style="Lookup" dataController="CargoBillOFLading" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="BillofladingAutoBillOFLading" type="String" readOnly="true" label="Billoflading Auto Bill OF Lading" length="50" />
+    <field name="BillofladingAutoShip_Ship_nm" type="String" readOnly="true" label="Billoflading Auto Ship nm" length="50" />
+    <field name="BillofladingAutoConsignee_Consignee" type="String" readOnly="true" label="Billoflading Auto Consignee" length="50" />
+    <field name="BillofladingAutoSizetypeSizetypeDesc" type="String" readOnly="true" label="Billoflading Auto Sizetype Desc" length="50" />
+    <field name="BillofladingAutoTrneedDocdesc" type="String" readOnly="true" label="Billoflading Auto Trneed Docdesc" length="50" />
+    <field name="BillofladingAutoTmessageDocdesc" type="String" readOnly="true" label="Billoflading Auto Tmessage Docdesc" length="50" />
+    <field name="BillofladingAutoTerminalofReleaseDocdesc" type="String" readOnly="true" label="Billoflading Auto Terminalof Release Docdesc" length="50" />
+    <field name="BillofladingAutoPlaceofDchageDocdesc" type="String" readOnly="true" label="Billoflading Auto Placeof Dchage Docdesc" length="50" />
+    <field name="BillofladingAutorequiredFollowupDocdesc" type="String" readOnly="true" label="Billoflading Autorequired Followup Docdesc" length="50" />
+    <field name="BillofladingAutocourierDocdesc" type="String" readOnly="true" label="Billoflading Autocourier Docdesc" length="50" />
+    <field name="BillofladingAutoCargoInfoCargoInfoDesc" type="String" readOnly="true" label="Billoflading Auto Cargo Info Desc" length="50" />
+    <field name="BillofladingAutoCstm_Cstm_Nm" type="String" readOnly="true" label="Billoflading Auto Cstm Nm" length="155" />
+    <field name="BillofladingAutoCstm_AreaArea_name" type="String" readOnly="true" label="Billoflading Auto Cstm Area name" length="150" />
+    <field name="BillofladingAutoCstm_EvaluationEvaluation_name" type="String" readOnly="true" label="Billoflading Auto Cstm Evaluation name" length="150" />
+    <field name="BillofladingAutoCstm_acc_Acc_Nm" type="String" readOnly="true" label="Billoflading Auto Cstm acc Acc Nm" length="255" />
+    <field name="BillofladingAutoCstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="Billoflading Auto Cstm Cntry Nm" length="255" />
+    <field name="BillofladingAutoCstm_curncy_Curncy_Nm" type="String" readOnly="true" label="Billoflading Auto Cstm curncy Curncy Nm" length="200" />
+    <field name="BillofladingAutoCstm_TSNEFTSNEF_name" type="String" readOnly="true" label="Billoflading Auto Cstm TSNEFTSNEF name" length="150" />
+    <field name="BillofladingAutoCstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="Billoflading Auto Cstm TSNEFNO1TSNEF1 name" length="150" />
+    <field name="BillofladingAutoCstm_Slm_Slm_Nm" type="String" readOnly="true" label="Billoflading Auto Cstm Slm Nm" length="100" />
+    <field name="BillofladingAutoLineagent_Sup_Nm" type="String" readOnly="true" label="Billoflading Auto Lineagent Sup Nm" length="255" />
+    <field name="BillofladingAutoLineagent_Acc_Acc_Nm" type="String" readOnly="true" label="Billoflading Auto Lineagent Acc Nm" length="255" />
+    <field name="BillofladingAutoLineagent_Cntry_Cntry_Nm" type="String" readOnly="true" label="Billoflading Auto Lineagent Cntry Nm" length="255" />
+    <field name="BillofladingAutoLineagent_Curncy_Curncy_Nm" type="String" readOnly="true" label="Billoflading Auto Lineagent Curncy Nm" length="200" />
+    <field name="Doumenttyp" type="Int64" allowNulls="false" label="Doumenttyp" showInSummary="true">
+      <items style="Lookup" dataController="CargoDocList9" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheDoumenttypDoumenttypdesc" type="String" readOnly="true" label="Doumenttyp Doumenttypdesc" length="50" />
+    <field name="documetNature" type="Int64" allowNulls="false" label="documet Nature" showInSummary="true">
+      <items style="Lookup" dataController="CargoDocList11" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ThedocumetNaturedocumetNaturedesc" type="String" readOnly="true" label="Thedocumet Naturedocumet Naturedesc" length="50" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" showInSummary="true" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" showInSummary="true" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Cargo Doc Lading">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="BillofladingAutoID" aliasFieldName="BillofladingAutoBillOFLading" />
+        <dataField fieldName="Doumenttyp" aliasFieldName="TheDoumenttypDoumenttypdesc" hyperlinkFormatString="~/Pages/CargoDocList9.aspx?Doumenttyp={Doumenttyp}&amp;_controller=CargoDocList9&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="documetNature" aliasFieldName="ThedocumetNaturedocumetNaturedesc" hyperlinkFormatString="~/Pages/CargoDocList11.aspx?documetNature={documetNature}&amp;_controller=CargoDocList11&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="BillofladingAutoShip_Ship_nm" columns="50" />
+        <dataField fieldName="BillofladingAutoConsignee_Consignee" columns="50" />
+        <dataField fieldName="BillofladingAutoSizetypeSizetypeDesc" columns="50" />
+        <dataField fieldName="BillofladingAutoTrneedDocdesc" columns="50" />
+        <dataField fieldName="BillofladingAutoTmessageDocdesc" columns="50" />
+        <dataField fieldName="BillofladingAutoTerminalofReleaseDocdesc" columns="50" />
+        <dataField fieldName="BillofladingAutoPlaceofDchageDocdesc" columns="50" />
+        <dataField fieldName="BillofladingAutorequiredFollowupDocdesc" columns="50" />
+        <dataField fieldName="BillofladingAutocourierDocdesc" columns="50" />
+        <dataField fieldName="BillofladingAutoCargoInfoCargoInfoDesc" columns="50" />
+        <dataField fieldName="BillofladingAutoCstm_Cstm_Nm" />
+        <dataField fieldName="BillofladingAutoCstm_AreaArea_name" />
+        <dataField fieldName="BillofladingAutoCstm_EvaluationEvaluation_name" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Cargo Doc Lading">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Cargo Doc Lading" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="BillofladingAutoID" aliasFieldName="BillofladingAutoBillOFLading" hyperlinkFormatString="~/Pages/CargoBillOFLading.aspx?BillofladingAutoID={BillofladingAutoID}&amp;_controller=CargoBillOFLading&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Doumenttyp" aliasFieldName="TheDoumenttypDoumenttypdesc" hyperlinkFormatString="~/Pages/CargoDocList9.aspx?Doumenttyp={Doumenttyp}&amp;_controller=CargoDocList9&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="documetNature" aliasFieldName="ThedocumetNaturedocumetNaturedesc" hyperlinkFormatString="~/Pages/CargoDocList11.aspx?documetNature={documetNature}&amp;_controller=CargoDocList11&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="BillofladingAutoShip_Ship_nm" columns="50" />
+            <dataField fieldName="BillofladingAutoConsignee_Consignee" columns="50" />
+            <dataField fieldName="BillofladingAutoSizetypeSizetypeDesc" columns="50" />
+            <dataField fieldName="BillofladingAutoTrneedDocdesc" columns="50" />
+            <dataField fieldName="BillofladingAutoTmessageDocdesc" columns="50" />
+            <dataField fieldName="BillofladingAutoTerminalofReleaseDocdesc" columns="50" />
+            <dataField fieldName="BillofladingAutoPlaceofDchageDocdesc" columns="50" />
+            <dataField fieldName="BillofladingAutorequiredFollowupDocdesc" columns="50" />
+            <dataField fieldName="BillofladingAutocourierDocdesc" columns="50" />
+            <dataField fieldName="BillofladingAutoCargoInfoCargoInfoDesc" columns="50" />
+            <dataField fieldName="BillofladingAutoCstm_Cstm_Nm" />
+            <dataField fieldName="BillofladingAutoCstm_AreaArea_name" />
+            <dataField fieldName="BillofladingAutoCstm_EvaluationEvaluation_name" />
+            <dataField fieldName="BillofladingAutoCstm_acc_Acc_Nm" />
+            <dataField fieldName="BillofladingAutoCstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="BillofladingAutoCstm_curncy_Curncy_Nm" />
+            <dataField fieldName="BillofladingAutoCstm_TSNEFTSNEF_name" />
+            <dataField fieldName="BillofladingAutoCstm_TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="BillofladingAutoCstm_Slm_Slm_Nm" />
+            <dataField fieldName="BillofladingAutoLineagent_Sup_Nm" />
+            <dataField fieldName="BillofladingAutoLineagent_Acc_Acc_Nm" />
+            <dataField fieldName="BillofladingAutoLineagent_Cntry_Cntry_Nm" />
+            <dataField fieldName="BillofladingAutoLineagent_Curncy_Curncy_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Cargo Doc Lading">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Cargo Doc Lading" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="BillofladingAutoID" aliasFieldName="BillofladingAutoBillOFLading" />
+            <dataField fieldName="Doumenttyp" aliasFieldName="TheDoumenttypDoumenttypdesc" />
+            <dataField fieldName="documetNature" aliasFieldName="ThedocumetNaturedocumetNaturedesc" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

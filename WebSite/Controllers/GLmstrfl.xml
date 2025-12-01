@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="GLmstrfl" conflictDetection="overwriteChanges" label="G Lmstrfl" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.glmstrflhandler" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"GLmstrfl"."Acc_No" "Acc_No"
+	,"GLmstrfl"."Acc_Bnd" "Acc_Bnd"
+	,"TheAcc_Bnd"."Acc_Nm" "TheAcc_BndAcc_Nm"
+	,"TheAcc_Bndaccclass"."accountclass" "TheAcc_Bndaccclassaccountclass"
+	,"TheAcc_BndAcc_Bab"."Acc_Nm" "TheAcc_BndAcc_BabAcc_Nm"
+	,"GLmstrfl"."Acc_Nm" "Acc_Nm"
+	,"GLmstrfl"."Acc_Nme" "Acc_Nme"
+	,"GLmstrfl"."Clsacc_No" "Clsacc_No"
+	,"Clsacc_"."Acc_Nm" "Clsacc_Acc_Nm"
+	,"GLmstrfl"."Acc_Ntr" "Acc_Ntr"
+	,"GLmstrfl"."CostCntr_No" "CostCntr_No"
+	,"glcross"."cross_Nm" "cross_Nm"
+	,"GLmstrfl"."ModifiedBy" "ModifiedBy"
+	,"GLmstrfl"."ModifiedOn" "ModifiedOn"
+	,"GLmstrfl"."CreatedBy" "CreatedBy"
+	,"GLmstrfl"."CreatedOn" "CreatedOn"
+	,"GLmstrfl"."accountold" "accountold"
+	
+from "dbo"."GLmstrfl" "GLmstrfl"
+	left join "dbo"."GLmfband" "TheAcc_Bnd" on "GLmstrfl"."Acc_Bnd" = "TheAcc_Bnd"."Acc_Bnd"
+	left join "dbo"."glcross" "glcross" on "GLmstrfl"."CostCntr_No" = "glcross"."cross_NO"
+	left join "dbo"."accountclasslist" "TheAcc_Bndaccclass" on "TheAcc_Bnd"."accclass" = "TheAcc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "TheAcc_BndAcc_Bab" on "TheAcc_Bnd"."Acc_Bab" = "TheAcc_BndAcc_Bab"."Acc_Bab"
+	left join "dbo"."GLmfbab" "Clsacc_" on "GLmstrfl"."Clsacc_No" = "Clsacc_"."Acc_Bab"
+	
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="Acc_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Acc No" calculated="true" contextFields="Acc_Bnd,Acc_Mag,Acc_Bab" />
+    <field name="Acc_Bnd" type="Int64" label="Acc Bnd" showInSummary="true" calculated="true" contextFields="sgm=sgm">
+      <items style="Lookup" dataController="GlbandView" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataValueField="Acc_Bnd" dataTextField="Acc_Nm" copy="Acc_Bnd=Acc_Bnd&#xD;&#xA;Clsacc_No=Acc_Bab" />
+    </field>
+    <field name="TheAcc_BndAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Nm" length="50" />
+    <field name="TheAcc_Bndaccclassaccountclass" type="String" readOnly="true" label="Acc Bndaccclassaccountclass" length="100" />
+    <field name="TheAcc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Bab Acc Nm" length="250" />
+    <field name="Acc_Nm" type="String" label="Acc Nm" length="255" showInSummary="true" />
+    <field name="Acc_Nme" type="String" label="Acc Nme" length="255" showInSummary="true" />
+    <field name="Clsacc_No" type="Int64" label="Clsacc No" showInSummary="true" >
+      <items style="Lookup" dataController="GLclosacnt"  searchOnStart="true" dataView="grid1" dataValueField="CLsacc_No" dataTextField="CLsacc_Nm" />
+    </field>
+	<field name="CostCntr_No" type="Int64" label="Clsacc No" showInSummary="true" >
+      <items style="Lookup" dataController="glcross" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataValueField="cross_NO" dataTextField="cross_Nm" />
+    </field>
+	 <field name="cross_Nm" type="String" readOnly="true" label="cross_Nm" length="250" />
+    <field name="Clsacc_Acc_Nm" type="String" readOnly="true" label="Clsacc Acc Nm" length="250" />
+    <field name="Acc_Ntr" type="Int64" default="((1))" label="Acc Ntr" showInSummary="true" />
+	<field name="accountold" type="String" label="accountold" length="255" showInSummary="true" />
+    <dataField fieldName="" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="G Lmstrfl">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Acc_No" columns="15" textMode="Text" hidden="false" />
+        <dataField fieldName="Acc_Bnd" aliasFieldName="TheAcc_BndAcc_Nm" />
+        <dataField fieldName="Acc_Nm" />
+        <dataField fieldName="Acc_Nme" />
+        <dataField fieldName="Clsacc_No" aliasFieldName="Clsacc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmfbab.aspx?Acc_Bab={Clsacc_No}&amp;_controller=GLmfbab&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Acc_Ntr" columns="15" />
+        <dataField fieldName="CostCntr_No" columns="15" aliasFieldName="cross_Nm" />
+        <dataField fieldName="TheAcc_Bndaccclassaccountclass" />
+        <dataField fieldName="TheAcc_BndAcc_BabAcc_Nm" />
+		<dataField fieldName="accountold" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review G Lmstrfl">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="G Lmstrfl" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Acc_Bnd" aliasFieldName="TheAcc_BndAcc_Nm" hyperlinkFormatString="~/Pages/GLmfband.aspx?Acc_Bnd={Acc_Bnd}&amp;_controller=GLmfband&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Acc_No" columns="15" textMode="Text" hidden="false" />
+            <dataField fieldName="Acc_Nm" />
+            <dataField fieldName="Acc_Nme" />
+            <dataField fieldName="Clsacc_No" aliasFieldName="Clsacc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmfbab.aspx?Acc_Bab={Clsacc_No}&amp;_controller=GLmfbab&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Acc_Ntr" columns="15" />
+            <dataField fieldName="CostCntr_No" columns="15" />
+			<dataField fieldName="accountold" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="TheAcc_Bndaccclassaccountclass" />
+            <dataField fieldName="TheAcc_BndAcc_BabAcc_Nm" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New G Lmstrfl">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New G Lmstrfl" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Acc_Bnd" aliasFieldName="TheAcc_BndAcc_Nm" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="Acc_Nm" />
+            <dataField fieldName="Acc_Nme" />
+            <dataField fieldName="Clsacc_No" aliasFieldName="Clsacc_Acc_Nm" />
+            <dataField fieldName="Acc_Ntr" columns="15" />
+            <dataField fieldName="CostCntr_No" columns="15" />
+			<dataField fieldName="accountold" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="grid2" commandId="command1" type="DataSheet" label="grid2">
+      <dataFields>
+        <dataField fieldName="Acc_No" columns="15" textMode="Text" hidden="false" />
+        <dataField fieldName="Acc_Bnd" aliasFieldName="TheAcc_BndAcc_Nm" tag="hierarchy-parent" />
+        <dataField fieldName="Acc_Nm" />
+        <dataField fieldName="Acc_Nme" />
+        <dataField fieldName="Clsacc_No" aliasFieldName="Clsacc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmfbab.aspx?Acc_Bab={Clsacc_No}&amp;_controller=GLmfbab&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Acc_Ntr" columns="15" />
+        <dataField fieldName="CostCntr_No" columns="15" />
+        <dataField fieldName="TheAcc_Bndaccclassaccountclass" />
+        <dataField fieldName="TheAcc_BndAcc_BabAcc_Nm" />
+		<dataField fieldName="accountold" />
+      </dataFields>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+	  
+	<action commandName="SQL" headerText="نقل الحركة" id="a107" description="Insert newcode" confirmation="_controller=CustomINsert1006glmstr&#xD;&#xA;_width=600 &#xD;&#xA;_title=Insert new &#xD;&#xA;_shortcut=true&#xD;&#xA;_view=createForm2">
+        <data><![CDATA[exec dbo.[fixglmstr2016] @Parameters_truenumber,@Parameters_Errornumber
+ set @Result_Refresh = 1
+          set @Result_ShowViewMessage = 'code change '
+
+ ]]></data>
+      </action>
+	 <action commandName="SQL" headerText="fixindex" id="a107xx" >
+        <data><![CDATA[
+		
+ exec [dbo].[Runfixaccount]
+set @Result_Refresh = 1
+set @Result_ShowViewMessage = 'code change '
+
+ ]]></data>
+      </action> 
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="rcalculate100" commandName="Calculate" type="Code" phase="Execute" />
+  </businessRules>
+<restConfig>Uri: . 
+Users: *</restConfig>
+</dataController>

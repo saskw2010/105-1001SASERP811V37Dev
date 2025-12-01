@@ -1,0 +1,392 @@
+/* Integration CSS - للربط بين التصميم الجديد والقديم */
+
+/* Import Modern Theme */
+@import url('ModernTheme.css');
+
+/* Import White Text Fix */
+@import url('white-text-fix.css');
+
+/* Override existing Core.css styles with modern design */
+.HoverMenu {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 14px !important;
+    background: var(--bg-primary) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-xl) !important;
+    background-image: none !important;
+}
+
+/* Enhanced input styles for compatibility */
+.Hosted input, .Hosted select, .Hosted textarea, .Hosted iframe,
+input, select, textarea {
+    border: 2px solid var(--border-light) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    transition: var(--transition-fast) !important;
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+    box-shadow: none !important;
+    margin: 4px 2px !important;
+}
+
+.Hosted input:focus, .Hosted select:focus, .Hosted textarea:focus,
+input:focus, select:focus, textarea:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+    outline: none !important;
+}
+
+/* Fix for ASP.NET controls */
+.aspNetHidden {
+    display: none !important;
+}
+
+/* Enhanced body styles */
+body.Hosted {
+    background: var(--bg-secondary) !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    line-height: 1.6 !important;
+    color: var(--text-primary) !important;
+}
+
+body {
+    color: var(--text-primary) !important;
+}
+
+/* Fix for all text elements to ensure visibility */
+div, span, p, label, td, th, li, ul, ol, h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary) !important;
+}
+
+/* Specific fixes for white text issues */
+.TaskBox, .TaskBox *, 
+.DataView, .DataView *,
+.DataViewExtender, .DataViewExtender *,
+table, table * {
+    color: var(--text-primary) !important;
+}
+
+/* Override any white color specifications */
+[style*="color: white"], [style*="color: #ffffff"], [style*="color: #FFF"] {
+    color: var(--text-primary) !important;
+}
+
+.white, .White, .text-white {
+    color: var(--text-primary) !important;
+}
+
+/* Modern scrollbar for all elements */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--gray-100);
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--gray-100);
+    border-radius: var(--radius-md);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    border-radius: var(--radius-md);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--primary-light) 0%, var(--primary-color) 100%) !important;
+}
+
+/* Fix for existing table styles */
+table:not(.DataView) {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Enhanced form controls specific to CodeOnTime */
+.DataViewExtender table {
+    background: var(--bg-primary) !important;
+    border-radius: var(--radius-lg) !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-sm) !important;
+    border: 1px solid var(--border-light) !important;
+}
+
+.DataViewExtender th {
+    background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    padding: 16px 12px !important;
+    border-bottom: 2px solid var(--border-medium) !important;
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.DataViewExtender td {
+    padding: 14px 12px !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    transition: var(--transition-fast) !important;
+}
+
+.DataViewExtender tr:hover td {
+    background: var(--gray-50) !important;
+}
+
+/* Fix for existing button styles */
+input[type="submit"], input[type="button"], button,
+.Button, .btn {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    border-radius: var(--radius-md) !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: var(--transition-fast) !important;
+    box-shadow: var(--shadow-sm) !important;
+    font-size: 13px !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover, button:hover,
+.Button:hover, .btn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-md) !important;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-dark) 100%) !important;
+}
+
+/* Fix for ASP.NET specific controls */
+.ajax__tab_tab {
+    background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+    padding: 12px 20px !important;
+    margin-right: 4px !important;
+    transition: var(--transition-fast) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+.ajax__tab_tab:hover {
+    background: linear-gradient(135deg, var(--gray-200) 0%, var(--gray-300) 100%) !important;
+    color: var(--text-primary) !important;
+}
+
+.ajax__tab_active .ajax__tab_tab {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    border-color: var(--primary-color) !important;
+}
+
+/* Enhanced menu styles */
+.Menu, .MenuExtender {
+    background: var(--bg-primary) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.Menu a, .MenuExtender a {
+    color: var(--text-primary) !important;
+    padding: 12px 16px !important;
+    text-decoration: none !important;
+    display: block !important;
+    transition: var(--transition-fast) !important;
+    border-radius: var(--radius-md) !important;
+    margin: 2px 8px !important;
+}
+
+.Menu a:hover, .MenuExtender a:hover {
+    background: var(--primary-color) !important;
+    color: white !important;
+}
+
+/* Fix for CodeOnTime specific styles */
+.ModalWindow {
+    background: var(--bg-primary) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-xl) !important;
+    border: 1px solid var(--border-light) !important;
+}
+
+.ModalWindow .Header {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    padding: 16px 20px !important;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+}
+
+/* Enhanced loading styles */
+.Wait, .Loading {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="%23667eea" stroke-width="2" stroke-linecap="round" stroke-dasharray="31.416" stroke-dashoffset="31.416"><animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/><animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/></circle></svg>') center center no-repeat !important;
+    background-size: 20px 20px !important;
+}
+
+/* Enhanced alert and message styles */
+.Alert, .MessageBar, .ValidationSummary {
+    padding: 12px 16px !important;
+    border-radius: var(--radius-md) !important;
+    margin: 16px 0 !important;
+    border-left: 4px solid var(--primary-color) !important;
+    background: linear-gradient(90deg, rgba(37, 99, 235, 0.1) 0%, transparent 100%) !important;
+}
+
+/* Fix for grid views */
+.GridView {
+    background: var(--bg-primary) !important;
+    border-radius: var(--radius-lg) !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-sm) !important;
+    border: 1px solid var(--border-light) !important;
+}
+
+.GridView th {
+    background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    padding: 16px 12px !important;
+    border-bottom: 2px solid var(--border-medium) !important;
+    font-size: 13px !important;
+}
+
+.GridView td {
+    padding: 14px 12px !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    transition: var(--transition-fast) !important;
+}
+
+.GridView tr:hover td {
+    background: var(--gray-50) !important;
+}
+
+/* Print styles */
+@media print {
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+    
+    .TaskBox, .DataView, .GridView {
+        border: 1px solid #ccc !important;
+    }
+    
+    .ActionButtons, .Menu, .MenuExtender {
+        display: none !important;
+    }
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+    .TaskBox, .DataView, .GridView {
+        font-size: 12px !important;
+    }
+    
+    .TaskBox .Item, .Menu a, .MenuExtender a {
+        padding: 8px 12px !important;
+    }
+    
+    input[type="submit"], input[type="button"], button, .Button {
+        padding: 8px 16px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* Dark mode support for system preference */
+@media (prefers-color-scheme: dark) {
+    body.dark-theme {
+        --bg-primary: #1f2937;
+        --bg-secondary: #111827;
+        --bg-tertiary: #374151;
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --border-light: #374151;
+        --border-medium: #4b5563;
+    }
+}
+
+/* Global text color fix - highest priority */
+* {
+    color: var(--text-primary) !important;
+}
+
+/* Exception for elements that should have specific colors */
+button, input[type="submit"], input[type="button"], .Button {
+    color: white !important;
+}
+
+.TaskBox .Header, .DataView .HeaderRow th {
+    color: white !important;
+}
+
+a {
+    color: var(--primary-color) !important;
+}
+
+a:hover {
+    color: var(--primary-dark) !important;
+}
+
+/* Login page specific overrides */
+#LoginControl .login-control {
+    background-color: var(--primary-color) !important;
+}
+
+#LoginControl .container-fluid {
+    background-color: rgba(37, 99, 235, 0.85) !important;
+}
+
+#LoginControl .btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+#LoginControl .btn-primary:hover {
+    background-color: var(--primary-dark) !important;
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3) !important;
+}
+
+#LoginControl .form-control:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+}
+
+/* NewsPanel specific overrides */
+.news-section .news-title {
+    color: var(--primary-dark) !important;
+}
+
+.news-section .news-header {
+    border-bottom-color: var(--primary-color) !important;
+}
+
+.news-section .news-item {
+    border-left-color: var(--primary-color) !important;
+}
+
+.news-section .news-item:hover {
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.15) !important;
+}
+
+.news-section .news-tag {
+    background-color: var(--primary-color) !important;
+}
+
+.news-section .read-more {
+    color: var(--primary-color) !important;
+}
+
+.news-section .read-more:hover {
+    color: var(--primary-dark) !important;
+}
+
+.news-section .news-icon {
+    color: var(--primary-color) !important;
+}

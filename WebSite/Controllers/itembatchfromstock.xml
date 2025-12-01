@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="itembatchfromstock" conflictDetection="overwriteChanges" label="Itembatchfromstock" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"itembatchfromstock"."Batchidstock" "Batchidstock"
+	,"itembatchfromstock"."Barcodubatch" "Barcodubatch"
+	,"itembatchfromstock"."descitem" "descitem"
+	,"itembatchfromstock"."unit_no" "unit_no"
+	,"itembatchfromstock"."Brn_No" "Brn_No"
+	,itembatchfromstock.ModifiedBy
+	,itembatchfromstock.ModifiedOn
+	,itembatchfromstock.CreatedBy
+	,itembatchfromstock.CreatedOn
+	,itembatchfromstock.expirdate
+	,"Brn_"."Brn_Nm" "Brn_Brn_Nm"
+	,"Brn_branch"."Desc1" "Brn_branchDesc1"
+	,"Brn_branchsgm"."sgm_Nm" "Brn_branchsgmsgm_Nm"
+	,"Brn_branchGender"."Gender" "Brn_branchGenderGender"
+	,"Brn_branchstage"."ShortDesc1" "Brn_branchstageShortDesc1"
+	,"Brn_branchschtyp"."schtypDesc" "Brn_branchschtypschtypDesc"
+	,"itembatchfromstock"."countrdus" "countrdus"
+	,"Thecountrdus"."ardtypnm" "Thecountrdusardtypnm"
+	,"ThecountrdusBrn_"."Brn_Nm" "ThecountrdusBrn_Brn_Nm"
+	,"ThecountrdusBrn_branch"."Desc1" "ThecountrdusBrn_branchDesc1"
+	,"ThecountrdusTRFBrn_"."Brn_Nm" "ThecountrdusTRFBrn_Brn_Nm"
+	,"ThecountrdusTRFBrn_branch"."Desc1" "ThecountrdusTRFBrn_branchDesc1"
+	,"Thecountrdusdoc_typ"."doc_name" "Thecountrdusdoc_typdoc_name"
+	,"Thecountrdustypcmsup"."SubledgerDescrption" "ThecountrdustypcmsupSubledgerDescrption"
+	,"ThecountrdusCstm_"."Cstm_Nm" "ThecountrdusCstm_Cstm_Nm"
+	,"ThecountrdusCstm_Area"."Area_name" "ThecountrdusCstm_AreaArea_name"
+	,"ThecountrdusCstm_Evaluation"."Evaluation_name" "ThecountrdusCstm_EvaluationEvaluation_name"
+	,"ThecountrdusCstm_acc_"."Acc_Nm" "ThecountrdusCstm_acc_Acc_Nm"
+	,"ThecountrdusCstm_Cntry_"."Cntry_Nm" "ThecountrdusCstm_Cntry_Cntry_Nm"
+	,"ThecountrdusCstm_curncy_"."Curncy_Nm" "ThecountrdusCstm_curncy_Curncy_Nm"
+	,"ThecountrdusCstm_TSNEF"."TSNEF_name" "ThecountrdusCstm_TSNEFTSNEF_name"
+	,"ThecountrdusCstm_TSNEFNO1"."TSNEF1_name" "ThecountrdusCstm_TSNEFNO1TSNEF1_name"
+	,"ThecountrdusCstm_Slm_"."Slm_Nm" "ThecountrdusCstm_Slm_Slm_Nm"
+	,"ThecountrdusSup_"."Sup_Nm" "ThecountrdusSup_Sup_Nm"
+	,"ThecountrdusSup_Acc_"."Acc_Nm" "ThecountrdusSup_Acc_Acc_Nm"
+	,"ThecountrdusSup_sgm"."sgm_Nm" "ThecountrdusSup_sgmsgm_Nm"
+	,"ThecountrdusSup_Cntry_"."Cntry_Nm" "ThecountrdusSup_Cntry_Cntry_Nm"
+	,"ThecountrdusSup_Curncy_"."Curncy_Nm" "ThecountrdusSup_Curncy_Curncy_Nm"
+	,"itembatchfromstock"."QTY" "QTY"
+from "dbo"."itembatchfromstock" "itembatchfromstock"
+	left join "dbo"."Branchcnst" "Brn_" on "itembatchfromstock"."Brn_No" = "Brn_"."Brn_No"
+	left join "dbo"."schBranch" "Brn_branch" on "Brn_"."branch" = "Brn_branch"."branch"
+	left join "dbo"."glmulcmp" "Brn_branchsgm" on "Brn_branch"."sgm" = "Brn_branchsgm"."sgmid"
+	left join "dbo"."PyGender" "Brn_branchGender" on "Brn_branch"."Genderid" = "Brn_branchGender"."Genderid"
+	left join "dbo"."schStage" "Brn_branchstage" on "Brn_branch"."stagecode" = "Brn_branchstage"."Code"
+	left join "dbo"."schtyp" "Brn_branchschtyp" on "Brn_branch"."schtypid" = "Brn_branchschtyp"."schtypid"
+	left join "dbo"."azonhdr1" "Thecountrdus" on "itembatchfromstock"."countrdus" = "Thecountrdus"."countrdus"
+	left join "dbo"."Branchcnst" "ThecountrdusBrn_" on "Thecountrdus"."Brn_No" = "ThecountrdusBrn_"."Brn_No"
+	left join "dbo"."schBranch" "ThecountrdusBrn_branch" on "ThecountrdusBrn_"."branch" = "ThecountrdusBrn_branch"."branch"
+	left join "dbo"."Branchcnst" "ThecountrdusTRFBrn_" on "Thecountrdus"."TRFBrn_NO" = "ThecountrdusTRFBrn_"."Brn_No"
+	left join "dbo"."schBranch" "ThecountrdusTRFBrn_branch" on "ThecountrdusTRFBrn_"."branch" = "ThecountrdusTRFBrn_branch"."branch"
+	left join "dbo"."docsand" "Thecountrdusdoc_typ" on "Thecountrdus"."doc_typ" = "Thecountrdusdoc_typ"."doc_typ"
+	left join "dbo"."GLSubledgertyplist" "Thecountrdustypcmsup" on "Thecountrdus"."typcmsup" = "Thecountrdustypcmsup"."Subledgerid"
+	left join "dbo"."Stcustmr" "ThecountrdusCstm_" on "Thecountrdus"."Cstm_No" = "ThecountrdusCstm_"."Cstm_No"
+	left join "dbo"."AreaList" "ThecountrdusCstm_Area" on "ThecountrdusCstm_"."AreaNo" = "ThecountrdusCstm_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "ThecountrdusCstm_Evaluation" on "ThecountrdusCstm_"."EvaluationNO" = "ThecountrdusCstm_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "ThecountrdusCstm_acc_" on "ThecountrdusCstm_"."acc_no" = "ThecountrdusCstm_acc_"."Acc_No"
+	left join "dbo"."PYCntry" "ThecountrdusCstm_Cntry_" on "ThecountrdusCstm_"."Cntry_No" = "ThecountrdusCstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "ThecountrdusCstm_curncy_" on "ThecountrdusCstm_"."curncy_no" = "ThecountrdusCstm_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "ThecountrdusCstm_TSNEF" on "ThecountrdusCstm_"."TSNEFNO" = "ThecountrdusCstm_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "ThecountrdusCstm_TSNEFNO1" on "ThecountrdusCstm_"."TSNEFNO1" = "ThecountrdusCstm_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "ThecountrdusCstm_Slm_" on "ThecountrdusCstm_"."Slm_No" = "ThecountrdusCstm_Slm_"."Slm_No"
+	left join "dbo"."Stsuplir" "ThecountrdusSup_" on "Thecountrdus"."Sup_No" = "ThecountrdusSup_"."Sup_No"
+	left join "dbo"."GLmstrfl" "ThecountrdusSup_Acc_" on "ThecountrdusSup_"."Acc_No" = "ThecountrdusSup_Acc_"."Acc_No"
+	left join "dbo"."glmulcmp" "ThecountrdusSup_sgm" on "ThecountrdusSup_"."sgm" = "ThecountrdusSup_sgm"."sgmid"
+	left join "dbo"."PYCntry" "ThecountrdusSup_Cntry_" on "ThecountrdusSup_"."Cntry_No" = "ThecountrdusSup_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "ThecountrdusSup_Curncy_" on "ThecountrdusSup_"."Curncy_No" = "ThecountrdusSup_Curncy_"."Curncy_No"
+]]></text>
+    </command>
+    <command id="BatchidstockIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Batchidstock" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Batchidstock" type="Int64" allowNulls="false" isPrimaryKey="true" label="Batchidstock" readOnly="true" />
+    
+<field name="Barcodubatch" type="String" label="Barcodubatch" length="50" showInSummary="true" >
+      <items style="Lookup" dataController="ITEMS"   copy="unit_no=Unit_No&#xD;&#xA;" description="Search About Item" />
+    </field>
+	<field name="descitem" type="String" label="descitem" length="50" showInSummary="true" />
+	<field name="unit_no" type="Int64"   label="unit_no"  />
+    <field name="Brn_No" type="Int64" allowNulls="false" label="Brn No" showInSummary="true">
+      <items style="Lookup" dataController="Branchcnst" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Brn_Brn_Nm" type="String" readOnly="true" label="Brn Nm" length="255" />
+    <field name="Brn_branchDesc1" type="String" readOnly="true" label="Brn branch Desc1" length="50" />
+    <field name="Brn_branchsgmsgm_Nm" type="String" readOnly="true" label="Brn branchsgmsgm Nm" length="255" />
+    <field name="Brn_branchGenderGender" type="String" readOnly="true" label="Brn branch Gender" length="100" />
+    <field name="Brn_branchstageShortDesc1" type="String" readOnly="true" label="Brn branchstage Short Desc1" length="50" />
+    <field name="Brn_branchschtypschtypDesc" type="String" readOnly="true" label="Brn branchschtypschtyp Desc" length="150" />
+    <field name="countrdus" type="Int64" allowNulls="false" label="Countrdus" showInSummary="true">
+      <items style="Lookup" dataController="azonhdr1" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecountrdusardtypnm" type="String" readOnly="true" label="Thecountrdusardtypnm" length="50" />
+    <field name="ThecountrdusBrn_Brn_Nm" type="String" readOnly="true" label="Thecountrdus Brn Nm" length="255" />
+    <field name="ThecountrdusBrn_branchDesc1" type="String" readOnly="true" label="Thecountrdus Brn branch Desc1" length="50" />
+    <field name="ThecountrdusTRFBrn_Brn_Nm" type="String" readOnly="true" label="Thecountrdus TRF Brn Nm" length="255" />
+    <field name="ThecountrdusTRFBrn_branchDesc1" type="String" readOnly="true" label="Thecountrdus TRF Brn branch Desc1" length="50" />
+    <field name="Thecountrdusdoc_typdoc_name" type="String" readOnly="true" label="Thecountrdusdoc typdoc name" length="255" />
+    <field name="ThecountrdustypcmsupSubledgerDescrption" type="String" readOnly="true" label="Thecountrdustypcmsup Subledger Descrption" length="50" />
+    <field name="ThecountrdusCstm_Cstm_Nm" type="String" readOnly="true" label="Thecountrdus Cstm Nm" length="155" />
+    <field name="ThecountrdusCstm_AreaArea_name" type="String" readOnly="true" label="Thecountrdus Cstm Area name" length="150" />
+    <field name="ThecountrdusCstm_EvaluationEvaluation_name" type="String" readOnly="true" label="Thecountrdus Cstm Evaluation name" length="150" />
+    <field name="ThecountrdusCstm_acc_Acc_Nm" type="String" readOnly="true" label="Thecountrdus Cstm acc Acc Nm" length="255" />
+    <field name="ThecountrdusCstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="Thecountrdus Cstm Cntry Nm" length="255" />
+    <field name="ThecountrdusCstm_curncy_Curncy_Nm" type="String" readOnly="true" label="Thecountrdus Cstm curncy Curncy Nm" length="200" />
+    <field name="ThecountrdusCstm_TSNEFTSNEF_name" type="String" readOnly="true" label="Thecountrdus Cstm TSNEFTSNEF name" length="150" />
+    <field name="ThecountrdusCstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="Thecountrdus Cstm TSNEFNO1TSNEF1 name" length="150" />
+    <field name="ThecountrdusCstm_Slm_Slm_Nm" type="String" readOnly="true" label="Thecountrdus Cstm Slm Nm" length="100" />
+    <field name="ThecountrdusSup_Sup_Nm" type="String" readOnly="true" label="Thecountrdus Sup Nm" length="255" />
+    <field name="ThecountrdusSup_Acc_Acc_Nm" type="String" readOnly="true" label="Thecountrdus Sup Acc Nm" length="255" />
+    <field name="ThecountrdusSup_sgmsgm_Nm" type="String" readOnly="true" label="Thecountrdus Sup sgmsgm Nm" length="255" />
+    <field name="ThecountrdusSup_Cntry_Cntry_Nm" type="String" readOnly="true" label="Thecountrdus Sup Cntry Nm" length="255" />
+    <field name="ThecountrdusSup_Curncy_Curncy_Nm" type="String" readOnly="true" label="Thecountrdus Sup Curncy Nm" length="200" />
+    <field name="QTY" type="Decimal" default="((1))" label="Qty" showInSummary="true" />
+	<field name="expirdate" type="DateTime" label="expirdate" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="10" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="10" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="DataSheet" commandId="command1" label="Itembatchfromstock">
+      
+      <dataFields>
+        <dataField fieldName="Brn_No"  hidden="true" />
+        <dataField fieldName="Barcodubatch" columns="50" />
+        <dataField fieldName="countrdus" hidden="true" />
+        <dataField fieldName="QTY" columns="15" />
+        <dataField fieldName="expirdate" columns="10" />
+		<dataField fieldName="descitem" columns="10" />
+		<dataField fieldName="unit_no" columns="10" />
+		<dataField fieldName="ModifiedBy" columns="10" hidden="true" />
+		<dataField fieldName="ModifiedOn" columns="10" hidden="true" />
+		<dataField fieldName="CreatedBy" columns="10" hidden="true" />
+		<dataField fieldName="CreatedOn" columns="10" hidden="true" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Itembatchfromstock">
+     
+      <categories>
+        <category id="c1" headerText="Itembatchfromstock" flow="NewColumn"  newColumn="true">
+         
+          <dataFields>
+            <dataField fieldName="Barcodubatch" columns="50" />
+            <dataField fieldName="Brn_No" aliasFieldName="Brn_Brn_Nm" hyperlinkFormatString="~/Pages/Branchcnst.aspx?Brn_No={Brn_No}&amp;_controller=Branchcnst&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="countrdus" aliasFieldName="Thecountrdusardtypnm" hyperlinkFormatString="~/Pages/azonhdr1.aspx?countrdus={countrdus}&amp;_controller=azonhdr1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="QTY" columns="15" />
+			 <dataField fieldName="expirdate" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="10" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="10" />
+            <dataField fieldName="CreatedOn" columns="10" />
+			 <dataField fieldName="descitem" columns="10" />
+		  <dataField fieldName="unit_no" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Brn_branchDesc1" columns="50" />
+            <dataField fieldName="Brn_branchsgmsgm_Nm" />
+            <dataField fieldName="Brn_branchGenderGender" />
+            <dataField fieldName="Brn_branchstageShortDesc1" columns="50" />
+            <dataField fieldName="Brn_branchschtypschtypDesc" />
+            <dataField fieldName="ThecountrdusBrn_Brn_Nm" />
+            <dataField fieldName="ThecountrdusBrn_branchDesc1" columns="50" />
+            <dataField fieldName="ThecountrdusTRFBrn_Brn_Nm" />
+            <dataField fieldName="ThecountrdusTRFBrn_branchDesc1" columns="50" />
+            <dataField fieldName="Thecountrdusdoc_typdoc_name" />
+            <dataField fieldName="ThecountrdustypcmsupSubledgerDescrption" columns="50" />
+            <dataField fieldName="ThecountrdusCstm_Cstm_Nm" />
+            <dataField fieldName="ThecountrdusCstm_AreaArea_name" />
+            <dataField fieldName="ThecountrdusCstm_EvaluationEvaluation_name" />
+            <dataField fieldName="ThecountrdusCstm_acc_Acc_Nm" />
+            <dataField fieldName="ThecountrdusCstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="ThecountrdusCstm_curncy_Curncy_Nm" />
+            <dataField fieldName="ThecountrdusCstm_TSNEFTSNEF_name" />
+            <dataField fieldName="ThecountrdusCstm_TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="ThecountrdusCstm_Slm_Slm_Nm" />
+            <dataField fieldName="ThecountrdusSup_Sup_Nm" />
+            <dataField fieldName="ThecountrdusSup_Acc_Acc_Nm" />
+            <dataField fieldName="ThecountrdusSup_sgmsgm_Nm" />
+            <dataField fieldName="ThecountrdusSup_Cntry_Cntry_Nm" />
+            <dataField fieldName="ThecountrdusSup_Curncy_Curncy_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Itembatchfromstock">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Itembatchfromstock" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Barcodubatch" columns="50" />
+             <dataField fieldName="QTY" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="grid1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+  <rule id="r102" commandName="Update" type="Sql" phase="After" ><![CDATA[
+ DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Barcodubatch,@Batchidstock,@Brn_No
+]]></rule>
+  
+  </businessRules>
+</dataController>

@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="GSIlinedetail" conflictDetection="overwriteChanges" label="GS Ilinedetail" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"GSIlinedetail"."ID" "ID"
+	,"GSIlinedetail"."MasterIDSEC" "MasterIDSEC"
+	,"MasterIDSEC"."DetailData" "MasterIDSECDetailData"
+	,"MasterIDSECMaster"."WORKORDERDSC" "MasterIDSECMasterWORKORDERDSC"
+	,"MasterIDSECMasterGSIwork"."GSIworkDsc" "MasterIDSECMasterGSIworkGSIworkDsc"
+	,"MasterIDSECMasterCstm_"."Cstm_Nm" "MasterIDSECMasterCstm_Cstm_Nm"
+	,"GSIlinedetail"."DetailData" "DetailData"
+	,"GSIlinedetail"."Req_Typcmpline" "Req_Typcmpline"
+	,"Req_Typcmpline"."Req_NM" "Req_TypcmplineReq_NM"
+	,"GSIlinedetail"."ID_compline" "ID_compline"
+	,"ID_compline"."ID_USER" "ID_complineID_USER"
+	,"ID_complineIDGROUP"."ID_USER" "ID_complineIDGROUPID_USER"
+	,"ID_complineSup_"."Item_name" "ID_complineSup_Item_name"
+	,"ID_complineid1"."DESCRP1" "ID_complineid1DESCRP1"
+	,"ID_complineid2"."DESCRP1" "ID_complineid2DESCRP1"
+	,"ID_complineid3"."DESCRP1" "ID_complineid3DESCRP1"
+	,"ID_complineid4"."DESCRP1" "ID_complineid4DESCRP1"
+	,"ID_complineid5"."DESCRP1" "ID_complineid5DESCRP1"
+	,"ID_complineid6"."DESCRP1" "ID_complineid6DESCRP1"
+	,"ID_complineid7"."DESCRP1" "ID_complineid7DESCRP1"
+	,"GSIlinedetail"."brn_no" "brn_no"
+	,"GSIlinedetail"."ModifiedBy" "ModifiedBy"
+	,"GSIlinedetail"."ModifiedOn" "ModifiedOn"
+	,"GSIlinedetail"."CreatedBy" "CreatedBy"
+	,"GSIlinedetail"."CreatedOn" "CreatedOn"
+from "dbo"."GSIlinedetail" "GSIlinedetail"
+	left join "dbo"."GSIWORKORDERPRODUCTION" "MasterIDSEC" on "GSIlinedetail"."MasterIDSEC" = "MasterIDSEC"."ID"
+	left join "dbo"."GSIWORKORDER" "MasterIDSECMaster" on "MasterIDSEC"."MasterID" = "MasterIDSECMaster"."ID"
+	left join "dbo"."GSIworkList" "MasterIDSECMasterGSIwork" on "MasterIDSECMaster"."GSIworkid" = "MasterIDSECMasterGSIwork"."GSIworkid"
+	left join "dbo"."Stcustmr" "MasterIDSECMasterCstm_" on "MasterIDSECMaster"."Cstm_No" = "MasterIDSECMasterCstm_"."Cstm_No"
+	left join "dbo"."pyhldtypsl1" "Req_Typcmpline" on "GSIlinedetail"."Req_Typcmpline" = "Req_Typcmpline"."Req_Typ"
+	left join "dbo"."ITEMS" "ID_compline" on "GSIlinedetail"."ID_compline" = "ID_compline"."ID_comp"
+	left join "dbo"."GROUPStk" "ID_complineIDGROUP" on "ID_compline"."IDGROUP" = "ID_complineIDGROUP"."IDGROUP"
+	left join "dbo"."ItemList" "ID_complineSup_" on "ID_compline"."Sup_No" = "ID_complineSup_"."ItemNo"
+	left join "dbo"."PYHldtypsv1" "ID_complineid1" on "ID_compline"."id1" = "ID_complineid1"."ID1"
+	left join "dbo"."PYHldtypsv2" "ID_complineid2" on "ID_compline"."id2" = "ID_complineid2"."ID2"
+	left join "dbo"."PYHldtypsv3" "ID_complineid3" on "ID_compline"."id3" = "ID_complineid3"."id3"
+	left join "dbo"."PYHldtypsv4" "ID_complineid4" on "ID_compline"."id4" = "ID_complineid4"."id4"
+	left join "dbo"."PYHldtypsv5" "ID_complineid5" on "ID_compline"."id5" = "ID_complineid5"."id5"
+	left join "dbo"."PYHldtypsv6" "ID_complineid6" on "ID_compline"."id6" = "ID_complineid6"."id6"
+	left join "dbo"."PYHldtypsv7" "ID_complineid7" on "ID_compline"."id7" = "ID_complineid7"."id7"
+]]></text>
+    </command>
+    <command id="IDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Id" readOnly="true" />
+    <field name="MasterIDSEC" type="Int64" allowNulls="false" label="Master IDSEC" showInSummary="true">
+      <items style="Lookup" dataController="GSIWORKORDERPRODUCTION" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="MasterIDSECDetailData" type="String" readOnly="true" label="Master IDSEC Detail Data" length="250" />
+    <field name="MasterIDSECMasterWORKORDERDSC" type="String" readOnly="true" label="Master IDSEC Master WORKORDERDSC" length="250" />
+    <field name="MasterIDSECMasterGSIworkGSIworkDsc" type="String" readOnly="true" label="Master IDSEC Master GS Iwork Dsc" length="255" />
+    <field name="MasterIDSECMasterCstm_Cstm_Nm" type="String" readOnly="true" label="Master IDSEC Master Cstm Nm" length="155" />
+    <field name="DetailData" type="String" label="Detail Data" length="250" showInSummary="true" />
+    <field name="Req_Typcmpline" type="Int64" label="Req Typcmpline" showInSummary="true">
+      <items style="Lookup" dataController="pyhldtypsl1" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Req_TypcmplineReq_NM" type="String" readOnly="true" label="Req Typcmpline Req NM" length="255" />
+    <field name="ID_compline" type="Int64" label="ID compline" showInSummary="true">
+      <items style="Lookup" dataController="ITEMS" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ID_complineID_USER" type="String" readOnly="true" label="ID compline ID USER" length="50" />
+    <field name="ID_complineIDGROUPID_USER" type="String" readOnly="true" label="ID compline IDGROUPID USER" length="50" />
+    <field name="ID_complineSup_Item_name" type="String" readOnly="true" label="ID compline Sup Item name" length="150" />
+    <field name="ID_complineid1DESCRP1" type="String" readOnly="true" label="ID complineid1 DESCRP1" length="255" />
+    <field name="ID_complineid2DESCRP1" type="String" readOnly="true" label="ID complineid2 DESCRP1" length="255" />
+    <field name="ID_complineid3DESCRP1" type="String" readOnly="true" label="ID complineid3 DESCRP1" length="255" />
+    <field name="ID_complineid4DESCRP1" type="String" readOnly="true" label="ID complineid4 DESCRP1" length="255" />
+    <field name="ID_complineid5DESCRP1" type="String" readOnly="true" label="ID complineid5 DESCRP1" length="255" />
+    <field name="ID_complineid6DESCRP1" type="String" readOnly="true" label="ID complineid6 DESCRP1" length="255" />
+    <field name="ID_complineid7DESCRP1" type="String" readOnly="true" label="ID complineid7 DESCRP1" length="255" />
+    <field name="brn_no" type="Int64" label="Brn No" showInSummary="true" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="GS Ilinedetail">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="MasterIDSEC" aliasFieldName="MasterIDSECDetailData" />
+        <dataField fieldName="DetailData" />
+        <dataField fieldName="Req_Typcmpline" aliasFieldName="Req_TypcmplineReq_NM" hyperlinkFormatString="~/Pages/pyhldtypsl1.aspx?Req_Typ={Req_Typcmpline}&amp;_controller=pyhldtypsl1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ID_compline" aliasFieldName="ID_complineID_USER" hyperlinkFormatString="~/Pages/ITEMS.aspx?ID_comp={ID_compline}&amp;_controller=ITEMS&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="brn_no" columns="15" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="MasterIDSECMasterWORKORDERDSC" />
+        <dataField fieldName="MasterIDSECMasterGSIworkGSIworkDsc" />
+        <dataField fieldName="MasterIDSECMasterCstm_Cstm_Nm" />
+        <dataField fieldName="ID_complineIDGROUPID_USER" columns="50" />
+        <dataField fieldName="ID_complineSup_Item_name" />
+        <dataField fieldName="ID_complineid1DESCRP1" />
+        <dataField fieldName="ID_complineid2DESCRP1" />
+        <dataField fieldName="ID_complineid3DESCRP1" />
+        <dataField fieldName="ID_complineid4DESCRP1" />
+        <dataField fieldName="ID_complineid5DESCRP1" />
+        <dataField fieldName="ID_complineid6DESCRP1" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review GS Ilinedetail">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="GS Ilinedetail" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="MasterIDSEC" aliasFieldName="MasterIDSECDetailData" hyperlinkFormatString="~/Pages/GSIWORKORDERPRODUCTION.aspx?ID={MasterIDSEC}&amp;_controller=GSIWORKORDERPRODUCTION&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="DetailData" />
+            <dataField fieldName="Req_Typcmpline" aliasFieldName="Req_TypcmplineReq_NM" hyperlinkFormatString="~/Pages/pyhldtypsl1.aspx?Req_Typ={Req_Typcmpline}&amp;_controller=pyhldtypsl1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ID_compline" aliasFieldName="ID_complineID_USER" hyperlinkFormatString="~/Pages/ITEMS.aspx?ID_comp={ID_compline}&amp;_controller=ITEMS&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="brn_no" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="MasterIDSECMasterWORKORDERDSC" />
+            <dataField fieldName="MasterIDSECMasterGSIworkGSIworkDsc" />
+            <dataField fieldName="MasterIDSECMasterCstm_Cstm_Nm" />
+            <dataField fieldName="ID_complineIDGROUPID_USER" columns="50" />
+            <dataField fieldName="ID_complineSup_Item_name" />
+            <dataField fieldName="ID_complineid1DESCRP1" />
+            <dataField fieldName="ID_complineid2DESCRP1" />
+            <dataField fieldName="ID_complineid3DESCRP1" />
+            <dataField fieldName="ID_complineid4DESCRP1" />
+            <dataField fieldName="ID_complineid5DESCRP1" />
+            <dataField fieldName="ID_complineid6DESCRP1" />
+            <dataField fieldName="ID_complineid7DESCRP1" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New GS Ilinedetail">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New GS Ilinedetail" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="MasterIDSEC" aliasFieldName="MasterIDSECDetailData" />
+            <dataField fieldName="DetailData" />
+            <dataField fieldName="Req_Typcmpline" aliasFieldName="Req_TypcmplineReq_NM" />
+            <dataField fieldName="ID_compline" aliasFieldName="ID_complineID_USER" />
+            <dataField fieldName="brn_no" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

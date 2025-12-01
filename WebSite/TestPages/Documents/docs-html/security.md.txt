@@ -1,0 +1,12 @@
+﻿# Security Overview
+
+- Authentication: Forms auth (Login.aspx)
+- Authorization: Extensive <location> based role restrictions in web.config
+- Membership/Roles/Profile: SQL providers (encrypted password)
+- Custom Module: eZee.Security.ExportAuthenticationModule
+- Session: InProc; note Session_End hooks OnlineActiveUsers module in Global.asax
+- Sensitive appSettings in web.config (SMS credentials, license keys) â€” consider secrets move and rotation
+- SiteMap security trimming enabled (XmlSiteMapProvider)
+- Menu JSON endpoint `Pages/MenuApi.aspx/GetMenuTree` respects SiteMap `IsAccessibleToUser`
+- Data services via ASMX `Services/DataControllerService.asmx` with multiple [WebMethod]s
+

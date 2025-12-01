@@ -1,0 +1,536 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="alldata" conflictDetection="overwriteChanges" label="Alldata" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"alldata"."StudentCode" "StudentCode"
+	,"alldata"."FirstName1" "FirstName1"
+	,"alldata"."FirstName2" "FirstName2"
+	,"alldata"."FatherCode" "FatherCode"
+	,"alldata"."MotherCode" "MotherCode"
+	,"alldata"."branch" "branch"
+	,"alldata"."Religion" "Religion"
+	,"alldata"."Cntry_No" "Cntry_No"
+	,"alldata"."Genderid" "Genderid"
+	,"alldata"."area" "area"
+	,"alldata"."gadah" "gadah"
+	,"alldata"."blockno" "blockno"
+	,"alldata"."streetno" "streetno"
+	,"alldata"."houseno" "houseno"
+	,"alldata"."addressdetail" "addressdetail"
+	,"alldata"."Stage" "Stage"
+	,"alldata"."GradeCode" "GradeCode"
+	,"alldata"."Class" "Class"
+	,"alldata"."schstatus_code" "schstatus_code"
+	,"alldata"."schstudenttypid" "schstudenttypid"
+	,"alldata"."BirthDate" "BirthDate"
+	,"alldata"."BirthPlace" "BirthPlace"
+	,"alldata"."BirthDocNo" "BirthDocNo"
+	,"alldata"."BirthDocPlace" "BirthDocPlace"
+	,"alldata"."birthdocdate" "birthdocdate"
+	,"alldata"."CivilidExpDate" "CivilidExpDate"
+	,"alldata"."Joiningdate" "Joiningdate"
+	,"alldata"."Residenceaddress" "Residenceaddress"
+	,"alldata"."EmergencyTelNo1" "EmergencyTelNo1"
+	,"alldata"."EmergencyTelNo2" "EmergencyTelNo2"
+	,"alldata"."EmergencyTelNo3" "EmergencyTelNo3"
+	,"alldata"."PassportNumber" "PassportNumber"
+	,"alldata"."PassportPlace" "PassportPlace"
+	,"alldata"."PassportIssueDate" "PassportIssueDate"
+	,"alldata"."PassportExpDate" "PassportExpDate"
+	,"alldata"."Residencenumber" "Residencenumber"
+	,"alldata"."ResidenceExpDate" "ResidenceExpDate"
+	,"alldata"."Notes" "Notes"
+	,"alldata"."ApplicationCodeauto" "ApplicationCodeauto"
+	,"alldata"."studentsefa" "studentsefa"
+	,"alldata"."schsthlthcaseid" "schsthlthcaseid"
+	,"alldata"."resigncases" "resigncases"
+	,"alldata"."joindate" "joindate"
+	,"alldata"."id" "id"
+	,"alldata"."schstsplid" "schstsplid"
+	,"alldata"."Schclasskindid" "Schclasskindid"
+	,"alldata"."schstclasskinddmgid" "schstclasskinddmgid"
+	,"alldata"."Schtransferid" "Schtransferid"
+	,"alldata"."countrydesc1" "countrydesc1"
+	,"alldata"."countrydesc2" "countrydesc2"
+	,"alldata"."countrydesc3" "countrydesc3"
+	,"alldata"."countrydesc4" "countrydesc4"
+	,"alldata"."Gender" "Gender"
+	,"alldata"."Gendere" "Gendere"
+	,"alldata"."reljan" "reljan"
+	,"alldata"."Reljan_nm" "Reljan_nm"
+	,"alldata"."Reljan_nme" "Reljan_nme"
+	,"alldata"."studentsefaid" "studentsefaid"
+	,"alldata"."studentsefaar" "studentsefaar"
+	,"alldata"."studentsefaar1" "studentsefaar1"
+	,"alldata"."schstsplDsc" "schstsplDsc"
+	,"alldata"."schstsplDsc1" "schstsplDsc1"
+	,"alldata"."Schclasskinddesc" "Schclasskinddesc"
+	,"alldata"."Schclasskinddesc1" "Schclasskinddesc1"
+	,"alldata"."stagecode" "stagecode"
+	,"alldata"."stage1" "stage1"
+	,"alldata"."stage2" "stage2"
+	,"alldata"."stage3" "stage3"
+	,"alldata"."stage4" "stage4"
+	,"alldata"."SchtransferDesc" "SchtransferDesc"
+	,"alldata"."SchtransferDesc1" "SchtransferDesc1"
+	,"alldata"."areacode" "areacode"
+	,"alldata"."areaname1" "areaname1"
+	,"alldata"."areaname2" "areaname2"
+	,"alldata"."schstatus_name" "schstatus_name"
+	,"alldata"."schstatus_namee" "schstatus_namee"
+	,"alldata"."schstudenttyp" "schstudenttyp"
+	,"alldata"."schstudenttype" "schstudenttype"
+	,"alldata"."State_Nm" "State_Nm"
+	,"alldata"."State_Nme" "State_Nme"
+	,"alldata"."state" "state"
+	,"alldata"."schoolname1" "schoolname1"
+	,"alldata"."schoolname2" "schoolname2"
+	,"alldata"."acdcode" "acdcode"
+	,"alldata"."AcademicYear" "AcademicYear"
+	,"alldata"."startdate" "startdate"
+	,"alldata"."enddate" "enddate"
+	,"alldata"."schoolfromname1" "schoolfromname1"
+	,"alldata"."name_2" "name_2"
+	,"alldata"."schstEmail" "schstEmail"
+	,"alldata"."SchstCivilidnumber" "SchstCivilidnumber"
+from "dbo"."alldata" "alldata"
+]]></text>
+    </command>
+    <command id="branchIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="branch" />
+      </output>
+    </command>
+    <command id="Cntry_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Cntry_No" />
+      </output>
+    </command>
+    <command id="GenderidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Genderid" />
+      </output>
+    </command>
+    <command id="schstatus_codeIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="schstatus_code" />
+      </output>
+    </command>
+    <command id="schstudenttypidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="schstudenttypid" />
+      </output>
+    </command>
+    <command id="idIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="id" />
+      </output>
+    </command>
+    <command id="schstsplidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="schstsplid" />
+      </output>
+    </command>
+    <command id="SchclasskindidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Schclasskindid" />
+      </output>
+    </command>
+    <command id="SchtransferidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Schtransferid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="StudentCode" type="Int64" allowNulls="false" label="Student Code" showInSummary="true" />
+    <field name="FirstName1" type="String" label="First Name1" length="150" showInSummary="true" />
+    <field name="FirstName2" type="String" label="First Name2" length="100" showInSummary="true" />
+    <field name="FatherCode" type="Int64" label="Father Code" showInSummary="true" />
+    <field name="MotherCode" type="Int64" label="Mother Code" showInSummary="true" />
+    <field name="branch" type="Int64" label="Branch" readOnly="true" />
+    <field name="Religion" type="Int64" label="Religion" />
+    <field name="Cntry_No" type="Int64" label="Cntry No" readOnly="true" />
+    <field name="Genderid" type="Int64" label="Genderid" readOnly="true" />
+    <field name="area" type="Int64" label="Area" />
+    <field name="gadah" type="Int64" label="Gadah" />
+    <field name="blockno" type="String" label="Blockno" length="5" />
+    <field name="streetno" type="String" label="Streetno" length="5" />
+    <field name="houseno" type="String" label="Houseno" length="10" />
+    <field name="addressdetail" type="String" label="Addressdetail" length="150" />
+    <field name="Stage" type="Int64" label="Stage" />
+    <field name="GradeCode" type="Int64" label="Grade Code" />
+    <field name="Class" type="Int64" label="Class" />
+    <field name="schstatus_code" type="Int64" label="Schstatus Code" readOnly="true" />
+    <field name="schstudenttypid" type="Int64" label="Schstudenttypid" readOnly="true" />
+    <field name="BirthDate" type="DateTime" label="Birth Date" />
+    <field name="BirthPlace" type="String" label="Birth Place" length="50" />
+    <field name="BirthDocNo" type="String" label="Birth Doc No" length="50" />
+    <field name="BirthDocPlace" type="String" label="Birth Doc Place" length="50" />
+    <field name="birthdocdate" type="DateTime" label="Birthdocdate" />
+    <field name="CivilidExpDate" type="DateTime" label="Civilid Exp Date" />
+    <field name="Joiningdate" type="DateTime" label="Joiningdate" />
+    <field name="Residenceaddress" type="String" label="Residenceaddress" length="50" />
+    <field name="EmergencyTelNo1" type="String" label="Emergency Tel No1" length="8" />
+    <field name="EmergencyTelNo2" type="String" label="Emergency Tel No2" length="8" />
+    <field name="EmergencyTelNo3" type="String" label="Emergency Tel No3" length="8" />
+    <field name="PassportNumber" type="String" label="Passport Number" length="50" />
+    <field name="PassportPlace" type="String" label="Passport Place" length="50" />
+    <field name="PassportIssueDate" type="DateTime" label="Passport Issue Date" />
+    <field name="PassportExpDate" type="DateTime" label="Passport Exp Date" />
+    <field name="Residencenumber" type="String" label="Residencenumber" length="50" />
+    <field name="ResidenceExpDate" type="DateTime" label="Residence Exp Date" />
+    <field name="Notes" type="String" label="Notes" length="250" />
+    <field name="ApplicationCodeauto" type="Int64" label="Application Codeauto" />
+    <field name="studentsefa" type="Int64" label="Studentsefa" />
+    <field name="schsthlthcaseid" type="Int64" label="Schsthlthcaseid" />
+    <field name="resigncases" type="String" label="Resigncases" length="250" />
+    <field name="joindate" type="DateTime" label="Joindate" />
+    <field name="id" type="Int64" label="Id" readOnly="true" />
+    <field name="schstsplid" type="Int64" label="Schstsplid" readOnly="true" />
+    <field name="Schclasskindid" type="Int64" label="Schclasskindid" readOnly="true" />
+    <field name="schstclasskinddmgid" type="Int64" label="Schstclasskinddmgid" />
+    <field name="Schtransferid" type="Int64" label="Schtransferid" readOnly="true" />
+    <field name="countrydesc1" type="String" label="Countrydesc1" length="255" />
+    <field name="countrydesc2" type="String" label="Countrydesc2" length="255" />
+    <field name="countrydesc3" type="String" label="Countrydesc3" length="50" />
+    <field name="countrydesc4" type="String" label="Countrydesc4" length="50" />
+    <field name="Gender" type="String" label="Gender" length="100" />
+    <field name="Gendere" type="String" label="Gendere" length="100" />
+    <field name="reljan" type="Int64" label="Reljan" />
+    <field name="Reljan_nm" type="String" label="Reljan nm" length="50" />
+    <field name="Reljan_nme" type="String" label="Reljan nme" length="255" />
+    <field name="studentsefaid" type="Int64" label="Studentsefaid" />
+    <field name="studentsefaar" type="String" label="Studentsefaar" length="150" />
+    <field name="studentsefaar1" type="String" label="Studentsefaar1" length="150" />
+    <field name="schstsplDsc" type="String" label="schstspl Dsc" length="150" />
+    <field name="schstsplDsc1" type="String" label="schstspl Dsc1" length="150" />
+    <field name="Schclasskinddesc" type="String" label="Schclasskinddesc" length="255" />
+    <field name="Schclasskinddesc1" type="String" label="Schclasskinddesc1" length="255" />
+    <field name="stagecode" type="Int64" label="Stagecode" />
+    <field name="stage1" type="String" label="Stage1" length="50" />
+    <field name="stage2" type="String" label="Stage2" length="50" />
+    <field name="stage3" type="String" label="Stage3" length="50" />
+    <field name="stage4" type="String" label="Stage4" length="50" />
+    <field name="SchtransferDesc" type="String" label="Schtransfer Desc" length="150" />
+    <field name="SchtransferDesc1" type="String" label="Schtransfer Desc1" length="150" />
+    <field name="areacode" type="Int64" label="Areacode" />
+    <field name="areaname1" type="String" label="Areaname1" length="40" />
+    <field name="areaname2" type="String" label="Areaname2" length="40" />
+    <field name="schstatus_name" type="String" label="Schstatus Name" length="50" />
+    <field name="schstatus_namee" type="String" label="Schstatus Namee" length="50" />
+    <field name="schstudenttyp" type="String" label="Schstudenttyp" length="50" />
+    <field name="schstudenttype" type="String" label="Schstudenttype" length="50" />
+    <field name="State_Nm" type="String" label="State Nm" length="60" />
+    <field name="State_Nme" type="String" label="State Nme" length="60" />
+    <field name="state" type="Int64" label="State" />
+    <field name="schoolname1" type="String" label="Schoolname1" length="50" />
+    <field name="schoolname2" type="String" label="Schoolname2" length="50" />
+    <field name="acdcode" type="Int64" label="Acdcode" />
+    <field name="AcademicYear" type="String" label="Academic Year" length="150" />
+    <field name="startdate" type="DateTime" label="Startdate" />
+    <field name="enddate" type="DateTime" label="Enddate" />
+    <field name="schoolfromname1" type="String" label="Schoolfromname1" length="50" />
+    <field name="name_2" type="String" label="Name 2" length="50" />
+    <field name="schstEmail" type="String" label="schst Email" length="50" />
+    <field name="SchstCivilidnumber" type="String" label="Schst Civilidnumber" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Alldata">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="StudentCode" columns="15" />
+        <dataField fieldName="FirstName1" />
+        <dataField fieldName="FirstName2" />
+        <dataField fieldName="FatherCode" columns="15" />
+        <dataField fieldName="MotherCode" columns="15" />
+        <dataField fieldName="branch" columns="15" />
+        <dataField fieldName="Religion" columns="15" />
+        <dataField fieldName="Cntry_No" columns="15" />
+        <dataField fieldName="Genderid" columns="15" />
+        <dataField fieldName="area" columns="15" />
+        <dataField fieldName="gadah" columns="15" />
+        <dataField fieldName="blockno" columns="5" />
+        <dataField fieldName="streetno" columns="5" />
+        <dataField fieldName="houseno" columns="10" />
+        <dataField fieldName="addressdetail" />
+        <dataField fieldName="Stage" columns="15" />
+        <dataField fieldName="GradeCode" columns="15" />
+        <dataField fieldName="Class" columns="15" />
+        <dataField fieldName="schstatus_code" columns="15" />
+        <dataField fieldName="schstudenttypid" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Alldata">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Alldata" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="StudentCode" columns="15" />
+            <dataField fieldName="FirstName1" />
+            <dataField fieldName="FirstName2" />
+            <dataField fieldName="FatherCode" columns="15" />
+            <dataField fieldName="MotherCode" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="Religion" columns="15" />
+            <dataField fieldName="Cntry_No" columns="15" />
+            <dataField fieldName="Genderid" columns="15" />
+            <dataField fieldName="area" columns="15" />
+            <dataField fieldName="gadah" columns="15" />
+            <dataField fieldName="blockno" columns="5" />
+            <dataField fieldName="streetno" columns="5" />
+            <dataField fieldName="houseno" columns="10" />
+            <dataField fieldName="addressdetail" />
+            <dataField fieldName="Stage" columns="15" />
+            <dataField fieldName="GradeCode" columns="15" />
+            <dataField fieldName="Class" columns="15" />
+            <dataField fieldName="schstatus_code" columns="15" />
+            <dataField fieldName="schstudenttypid" columns="15" />
+            <dataField fieldName="BirthDate" columns="10" />
+            <dataField fieldName="BirthPlace" columns="50" />
+            <dataField fieldName="BirthDocNo" columns="50" />
+            <dataField fieldName="BirthDocPlace" columns="50" />
+            <dataField fieldName="birthdocdate" columns="10" />
+            <dataField fieldName="CivilidExpDate" columns="10" />
+            <dataField fieldName="Joiningdate" columns="10" />
+            <dataField fieldName="Residenceaddress" columns="50" />
+            <dataField fieldName="EmergencyTelNo1" columns="8" />
+            <dataField fieldName="EmergencyTelNo2" columns="8" />
+            <dataField fieldName="EmergencyTelNo3" columns="8" />
+            <dataField fieldName="PassportNumber" columns="50" />
+            <dataField fieldName="PassportPlace" columns="50" />
+            <dataField fieldName="PassportIssueDate" columns="10" />
+            <dataField fieldName="PassportExpDate" columns="10" />
+            <dataField fieldName="Residencenumber" columns="50" />
+            <dataField fieldName="ResidenceExpDate" columns="10" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="ApplicationCodeauto" columns="15" />
+            <dataField fieldName="studentsefa" columns="15" />
+            <dataField fieldName="schsthlthcaseid" columns="15" />
+            <dataField fieldName="resigncases" />
+            <dataField fieldName="joindate" columns="10" />
+            <dataField fieldName="id" columns="15" />
+            <dataField fieldName="schstsplid" columns="15" />
+            <dataField fieldName="Schclasskindid" columns="15" />
+            <dataField fieldName="schstclasskinddmgid" columns="15" />
+            <dataField fieldName="Schtransferid" columns="15" />
+            <dataField fieldName="countrydesc1" />
+            <dataField fieldName="countrydesc2" />
+            <dataField fieldName="countrydesc3" columns="50" />
+            <dataField fieldName="countrydesc4" columns="50" />
+            <dataField fieldName="Gender" />
+            <dataField fieldName="Gendere" />
+            <dataField fieldName="reljan" columns="15" />
+            <dataField fieldName="Reljan_nm" columns="50" />
+            <dataField fieldName="Reljan_nme" />
+            <dataField fieldName="studentsefaid" columns="15" />
+            <dataField fieldName="studentsefaar" />
+            <dataField fieldName="studentsefaar1" />
+            <dataField fieldName="schstsplDsc" />
+            <dataField fieldName="schstsplDsc1" />
+            <dataField fieldName="Schclasskinddesc" />
+            <dataField fieldName="Schclasskinddesc1" />
+            <dataField fieldName="stagecode" columns="15" />
+            <dataField fieldName="stage1" columns="50" />
+            <dataField fieldName="stage2" columns="50" />
+            <dataField fieldName="stage3" columns="50" />
+            <dataField fieldName="stage4" columns="50" />
+            <dataField fieldName="SchtransferDesc" />
+            <dataField fieldName="SchtransferDesc1" />
+            <dataField fieldName="areacode" columns="15" />
+            <dataField fieldName="areaname1" columns="40" />
+            <dataField fieldName="areaname2" columns="40" />
+            <dataField fieldName="schstatus_name" columns="50" />
+            <dataField fieldName="schstatus_namee" columns="50" />
+            <dataField fieldName="schstudenttyp" columns="50" />
+            <dataField fieldName="schstudenttype" columns="50" />
+            <dataField fieldName="State_Nm" />
+            <dataField fieldName="State_Nme" />
+            <dataField fieldName="state" columns="15" />
+            <dataField fieldName="schoolname1" columns="50" />
+            <dataField fieldName="schoolname2" columns="50" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="AcademicYear" />
+            <dataField fieldName="startdate" columns="10" />
+            <dataField fieldName="enddate" columns="10" />
+            <dataField fieldName="schoolfromname1" columns="50" />
+            <dataField fieldName="name_2" columns="50" />
+            <dataField fieldName="schstEmail" columns="50" />
+            <dataField fieldName="SchstCivilidnumber" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Alldata">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Alldata" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="StudentCode" columns="15" />
+            <dataField fieldName="FirstName1" />
+            <dataField fieldName="FirstName2" />
+            <dataField fieldName="FatherCode" columns="15" />
+            <dataField fieldName="MotherCode" columns="15" />
+            <dataField fieldName="Religion" columns="15" />
+            <dataField fieldName="area" columns="15" />
+            <dataField fieldName="gadah" columns="15" />
+            <dataField fieldName="blockno" columns="5" />
+            <dataField fieldName="streetno" columns="5" />
+            <dataField fieldName="houseno" columns="10" />
+            <dataField fieldName="addressdetail" />
+            <dataField fieldName="Stage" columns="15" />
+            <dataField fieldName="GradeCode" columns="15" />
+            <dataField fieldName="Class" columns="15" />
+            <dataField fieldName="BirthDate" columns="10" />
+            <dataField fieldName="BirthPlace" columns="50" />
+            <dataField fieldName="BirthDocNo" columns="50" />
+            <dataField fieldName="BirthDocPlace" columns="50" />
+            <dataField fieldName="birthdocdate" columns="10" />
+            <dataField fieldName="CivilidExpDate" columns="10" />
+            <dataField fieldName="Joiningdate" columns="10" />
+            <dataField fieldName="Residenceaddress" columns="50" />
+            <dataField fieldName="EmergencyTelNo1" columns="8" />
+            <dataField fieldName="EmergencyTelNo2" columns="8" />
+            <dataField fieldName="EmergencyTelNo3" columns="8" />
+            <dataField fieldName="PassportNumber" columns="50" />
+            <dataField fieldName="PassportPlace" columns="50" />
+            <dataField fieldName="PassportIssueDate" columns="10" />
+            <dataField fieldName="PassportExpDate" columns="10" />
+            <dataField fieldName="Residencenumber" columns="50" />
+            <dataField fieldName="ResidenceExpDate" columns="10" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="ApplicationCodeauto" columns="15" />
+            <dataField fieldName="studentsefa" columns="15" />
+            <dataField fieldName="schsthlthcaseid" columns="15" />
+            <dataField fieldName="resigncases" />
+            <dataField fieldName="joindate" columns="10" />
+            <dataField fieldName="schstclasskinddmgid" columns="15" />
+            <dataField fieldName="countrydesc1" />
+            <dataField fieldName="countrydesc2" />
+            <dataField fieldName="countrydesc3" columns="50" />
+            <dataField fieldName="countrydesc4" columns="50" />
+            <dataField fieldName="Gender" />
+            <dataField fieldName="Gendere" />
+            <dataField fieldName="reljan" columns="15" />
+            <dataField fieldName="Reljan_nm" columns="50" />
+            <dataField fieldName="Reljan_nme" />
+            <dataField fieldName="studentsefaid" columns="15" />
+            <dataField fieldName="studentsefaar" />
+            <dataField fieldName="studentsefaar1" />
+            <dataField fieldName="schstsplDsc" />
+            <dataField fieldName="schstsplDsc1" />
+            <dataField fieldName="Schclasskinddesc" />
+            <dataField fieldName="Schclasskinddesc1" />
+            <dataField fieldName="stagecode" columns="15" />
+            <dataField fieldName="stage1" columns="50" />
+            <dataField fieldName="stage2" columns="50" />
+            <dataField fieldName="stage3" columns="50" />
+            <dataField fieldName="stage4" columns="50" />
+            <dataField fieldName="SchtransferDesc" />
+            <dataField fieldName="SchtransferDesc1" />
+            <dataField fieldName="areacode" columns="15" />
+            <dataField fieldName="areaname1" columns="40" />
+            <dataField fieldName="areaname2" columns="40" />
+            <dataField fieldName="schstatus_name" columns="50" />
+            <dataField fieldName="schstatus_namee" columns="50" />
+            <dataField fieldName="schstudenttyp" columns="50" />
+            <dataField fieldName="schstudenttype" columns="50" />
+            <dataField fieldName="State_Nm" />
+            <dataField fieldName="State_Nme" />
+            <dataField fieldName="state" columns="15" />
+            <dataField fieldName="schoolname1" columns="50" />
+            <dataField fieldName="schoolname2" columns="50" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="AcademicYear" />
+            <dataField fieldName="startdate" columns="10" />
+            <dataField fieldName="enddate" columns="10" />
+            <dataField fieldName="schoolfromname1" columns="50" />
+            <dataField fieldName="name_2" columns="50" />
+            <dataField fieldName="schstEmail" columns="50" />
+            <dataField fieldName="SchstCivilidnumber" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="schglpaydlydetailreg" conflictDetection="overwriteChanges" label="Schglpaydlydetailreg" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.schglpaydlydetailregBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text" custom="true" tableName="schglpaydlydetailreg">
+      <text><![CDATA[select
+	"schglpaydlydetailreg"."Trs_No" "Trs_No"
+	,"schglpaydlydetailreg"."schglpaydlyhdregid" "schglpaydlyhdregid"
+	,"schglpaydlyhdreg"."payDelevername" "schglpaydlyhdregpayDelevername"
+	,"schglpaydlyhdregsgm"."sgm_Nm" "schglpaydlyhdregsgmsgm_Nm"
+	,"schglpaydlyhdregsgmOpco"."OpcoName" "schglpaydlyhdregsgmOpcoOpcoName"
+	,"schglpaydlyhdregpayIDregorg"."NAME_1" "schglpaydlyhdregpayIDregorgNAME_1"
+	,"schglpaydlyhdregacd"."AcademicYear" "schglpaydlyhdregacdAcademicYear"
+	,"schglpaydlyhdregacdGlFinperiod"."Fin_period_info" "schglpaydlyhdregacdGlFinperiodFin_period_info"
+	,"schglpaydlyhdregbranch"."Desc1" "schglpaydlyhdregbranchDesc1"
+	,"schglpaydlyhdregbranchsgm"."sgm_Nm" "schglpaydlyhdregbranchsgmsgm_Nm"
+	,"schglpaydlyhdregbranchGender"."Gender" "schglpaydlyhdregbranchGenderGender"
+	,"schglpaydlyhdregbranchstage"."ShortDesc1" "schglpaydlyhdregbranchstageShortDesc1"
+	,"schglpaydlyhdregbranchschtyp"."schtypDesc" "schglpaydlyhdregbranchschtypschtypDesc"
+	,"schglpaydlydetailreg"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"Thebranchsgm"."sgm_Nm" "Thebranchsgmsgm_Nm"
+	,"ThebranchsgmOpco"."OpcoName" "ThebranchsgmOpcoOpcoName"
+	,"ThebranchGender"."Gender" "ThebranchGenderGender"
+	,"Thebranchstage"."ShortDesc1" "ThebranchstageShortDesc1"
+	,"Thebranchschtyp"."schtypDesc" "ThebranchschtypschtypDesc"
+	,"schglpaydlydetailreg"."acdcode" "acdcode"
+	,"acd"."Fin_period_info" "acdFin_period_info"
+	,"acdaccountnumber"."Acc_Nm" "acdaccountnumberAcc_Nm"
+	,"acdaccountnumberClsacc_"."Acc_Nm" "acdaccountnumberClsacc_Acc_Nm"
+	,"acdaccountnumberAcc_Bnd"."Acc_Nm" "acdaccountnumberAcc_BndAcc_Nm"
+	,"schglpaydlydetailreg"."Acc_no" "Acc_no"
+	,"Acc_"."Acc_Nm" "Acc_Acc_Nm"
+	,"Acc_Clsacc_"."Acc_Nm" "Acc_Clsacc_Acc_Nm"
+	,"Acc_Acc_Bnd"."Acc_Nm" "Acc_Acc_BndAcc_Nm"
+	,"Acc_Acc_Bndaccclass"."accountclass" "Acc_Acc_Bndaccclassaccountclass"
+	,"Acc_Acc_BndAcc_Bab"."Acc_Nm" "Acc_Acc_BndAcc_BabAcc_Nm"
+	,"schglpaydlydetailreg"."cstyp_no" "cstyp_no"
+	,"schglpaydlydetailreg"."subaccountno" "subaccountno"
+	,"schglpaydlydetailreg"."Trs_Dt" "Trs_Dt"
+	,"schglpaydlydetailreg"."schpaymenttypeid" "schpaymenttypeid"
+	,"schpaymenttype"."schpaymenttypenm" "schpaymenttypeschpaymenttypenm"
+	,"schpaymenttypedebitaccount"."Acc_Nm" "schpaymenttypedebitaccountAcc_Nm"
+	,"schpaymenttypedebitaccountClsacc_"."Acc_Nm" "schpaymenttypedebitaccountClsacc_Acc_Nm"
+	,"schpaymenttypedebitaccountAcc_Bnd"."Acc_Nm" "schpaymenttypedebitaccountAcc_BndAcc_Nm"
+	,"schpaymenttypecreditaccount"."Acc_Nm" "schpaymenttypecreditaccountAcc_Nm"
+	,"schpaymenttypecreditaccountClsacc_"."Acc_Nm" "schpaymenttypecreditaccountClsacc_Acc_Nm"
+	,"schpaymenttypecreditaccountAcc_Bnd"."Acc_Nm" "schpaymenttypecreditaccountAcc_BndAcc_Nm"
+	,"schglpaydlydetailreg"."Mony_Paid" "Mony_Paid"
+	,"schglpaydlydetailreg"."Notes" "Notes"
+	,"schglpaydlydetailreg"."glcostcntr" "glcostcntr"
+	,"glcostcntr"."Costcntr_Nm" "glcostcntrCostcntr_Nm"
+	,"glcostcntrcost_typ"."Costcntr_Nm" "glcostcntrcost_typCostcntr_Nm"
+	,"schglpaydlydetailreg"."glcostcntr1" "glcostcntr1"
+	,"glcostcntr1"."Costcntr_Nm" "glcostcntr1Costcntr_Nm"
+	,"glcostcntr1cost_typ"."Costcntr_Nm" "glcostcntr1cost_typCostcntr_Nm"
+	,"schglpaydlydetailreg"."CSMSUP_NM" "CSMSUP_NM"
+from "dbo"."schglpaydlydetailreg" "schglpaydlydetailreg"
+	left join "dbo"."schglpaydlyhdreg" "schglpaydlyhdreg" on "schglpaydlydetailreg"."schglpaydlyhdregid" = "schglpaydlyhdreg"."schglpaydlyhdregid"
+	left join "dbo"."glmulcmp" "schglpaydlyhdregsgm" on "schglpaydlyhdreg"."sgm" = "schglpaydlyhdregsgm"."sgmid"
+	left join "dbo"."OpCo" "schglpaydlyhdregsgmOpco" on "schglpaydlyhdregsgm"."OpcoID" = "schglpaydlyhdregsgmOpco"."OpcoIDidentity"
+	left join "dbo"."REG_ORGANIZATIONS" "schglpaydlyhdregpayIDregorg" on "schglpaydlyhdreg"."payIDregorg" = "schglpaydlyhdregpayIDregorg"."IDIDregorg"
+	left join "dbo"."schAcademicyear" "schglpaydlyhdregacd" on "schglpaydlyhdreg"."acdcode" = "schglpaydlyhdregacd"."Code"
+	left join "dbo"."GlFinanceperiod" "schglpaydlyhdregacdGlFinperiod" on "schglpaydlyhdregacd"."GlFinperiodID" = "schglpaydlyhdregacdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."schBranch" "schglpaydlyhdregbranch" on "schglpaydlyhdreg"."branch" = "schglpaydlyhdregbranch"."branch"
+	left join "dbo"."glmulcmp" "schglpaydlyhdregbranchsgm" on "schglpaydlyhdregbranch"."sgm" = "schglpaydlyhdregbranchsgm"."sgmid"
+	left join "dbo"."PyGender" "schglpaydlyhdregbranchGender" on "schglpaydlyhdregbranch"."Genderid" = "schglpaydlyhdregbranchGender"."Genderid"
+	left join "dbo"."schStage" "schglpaydlyhdregbranchstage" on "schglpaydlyhdregbranch"."stagecode" = "schglpaydlyhdregbranchstage"."Code"
+	left join "dbo"."schtyp" "schglpaydlyhdregbranchschtyp" on "schglpaydlyhdregbranch"."schtypid" = "schglpaydlyhdregbranchschtyp"."schtypid"
+	left join "dbo"."schBranch" "Thebranch" on "schglpaydlydetailreg"."branch" = "Thebranch"."branch"
+	left join "dbo"."glmulcmp" "Thebranchsgm" on "Thebranch"."sgm" = "Thebranchsgm"."sgmid"
+	left join "dbo"."OpCo" "ThebranchsgmOpco" on "Thebranchsgm"."OpcoID" = "ThebranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "ThebranchGender" on "Thebranch"."Genderid" = "ThebranchGender"."Genderid"
+	left join "dbo"."schStage" "Thebranchstage" on "Thebranch"."stagecode" = "Thebranchstage"."Code"
+	left join "dbo"."schtyp" "Thebranchschtyp" on "Thebranch"."schtypid" = "Thebranchschtyp"."schtypid"
+	left join "dbo"."GlFinanceperiod" "acd" on "schglpaydlydetailreg"."acdcode" = "acd"."GlFinperiodID"
+	left join "dbo"."GLmstrfl" "acdaccountnumber" on "acd"."accountnumber" = "acdaccountnumber"."Acc_No"
+	left join "dbo"."GLmfbab" "acdaccountnumberClsacc_" on "acdaccountnumber"."Clsacc_No" = "acdaccountnumberClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "acdaccountnumberAcc_Bnd" on "acdaccountnumber"."Acc_Bnd" = "acdaccountnumberAcc_Bnd"."Acc_Bnd"
+	left join "dbo"."GLmstrfl" "Acc_" on "schglpaydlydetailreg"."Acc_no" = "Acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "Acc_Clsacc_" on "Acc_"."Clsacc_No" = "Acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Acc_Acc_Bnd" on "Acc_"."Acc_Bnd" = "Acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "Acc_Acc_Bndaccclass" on "Acc_Acc_Bnd"."accclass" = "Acc_Acc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "Acc_Acc_BndAcc_Bab" on "Acc_Acc_Bnd"."Acc_Bab" = "Acc_Acc_BndAcc_Bab"."Acc_Bab"
+	left join "dbo"."schpaymenttype" "schpaymenttype" on "schglpaydlydetailreg"."schpaymenttypeid" = "schpaymenttype"."schpaymenttypeid"
+	left join "dbo"."GLmstrfl" "schpaymenttypedebitaccount" on "schpaymenttype"."debitaccount" = "schpaymenttypedebitaccount"."Acc_No"
+	left join "dbo"."GLmfbab" "schpaymenttypedebitaccountClsacc_" on "schpaymenttypedebitaccount"."Clsacc_No" = "schpaymenttypedebitaccountClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "schpaymenttypedebitaccountAcc_Bnd" on "schpaymenttypedebitaccount"."Acc_Bnd" = "schpaymenttypedebitaccountAcc_Bnd"."Acc_Bnd"
+	left join "dbo"."GLmstrfl" "schpaymenttypecreditaccount" on "schpaymenttype"."creditaccount" = "schpaymenttypecreditaccount"."Acc_No"
+	left join "dbo"."GLmfbab" "schpaymenttypecreditaccountClsacc_" on "schpaymenttypecreditaccount"."Clsacc_No" = "schpaymenttypecreditaccountClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "schpaymenttypecreditaccountAcc_Bnd" on "schpaymenttypecreditaccount"."Acc_Bnd" = "schpaymenttypecreditaccountAcc_Bnd"."Acc_Bnd"
+	left join "dbo"."GLcostcntr" "glcostcntr" on "schglpaydlydetailreg"."glcostcntr" = "glcostcntr"."Costcntr_No"
+	left join "dbo"."Glcostcentgruop" "glcostcntrcost_typ" on "glcostcntr"."cost_typ" = "glcostcntrcost_typ"."Costcntr_No"
+	left join "dbo"."GLcostcntr1" "glcostcntr1" on "schglpaydlydetailreg"."glcostcntr1" = "glcostcntr1"."Costcntr_No"
+	left join "dbo"."Glcostcentgruop1" "glcostcntr1cost_typ" on "glcostcntr1"."cost_typ" = "glcostcntr1cost_typ"."Costcntr_No"
+]]></text>
+    </command>
+    <command id="Trs_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Trs_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Trs_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Trs No" readOnly="true" />
+    <field name="schglpaydlyhdregid" type="Int64" allowNulls="false" label="Schglpaydlyhdregid" showInSummary="true">
+      <items style="DropDownList" dataController="schglpaydlyhdreg" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="schglpaydlyhdregpayDelevername" type="String" readOnly="true" label="schglpaydlyhdregpay Delevername" length="100" />
+    <field name="schglpaydlyhdregsgmsgm_Nm" type="String" readOnly="true" label="schglpaydlyhdregsgmsgm Nm" length="255" />
+    <field name="schglpaydlyhdregsgmOpcoOpcoName" type="String" readOnly="true" label="schglpaydlyhdregsgm Opco Name" length="50" />
+    <field name="schglpaydlyhdregpayIDregorgNAME_1" type="String" readOnly="true" label="schglpaydlyhdregpay I Dregorg NAME 1" length="50" />
+    <field name="schglpaydlyhdregacdAcademicYear" type="String" readOnly="true" label="schglpaydlyhdregacd Academic Year" length="150" />
+    <field name="schglpaydlyhdregacdGlFinperiodFin_period_info" type="String" readOnly="true" label="schglpaydlyhdregacd Gl Finperiod Fin period info" length="150" />
+    <field name="schglpaydlyhdregbranchDesc1" type="String" readOnly="true" label="schglpaydlyhdregbranch Desc1" length="50" />
+    <field name="schglpaydlyhdregbranchsgmsgm_Nm" type="String" readOnly="true" label="schglpaydlyhdregbranchsgmsgm Nm" length="255" />
+    <field name="schglpaydlyhdregbranchGenderGender" type="String" readOnly="true" label="schglpaydlyhdregbranch Gender" length="100" />
+    <field name="schglpaydlyhdregbranchstageShortDesc1" type="String" readOnly="true" label="schglpaydlyhdregbranchstage Short Desc1" length="50" />
+    <field name="schglpaydlyhdregbranchschtypschtypDesc" type="String" readOnly="true" label="schglpaydlyhdregbranchschtypschtyp Desc" length="150" />
+    <field name="branch" type="Int64" allowNulls="false" label="Branch" showInSummary="true">
+      <items style="DropDownList" dataController="schBranch" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ThebranchDesc1" type="String" readOnly="true" label="Thebranch Desc1" length="50" />
+    <field name="Thebranchsgmsgm_Nm" type="String" readOnly="true" label="Thebranchsgmsgm Nm" length="255" />
+    <field name="ThebranchsgmOpcoOpcoName" type="String" readOnly="true" label="Thebranchsgm Opco Name" length="50" />
+    <field name="ThebranchGenderGender" type="String" readOnly="true" label="Thebranch Gender" length="100" />
+    <field name="ThebranchstageShortDesc1" type="String" readOnly="true" label="Thebranchstage Short Desc1" length="50" />
+    <field name="ThebranchschtypschtypDesc" type="String" readOnly="true" label="Thebranchschtypschtyp Desc" length="150" />
+    <field name="acdcode" type="Int64" allowNulls="false" label="Acdcode" showInSummary="true">
+      <items style="DropDownList" dataController="GlFinanceperiod" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="acdFin_period_info" type="String" readOnly="true" label="acd Fin period info" length="150" />
+    <field name="acdaccountnumberAcc_Nm" type="String" readOnly="true" label="acdaccountnumber Acc Nm" length="255" />
+    <field name="acdaccountnumberClsacc_Acc_Nm" type="String" readOnly="true" label="acdaccountnumber Clsacc Acc Nm" length="250" />
+    <field name="acdaccountnumberAcc_BndAcc_Nm" type="String" readOnly="true" label="acdaccountnumber Acc Bnd Acc Nm" length="50" />
+    <field name="Acc_no" type="Int64" allowNulls="false" label="Acc no" showInSummary="true">
+      <items style="Lookup" dataController="GLmstrfl" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Acc_Acc_Nm" type="String" readOnly="true" label="Acc Nm" length="255" />
+    <field name="Acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Acc Clsacc Acc Nm" length="250" />
+    <field name="Acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Nm" length="50" />
+    <field name="Acc_Acc_Bndaccclassaccountclass" type="String" readOnly="true" label="Acc Bndaccclassaccountclass" length="100" />
+    <field name="Acc_Acc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Bab Acc Nm" length="250" />
+    <field name="cstyp_no" type="Int64" label="Cstyp No" showInSummary="true">
+      <items style="DropDownList" dataController="GLSubledgertyplist" dataView="grid1" dataTextField="SubledgerDescrption" dataValueField="Subledgerid" />
+    </field>
+    <field name="subaccountno" type="Int64" label="Subaccountno">
+      <items style="Lookup" dataController="Qsupcstmr" dataView="grid1" dataTextField="Cstm_nm" dataValueField="Cstm_no" copy="Acc_no=classacc&#xD;&#xA;CSMSUP_NM=Cstm_nm" />
+    </field>
+    <field name="Trs_Dt" type="DateTime" default="(getdate())" label="Trs Dt" />
+    <field name="schpaymenttypeid" type="Int64" label="Schpaymenttypeid">
+      <items style="DropDownList" dataController="schpaymenttype" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="schpaymenttypeschpaymenttypenm" type="String" readOnly="true" label="Schpaymenttypeschpaymenttypenm" length="50" />
+    <field name="schpaymenttypedebitaccountAcc_Nm" type="String" readOnly="true" label="schpaymenttypedebitaccount Acc Nm" length="255" />
+    <field name="schpaymenttypedebitaccountClsacc_Acc_Nm" type="String" readOnly="true" label="schpaymenttypedebitaccount Clsacc Acc Nm" length="250" />
+    <field name="schpaymenttypedebitaccountAcc_BndAcc_Nm" type="String" readOnly="true" label="schpaymenttypedebitaccount Acc Bnd Acc Nm" length="50" />
+    <field name="schpaymenttypecreditaccountAcc_Nm" type="String" readOnly="true" label="schpaymenttypecreditaccount Acc Nm" length="255" />
+    <field name="schpaymenttypecreditaccountClsacc_Acc_Nm" type="String" readOnly="true" label="schpaymenttypecreditaccount Clsacc Acc Nm" length="250" />
+    <field name="schpaymenttypecreditaccountAcc_BndAcc_Nm" type="String" readOnly="true" label="schpaymenttypecreditaccount Acc Bnd Acc Nm" length="50" />
+    <field name="Mony_Paid" type="Decimal" label="Mony Paid" allowNulls="false" />
+    <field name="Notes" type="String" allowQBE="false" allowSorting="false" label="Notes" length="-1" />
+    <field name="glcostcntr" type="Int64" label="Glcostcntr">
+      <items style="DropDownList" dataController="GLcostcntr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="glcostcntrCostcntr_Nm" type="String" readOnly="true" label="glcostcntr Costcntr Nm" length="255" />
+    <field name="glcostcntrcost_typCostcntr_Nm" type="String" readOnly="true" label="glcostcntrcost typ Costcntr Nm" length="255" />
+    <field name="glcostcntr1" type="Int64" label="Glcostcntr1">
+      <items style="DropDownList" dataController="GLcostcntr1" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="glcostcntr1Costcntr_Nm" type="String" readOnly="true" label="glcostcntr1 Costcntr Nm" length="255" />
+    <field name="glcostcntr1cost_typCostcntr_Nm" type="String" readOnly="true" label="glcostcntr1cost typ Costcntr Nm" length="255" />
+    <field name="CSMSUP_NM" type="String" label="Csmsup Nm" length="255" />
+  </fields>
+  <views>
+    <view id="grid1" type="DataSheet" commandId="command1" label="Schglpaydlydetailreg">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="schglpaydlyhdregid" aliasFieldName="schglpaydlyhdregpayDelevername" />
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="acdcode" aliasFieldName="acdFin_period_info" hyperlinkFormatString="~/Pages/GlFinanceperiod.aspx?GlFinperiodID={acdcode}&amp;_controller=GlFinanceperiod&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="cstyp_no" columns="15" />
+        <dataField fieldName="subaccountno" columns="15" />
+        <dataField fieldName="CSMSUP_NM" />
+        <dataField fieldName="Acc_no" aliasFieldName="Acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={Acc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Trs_Dt" columns="10" />
+        <dataField fieldName="schpaymenttypeid" aliasFieldName="schpaymenttypeschpaymenttypenm" hyperlinkFormatString="~/Pages/schpaymenttype.aspx?schpaymenttypeid={schpaymenttypeid}&amp;_controller=schpaymenttype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Mony_Paid" columns="15" />
+        <dataField fieldName="glcostcntr" aliasFieldName="glcostcntrCostcntr_Nm" hyperlinkFormatString="~/Pages/GLcostcntr.aspx?Costcntr_No={glcostcntr}&amp;_controller=GLcostcntr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="glcostcntr1" aliasFieldName="glcostcntr1Costcntr_Nm" hyperlinkFormatString="~/Pages/GLcostcntr1.aspx?Costcntr_No={glcostcntr1}&amp;_controller=GLcostcntr1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Notes" rows="5" />
+      </dataFields>
+    </view>
+    <view id="grid2" type="DataSheet" commandId="command1" label="Schglpaydlydetailreg">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="schglpaydlyhdregid" aliasFieldName="schglpaydlyhdregpayDelevername" />
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="acdcode" aliasFieldName="acdFin_period_info" hyperlinkFormatString="~/Pages/GlFinanceperiod.aspx?GlFinperiodID={acdcode}&amp;_controller=GlFinanceperiod&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="cstyp_no" columns="15" />
+        <dataField fieldName="subaccountno" columns="15" />
+        <dataField fieldName="CSMSUP_NM" />
+        <dataField fieldName="Acc_no" aliasFieldName="Acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={Acc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Trs_Dt" columns="10" />
+        <dataField fieldName="schpaymenttypeid" aliasFieldName="schpaymenttypeschpaymenttypenm" hyperlinkFormatString="~/Pages/schpaymenttype.aspx?schpaymenttypeid={schpaymenttypeid}&amp;_controller=schpaymenttype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Mony_Paid" columns="15" />
+        <dataField fieldName="glcostcntr" aliasFieldName="glcostcntrCostcntr_Nm" hyperlinkFormatString="~/Pages/GLcostcntr.aspx?Costcntr_No={glcostcntr}&amp;_controller=GLcostcntr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="glcostcntr1" aliasFieldName="glcostcntr1Costcntr_Nm" hyperlinkFormatString="~/Pages/GLcostcntr1.aspx?Costcntr_No={glcostcntr1}&amp;_controller=GLcostcntr1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Notes" rows="5" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Schglpaydlydetailreg">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Schglpaydlydetailreg" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="schglpaydlyhdregid" aliasFieldName="schglpaydlyhdregpayDelevername" hyperlinkFormatString="~/Pages/schglpaydlyhdreg.aspx?schglpaydlyhdregid={schglpaydlyhdregid}&amp;_controller=schglpaydlyhdreg&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="acdcode" aliasFieldName="acdFin_period_info" hyperlinkFormatString="~/Pages/GlFinanceperiod.aspx?GlFinperiodID={acdcode}&amp;_controller=GlFinanceperiod&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Acc_no" aliasFieldName="Acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={Acc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="cstyp_no" columns="15" />
+            <dataField fieldName="subaccountno" columns="15" />
+            <dataField fieldName="Trs_Dt" columns="10" />
+            <dataField fieldName="schpaymenttypeid" aliasFieldName="schpaymenttypeschpaymenttypenm" hyperlinkFormatString="~/Pages/schpaymenttype.aspx?schpaymenttypeid={schpaymenttypeid}&amp;_controller=schpaymenttype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Mony_Paid" dataFormatString="c" columns="15" />
+            <dataField fieldName="Notes" rows="5" />
+            <dataField fieldName="glcostcntr" aliasFieldName="glcostcntrCostcntr_Nm" hyperlinkFormatString="~/Pages/GLcostcntr.aspx?Costcntr_No={glcostcntr}&amp;_controller=GLcostcntr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="glcostcntr1" aliasFieldName="glcostcntr1Costcntr_Nm" hyperlinkFormatString="~/Pages/GLcostcntr1.aspx?Costcntr_No={glcostcntr1}&amp;_controller=GLcostcntr1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="CSMSUP_NM" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Schglpaydlydetailreg">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Schglpaydlydetailreg" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="schglpaydlyhdregid" aliasFieldName="schglpaydlyhdregpayDelevername" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />
+            <dataField fieldName="acdcode" aliasFieldName="acdFin_period_info" />
+            <dataField fieldName="Acc_no" aliasFieldName="Acc_Acc_Nm" />
+            <dataField fieldName="cstyp_no" columns="15" />
+            <dataField fieldName="subaccountno" columns="15" />
+            <dataField fieldName="Trs_Dt" columns="10" />
+            <dataField fieldName="schpaymenttypeid" aliasFieldName="schpaymenttypeschpaymenttypenm" />
+            <dataField fieldName="Mony_Paid" dataFormatString="c" columns="15" />
+            <dataField fieldName="Notes" rows="5" />
+            <dataField fieldName="glcostcntr" aliasFieldName="glcostcntrCostcntr_Nm" />
+            <dataField fieldName="glcostcntr1" aliasFieldName="glcostcntr1Costcntr_Nm" />
+            <dataField fieldName="CSMSUP_NM" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Insert" type="Code" phase="Before" />
+    <rule id="r101" commandName="Update" type="Code" phase="Before" />
+  </businessRules>
+</dataController>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PageMenuBar Complete Test & Fix</title>
+    
+    <!-- الأنماط المطلوبة -->
+    <link href="css/themes/theme-integration.css" rel="stylesheet" type="text/css" />
+    <link href="css/pagemenubar-comprehensive-fix.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    
+    <style>
+        /* أنماط خاصة بصفحة الاختبار */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .test-section {
+            background: white;
+            margin: 20px 0;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .test-header {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .status-card {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 5px solid;
+        }
+        
+        .status-success {
+            background: #e8f5e8;
+            border-color: #4caf50;
+            color: #2e7d32;
+        }
+        
+        .status-warning {
+            background: #fff3e0;
+            border-color: #ff9800;
+            color: #f57c00;
+        }
+        
+        .status-error {
+            background: #ffebee;
+            border-color: #f44336;
+            color: #c62828;
+        }
+        
+        .status-icon {
+            font-size: 24px;
+            margin-left: 15px;
+            min-width: 30px;
+        }
+        
+        .control-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .control-btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary { background: #2196f3; color: white; }
+        .btn-success { background: #4caf50; color: white; }
+        .btn-warning { background: #ff9800; color: white; }
+        .btn-danger { background: #f44336; color: white; }
+        
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .log-container {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            max-height: 300px;
+            overflow-y: auto;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .device-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        
+        /* تحسين PageMenuBar للاختبار */
+        .test-pagemenubar {
+            background: linear-gradient(135deg, #667eea, #764ba2) !important;
+            border-radius: 0 0 15px 15px !important;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3) !important;
+            margin-bottom: 30px !important;
+        }
+        
+        .test-menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 15px 20px;
+            gap: 20px;
+        }
+        
+        .test-menu li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .test-menu li a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .test-menu {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .test-menu li a {
+                display: block;
+                text-align: center;
+                padding: 15px 25px;
+                background: rgba(255,255,255,0.1);
+                border: 1px solid rgba(255,255,255,0.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PageMenuBar للاختبار -->
+    <div id="ctl00_PageMenuBar" class="PageMenuBar responsive-pagemenubar test-pagemenubar">
+        <ul class="test-menu">
+            <li><a href="#home"><i class="fas fa-home"></i> الرئيسية</a></li>
+            <li><a href="#products"><i class="fas fa-shopping-cart"></i> المنتجات</a></li>
+            <li><a href="#services"><i class="fas fa-cogs"></i> الخدمات</a></li>
+            <li><a href="#reports"><i class="fas fa-chart-bar"></i> التقارير</a></li>
+            <li><a href="#settings"><i class="fas fa-user-cog"></i> الإعدادات</a></li>
+        </ul>
+    </div>
+    
+    <div class="test-container">
+        <!-- عنوان الاختبار -->
+        <div class="test-header">
+            <h1><i class="fas fa-bug"></i> PageMenuBar Complete Fix Test</h1>
+            <p>اختبار شامل لإصلاح مشكلة عدم ظهور PageMenuBar</p>
+        </div>
+        
+        <!-- حالة النظام -->
+        <div class="test-section">
+            <h2><i class="fas fa-heartbeat"></i> حالة النظام</h2>
+            <div id="system-status">
+                <!-- سيتم ملؤها بواسطة JavaScript -->
+            </div>
+        </div>
+        
+        <!-- معلومات الجهاز -->
+        <div class="test-section">
+            <h2><i class="fas fa-mobile-alt"></i> معلومات الجهاز</h2>
+            <div class="device-info">
+                <div class="info-card">
+                    <strong>حجم الشاشة:</strong>
+                    <span id="screen-size">يتم الفحص...</span>
+                </div>
+                <div class="info-card">
+                    <strong>نوع الجهاز:</strong>
+                    <span id="device-type">يتم الفحص...</span>
+                </div>
+                <div class="info-card">
+                    <strong>المتصفح:</strong>
+                    <span id="browser-info">يتم الفحص...</span>
+                </div>
+                <div class="info-card">
+                    <strong>دعم اللمس:</strong>
+                    <span id="touch-support">يتم الفحص...</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- لوحة التحكم -->
+        <div class="test-section">
+            <h2><i class="fas fa-sliders-h"></i> لوحة التحكم</h2>
+            <div class="control-panel">
+                <button class="control-btn btn-primary" onclick="testDesktopMode()">
+                    <i class="fas fa-desktop"></i> اختبار الديسكتوب
+                </button>
+                <button class="control-btn btn-warning" onclick="testMobileMode()">
+                    <i class="fas fa-mobile-alt"></i> اختبار الموبايل
+                </button>
+                <button class="control-btn btn-success" onclick="toggleTestMenu()">
+                    <i class="fas fa-bars"></i> تبديل القائمة
+                </button>
+                <button class="control-btn btn-danger" onclick="resetPageMenuBar()">
+                    <i class="fas fa-redo"></i> إعادة تعيين
+                </button>
+                <button class="control-btn btn-primary" onclick="diagnoseSystem()">
+                    <i class="fas fa-stethoscope"></i> تشخيص شامل
+                </button>
+                <button class="control-btn btn-success" onclick="applyFix()">
+                    <i class="fas fa-magic"></i> تطبيق الإصلاح
+                </button>
+            </div>
+        </div>
+        
+        <!-- سجل النشاط -->
+        <div class="test-section">
+            <h2><i class="fas fa-terminal"></i> سجل النشاط</h2>
+            <div id="activity-log" class="log-container">
+                <div>🚀 تم تحميل نظام الاختبار...</div>
+            </div>
+            <button class="control-btn btn-warning" onclick="clearLog()" style="margin-top: 10px;">
+                <i class="fas fa-trash"></i> مسح السجل
+            </button>
+        </div>
+    </div>
+    
+    <!-- استيراد الـ JavaScript -->
+    <script src="js/pagemenubar-enhanced.js"></script>
+    
+    <script>
+        // متغيرات الاختبار
+        let testLog = [];
+        let testInterval;
+        
+        // دوال الاختبار
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString('ar-EG');
+            const logEntry = `[${timestamp}] ${message}`;
+            testLog.push(logEntry);
+            
+            const logContainer = document.getElementById('activity-log');
+            const logDiv = document.createElement('div');
+            logDiv.textContent = logEntry;
+            logDiv.style.color = type === 'error' ? '#ff6b6b' : type === 'success' ? '#51cf66' : '#00ff00';
+            logContainer.appendChild(logDiv);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+        
+        function updateSystemStatus() {
+            const statusContainer = document.getElementById('system-status');
+            const pageMenuBar = document.getElementById('ctl00_PageMenuBar');
+            const mobileBtn = document.querySelector('.pagemenu-mobile-toggle');
+            
+            let statusHTML = '';
+            
+            // فحص PageMenuBar
+            if (pageMenuBar) {
+                const style = window.getComputedStyle(pageMenuBar);
+                const isVisible = style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
+                
+                statusHTML += `
+                    <div class="status-card ${isVisible ? 'status-success' : 'status-error'}">
+                        <i class="status-icon fas ${isVisible ? 'fa-check-circle' : 'fa-exclamation-triangle'}"></i>
+                        <div>
+                            <strong>PageMenuBar:</strong> ${isVisible ? 'مرئية' : 'مخفية'}
+                            <br><small>Display: ${style.display}, Visibility: ${style.visibility}, Opacity: ${style.opacity}</small>
+                        </div>
+                    </div>
+                `;
+            } else {
+                statusHTML += `
+                    <div class="status-card status-error">
+                        <i class="status-icon fas fa-times-circle"></i>
+                        <div><strong>PageMenuBar:</strong> غير موجودة</div>
+                    </div>
+                `;
+            }
+            
+            // فحص زر الموبايل
+            if (mobileBtn) {
+                const style = window.getComputedStyle(mobileBtn);
+                const isVisible = style.display !== 'none';
+                
+                statusHTML += `
+                    <div class="status-card ${isVisible ? 'status-success' : 'status-warning'}">
+                        <i class="status-icon fas ${isVisible ? 'fa-check-circle' : 'fa-exclamation-triangle'}"></i>
+                        <div>
+                            <strong>زر الموبايل:</strong> ${isVisible ? 'مرئي' : 'مخفي'}
+                            <br><small>Display: ${style.display}</small>
+                        </div>
+                    </div>
+                `;
+            } else {
+                statusHTML += `
+                    <div class="status-card status-warning">
+                        <i class="status-icon fas fa-question-circle"></i>
+                        <div><strong>زر الموبايل:</strong> غير موجود</div>
+                    </div>
+                `;
+            }
+            
+            // فحص النظام
+            const isMobile = window.innerWidth <= 768;
+            statusHTML += `
+                <div class="status-card status-success">
+                    <i class="status-icon fas fa-info-circle"></i>
+                    <div>
+                        <strong>وضع العرض:</strong> ${isMobile ? 'موبايل' : 'ديسكتوب'}
+                        <br><small>حجم الشاشة: ${window.innerWidth}x${window.innerHeight}</small>
+                    </div>
+                </div>
+            `;
+            
+            statusContainer.innerHTML = statusHTML;
+        }
+        
+        function updateDeviceInfo() {
+            document.getElementById('screen-size').textContent = `${window.innerWidth} × ${window.innerHeight}`;
+            document.getElementById('device-type').textContent = window.innerWidth <= 768 ? 'موبايل' : 'ديسكتوب';
+            document.getElementById('browser-info').textContent = navigator.userAgent.match(/(Chrome|Firefox|Safari|Edge)/)?.[0] || 'غير معروف';
+            document.getElementById('touch-support').textContent = 'ontouchstart' in window ? 'مدعوم' : 'غير مدعوم';
+        }
+        
+        function testDesktopMode() {
+            log('🖥️ اختبار وضع الديسكتوب...', 'info');
+            const pageMenuBar = document.getElementById('ctl00_PageMenuBar');
+            const mobileBtn = document.querySelector('.pagemenu-mobile-toggle');
+            
+            if (pageMenuBar) {
+                pageMenuBar.style.display = 'block';
+                pageMenuBar.style.visibility = 'visible';
+                pageMenuBar.style.opacity = '1';
+                pageMenuBar.style.position = 'relative';
+                pageMenuBar.style.transform = 'none';
+                pageMenuBar.classList.remove('mobile-active');
+            }
+            
+            if (mobileBtn) {
+                mobileBtn.style.display = 'none';
+            }
+            
+            log('✅ تم تطبيق وضع الديسكتوب', 'success');
+            updateSystemStatus();
+        }
+        
+        function testMobileMode() {
+            log('📱 اختبار وضع الموبايل...', 'info');
+            const pageMenuBar = document.getElementById('ctl00_PageMenuBar');
+            const mobileBtn = document.querySelector('.pagemenu-mobile-toggle');
+            
+            if (pageMenuBar) {
+                pageMenuBar.style.display = 'none';
+            }
+            
+            if (mobileBtn) {
+                mobileBtn.style.display = 'flex';
+            }
+            
+            log('✅ تم تطبيق وضع الموبايل', 'success');
+            updateSystemStatus();
+        }
+        
+        function toggleTestMenu() {
+            log('🔄 تبديل حالة القائمة...', 'info');
+            if (typeof window.togglePageMenuBar === 'function') {
+                window.togglePageMenuBar();
+                log('✅ تم استدعاء togglePageMenuBar', 'success');
+            } else {
+                log('❌ دالة togglePageMenuBar غير متاحة', 'error');
+            }
+            updateSystemStatus();
+        }
+        
+        function resetPageMenuBar() {
+            log('🔄 إعادة تعيين PageMenuBar...', 'info');
+            const pageMenuBar = document.getElementById('ctl00_PageMenuBar');
+            const mobileBtn = document.querySelector('.pagemenu-mobile-toggle');
+            
+            if (pageMenuBar) {
+                pageMenuBar.removeAttribute('style');
+                pageMenuBar.classList.remove('mobile-active');
+                pageMenuBar.classList.add('responsive-pagemenubar');
+            }
+            
+            if (mobileBtn) {
+                mobileBtn.removeAttribute('style');
+                mobileBtn.classList.remove('active');
+            }
+            
+            // إعادة تهيئة النظام
+            if (typeof window.pageMenuBarReinit === 'function') {
+                window.pageMenuBarReinit();
+            }
+            
+            log('✅ تم إعادة تعيين النظام', 'success');
+            updateSystemStatus();
+        }
+        
+        function diagnoseSystem() {
+            log('🔍 بدء التشخيص الشامل...', 'info');
+            
+            if (typeof window.pageMenuBarDiagnose === 'function') {
+                const diagnosis = window.pageMenuBarDiagnose();
+                log('📊 نتائج التشخيص:', 'info');
+                log(`- PageMenuBar موجودة: ${diagnosis.pageMenuBarFound}`, 'info');
+                log(`- زر الموبايل موجود: ${diagnosis.mobileToggleFound}`, 'info');
+                log(`- قائمة الموبايل نشطة: ${diagnosis.mobileMenuActive}`, 'info');
+                log(`- حجم الشاشة: ${diagnosis.screenSize.width}x${diagnosis.screenSize.height}`, 'info');
+                log(`- وضع الموبايل: ${diagnosis.isMobile}`, 'info');
+            } else {
+                log('❌ دالة التشخيص غير متاحة', 'error');
+            }
+            
+            updateSystemStatus();
+        }
+        
+        function applyFix() {
+            log('🛠️ تطبيق الإصلاح الشامل...', 'info');
+            
+            // إجبار إعادة تحميل CSS
+            const links = document.querySelectorAll('link[rel="stylesheet"]');
+            links.forEach(link => {
+                const href = link.href;
+                link.href = href + (href.includes('?') ? '&' : '?') + 'v=' + Date.now();
+            });
+            
+            // تطبيق الإصلاح حسب حجم الشاشة
+            if (window.innerWidth <= 768) {
+                testMobileMode();
+            } else {
+                testDesktopMode();
+            }
+            
+            log('✅ تم تطبيق الإصلاح بنجاح', 'success');
+        }
+        
+        function clearLog() {
+            testLog = [];
+            document.getElementById('activity-log').innerHTML = '<div>🧹 تم مسح السجل...</div>';
+        }
+        
+        // تهيئة الاختبار
+        function initializeTest() {
+            log('🚀 تهيئة نظام الاختبار...', 'info');
+            updateSystemStatus();
+            updateDeviceInfo();
+            
+            // مراقبة تغيير حجم الشاشة
+            window.addEventListener('resize', () => {
+                updateDeviceInfo();
+                updateSystemStatus();
+                log(`📐 تغيير حجم الشاشة: ${window.innerWidth}x${window.innerHeight}`, 'info');
+            });
+            
+            // تحديث دوري للحالة
+            testInterval = setInterval(() => {
+                updateSystemStatus();
+            }, 3000);
+            
+            log('✅ تم تهيئة نظام الاختبار بنجاح', 'success');
+        }
+        
+        // تشغيل الاختبار عند تحميل الصفحة
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeTest);
+        } else {
+            initializeTest();
+        }
+        
+        // إيقاف التحديث الدوري عند إغلاق الصفحة
+        window.addEventListener('beforeunload', () => {
+            if (testInterval) {
+                clearInterval(testInterval);
+            }
+        });
+    </script>
+</body>
+</html>

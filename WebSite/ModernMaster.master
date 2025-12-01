@@ -1,0 +1,1408 @@
+<%@ Master Language="VB" AutoEventWireup="false" CodeFile="ModernMaster.master.vb" Inherits="ModernMaster" %>
+
+<!DOCTYPE html>
+<html xml:lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>" lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>">
+<head runat="server">
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Code On Time</title>
+    
+    <!-- AdminLTE Style Sidebar -->
+    <link href="/VueCss/adminlte-sidebar.css" rel="stylesheet" type="text/css" />
+    
+    <!-- 🎨 UNIFIED CSS FILE - All styles merged into one file -->
+    <link href="/css/stylesheet.css" rel="stylesheet" type="text/css" />
+    
+    <!-- 🔧 PageMenuBar Fixes - Z-index and Design Improvements -->
+    <link href="/VueCss/pagemenubar-fixes.css" rel="stylesheet" type="text/css" />
+    <!-- Responsive modal menu styles (shared with Main.master) -->
+    <link href="/VueCss/responsive-pagemenubar.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3.2 (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <!-- Font Awesome 6 (CDN) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" referrerpolicy="no-referrer" />
+    <!-- Consolidated App Styles -->
+    <link href="/css/stylesheet.css" rel="stylesheet" type="text/css" />
+    
+    <!-- User Roles Management (missing file - disabled to avoid 404) -->
+    <!-- <script src="/js/user-roles-manager.js"></script> -->
+    
+    <!-- PageMenuBar Mobile Functionality (missing file - disabled to avoid 404) -->
+    <!-- <script src="/js/pagemenubar-mobile.js"></script> -->
+    
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+    
+    <style>
+        /* CRITICAL: Remove ALL hiding/background classes from MembershipBar */
+        .MembershipBar,
+        #Membership_Login,
+        #mb,
+        [id*="mb"],
+        [id*="Membership"] {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: relative !important;
+            z-index: 10000 !important;
+            background: rgba(15, 23, 42, 0.95) !important;
+            padding: 8px 16px !important;
+            color: #fff !important;
+            left: auto !important;
+            top: auto !important;
+            width: auto !important;
+            height: auto !important;
+            overflow: visible !important;
+            clip: auto !important;
+            clip-path: none !important;
+        }
+        
+        /* Force all children to be visible */
+        .MembershipBar,
+        .MembershipBar *,
+        #Membership_Login,
+        #Membership_Login *,
+        .CultureLink,
+        .CultureLink *,
+        .HelpLink,
+        .HelpLink *,
+        .LoginDialog,
+        .LoginDialog *,
+        .LoginDialog td,
+        .LoginDialog a {
+            visibility: visible !important;
+            opacity: 1 !important;
+            color: #fff !important;
+        }
+        
+        /* Specific fixes for CultureLink */
+        .CultureLink {
+            display: inline-block !important;
+            float: right !important;
+            margin: 0 5px !important;
+        }
+        
+        .CultureLink a {
+            display: inline !important;
+            color: #fff !important;
+            text-decoration: underline !important;
+        }
+        
+        /* Remove legacy-hidden class effects */
+        .legacy-hidden .MembershipBar,
+        .legacy-hidden #Membership_Login,
+        .legacy-hidden #mb {
+            position: relative !important;
+            left: auto !important;
+            top: auto !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        /* Legacy PageMenuBar theming to match MembershipBar */
+        #PageMenuBar,
+        .AspNet-Menu,
+        .AspNet-Menu-Horizontal,
+        .modern-menu-wrapper .AspNet-Menu,
+        .modern-menu-wrapper .AspNet-Menu-Horizontal {
+            background: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        #PageMenuBar a,
+        .AspNet-Menu a,
+        .AspNet-Menu-Horizontal a {
+            color: #cbd5e1 !important;
+            text-decoration: none;
+        }
+        #PageMenuBar a:hover,
+        .AspNet-Menu a:hover,
+        .AspNet-Menu-Horizontal a:hover,
+        .AspNet-Menu .AspNet-Menu-Hover a,
+        .AspNet-Menu .AspNet-Menu-Selected a {
+            color: #ffffff !important;
+            background: rgba(255, 255, 255, 0.08) !important;
+        }
+        .AspNet-Menu .AspNet-Menu-SubMenu,
+        .AspNet-Menu-Horizontal .AspNet-Menu-SubMenu {
+            background: rgba(15, 23, 42, 0.98) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+        .AspNet-Menu .AspNet-Menu-Separator,
+        .AspNet-Menu-Horizontal .AspNet-Menu-Separator {
+            border-color: rgba(255, 255, 255, 0.08) !important;
+        }
+        #PageMenuBar i,
+        .AspNet-Menu i { color: #94a3b8 !important; }
+        
+        /* Hide modern-header to place menu directly under MembershipBar */
+        .modern-header { display: none !important; }
+        
+        /* Position navigation directly after MembershipBar */
+        .modern-navigation {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 999;
+        }
+        
+        /* Hide nav-container on large screens, show only on small screens */
+        .nav-container {
+            display: none; /* Hidden by default on large screens */
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                display: block; /* Show on small screens (mobile/tablet) */
+            }
+        }
+    </style>
+    <script>
+        // Relocate language/menu buttons into MembershipBar and center them
+        window.addEventListener('load', function() {
+            try {
+                const membership = document.getElementById('Membership_Login') || document.querySelector('.MembershipBar');
+                if (membership) {
+                    let group = membership.querySelector('.header-icon-group');
+                    if (!group) {
+                        group = document.createElement('span');
+                        group.className = 'header-icon-group center';
+                        group.style.display = 'inline-flex';
+                        group.style.gap = '.25rem';
+                        membership.appendChild(group);
+                    }
+
+                    const btnLang = document.getElementById('languageToggleBtn');
+                    const btnMenu = document.getElementById('menuToggleBtn') || document.querySelector('.mobile-menu-toggle');
+                    const help = membership.querySelector('.HelpLink');
+
+                    // Leave menu button out of the center group (will be placed near brand)
+                    if (btnLang && btnLang.parentElement !== group) group.appendChild(btnLang);
+                    if (help && help.parentElement !== group) group.appendChild(help);
+
+                    // Build/ensure brand area with single-line system-brand and menu button
+                    let brand = document.querySelector('.brand-area');
+                    if (!brand) {
+                        brand = document.createElement('span');
+                        brand.className = 'brand-area';
+                        brand.innerHTML = '<span class="system-brand">'
+                            + '<button type="button" class="membership-btn" id="menuToggleBtn" title="القائمة"><i class="fas fa-bars"></i></button>'
+                            + '<span class="brand-icon"><i class="fas fa-cube"></i></span>'
+                            + '<span class="brand-text">SKYsaas ERP - نظام إدارة الموارد المؤسسية</span>'
+                            + '</span>';
+                        (membership.parentElement || membership).appendChild(brand);
+                    }
+
+                    // If an existing menu button was found elsewhere, move it into system-brand and remove duplicates
+                    const systemBrand = brand.querySelector('.system-brand');
+                    if (btnMenu && btnMenu.parentElement !== systemBrand) {
+                        // Remove any placeholder button inside system-brand
+                        const placeholder = systemBrand.querySelector('#menuToggleBtn');
+                        if (placeholder && placeholder !== btnMenu) placeholder.remove();
+                        systemBrand.insertBefore(btnMenu, systemBrand.firstChild);
+                    }
+                    // Ensure there is only one menu button across the header
+                    const menuButtons = Array.from(document.querySelectorAll('#menuToggleBtn, .mobile-menu-toggle'));
+                    if (menuButtons.length > 1) menuButtons.slice(1).forEach(b => { if (b !== btnMenu && b.parentElement) b.parentElement.removeChild(b); });
+                    // Ensure center group does not include the menu button
+                    if (btnMenu && group.contains(btnMenu)) group.removeChild(btnMenu);
+
+                    // Optional improvements: notifications and profile dropdown
+                    let notifBtn = membership.querySelector('#headerNotifBtn');
+                    if (!notifBtn) {
+                        notifBtn = document.createElement('button');
+                        notifBtn.id = 'headerNotifBtn';
+                        notifBtn.className = 'membership-btn header-icon-btn';
+                        notifBtn.type = 'button';
+                        notifBtn.title = 'Notifications';
+                        notifBtn.innerHTML = '<i class="fas fa-bell"></i>';
+                    }
+                    let profileBtn = membership.querySelector('#headerProfileBtn');
+                    if (!profileBtn) {
+                        profileBtn = document.createElement('button');
+                        profileBtn.id = 'headerProfileBtn';
+                        profileBtn.className = 'membership-btn header-icon-btn';
+                        profileBtn.type = 'button';
+                        profileBtn.title = 'Profile';
+                        profileBtn.innerHTML = '<i class="fas fa-user"></i>';
+                    }
+
+                    let notifDrop = document.getElementById('headerNotifDropdown');
+                    if (!notifDrop) {
+                        notifDrop = document.createElement('div');
+                        notifDrop.id = 'headerNotifDropdown';
+                        notifDrop.className = 'header-dropdown';
+                        notifDrop.innerHTML = '<div class="dropdown-title">Notifications</div>' +
+                            '<div class="dropdown-item">No new notifications</div>';
+                        document.body.appendChild(notifDrop);
+                    }
+                    let profileDrop = document.getElementById('headerProfileDropdown');
+                    if (!profileDrop) {
+                        profileDrop = document.createElement('div');
+                        profileDrop.id = 'headerProfileDropdown';
+                        profileDrop.className = 'header-dropdown';
+                        profileDrop.innerHTML = '<div class="dropdown-title">Account</div>' +
+                            '<div class="dropdown-item" onclick="location.href=\'/Pages/MyProfile.aspx\'">My Account</div>' +
+                            '<div class="dropdown-item" onclick="location.href=\'/Pages/Membership.aspx\'">Membership</div>' +
+                            '<div class="dropdown-item" onclick="if(window.Web&&Web.Membership&&Web.Membership._instance){Web.Membership._instance.logout();} else { location.href=\'/Account/Logout.aspx\'; }">Logout</div>';
+                        document.body.appendChild(profileDrop);
+                    }
+
+                    if (notifBtn && !group.contains(notifBtn)) group.appendChild(notifBtn);
+                    if (profileBtn && !group.contains(profileBtn)) group.appendChild(profileBtn);
+
+                    function closeAllDrops(){
+                        notifDrop.classList.remove('open');
+                        profileDrop.classList.remove('open');
+                    }
+                    notifBtn.addEventListener('click', function(e){
+                        e.stopPropagation();
+                        const isOpen = notifDrop.classList.contains('open');
+                        closeAllDrops();
+                        if (!isOpen) notifDrop.classList.add('open');
+                    });
+                    profileBtn.addEventListener('click', function(e){
+                        e.stopPropagation();
+                        const isOpen = profileDrop.classList.contains('open');
+                        closeAllDrops();
+                        if (!isOpen) profileDrop.classList.add('open');
+                    });
+                    document.addEventListener('click', closeAllDrops);
+                    window.addEventListener('resize', closeAllDrops);
+                }
+
+                // Ensure membership actions are centered if present
+                const ma = document.querySelector('.membership-actions');
+                if (ma && !ma.classList.contains('center')) ma.classList.add('center');
+            } catch (e) {
+                console && console.warn && console.warn('ModernMaster header relocation skipped:', e);
+            }
+        });
+    </script>
+    <script>
+        // Enable slide-in Modern Menu on mobile/desktop
+        document.addEventListener('DOMContentLoaded', function() {
+            const host = document.getElementById('ModernMenuHost');
+            const openBtn = document.getElementById('menuToggleBtn') || document.querySelector('.mobile-menu-toggle');
+            if (!host || !openBtn) return;
+
+            const backdrop = host.querySelector('.pm-backdrop');
+            const closeBtn = host.querySelector('.pm-close');
+
+            function openMenu() { host.classList.add('open'); }
+            function closeMenu() { host.classList.remove('open'); }
+            function toggleMenu() { host.classList.toggle('open'); }
+
+            openBtn.addEventListener('click', toggleMenu);
+            if (backdrop) backdrop.addEventListener('click', closeMenu);
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMenu(); });
+        });
+    </script>
+</head>
+<body runat="server" class="modern-body">
+    <form id="form1" runat="server">
+        <div class="modern-layout-wrapper">
+            <!-- Script Manager (Code On Time Required) -->
+            <act:ToolkitScriptManager ID="sm" runat="server" ScriptMode="Release" EnableScriptGlobalization="True" OnResolveScriptReference="sm_ResolveScriptReference" />
+            
+            <!-- Membership Bar (Code On Time Required) -->
+            <aquarium:MembershipBar ID="mb" runat="server" RememberMeSet="True" DisplayLogin="False" IdleUserTimeout="15" EnableHistory="True" EnablePermalinks="True" />
+            
+            <!-- Site Map Data Source (Code On Time Required) -->
+            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+            
+            <!-- Modern Navigation directly under MembershipBar -->
+            <nav class="modern-navigation" id="modernNavigation">
+                <div class="nav-container">
+                    <!-- Mobile Menu Toggle -->
+                    <button class="sidebar-toggle" id="sidebarToggle" type="button">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <!-- Modal menu toggle (for ModernMenuHost) -->
+                    <button type="button" class="mobile-menu-toggle" id="menuToggleBtn" title="القائمة" style="margin-inline-start: 0.5rem;">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    
+                    <!-- Language Selector Button -->
+                    <button type="button" class="mobile-menu-toggle" id="languageToggleBtn" title="اللغة" style="margin-inline-start: 0.5rem;" onclick="toggleMembershipLanguage()">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    
+                    <div id="PageMenuBar" runat="server" class="modern-menu-wrapper"></div>
+                    <aquarium:MenuExtender ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" TargetControlID="PageMenuBar" HoverStyle="Auto" PopupPosition="Left" ShowSiteActions="true" />
+                </div>
+            </nav>
+            
+            <!-- Hidden placeholders for compatibility -->
+            <div style="display:none;">
+                <asp:ContentPlaceHolder ID="PageHeaderContentPlaceHolder" runat="server">Modern ERP System</asp:ContentPlaceHolder>
+            </div>
+            
+            <!-- AdminLTE Style Sidebar -->
+            <aside class="main-sidebar sidebar-dark-primary elevation-4" id="mainSidebar">
+                <!-- Brand Logo -->
+                <div class="brand-link">
+                    <asp:Image ID="SidebarLogo" runat="server" SkinID="PageLogo" CssClass="brand-image img-circle elevation-3" style="opacity: .8" />
+                    <span class="brand-text font-weight-light">Modern ERP</span>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div class="image">
+                            <i class="fas fa-user-circle nav-icon" style="font-size: 2.1rem; color: #c2c7d0;"></i>
+                        </div>
+                        <div class="info">
+                            <span class="d-block text-white">مرحباً بك</span>
+                            <small class="text-muted">مستخدم النظام</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Sidebar Menu -->
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <!-- Dashboard -->
+                            <li class="nav-item">
+                                <a href="~/Default.aspx" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>لوحة التحكم الرئيسية</p>
+                                </a>
+                            </li>
+                            
+                            <!-- Test Pages Section -->
+                            <li class="nav-item has-treeview" id="testPagesMenu">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-flask"></i>
+                                    <p>
+                                        صفحات الاختبار
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="~/TestPages/Index.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>الفهرس الرئيسي</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="~/TestPages/ASPXadv/Index.aspx" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>الصفحات المتقدمة</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="~/TestPages/ThemeSystem.aspx" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>نظام الثيمات</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <!-- Financial Analysis -->
+                            <li class="nav-item has-treeview" id="financialMenu">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-chart-line"></i>
+                                    <p>
+                                        التحليل المالي
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="~/TestPages/ASPXadv/FinancialAnalysisPro.aspx" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>التحليل الاحترافي</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="~/TestPages/ASPXadv/FinancialDashboardVue.aspx" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>لوحة التحكم المالية</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <!-- Customer Management -->
+                            <li class="nav-item has-treeview" id="customerMenu">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-users"></i>
+                                    <p>
+                                        إدارة العملاء
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="~/TestPages/ASPXadv/CustomerStatement.aspx" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>كشف حساب العميل</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="~/TestPages/ASPXadv/CustomerStatementAdvanced.aspx" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>كشف حساب متقدم</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <!-- Dynamic Menu Content (from PageMenuBar) -->
+                            <li class="nav-header">النظام الأساسي</li>
+                            <div id="dynamicSidebarMenu" class="dynamic-menu-content">
+                                <!-- This will be populated from PageMenuBar content -->
+                            </div>
+                            
+                            <!-- Theme Switcher -->
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" id="sidebarThemeSwitcher">
+                                    <i class="nav-icon fas fa-palette"></i>
+                                    <p>تغيير الثيم</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+            
+            <!-- Content Wrapper -->
+            <div class="content-wrapper" id="contentWrapper">
+            <main class="modern-main">
+                <div class="main-container">
+                    <!-- Breadcrumb Navigation -->
+                    <div class="breadcrumb-section">
+                        <asp:SiteMapPath ID="SiteMapPath1" runat="server" SkinID="SiteMapPath" CssClass="modern-breadcrumb" />
+                    </div>
+                    
+                    <!-- Page Title -->
+                    <div class="page-title-section">
+                        <h1 class="page-title">
+                            <asp:ContentPlaceHolder ID="PageTitleContentPlaceHolder" runat="server">Page Title</asp:ContentPlaceHolder>
+                        </h1>
+                    </div>
+                    
+                    <!-- Content Layout -->
+                    <div class="content-layout">
+                        <!-- Sidebar (Optional) -->
+                        <aside class="content-sidebar" id="contentSidebar">
+                            <div class="sidebar-content">
+                                <asp:ContentPlaceHolder ID="SideBarPlaceHolder" runat="server" />
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1"  Runat="Server" />
+
+
+                            </div>
+                        </aside>
+                        
+                        <!-- Main Content -->
+                        <div class="content-main">
+                            <asp:ContentPlaceHolder ID="PageContentPlaceHolder" runat="server" />
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+            <!-- Modern Footer -->
+            <footer class="modern-footer">
+                <div class="footer-container">
+                    <div class="footer-content">
+                        <asp:ContentPlaceHolder ID="PageFooterContentPlaceHolder" runat="server">
+                            <div class="footer-info">
+                                <p>&copy; 2025 Modern Code On Time ERP System. جميع الحقوق محفوظة.</p>
+                                <p>Powered by Code On Time Framework</p>
+                            </div>
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </footer>
+            
+            <!-- Notification System -->
+            <div id="notificationContainer" class="notification-container"></div>
+        </div>
+
+        <!-- Unified Modal Menu Host (non-intrusive) -->
+        <div id="ModernMenuHost">
+            <div class="pm-backdrop" data-close="1"></div>
+            <aside class="pm-panel" role="dialog" aria-modal="true" aria-label="Application Menu">
+                <header class="pm-header">
+                    <div class="pm-title">القائمة</div>
+                    <div id="pm-tools-slot"></div>
+                    <button type="button" class="pm-close" data-close="1" aria-label="Close">×</button>
+                </header>
+                <nav class="pm-body">
+                    <ul id="pm-list" role="tree"></ul>
+                </nav>
+            </aside>
+        </div>
+
+            </div>
+    </form>
+    
+    <!-- Modern Master Page Styles -->
+    <style>
+    /* Modern Master Page Layout */
+    .modern-body {
+        font-family: 'Cairo', 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        min-height: 100vh;
+        direction: rtl;
+    }
+    
+    .modern-layout-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    /* Modern Header */
+    .modern-header {
+        background: white;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .header-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .header-brand {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .modern-logo {
+        max-height: 50px;
+        width: auto;
+    }
+    
+    .brand-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0;
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+        border-radius: 50px;
+        font-size: 0.9rem;
+        color: #64748b;
+    }
+    
+    .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #64748b;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-toggle:hover {
+        background: #f1f5f9;
+        color: #2563eb;
+    }
+    
+    /* Modern Navigation */
+    .modern-navigation {
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    
+    .modern-menu-wrapper {
+        /* MenuExtender will populate this */
+    }
+    
+    /* Modern Main Content */
+    .modern-main {
+        flex: 1;
+        padding: 2rem 0;
+    }
+    
+    .main-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    
+    .breadcrumb-section {
+        margin-bottom: 1rem;
+    }
+    
+    .modern-breadcrumb {
+        color: #64748b;
+        font-size: 0.9rem;
+    }
+    
+    .page-title-section {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #e2e8f0;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .content-layout {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 2rem;
+        min-height: 400px;
+    }
+    
+    .content-sidebar {
+        width: 280px;
+        background: white;
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        height: fit-content;
+        position: sticky;
+        top: 120px;
+    }
+    
+    .content-main {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        min-height: 500px;
+    }
+    
+    /* Modern Footer */
+    .modern-footer {
+        background: #1e293b;
+        color: white;
+        padding: 2rem 0;
+        margin-top: auto;
+    }
+    
+    .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    
+    .footer-info {
+        text-align: center;
+    }
+    
+    .footer-info p {
+        margin: 0.5rem 0;
+        color: #94a3b8;
+    }
+    
+    /* Notification System */
+    .notification-container {
+        position: fixed;
+        top: 100px;
+        left: 20px;
+        z-index: 9999;
+        pointer-events: none;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .content-layout {
+            grid-template-columns: 1fr;
+        }
+        
+        .content-sidebar {
+            width: 100%;
+            position: static;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .header-container {
+            padding: 1rem;
+        }
+        
+        .mobile-menu-toggle {
+            display: block;
+        }
+        
+        .user-info {
+            display: none;
+        }
+        
+        .main-container {
+            padding: 0 1rem;
+        }
+        
+        .content-main {
+            padding: 1.5rem;
+        }
+        
+        .page-title {
+            font-size: 1.5rem;
+        }
+    }
+    
+    /* Hide original Code On Time elements when needed */
+    .placeholder {
+        display: none;
+    }
+    
+    /* Enhance Code On Time controls */
+    .modern-menu-wrapper .AspNet-Menu {
+        background: transparent;
+        border: none;
+    }
+    
+    .modern-menu-wrapper .AspNet-Menu-Horizontal {
+        background: transparent;
+    }
+    
+    .modern-breadcrumb .AspNet-SiteMapPath {
+        color: #64748b;
+    }
+    
+    /* Theme Switcher Styles */
+    .theme-switcher-header {
+        position: relative;
+        margin-left: 1rem;
+    }
+    
+    .theme-btn {
+        background: var(--bg-secondary, #f8fafc);
+        border: 1px solid var(--border-primary, #e2e8f0);
+        border-radius: 8px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        color: var(--text-primary, #0f172a);
+    }
+    
+    .theme-btn:hover {
+        background: var(--primary, #3b82f6);
+        color: var(--text-inverse, white);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+    
+    .theme-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: var(--bg-primary, white);
+        border: 1px solid var(--border-primary, #e2e8f0);
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        min-width: 180px;
+        z-index: 1000;
+        display: none;
+        margin-top: 8px;
+        padding: 8px;
+    }
+    
+    .theme-dropdown.show {
+        display: block;
+        animation: fadeInUp 0.2s ease;
+    }
+    
+    .theme-option {
+        width: 100%;
+        padding: 10px 12px;
+        border: none;
+        background: transparent;
+        text-align: right;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text-primary, #0f172a);
+        font-size: 14px;
+    }
+    
+    .theme-option:hover {
+        background: var(--primary, #3b82f6);
+        color: var(--text-inverse, white);
+    }
+    
+    .theme-option i {
+        width: 16px;
+        text-align: center;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    </style>
+    
+    <!-- Modern Master Page Scripts -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Modern Master Page initialized');
+        
+        // Initialize theme system
+        initializeThemeSystem();
+        
+        // Initialize user roles manager if available
+        if (typeof UserRolesManager !== 'undefined') {
+            const userManager = new UserRolesManager();
+            userManager.updateUserInterface();
+        }
+        
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileMenuToggle');
+        const navigation = document.getElementById('modernNavigation');
+        
+        if (mobileToggle && navigation) {
+            mobileToggle.addEventListener('click', function() {
+                navigation.classList.toggle('mobile-open');
+            });
+        }
+        
+        // Auto-hide/show sidebar based on content
+        const sidebar = document.getElementById('contentSidebar');
+        if (sidebar && sidebar.children.length === 0) {
+            sidebar.style.display = 'none';
+            document.querySelector('.content-layout').style.gridTemplateColumns = '1fr';
+        }
+        
+        // Theme dropdown functionality
+        setupThemeDropdown();
+    });
+    
+    // Initialize theme system
+        function initializeThemeSystem() {
+            // Apply saved theme or detect system preference
+            if (window.advancedThemeSystem) {
+                window.advancedThemeSystem.init();
+            } else {
+                // Fallback if theme system not loaded yet
+                setTimeout(() => {
+                    if (window.advancedThemeSystem) {
+                        window.advancedThemeSystem.init();
+                    }
+                }, 500);
+            }
+        }    // Setup theme dropdown
+    function setupThemeDropdown() {
+        const themeBtn = document.querySelector('.theme-btn');
+        const themeDropdown = document.getElementById('themeDropdown');
+        
+        if (themeBtn && themeDropdown) {
+            themeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                themeDropdown.classList.toggle('show');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function() {
+                themeDropdown.classList.remove('show');
+            });
+            
+            themeDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    }
+    
+    // Theme functions
+    function setTheme(themeName) {
+        if (window.advancedThemeSystem) {
+            window.advancedThemeSystem.setTheme(themeName);
+            showNotification(`تم تطبيق ثيم ${getThemeNameAr(themeName)}`, 'success');
+        }
+        document.getElementById('themeDropdown').classList.remove('show');
+    }
+    
+    function quickSwitchTheme() {
+        const currentTheme = localStorage.getItem('selectedTheme') || 'light';
+        const themes = ['light', 'dark', 'ai', 'citrus', 'emerald', 'rose'];
+        const currentIndex = themes.indexOf(currentTheme);
+        const nextTheme = themes[(currentIndex + 1) % themes.length];
+        setTheme(nextTheme);
+    }
+    
+    function getThemeNameAr(themeKey) {
+        const names = {
+            light: 'فاتح',
+            dark: 'داكن',
+            ai: 'ذكي',
+            citrus: 'حمضي',
+            emerald: 'زمردي',
+            rose: 'وردي'
+        };
+        return names[themeKey] || themeKey;
+    }
+    
+    function openThemeManager() {
+        window.open('/TestPages/theme-management-console.html', '_blank');
+        document.getElementById('themeDropdown').classList.remove('show');
+    }
+    
+    // Keyboard shortcuts for themes
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.shiftKey) {
+            switch (e.key.toLowerCase()) {
+                case 'l':
+                    e.preventDefault();
+                    setTheme('light');
+                    break;
+                case 'd':
+                    e.preventDefault();
+                    setTheme('dark');
+                    break;
+                case 'a':
+                    e.preventDefault();
+                    setTheme('ai');
+                    break;
+                case 't':
+                    e.preventDefault();
+                    quickSwitchTheme();
+                    break;
+            }
+        }
+    });
+    
+    // Global notification function
+    function showNotification(message, type = 'info') {
+        const container = document.getElementById('notificationContainer');
+        if (!container) return;
+        
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+                <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        `;
+        
+        container.appendChild(notification);
+        
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            if (notification.parentElement) {
+                notification.remove();
+            }
+        }, 5000);
+    }
+    </script>
+
+    <!-- Modal menu data bridge and renderer (shared scripts) -->
+    <script src="/Vuejs/menu-data-bridge.js"></script>
+    <script src="/js/pro-modal-menu.js"></script>
+    
+    <style>
+    /* Notification Styles */
+    .notification {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        margin-bottom: 1rem;
+        overflow: hidden;
+        pointer-events: auto;
+        animation: slideInRight 0.3s ease-out;
+        max-width: 400px;
+    }
+    
+    .notification-content {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+    }
+    
+    .notification-success {
+        border-right: 4px solid #10b981;
+    }
+    
+    .notification-error {
+        border-right: 4px solid #ef4444;
+    }
+    
+    .notification-info {
+        border-right: 4px solid #3b82f6;
+    }
+    
+    .notification-close {
+        background: none;
+        border: none;
+        color: #6b7280;
+        cursor: pointer;
+        margin-left: auto;
+        padding: 0.25rem;
+    }
+    
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    /* ===== AdminLTE Style Sidebar ===== */
+    .main-sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100vh;
+        background: #343a40;
+        color: #c2c7d0;
+        z-index: 1050;
+        transition: all 0.3s ease;
+        box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+        overflow-y: auto;
+        direction: rtl;
+    }
+    
+    .main-sidebar.sidebar-open {
+        left: 0;
+    }
+    
+    .sidebar-dark-primary {
+        background: linear-gradient(180deg, #343a40 0%, #495057 100%);
+    }
+    
+    .elevation-4 {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+    
+    .brand-link {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        background: rgba(255,255,255,0.1);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .brand-image {
+        width: 35px;
+        height: 35px;
+        margin-left: 10px;
+        border-radius: 50%;
+    }
+    
+    .brand-text {
+        font-size: 1.1rem;
+        font-weight: 300;
+        color: #fff;
+    }
+    
+    .sidebar {
+        padding: 0;
+        direction: rtl;
+    }
+    
+    .user-panel {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .user-panel .image {
+        margin-left: 10px;
+    }
+    
+    .user-panel .info {
+        flex: 1;
+    }
+    
+    .nav-sidebar {
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    
+    .nav-sidebar .nav-item {
+        margin: 0;
+    }
+    
+    .nav-sidebar .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        color: #c2c7d0;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+    }
+    
+    .nav-sidebar .nav-link:hover {
+        background: rgba(255,255,255,0.1);
+        color: #fff;
+        border-left-color: #007bff;
+    }
+    
+    .nav-sidebar .nav-link.active {
+        background: rgba(0,123,255,0.2);
+        color: #fff;
+        border-left-color: #007bff;
+    }
+    
+    .nav-icon {
+        width: 20px;
+        margin-left: 10px;
+        text-align: center;
+        font-size: 1rem;
+    }
+    
+    .nav-sidebar .nav-link p {
+        margin: 0;
+        flex: 1;
+        font-size: 0.9rem;
+    }
+    
+    .nav-treeview {
+        display: none;
+        background: rgba(0,0,0,0.2);
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    
+    .nav-item.menu-open .nav-treeview {
+        display: block;
+    }
+    
+    .nav-treeview .nav-link {
+        padding-right: 2.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .nav-header {
+        padding: 0.75rem 1rem 0.25rem;
+        font-size: 0.75rem;
+        color: #6c757d;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    
+    .sidebar-toggle {
+        background: #007bff;
+        border: none;
+        color: white;
+        padding: 0.5rem 0.75rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        margin-left: auto;
+    }
+    
+    .sidebar-toggle:hover {
+        background: #0056b3;
+    }
+    
+    .content-wrapper {
+        margin-right: 0;
+        transition: margin-right 0.3s ease;
+        min-height: 100vh;
+        position: relative;
+    }
+    
+    .content-wrapper.sidebar-open {
+        margin-right: 250px;
+    }
+    
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1040;
+        display: none;
+    }
+    
+    .sidebar-overlay.show {
+        display: block;
+    }
+    
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+        .main-sidebar {
+            transform: translateX(-100%);
+            left: 0;
+        }
+        
+        .main-sidebar.sidebar-open {
+            transform: translateX(0);
+        }
+        
+        .content-wrapper.sidebar-open {
+            margin-right: 0;
+        }
+    }
+    
+    /* RTL Support */
+    [dir="rtl"] .main-sidebar {
+        left: auto;
+        right: -250px;
+    }
+    
+    [dir="rtl"] .main-sidebar.sidebar-open {
+        right: 0;
+    }
+    
+    [dir="rtl"] .content-wrapper.sidebar-open {
+        margin-left: 250px;
+        margin-right: 0;
+    }
+    
+    /* Animation classes */
+    .fade-in {
+        animation: fadeInUp 0.3s ease;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Dynamic menu styling */
+    .dynamic-menu-content .nav-item {
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .dynamic-menu-content .nav-link {
+        font-size: 0.85rem;
+    }
+    </style>
+    
+    <!-- Language Toggle Script - Code On Time Framework Compatible -->
+    <script>
+        function toggleMembershipLanguage() {
+            try {
+                console.log('🌐 Attempting to toggle language...');
+                
+                // Method 1: Use Code On Time Web.Membership API
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    console.log('✅ Found Web.Membership instance');
+                    
+                    // Try to find and trigger the culture selector
+                    const cultureSelector = document.getElementById('Membership$Cultures');
+                    if (cultureSelector) {
+                        console.log('✅ Found culture selector, showing it');
+                        // Trigger the hover event to show culture options
+                        if (typeof $showHover === 'function') {
+                            const cultureLinkElement = document.querySelector('.CultureLink a');
+                            if (cultureLinkElement) {
+                                $showHover(cultureLinkElement, 'Membership$Cultures', 'CultureSelector', 1);
+                                return;
+                            }
+                        }
+                    }
+                }
+                
+                // Method 2: Direct click on CultureLink
+                const cultureLink = document.querySelector('.CultureLink a');
+                if (cultureLink) {
+                    console.log('✅ Found CultureLink, clicking it');
+                    // Simulate mouse events to trigger the hover menu
+                    const mouseOverEvent = new MouseEvent('mouseover', { bubbles: true, cancelable: true });
+                    const clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true });
+                    cultureLink.dispatchEvent(mouseOverEvent);
+                    setTimeout(() => cultureLink.dispatchEvent(clickEvent), 50);
+                    return;
+                }
+                
+                // Method 3: Try to find the culture selector dropdown
+                const membershipBar = document.getElementById('Membership_Login');
+                if (membershipBar) {
+                    const langLink = membershipBar.querySelector('a[title*="language"], a[onclick*="toggleHover"]');
+                    if (langLink) {
+                        console.log('✅ Found language link via fallback');
+                        langLink.click();
+                        return;
+                    }
+                }
+                
+                console.warn('⚠️ No language selector method worked');
+            } catch (e) {
+                console.error('❌ Error toggling language:', e);
+            }
+        }
+    </script>
+    
+    <!-- Close content-wrapper -->
+   
+    
+</body>
+</html>

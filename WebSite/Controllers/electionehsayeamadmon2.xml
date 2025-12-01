@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="election5create" conflictDetection="overwriteChanges" label="Election5create" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+SELECT        dbo.election5create2016.tableiden, dbo.election5create2016.elnoaa, dbo.election5create2016.gadwalintekhaby, dbo.election5create2016.rakmelkeed, dbo.election5create2016.trekhelkeed, 
+                         dbo.election5create2016.harfelkeed, dbo.election5create2016.rakmelgensya, dbo.election5create2016.esmalaela, dbo.election5create2016.elesmbelkamel, dbo.election5create2016.tarekhelmelad, 
+                         dbo.election5create2016.elwazefa, dbo.election5create2016.elenwan, dbo.election5create2016.esmeldamen, dbo.election5create2016.eldaera, dbo.election5create2016.comenot, dbo.election5create2016.fieldeht, 
+                         dbo.election5create2016.fieldeht1, dbo.election5create2016.fieldeht2, dbo.election5create2016.fieldeht3, dbo.election5create2016.fieldeht31, dbo.election5create2016.fieldeht32, 
+                         dbo.election5create2016.fieldeht33, dbo.election5create2016.branch, dbo.election5create2016.ModifiedBy, dbo.election5create2016.ModifiedOn, dbo.election5create2016.CreatedBy, 
+                         dbo.election5create2016.CreatedOn, dbo.election5create2016.eleclganid, dbo.electionlegantable.mandobname, dbo.electionlegantable.telphonemandob, dbo.electionlegantable.lgna_no, 
+                         dbo.electionlegantable.wkel_name, dbo.electionlegantable.madny, dbo.electionlegantable.elhodoor, dbo.electionlegantable.totalaswat
+FROM            dbo.electionlegantable RIGHT OUTER JOIN
+                         dbo.election5create2016 ON dbo.electionlegantable.lgna_no = dbo.election5create2016.fieldeht  
+
+]]></text>
+    </command>
+    <command id="tableidenIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="tableiden" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="tableiden" type="Int64" allowNulls="false" isPrimaryKey="true" label="Tableiden" readOnly="true" />
+    <field name="elnoaa" type="String" label="Elnoaa" length="255" showInSummary="true" />
+    <field name="gadwalintekhaby" type="String" label="Gadwalintekhaby" length="255" showInSummary="true" />
+    <field name="rakmelkeed" type="Double" label="Rakmelkeed" showInSummary="true" />
+    <field name="trekhelkeed" type="DateTime" label="Trekhelkeed" showInSummary="true" />
+    <field name="harfelkeed" type="String" label="Harfelkeed" length="255" showInSummary="true" />
+    <field name="rakmelgensya" type="Double" label="Rakmelgensya" />
+    <field name="esmalaela" type="String" label="Esmalaela" length="50"  />
+    <field name="elesmbelkamel" type="String" label="Elesmbelkamel" length="255" />
+    <field name="tarekhelmelad" type="DateTime" label="Tarekhelmelad" />
+    <field name="elwazefa" type="String" label="Elwazefa" length="255" />
+    <field name="elenwan" type="String" label="Elenwan" length="255" />
+    <field name="esmeldamen" type="String" label="Esmeldamen" length="255" />
+    <field name="eldaera" type="Int64" label="Eldaera" />
+    <field name="comenot" type="Int64" label="Comenot" />
+    <field name="fieldeht" type="Int64" label="Fieldeht" />
+    <field name="fieldeht1" type="Int64" label="Fieldeht1" />
+    <field name="fieldeht2" type="Int64" label="Fieldeht2" />
+    <field name="fieldeht3" type="String" label="Fieldeht3" length="50" />
+    <field name="fieldeht31" type="String" label="Fieldeht31" length="50" />
+    <field name="fieldeht32" type="String" label="Fieldeht32" length="50" />
+    <field name="fieldeht33" type="String" label="aldwania" length="50" />
+		    <field name="wkel_name" type="String" label="wkel_name" length="50" />
+    <field name="madny" type="String" label="madny" length="50" />
+    <field name="elhodoor" type="String" label="elhodoor" length="50" />
+    <field name="totalaswat" type="String" label="totalaswat" length="50" />
+	<field name="telphonemandob" type="String" label="telphonemandob" length="50" />
+    <field name="mandobname" type="String" label="mandobname" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Election5create">
+  
+      <dataFields>
+       <dataField fieldName="esmeldamen" columns="15" searchOptions="$contains,*" search="Suggested"/>
+        <dataField fieldName="esmalaela" columns="10"  searchOptions="$contains,*" search="Suggested"/>
+        <dataField fieldName="elesmbelkamel" columns="100"    searchOptions="$contains,*" search="Suggested"  />
+         <dataField fieldName="elwazefa" />
+        <dataField fieldName="gadwalintekhaby" />
+        <dataField fieldName="rakmelkeed" columns="15" />
+        <dataField fieldName="trekhelkeed" columns="10" />
+        <dataField fieldName="harfelkeed" />
+        <dataField fieldName="rakmelgensya" columns="15" />
+        <dataField fieldName="tarekhelmelad" columns="10" />
+         <dataField fieldName="elenwan" />
+        <dataField fieldName="eldaera" columns="15" hidden="true"/>
+        <dataField fieldName="comenot" columns="15" />
+        <dataField fieldName="fieldeht" columns="15" hidden="true"/>
+        <dataField fieldName="fieldeht1" columns="15" hidden="true"/>
+        <dataField fieldName="fieldeht2" columns="15" hidden="true"/>
+        <dataField fieldName="fieldeht3" columns="50" />
+        <dataField fieldName="fieldeht31" columns="50" hidden="true"/>
+        <dataField fieldName="fieldeht32" columns="50"  hidden="true"/>
+		<dataField fieldName="fieldeht33" columns="50"  />
+        <dataField fieldName="elnoaa" hidden="true"/>
+         <dataField fieldName="tableiden"  hidden="true"/>
+		 	
+			   <dataField fieldName="wkel_name" columns="10" />
+		<dataField fieldName="madny" columns="10" />
+		<dataField fieldName="elhodoor" columns="10" />
+		<dataField fieldName="totalaswat" columns="10" />
+		<dataField fieldName="telphonemandob" columns="10" />
+		<dataField fieldName="mandobname" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Election5create">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Election5create" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="elnoaa" />
+            <dataField fieldName="gadwalintekhaby" />
+            <dataField fieldName="rakmelkeed" columns="15" />
+            <dataField fieldName="trekhelkeed" columns="10" />
+            <dataField fieldName="harfelkeed" />
+            <dataField fieldName="rakmelgensya" columns="15" />
+            <dataField fieldName="esmalaela" columns="10" />
+            <dataField fieldName="elesmbelkamel" />
+            <dataField fieldName="tarekhelmelad" columns="10" />
+            <dataField fieldName="elwazefa" />
+            <dataField fieldName="elenwan" />
+            <dataField fieldName="esmeldamen" />
+            <dataField fieldName="eldaera" columns="15" />
+            <dataField fieldName="comenot" columns="15" />
+            <dataField fieldName="fieldeht" columns="15" />
+            <dataField fieldName="fieldeht1" columns="15" />
+            <dataField fieldName="fieldeht2" columns="15" />
+            <dataField fieldName="fieldeht3" columns="50" />
+            <dataField fieldName="fieldeht31" columns="50" />
+            <dataField fieldName="fieldeht32" columns="50" />
+            <dataField fieldName="fieldeht33" columns="50" />
+				
+			   <dataField fieldName="wkel_name" columns="10" hidden="true"/>
+		<dataField fieldName="madny" columns="10" hidden="true"/>
+		<dataField fieldName="elhodoor" columns="10" hidden="true"/>
+		<dataField fieldName="totalaswat" columns="10" hidden="true"/>
+		<dataField fieldName="telphonemandob" columns="10" hidden="true"/>
+		<dataField fieldName="mandobname" columns="10" hidden="true"/>
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Election5create">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Election5create" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="elnoaa" />
+            <dataField fieldName="gadwalintekhaby" />
+            <dataField fieldName="rakmelkeed" columns="15" />
+            <dataField fieldName="trekhelkeed" columns="10" />
+            <dataField fieldName="harfelkeed" />
+            <dataField fieldName="rakmelgensya" columns="15" />
+            <dataField fieldName="esmalaela" columns="10" />
+            <dataField fieldName="elesmbelkamel" />
+            <dataField fieldName="tarekhelmelad" columns="10" />
+            <dataField fieldName="elwazefa" />
+            <dataField fieldName="elenwan" />
+            <dataField fieldName="esmeldamen" />
+            <dataField fieldName="eldaera" columns="15" />
+            <dataField fieldName="comenot" columns="15" />
+            <dataField fieldName="fieldeht" columns="15" />
+            <dataField fieldName="fieldeht1" columns="15" />
+            <dataField fieldName="fieldeht2" columns="15" />
+            <dataField fieldName="fieldeht3" columns="50" />
+            <dataField fieldName="fieldeht31" columns="50" />
+            <dataField fieldName="fieldeht32" columns="50" />
+            <dataField fieldName="fieldeht33" columns="50" />
+				
+			   <dataField fieldName="wkel_name" columns="10" hidden="true"/>
+		<dataField fieldName="madny" columns="10" hidden="true"/>
+		<dataField fieldName="elhodoor" columns="10" hidden="true"/>
+		<dataField fieldName="totalaswat" columns="10" hidden="true"/>
+		<dataField fieldName="telphonemandob" columns="10" hidden="true"/>
+		<dataField fieldName="mandobname" columns="10" hidden="true"/>
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+   <view id="reportgrid" type="Grid" commandId="command1" label="Election5create">
+  
+      <dataFields>
+       <dataField fieldName="esmeldamen" columns="15" searchOptions="$contains,*" search="Suggested"/>
+        <dataField fieldName="esmalaela" columns="10"  searchOptions="$contains,*" search="Suggested"/>
+        <dataField fieldName="elesmbelkamel" columns="100"    searchOptions="$contains,*" search="Suggested"  />
+         <dataField fieldName="elwazefa" />
+        <dataField fieldName="gadwalintekhaby" />
+        <dataField fieldName="rakmelkeed" columns="15" />
+        <dataField fieldName="trekhelkeed" columns="10" />
+        <dataField fieldName="harfelkeed" />
+        <dataField fieldName="rakmelgensya" columns="15" />
+        <dataField fieldName="tarekhelmelad" columns="10" />
+         <dataField fieldName="elenwan" />
+        <dataField fieldName="eldaera" columns="15" hidden="true"/>
+        <dataField fieldName="comenot" columns="15" />
+        <dataField fieldName="fieldeht" columns="15" hidden="true"/>
+        <dataField fieldName="fieldeht1" columns="15" hidden="true"/>
+        <dataField fieldName="fieldeht2" columns="15" hidden="true"/>
+        <dataField fieldName="fieldeht3" columns="50" />
+        <dataField fieldName="fieldeht31" columns="50" hidden="true"/>
+        <dataField fieldName="fieldeht32" columns="50"  hidden="true"/>
+		<dataField fieldName="fieldeht33" columns="50"  />
+        <dataField fieldName="elnoaa" hidden="true"/>
+         <dataField fieldName="tableiden"  hidden="true"/>
+		 	
+			   <dataField fieldName="wkel_name" columns="10" hidden="true"/>
+		<dataField fieldName="madny" columns="10" hidden="true"/>
+		<dataField fieldName="elhodoor" columns="10" hidden="true"/>
+		<dataField fieldName="totalaswat" columns="10" hidden="true"/>
+		<dataField fieldName="telphonemandob" columns="10" hidden="true"/>
+		<dataField fieldName="mandobname" columns="10" hidden="true"/>
+      </dataFields>
+    </view>
+  
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" roles="election5delete"/>
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" roles="election5delete"/>
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" roles="election5delete"/>
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" roles="election5delete"/>
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+	<actionGroup id="ag7xlxmos" scope="ActionBar" headerText="xlxReport">
+     <action id="ag72" />
+      <action id="ag7xla2" />
+     </actionGroup>
+     <actionGroup id="ag7pdfmos" scope="ActionBar" headerText="pdfReport">
+     <action id="ag72" />
+     <action id="ag7xla2" />
+     </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" /> 
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" roles="election5delete"/>
+	  
+	       <action commandName="SQL" headerText="حضر"  id="a101">
+        <data><![CDATA[
+update election5create Set comenot=1 where tableiden= @tableiden 
+ ]]></data>
+      </action>
+	  
+	  	       <action commandName="SQL" headerText="لم يحضر "  id="a102">
+        <data><![CDATA[
+update election5create Set comenot=0 where tableiden= @tableiden 
+ ]]></data>
+      </action>
+	  
+	  
+    </actionGroup>
+  </actions>
+</dataController>
+
+
+
+
+
+
+
+
+
+
+
+

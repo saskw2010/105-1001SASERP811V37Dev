@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Keys Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --info-color: #17a2b8;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --card-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            color: var(--dark-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: var(--secondary-color);
+            font-size: 1.1em;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid var(--primary-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .card-type {
+            background-color: var(--info-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .card-body {
+            flex-grow: 1;
+        }
+
+        .api-key-label {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .api-key-value {
+            background-color: var(--light-color);
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            padding: 12px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            word-break: break-all;
+            line-height: 1.4;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 8px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: background-color 0.3s;
+        }
+
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .card-footer {
+            margin-top: 15px;
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            text-align: right;
+        }
+
+        /* Specific card colors for variety */
+        .card:nth-child(5n+1) { border-left-color: var(--success-color); }
+        .card:nth-child(5n+1) .card-title i { color: var(--success-color); }
+        .card:nth-child(5n+1) .card-type { background-color: var(--success-color); }
+
+        .card:nth-child(5n+2) { border-left-color: var(--info-color); }
+        .card:nth-child(5n+2) .card-title i { color: var(--info-color); }
+        .card:nth-child(5n+2) .card-type { background-color: var(--info-color); }
+
+        .card:nth-child(5n+3) { border-left-color: var(--warning-color); }
+        .card:nth-child(5n+3) .card-title i { color: var(--warning-color); }
+        .card:nth-child(5n+3) .card-type { background-color: var(--warning-color); color: var(--dark-color); }
+
+        .card:nth-child(5n+4) { border-left-color: var(--danger-color); }
+        .card:nth-child(5n+4) .card-title i { color: var(--danger-color); }
+        .card:nth-child(5n+4) .card-type { background-color: var(--danger-color); }
+
+        .card:nth-child(5n+5) { border-left-color: var(--secondary-color); }
+        .card:nth-child(5n+5) .card-title i { color: var(--secondary-color); }
+        .card:nth-child(5n+5) .card-type { background-color: var(--secondary-color); }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1><i class="fas fa-key"></i> API Keys Dashboard</h1>
+        <p>A centralized view of all your essential API keys and credentials.</p>
+    </div>
+
+    <div class="container">
+        <!-- OpenRouter -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-route"></i> OpenRouter</h3>
+                <span class="card-type">API Key</span>
+            </div>
+            <div class="card-body">
+                <div class="api-key-label">API Key</div>
+                <div class="api-key-value" data-key="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">
+                    ******************************************
+                    <button class="copy-btn" onclick="verifyAndCopyKey(this)">Show & Copy</button>
+                </div>
+            </div>
+            <div class="card-footer">
+                <i class="fas fa-info-circle"></i> Unified access to multiple AI models.
+            </div>
+        </div>
+
+        <!-- Google Gemini -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fab fa-google"></i> Google Gemini</h3>
+                <span class="card-type">API Key</span>
+            </div>
+            <div class="card-body">
+                <div class="api-key-label">API Key</div>
+                <div class="api-key-value" data-key="AIzaSyDyemJjJGdExisG0GWFUzFJ03tPoNehvMA">
+                    ******************************************
+                    <button class="copy-btn" onclick="verifyAndCopyKey(this)">Show & Copy</button>
+                </div>
+            </div>
+            <div class="card-footer">
+                <i class="fas fa-info-circle"></i> Google's next-gen AI model.
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

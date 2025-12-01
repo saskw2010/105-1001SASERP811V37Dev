@@ -1,0 +1,28 @@
+# Migration Map (WebForms -> Modern)
+
+- Navigation
+  - Source: Web.sitemap + SiteMapProvider
+  - New: JSON endpoint (Pages/MenuApi.aspx/GetMenuTree) consumed by modern drawer (js/modern-menu-once.js, css/modern-menu.css)
+
+- WebMethods / ASMX
+  - Replace ASMX ScriptService with Web API (ASP.NET Core minimal APIs or controllers)
+  - DataControllerService methods map to REST endpoints
+
+- Handlers (*.ashx)
+  - Replace with middleware/controllers (IActionResult returning FileStreamResult etc.)
+
+- UI Pages (.aspx/.ascx)
+  - Migrate to Razor pages/components; preserve master layout in _Layout
+  - Use Bootstrap/FA classes; reuse existing HTML/CSS patterns
+
+- Serialization
+  - Replace JavaScriptSerializer with System.Text.Json
+
+- Localization
+  - Implement IStringLocalizer and resource files to replace translatemeyamosso
+
+- AuthZ
+  - Forms -> Cookie auth with ASP.NET Core Identity; map Roles to policies
+
+- Config
+  - web.config -> appsettings.json (connection strings, feature flags)

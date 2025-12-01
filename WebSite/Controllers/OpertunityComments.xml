@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="OpertunityComments" conflictDetection="overwriteChanges" label="Opertunity Comments" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"OpertunityComments"."OpertunityCommentsID" "OpertunityCommentsID"
+	,"OpertunityComments"."Modid" "Modid"
+	,"Mod"."MODAr" "ModMODAr"
+	,"OpertunityComments"."FormDescription" "FormDescription"
+	,"OpertunityComments"."OpertunityID" "OpertunityID"
+	,"Opertunity"."OpertunityDesc" "OpertunityOpertunityDesc"
+	,"Opertunitycall"."customertel1" "Opertunitycallcustomertel1"
+	,"OpertunitycallMarketplan"."MarketplanDesc" "OpertunitycallMarketplanMarketplanDesc"
+	,"Opertunitycallproducts"."productsname" "Opertunitycallproductsproductsname"
+	,"OpertunitycallSlm_"."Slm_Nm" "OpertunitycallSlm_Slm_Nm"
+	,"OpertunitycallVisitstatus"."Visitstatusname" "OpertunitycallVisitstatusVisitstatusname"
+	,"Opertunitycallvisittype"."visittypeNm" "OpertunitycallvisittypevisittypeNm"
+	,"OpertunityOpertunityclass"."Opertunityclass" "OpertunityOpertunityclassOpertunityclass"
+	,"OpertunityOpertunitydegree"."Opertunitydegree" "OpertunityOpertunitydegreeOpertunitydegree"
+	,"OpertunityCstm_"."Cstm_Nm" "OpertunityCstm_Cstm_Nm"
+	,"OpertunityCstm_Area"."Area_name" "OpertunityCstm_AreaArea_name"
+	,"OpertunityCstm_Evaluation"."Evaluation_name" "OpertunityCstm_EvaluationEvaluation_name"
+	,"OpertunityCstm_acc_"."Acc_Nm" "OpertunityCstm_acc_Acc_Nm"
+	,"OpertunityCstm_Cntry_"."Cntry_Nm" "OpertunityCstm_Cntry_Cntry_Nm"
+	,"OpertunityCstm_curncy_"."Curncy_Nm" "OpertunityCstm_curncy_Curncy_Nm"
+	,"OpertunityCstm_TSNEF"."TSNEF_name" "OpertunityCstm_TSNEFTSNEF_name"
+	,"OpertunityCstm_TSNEFNO1"."TSNEF1_name" "OpertunityCstm_TSNEFNO1TSNEF1_name"
+	,"OpertunityCstm_Slm_"."Slm_Nm" "OpertunityCstm_Slm_Slm_Nm"
+	,"OpertunitySlm_"."Slm_Nm" "OpertunitySlm_Slm_Nm"
+	,"OpertunitySlm_masngerclass"."masngerclass" "OpertunitySlm_masngerclassmasngerclass"
+	,"Opertunityopenslm_"."Slm_Nm" "Opertunityopenslm_Slm_Nm"
+	,"Opertunityopenslm_masngerclass"."masngerclass" "Opertunityopenslm_masngerclassmasngerclass"
+	,"OpertunityComments"."TaskEVENT" "TaskEVENT"
+	,"OpertunityComments"."TaskCommentsEnterDate" "TaskCommentsEnterDate"
+	,"OpertunityComments"."TaskCommentsDelvery" "TaskCommentsDelvery"
+	,"OpertunityComments"."CommentsNotes" "CommentsNotes"
+	,"OpertunityComments"."CommentsDetailes" "CommentsDetailes"
+	,"OpertunityComments"."ModifiedBy" "ModifiedBy"
+	,"OpertunityComments"."ModifiedOn" "ModifiedOn"
+	,"OpertunityComments"."CreatedBy" "CreatedBy"
+	,"OpertunityComments"."CreatedOn" "CreatedOn"
+from "dbo"."OpertunityComments" "OpertunityComments"
+	left join "dbo"."MODMaster" "Mod" on "OpertunityComments"."Modid" = "Mod"."MODID"
+	left join "dbo"."Opertunity" "Opertunity" on "OpertunityComments"."OpertunityID" = "Opertunity"."OpertunityID"
+	left join "dbo"."callregister" "Opertunitycall" on "Opertunity"."callid" = "Opertunitycall"."callid"
+	left join "dbo"."Marketplan" "OpertunitycallMarketplan" on "Opertunitycall"."MarketplanID" = "OpertunitycallMarketplan"."MarketplanID"
+	left join "dbo"."ProductsList" "Opertunitycallproducts" on "Opertunitycall"."productsID" = "Opertunitycallproducts"."productsid"
+	left join "dbo"."Stslsman" "OpertunitycallSlm_" on "Opertunitycall"."Slm_No" = "OpertunitycallSlm_"."Slm_No"
+	left join "dbo"."Visitstatuslist" "OpertunitycallVisitstatus" on "Opertunitycall"."Visitstatus" = "OpertunitycallVisitstatus"."VisitstatusID"
+	left join "dbo"."visittypelist" "Opertunitycallvisittype" on "Opertunitycall"."visittype" = "Opertunitycallvisittype"."visittypeNo"
+	left join "dbo"."Opertunityclasslist" "OpertunityOpertunityclass" on "Opertunity"."OpertunityclassID" = "OpertunityOpertunityclass"."OpertunityclassID"
+	left join "dbo"."Opertunitydegreelist" "OpertunityOpertunitydegree" on "Opertunity"."OpertunitydegreeID" = "OpertunityOpertunitydegree"."OpertunitydegreeID"
+	left join "dbo"."Stcustmr" "OpertunityCstm_" on "Opertunity"."Cstm_no" = "OpertunityCstm_"."Cstm_No"
+	left join "dbo"."AreaList" "OpertunityCstm_Area" on "OpertunityCstm_"."AreaNo" = "OpertunityCstm_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "OpertunityCstm_Evaluation" on "OpertunityCstm_"."EvaluationNO" = "OpertunityCstm_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "OpertunityCstm_acc_" on "OpertunityCstm_"."acc_no" = "OpertunityCstm_acc_"."Acc_No"
+	left join "dbo"."PYCntry" "OpertunityCstm_Cntry_" on "OpertunityCstm_"."Cntry_No" = "OpertunityCstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "OpertunityCstm_curncy_" on "OpertunityCstm_"."curncy_no" = "OpertunityCstm_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "OpertunityCstm_TSNEF" on "OpertunityCstm_"."TSNEFNO" = "OpertunityCstm_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "OpertunityCstm_TSNEFNO1" on "OpertunityCstm_"."TSNEFNO1" = "OpertunityCstm_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "OpertunityCstm_Slm_" on "OpertunityCstm_"."Slm_No" = "OpertunityCstm_Slm_"."Slm_No"
+	left join "dbo"."Stslsman" "OpertunitySlm_" on "Opertunity"."Slm_No" = "OpertunitySlm_"."Slm_No"
+	left join "dbo"."masngerclass" "OpertunitySlm_masngerclass" on "OpertunitySlm_"."masngerclassid" = "OpertunitySlm_masngerclass"."masngerclassid"
+	left join "dbo"."Stslsman" "Opertunityopenslm_" on "Opertunity"."openslm_no" = "Opertunityopenslm_"."Slm_No"
+	left join "dbo"."masngerclass" "Opertunityopenslm_masngerclass" on "Opertunityopenslm_"."masngerclassid" = "Opertunityopenslm_masngerclass"."masngerclassid"
+]]></text>
+    </command>
+    <command id="OpertunityCommentsIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="OpertunityCommentsID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="OpertunityCommentsID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Opertunity Comments#" readOnly="true" />
+    <field name="Modid" type="Int64" allowNulls="false" label="Modid" showInSummary="true">
+      <items style="Lookup" dataController="MODMaster" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ModMODAr" type="String" readOnly="true" label="Mod MOD Ar" length="50" />
+    <field name="FormDescription" type="String" allowNulls="false" label="Form Description" length="100" showInSummary="true" />
+    <field name="OpertunityID" type="Int64" allowNulls="false" label="Opertunity#" showInSummary="true">
+      <items style="Lookup" dataController="Opertunity" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="OpertunityOpertunityDesc" type="String" readOnly="true" label="Opertunity Desc" length="255" />
+    <field name="Opertunitycallcustomertel1" type="String" readOnly="true" label="Opertunitycallcustomertel1" length="10" />
+    <field name="OpertunitycallMarketplanMarketplanDesc" type="String" readOnly="true" label="Opertunitycall Marketplan Desc" length="50" />
+    <field name="Opertunitycallproductsproductsname" type="String" readOnly="true" label="Opertunitycallproductsproductsname" length="150" />
+    <field name="OpertunitycallSlm_Slm_Nm" type="String" readOnly="true" label="Opertunitycall Slm Nm" length="100" />
+    <field name="OpertunitycallVisitstatusVisitstatusname" type="String" readOnly="true" label="Opertunitycall Visitstatus Visitstatusname" length="50" />
+    <field name="OpertunitycallvisittypevisittypeNm" type="String" readOnly="true" label="Opertunitycallvisittypevisittype Nm" length="20" />
+    <field name="OpertunityOpertunityclassOpertunityclass" type="String" readOnly="true" label="Opertunity Opertunityclass" length="100" />
+    <field name="OpertunityOpertunitydegreeOpertunitydegree" type="String" readOnly="true" label="Opertunity Opertunitydegree" length="100" />
+    <field name="OpertunityCstm_Cstm_Nm" type="String" readOnly="true" label="Opertunity Cstm Nm" length="155" />
+    <field name="OpertunityCstm_AreaArea_name" type="String" readOnly="true" label="Opertunity Cstm Area name" length="150" />
+    <field name="OpertunityCstm_EvaluationEvaluation_name" type="String" readOnly="true" label="Opertunity Cstm Evaluation name" length="150" />
+    <field name="OpertunityCstm_acc_Acc_Nm" type="String" readOnly="true" label="Opertunity Cstm acc Acc Nm" length="255" />
+    <field name="OpertunityCstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="Opertunity Cstm Cntry Nm" length="255" />
+    <field name="OpertunityCstm_curncy_Curncy_Nm" type="String" readOnly="true" label="Opertunity Cstm curncy Curncy Nm" length="200" />
+    <field name="OpertunityCstm_TSNEFTSNEF_name" type="String" readOnly="true" label="Opertunity Cstm TSNEFTSNEF name" length="150" />
+    <field name="OpertunityCstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="Opertunity Cstm TSNEFNO1TSNEF1 name" length="150" />
+    <field name="OpertunityCstm_Slm_Slm_Nm" type="String" readOnly="true" label="Opertunity Cstm Slm Nm" length="100" />
+    <field name="OpertunitySlm_Slm_Nm" type="String" readOnly="true" label="Opertunity Slm Nm" length="100" />
+    <field name="OpertunitySlm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Opertunity Slm masngerclassmasngerclass" length="-1" />
+    <field name="Opertunityopenslm_Slm_Nm" type="String" readOnly="true" label="Opertunityopenslm Slm Nm" length="100" />
+    <field name="Opertunityopenslm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Opertunityopenslm masngerclassmasngerclass" length="-1" />
+    <field name="TaskEVENT" type="String" label="Task EVENT" length="255" showInSummary="true" />
+    <field name="TaskCommentsEnterDate" type="DateTime" default="(getdate())" label="Task Comments Enter Date" showInSummary="true" />
+    <field name="TaskCommentsDelvery" type="DateTime" label="Task Comments Delvery" />
+    <field name="CommentsNotes" type="String" label="Comments Notes" length="255" />
+    <field name="CommentsDetailes" type="String" label="Comments Detailes" length="255" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Opertunity Comments">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Modid" aliasFieldName="ModMODAr" />
+        <dataField fieldName="FormDescription" />
+        <dataField fieldName="OpertunityID" aliasFieldName="OpertunityOpertunityDesc" hyperlinkFormatString="~/Pages/Opertunity.aspx?OpertunityID={OpertunityID}&amp;_controller=Opertunity&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="TaskEVENT" />
+        <dataField fieldName="TaskCommentsEnterDate" columns="10" />
+        <dataField fieldName="TaskCommentsDelvery" columns="10" />
+        <dataField fieldName="CommentsNotes" />
+        <dataField fieldName="CommentsDetailes" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="Opertunitycallcustomertel1" columns="10" />
+        <dataField fieldName="OpertunitycallMarketplanMarketplanDesc" columns="50" />
+        <dataField fieldName="Opertunitycallproductsproductsname" />
+        <dataField fieldName="OpertunitycallSlm_Slm_Nm" />
+        <dataField fieldName="OpertunitycallVisitstatusVisitstatusname" columns="50" />
+        <dataField fieldName="OpertunitycallvisittypevisittypeNm" columns="20" />
+        <dataField fieldName="OpertunityOpertunityclassOpertunityclass" />
+        <dataField fieldName="OpertunityOpertunitydegreeOpertunitydegree" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Opertunity Comments">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Opertunity Comments" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Modid" aliasFieldName="ModMODAr" hyperlinkFormatString="~/Pages/MODMaster.aspx?MODID={Modid}&amp;_controller=MODMaster&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="FormDescription" />
+            <dataField fieldName="OpertunityID" aliasFieldName="OpertunityOpertunityDesc" hyperlinkFormatString="~/Pages/Opertunity.aspx?OpertunityID={OpertunityID}&amp;_controller=Opertunity&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="TaskEVENT" />
+            <dataField fieldName="TaskCommentsEnterDate" columns="10" />
+            <dataField fieldName="TaskCommentsDelvery" columns="10" />
+            <dataField fieldName="CommentsNotes" />
+            <dataField fieldName="CommentsDetailes" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Opertunitycallcustomertel1" columns="10" />
+            <dataField fieldName="OpertunitycallMarketplanMarketplanDesc" columns="50" />
+            <dataField fieldName="Opertunitycallproductsproductsname" />
+            <dataField fieldName="OpertunitycallSlm_Slm_Nm" />
+            <dataField fieldName="OpertunitycallVisitstatusVisitstatusname" columns="50" />
+            <dataField fieldName="OpertunitycallvisittypevisittypeNm" columns="20" />
+            <dataField fieldName="OpertunityOpertunityclassOpertunityclass" />
+            <dataField fieldName="OpertunityOpertunitydegreeOpertunitydegree" />
+            <dataField fieldName="OpertunityCstm_Cstm_Nm" />
+            <dataField fieldName="OpertunityCstm_AreaArea_name" />
+            <dataField fieldName="OpertunityCstm_EvaluationEvaluation_name" />
+            <dataField fieldName="OpertunityCstm_acc_Acc_Nm" />
+            <dataField fieldName="OpertunityCstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="OpertunityCstm_curncy_Curncy_Nm" />
+            <dataField fieldName="OpertunityCstm_TSNEFTSNEF_name" />
+            <dataField fieldName="OpertunityCstm_TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="OpertunityCstm_Slm_Slm_Nm" />
+            <dataField fieldName="OpertunitySlm_Slm_Nm" />
+            <dataField fieldName="OpertunitySlm_masngerclassmasngerclass" rows="5" />
+            <dataField fieldName="Opertunityopenslm_Slm_Nm" />
+            <dataField fieldName="Opertunityopenslm_masngerclassmasngerclass" rows="5" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Opertunity Comments">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Opertunity Comments" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Modid" aliasFieldName="ModMODAr" />
+            <dataField fieldName="FormDescription" />
+            <dataField fieldName="OpertunityID" aliasFieldName="OpertunityOpertunityDesc" />
+            <dataField fieldName="TaskEVENT" />
+            <dataField fieldName="TaskCommentsEnterDate" columns="10" />
+            <dataField fieldName="TaskCommentsDelvery" columns="10" />
+            <dataField fieldName="CommentsNotes" />
+            <dataField fieldName="CommentsDetailes" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

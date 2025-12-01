@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="CustOrderHist_Cache" conflictDetection="overwriteChanges" label="Cust Order Hist Cache" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"CustOrderHist_Cache"."CacheID" "CacheID"
+	,"CustOrderHist_Cache"."SessionTime" "SessionTime"
+	,"CustOrderHist_Cache"."recordTime1" "recordTime1"
+	,"CustOrderHist_Cache"."CacheUserName" "CacheUserName"
+	,"CustOrderHist_Cache"."CacheExpires" "CacheExpires"
+	,"CustOrderHist_Cache"."qwizid" "qwizid"
+	,"CustOrderHist_Cache"."QwizidORDER" "QwizidORDER"
+	,"CustOrderHist_Cache"."catid2" "catid2"
+	,"Thecatid2"."cat2name" "Thecatid2cat2name"
+	,"Thecatid2Cntry_"."Cntry_Nm" "Thecatid2Cntry_Cntry_Nm"
+	,"CustOrderHist_Cache"."catid3" "catid3"
+	,"Thecatid3"."cat3name" "Thecatid3cat3name"
+	,"Thecatid3catid2"."cat2name" "Thecatid3catid2cat2name"
+	,"Thecatid3catid2Cntry_"."Cntry_Nm" "Thecatid3catid2Cntry_Cntry_Nm"
+	,"CustOrderHist_Cache"."catid4" "catid4"
+	,"Thecatid4"."cat4name" "Thecatid4cat4name"
+	,"CustOrderHist_Cache"."catid5" "catid5"
+	,"Thecatid5"."cat5name" "Thecatid5cat5name"
+	,"CustOrderHist_Cache"."catid1" "catid1"
+	,"CustOrderHist_Cache"."catid6" "catid6"
+	,"CustOrderHist_Cache"."catid7" "catid7"
+	,"CustOrderHist_Cache"."catid8" "catid8"
+	,"CustOrderHist_Cache"."catid9" "catid9"
+	,"CustOrderHist_Cache"."catid10" "catid10"
+	,"CustOrderHist_Cache"."catid11" "catid11"
+	,"CustOrderHist_Cache"."catid12" "catid12"
+	,"CustOrderHist_Cache"."catid13" "catid13"
+	,"CustOrderHist_Cache"."catid14" "catid14"
+from "dbo"."CustOrderHist_Cache" "CustOrderHist_Cache"
+	left join "dbo"."Qwaizcat2" "Thecatid2" on "CustOrderHist_Cache"."catid2" = "Thecatid2"."catid2"
+	left join "dbo"."PYCntry" "Thecatid2Cntry_" on "Thecatid2"."Cntry_No" = "Thecatid2Cntry_"."Cntry_No"
+	left join "dbo"."Qwaizcat3" "Thecatid3" on "CustOrderHist_Cache"."catid3" = "Thecatid3"."catid3"
+	left join "dbo"."Qwaizcat2" "Thecatid3catid2" on "Thecatid3"."catid2" = "Thecatid3catid2"."catid2"
+	left join "dbo"."PYCntry" "Thecatid3catid2Cntry_" on "Thecatid3catid2"."Cntry_No" = "Thecatid3catid2Cntry_"."Cntry_No"
+	left join "dbo"."Qwaizcat4" "Thecatid4" on "CustOrderHist_Cache"."catid4" = "Thecatid4"."catid4"
+	left join "dbo"."Qwaizcat5" "Thecatid5" on "CustOrderHist_Cache"."catid5" = "Thecatid5"."catid5"
+]]></text>
+    </command>
+    <command id="CacheIDUniqueIdentifierCommand" type="Text" event="Inserting">
+      <text><![CDATA[select newid()]]></text>
+      <output>
+        <fieldOutput fieldName="CacheID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="CacheID" type="Guid" allowNulls="false" isPrimaryKey="true" label="Cache#" />
+    <field name="SessionTime" type="String" allowNulls="false" label="Session Time" length="50" showInSummary="true" />
+    <field name="recordTime1" type="DateTime" allowNulls="false" default="(getdate())" label="record Time1" showInSummary="true" />
+    <field name="CacheUserName" type="String" allowNulls="false" label="Cache User Name" length="40" showInSummary="true" />
+    <field name="CacheExpires" type="DateTime" allowNulls="false" label="Cache Expires" showInSummary="true" />
+    <field name="qwizid" type="Int64" allowNulls="false" label="Qwizid" showInSummary="true" />
+    <field name="QwizidORDER" type="Int64" allowNulls="false" label="Qwizid ORDER" />
+    <field name="catid2" type="Int64" allowNulls="false" label="Catid2">
+      <items style="Lookup" dataController="Qwaizcat2" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecatid2cat2name" type="String" readOnly="true" label="Thecatid2cat2name" length="255" />
+    <field name="Thecatid2Cntry_Cntry_Nm" type="String" readOnly="true" label="Thecatid2 Cntry Nm" length="255" />
+    <field name="catid3" type="Int64" allowNulls="false" label="Catid3">
+      <items style="Lookup" dataController="Qwaizcat3" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecatid3cat3name" type="String" readOnly="true" label="Thecatid3cat3name" length="255" />
+    <field name="Thecatid3catid2cat2name" type="String" readOnly="true" label="Thecatid3catid2cat2name" length="255" />
+    <field name="Thecatid3catid2Cntry_Cntry_Nm" type="String" readOnly="true" label="Thecatid3catid2 Cntry Nm" length="255" />
+    <field name="catid4" type="Int64" allowNulls="false" label="Catid4">
+      <items style="Lookup" dataController="Qwaizcat4" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecatid4cat4name" type="String" readOnly="true" label="Thecatid4cat4name" length="255" />
+    <field name="catid5" type="Int64" allowNulls="false" label="Catid5">
+      <items style="Lookup" dataController="Qwaizcat5" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecatid5cat5name" type="String" readOnly="true" label="Thecatid5cat5name" length="255" />
+    <field name="catid1" type="Int64" label="Catid1" />
+    <field name="catid6" type="Int64" label="Catid6" />
+    <field name="catid7" type="Int64" label="Catid7" />
+    <field name="catid8" type="Int64" label="Catid8" />
+    <field name="catid9" type="Int64" label="Catid9" />
+    <field name="catid10" type="Int64" label="Catid10" />
+    <field name="catid11" type="Int64" label="Catid11" />
+    <field name="catid12" type="Int64" label="Catid12" />
+    <field name="catid13" type="Int64" label="Catid13" />
+    <field name="catid14" type="Int64" label="Catid14" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Cust Order Hist Cache">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="SessionTime" columns="50" />
+        <dataField fieldName="recordTime1" dataFormatString="t" columns="10" />
+        <dataField fieldName="CacheUserName" columns="40" />
+        <dataField fieldName="CacheExpires" columns="10" />
+        <dataField fieldName="qwizid" columns="15" />
+        <dataField fieldName="QwizidORDER" columns="15" />
+        <dataField fieldName="catid2" aliasFieldName="Thecatid2cat2name" hyperlinkFormatString="~/Pages/Qwaizcat2.aspx?catid2={catid2}&amp;_controller=Qwaizcat2&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="catid3" aliasFieldName="Thecatid3cat3name" hyperlinkFormatString="~/Pages/Qwaizcat3.aspx?catid3={catid3}&amp;_controller=Qwaizcat3&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="catid4" aliasFieldName="Thecatid4cat4name" hyperlinkFormatString="~/Pages/Qwaizcat4.aspx?catid4={catid4}&amp;_controller=Qwaizcat4&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="catid5" aliasFieldName="Thecatid5cat5name" hyperlinkFormatString="~/Pages/Qwaizcat5.aspx?catid5={catid5}&amp;_controller=Qwaizcat5&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="catid1" columns="15" />
+        <dataField fieldName="catid6" columns="15" />
+        <dataField fieldName="catid7" columns="15" />
+        <dataField fieldName="catid8" columns="15" />
+        <dataField fieldName="catid9" columns="15" />
+        <dataField fieldName="catid10" columns="15" />
+        <dataField fieldName="catid11" columns="15" />
+        <dataField fieldName="catid12" columns="15" />
+        <dataField fieldName="catid13" columns="15" />
+        <dataField fieldName="catid14" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Cust Order Hist Cache">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Cust Order Hist Cache" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="SessionTime" columns="50" />
+            <dataField fieldName="recordTime1" dataFormatString="t" columns="10" />
+            <dataField fieldName="CacheUserName" columns="40" />
+            <dataField fieldName="CacheExpires" columns="10" />
+            <dataField fieldName="qwizid" columns="15" />
+            <dataField fieldName="QwizidORDER" columns="15" />
+            <dataField fieldName="catid2" aliasFieldName="Thecatid2cat2name" hyperlinkFormatString="~/Pages/Qwaizcat2.aspx?catid2={catid2}&amp;_controller=Qwaizcat2&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="catid3" aliasFieldName="Thecatid3cat3name" hyperlinkFormatString="~/Pages/Qwaizcat3.aspx?catid3={catid3}&amp;_controller=Qwaizcat3&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="catid4" aliasFieldName="Thecatid4cat4name" hyperlinkFormatString="~/Pages/Qwaizcat4.aspx?catid4={catid4}&amp;_controller=Qwaizcat4&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="catid5" aliasFieldName="Thecatid5cat5name" hyperlinkFormatString="~/Pages/Qwaizcat5.aspx?catid5={catid5}&amp;_controller=Qwaizcat5&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="catid1" columns="15" />
+            <dataField fieldName="catid6" columns="15" />
+            <dataField fieldName="catid7" columns="15" />
+            <dataField fieldName="catid8" columns="15" />
+            <dataField fieldName="catid9" columns="15" />
+            <dataField fieldName="catid10" columns="15" />
+            <dataField fieldName="catid11" columns="15" />
+            <dataField fieldName="catid12" columns="15" />
+            <dataField fieldName="catid13" columns="15" />
+            <dataField fieldName="catid14" columns="15" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Thecatid2Cntry_Cntry_Nm" />
+            <dataField fieldName="Thecatid3catid2cat2name" />
+            <dataField fieldName="Thecatid3catid2Cntry_Cntry_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Cust Order Hist Cache">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Cust Order Hist Cache" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CacheID" columns="15" />
+            <dataField fieldName="SessionTime" columns="50" />
+            <dataField fieldName="recordTime1" dataFormatString="t" columns="10" />
+            <dataField fieldName="CacheUserName" columns="40" />
+            <dataField fieldName="CacheExpires" columns="10" />
+            <dataField fieldName="qwizid" columns="15" />
+            <dataField fieldName="QwizidORDER" columns="15" />
+            <dataField fieldName="catid2" aliasFieldName="Thecatid2cat2name" />
+            <dataField fieldName="catid3" aliasFieldName="Thecatid3cat3name" />
+            <dataField fieldName="catid4" aliasFieldName="Thecatid4cat4name" />
+            <dataField fieldName="catid5" aliasFieldName="Thecatid5cat5name" />
+            <dataField fieldName="catid1" columns="15" />
+            <dataField fieldName="catid6" columns="15" />
+            <dataField fieldName="catid7" columns="15" />
+            <dataField fieldName="catid8" columns="15" />
+            <dataField fieldName="catid9" columns="15" />
+            <dataField fieldName="catid10" columns="15" />
+            <dataField fieldName="catid11" columns="15" />
+            <dataField fieldName="catid12" columns="15" />
+            <dataField fieldName="catid13" columns="15" />
+            <dataField fieldName="catid14" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

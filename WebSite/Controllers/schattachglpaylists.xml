@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="schattachglpaylists" conflictDetection="overwriteChanges" label="Schattachglpaylists" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.schattachglpaylistsBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"schattachglpaylists"."schattachglpayid" "schattachglpayid"
+	,"schattachglpaylists"."schglpaydlyhdregid" "schglpaydlyhdregid"
+	,"schglpaydlyhdreg"."payDelevername" "schglpaydlyhdregpayDelevername"
+	,"schglpaydlyhdregsgm"."sgm_Nm" "schglpaydlyhdregsgmsgm_Nm"
+	,"schglpaydlyhdregsgmOpco"."OpcoName" "schglpaydlyhdregsgmOpcoOpcoName"
+	,"schglpaydlyhdregpayIDregorg"."NAME_1" "schglpaydlyhdregpayIDregorgNAME_1"
+	,"schglpaydlyhdregacd"."AcademicYear" "schglpaydlyhdregacdAcademicYear"
+	,"schglpaydlyhdregacdGlFinperiod"."Fin_period_info" "schglpaydlyhdregacdGlFinperiodFin_period_info"
+	,"schglpaydlyhdregbranch"."Desc1" "schglpaydlyhdregbranchDesc1"
+	,"schglpaydlyhdregbranchsgm"."sgm_Nm" "schglpaydlyhdregbranchsgmsgm_Nm"
+	,"schglpaydlyhdregbranchGender"."Gender" "schglpaydlyhdregbranchGenderGender"
+	,"schglpaydlyhdregbranchstage"."ShortDesc1" "schglpaydlyhdregbranchstageShortDesc1"
+	,"schglpaydlyhdregbranchschtyp"."schtypDesc" "schglpaydlyhdregbranchschtypschtypDesc"
+	,"schattachglpaylists"."schattachglpaytype" "schattachglpaytype"
+	,"schattachglpaylists"."schattachglpayrefno" "schattachglpayrefno"
+	,"schattachglpaylists"."schattachglpayrefdate" "schattachglpayrefdate"
+	,"schattachglpaylists"."schattachglpayrefpagesno" "schattachglpayrefpagesno"
+	,"schattachglpaylists"."notes" "notes"
+	,"schattachglpaylists"."ExternalDocFileName" "ExternalDocFileName"
+	,"schattachglpaylists"."ExternalDocContentType" "ExternalDocContentType"
+	,"schattachglpaylists"."ExternalDocLength" "ExternalDocLength"
+from "dbo"."schattachglpaylists" "schattachglpaylists"
+	left join "dbo"."schglpaydlyhdreg" "schglpaydlyhdreg" on "schattachglpaylists"."schglpaydlyhdregid" = "schglpaydlyhdreg"."schglpaydlyhdregid"
+	left join "dbo"."glmulcmp" "schglpaydlyhdregsgm" on "schglpaydlyhdreg"."sgm" = "schglpaydlyhdregsgm"."sgmid"
+	left join "dbo"."OpCo" "schglpaydlyhdregsgmOpco" on "schglpaydlyhdregsgm"."OpcoID" = "schglpaydlyhdregsgmOpco"."OpcoIDidentity"
+	left join "dbo"."REG_ORGANIZATIONS" "schglpaydlyhdregpayIDregorg" on "schglpaydlyhdreg"."payIDregorg" = "schglpaydlyhdregpayIDregorg"."IDIDregorg"
+	left join "dbo"."schAcademicyear" "schglpaydlyhdregacd" on "schglpaydlyhdreg"."acdcode" = "schglpaydlyhdregacd"."Code"
+	left join "dbo"."GlFinanceperiod" "schglpaydlyhdregacdGlFinperiod" on "schglpaydlyhdregacd"."GlFinperiodID" = "schglpaydlyhdregacdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."schBranch" "schglpaydlyhdregbranch" on "schglpaydlyhdreg"."branch" = "schglpaydlyhdregbranch"."branch"
+	left join "dbo"."glmulcmp" "schglpaydlyhdregbranchsgm" on "schglpaydlyhdregbranch"."sgm" = "schglpaydlyhdregbranchsgm"."sgmid"
+	left join "dbo"."PyGender" "schglpaydlyhdregbranchGender" on "schglpaydlyhdregbranch"."Genderid" = "schglpaydlyhdregbranchGender"."Genderid"
+	left join "dbo"."schStage" "schglpaydlyhdregbranchstage" on "schglpaydlyhdregbranch"."stagecode" = "schglpaydlyhdregbranchstage"."Code"
+	left join "dbo"."schtyp" "schglpaydlyhdregbranchschtyp" on "schglpaydlyhdregbranch"."schtypid" = "schglpaydlyhdregbranchschtyp"."schtypid"
+]]></text>
+    </command>
+    <command id="schattachglpayidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="schattachglpayid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="schattachglpayid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Schattachglpayid" readOnly="true" />
+    <field name="schglpaydlyhdregid" type="Int64" allowNulls="false" label="Schglpaydlyhdregid" showInSummary="true">
+      <items style="Lookup" dataController="schglpaydlyhdreg" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="schglpaydlyhdregpayDelevername" type="String" readOnly="true" label="schglpaydlyhdregpay Delevername" length="100" />
+    <field name="schglpaydlyhdregsgmsgm_Nm" type="String" readOnly="true" label="schglpaydlyhdregsgmsgm Nm" length="255" />
+    <field name="schglpaydlyhdregsgmOpcoOpcoName" type="String" readOnly="true" label="schglpaydlyhdregsgm Opco Name" length="50" />
+    <field name="schglpaydlyhdregpayIDregorgNAME_1" type="String" readOnly="true" label="schglpaydlyhdregpay I Dregorg NAME 1" length="50" />
+    <field name="schglpaydlyhdregacdAcademicYear" type="String" readOnly="true" label="schglpaydlyhdregacd Academic Year" length="150" />
+    <field name="schglpaydlyhdregacdGlFinperiodFin_period_info" type="String" readOnly="true" label="schglpaydlyhdregacd Gl Finperiod Fin period info" length="150" />
+    <field name="schglpaydlyhdregbranchDesc1" type="String" readOnly="true" label="schglpaydlyhdregbranch Desc1" length="50" />
+    <field name="schglpaydlyhdregbranchsgmsgm_Nm" type="String" readOnly="true" label="schglpaydlyhdregbranchsgmsgm Nm" length="255" />
+    <field name="schglpaydlyhdregbranchGenderGender" type="String" readOnly="true" label="schglpaydlyhdregbranch Gender" length="100" />
+    <field name="schglpaydlyhdregbranchstageShortDesc1" type="String" readOnly="true" label="schglpaydlyhdregbranchstage Short Desc1" length="50" />
+    <field name="schglpaydlyhdregbranchschtypschtypDesc" type="String" readOnly="true" label="schglpaydlyhdregbranchschtypschtyp Desc" length="150" />
+    <field name="schattachglpaytype" type="String" label="Schattachglpaytype" length="50" showInSummary="true" />
+    <field name="schattachglpayrefno" type="String" label="Schattachglpayrefno" length="50" showInSummary="true" />
+    <field name="schattachglpayrefdate" type="DateTime" label="Schattachglpayrefdate" showInSummary="true" />
+    <field name="schattachglpayrefpagesno" type="String" label="Schattachglpayrefpagesno" length="50" showInSummary="true" />
+    <field name="notes" type="String" label="Notes" length="50" />
+    <field name="ExternalDocFileName" type="String" label="External Doc File Name" length="150" />
+    <field name="ExternalDocContentType" type="String" label="External Doc Content Type" length="50" />
+    <field name="ExternalDocLength" type="Int64" label="External Doc Length" />
+    <field name="ExternalDoc" type="Byte[]" label="External Doc" allowQBE="false" allowSorting="false" sourceFields="schattachglpayid" onDemand="true" onDemandHandler="schattachglpayidExternalDoc" onDemandStyle="Thumbnail" computed="true" htmlEncode="false" hidden="false">
+      <items letters="false" />
+    </field>
+  </fields>
+  <views>
+    <view id="grid1" type="DataSheet" commandId="command1" label="Schattachglpaylists">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="schglpaydlyhdregid" aliasFieldName="schglpaydlyhdregpayDelevername" />
+        <dataField fieldName="schattachglpaytype" columns="50" />
+        <dataField fieldName="schattachglpayrefno" columns="50" />
+        <dataField fieldName="schattachglpayrefdate" columns="10" />
+        <dataField fieldName="schattachglpayrefpagesno" columns="50" />
+        <dataField fieldName="notes" columns="50" />
+        <dataField fieldName="ExternalDocFileName" />
+        <dataField fieldName="ExternalDocContentType" columns="50" />
+        <dataField fieldName="ExternalDocLength" columns="15" />
+        <dataField fieldName="ExternalDoc" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Schattachglpaylists">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Schattachglpaylists" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="schglpaydlyhdregid" aliasFieldName="schglpaydlyhdregpayDelevername" hyperlinkFormatString="~/Pages/schglpaydlyhdreg.aspx?schglpaydlyhdregid={schglpaydlyhdregid}&amp;_controller=schglpaydlyhdreg&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="schattachglpaytype" columns="50" />
+            <dataField fieldName="schattachglpayrefno" columns="50" />
+            <dataField fieldName="schattachglpayrefdate" columns="10" />
+            <dataField fieldName="schattachglpayrefpagesno" columns="50" />
+            <dataField fieldName="notes" columns="50" />
+            <dataField fieldName="ExternalDocFileName" />
+            <dataField fieldName="ExternalDocContentType" columns="50" />
+            <dataField fieldName="ExternalDocLength" columns="15" />
+            <dataField fieldName="ExternalDoc" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Schattachglpaylists">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Schattachglpaylists" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="schglpaydlyhdregid" aliasFieldName="schglpaydlyhdregpayDelevername" />
+            <dataField fieldName="schattachglpaytype" columns="50" />
+            <dataField fieldName="schattachglpayrefno" columns="50" />
+            <dataField fieldName="schattachglpayrefdate" columns="10" />
+            <dataField fieldName="schattachglpayrefpagesno" columns="50" />
+            <dataField fieldName="notes" columns="50" />
+            <dataField fieldName="ExternalDocFileName" />
+            <dataField fieldName="ExternalDocContentType" columns="50" />
+            <dataField fieldName="ExternalDocLength" columns="15" />
+            <dataField fieldName="ExternalDoc" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="UploadFile" commandArgument="ExternalDoc" type="Code" phase="Execute" />
+    <rule id="r101" commandName="DownloadFile" commandArgument="ExternalDoc" type="Code" phase="Execute" />
+    <rule id="r102" commandName="Select" type="Code" phase="Execute" />
+  </businessRules>
+</dataController>

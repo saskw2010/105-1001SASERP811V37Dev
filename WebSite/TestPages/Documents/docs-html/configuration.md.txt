@@ -1,0 +1,29 @@
+﻿# Configuration Overview
+
+Source: `web.config`
+
+- Globalization: en-GB
+- targetFramework: 4.7.2
+- MachineKey: configured (AES/SHA1)
+- SessionState: InProc, timeout=300
+- Authentication: Forms, loginUrl=~/Login.aspx, timeout=1200
+- Membership providers: dbSqlMemberShipProvider (+Admin variant)
+- RoleManager: SqlRoleProvider
+- Profile: SqlProfileProvider (FirstName, LastName, Department, Position)
+- SiteMap provider: eZee.Services.ApplicationSiteMapProvider (Web.sitemap)
+- Ajax/ScriptManager: AjaxControlToolkit registered
+- Handlers: ChartImg.axd, ReportViewer, XML forbidden
+- Modules: ExportAuthentication, FormsAuthenticationModule, OnlineActiveUsers
+- JSON max length: 524288
+- <location> authorization: many page-level role restrictions
+- runtime: Roslyn compilers configured
+- bindingRedirects: Newtonsoft.Json, SharpZipLib
+
+AppSettings highlights:
+- SMS creds and URLs (sensitive)
+- TableOfContents.* switches
+- imagepath/imagepathphsical
+- WebClientPrint20 license keys
+
+ConnectionStrings: LocalSqlServer, eZee, fajr2023after, DefaultConnection (all pointing to same SQL host)
+

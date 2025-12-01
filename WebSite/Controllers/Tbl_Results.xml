@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Tbl_Results" conflictDetection="overwriteChanges" label="Tbl Results" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Tbl_Results"."ResultID" "ResultID"
+	,"Tbl_Results"."calssid" "calssid"
+	,"calss"."calssResultClass" "calsscalssResultClass"
+	,"Tbl_Results"."ResultDesc" "ResultDesc"
+	,"Tbl_Results"."ResultDesc1" "ResultDesc1"
+	,"Tbl_Results"."Ref_KindID" "Ref_KindID"
+	,"Ref_Kind"."Ref_Kind" "Ref_KindRef_Kind"
+from "dbo"."Tbl_Results" "Tbl_Results"
+	left join "dbo"."Tbl_ResultsClassfication" "calss" on "Tbl_Results"."calssid" = "calss"."calssid"
+	left join "dbo"."Ref_Kindlist" "Ref_Kind" on "Tbl_Results"."Ref_KindID" = "Ref_Kind"."Ref_KindID"
+]]></text>
+    </command>
+    <command id="ResultIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ResultID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ResultID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Result#" readOnly="true" />
+    <field name="calssid" type="Int64" label="Calssid" showInSummary="true">
+      <items style="Lookup" dataController="Tbl_ResultsClassfication" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="calsscalssResultClass" type="String" readOnly="true" label="calsscalss Result Class" length="50" />
+    <field name="ResultDesc" type="String" label="Result Desc" length="50" showInSummary="true" />
+    <field name="ResultDesc1" type="String" label="Result Desc1" length="50" showInSummary="true" />
+    <field name="Ref_KindID" type="Int64" label="Ref Kind#" showInSummary="true">
+      <items style="Lookup" dataController="Ref_Kindlist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Ref_KindRef_Kind" type="String" readOnly="true" label="Ref Kind" length="10" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Tbl Results">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+	  <dataField fieldName="ResultID" columns="50" />
+        <dataField fieldName="calssid" aliasFieldName="calsscalssResultClass" />
+        <dataField fieldName="ResultDesc" columns="50" />
+        <dataField fieldName="ResultDesc1" columns="50" />
+        <dataField fieldName="Ref_KindID" aliasFieldName="Ref_KindRef_Kind" hyperlinkFormatString="~/Pages/Ref_Kindlist.aspx?Ref_KindID={Ref_KindID}&amp;_controller=Ref_Kindlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Tbl Results">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Tbl Results" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="calssid" aliasFieldName="calsscalssResultClass" hyperlinkFormatString="~/Pages/Tbl_ResultsClassfication.aspx?calssid={calssid}&amp;_controller=Tbl_ResultsClassfication&amp;_commandName=Select&amp;_commandArgument=editForm1" textMode="Static" />
+            <dataField fieldName="ResultDesc" columns="50" textMode="Static" />
+            <dataField fieldName="ResultDesc1" columns="50" textMode="Static" />
+            <dataField fieldName="Ref_KindID" aliasFieldName="Ref_KindRef_Kind" hyperlinkFormatString="~/Pages/Ref_Kindlist.aspx?Ref_KindID={Ref_KindID}&amp;_controller=Ref_Kindlist&amp;_commandName=Select&amp;_commandArgument=editForm1" textMode="Static" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Tbl Results">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Tbl Results" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="calssid" aliasFieldName="calsscalssResultClass" textMode="Static" />
+            <dataField fieldName="ResultDesc" columns="50" textMode="Static" />
+            <dataField fieldName="ResultDesc1" columns="50" textMode="Static" />
+            <dataField fieldName="Ref_KindID" aliasFieldName="Ref_KindRef_Kind" textMode="Static" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  
+</dataController>

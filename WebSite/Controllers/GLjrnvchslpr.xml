@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="GLjrnvchslpr" conflictDetection="overwriteChanges" label="G Ljrnvchslpr" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"GLjrnvchslpr"."Ln_No" "Ln_No"
+	,"GLjrnvchslpr"."Tr_No" "Tr_No"
+	,"Tr_"."Pur_Wys" "Tr_Pur_Wys"
+	,"Tr_brn_"."Brn_Nm" "Tr_brn_Brn_Nm"
+	,"Tr_brn_Branch"."Desc1" "Tr_brn_BranchDesc1"
+	,"Tr_Pym_"."PaymentTypeName" "Tr_Pym_PaymentTypeName"
+	,"Tr_Curncy_"."Curncy_Nm" "Tr_Curncy_Curncy_Nm"
+	,"Tr_Sup_"."Sup_Nm" "Tr_Sup_Sup_Nm"
+	,"Tr_Sup_Acc_"."Acc_Nm" "Tr_Sup_Acc_Acc_Nm"
+	,"Tr_Sup_sgm"."sgm_Nm" "Tr_Sup_sgmsgm_Nm"
+	,"Tr_Sup_Cntry_"."Cntry_Nm" "Tr_Sup_Cntry_Cntry_Nm"
+	,"Tr_Sup_Curncy_"."Curncy_Nm" "Tr_Sup_Curncy_Curncy_Nm"
+	,"GLjrnvchslpr"."Tr_Dt" "Tr_Dt"
+	,"GLjrnvchslpr"."Acc_No" "Acc_No"
+	,"Acc_"."Acc_Nm" "Acc_Acc_Nm"
+	,"Acc_Clsacc_"."Acc_Nm" "Acc_Clsacc_Acc_Nm"
+	,"Acc_Acc_Bnd"."Acc_Nm" "Acc_Acc_BndAcc_Nm"
+	,"Acc_Acc_Bndaccclass"."accountclass" "Acc_Acc_Bndaccclassaccountclass"
+	,"Acc_Acc_BndAcc_Bab"."Acc_Nm" "Acc_Acc_BndAcc_BabAcc_Nm"
+	,"GLjrnvchslpr"."Tr_Db" "Tr_Db"
+	,"GLjrnvchslpr"."Tr_Cr" "Tr_Cr"
+	,"GLjrnvchslpr"."Dc_No" "Dc_No"
+	,"GLjrnvchslpr"."Clsacc_No" "Clsacc_No"
+	,"GLjrnvchslpr"."Costcntr_No" "Costcntr_No"
+	,"GLjrnvchslpr"."Tr_Dsc1" "Tr_Dsc1"
+	,"GLjrnvchslpr"."docrelno" "docrelno"
+	,"GLjrnvchslpr"."docreltyp" "docreltyp"
+	,"GLjrnvchslpr"."curno" "curno"
+	,"GLjrnvchslpr"."curprice" "curprice"
+	,"GLjrnvchslpr"."curvalue" "curvalue"
+	,"GLjrnvchslpr"."curvalue1" "curvalue1"
+	,"GLjrnvchslpr"."cstyp_NO" "cstyp_NO"
+	,"cstyp_"."SubledgerDescrption" "cstyp_SubledgerDescrption"
+	,"GLjrnvchslpr"."CSMSUP_NO" "CSMSUP_NO"
+	,"GLjrnvchslpr"."CSMSUP_NM" "CSMSUP_NM"
+	,"GLjrnvchslpr"."trs_dt1" "trs_dt1"
+	,"GLjrnvchslpr"."ModifiedBy" "ModifiedBy"
+	,"GLjrnvchslpr"."ModifiedOn" "ModifiedOn"
+	,"GLjrnvchslpr"."CreatedBy" "CreatedBy"
+	,"GLjrnvchslpr"."CreatedOn" "CreatedOn"
+from "dbo"."GLjrnvchslpr" "GLjrnvchslpr"
+	left join "dbo"."StLcHdr" "Tr_" on "GLjrnvchslpr"."Tr_No" = "Tr_"."Doc_No"
+	left join "dbo"."Branchcnst" "Tr_brn_" on "Tr_"."brn_no" = "Tr_brn_"."Brn_No"
+	left join "dbo"."schBranch" "Tr_brn_Branch" on "Tr_brn_"."Branch" = "Tr_brn_Branch"."branch"
+	left join "dbo"."PaymentTypes" "Tr_Pym_" on "Tr_"."Pym_No" = "Tr_Pym_"."PaymentTypeID"
+	left join "dbo"."Stcurncy" "Tr_Curncy_" on "Tr_"."Curncy_No" = "Tr_Curncy_"."Curncy_No"
+	left join "dbo"."Stsuplir" "Tr_Sup_" on "Tr_"."Sup_No" = "Tr_Sup_"."Sup_No"
+	left join "dbo"."GLmstrfl" "Tr_Sup_Acc_" on "Tr_Sup_"."Acc_No" = "Tr_Sup_Acc_"."Acc_No"
+	left join "dbo"."glmulcmp" "Tr_Sup_sgm" on "Tr_Sup_"."sgm" = "Tr_Sup_sgm"."sgmid"
+	left join "dbo"."PYCntry" "Tr_Sup_Cntry_" on "Tr_Sup_"."Cntry_No" = "Tr_Sup_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "Tr_Sup_Curncy_" on "Tr_Sup_"."Curncy_No" = "Tr_Sup_Curncy_"."Curncy_No"
+	left join "dbo"."GLmstrfl" "Acc_" on "GLjrnvchslpr"."Acc_No" = "Acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "Acc_Clsacc_" on "Acc_"."Clsacc_No" = "Acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Acc_Acc_Bnd" on "Acc_"."Acc_Bnd" = "Acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "Acc_Acc_Bndaccclass" on "Acc_Acc_Bnd"."accclass" = "Acc_Acc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "Acc_Acc_BndAcc_Bab" on "Acc_Acc_Bnd"."Acc_Bab" = "Acc_Acc_BndAcc_Bab"."Acc_Bab"
+	left join "dbo"."GLSubledgertyplist" "cstyp_" on "GLjrnvchslpr"."cstyp_NO" = "cstyp_"."Subledgerid"
+]]></text>
+    </command>
+    <command id="Ln_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Ln_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Ln_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Ln No" readOnly="true" />
+    <field name="Tr_No" type="Int64" allowNulls="false" label="Tr No" showInSummary="true">
+      <items style="Lookup" dataController="StLcHdr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Tr_Pur_Wys" type="String" readOnly="true" label="Tr Pur Wys" length="50" />
+    <field name="Tr_brn_Brn_Nm" type="String" readOnly="true" label="Tr brn Brn Nm" length="255" />
+    <field name="Tr_brn_BranchDesc1" type="String" readOnly="true" label="Tr brn Branch Desc1" length="50" />
+    <field name="Tr_Pym_PaymentTypeName" type="String" readOnly="true" label="Tr Pym Payment Type Name" length="75" />
+    <field name="Tr_Curncy_Curncy_Nm" type="String" readOnly="true" label="Tr Curncy Nm" length="200" />
+    <field name="Tr_Sup_Sup_Nm" type="String" readOnly="true" label="Tr Sup Nm" length="255" />
+    <field name="Tr_Sup_Acc_Acc_Nm" type="String" readOnly="true" label="Tr Sup Acc Nm" length="255" />
+    <field name="Tr_Sup_sgmsgm_Nm" type="String" readOnly="true" label="Tr Sup sgmsgm Nm" length="255" />
+    <field name="Tr_Sup_Cntry_Cntry_Nm" type="String" readOnly="true" label="Tr Sup Cntry Nm" length="255" />
+    <field name="Tr_Sup_Curncy_Curncy_Nm" type="String" readOnly="true" label="Tr Sup Curncy Nm" length="200" />
+    <field name="Tr_Dt" type="DateTime" default="(getdate())" label="Tr Dt" showInSummary="true" />
+    <field name="Acc_No" type="Int64" allowNulls="false" label="Acc No" showInSummary="true">
+      <items style="Lookup" dataController="GLmstrfl" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Acc_Acc_Nm" type="String" readOnly="true" label="Acc Nm" length="255" />
+    <field name="Acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Acc Clsacc Acc Nm" length="250" />
+    <field name="Acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Nm" length="50" />
+    <field name="Acc_Acc_Bndaccclassaccountclass" type="String" readOnly="true" label="Acc Bndaccclassaccountclass" length="100" />
+    <field name="Acc_Acc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Bab Acc Nm" length="250" />
+    <field name="Tr_Db" type="Decimal" default="((0))" label="Tr Db" showInSummary="true" />
+    <field name="Tr_Cr" type="Decimal" default="((0))" label="Tr Cr" showInSummary="true" />
+    <field name="Dc_No" type="String" label="Dc No" length="255" />
+    <field name="Clsacc_No" type="Int64" label="Clsacc No">
+      <items style="DropDownList" dataController="GLcostcntr1" dataView="grid1" dataTextField="Costcntr_Nm" dataValueField="Costcntr_No" newDataView="createForm1" />
+    </field>
+    <field name="Costcntr_No" type="Int64" label="Costcntr No">
+      <items style="Lookup" dataController="GLcostcntr" dataView="grid1" dataTextField="Costcntr_Nm" dataValueField="Costcntr_No" newDataView="createForm1" />
+    </field>
+    <field name="Tr_Dsc1" type="String" label="Tr Dsc1" length="255" />
+    <field name="docrelno" type="Int64" label="Docrelno" />
+    <field name="docreltyp" type="Int64" label="Docreltyp" />
+    <field name="curno" type="Int64" label="Curno" default="1" allowNulls="false">
+      <items style="DropDownList" dataController="Stcurncy" dataView="grid1" dataTextField="Curncy_Nm" dataValueField="Curncy_No" copy="curprice=Curncy_Rate&#xD;&#xA;" />
+    </field>
+    <field name="curprice" type="Decimal" default="((1))" label="Curprice" />
+    <field name="curvalue" type="Decimal" default="((0))" label="Curvalue" />
+    <field name="curvalue1" type="Decimal" default="((0))" label="Curvalue1" />
+    <field name="cstyp_NO" type="Int64" label="cstyp NO">
+      <items style="DropDownList" dataController="GLSubledgertyplist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="cstyp_SubledgerDescrption" type="String" readOnly="true" label="cstyp Subledger Descrption" length="50" />
+    
+	<field name="CSMSUP_NO" type="Int64" label="Csmsup No" contextFields="typ=cstyp_NO" calculated="true">
+      <items style="Lookup" dataController="Qsupcstmr" dataView="grid1" dataTextField="Cstm_nm" dataValueField="Cstm_no" copy="Acc_No=classacc&#xD;&#xA;CSMSUP_NM=Cstm_nm" />
+    </field>
+    <field name="CSMSUP_NM" type="String" label="Csmsup Nm" length="255" />
+    <field name="trs_dt1" type="DateTime" default="(getdate())" label="Trs Dt1" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="DataSheet" commandId="command1" label="Expense">
+     
+      <dataFields>
+	     <dataField fieldName="Tr_No" aliasFieldName="Tr_No" />
+        <dataField fieldName="cstyp_NO"  />
+        <dataField fieldName="CSMSUP_NO" columns="20"  />
+        <dataField fieldName="CSMSUP_NM" rows="1" />
+        <dataField fieldName="Acc_No"  />
+		<dataField fieldName="Acc_Acc_Nm"  />
+        <dataField fieldName="curno" columns="10" />
+        <dataField fieldName="curvalue" columns="10" aggregate="Sum" hidden="true"/>
+        <dataField fieldName="curvalue1" columns="10" aggregate="Sum" />
+        <dataField fieldName="curprice" columns="5" aggregate="Sum"  />
+        <dataField fieldName="Tr_Db" columns="15" aggregate="Sum"  hidden="true"/>
+        <dataField fieldName="Tr_Dsc1" columns="10"   />
+		<dataField fieldName="Tr_Cr" columns="15" aggregate="Sum" />
+        <dataField fieldName="Dc_No" columns="15" hidden="true"  />
+        <dataField fieldName="Clsacc_No" columns="20" hidden="true"  />
+        <dataField fieldName="Costcntr_No" columns="20"  hidden="true"/>
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review G Ljrnvchslpr">
+     
+      <categories>
+        <category id="c1" headerText="G Ljrnvchslpr" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Tr_No" aliasFieldName="Tr_Pur_Wys" hyperlinkFormatString="~/Pages/StLcHdr.aspx?Doc_No={Tr_No}&amp;_controller=StLcHdr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="Acc_No" aliasFieldName="Acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={Acc_No}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Tr_Db" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tr_Cr" dataFormatString="c" columns="15" />
+            <dataField fieldName="Dc_No" />
+            <dataField fieldName="Clsacc_No" columns="15" />
+            <dataField fieldName="Costcntr_No" columns="15" />
+            <dataField fieldName="Tr_Dsc1" />
+            <dataField fieldName="docrelno" columns="15" />
+            <dataField fieldName="docreltyp" columns="15" />
+            <dataField fieldName="curno" columns="15" />
+            <dataField fieldName="curprice" dataFormatString="c" columns="15" />
+            <dataField fieldName="curvalue" dataFormatString="c" columns="15" />
+            <dataField fieldName="curvalue1" dataFormatString="c" columns="15" />
+            <dataField fieldName="cstyp_NO" aliasFieldName="cstyp_SubledgerDescrption" hyperlinkFormatString="~/Pages/GLSubledgertyplist.aspx?Subledgerid={cstyp_NO}&amp;_controller=GLSubledgertyplist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="CSMSUP_NO" columns="15" />
+            <dataField fieldName="CSMSUP_NM" />
+            <dataField fieldName="trs_dt1" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Tr_brn_Brn_Nm" />
+            <dataField fieldName="Tr_brn_BranchDesc1" columns="50" />
+            <dataField fieldName="Tr_Pym_PaymentTypeName" />
+            <dataField fieldName="Tr_Curncy_Curncy_Nm" />
+            <dataField fieldName="Tr_Sup_Sup_Nm" />
+            <dataField fieldName="Tr_Sup_Acc_Acc_Nm" />
+            <dataField fieldName="Tr_Sup_sgmsgm_Nm" />
+            <dataField fieldName="Tr_Sup_Cntry_Cntry_Nm" />
+            <dataField fieldName="Tr_Sup_Curncy_Curncy_Nm" />
+            <dataField fieldName="Acc_Clsacc_Acc_Nm" />
+            <dataField fieldName="Acc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="Acc_Acc_Bndaccclassaccountclass" />
+            <dataField fieldName="Acc_Acc_BndAcc_BabAcc_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New G Ljrnvchslpr">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New G Ljrnvchslpr" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Tr_No" aliasFieldName="Tr_Pur_Wys" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="Acc_No" aliasFieldName="Acc_Acc_Nm" />
+            <dataField fieldName="Tr_Db" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tr_Cr" dataFormatString="c" columns="15" />
+            <dataField fieldName="Dc_No" />
+            <dataField fieldName="Clsacc_No" columns="15" />
+            <dataField fieldName="Costcntr_No" columns="15" />
+            <dataField fieldName="Tr_Dsc1" />
+            <dataField fieldName="docrelno" columns="15" />
+            <dataField fieldName="docreltyp" columns="15" />
+            <dataField fieldName="curno" columns="15" />
+            <dataField fieldName="curprice" dataFormatString="c" columns="15" />
+            <dataField fieldName="curvalue" dataFormatString="c" columns="15" />
+            <dataField fieldName="curvalue1" dataFormatString="c" columns="15" />
+            <dataField fieldName="cstyp_NO" aliasFieldName="cstyp_SubledgerDescrption" />
+            <dataField fieldName="CSMSUP_NO" columns="15" />
+            <dataField fieldName="CSMSUP_NM" />
+            <dataField fieldName="trs_dt1" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New"  cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+<rule id="r107j" type="Sql" commandName="Insert|Update" phase="Before" ><![CDATA[
+ if @curprice is null
+ begin
+ set @curprice=1
+ end
+ if @curvalue1 is null
+ begin
+ set @curvalue1=0
+ end
+ if @curvalue is null
+ begin
+ set @curvalue=0
+ end
+ Set @Tr_Cr=Round(@curvalue1*@curprice,3)
+ Set @Tr_Db=Round(@curvalue*@curprice,3)
+]]></rule>
+
+ </businessRules>
+</dataController>

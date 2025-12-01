@@ -1,0 +1,33 @@
+﻿<div class="doc-banner">
+  <span class="crumbs">flows â€؛ h-to-l-modern-sequence</span>
+  <a class="source" href="h-to-l-modern-sequence.md.txt" target="_blank" rel="noopener">View source (.md)</a>
+</div>
+<div class="doc-body">
+<h1>Modern Sequence (Hâ†’L)</h1>
+<pre><code>
+sequenceDiagram
+  autonumber
+  participant UI as Frontend (React/Blazor)
+  participant API as ASP.NET Core API
+  participant SVC as Service Layer
+  participant DB as EF Core / DB
+
+  UI-&gt;&gt;API: GET /api/{controller}?pageIndex=..&amp;pageSize=..
+  API-&gt;&gt;SVC: Build PageRequestDto, validate
+  SVC-&gt;&gt;DB: Query via DbContext (AsNoTracking, filters)
+  DB--&gt;&gt;SVC: Page of data (entities)
+  SVC--&gt;&gt;API: ViewPageDto
+  API--&gt;&gt;UI: 200 OK (application/json)
+
+  UI-&gt;&gt;API: POST /api/{controller}/actions/{action}
+  API-&gt;&gt;SVC: Validate ActionArgsDto
+  SVC-&gt;&gt;DB: Transactional update
+  DB--&gt;&gt;SVC: ActionResult
+  SVC--&gt;&gt;API: ActionResultDto / ProblemDetails
+  API--&gt;&gt;UI: 200/4xx
+</code></pre>
+<ul>
+<li>DataControllerService (legacy): ../TestPages/Documents/docs-html/files/App_Code_Services_DataControllerService.vb.html</li>
+<li>Main.master: ../TestPages/Documents/docs-html/files/Main.master.html#function-Page_Load</li>
+
+</div>

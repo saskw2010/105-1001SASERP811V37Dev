@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Tbl_TMP_3" conflictDetection="overwriteChanges" label="Tbl TMP 3" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Tbl_TMP_3"."Serial_Index" "Serial_Index"
+	,"Tbl_TMP_3"."S_Inv" "S_Inv"
+	,"Tbl_TMP_3"."P_Inv" "P_Inv"
+	,"Tbl_TMP_3"."Supplier_Name" "Supplier_Name"
+	,"Tbl_TMP_3"."Description" "Description"
+	,"Tbl_TMP_3"."Date" "Date"
+	,"Tbl_TMP_3"."Date_R" "Date_R"
+	,"Tbl_TMP_3"."Rainbow_no" "Rainbow_no"
+	,"Tbl_TMP_3"."Item_Code" "Item_Code"
+	,"Tbl_TMP_3"."Arab_Desc" "Arab_Desc"
+	,"Tbl_TMP_3"."Ini_Qty" "Ini_Qty"
+	,"Tbl_TMP_3"."QTY" "QTY"
+	,"Tbl_TMP_3"."QTY_R" "QTY_R"
+	,"Tbl_TMP_3"."Cost_Price" "Cost_Price"
+	,"Tbl_TMP_3"."Sale_Price" "Sale_Price"
+	,"Tbl_TMP_3"."Flag" "Flag"
+	,"Tbl_TMP_3"."Grand_Total" "Grand_Total"
+from "dbo"."Tbl_TMP_3" "Tbl_TMP_3"
+]]></text>
+    </command>
+    <command id="Serial_IndexIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Serial_Index" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Serial_Index" type="Int32" allowNulls="false" isPrimaryKey="true" label="Serial Index" readOnly="true" />
+    <field name="S_Inv" type="Double" default="((0))" label="S Inv" showInSummary="true" />
+    <field name="P_Inv" type="String" label="P Inv" length="20" showInSummary="true" />
+    <field name="Supplier_Name" type="String" label="Supplier Name" length="50" showInSummary="true" />
+    <field name="Description" type="String" label="Description" length="50" showInSummary="true" />
+    <field name="Date" type="DateTime" label="Date" showInSummary="true" />
+    <field name="Date_R" type="DateTime" label="Date R" />
+    <field name="Rainbow_no" type="Double" default="((0))" label="Rainbow no" />
+    <field name="Item_Code" type="String" label="Item Code" length="50" />
+    <field name="Arab_Desc" type="String" label="Arab Desc" length="50" />
+    <field name="Ini_Qty" type="Double" default="((0))" label="Ini Qty" />
+    <field name="QTY" type="Double" default="((0))" label="Qty" />
+    <field name="QTY_R" type="Double" default="((0))" label="Qty R" />
+    <field name="Cost_Price" type="Decimal" default="((0))" label="Cost Price" />
+    <field name="Sale_Price" type="Decimal" default="((0))" label="Sale Price" />
+    <field name="Flag" type="Boolean" allowNulls="false" label="Flag" />
+    <field name="Grand_Total" type="Double" default="((0))" label="Grand Total" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Tbl TMP 3">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Flag" />
+        <dataField fieldName="S_Inv" columns="15" />
+        <dataField fieldName="P_Inv" columns="20" />
+        <dataField fieldName="Supplier_Name" columns="50" />
+        <dataField fieldName="Description" columns="50" />
+        <dataField fieldName="Date" columns="10" />
+        <dataField fieldName="Date_R" columns="10" />
+        <dataField fieldName="Rainbow_no" columns="15" />
+        <dataField fieldName="Item_Code" columns="50" />
+        <dataField fieldName="Arab_Desc" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Tbl TMP 3">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Tbl TMP 3" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="S_Inv" columns="15" />
+            <dataField fieldName="P_Inv" columns="20" />
+            <dataField fieldName="Supplier_Name" columns="50" />
+            <dataField fieldName="Description" columns="50" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="Date_R" columns="10" />
+            <dataField fieldName="Rainbow_no" columns="15" />
+            <dataField fieldName="Item_Code" columns="50" />
+            <dataField fieldName="Arab_Desc" columns="50" />
+            <dataField fieldName="Ini_Qty" columns="15" />
+            <dataField fieldName="QTY" columns="15" />
+            <dataField fieldName="QTY_R" columns="15" />
+            <dataField fieldName="Cost_Price" columns="15" />
+            <dataField fieldName="Sale_Price" columns="15" />
+            <dataField fieldName="Flag" />
+            <dataField fieldName="Grand_Total" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Tbl TMP 3">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Tbl TMP 3" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="S_Inv" columns="15" />
+            <dataField fieldName="P_Inv" columns="20" />
+            <dataField fieldName="Supplier_Name" columns="50" />
+            <dataField fieldName="Description" columns="50" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="Date_R" columns="10" />
+            <dataField fieldName="Rainbow_no" columns="15" />
+            <dataField fieldName="Item_Code" columns="50" />
+            <dataField fieldName="Arab_Desc" columns="50" />
+            <dataField fieldName="Ini_Qty" columns="15" />
+            <dataField fieldName="QTY" columns="15" />
+            <dataField fieldName="QTY_R" columns="15" />
+            <dataField fieldName="Cost_Price" columns="15" />
+            <dataField fieldName="Sale_Price" columns="15" />
+            <dataField fieldName="Flag" />
+            <dataField fieldName="Grand_Total" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a8" commandName="New" commandArgument="grid1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

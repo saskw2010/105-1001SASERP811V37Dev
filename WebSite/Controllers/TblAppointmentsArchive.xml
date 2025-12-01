@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="TblAppointmentsArchive" conflictDetection="overwriteChanges" label="Tbl Appointments Archive" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"TblAppointmentsArchive"."Archivid" "Archivid"
+	,"TblAppointmentsArchive"."IDATUTO" "IDATUTO"
+	,"TheIDATUTO"."Time" "TheIDATUTOTime"
+	,"TheIDATUTOCallDep"."CallDepDesc" "TheIDATUTOCallDepCallDepDesc"
+	,"TheIDATUTORef_Kind"."Ref_Kind" "TheIDATUTORef_KindRef_Kind"
+	,"TheIDATUTObranch"."Desc1" "TheIDATUTObranchDesc1"
+	,"TheIDATUTODay"."اليوم" "TheIDATUTODayاليوم"
+	,"TheIDATUTODealer"."Dealer_name" "TheIDATUTODealerDealer_name"
+	,"TheIDATUTODealerMD"."MD_Name" "TheIDATUTODealerMDMD_Name"
+	,"TheIDATUTOMD"."MD_Name" "TheIDATUTOMDMD_Name"
+	,"TheIDATUTORegion"."Region" "TheIDATUTORegionRegion"
+	,"TheIDATUTOResult"."ResultDesc" "TheIDATUTOResultResultDesc"
+	,"TheIDATUTOResultRef_Kind"."Ref_Kind" "TheIDATUTOResultRef_KindRef_Kind"
+	,"TheIDATUTOResultcalss"."calssResultClass" "TheIDATUTOResultcalsscalssResultClass"
+	,"TheIDATUTOTele_Mark_Sec"."Tele_Mark_Sec" "TheIDATUTOTele_Mark_SecTele_Mark_Sec"
+	,"TheIDATUTOTele_Mark_SecCallDep"."CallDepDesc" "TheIDATUTOTele_Mark_SecCallDepCallDepDesc"
+	,"TheIDATUTOTime"."timedesc" "TheIDATUTOTimetimedesc"
+	,"TblAppointmentsArchive"."HomePhone" "HomePhone"
+	,"TblAppointmentsArchive"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"TblAppointmentsArchive"."CallDepid" "CallDepid"
+	,"CallDep"."CallDepDesc" "CallDepCallDepDesc"
+	,"TblAppointmentsArchive"."MobilePhone" "MobilePhone"
+	,"TblAppointmentsArchive"."Date" "Date"
+	,"TblAppointmentsArchive"."DayID" "DayID"
+	,"Day"."اليوم" "Dayاليوم"
+	,"TblAppointmentsArchive"."Time" "Time"
+	,"Time"."timedesc" "Timetimedesc"
+	,"TblAppointmentsArchive"."MDID" "MDID"
+	,"MD"."MD_Name" "MDMD_Name"
+	,"TblAppointmentsArchive"."Customer_Name" "Customer_Name"
+	,"TblAppointmentsArchive"."Ref_Name" "Ref_Name"
+	,"TblAppointmentsArchive"."Ref_KindID" "Ref_KindID"
+	,"Ref_Kind"."Ref_Kind" "Ref_KindRef_Kind"
+	,"TblAppointmentsArchive"."Ref_Phone" "Ref_Phone"
+	,"TblAppointmentsArchive"."RegionID" "RegionID"
+	,"Region"."Region" "RegionRegion"
+	,"TblAppointmentsArchive"."Full_DetailsAddress" "Full_DetailsAddress"
+	,"TblAppointmentsArchive"."Fixed_Date" "Fixed_Date"
+	,"TblAppointmentsArchive"."Tele_Mark_SecID" "Tele_Mark_SecID"
+	,"Tele_Mark_Sec"."Tele_Mark_Sec" "Tele_Mark_SecTele_Mark_Sec"
+	,"Tele_Mark_SecCallDep"."CallDepDesc" "Tele_Mark_SecCallDepCallDepDesc"
+	,"TblAppointmentsArchive"."Customer_onCall" "Customer_onCall"
+	,"TblAppointmentsArchive"."ResultID" "ResultID"
+	,"Result"."ResultDesc" "ResultResultDesc"
+	,"ResultRef_Kind"."Ref_Kind" "ResultRef_KindRef_Kind"
+	,"Resultcalss"."calssResultClass" "ResultcalsscalssResultClass"
+	,"TblAppointmentsArchive"."DealerID" "DealerID"
+	,"Dealer"."Dealer_name" "DealerDealer_name"
+	,"DealerMD"."MD_Name" "DealerMDMD_Name"
+	,"TblAppointmentsArchive"."Names_No" "Names_No"
+	,"TblAppointmentsArchive"."enter_usre" "enter_usre"
+	,"TblAppointmentsArchive"."old_Names" "old_Names"
+	,"TblAppointmentsArchive"."Postponement_Cause" "Postponement_Cause"
+	,"TblAppointmentsArchive"."Dealer_Remarks" "Dealer_Remarks"
+	,"TblAppointmentsArchive"."ModifiedBy" "ModifiedBy"
+	,"TblAppointmentsArchive"."ModifiedOn" "ModifiedOn"
+	,"TblAppointmentsArchive"."CreatedBy" "CreatedBy"
+	,"TblAppointmentsArchive"."CreatedOn" "CreatedOn"
+from "dbo"."TblAppointmentsArchive" "TblAppointmentsArchive"
+	left join "dbo"."TblAppointments" "TheIDATUTO" on "TblAppointmentsArchive"."IDATUTO" = "TheIDATUTO"."IDATUTO"
+	left join "dbo"."CallDeplist" "TheIDATUTOCallDep" on "TheIDATUTO"."CallDepid" = "TheIDATUTOCallDep"."CallDepid"
+	left join "dbo"."Ref_Kindlist" "TheIDATUTORef_Kind" on "TheIDATUTO"."Ref_KindID" = "TheIDATUTORef_Kind"."Ref_KindID"
+	left join "dbo"."schBranch" "TheIDATUTObranch" on "TheIDATUTO"."branch" = "TheIDATUTObranch"."branch"
+	left join "dbo"."Tbl_Day" "TheIDATUTODay" on "TheIDATUTO"."DayID" = "TheIDATUTODay"."DayID"
+	left join "dbo"."Tbl_Dealers" "TheIDATUTODealer" on "TheIDATUTO"."DealerID" = "TheIDATUTODealer"."DealerID"
+	left join "dbo"."Tbl_MD" "TheIDATUTODealerMD" on "TheIDATUTODealer"."MDID" = "TheIDATUTODealerMD"."MDID"
+	left join "dbo"."Tbl_MD" "TheIDATUTOMD" on "TheIDATUTO"."MDID" = "TheIDATUTOMD"."MDID"
+	left join "dbo"."Tbl_Regions" "TheIDATUTORegion" on "TheIDATUTO"."RegionID" = "TheIDATUTORegion"."RegionID"
+	left join "dbo"."Tbl_Results" "TheIDATUTOResult" on "TheIDATUTO"."ResultID" = "TheIDATUTOResult"."ResultID"
+	left join "dbo"."Ref_Kindlist" "TheIDATUTOResultRef_Kind" on "TheIDATUTOResult"."Ref_KindID" = "TheIDATUTOResultRef_Kind"."Ref_KindID"
+	left join "dbo"."Tbl_ResultsClassfication" "TheIDATUTOResultcalss" on "TheIDATUTOResult"."calssid" = "TheIDATUTOResultcalss"."calssid"
+	left join "dbo"."Tbl_Tele_Mark_Sec" "TheIDATUTOTele_Mark_Sec" on "TheIDATUTO"."Tele_Mark_SecID" = "TheIDATUTOTele_Mark_Sec"."Tele_Mark_SecID"
+	left join "dbo"."CallDeplist" "TheIDATUTOTele_Mark_SecCallDep" on "TheIDATUTOTele_Mark_Sec"."CallDepid" = "TheIDATUTOTele_Mark_SecCallDep"."CallDepid"
+	left join "dbo"."Tbl_Time" "TheIDATUTOTime" on "TheIDATUTO"."Time" = "TheIDATUTOTime"."الوقت"
+	left join "dbo"."schBranch" "Thebranch" on "TblAppointmentsArchive"."branch" = "Thebranch"."branch"
+	left join "dbo"."CallDeplist" "CallDep" on "TblAppointmentsArchive"."CallDepid" = "CallDep"."CallDepid"
+	left join "dbo"."Tbl_Day" "Day" on "TblAppointmentsArchive"."DayID" = "Day"."DayID"
+	left join "dbo"."Tbl_Time" "Time" on "TblAppointmentsArchive"."Time" = "Time"."الوقت"
+	left join "dbo"."Tbl_MD" "MD" on "TblAppointmentsArchive"."MDID" = "MD"."MDID"
+	left join "dbo"."Ref_Kindlist" "Ref_Kind" on "TblAppointmentsArchive"."Ref_KindID" = "Ref_Kind"."Ref_KindID"
+	left join "dbo"."Tbl_Regions" "Region" on "TblAppointmentsArchive"."RegionID" = "Region"."RegionID"
+	left join "dbo"."Tbl_Tele_Mark_Sec" "Tele_Mark_Sec" on "TblAppointmentsArchive"."Tele_Mark_SecID" = "Tele_Mark_Sec"."Tele_Mark_SecID"
+	left join "dbo"."CallDeplist" "Tele_Mark_SecCallDep" on "Tele_Mark_Sec"."CallDepid" = "Tele_Mark_SecCallDep"."CallDepid"
+	left join "dbo"."Tbl_Results" "Result" on "TblAppointmentsArchive"."ResultID" = "Result"."ResultID"
+	left join "dbo"."Ref_Kindlist" "ResultRef_Kind" on "Result"."Ref_KindID" = "ResultRef_Kind"."Ref_KindID"
+	left join "dbo"."Tbl_ResultsClassfication" "Resultcalss" on "Result"."calssid" = "Resultcalss"."calssid"
+	left join "dbo"."Tbl_Dealers" "Dealer" on "TblAppointmentsArchive"."DealerID" = "Dealer"."DealerID"
+	left join "dbo"."Tbl_MD" "DealerMD" on "Dealer"."MDID" = "DealerMD"."MDID"
+]]></text>
+    </command>
+    <command id="ArchividIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Archivid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Archivid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Archivid" readOnly="true" />
+    <field name="IDATUTO" type="Int64" allowNulls="false" label="Idatuto" showInSummary="true">
+      <items style="DropDownList" dataController="TblAppointments" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheIDATUTOTime" type="String" readOnly="true" label="IDATUTO Time" length="50">
+      <items style="Lookup" dataController="Tbl_Time" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheIDATUTOCallDepCallDepDesc" type="String" readOnly="true" label="IDATUTO Call Dep Desc" length="50" />
+    <field name="TheIDATUTORef_KindRef_Kind" type="String" readOnly="true" label="IDATUTO Ref Kind" length="10" />
+    <field name="TheIDATUTObranchDesc1" type="String" readOnly="true" label="IDATUT Obranch Desc1" length="50" />
+    <field name="TheIDATUTODayاليوم" type="String" readOnly="true" label="IDATUTO Day" length="50" />
+    <field name="TheIDATUTODealerDealer_name" type="String" readOnly="true" label="IDATUTO Dealer name" length="50" />
+    <field name="TheIDATUTODealerMDMD_Name" type="String" readOnly="true" label="IDATUTO Dealer MDMD Name" length="50" />
+    <field name="TheIDATUTOMDMD_Name" type="String" readOnly="true" label="IDATUTOMDMD Name" length="50" />
+    <field name="TheIDATUTORegionRegion" type="String" readOnly="true" label="IDATUTO Region" length="50" />
+    <field name="TheIDATUTOResultResultDesc" type="String" readOnly="true" label="IDATUTO Result Desc" length="50" />
+    <field name="TheIDATUTOResultRef_KindRef_Kind" type="String" readOnly="true" label="IDATUTO Result Ref Kind" length="10" />
+    <field name="TheIDATUTOResultcalsscalssResultClass" type="String" readOnly="true" label="IDATUTO Resultcalsscalss Result Class" length="50" />
+    <field name="TheIDATUTOTele_Mark_SecTele_Mark_Sec" type="String" readOnly="true" label="IDATUTO Tele Mark Sec" length="50" />
+    <field name="TheIDATUTOTele_Mark_SecCallDepCallDepDesc" type="String" readOnly="true" label="IDATUTO Tele Mark Sec Call Dep Desc" length="50" />
+    <field name="TheIDATUTOTimetimedesc" type="String" readOnly="true" label="IDATUTO Timetimedesc" length="50" />
+    <field name="HomePhone" type="Int32" label="Home Phone" showInSummary="true" />
+    <field name="branch" type="Int64" label="Branch" showInSummary="true">
+      <items style="Lookup" dataController="schBranch" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ThebranchDesc1" type="String" readOnly="true" label="Thebranch Desc1" length="50" />
+    <field name="CallDepid" type="Int64" label="Call Depid" showInSummary="true">
+      <items style="Lookup" dataController="CallDeplist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="CallDepCallDepDesc" type="String" readOnly="true" label="Call Dep Desc" length="50" />
+    <field name="MobilePhone" type="Int32" label="Mobile Phone" showInSummary="true" />
+    <field name="Date" type="DateTime" label="Date" />
+    <field name="DayID" type="Int64" label="Day#">
+      <items style="Lookup" dataController="Tbl_Day" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Dayاليوم" type="String" readOnly="true" label="Day" length="50" />
+    <field name="Time" type="String" label="Time" length="50">
+      <items style="Lookup" dataController="Tbl_Time" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Timetimedesc" type="String" readOnly="true" label="Timetimedesc" length="50" />
+    <field name="MDID" type="Int64" label="Mdid">
+      <items style="Lookup" dataController="Tbl_MD" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="MDMD_Name" type="String" readOnly="true" label="MDMD Name" length="50" />
+    <field name="Customer_Name" type="String" label="Customer Name" length="50" />
+    <field name="Ref_Name" type="String" label="Ref Name" length="50" />
+    <field name="Ref_KindID" type="Int64" label="Ref Kind#">
+      <items style="Lookup" dataController="Ref_Kindlist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Ref_KindRef_Kind" type="String" readOnly="true" label="Ref Kind" length="10" />
+    <field name="Ref_Phone" type="String" label="Ref Phone" length="15" />
+    <field name="RegionID" type="Int64" label="Region#">
+      <items style="Lookup" dataController="Tbl_Regions" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="RegionRegion" type="String" readOnly="true" label="Region" length="50" />
+    <field name="Full_DetailsAddress" type="String" allowQBE="false" allowSorting="false" label="Full Details Address" />
+    <field name="Fixed_Date" type="DateTime" label="Fixed Date" />
+    <field name="Tele_Mark_SecID" type="Int64" label="Tele Mark Sec#">
+      <items style="Lookup" dataController="Tbl_Tele_Mark_Sec" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Tele_Mark_SecTele_Mark_Sec" type="String" readOnly="true" label="Tele Mark Sec" length="50" />
+    <field name="Tele_Mark_SecCallDepCallDepDesc" type="String" readOnly="true" label="Tele Mark Sec Call Dep Desc" length="50" />
+    <field name="Customer_onCall" type="String" label="Customer on Call" length="50" />
+    <field name="ResultID" type="Int64" label="Result#">
+      <items style="Lookup" dataController="Tbl_Results" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ResultResultDesc" type="String" readOnly="true" label="Result Desc" length="50" />
+    <field name="ResultRef_KindRef_Kind" type="String" readOnly="true" label="Result Ref Kind" length="10" />
+    <field name="ResultcalsscalssResultClass" type="String" readOnly="true" label="Resultcalsscalss Result Class" length="50" />
+    <field name="DealerID" type="Int64" label="Dealer#">
+      <items style="Lookup" dataController="Tbl_Dealers" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="DealerDealer_name" type="String" readOnly="true" label="Dealer name" length="50" />
+    <field name="DealerMDMD_Name" type="String" readOnly="true" label="Dealer MDMD Name" length="50" />
+    <field name="Names_No" type="Int32" label="Names No" />
+    <field name="enter_usre" type="String" label="Enter Usre" length="50" />
+    <field name="old_Names" type="Int32" label="old Names" />
+    <field name="Postponement_Cause" type="String" allowQBE="false" allowSorting="false" label="Postponement Cause" />
+    <field name="Dealer_Remarks" type="String" allowQBE="false" allowSorting="false" label="Dealer Remarks" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Tbl Appointments Archive">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IDATUTO" />
+        <dataField fieldName="HomePhone" columns="15" />
+        <dataField fieldName="MobilePhone" columns="15" />
+        <dataField fieldName="Customer_Name" columns="50" />
+        <dataField fieldName="Customer_onCall" columns="50" />
+        <dataField fieldName="Ref_Name" columns="50" />
+        <dataField fieldName="Ref_KindID" aliasFieldName="Ref_KindRef_Kind" hyperlinkFormatString="~/Pages/Ref_Kindlist.aspx?Ref_KindID={Ref_KindID}&amp;_controller=Ref_Kindlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="DealerID" aliasFieldName="DealerDealer_name" hyperlinkFormatString="~/Pages/Tbl_Dealers.aspx?DealerID={DealerID}&amp;_controller=Tbl_Dealers&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Date" columns="10" />
+        <dataField fieldName="Ref_Phone" columns="15" />
+        <dataField fieldName="RegionID" aliasFieldName="RegionRegion" hyperlinkFormatString="~/Pages/Tbl_Regions.aspx?RegionID={RegionID}&amp;_controller=Tbl_Regions&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Tele_Mark_SecID" aliasFieldName="Tele_Mark_SecTele_Mark_Sec" hyperlinkFormatString="~/Pages/Tbl_Tele_Mark_Sec.aspx?Tele_Mark_SecID={Tele_Mark_SecID}&amp;_controller=Tbl_Tele_Mark_Sec&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ResultID" aliasFieldName="ResultResultDesc" hyperlinkFormatString="~/Pages/Tbl_Results.aspx?ResultID={ResultID}&amp;_controller=Tbl_Results&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Names_No" columns="15" hidden="true" />
+        <dataField fieldName="CallDepid" aliasFieldName="CallDepCallDepDesc" hyperlinkFormatString="~/Pages/CallDeplist.aspx?CallDepid={CallDepid}&amp;_controller=CallDeplist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" hidden="true" />
+        <dataField fieldName="Fixed_Date" columns="10" hidden="true" />
+        <dataField fieldName="MDID" aliasFieldName="MDMD_Name" hyperlinkFormatString="~/Pages/Tbl_MD.aspx?MDID={MDID}&amp;_controller=Tbl_MD&amp;_commandName=Select&amp;_commandArgument=editForm1" hidden="true" />
+        <dataField fieldName="Time" aliasFieldName="Timetimedesc" hyperlinkFormatString="~/Pages/Tbl_Time.aspx?الوقت={Time}&amp;_controller=Tbl_Time&amp;_commandName=Select&amp;_commandArgument=editForm1" hidden="true" />
+        <dataField fieldName="ModifiedBy" columns="50" hidden="true" />
+        <dataField fieldName="ModifiedOn" columns="10" hidden="true" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Tbl Appointments Archive">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Tbl Appointments Archive" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDATUTO" aliasFieldName="TheIDATUTOTime" hyperlinkFormatString="~/Pages/TblAppointments.aspx?IDATUTO={IDATUTO}&amp;_controller=TblAppointments&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="HomePhone" columns="15" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="CallDepid" aliasFieldName="CallDepCallDepDesc" hyperlinkFormatString="~/Pages/CallDeplist.aspx?CallDepid={CallDepid}&amp;_controller=CallDeplist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="MobilePhone" columns="15" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="DayID" aliasFieldName="Dayاليوم" hyperlinkFormatString="~/Pages/Tbl_Day.aspx?DayID={DayID}&amp;_controller=Tbl_Day&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Time" aliasFieldName="Timetimedesc" hyperlinkFormatString="~/Pages/Tbl_Time.aspx?الوقت={Time}&amp;_controller=Tbl_Time&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="MDID" aliasFieldName="MDMD_Name" hyperlinkFormatString="~/Pages/Tbl_MD.aspx?MDID={MDID}&amp;_controller=Tbl_MD&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Customer_Name" columns="50" />
+            <dataField fieldName="Ref_Name" columns="50" />
+            <dataField fieldName="Ref_KindID" aliasFieldName="Ref_KindRef_Kind" hyperlinkFormatString="~/Pages/Ref_Kindlist.aspx?Ref_KindID={Ref_KindID}&amp;_controller=Ref_Kindlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Ref_Phone" columns="15" />
+            <dataField fieldName="RegionID" aliasFieldName="RegionRegion" hyperlinkFormatString="~/Pages/Tbl_Regions.aspx?RegionID={RegionID}&amp;_controller=Tbl_Regions&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Full_DetailsAddress" rows="5" />
+            <dataField fieldName="Fixed_Date" columns="10" />
+            <dataField fieldName="Tele_Mark_SecID" aliasFieldName="Tele_Mark_SecTele_Mark_Sec" hyperlinkFormatString="~/Pages/Tbl_Tele_Mark_Sec.aspx?Tele_Mark_SecID={Tele_Mark_SecID}&amp;_controller=Tbl_Tele_Mark_Sec&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Customer_onCall" columns="50" />
+            <dataField fieldName="ResultID" aliasFieldName="ResultResultDesc" hyperlinkFormatString="~/Pages/Tbl_Results.aspx?ResultID={ResultID}&amp;_controller=Tbl_Results&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="DealerID" aliasFieldName="DealerDealer_name" hyperlinkFormatString="~/Pages/Tbl_Dealers.aspx?DealerID={DealerID}&amp;_controller=Tbl_Dealers&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Names_No" columns="15" />
+            <dataField fieldName="enter_usre" columns="50" />
+            <dataField fieldName="old_Names" columns="15" />
+            <dataField fieldName="Postponement_Cause" rows="5" />
+            <dataField fieldName="Dealer_Remarks" rows="5" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="TheIDATUTOCallDepCallDepDesc" columns="50" />
+            <dataField fieldName="TheIDATUTORef_KindRef_Kind" columns="10" />
+            <dataField fieldName="TheIDATUTObranchDesc1" columns="50" />
+            <dataField fieldName="TheIDATUTODayاليوم" columns="50" />
+            <dataField fieldName="TheIDATUTODealerDealer_name" columns="50" />
+            <dataField fieldName="TheIDATUTODealerMDMD_Name" columns="50" />
+            <dataField fieldName="TheIDATUTOMDMD_Name" columns="50" />
+            <dataField fieldName="TheIDATUTORegionRegion" columns="50" />
+            <dataField fieldName="TheIDATUTOResultResultDesc" columns="50" />
+            <dataField fieldName="TheIDATUTOResultRef_KindRef_Kind" columns="10" />
+            <dataField fieldName="TheIDATUTOResultcalsscalssResultClass" columns="50" />
+            <dataField fieldName="TheIDATUTOTele_Mark_SecTele_Mark_Sec" columns="50" />
+            <dataField fieldName="TheIDATUTOTele_Mark_SecCallDepCallDepDesc" columns="50" />
+            <dataField fieldName="TheIDATUTOTimetimedesc" columns="50" />
+            <dataField fieldName="Tele_Mark_SecCallDepCallDepDesc" columns="50" />
+            <dataField fieldName="ResultRef_KindRef_Kind" columns="10" />
+            <dataField fieldName="ResultcalsscalssResultClass" columns="50" />
+            <dataField fieldName="DealerMDMD_Name" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Tbl Appointments Archive">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Tbl Appointments Archive" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDATUTO" aliasFieldName="TheIDATUTOTime" />
+            <dataField fieldName="HomePhone" columns="15" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />
+            <dataField fieldName="CallDepid" aliasFieldName="CallDepCallDepDesc" />
+            <dataField fieldName="MobilePhone" columns="15" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="DayID" aliasFieldName="Dayاليوم" />
+            <dataField fieldName="Time" aliasFieldName="Timetimedesc" />
+            <dataField fieldName="MDID" aliasFieldName="MDMD_Name" />
+            <dataField fieldName="Customer_Name" columns="50" />
+            <dataField fieldName="Ref_Name" columns="50" />
+            <dataField fieldName="Ref_KindID" aliasFieldName="Ref_KindRef_Kind" />
+            <dataField fieldName="Ref_Phone" columns="15" />
+            <dataField fieldName="RegionID" aliasFieldName="RegionRegion" />
+            <dataField fieldName="Full_DetailsAddress" rows="5" />
+            <dataField fieldName="Fixed_Date" columns="10" />
+            <dataField fieldName="Tele_Mark_SecID" aliasFieldName="Tele_Mark_SecTele_Mark_Sec" />
+            <dataField fieldName="Customer_onCall" columns="50" />
+            <dataField fieldName="ResultID" aliasFieldName="ResultResultDesc" />
+            <dataField fieldName="DealerID" aliasFieldName="DealerDealer_name" />
+            <dataField fieldName="Names_No" columns="15" />
+            <dataField fieldName="enter_usre" columns="50" />
+            <dataField fieldName="old_Names" columns="15" />
+            <dataField fieldName="Postponement_Cause" rows="5" />
+            <dataField fieldName="Dealer_Remarks" rows="5" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="grid2" commandId="command1" type="Grid" label="grid2">
+      <dataFields>
+        <dataField fieldName="HomePhone" columns="15" />
+        <dataField fieldName="MobilePhone" columns="15" />
+        <dataField fieldName="CallDepid" aliasFieldName="CallDepCallDepDesc" hyperlinkFormatString="~/Pages/CallDeplist.aspx?CallDepid={CallDepid}&amp;_controller=CallDeplist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Tele_Mark_SecID" aliasFieldName="Tele_Mark_SecTele_Mark_Sec" hyperlinkFormatString="~/Pages/Tbl_Tele_Mark_Sec.aspx?Tele_Mark_SecID={Tele_Mark_SecID}&amp;_controller=Tbl_Tele_Mark_Sec&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Date" columns="10" />
+        <dataField fieldName="Customer_Name" columns="50" />
+        <dataField fieldName="ResultID" aliasFieldName="ResultResultDesc" hyperlinkFormatString="~/Pages/Tbl_Results.aspx?ResultID={ResultID}&amp;_controller=Tbl_Results&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Ref_Name" columns="50" />
+        <dataField fieldName="Ref_KindID" aliasFieldName="Ref_KindRef_Kind" hyperlinkFormatString="~/Pages/Ref_Kindlist.aspx?Ref_KindID={Ref_KindID}&amp;_controller=Ref_Kindlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Customer_onCall" columns="50" />
+        <dataField fieldName="DealerID" aliasFieldName="DealerDealer_name" hyperlinkFormatString="~/Pages/Tbl_Dealers.aspx?DealerID={DealerID}&amp;_controller=Tbl_Dealers&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+      </dataFields>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid" />
+    <actionGroup id="ag2" scope="Form" />
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true" />
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true" />
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions" />
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record" />
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report" />
+    <actionGroup id="ag8" scope="Row" />
+    <actionGroup id="ag9" scope="ActionColumn" />
+  </actions>
+</dataController>

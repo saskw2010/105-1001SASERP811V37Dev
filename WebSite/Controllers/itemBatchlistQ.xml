@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="itemBatchlistQ" conflictDetection="overwriteChanges" label="item Batchlist Q" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"itemBatchlistQ"."ID_comp" "ID_comp"
+	,"itemBatchlistQ"."ITEM" "ITEM"
+	,"itemBatchlistQ"."ITEME" "ITEME"
+	,"itemBatchlistQ"."ID_USERM" "ID_USERM"
+	,"itemBatchlistQ"."IDN" "IDN"
+	,"itemBatchlistQ"."ID_USERN" "ID_USERN"
+	,"itemBatchlistQ"."ITM_NM" "ITM_NM"
+	,"itemBatchlistQ"."unit_no" "unit_no"
+	,"itemBatchlistQ"."quntit" "quntit"
+	,"itemBatchlistQ"."quntitb4" "quntitb4"
+	,"itemBatchlistQ"."opnblnc" "opnblnc"
+	,"itemBatchlistQ"."talbhad" "talbhad"
+	,"itemBatchlistQ"."sarfhad" "sarfhad"
+	,"itemBatchlistQ"."Barcodu" "Barcodu"
+	,"itemBatchlistQ"."Factor" "Factor"
+	,"itemBatchlistQ"."Unit_Nm" "Unit_Nm"
+	,"itemBatchlistQ"."IDGROUP" "IDGROUP"
+	,"itemBatchlistQ"."ID_USER" "ID_USER"
+	,"itemBatchlistQ"."unitPrice" "unitPrice"
+	,"itemBatchlistQ"."itm_Cost" "itm_Cost"
+	,"itemBatchlistQ"."Sup_No" "Sup_No"
+	,"itemBatchlistQ"."notesdtl" "notesdtl"
+	,"itemBatchlistQ"."Batchid" "Batchid"
+	,"itemBatchlistQ"."Expiredate" "Expiredate"
+	,"itemBatchlistQ"."waranteydate" "waranteydate"
+	,"itemBatchlistQ"."Barcodubatch" "Barcodubatch"
+	,"itemBatchlistQ"."Barcodu1batch" "Barcodu1batch"
+from "dbo"."itemBatchlistQ" "itemBatchlistQ"
+]]></text>
+    </command>
+    <command id="ID_compIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID_comp" />
+      </output>
+    </command>
+    <command id="ID_USERNIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID_USERN" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ID_comp" type="Int64" label="ID comp" readOnly="true" showInSummary="true" />
+    <field name="ITEM" type="String" label="Item" length="255" showInSummary="true" />
+    <field name="ITEME" type="String" label="Iteme" length="255" showInSummary="true" />
+    <field name="ID_USERM" type="String" label="Id Userm" length="50" showInSummary="true" />
+    <field name="IDN" type="Single" allowNulls="false" label="Idn" readOnly="true" showInSummary="true" />
+    <field name="ID_USERN" type="Single" allowNulls="false" label="Id Usern" readOnly="true" />
+    <field name="ITM_NM" type="String" label="Itm Nm" length="255" />
+    <field name="unit_no" type="Int64" allowNulls="false" label="Unit No" readOnly="true" />
+    <field name="quntit" type="Single" label="Quntit" />
+    <field name="quntitb4" type="Single" label="Quntitb4" />
+    <field name="opnblnc" type="Single" label="Opnblnc" />
+    <field name="talbhad" type="Single" label="Talbhad" />
+    <field name="sarfhad" type="Single" label="Sarfhad" />
+    <field name="Barcodu" type="String" label="Barcodu" length="50" />
+    <field name="Factor" type="Single" label="Factor" />
+    <field name="Unit_Nm" type="String" label="Unit Nm" length="255" />
+    <field name="IDGROUP" type="Int64" label="Idgroup" />
+    <field name="ID_USER" type="String" label="Id User" length="50" />
+    <field name="unitPrice" type="Single" label="unit Price" />
+    <field name="itm_Cost" type="Single" label="itm Cost" />
+    <field name="Sup_No" type="Int64" label="Sup No" />
+    <field name="notesdtl" type="String" label="Notesdtl" length="50" />
+    <field name="Batchid" type="Int64" label="Batchid" />
+    <field name="Expiredate" type="DateTime" label="Expiredate" />
+    <field name="waranteydate" type="DateTime" label="Waranteydate" />
+    <field name="Barcodubatch" type="String" label="Barcodubatch" length="50" />
+    <field name="Barcodu1batch" type="String" label="Barcodu1batch" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="item Batchlist Q">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IDN" columns="15" />
+        <dataField fieldName="ID_comp" columns="15" />
+        <dataField fieldName="ITEM" />
+        <dataField fieldName="ITEME" />
+        <dataField fieldName="ID_USERM" columns="50" />
+        <dataField fieldName="ID_USERN" columns="15" />
+        <dataField fieldName="ITM_NM" />
+        <dataField fieldName="unit_no" columns="15" />
+        <dataField fieldName="quntit" columns="15" />
+        <dataField fieldName="quntitb4" columns="15" />
+        <dataField fieldName="opnblnc" columns="15" />
+        <dataField fieldName="talbhad" columns="15" />
+        <dataField fieldName="sarfhad" columns="15" />
+        <dataField fieldName="Barcodu" columns="50" />
+        <dataField fieldName="Factor" columns="15" />
+        <dataField fieldName="Unit_Nm" />
+        <dataField fieldName="IDGROUP" columns="15" />
+        <dataField fieldName="ID_USER" columns="50" />
+        <dataField fieldName="unitPrice" columns="15" />
+        <dataField fieldName="itm_Cost" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review item Batchlist Q">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="item Batchlist Q" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ID_comp" columns="15" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="ITEME" />
+            <dataField fieldName="ID_USERM" columns="50" />
+            <dataField fieldName="IDN" columns="15" />
+            <dataField fieldName="ID_USERN" columns="15" />
+            <dataField fieldName="ITM_NM" />
+            <dataField fieldName="unit_no" columns="15" />
+            <dataField fieldName="quntit" columns="15" />
+            <dataField fieldName="quntitb4" columns="15" />
+            <dataField fieldName="opnblnc" columns="15" />
+            <dataField fieldName="talbhad" columns="15" />
+            <dataField fieldName="sarfhad" columns="15" />
+            <dataField fieldName="Barcodu" columns="50" />
+            <dataField fieldName="Factor" columns="15" />
+            <dataField fieldName="Unit_Nm" />
+            <dataField fieldName="IDGROUP" columns="15" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="unitPrice" columns="15" />
+            <dataField fieldName="itm_Cost" columns="15" />
+            <dataField fieldName="Sup_No" columns="15" />
+            <dataField fieldName="notesdtl" columns="50" />
+            <dataField fieldName="Batchid" columns="15" />
+            <dataField fieldName="Expiredate" columns="10" />
+            <dataField fieldName="waranteydate" columns="10" />
+            <dataField fieldName="Barcodubatch" columns="50" />
+            <dataField fieldName="Barcodu1batch" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New item Batchlist Q">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New item Batchlist Q" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="ITEME" />
+            <dataField fieldName="ID_USERM" columns="50" />
+            <dataField fieldName="ITM_NM" />
+            <dataField fieldName="quntit" columns="15" />
+            <dataField fieldName="quntitb4" columns="15" />
+            <dataField fieldName="opnblnc" columns="15" />
+            <dataField fieldName="talbhad" columns="15" />
+            <dataField fieldName="sarfhad" columns="15" />
+            <dataField fieldName="Barcodu" columns="50" />
+            <dataField fieldName="Factor" columns="15" />
+            <dataField fieldName="Unit_Nm" />
+            <dataField fieldName="IDGROUP" columns="15" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="unitPrice" columns="15" />
+            <dataField fieldName="itm_Cost" columns="15" />
+            <dataField fieldName="Sup_No" columns="15" />
+            <dataField fieldName="notesdtl" columns="50" />
+            <dataField fieldName="Batchid" columns="15" />
+            <dataField fieldName="Expiredate" columns="10" />
+            <dataField fieldName="waranteydate" columns="10" />
+            <dataField fieldName="Barcodubatch" columns="50" />
+            <dataField fieldName="Barcodu1batch" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="V_EmployeeAbsence" conflictDetection="overwriteChanges" label="V Employee Absence" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"V_EmployeeAbsence"."F_Serial" "F_Serial"
+	,"V_EmployeeAbsence"."F_EmpCode" "F_EmpCode"
+	,"V_EmployeeAbsence"."F_Date" "F_Date"
+	,"V_EmployeeAbsence"."F_HijriDate" "F_HijriDate"
+	,"V_EmployeeAbsence"."F_Period" "F_Period"
+	,"V_EmployeeAbsence"."F_MeritCode" "F_MeritCode"
+	,"V_EmployeeAbsence"."F_MeritType" "F_MeritType"
+	,"V_EmployeeAbsence"."F_VacationCode" "F_VacationCode"
+	,"V_EmployeeAbsence"."F_Note" "F_Note"
+	,"V_EmployeeAbsence"."F_DailyTransSerial" "F_DailyTransSerial"
+	,"V_EmployeeAbsence"."EmployeeName" "EmployeeName"
+	,"V_EmployeeAbsence"."BranchName" "BranchName"
+	,"V_EmployeeAbsence"."DeptName" "DeptName"
+	,"V_EmployeeAbsence"."ManageName" "ManageName"
+	,"V_EmployeeAbsence"."ManageCode" "ManageCode"
+	,"V_EmployeeAbsence"."DeptCode" "DeptCode"
+	,"V_EmployeeAbsence"."BranchCode" "BranchCode"
+	,"V_EmployeeAbsence"."EmpStatus" "EmpStatus"
+	,"V_EmployeeAbsence"."EnEmpName" "EnEmpName"
+	,"V_EmployeeAbsence"."ENManagement" "ENManagement"
+	,"V_EmployeeAbsence"."EnDept" "EnDept"
+from "dbo"."V_EmployeeAbsence" "V_EmployeeAbsence"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="F_Serial" type="Decimal" label="F Serial" showInSummary="true" />
+    <field name="F_EmpCode" type="String" label="F Emp Code" length="10" showInSummary="true" />
+    <field name="F_Date" type="DateTime" label="F Date" showInSummary="true" />
+    <field name="F_HijriDate" type="String" label="F Hijri Date" length="10" showInSummary="true" />
+    <field name="F_Period" type="Decimal" label="F Period" showInSummary="true" />
+    <field name="F_MeritCode" type="String" label="F Merit Code" length="10" />
+    <field name="F_MeritType" type="Decimal" label="F Merit Type" />
+    <field name="F_VacationCode" type="String" label="F Vacation Code" length="10" />
+    <field name="F_Note" type="String" label="F Note" length="150" />
+    <field name="F_DailyTransSerial" type="Decimal" label="F Daily Trans Serial" />
+    <field name="EmployeeName" type="String" label="Employee Name" length="50" />
+    <field name="BranchName" type="String" label="Branch Name" length="50" />
+    <field name="DeptName" type="String" label="Dept Name" length="50" />
+    <field name="ManageName" type="String" label="Manage Name" length="50" />
+    <field name="ManageCode" type="String" label="Manage Code" length="10" />
+    <field name="DeptCode" type="String" label="Dept Code" length="10" />
+    <field name="BranchCode" type="String" label="Branch Code" length="10" />
+    <field name="EmpStatus" type="Decimal" label="Emp Status" />
+    <field name="EnEmpName" type="String" label="En Emp Name" length="50" />
+    <field name="ENManagement" type="String" label="EN Management" length="50" />
+    <field name="EnDept" type="String" label="En Dept" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="V Employee Absence">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="F_Serial" columns="15" />
+        <dataField fieldName="F_EmpCode" columns="10" />
+        <dataField fieldName="F_Date" columns="10" />
+        <dataField fieldName="F_HijriDate" columns="10" />
+        <dataField fieldName="F_Period" columns="15" />
+        <dataField fieldName="F_MeritCode" columns="10" />
+        <dataField fieldName="F_MeritType" columns="15" />
+        <dataField fieldName="F_VacationCode" columns="10" />
+        <dataField fieldName="F_Note" />
+        <dataField fieldName="F_DailyTransSerial" columns="15" />
+        <dataField fieldName="EmployeeName" columns="50" />
+        <dataField fieldName="BranchName" columns="50" />
+        <dataField fieldName="DeptName" columns="50" />
+        <dataField fieldName="ManageName" columns="50" />
+        <dataField fieldName="ManageCode" columns="10" />
+        <dataField fieldName="DeptCode" columns="10" />
+        <dataField fieldName="BranchCode" columns="10" />
+        <dataField fieldName="EmpStatus" columns="15" />
+        <dataField fieldName="EnEmpName" columns="50" />
+        <dataField fieldName="ENManagement" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review V Employee Absence">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="V Employee Absence" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="F_Serial" columns="15" />
+            <dataField fieldName="F_EmpCode" columns="10" />
+            <dataField fieldName="F_Date" columns="10" />
+            <dataField fieldName="F_HijriDate" columns="10" />
+            <dataField fieldName="F_Period" columns="15" />
+            <dataField fieldName="F_MeritCode" columns="10" />
+            <dataField fieldName="F_MeritType" columns="15" />
+            <dataField fieldName="F_VacationCode" columns="10" />
+            <dataField fieldName="F_Note" />
+            <dataField fieldName="F_DailyTransSerial" columns="15" />
+            <dataField fieldName="EmployeeName" columns="50" />
+            <dataField fieldName="BranchName" columns="50" />
+            <dataField fieldName="DeptName" columns="50" />
+            <dataField fieldName="ManageName" columns="50" />
+            <dataField fieldName="ManageCode" columns="10" />
+            <dataField fieldName="DeptCode" columns="10" />
+            <dataField fieldName="BranchCode" columns="10" />
+            <dataField fieldName="EmpStatus" columns="15" />
+            <dataField fieldName="EnEmpName" columns="50" />
+            <dataField fieldName="ENManagement" columns="50" />
+            <dataField fieldName="EnDept" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New V Employee Absence">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New V Employee Absence" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="F_Serial" columns="15" />
+            <dataField fieldName="F_EmpCode" columns="10" />
+            <dataField fieldName="F_Date" columns="10" />
+            <dataField fieldName="F_HijriDate" columns="10" />
+            <dataField fieldName="F_Period" columns="15" />
+            <dataField fieldName="F_MeritCode" columns="10" />
+            <dataField fieldName="F_MeritType" columns="15" />
+            <dataField fieldName="F_VacationCode" columns="10" />
+            <dataField fieldName="F_Note" />
+            <dataField fieldName="F_DailyTransSerial" columns="15" />
+            <dataField fieldName="EmployeeName" columns="50" />
+            <dataField fieldName="BranchName" columns="50" />
+            <dataField fieldName="DeptName" columns="50" />
+            <dataField fieldName="ManageName" columns="50" />
+            <dataField fieldName="ManageCode" columns="10" />
+            <dataField fieldName="DeptCode" columns="10" />
+            <dataField fieldName="BranchCode" columns="10" />
+            <dataField fieldName="EmpStatus" columns="15" />
+            <dataField fieldName="EnEmpName" columns="50" />
+            <dataField fieldName="ENManagement" columns="50" />
+            <dataField fieldName="EnDept" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

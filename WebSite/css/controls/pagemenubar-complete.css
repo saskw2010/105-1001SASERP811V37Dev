@@ -1,0 +1,656 @@
+/**
+ * 📋 PageMenuBar CSS Classes Collection
+ * 🎨 Complete styles for navigation menu system
+ * 🚀 Compiled from multiple CSS files
+ * ♿ Responsive and accessible
+ */
+
+/* ==============================================
+   📊 CSS Variables for PageMenuBar
+   ============================================== */
+:root {
+    /* PageMenuBar Color Palette */
+    --pagemenu-primary: var(--sky365-primary, #3b82f6);
+    --pagemenu-primary-dark: var(--sky365-primary-dark, #2563eb);
+    --pagemenu-secondary: var(--sky365-secondary, #6366f1);
+    --pagemenu-accent: var(--sky365-accent, #8b5cf6);
+    
+    /* Neutral Colors */
+    --pagemenu-white: var(--sky365-white, #ffffff);
+    --pagemenu-gray-100: var(--sky365-gray-100, #f1f5f9);
+    --pagemenu-gray-200: var(--sky365-gray-200, #e2e8f0);
+    --pagemenu-gray-300: var(--sky365-gray-300, #cbd5e1);
+    --pagemenu-gray-700: var(--sky365-gray-700, #334155);
+    --pagemenu-gray-800: var(--sky365-gray-800, #1e293b);
+    
+    /* Spacing */
+    --pagemenu-space-sm: 8px;
+    --pagemenu-space-md: 16px;
+    --pagemenu-space-lg: 24px;
+    --pagemenu-space-xl: 32px;
+    
+    /* Border Radius */
+    --pagemenu-radius-sm: 6px;
+    --pagemenu-radius-md: 8px;
+    --pagemenu-radius-lg: 12px;
+    
+    /* Shadows */
+    --pagemenu-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+    --pagemenu-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --pagemenu-shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.2);
+    --pagemenu-shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.25);
+    
+    /* Transitions */
+    --pagemenu-transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --pagemenu-transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --pagemenu-transition-slow: 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    /* Z-index levels */
+    --pagemenu-z-dropdown: 1000;
+    --pagemenu-z-mobile-toggle: 10000;
+    --pagemenu-z-mobile-menu: 999999;
+}
+
+/* ==============================================
+   📋 Main PageMenuBar Styles
+   ============================================== */
+.PageMenuBar {
+    background: linear-gradient(135deg, var(--pagemenu-primary), var(--pagemenu-secondary));
+    border-radius: 0 0 var(--pagemenu-radius-lg) var(--pagemenu-radius-lg);
+    box-shadow: var(--pagemenu-shadow-lg);
+    margin-bottom: var(--pagemenu-space-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.PageMenuBar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.1) 50%, transparent 51%);
+    pointer-events: none;
+}
+
+/* Ensure PageMenuBar displays properly */
+#PageMenuBar {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* ==============================================
+   🍔 Menu Container and Items
+   ============================================== */
+.Menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    padding: var(--pagemenu-space-md) var(--pagemenu-space-lg);
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.Menu .Item {
+    position: relative;
+}
+
+.Menu .Item .Link {
+    display: block;
+    text-decoration: none;
+}
+
+.Menu .Item .Link a {
+    color: var(--pagemenu-white);
+    font-weight: 500;
+    padding: var(--pagemenu-space-md) var(--pagemenu-space-lg);
+    border-radius: var(--pagemenu-radius-md);
+    transition: var(--pagemenu-transition-normal);
+    display: flex;
+    align-items: center;
+    gap: var(--pagemenu-space-sm);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.Menu .Item .Link a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left var(--pagemenu-transition-normal);
+}
+
+.Menu .Item .Link a:hover::before {
+    left: 100%;
+}
+
+.Menu .Item .Link a:hover {
+    background-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+    box-shadow: var(--pagemenu-shadow-md);
+    text-decoration: none;
+}
+
+.Menu .Item.Selected .Link a {
+    background-color: rgba(255,255,255,0.25);
+    font-weight: 600;
+    box-shadow: var(--pagemenu-shadow-sm);
+}
+
+/* ==============================================
+   🎯 Modern Navigation Variant
+   ============================================== */
+.PageMenuBar.modern-nav {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: static !important;
+    transform: none !important;
+    overflow: visible !important;
+}
+
+.PageMenuBar.modern-nav .Menu {
+    background: transparent !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center;
+    gap: var(--pagemenu-space-sm);
+}
+
+.PageMenuBar.modern-nav .Menu tbody,
+.PageMenuBar.modern-nav .Menu tr {
+    display: flex !important;
+    align-items: center;
+    gap: var(--pagemenu-space-sm);
+}
+
+.PageMenuBar.modern-nav .Menu .Item {
+    display: block !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: var(--pagemenu-radius-md) !important;
+    margin: 0 !important;
+    transition: all var(--pagemenu-transition-fast) !important;
+    position: relative !important;
+}
+
+.PageMenuBar.modern-nav .Menu .Item:hover {
+    background: var(--pagemenu-gray-100) !important;
+    transform: none !important;
+}
+
+.PageMenuBar.modern-nav .Menu .Item .Link a {
+    color: var(--pagemenu-gray-700) !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    padding: 10px 16px !important;
+    border-radius: var(--pagemenu-radius-md) !important;
+    transition: all var(--pagemenu-transition-fast) !important;
+    display: block !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    text-shadow: none !important;
+}
+
+.PageMenuBar.modern-nav .Menu .Item .Link a:hover {
+    color: var(--pagemenu-primary) !important;
+    background: var(--pagemenu-gray-100) !important;
+    transform: none !important;
+    text-decoration: none !important;
+}
+
+.PageMenuBar.modern-nav .Menu .Item.Selected .Link a {
+    color: var(--pagemenu-primary) !important;
+    background: rgba(59, 130, 246, 0.1) !important;
+    font-weight: 600 !important;
+}
+
+/* ==============================================
+   🎭 Hover Menu (Dropdown)
+   ============================================== */
+.HoverMenu {
+    background-color: var(--pagemenu-white);
+    border: 1px solid var(--pagemenu-gray-300);
+    border-radius: var(--pagemenu-radius-md);
+    box-shadow: var(--pagemenu-shadow-xl);
+    padding: var(--pagemenu-space-sm);
+    min-width: 200px;
+    z-index: var(--pagemenu-z-dropdown);
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all var(--pagemenu-transition-normal);
+}
+
+.Menu .Item:hover .HoverMenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.HoverMenu .Item {
+    margin: 0;
+    border-radius: var(--pagemenu-radius-sm);
+}
+
+.HoverMenu .Item .Link a {
+    color: var(--pagemenu-gray-700);
+    padding: var(--pagemenu-space-sm) var(--pagemenu-space-md);
+    border-radius: var(--pagemenu-radius-sm);
+    font-size: 14px;
+    font-weight: 400;
+    display: block;
+    transition: all var(--pagemenu-transition-fast);
+}
+
+.HoverMenu .Item .Link a:hover {
+    background: var(--pagemenu-gray-100);
+    color: var(--pagemenu-primary);
+    transform: translateX(4px);
+}
+
+/* ==============================================
+   📱 Mobile Toggle Button
+   ============================================== */
+.pagemenu-mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: var(--pagemenu-z-mobile-toggle);
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg, var(--pagemenu-primary-dark), var(--pagemenu-primary));
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--pagemenu-radius-lg);
+    color: var(--pagemenu-white);
+    cursor: pointer;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all var(--pagemenu-transition-normal);
+    box-shadow: 
+        0 10px 30px rgba(30, 64, 175, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    
+    /* Floating effect */
+    animation: pagemenuFloatingPulse 3s ease-in-out infinite;
+}
+
+@keyframes pagemenuFloatingPulse {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 
+            0 10px 30px rgba(30, 64, 175, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 
+            0 15px 40px rgba(30, 64, 175, 0.7),
+            inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+}
+
+.pagemenu-mobile-toggle:hover {
+    background: linear-gradient(135deg, #1d4ed8, var(--pagemenu-primary));
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(37, 99, 235, 0.6);
+}
+
+.pagemenu-mobile-toggle.active {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    transform: translateY(0);
+}
+
+/* ==============================================
+   📱 Mobile Responsive Design
+   ============================================== */
+@media (max-width: 768px) {
+    .pagemenu-mobile-toggle {
+        display: flex !important;
+        position: fixed !important;
+        top: 80px !important;
+        left: 10px !important;
+        right: 10px !important;
+        width: auto !important;
+        height: 60px !important;
+        border-radius: var(--pagemenu-radius-lg) !important;
+        z-index: var(--pagemenu-z-mobile-toggle) !important;
+        background: linear-gradient(135deg, var(--pagemenu-primary-dark), var(--pagemenu-primary)) !important;
+        color: var(--pagemenu-white) !important;
+        border: 3px solid rgba(255, 255, 255, 0.3) !important;
+        font-size: 18px !important;
+        font-weight: 600 !important;
+        gap: 10px !important;
+        box-shadow: 
+            0 8px 25px rgba(37, 99, 235, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    /* Mobile Menu Overlay */
+    .PageMenuBar.responsive-pagemenubar,
+    #ctl00_PageMenuBar.responsive-pagemenubar {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: rgba(30, 64, 175, 0.96) !important;
+        backdrop-filter: blur(15px) !important;
+        z-index: var(--pagemenu-z-mobile-menu) !important;
+        transform: translateY(-100vh) !important;
+        transition: transform var(--pagemenu-transition-slow) !important;
+        border-radius: 0 !important;
+        overflow-y: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 20px !important;
+        -webkit-overflow-scrolling: touch !important;
+        visibility: hidden !important;
+    }
+    
+    .PageMenuBar.responsive-pagemenubar.show,
+    #ctl00_PageMenuBar.responsive-pagemenubar.show {
+        transform: translateY(0) !important;
+        visibility: visible !important;
+    }
+    
+    .PageMenuBar.responsive-pagemenubar .Menu,
+    #ctl00_PageMenuBar.responsive-pagemenubar .Menu {
+        flex-direction: column !important;
+        gap: var(--pagemenu-space-lg) !important;
+        padding: var(--pagemenu-space-xl) !important;
+        background: transparent !important;
+        width: 100% !important;
+        max-width: 400px !important;
+        text-align: center !important;
+    }
+    
+    .PageMenuBar.responsive-pagemenubar .Menu .Item,
+    #ctl00_PageMenuBar.responsive-pagemenubar .Menu .Item {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .PageMenuBar.responsive-pagemenubar .Menu .Item .Link a,
+    #ctl00_PageMenuBar.responsive-pagemenubar .Menu .Item .Link a {
+        color: var(--pagemenu-white) !important;
+        font-size: 24px !important;
+        font-weight: 600 !important;
+        padding: var(--pagemenu-space-lg) var(--pagemenu-space-xl) !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-radius: var(--pagemenu-radius-lg) !important;
+        border: 2px solid rgba(255, 255, 255, 0.2) !important;
+        transition: all var(--pagemenu-transition-normal) !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        width: 100% !important;
+        display: block !important;
+        text-align: center !important;
+    }
+    
+    .PageMenuBar.responsive-pagemenubar .Menu .Item .Link a:hover,
+    #ctl00_PageMenuBar.responsive-pagemenubar .Menu .Item .Link a:hover {
+        background: rgba(255, 255, 255, 0.25) !important;
+        transform: scale(1.05) !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+    }
+    
+    /* Hide desktop menu on mobile */
+    .PageMenuBar:not(.responsive-pagemenubar) {
+        display: none !important;
+    }
+}
+
+/* ==============================================
+   📱 Tablet Responsive Design
+   ============================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .PageMenuBar {
+        margin-bottom: var(--pagemenu-space-md);
+    }
+    
+    .Menu {
+        padding: var(--pagemenu-space-sm) var(--pagemenu-space-md);
+        gap: var(--pagemenu-space-sm);
+    }
+    
+    .Menu .Item .Link a {
+        padding: var(--pagemenu-space-sm) var(--pagemenu-space-md);
+        font-size: 14px;
+    }
+    
+    .pagemenu-mobile-toggle {
+        display: none !important;
+    }
+}
+
+/* ==============================================
+   🖥️ Desktop Enhancements
+   ============================================== */
+@media (min-width: 1025px) {
+    .PageMenuBar {
+        border-radius: 0 0 var(--pagemenu-radius-lg) var(--pagemenu-radius-lg);
+    }
+    
+    .Menu .Item .Link a {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .Menu .Item .Link a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: var(--pagemenu-white);
+        transition: all var(--pagemenu-transition-normal);
+        transform: translateX(-50%);
+    }
+    
+    .Menu .Item .Link a:hover::after {
+        width: 80%;
+    }
+    
+    .Menu .Item.Selected .Link a::after {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.8);
+    }
+    
+    .pagemenu-mobile-toggle {
+        display: none !important;
+    }
+}
+
+/* ==============================================
+   ♿ Accessibility Enhancements
+   ============================================== */
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .PageMenuBar {
+        border: 2px solid var(--pagemenu-gray-800);
+        background: var(--pagemenu-white);
+    }
+    
+    .Menu .Item .Link a {
+        color: var(--pagemenu-gray-800) !important;
+        border: 1px solid var(--pagemenu-gray-300);
+        font-weight: 600;
+    }
+    
+    .Menu .Item .Link a:hover {
+        background: var(--pagemenu-gray-100) !important;
+        border-color: var(--pagemenu-primary);
+    }
+    
+    .Menu .Item.Selected .Link a {
+        background: var(--pagemenu-primary) !important;
+        color: var(--pagemenu-white) !important;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .PageMenuBar,
+    .Menu .Item .Link a,
+    .HoverMenu,
+    .pagemenu-mobile-toggle {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .Menu .Item .Link a:hover {
+        transform: none !important;
+    }
+}
+
+/* Focus Management */
+.Menu .Item .Link a:focus {
+    outline: 3px solid var(--pagemenu-primary);
+    outline-offset: 2px;
+    z-index: 10;
+}
+
+.Menu .Item .Link a:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Screen Reader Support */
+.pagemenu-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ==============================================
+   🌐 RTL Support
+   ============================================== */
+[dir="rtl"] .Menu {
+    direction: rtl;
+}
+
+[dir="rtl"] .Menu .Item .Link a {
+    text-align: right;
+}
+
+[dir="rtl"] .HoverMenu .Item .Link a:hover {
+    transform: translateX(-4px);
+}
+
+[dir="rtl"] .pagemenu-mobile-toggle {
+    left: 25px;
+    right: auto;
+}
+
+/* ==============================================
+   🎨 Theme Variations
+   ============================================== */
+/* Dark Theme Variant */
+.PageMenuBar.dark-theme {
+    background: linear-gradient(135deg, var(--pagemenu-gray-800), #1f2937);
+}
+
+.PageMenuBar.dark-theme .Menu .Item .Link a {
+    color: var(--pagemenu-gray-200);
+}
+
+.PageMenuBar.dark-theme .Menu .Item .Link a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--pagemenu-white);
+}
+
+/* Light Theme Variant */
+.PageMenuBar.light-theme {
+    background: var(--pagemenu-white);
+    border: 1px solid var(--pagemenu-gray-200);
+    box-shadow: var(--pagemenu-shadow-sm);
+}
+
+.PageMenuBar.light-theme .Menu .Item .Link a {
+    color: var(--pagemenu-gray-700);
+}
+
+.PageMenuBar.light-theme .Menu .Item .Link a:hover {
+    background-color: var(--pagemenu-gray-100);
+    color: var(--pagemenu-primary);
+}
+
+/* ==============================================
+   🚀 Performance Optimizations
+   ============================================== */
+/* GPU Acceleration */
+.PageMenuBar,
+.Menu .Item .Link a,
+.HoverMenu,
+.pagemenu-mobile-toggle {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Layout Containment */
+.PageMenuBar {
+    contain: layout style;
+}
+
+.Menu .Item {
+    contain: layout;
+}
+
+/* ==============================================
+   📊 Print Styles
+   ============================================== */
+@media print {
+    .PageMenuBar {
+        background: none !important;
+        box-shadow: none !important;
+        border: 1px solid #000 !important;
+        break-inside: avoid;
+    }
+    
+    .Menu {
+        display: block !important;
+    }
+    
+    .Menu .Item {
+        display: inline-block !important;
+        margin-right: 1rem !important;
+    }
+    
+    .Menu .Item .Link a {
+        color: #000 !important;
+        background: none !important;
+        text-decoration: underline !important;
+    }
+    
+    .pagemenu-mobile-toggle,
+    .HoverMenu {
+        display: none !important;
+    }
+}

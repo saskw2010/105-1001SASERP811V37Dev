@@ -1,0 +1,100 @@
+﻿Imports eZee.Data
+Imports System
+Imports System.Collections.Generic
+Imports System.Data
+Imports System.Linq
+Imports System.Text.RegularExpressions
+Imports System.Web
+Imports System.Web.Security
+
+Namespace eZee.Rules
+    
+    Partial Public Class StpurhdrBusinessRules
+        Inherits eZee.Rules.SharedBusinessRules
+        
+        ''' <summary>
+        ''' This method will execute in any view after an action
+        ''' with a command name that matches "Update".
+        ''' </summary>
+        <Rule("r103")>  _
+        Public Sub r103Implementation( _
+                    ByVal doc_No As Nullable(Of Long),  _
+                    ByVal branch As Nullable(Of Long),  _
+                    ByVal thebranchDesc1 As String,  _
+                    ByVal thebranchsgmsgm_Nm As String,  _
+                    ByVal thebranchsgmOpcoOpcoName As String,  _
+                    ByVal thebranchGenderGender As String,  _
+                    ByVal thebranchstageShortDesc1 As String,  _
+                    ByVal thebranchschtypschtypDesc As String,  _
+                    ByVal sgm As Nullable(Of Long),  _
+                    ByVal sgmsgm_Nm As String,  _
+                    ByVal sgmOpcoOpcoName As String,  _
+                    ByVal acdcode As Nullable(Of Long),  _
+                    ByVal acdAcademicYear As String,  _
+                    ByVal acdGlFinperiodFin_period_info As String,  _
+                    ByVal acdGlFinperiodaccountnumberAcc_Nm As String,  _
+                    ByVal brn_No As Nullable(Of Long),  _
+                    ByVal brn_Brn_Nm As String,  _
+                    ByVal brn_Cmp_Grp_Nm As String,  _
+                    ByVal brn_Cmp_Grp_Grp_Nm As String,  _
+                    ByVal referanceno As Nullable(Of Long),  _
+                    ByVal reftxt As String,  _
+                    ByVal pym_No As Nullable(Of Long),  _
+                    ByVal pym_Pymnt_Nm As String,  _
+                    ByVal pym_pymnt_accAcc_Nm As String,  _
+                    ByVal pym_pymnt_accClsacc_Acc_Nm As String,  _
+                    ByVal pym_pymnt_accAcc_BndAcc_Nm As String,  _
+                    ByVal pym_sgmsgm_Nm As String,  _
+                    ByVal pym_sgmOpcoOpcoName As String,  _
+                    ByVal slm_No As Nullable(Of Long),  _
+                    ByVal slm_Slm_Nm As String,  _
+                    ByVal slm_masngerclassmasngerclass As String,  _
+                    ByVal doc_Dt As Nullable(Of DateTime),  _
+                    ByVal cstm_No As Nullable(Of Long),  _
+                    ByVal cstm_Sup_Nm As String,  _
+                    ByVal cstm_Acc_Acc_Nm As String,  _
+                    ByVal cstm_Acc_Clsacc_Acc_Nm As String,  _
+                    ByVal cstm_Acc_Acc_BndAcc_Nm As String,  _
+                    ByVal cstm_Cntry_Cntry_Nm As String,  _
+                    ByVal cstm_Curncy_Curncy_Nm As String,  _
+                    ByVal cstm_NM As String,  _
+                    ByVal cstm_Add As String,  _
+                    ByVal cstm_Tel As String,  _
+                    ByVal post As Nullable(Of Integer),  _
+                    ByVal notes As String,  _
+                    ByVal kETAA As String,  _
+                    ByVal sTreet As String,  _
+                    ByVal gada As String,  _
+                    ByVal house As String,  _
+                    ByVal door As String,  _
+                    ByVal flat As Nullable(Of Long),  _
+                    ByVal rest As Nullable(Of Decimal),  _
+                    ByVal madfoa As Nullable(Of Decimal),  _
+                    ByVal tafmadfoa As String,  _
+                    ByVal tafrest As String,  _
+                    ByVal taftotal As String,  _
+                    ByVal discpercent As Nullable(Of Double),  _
+                    ByVal tot_Cost1 As Nullable(Of Decimal),  _
+                    ByVal tot_Sal As Nullable(Of Decimal),  _
+                    ByVal tot_Cost As Nullable(Of Decimal),  _
+                    ByVal tot_Disc As Nullable(Of Decimal),  _
+                    ByVal keed As Nullable(Of Long),  _
+                    ByVal wsl As Nullable(Of Long),  _
+                    ByVal submit As Nullable(Of Long),  _
+                    ByVal typcmsup As Nullable(Of Long),  _
+                    ByVal typcmsupSubledgerDescrption As String,  _
+                    ByVal carno As Nullable(Of Long),  _
+                    ByVal locno As Nullable(Of Long),  _
+                    ByVal refcode As Nullable(Of Long),  _
+                    ByVal whhus As Nullable(Of Long),  _
+                    ByVal curcode As Nullable(Of Long),  _
+                    ByVal curCurncy_Nm As String,  _
+                    ByVal curprice As Nullable(Of Decimal),  _
+                    ByVal modifiedBy As String,  _
+                    ByVal modifiedOn As Nullable(Of DateTime),  _
+                    ByVal createdBy As String,  _
+                    ByVal createdOn As Nullable(Of DateTime))
+            'This is the placeholder for method implementation.
+        End Sub
+    End Class
+End Namespace

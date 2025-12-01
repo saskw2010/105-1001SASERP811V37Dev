@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="vwaspnetMembershipUsers" conflictDetection="overwriteChanges" label="vwaspnet Membership Users" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"vwaspnetMembershipUsers"."UserId" "UserId"
+	,"vwaspnetMembershipUsers"."PasswordFormat" "PasswordFormat"
+	,"vwaspnetMembershipUsers"."MobilePIN" "MobilePIN"
+	,"vwaspnetMembershipUsers"."Email" "Email"
+	,"vwaspnetMembershipUsers"."LoweredEmail" "LoweredEmail"
+	,"vwaspnetMembershipUsers"."PasswordQuestion" "PasswordQuestion"
+	,"vwaspnetMembershipUsers"."PasswordAnswer" "PasswordAnswer"
+	,"vwaspnetMembershipUsers"."IsApproved" "IsApproved"
+	,"vwaspnetMembershipUsers"."IsLockedOut" "IsLockedOut"
+	,"vwaspnetMembershipUsers"."CreateDate" "CreateDate"
+	,"vwaspnetMembershipUsers"."LastLoginDate" "LastLoginDate"
+	,"vwaspnetMembershipUsers"."LastPasswordChangedDate" "LastPasswordChangedDate"
+	,"vwaspnetMembershipUsers"."LastLockoutDate" "LastLockoutDate"
+	,"vwaspnetMembershipUsers"."FailedPasswordAttemptCount" "FailedPasswordAttemptCount"
+	,"vwaspnetMembershipUsers"."FailedPasswordAttemptWindowStart" "FailedPasswordAttemptWindowStart"
+	,"vwaspnetMembershipUsers"."FailedPasswordAnswerAttemptCount" "FailedPasswordAnswerAttemptCount"
+	,"vwaspnetMembershipUsers"."FailedPasswordAnswerAttemptWindowStart" "FailedPasswordAnswerAttemptWindowStart"
+	,"vwaspnetMembershipUsers"."Comment" "Comment"
+	,"vwaspnetMembershipUsers"."ApplicationId" "ApplicationId"
+	,"vwaspnetMembershipUsers"."UserName" "UserName"
+	,"vwaspnetMembershipUsers"."MobileAlias" "MobileAlias"
+	,"vwaspnetMembershipUsers"."IsAnonymous" "IsAnonymous"
+	,"vwaspnetMembershipUsers"."LastActivityDate" "LastActivityDate"
+from "dbo"."vwaspnetMembershipUsers" "vwaspnetMembershipUsers"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="UserId" type="Guid" allowNulls="false" label="User#" showInSummary="true" />
+    <field name="PasswordFormat" type="Int32" allowNulls="false" label="Password Format" />
+    <field name="MobilePIN" type="String" label="Mobile PIN" length="16" showInSummary="true" />
+    <field name="Email" type="String" label="Email" length="256" showInSummary="true" />
+    <field name="LoweredEmail" type="String" label="Lowered Email" length="256" showInSummary="true" />
+    <field name="PasswordQuestion" type="String" label="Password Question" length="256" />
+    <field name="PasswordAnswer" type="String" label="Password Answer" length="128" />
+    <field name="IsApproved" type="Boolean" allowNulls="false" label="Is Approved" showInSummary="true" />
+    <field name="IsLockedOut" type="Boolean" allowNulls="false" label="Is Locked Out" />
+    <field name="CreateDate" type="DateTime" allowNulls="false" label="Create Date" />
+    <field name="LastLoginDate" type="DateTime" allowNulls="false" label="Last Login Date" />
+    <field name="LastPasswordChangedDate" type="DateTime" allowNulls="false" label="Last Password Changed Date" />
+    <field name="LastLockoutDate" type="DateTime" allowNulls="false" label="Last Lockout Date" />
+    <field name="FailedPasswordAttemptCount" type="Int32" allowNulls="false" label="Failed Password Attempt Count" />
+    <field name="FailedPasswordAttemptWindowStart" type="DateTime" allowNulls="false" label="Failed Password Attempt Window Start" />
+    <field name="FailedPasswordAnswerAttemptCount" type="Int32" allowNulls="false" label="Failed Password Answer Attempt Count" />
+    <field name="FailedPasswordAnswerAttemptWindowStart" type="DateTime" allowNulls="false" label="Failed Password Answer Attempt Window Start" />
+    <field name="Comment" type="String" allowQBE="false" allowSorting="false" label="Comment" />
+    <field name="ApplicationId" type="Guid" allowNulls="false" label="Application#" />
+    <field name="UserName" type="String" allowNulls="false" label="User Name" length="256" />
+    <field name="MobileAlias" type="String" label="Mobile Alias" length="16" />
+    <field name="IsAnonymous" type="Boolean" allowNulls="false" label="Is Anonymous" />
+    <field name="LastActivityDate" type="DateTime" allowNulls="false" label="Last Activity Date" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="vwaspnet Membership Users">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="UserId" columns="15" />
+        <dataField fieldName="MobilePIN" columns="16" />
+        <dataField fieldName="Email" />
+        <dataField fieldName="LoweredEmail" />
+        <dataField fieldName="IsApproved" />
+        <dataField fieldName="IsLockedOut" />
+        <dataField fieldName="CreateDate" columns="10" />
+        <dataField fieldName="LastLoginDate" columns="10" />
+        <dataField fieldName="LastLockoutDate" columns="10" />
+        <dataField fieldName="Comment" rows="5" />
+        <dataField fieldName="ApplicationId" columns="15" />
+        <dataField fieldName="UserName" />
+        <dataField fieldName="MobileAlias" columns="16" />
+        <dataField fieldName="IsAnonymous" />
+        <dataField fieldName="LastActivityDate" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review vwaspnet Membership Users">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="vwaspnet Membership Users" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="UserId" columns="15" />
+            <dataField fieldName="PasswordFormat" columns="15" />
+            <dataField fieldName="MobilePIN" columns="16" />
+            <dataField fieldName="Email" />
+            <dataField fieldName="LoweredEmail" />
+            <dataField fieldName="PasswordQuestion" />
+            <dataField fieldName="PasswordAnswer" />
+            <dataField fieldName="IsApproved" />
+            <dataField fieldName="IsLockedOut" />
+            <dataField fieldName="CreateDate" columns="10" />
+            <dataField fieldName="LastLoginDate" columns="10" />
+            <dataField fieldName="LastPasswordChangedDate" columns="10" />
+            <dataField fieldName="LastLockoutDate" columns="10" />
+            <dataField fieldName="FailedPasswordAttemptCount" columns="15" />
+            <dataField fieldName="FailedPasswordAttemptWindowStart" columns="10" />
+            <dataField fieldName="FailedPasswordAnswerAttemptCount" columns="15" />
+            <dataField fieldName="FailedPasswordAnswerAttemptWindowStart" columns="10" />
+            <dataField fieldName="Comment" rows="5" />
+            <dataField fieldName="ApplicationId" columns="15" />
+            <dataField fieldName="UserName" />
+            <dataField fieldName="MobileAlias" columns="16" />
+            <dataField fieldName="IsAnonymous" />
+            <dataField fieldName="LastActivityDate" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New vwaspnet Membership Users">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New vwaspnet Membership Users" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="UserId" columns="15" />
+            <dataField fieldName="PasswordFormat" columns="15" />
+            <dataField fieldName="MobilePIN" columns="16" />
+            <dataField fieldName="Email" />
+            <dataField fieldName="LoweredEmail" />
+            <dataField fieldName="PasswordQuestion" />
+            <dataField fieldName="PasswordAnswer" />
+            <dataField fieldName="IsApproved" />
+            <dataField fieldName="IsLockedOut" />
+            <dataField fieldName="CreateDate" columns="10" />
+            <dataField fieldName="LastLoginDate" columns="10" />
+            <dataField fieldName="LastPasswordChangedDate" columns="10" />
+            <dataField fieldName="LastLockoutDate" columns="10" />
+            <dataField fieldName="FailedPasswordAttemptCount" columns="15" />
+            <dataField fieldName="FailedPasswordAttemptWindowStart" columns="10" />
+            <dataField fieldName="FailedPasswordAnswerAttemptCount" columns="15" />
+            <dataField fieldName="FailedPasswordAnswerAttemptWindowStart" columns="10" />
+            <dataField fieldName="Comment" rows="5" />
+            <dataField fieldName="ApplicationId" columns="15" />
+            <dataField fieldName="UserName" />
+            <dataField fieldName="MobileAlias" columns="16" />
+            <dataField fieldName="IsAnonymous" />
+            <dataField fieldName="LastActivityDate" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

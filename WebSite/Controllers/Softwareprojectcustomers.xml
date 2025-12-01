@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Softwareprojectcustomers" conflictDetection="overwriteChanges" label="Softwareprojectcustomers" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Softwareprojectcustomers"."sprcustmno" "sprcustmno"
+	,"Softwareprojectcustomers"."sprcustomername" "sprcustomername"
+	,"Softwareprojectcustomers"."contactperson" "contactperson"
+	,"Softwareprojectcustomers"."contacttelphone" "contacttelphone"
+	,"Softwareprojectcustomers"."phone" "phone"
+	,"Softwareprojectcustomers"."Fax" "Fax"
+	,"Softwareprojectcustomers"."sprcustomerclass1id" "sprcustomerclass1id"
+	,"sprcustomerclass1"."sprcustomerclass1Desc" "sprcustomerclass1sprcustomerclass1Desc"
+	,"Softwareprojectcustomers"."sprcustomerclass2id" "sprcustomerclass2id"
+	,"sprcustomerclass2"."sprcustomerclass2Desc" "sprcustomerclass2sprcustomerclass2Desc"
+	,"Softwareprojectcustomers"."sprcustomerclass3id" "sprcustomerclass3id"
+	,"sprcustomerclass3"."sprcustomerclass3Desc" "sprcustomerclass3sprcustomerclass3Desc"
+	,"Softwareprojectcustomers"."sprcustomerclass4id" "sprcustomerclass4id"
+	,"sprcustomerclass4"."sprcustomerclass4Desc" "sprcustomerclass4sprcustomerclass4Desc"
+	,"Softwareprojectcustomers"."ModifiedBy" "ModifiedBy"
+	,"Softwareprojectcustomers"."ModifiedByUserId" "ModifiedByUserId"
+	,"Softwareprojectcustomers"."ModifiedOn" "ModifiedOn"
+	,"Softwareprojectcustomers"."CreatedBy" "CreatedBy"
+	,"Softwareprojectcustomers"."CreatedById" "CreatedById"
+	,"Softwareprojectcustomers"."CreatedOn" "CreatedOn"
+from "dbo"."Softwareprojectcustomers" "Softwareprojectcustomers"
+	left join "dbo"."softwareprojectcustomerclass1" "sprcustomerclass1" on "Softwareprojectcustomers"."sprcustomerclass1id" = "sprcustomerclass1"."sprcustomerclass1id"
+	left join "dbo"."softwareprojectcustomerclass2" "sprcustomerclass2" on "Softwareprojectcustomers"."sprcustomerclass2id" = "sprcustomerclass2"."sprcustomerclass2id"
+	left join "dbo"."softwareprojectcustomerclass3" "sprcustomerclass3" on "Softwareprojectcustomers"."sprcustomerclass3id" = "sprcustomerclass3"."sprcustomerclass3id"
+	left join "dbo"."softwareprojectcustomerclass4" "sprcustomerclass4" on "Softwareprojectcustomers"."sprcustomerclass4id" = "sprcustomerclass4"."sprcustomerclass4id"
+]]></text>
+    </command>
+    <command id="sprcustmnoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="sprcustmno" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="sprcustmno" type="Int64" allowNulls="false" isPrimaryKey="true" label="Sprcustmno" readOnly="true" />
+    <field name="sprcustomername" type="String" label="Sprcustomername" length="150" showInSummary="true" />
+    <field name="contactperson" type="String" label="Contactperson" length="150" showInSummary="true" />
+    <field name="contacttelphone" type="String" label="Contacttelphone" length="50" showInSummary="true" />
+    <field name="phone" type="String" label="Phone" length="50" showInSummary="true" />
+    <field name="Fax" type="String" label="Fax" length="50" showInSummary="true" />
+    <field name="sprcustomerclass1id" type="Int64" label="Sprcustomerclass1id">
+      <items style="Lookup" dataController="softwareprojectcustomerclass1" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sprcustomerclass1sprcustomerclass1Desc" type="String" readOnly="true" label="sprcustomerclass1sprcustomerclass1 Desc" length="150" />
+    <field name="sprcustomerclass2id" type="Int64" label="Sprcustomerclass2id">
+      <items style="Lookup" dataController="softwareprojectcustomerclass2" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sprcustomerclass2sprcustomerclass2Desc" type="String" readOnly="true" label="sprcustomerclass2sprcustomerclass2 Desc" length="150" />
+    <field name="sprcustomerclass3id" type="Int64" label="Sprcustomerclass3id">
+      <items style="Lookup" dataController="softwareprojectcustomerclass3" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sprcustomerclass3sprcustomerclass3Desc" type="String" readOnly="true" label="sprcustomerclass3sprcustomerclass3 Desc" length="150" />
+    <field name="sprcustomerclass4id" type="Int64" label="Sprcustomerclass4id">
+      <items style="Lookup" dataController="softwareprojectcustomerclass4" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sprcustomerclass4sprcustomerclass4Desc" type="String" readOnly="true" label="sprcustomerclass4sprcustomerclass4 Desc" length="150" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedByUserId" type="Guid" label="Modified By User#" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedById" type="Guid" label="Created By#" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Softwareprojectcustomers">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="sprcustomername" />
+        <dataField fieldName="contactperson" />
+        <dataField fieldName="contacttelphone" columns="50" />
+        <dataField fieldName="phone" columns="50" />
+        <dataField fieldName="Fax" columns="50" />
+        <dataField fieldName="sprcustomerclass1id" aliasFieldName="sprcustomerclass1sprcustomerclass1Desc" hyperlinkFormatString="~/Pages/softwareprojectcustomerclass1.aspx?sprcustomerclass1id={sprcustomerclass1id}&amp;_controller=softwareprojectcustomerclass1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="sprcustomerclass2id" aliasFieldName="sprcustomerclass2sprcustomerclass2Desc" hyperlinkFormatString="~/Pages/softwareprojectcustomerclass2.aspx?sprcustomerclass2id={sprcustomerclass2id}&amp;_controller=softwareprojectcustomerclass2&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="sprcustomerclass3id" aliasFieldName="sprcustomerclass3sprcustomerclass3Desc" hyperlinkFormatString="~/Pages/softwareprojectcustomerclass3.aspx?sprcustomerclass3id={sprcustomerclass3id}&amp;_controller=softwareprojectcustomerclass3&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="sprcustomerclass4id" aliasFieldName="sprcustomerclass4sprcustomerclass4Desc" hyperlinkFormatString="~/Pages/softwareprojectcustomerclass4.aspx?sprcustomerclass4id={sprcustomerclass4id}&amp;_controller=softwareprojectcustomerclass4&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedByUserId" columns="15" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedById" columns="15" />
+        <dataField fieldName="CreatedOn" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Softwareprojectcustomers">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Softwareprojectcustomers" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sprcustomername" />
+            <dataField fieldName="contactperson" />
+            <dataField fieldName="contacttelphone" columns="50" />
+            <dataField fieldName="phone" columns="50" />
+            <dataField fieldName="Fax" columns="50" />
+            <dataField fieldName="sprcustomerclass1id" aliasFieldName="sprcustomerclass1sprcustomerclass1Desc" hyperlinkFormatString="~/Pages/softwareprojectcustomerclass1.aspx?sprcustomerclass1id={sprcustomerclass1id}&amp;_controller=softwareprojectcustomerclass1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="sprcustomerclass2id" aliasFieldName="sprcustomerclass2sprcustomerclass2Desc" hyperlinkFormatString="~/Pages/softwareprojectcustomerclass2.aspx?sprcustomerclass2id={sprcustomerclass2id}&amp;_controller=softwareprojectcustomerclass2&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="sprcustomerclass3id" aliasFieldName="sprcustomerclass3sprcustomerclass3Desc" hyperlinkFormatString="~/Pages/softwareprojectcustomerclass3.aspx?sprcustomerclass3id={sprcustomerclass3id}&amp;_controller=softwareprojectcustomerclass3&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="sprcustomerclass4id" aliasFieldName="sprcustomerclass4sprcustomerclass4Desc" hyperlinkFormatString="~/Pages/softwareprojectcustomerclass4.aspx?sprcustomerclass4id={sprcustomerclass4id}&amp;_controller=softwareprojectcustomerclass4&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedByUserId" columns="15" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedById" columns="15" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Softwareprojectcustomers">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Softwareprojectcustomers" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sprcustomername" />
+            <dataField fieldName="contactperson" />
+            <dataField fieldName="contacttelphone" columns="50" />
+            <dataField fieldName="phone" columns="50" />
+            <dataField fieldName="Fax" columns="50" />
+            <dataField fieldName="sprcustomerclass1id" aliasFieldName="sprcustomerclass1sprcustomerclass1Desc" />
+            <dataField fieldName="sprcustomerclass2id" aliasFieldName="sprcustomerclass2sprcustomerclass2Desc" />
+            <dataField fieldName="sprcustomerclass3id" aliasFieldName="sprcustomerclass3sprcustomerclass3Desc" />
+            <dataField fieldName="sprcustomerclass4id" aliasFieldName="sprcustomerclass4sprcustomerclass4Desc" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedByUserId" columns="15" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedById" columns="15" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

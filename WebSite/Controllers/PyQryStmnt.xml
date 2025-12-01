@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="PyQryStmnt" conflictDetection="overwriteChanges" label="Py Qry Stmnt" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"PyQryStmnt"."Trs_Typ" "Trs_Typ"
+	,"PyQryStmnt"."Trs_No" "Trs_No"
+	,"PyQryStmnt"."Trs_Dt" "Trs_Dt"
+	,"PyQryStmnt"."Emp_No" "Emp_No"
+	,"PyQryStmnt"."Fdt" "Fdt"
+	,"PyQryStmnt"."Tdt" "Tdt"
+	,"PyQryStmnt"."Mony" "Mony"
+	,"PyQryStmnt"."Ern_No" "Ern_No"
+	,"PyQryStmnt"."Ded_No" "Ded_No"
+	,"PyQryStmnt"."Rpt_ty" "Rpt_ty"
+	,"PyQryStmnt"."New_Depm" "New_Depm"
+	,"PyQryStmnt"."Not" "Not"
+	,"PyQryStmnt"."Bsc_Salry" "Bsc_Salry"
+	,"PyQryStmnt"."Tot_Alow" "Tot_Alow"
+	,"PyQryStmnt"."Tot_Ded" "Tot_Ded"
+	,"PyQryStmnt"."Tot_Ern" "Tot_Ern"
+	,"PyQryStmnt"."Net_Salry" "Net_Salry"
+	,"PyQryStmnt"."Trs_Month" "Trs_Month"
+	,"PyQryStmnt"."Ern_Mony" "Ern_Mony"
+	,"PyQryStmnt"."sgm" "sgm"
+	,"PyQryStmnt"."ModifiedBy" "ModifiedBy"
+	,"PyQryStmnt"."ModifiedOn" "ModifiedOn"
+	,"PyQryStmnt"."CreatedBy" "CreatedBy"
+	,"PyQryStmnt"."CreatedOn" "CreatedOn"
+from "dbo"."PyQryStmnt" "PyQryStmnt"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="Trs_Typ" type="Int64" isPrimaryKey="true" label="Trs Typ" />
+    <field name="Trs_No" type="Int64" label="Trs No" showInSummary="true" />
+    <field name="Trs_Dt" type="String" label="Trs Dt" length="10" showInSummary="true" />
+    <field name="Emp_No" type="Int64" label="Emp No" showInSummary="true" />
+    <field name="Fdt" type="String" label="Fdt" length="10" showInSummary="true" />
+    <field name="Tdt" type="String" label="Tdt" length="10" showInSummary="true" />
+    <field name="Mony" type="Decimal" label="Mony" />
+    <field name="Ern_No" type="Int64" label="Ern No" />
+    <field name="Ded_No" type="Int64" label="Ded No" />
+    <field name="Rpt_ty" type="String" label="Rpt ty" length="15" />
+    <field name="New_Depm" type="Int64" label="New Depm" />
+    <field name="Not" type="String" label="Not" length="50" />
+    <field name="Bsc_Salry" type="Decimal" label="Bsc Salry" />
+    <field name="Tot_Alow" type="Decimal" label="Tot Alow" />
+    <field name="Tot_Ded" type="Decimal" label="Tot Ded" />
+    <field name="Tot_Ern" type="Decimal" label="Tot Ern" />
+    <field name="Net_Salry" type="Decimal" label="Net Salry" />
+    <field name="Trs_Month" type="String" label="Trs Month" length="7" />
+    <field name="Ern_Mony" type="Decimal" label="Ern Mony" />
+    <field name="sgm" type="Int64" label="Sgm" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Py Qry Stmnt">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Trs_No" columns="15" />
+        <dataField fieldName="Trs_Dt" columns="10" />
+        <dataField fieldName="Emp_No" columns="15" />
+        <dataField fieldName="Fdt" columns="10" />
+        <dataField fieldName="Tdt" columns="10" />
+        <dataField fieldName="Mony" dataFormatString="c" columns="15" />
+        <dataField fieldName="Ern_No" columns="15" />
+        <dataField fieldName="Ded_No" columns="15" />
+        <dataField fieldName="Rpt_ty" columns="15" />
+        <dataField fieldName="New_Depm" columns="15" />
+        <dataField fieldName="Not" columns="50" />
+        <dataField fieldName="Bsc_Salry" dataFormatString="c" columns="15" />
+        <dataField fieldName="Tot_Alow" dataFormatString="c" columns="15" />
+        <dataField fieldName="Tot_Ded" dataFormatString="c" columns="15" />
+        <dataField fieldName="Tot_Ern" dataFormatString="c" columns="15" />
+        <dataField fieldName="Net_Salry" dataFormatString="c" columns="15" />
+        <dataField fieldName="Trs_Month" columns="7" />
+        <dataField fieldName="Ern_Mony" dataFormatString="c" columns="15" />
+        <dataField fieldName="sgm" columns="15" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Py Qry Stmnt">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Py Qry Stmnt" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Trs_No" columns="15" />
+            <dataField fieldName="Trs_Dt" columns="10" />
+            <dataField fieldName="Emp_No" columns="15" />
+            <dataField fieldName="Fdt" columns="10" />
+            <dataField fieldName="Tdt" columns="10" />
+            <dataField fieldName="Mony" dataFormatString="c" columns="15" />
+            <dataField fieldName="Ern_No" columns="15" />
+            <dataField fieldName="Ded_No" columns="15" />
+            <dataField fieldName="Rpt_ty" columns="15" />
+            <dataField fieldName="New_Depm" columns="15" />
+            <dataField fieldName="Not" columns="50" />
+            <dataField fieldName="Bsc_Salry" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tot_Alow" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tot_Ded" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tot_Ern" dataFormatString="c" columns="15" />
+            <dataField fieldName="Net_Salry" dataFormatString="c" columns="15" />
+            <dataField fieldName="Trs_Month" columns="7" />
+            <dataField fieldName="Ern_Mony" dataFormatString="c" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Py Qry Stmnt">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Py Qry Stmnt" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Trs_Typ" columns="15" />
+            <dataField fieldName="Trs_No" columns="15" />
+            <dataField fieldName="Trs_Dt" columns="10" />
+            <dataField fieldName="Emp_No" columns="15" />
+            <dataField fieldName="Fdt" columns="10" />
+            <dataField fieldName="Tdt" columns="10" />
+            <dataField fieldName="Mony" dataFormatString="c" columns="15" />
+            <dataField fieldName="Ern_No" columns="15" />
+            <dataField fieldName="Ded_No" columns="15" />
+            <dataField fieldName="Rpt_ty" columns="15" />
+            <dataField fieldName="New_Depm" columns="15" />
+            <dataField fieldName="Not" columns="50" />
+            <dataField fieldName="Bsc_Salry" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tot_Alow" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tot_Ded" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tot_Ern" dataFormatString="c" columns="15" />
+            <dataField fieldName="Net_Salry" dataFormatString="c" columns="15" />
+            <dataField fieldName="Trs_Month" columns="7" />
+            <dataField fieldName="Ern_Mony" dataFormatString="c" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

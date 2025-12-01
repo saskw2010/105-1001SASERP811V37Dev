@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="GLTransCheckbalance" conflictDetection="overwriteChanges" label="GL Trans Checkbalance" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"GLTransCheckbalance"."sgm_Nm" "sgm_Nm"
+	,"GLTransCheckbalance"."sgm" "sgm"
+	,"GLTransCheckbalance"."Jrty_Nm" "Jrty_Nm"
+	,"GLTransCheckbalance"."jr_ty" "jr_ty"
+	,"GLTransCheckbalance"."Yeartrdt" "Yeartrdt"
+	,"GLTransCheckbalance"."Monthtrdt" "Monthtrdt"
+	,"GLTransCheckbalance"."Tr_Dt" "Tr_Dt"
+	,"GLTransCheckbalance"."Tr_no" "Tr_no"
+	,"GLTransCheckbalance"."tr_cr" "tr_cr"
+	,"GLTransCheckbalance"."Tr_db" "Tr_db"
+	,"GLTransCheckbalance"."Diffofdbcr" "Diffofdbcr"
+from "dbo"."GLTransCheckbalance" "GLTransCheckbalance"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="sgm_Nm" type="String" label="sgm Nm" length="255" showInSummary="true" />
+    <field name="sgm" type="Int64" label="Sgm" showInSummary="true" />
+    <field name="Jrty_Nm" type="String" label="Jrty Nm" length="255" showInSummary="true" />
+    <field name="jr_ty" type="Int64" label="Jr Ty" showInSummary="true" />
+    <field name="Yeartrdt" type="Int32" label="Yeartrdt" readOnly="true" showInSummary="true" />
+    <field name="Monthtrdt" type="Int32" label="Monthtrdt" readOnly="true" />
+    <field name="Tr_Dt" type="DateTime" label="Tr Dt" />
+    <field name="Tr_no" type="Int64" label="Tr no" />
+    <field name="tr_cr" type="Decimal" label="Tr Cr" />
+    <field name="Tr_db" type="Decimal" label="Tr db" />
+    <field name="Diffofdbcr" type="Decimal" label="Diffofdbcr" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="GL Trans Checkbalance">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="sgm_Nm" />
+        <dataField fieldName="sgm" columns="15" />
+        <dataField fieldName="Jrty_Nm" />
+        <dataField fieldName="jr_ty" columns="15" />
+        <dataField fieldName="Yeartrdt" columns="15" />
+        <dataField fieldName="Monthtrdt" columns="15" />
+        <dataField fieldName="Tr_Dt" columns="10" />
+        <dataField fieldName="Tr_no" columns="15" />
+        <dataField fieldName="tr_cr" columns="15" />
+        <dataField fieldName="Tr_db" columns="15" />
+        <dataField fieldName="Diffofdbcr" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review GL Trans Checkbalance">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="GL Trans Checkbalance" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sgm_Nm" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="Jrty_Nm" />
+            <dataField fieldName="jr_ty" columns="15" />
+            <dataField fieldName="Yeartrdt" columns="15" />
+            <dataField fieldName="Monthtrdt" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="Tr_no" columns="15" />
+            <dataField fieldName="tr_cr" columns="15" />
+            <dataField fieldName="Tr_db" columns="15" />
+            <dataField fieldName="Diffofdbcr" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New GL Trans Checkbalance">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New GL Trans Checkbalance" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sgm_Nm" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="Jrty_Nm" />
+            <dataField fieldName="jr_ty" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="Tr_no" columns="15" />
+            <dataField fieldName="tr_cr" columns="15" />
+            <dataField fieldName="Tr_db" columns="15" />
+            <dataField fieldName="Diffofdbcr" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

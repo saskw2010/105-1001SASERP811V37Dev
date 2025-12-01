@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Storderdtl" conflictDetection="overwriteChanges" label="Storderdtl" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Storderdtl"."Work_order_no" "Work_order_no"
+	,"Work_order_"."Notes" "Work_order_Notes"
+	,"Work_order_Request_"."Notes" "Work_order_Request_Notes"
+	,"Work_order_Request_Div_"."Emp_Nmdriver" "Work_order_Request_Div_Emp_Nmdriver"
+	,"Work_order_Request_Costcnter_"."Costcntr_Nm" "Work_order_Request_Costcnter_Costcntr_Nm"
+	,"Work_order_Request_reqtype"."reqDesc" "Work_order_Request_reqtypereqDesc"
+	,"Work_order_Request_Cstm_"."Cstm_Nm" "Work_order_Request_Cstm_Cstm_Nm"
+	,"Work_order_Inspc_"."inspction_name" "Work_order_Inspc_inspction_name"
+	,"Work_order_status_"."storderdesc" "Work_order_status_storderdesc"
+	,"Storderdtl"."Ln_No" "Ln_No"
+	,"Storderdtl"."notesdtl" "notesdtl"
+	,"Storderdtl"."carno" "carno"
+	,"car"."PLAT_No" "carPLAT_No"
+	,"carCar_Type"."Styl_Nm" "carCar_TypeStyl_Nm"
+	,"carcarclass"."carclassname" "carcarclasscarclassname"
+	,"carcarstutus_"."carstutus_name" "carcarstutus_carstutus_name"
+	,"carCar_Colr"."Color_name" "carCar_ColrColor_name"
+	,"carsgm"."sgm_Nm" "carsgmsgm_Nm"
+	,"carsgmOpco"."OpcoName" "carsgmOpcoOpcoName"
+	,"carInsurance_type"."Insurance_name" "carInsurance_typeInsurance_name"
+	,"carCar_Lik"."Like_name" "carCar_LikLike_name"
+	,"carFbrct_Cntry"."Cntry_Nm" "carFbrct_CntryCntry_Nm"
+	,"carOwnr_"."Ownr_ID" "carOwnr_Ownr_ID"
+	,"carOwnr_cmp_"."Grp_Nm" "carOwnr_cmp_Grp_Nm"
+	,"carTrfc_Dpm"."State_Nm" "carTrfc_DpmState_Nm"
+	,"carSup_"."Sup_Nm" "carSup_Sup_Nm"
+	,"carSup_Acc_"."Acc_Nm" "carSup_Acc_Acc_Nm"
+	,"carSup_Cntry_"."Cntry_Nm" "carSup_Cntry_Cntry_Nm"
+	,"carSup_Curncy_"."Curncy_Nm" "carSup_Curncy_Curncy_Nm"
+	,"Storderdtl"."section_no" "section_no"
+	,"section_"."Brn_Nm" "section_Brn_Nm"
+	,"Storderdtl"."complnsid" "complnsid"
+	,"complns"."complnsdesc" "complnscomplnsdesc"
+	,"complnssection_typ"."Brn_Nm" "complnssection_typBrn_Nm"
+	,"Storderdtl"."ModifiedBy" "ModifiedBy"
+	,"Storderdtl"."ModifiedOn" "ModifiedOn"
+	,"Storderdtl"."CreatedBy" "CreatedBy"
+	,"Storderdtl"."CreatedOn" "CreatedOn"
+from "dbo"."Storderdtl" "Storderdtl"
+	left join "dbo"."Storderhdr" "Work_order_" on "Storderdtl"."Work_order_no" = "Work_order_"."Work_order_no"
+	left join "dbo"."maintncrequest" "Work_order_Request_" on "Work_order_"."Request_no" = "Work_order_Request_"."Doc_No"
+	left join "dbo"."Cadriver" "Work_order_Request_Div_" on "Work_order_Request_"."Div_No" = "Work_order_Request_Div_"."Emp_No"
+	left join "dbo"."GLcostcntr" "Work_order_Request_Costcnter_" on "Work_order_Request_"."Costcnter_no" = "Work_order_Request_Costcnter_"."Costcntr_No"
+	left join "dbo"."maintainReqtype" "Work_order_Request_reqtype" on "Work_order_Request_"."reqtype" = "Work_order_Request_reqtype"."reqtype"
+	left join "dbo"."Stcustmr" "Work_order_Request_Cstm_" on "Work_order_Request_"."Cstm_No" = "Work_order_Request_Cstm_"."Cstm_No"
+	left join "dbo"."StorderInspctions" "Work_order_Inspc_" on "Work_order_"."Inspc_No" = "Work_order_Inspc_"."Inspction_no"
+	left join "dbo"."Storderstatus" "Work_order_status_" on "Work_order_"."status_code" = "Work_order_status_"."storderstuid"
+	left join "dbo"."CarInfom" "car" on "Storderdtl"."carno" = "car"."Car_No"
+	left join "dbo"."CaCrstyl" "carCar_Type" on "car"."Car_Type" = "carCar_Type"."Styl_No"
+	left join "dbo"."carclass" "carcarclass" on "car"."carclass" = "carcarclass"."carclass"
+	left join "dbo"."carstutuslist" "carcarstutus_" on "car"."carstutus_no" = "carcarstutus_"."carstutus_no"
+	left join "dbo"."Colorlist" "carCar_Colr" on "car"."Car_Colr" = "carCar_Colr"."ColorNo"
+	left join "dbo"."glmulcmp" "carsgm" on "car"."sgm" = "carsgm"."sgmid"
+	left join "dbo"."OpCo" "carsgmOpco" on "carsgm"."OpcoID" = "carsgmOpco"."OpcoIDidentity"
+	left join "dbo"."Insurancetype" "carInsurance_type" on "car"."Insurance_type" = "carInsurance_type"."Insurance_type"
+	left join "dbo"."Likelist" "carCar_Lik" on "car"."Car_Lik" = "carCar_Lik"."LikeNo"
+	left join "dbo"."PYCntry" "carFbrct_Cntry" on "car"."Fbrct_Cntry" = "carFbrct_Cntry"."Cntry_No"
+	left join "dbo"."Pyownrmf" "carOwnr_" on "car"."Ownr_No" = "carOwnr_"."Ownr_No"
+	left join "dbo"."Pycnstnt" "carOwnr_cmp_" on "carOwnr_"."cmp_no" = "carOwnr_cmp_"."Cmp_No"
+	left join "dbo"."PyState" "carTrfc_Dpm" on "car"."Trfc_Dpm" = "carTrfc_Dpm"."State"
+	left join "dbo"."Stsuplir" "carSup_" on "car"."Sup_No" = "carSup_"."Sup_No"
+	left join "dbo"."GLmstrfl" "carSup_Acc_" on "carSup_"."Acc_No" = "carSup_Acc_"."Acc_No"
+	left join "dbo"."PYCntry" "carSup_Cntry_" on "carSup_"."Cntry_No" = "carSup_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "carSup_Curncy_" on "carSup_"."Curncy_No" = "carSup_Curncy_"."Curncy_No"
+	left join "dbo"."Stwhrhouseorder" "section_" on "Storderdtl"."section_no" = "section_"."Brn_No"
+	left join "dbo"."Stordercopmlains" "complns" on "Storderdtl"."complnsid" = "complns"."complnsid"
+	left join "dbo"."Stwhrhouseorder" "complnssection_typ" on "complns"."section_typ" = "complnssection_typ"."Brn_No"
+]]></text>
+    </command>
+    <command id="Ln_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Ln_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Work_order_no" type="Int64" allowNulls="false" label="Work order no" showInSummary="true">
+      <items style="Lookup" dataController="Storderhdr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Work_order_Notes" type="String" readOnly="true" label="Work order Notes" length="50" />
+    <field name="Work_order_Request_Notes" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Work order Request Notes" length="-1" />
+    <field name="Work_order_Request_Div_Emp_Nmdriver" type="String" readOnly="true" label="Work order Request Div Emp Nmdriver" length="60" />
+    <field name="Work_order_Request_Costcnter_Costcntr_Nm" type="String" readOnly="true" label="Work order Request Costcnter Costcntr Nm" length="255" />
+    <field name="Work_order_Request_reqtypereqDesc" type="String" readOnly="true" label="Work order Request reqtypereq Desc" length="100" />
+    <field name="Work_order_Request_Cstm_Cstm_Nm" type="String" readOnly="true" label="Work order Request Cstm Nm" length="155" />
+    <field name="Work_order_Inspc_inspction_name" type="String" readOnly="true" label="Work order Inspc inspction name" length="100" />
+    <field name="Work_order_status_storderdesc" type="String" readOnly="true" label="Work order status storderdesc" length="50" />
+    <field name="Ln_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Ln No" readOnly="true" />
+    <field name="notesdtl" type="String" label="Notesdtl" length="255" showInSummary="true" />
+    <field name="carno" type="Int64" label="Carno" showInSummary="true">
+      <items searchOnStart="true" />
+    </field>
+    <field name="carPLAT_No" type="String" readOnly="true" label="car PLAT No" length="20" />
+    <field name="carCar_TypeStyl_Nm" type="String" readOnly="true" label="car Car Type Styl Nm" length="60" />
+    <field name="carcarclasscarclassname" type="String" readOnly="true" label="Carcarclasscarclassname" length="60" />
+    <field name="carcarstutus_carstutus_name" type="String" readOnly="true" label="Carcarstutus Carstutus Name" length="50" />
+    <field name="carCar_ColrColor_name" type="String" readOnly="true" label="car Car Colr Color name" length="50" />
+    <field name="carsgmsgm_Nm" type="String" readOnly="true" label="carsgmsgm Nm" length="255" />
+    <field name="carsgmOpcoOpcoName" type="String" readOnly="true" label="carsgm Opco Name" length="50" />
+    <field name="carInsurance_typeInsurance_name" type="String" readOnly="true" label="car Insurance type Insurance name" length="150" />
+    <field name="carCar_LikLike_name" type="String" readOnly="true" label="car Car Lik Like name" length="50" />
+    <field name="carFbrct_CntryCntry_Nm" type="String" readOnly="true" label="car Fbrct Cntry Nm" length="255" />
+    <field name="carOwnr_Ownr_ID" type="String" readOnly="true" label="car Ownr#" length="15" />
+    <field name="carOwnr_cmp_Grp_Nm" type="String" readOnly="true" label="car Ownr cmp Grp Nm" length="255" />
+    <field name="carTrfc_DpmState_Nm" type="String" readOnly="true" label="car Trfc Dpm State Nm" length="60" />
+    <field name="carSup_Sup_Nm" type="String" readOnly="true" label="car Sup Nm" length="255" />
+    <field name="carSup_Acc_Acc_Nm" type="String" readOnly="true" label="car Sup Acc Nm" length="255" />
+    <field name="carSup_Cntry_Cntry_Nm" type="String" readOnly="true" label="car Sup Cntry Nm" length="255" />
+    <field name="carSup_Curncy_Curncy_Nm" type="String" readOnly="true" label="car Sup Curncy Nm" length="200" />
+    <field name="section_no" type="Int64" label="Section No" showInSummary="true">
+      <items style="Lookup" dataController="Stwhrhouseorder" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="section_Brn_Nm" type="String" readOnly="true" label="section Brn Nm" length="255" />
+    <field name="complnsid" type="Int64" label="Complnsid" showInSummary="true">
+      <items style="Lookup" dataController="Stordercopmlains" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="complnscomplnsdesc" type="String" readOnly="true" label="Complnscomplnsdesc" length="150" />
+    <field name="complnssection_typBrn_Nm" type="String" readOnly="true" label="complnssection typ Brn Nm" length="255" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Storderdtl">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Work_order_no" aliasFieldName="Work_order_Notes" />
+        <dataField fieldName="notesdtl" />
+        <dataField fieldName="carno" aliasFieldName="carPLAT_No" hyperlinkFormatString="~/Pages/CarInfom.aspx?Car_No={carno}&amp;_controller=CarInfom&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="section_no" aliasFieldName="section_Brn_Nm" hyperlinkFormatString="~/Pages/Stwhrhouseorder.aspx?Brn_No={section_no}&amp;_controller=Stwhrhouseorder&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="complnsid" aliasFieldName="complnscomplnsdesc" hyperlinkFormatString="~/Pages/Stordercopmlains.aspx?complnsid={complnsid}&amp;_controller=Stordercopmlains&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="Work_order_Request_Notes" rows="5" />
+        <dataField fieldName="Work_order_Request_Div_Emp_Nmdriver" />
+        <dataField fieldName="Work_order_Request_Costcnter_Costcntr_Nm" />
+        <dataField fieldName="Work_order_Request_reqtypereqDesc" />
+        <dataField fieldName="Work_order_Request_Cstm_Cstm_Nm" />
+        <dataField fieldName="Work_order_Inspc_inspction_name" />
+        <dataField fieldName="Work_order_status_storderdesc" columns="50" />
+        <dataField fieldName="carCar_TypeStyl_Nm" />
+        <dataField fieldName="carcarclasscarclassname" />
+        <dataField fieldName="carcarstutus_carstutus_name" columns="50" />
+        <dataField fieldName="carCar_ColrColor_name" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Storderdtl">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Storderdtl" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Work_order_no" aliasFieldName="Work_order_Notes" hyperlinkFormatString="~/Pages/Storderhdr.aspx?Work_order_no={Work_order_no}&amp;_controller=Storderhdr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="notesdtl" />
+            <dataField fieldName="carno" aliasFieldName="carPLAT_No" hyperlinkFormatString="~/Pages/CarInfom.aspx?Car_No={carno}&amp;_controller=CarInfom&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="section_no" aliasFieldName="section_Brn_Nm" hyperlinkFormatString="~/Pages/Stwhrhouseorder.aspx?Brn_No={section_no}&amp;_controller=Stwhrhouseorder&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="complnsid" aliasFieldName="complnscomplnsdesc" hyperlinkFormatString="~/Pages/Stordercopmlains.aspx?complnsid={complnsid}&amp;_controller=Stordercopmlains&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Work_order_Request_Notes" rows="5" />
+            <dataField fieldName="Work_order_Request_Div_Emp_Nmdriver" />
+            <dataField fieldName="Work_order_Request_Costcnter_Costcntr_Nm" />
+            <dataField fieldName="Work_order_Request_reqtypereqDesc" />
+            <dataField fieldName="Work_order_Request_Cstm_Cstm_Nm" />
+            <dataField fieldName="Work_order_Inspc_inspction_name" />
+            <dataField fieldName="Work_order_status_storderdesc" columns="50" />
+            <dataField fieldName="carCar_TypeStyl_Nm" />
+            <dataField fieldName="carcarclasscarclassname" />
+            <dataField fieldName="carcarstutus_carstutus_name" columns="50" />
+            <dataField fieldName="carCar_ColrColor_name" columns="50" />
+            <dataField fieldName="carsgmsgm_Nm" />
+            <dataField fieldName="carsgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="carInsurance_typeInsurance_name" />
+            <dataField fieldName="carCar_LikLike_name" columns="50" />
+            <dataField fieldName="carFbrct_CntryCntry_Nm" />
+            <dataField fieldName="carOwnr_Ownr_ID" columns="15" />
+            <dataField fieldName="carOwnr_cmp_Grp_Nm" />
+            <dataField fieldName="carTrfc_DpmState_Nm" />
+            <dataField fieldName="carSup_Sup_Nm" />
+            <dataField fieldName="carSup_Acc_Acc_Nm" />
+            <dataField fieldName="carSup_Cntry_Cntry_Nm" />
+            <dataField fieldName="carSup_Curncy_Curncy_Nm" />
+            <dataField fieldName="complnssection_typBrn_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Storderdtl">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Storderdtl" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Work_order_no" aliasFieldName="Work_order_Notes" />
+            <dataField fieldName="notesdtl" />
+            <dataField fieldName="carno" aliasFieldName="carPLAT_No" />
+            <dataField fieldName="section_no" aliasFieldName="section_Brn_Nm" />
+            <dataField fieldName="complnsid" aliasFieldName="complnscomplnsdesc" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Insert" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+    <rule id="r105" commandName="Insert" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+    <rule id="r104" commandName="Update" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+    <rule id="r101" commandName="Update" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm
+set @Result_NavigateUrl = 'webreportviwer.aspx?reportquery=' + @Arguments_Controller    + '&idfilter=' + cast(@Doc_No as nvarchar) +  '&sosoname=' + cast(@sgm as nvarchar)]]></rule>
+    <rule id="r103" commandName="Delete" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+    <rule id="r102" commandName="Delete" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+    <rule id="r107" commandName="Calculate" type="Sql" phase="Execute"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Execute'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+  </businessRules>
+</dataController>

@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="cacotractdtl" conflictDetection="overwriteChanges" label="Cacotractdtl" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"cacotractdtl"."Trs_No" "Trs_No"
+	,"cacotractdtl"."contractid" "contractid"
+	,"contract"."GehatNo" "contractGehatNo"
+	,"contractcontractstatus"."status_name" "contractcontractstatusstatus_name"
+	,"cacotractdtl"."car_No" "car_No"
+	,"car_"."PLAT_No" "car_PLAT_No"
+	,"car_Car_Type"."Styl_Nm" "car_Car_TypeStyl_Nm"
+	,"car_carclass"."carclassname" "car_carclasscarclassname"
+	,"car_carstutus_"."carstutus_name" "car_carstutus_carstutus_name"
+	,"car_Car_Colr"."Color_name" "car_Car_ColrColor_name"
+	,"car_sgm"."sgm_Nm" "car_sgmsgm_Nm"
+	,"car_sgmOpco"."OpcoName" "car_sgmOpcoOpcoName"
+	,"car_Insurance_type"."Insurance_name" "car_Insurance_typeInsurance_name"
+	,"car_Car_Lik"."Like_name" "car_Car_LikLike_name"
+	,"car_Fbrct_Cntry"."Cntry_Nm" "car_Fbrct_CntryCntry_Nm"
+	,"car_Ownr_"."Ownr_ID" "car_Ownr_Ownr_ID"
+	,"car_Ownr_cmp_"."Grp_Nm" "car_Ownr_cmp_Grp_Nm"
+	,"car_Trfc_Dpm"."State_Nm" "car_Trfc_DpmState_Nm"
+	,"car_Sup_"."Sup_Nm" "car_Sup_Sup_Nm"
+	,"car_Sup_Acc_"."Acc_Nm" "car_Sup_Acc_Acc_Nm"
+	,"car_Sup_Cntry_"."Cntry_Nm" "car_Sup_Cntry_Cntry_Nm"
+	,"car_Sup_Curncy_"."Curncy_Nm" "car_Sup_Curncy_Curncy_Nm"
+	,"cacotractdtl"."Trs_Dt" "Trs_Dt"
+	,"cacotractdtl"."Notes1" "Notes1"
+	,"cacotractdtl"."cstm_no" "cstm_no"
+	,"cstm_"."Cstm_Nm" "cstm_Cstm_Nm"
+	,"cstm_Area"."Area_name" "cstm_AreaArea_name"
+	,"cstm_Evaluation"."Evaluation_name" "cstm_EvaluationEvaluation_name"
+	,"cstm_acc_"."Acc_Nm" "cstm_acc_Acc_Nm"
+	,"cstm_acc_Clsacc_"."Acc_Nm" "cstm_acc_Clsacc_Acc_Nm"
+	,"cstm_acc_Acc_Bnd"."Acc_Nm" "cstm_acc_Acc_BndAcc_Nm"
+	,"cstm_Cntry_"."Cntry_Nm" "cstm_Cntry_Cntry_Nm"
+	,"cstm_curncy_"."Curncy_Nm" "cstm_curncy_Curncy_Nm"
+	,"cstm_TSNEF"."TSNEF_name" "cstm_TSNEFTSNEF_name"
+	,"cstm_TSNEFNO1"."TSNEF1_name" "cstm_TSNEFNO1TSNEF1_name"
+	,"cstm_Slm_"."Slm_Nm" "cstm_Slm_Slm_Nm"
+	,"cstm_Slm_masngerclass"."masngerclass" "cstm_Slm_masngerclassmasngerclass"
+	,"cacotractdtl"."ModifiedBy" "ModifiedBy"
+	,"cacotractdtl"."ModifiedOn" "ModifiedOn"
+	,"cacotractdtl"."CreatedBy" "CreatedBy"
+	,"cacotractdtl"."CreatedOn" "CreatedOn"
+from "dbo"."cacotractdtl" "cacotractdtl"
+	left join "dbo"."cacotractmain" "contract" on "cacotractdtl"."contractid" = "contract"."contractid"
+	left join "dbo"."contractstatus" "contractcontractstatus" on "contract"."contractstatus" = "contractcontractstatus"."cntstcode"
+	left join "dbo"."CarInfom" "car_" on "cacotractdtl"."car_No" = "car_"."Car_No"
+	left join "dbo"."CaCrstyl" "car_Car_Type" on "car_"."Car_Type" = "car_Car_Type"."Styl_No"
+	left join "dbo"."carclass" "car_carclass" on "car_"."carclass" = "car_carclass"."carclass"
+	left join "dbo"."carstutuslist" "car_carstutus_" on "car_"."carstutus_no" = "car_carstutus_"."carstutus_no"
+	left join "dbo"."Colorlist" "car_Car_Colr" on "car_"."Car_Colr" = "car_Car_Colr"."ColorNo"
+	left join "dbo"."glmulcmp" "car_sgm" on "car_"."sgm" = "car_sgm"."sgmid"
+	left join "dbo"."OpCo" "car_sgmOpco" on "car_sgm"."OpcoID" = "car_sgmOpco"."OpcoIDidentity"
+	left join "dbo"."Insurancetype" "car_Insurance_type" on "car_"."Insurance_type" = "car_Insurance_type"."Insurance_type"
+	left join "dbo"."Likelist" "car_Car_Lik" on "car_"."Car_Lik" = "car_Car_Lik"."LikeNo"
+	left join "dbo"."PYCntry" "car_Fbrct_Cntry" on "car_"."Fbrct_Cntry" = "car_Fbrct_Cntry"."Cntry_No"
+	left join "dbo"."Pyownrmf" "car_Ownr_" on "car_"."Ownr_No" = "car_Ownr_"."Ownr_No"
+	left join "dbo"."Pycnstnt" "car_Ownr_cmp_" on "car_Ownr_"."cmp_no" = "car_Ownr_cmp_"."Cmp_No"
+	left join "dbo"."PyState" "car_Trfc_Dpm" on "car_"."Trfc_Dpm" = "car_Trfc_Dpm"."State"
+	left join "dbo"."Stsuplir" "car_Sup_" on "car_"."Sup_No" = "car_Sup_"."Sup_No"
+	left join "dbo"."GLmstrfl" "car_Sup_Acc_" on "car_Sup_"."Acc_No" = "car_Sup_Acc_"."Acc_No"
+	left join "dbo"."PYCntry" "car_Sup_Cntry_" on "car_Sup_"."Cntry_No" = "car_Sup_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "car_Sup_Curncy_" on "car_Sup_"."Curncy_No" = "car_Sup_Curncy_"."Curncy_No"
+	left join "dbo"."Stcustmr" "cstm_" on "cacotractdtl"."cstm_no" = "cstm_"."Cstm_No"
+	left join "dbo"."AreaList" "cstm_Area" on "cstm_"."AreaNo" = "cstm_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "cstm_Evaluation" on "cstm_"."EvaluationNO" = "cstm_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "cstm_acc_" on "cstm_"."acc_no" = "cstm_acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "cstm_acc_Clsacc_" on "cstm_acc_"."Clsacc_No" = "cstm_acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "cstm_acc_Acc_Bnd" on "cstm_acc_"."Acc_Bnd" = "cstm_acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."PYCntry" "cstm_Cntry_" on "cstm_"."Cntry_No" = "cstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "cstm_curncy_" on "cstm_"."curncy_no" = "cstm_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "cstm_TSNEF" on "cstm_"."TSNEFNO" = "cstm_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "cstm_TSNEFNO1" on "cstm_"."TSNEFNO1" = "cstm_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "cstm_Slm_" on "cstm_"."Slm_No" = "cstm_Slm_"."Slm_No"
+	left join "dbo"."masngerclass" "cstm_Slm_masngerclass" on "cstm_Slm_"."masngerclassid" = "cstm_Slm_masngerclass"."masngerclassid"
+]]></text>
+    </command>
+    <command id="Trs_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Trs_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Trs_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Trs No" readOnly="true" />
+    <field name="contractid" type="Int64" allowNulls="false" label="Contractid" showInSummary="true">
+      <items style="Lookup" dataController="cacotractmain" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="contractGehatNo" type="String" readOnly="true" label="contract Gehat No" length="50" />
+    <field name="contractcontractstatusstatus_name" type="String" readOnly="true" label="Contractcontractstatusstatus Name" length="100" />
+    <field name="car_No" type="Int64" allowNulls="false" label="car No" showInSummary="true">
+      <items searchOnStart="true" />
+    </field>
+    <field name="car_PLAT_No" type="String" readOnly="true" label="car PLAT No" length="20" />
+    <field name="car_Car_TypeStyl_Nm" type="String" readOnly="true" label="car Car Type Styl Nm" length="60" />
+    <field name="car_carclasscarclassname" type="String" readOnly="true" label="Car Carclasscarclassname" length="60" />
+    <field name="car_carstutus_carstutus_name" type="String" readOnly="true" label="Car Carstutus Name" length="50" />
+    <field name="car_Car_ColrColor_name" type="String" readOnly="true" label="car Car Colr Color name" length="50" />
+    <field name="car_sgmsgm_Nm" type="String" readOnly="true" label="car sgmsgm Nm" length="255" />
+    <field name="car_sgmOpcoOpcoName" type="String" readOnly="true" label="car sgm Opco Name" length="50" />
+    <field name="car_Insurance_typeInsurance_name" type="String" readOnly="true" label="car Insurance type Insurance name" length="150" />
+    <field name="car_Car_LikLike_name" type="String" readOnly="true" label="car Car Lik Like name" length="50" />
+    <field name="car_Fbrct_CntryCntry_Nm" type="String" readOnly="true" label="car Fbrct Cntry Nm" length="255" />
+    <field name="car_Ownr_Ownr_ID" type="String" readOnly="true" label="car Ownr#" length="15" />
+    <field name="car_Ownr_cmp_Grp_Nm" type="String" readOnly="true" label="car Ownr cmp Grp Nm" length="255" />
+    <field name="car_Trfc_DpmState_Nm" type="String" readOnly="true" label="car Trfc Dpm State Nm" length="60" />
+    <field name="car_Sup_Sup_Nm" type="String" readOnly="true" label="car Sup Nm" length="255" />
+    <field name="car_Sup_Acc_Acc_Nm" type="String" readOnly="true" label="car Sup Acc Nm" length="255" />
+    <field name="car_Sup_Cntry_Cntry_Nm" type="String" readOnly="true" label="car Sup Cntry Nm" length="255" />
+    <field name="car_Sup_Curncy_Curncy_Nm" type="String" readOnly="true" label="car Sup Curncy Nm" length="200" />
+    <field name="Trs_Dt" type="DateTime" label="Trs Dt" showInSummary="true" />
+    <field name="Notes1" type="String" label="Notes1" length="60" showInSummary="true" />
+    <field name="cstm_no" type="Int64" label="Cstm No" showInSummary="true">
+      <items style="Lookup" dataController="Stcustmr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="cstm_Cstm_Nm" type="String" readOnly="true" label="cstm Cstm Nm" length="155" />
+    <field name="cstm_AreaArea_name" type="String" readOnly="true" label="cstm Area name" length="150" />
+    <field name="cstm_EvaluationEvaluation_name" type="String" readOnly="true" label="cstm Evaluation name" length="150" />
+    <field name="cstm_acc_Acc_Nm" type="String" readOnly="true" label="cstm acc Acc Nm" length="255" />
+    <field name="cstm_acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="cstm acc Clsacc Acc Nm" length="250" />
+    <field name="cstm_acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="cstm acc Acc Bnd Acc Nm" length="50" />
+    <field name="cstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="cstm Cntry Nm" length="255" />
+    <field name="cstm_curncy_Curncy_Nm" type="String" readOnly="true" label="cstm curncy Curncy Nm" length="200" />
+    <field name="cstm_TSNEFTSNEF_name" type="String" readOnly="true" label="cstm TSNEFTSNEF name" length="150" />
+    <field name="cstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="cstm TSNEFNO1TSNEF1 name" length="150" />
+    <field name="cstm_Slm_Slm_Nm" type="String" readOnly="true" label="cstm Slm Nm" length="100" />
+    <field name="cstm_Slm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="cstm Slm masngerclassmasngerclass" length="-1" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Cacotractdtl">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="contractid" aliasFieldName="contractGehatNo" />
+        <dataField fieldName="car_No" aliasFieldName="car_PLAT_No" hyperlinkFormatString="~/Pages/CarInfom.aspx?Car_No={car_No}&amp;_controller=CarInfom&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Trs_Dt" columns="10" />
+        <dataField fieldName="Notes1" />
+        <dataField fieldName="cstm_no" aliasFieldName="cstm_Cstm_Nm" hyperlinkFormatString="~/Pages/Stcustmr.aspx?Cstm_No={cstm_no}&amp;_controller=Stcustmr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="contractcontractstatusstatus_name" />
+        <dataField fieldName="car_Car_TypeStyl_Nm" />
+        <dataField fieldName="car_carclasscarclassname" />
+        <dataField fieldName="car_carstutus_carstutus_name" columns="50" />
+        <dataField fieldName="car_Car_ColrColor_name" columns="50" />
+        <dataField fieldName="car_sgmsgm_Nm" />
+        <dataField fieldName="car_sgmOpcoOpcoName" columns="50" />
+        <dataField fieldName="car_Insurance_typeInsurance_name" />
+        <dataField fieldName="car_Car_LikLike_name" columns="50" />
+        <dataField fieldName="car_Fbrct_CntryCntry_Nm" />
+        <dataField fieldName="car_Ownr_Ownr_ID" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Cacotractdtl">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Cacotractdtl" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="contractid" aliasFieldName="contractGehatNo" hyperlinkFormatString="~/Pages/cacotractmain.aspx?contractid={contractid}&amp;_controller=cacotractmain&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="car_No" aliasFieldName="car_PLAT_No" hyperlinkFormatString="~/Pages/CarInfom.aspx?Car_No={car_No}&amp;_controller=CarInfom&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Trs_Dt" columns="10" />
+            <dataField fieldName="Notes1" />
+            <dataField fieldName="cstm_no" aliasFieldName="cstm_Cstm_Nm" hyperlinkFormatString="~/Pages/Stcustmr.aspx?Cstm_No={cstm_no}&amp;_controller=Stcustmr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="contractcontractstatusstatus_name" />
+            <dataField fieldName="car_Car_TypeStyl_Nm" />
+            <dataField fieldName="car_carclasscarclassname" />
+            <dataField fieldName="car_carstutus_carstutus_name" columns="50" />
+            <dataField fieldName="car_Car_ColrColor_name" columns="50" />
+            <dataField fieldName="car_sgmsgm_Nm" />
+            <dataField fieldName="car_sgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="car_Insurance_typeInsurance_name" />
+            <dataField fieldName="car_Car_LikLike_name" columns="50" />
+            <dataField fieldName="car_Fbrct_CntryCntry_Nm" />
+            <dataField fieldName="car_Ownr_Ownr_ID" columns="15" />
+            <dataField fieldName="car_Ownr_cmp_Grp_Nm" />
+            <dataField fieldName="car_Trfc_DpmState_Nm" />
+            <dataField fieldName="car_Sup_Sup_Nm" />
+            <dataField fieldName="car_Sup_Acc_Acc_Nm" />
+            <dataField fieldName="car_Sup_Cntry_Cntry_Nm" />
+            <dataField fieldName="car_Sup_Curncy_Curncy_Nm" />
+            <dataField fieldName="cstm_AreaArea_name" />
+            <dataField fieldName="cstm_EvaluationEvaluation_name" />
+            <dataField fieldName="cstm_acc_Acc_Nm" />
+            <dataField fieldName="cstm_acc_Clsacc_Acc_Nm" />
+            <dataField fieldName="cstm_acc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="cstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="cstm_curncy_Curncy_Nm" />
+            <dataField fieldName="cstm_TSNEFTSNEF_name" />
+            <dataField fieldName="cstm_TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="cstm_Slm_Slm_Nm" />
+            <dataField fieldName="cstm_Slm_masngerclassmasngerclass" rows="5" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Cacotractdtl">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Cacotractdtl" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="contractid" aliasFieldName="contractGehatNo" />
+            <dataField fieldName="car_No" aliasFieldName="car_PLAT_No" />
+            <dataField fieldName="Trs_Dt" columns="10" />
+            <dataField fieldName="Notes1" />
+            <dataField fieldName="cstm_no" aliasFieldName="cstm_Cstm_Nm" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

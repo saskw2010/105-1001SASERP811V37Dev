@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="SubCntItmd" conflictDetection="overwriteChanges" label="Sub Cnt Itmd" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"SubCntItmd"."ItmNo" "ItmNo"
+	,"SubCntItmd"."Ac_No1" "Ac_No1"
+	,"TheAc_No1"."Ac_Nm1" "TheAc_No1Ac_Nm1"
+	,"SubCntItmd"."SubCnt_No" "SubCnt_No"
+	,"SubCnt_"."Sub_Disc" "SubCnt_Sub_Disc"
+	,"SubCnt_SubCnt_"."NameEn" "SubCnt_SubCnt_NameEn"
+	,"SubCntItmd"."PJcntmf_Prj_No" "PJcntmf_Prj_No"
+	,"PJcntmf_Prj_"."Prj_Nm" "PJcntmf_Prj_Prj_Nm"
+	,"PJcntmf_Prj_Cstm_"."Cstm_Nm" "PJcntmf_Prj_Cstm_Cstm_Nm"
+	,"PJcntmf_Prj_Cstm_Area"."Area_name" "PJcntmf_Prj_Cstm_AreaArea_name"
+	,"PJcntmf_Prj_Cstm_Evaluation"."Evaluation_name" "PJcntmf_Prj_Cstm_EvaluationEvaluation_name"
+	,"PJcntmf_Prj_Cstm_acc_"."Acc_Nm" "PJcntmf_Prj_Cstm_acc_Acc_Nm"
+	,"PJcntmf_Prj_Cstm_Cntry_"."Cntry_Nm" "PJcntmf_Prj_Cstm_Cntry_Cntry_Nm"
+	,"PJcntmf_Prj_Cstm_curncy_"."Curncy_Nm" "PJcntmf_Prj_Cstm_curncy_Curncy_Nm"
+	,"PJcntmf_Prj_Cstm_TSNEF"."TSNEF_name" "PJcntmf_Prj_Cstm_TSNEFTSNEF_name"
+	,"PJcntmf_Prj_Cstm_TSNEFNO1"."TSNEF1_name" "PJcntmf_Prj_Cstm_TSNEFNO1TSNEF1_name"
+	,"PJcntmf_Prj_Cstm_Slm_"."Slm_Nm" "PJcntmf_Prj_Cstm_Slm_Slm_Nm"
+	,"SubCntItmd"."Qu" "Qu"
+	,"SubCntItmd"."Pr_Mo" "Pr_Mo"
+	,"SubCntItmd"."Itmval" "Itmval"
+	,"SubCntItmd"."Pymval" "Pymval"
+	,"SubCntItmd"."ItmBal" "ItmBal"
+	,"SubCntItmd"."Itm_stdate" "Itm_stdate"
+	,"SubCntItmd"."Itm_Endate" "Itm_Endate"
+	,"SubCntItmd"."PymDt" "PymDt"
+	,"SubCntItmd"."PymPer" "PymPer"
+	,"SubCntItmd"."ItmDisc" "ItmDisc"
+	,"SubCntItmd"."ModifiedBy" "ModifiedBy"
+	,"SubCntItmd"."ModifiedOn" "ModifiedOn"
+	,"SubCntItmd"."CreatedBy" "CreatedBy"
+	,"SubCntItmd"."CreatedOn" "CreatedOn"
+from "dbo"."SubCntItmd" "SubCntItmd"
+	left join "dbo"."Prjbudgac1" "TheAc_No1" on "SubCntItmd"."Ac_No1" = "TheAc_No1"."Ac_No1"
+	left join "dbo"."Subcntmf" "SubCnt_" on "SubCntItmd"."SubCnt_No" = "SubCnt_"."Sub_No"
+	left join "dbo"."SubContrctr" "SubCnt_SubCnt_" on "SubCnt_"."SubCnt_no" = "SubCnt_SubCnt_"."Sub_No"
+	left join "dbo"."PJcntmf" "PJcntmf_Prj_" on "SubCntItmd"."PJcntmf_Prj_No" = "PJcntmf_Prj_"."Prj_No"
+	left join "dbo"."Stcustmr" "PJcntmf_Prj_Cstm_" on "PJcntmf_Prj_"."Cstm_No" = "PJcntmf_Prj_Cstm_"."Cstm_No"
+	left join "dbo"."AreaList" "PJcntmf_Prj_Cstm_Area" on "PJcntmf_Prj_Cstm_"."AreaNo" = "PJcntmf_Prj_Cstm_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "PJcntmf_Prj_Cstm_Evaluation" on "PJcntmf_Prj_Cstm_"."EvaluationNO" = "PJcntmf_Prj_Cstm_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "PJcntmf_Prj_Cstm_acc_" on "PJcntmf_Prj_Cstm_"."acc_no" = "PJcntmf_Prj_Cstm_acc_"."Acc_No"
+	left join "dbo"."PYCntry" "PJcntmf_Prj_Cstm_Cntry_" on "PJcntmf_Prj_Cstm_"."Cntry_No" = "PJcntmf_Prj_Cstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "PJcntmf_Prj_Cstm_curncy_" on "PJcntmf_Prj_Cstm_"."curncy_no" = "PJcntmf_Prj_Cstm_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "PJcntmf_Prj_Cstm_TSNEF" on "PJcntmf_Prj_Cstm_"."TSNEFNO" = "PJcntmf_Prj_Cstm_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "PJcntmf_Prj_Cstm_TSNEFNO1" on "PJcntmf_Prj_Cstm_"."TSNEFNO1" = "PJcntmf_Prj_Cstm_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "PJcntmf_Prj_Cstm_Slm_" on "PJcntmf_Prj_Cstm_"."Slm_No" = "PJcntmf_Prj_Cstm_Slm_"."Slm_No"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="ItmNo" type="Int32" allowNulls="false" isPrimaryKey="true" label="Itm No" />
+    <field name="Ac_No1" type="Int64" allowNulls="false" isPrimaryKey="true" label="Ac No1" showInSummary="true">
+      <items style="Lookup" dataController="Prjbudgac1" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheAc_No1Ac_Nm1" type="String" readOnly="true" label="Ac No1 Ac Nm1" length="100" />
+    <field name="SubCnt_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Sub Cnt No" showInSummary="true">
+      <items style="Lookup" dataController="Subcntmf" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="SubCnt_Sub_Disc" type="String" readOnly="true" label="Sub Cnt Sub Disc" length="255" />
+    <field name="SubCnt_SubCnt_NameEn" type="String" readOnly="true" label="Sub Cnt Name En" length="50" />
+    <field name="PJcntmf_Prj_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="P Jcntmf Prj No" showInSummary="true">
+      <items style="Lookup" dataController="PJcntmf" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="PJcntmf_Prj_Prj_Nm" type="String" readOnly="true" label="P Jcntmf Prj Nm" length="50" />
+    <field name="PJcntmf_Prj_Cstm_Cstm_Nm" type="String" readOnly="true" label="P Jcntmf Prj Cstm Nm" length="155" />
+    <field name="PJcntmf_Prj_Cstm_AreaArea_name" type="String" readOnly="true" label="P Jcntmf Prj Cstm Area name" length="150" />
+    <field name="PJcntmf_Prj_Cstm_EvaluationEvaluation_name" type="String" readOnly="true" label="P Jcntmf Prj Cstm Evaluation name" length="150" />
+    <field name="PJcntmf_Prj_Cstm_acc_Acc_Nm" type="String" readOnly="true" label="P Jcntmf Prj Cstm acc Acc Nm" length="255" />
+    <field name="PJcntmf_Prj_Cstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="P Jcntmf Prj Cstm Cntry Nm" length="255" />
+    <field name="PJcntmf_Prj_Cstm_curncy_Curncy_Nm" type="String" readOnly="true" label="P Jcntmf Prj Cstm curncy Curncy Nm" length="200" />
+    <field name="PJcntmf_Prj_Cstm_TSNEFTSNEF_name" type="String" readOnly="true" label="P Jcntmf Prj Cstm TSNEFTSNEF name" length="150" />
+    <field name="PJcntmf_Prj_Cstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="P Jcntmf Prj Cstm TSNEFNO1TSNEF1 name" length="150" />
+    <field name="PJcntmf_Prj_Cstm_Slm_Slm_Nm" type="String" readOnly="true" label="P Jcntmf Prj Cstm Slm Nm" length="100" />
+    <field name="Qu" type="Int64" label="Qu" showInSummary="true" />
+    <field name="Pr_Mo" type="Decimal" label="Pr Mo" showInSummary="true" />
+    <field name="Itmval" type="Decimal" label="Itmval" />
+    <field name="Pymval" type="Decimal" label="Pymval" />
+    <field name="ItmBal" type="Decimal" label="Itm Bal" />
+    <field name="Itm_stdate" type="DateTime" label="Itm stdate" />
+    <field name="Itm_Endate" type="DateTime" label="Itm Endate" />
+    <field name="PymDt" type="DateTime" label="Pym Dt" />
+    <field name="PymPer" type="Int64" label="Pym Per" />
+    <field name="ItmDisc" type="String" label="Itm Disc" length="255" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Sub Cnt Itmd">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Ac_No1" aliasFieldName="TheAc_No1Ac_Nm1" />
+        <dataField fieldName="SubCnt_No" aliasFieldName="SubCnt_Sub_Disc" hyperlinkFormatString="~/Pages/Subcntmf.aspx?Sub_No={SubCnt_No}&amp;_controller=Subcntmf&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="PJcntmf_Prj_No" aliasFieldName="PJcntmf_Prj_Prj_Nm" hyperlinkFormatString="~/Pages/PJcntmf.aspx?Prj_No={PJcntmf_Prj_No}&amp;_controller=PJcntmf&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Qu" columns="15" />
+        <dataField fieldName="Pr_Mo" dataFormatString="c" columns="15" />
+        <dataField fieldName="Itmval" dataFormatString="c" columns="15" />
+        <dataField fieldName="Pymval" dataFormatString="c" columns="15" />
+        <dataField fieldName="ItmBal" dataFormatString="c" columns="15" />
+        <dataField fieldName="Itm_stdate" columns="10" />
+        <dataField fieldName="Itm_Endate" columns="10" />
+        <dataField fieldName="PymDt" columns="10" />
+        <dataField fieldName="PymPer" columns="15" />
+        <dataField fieldName="ItmDisc" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="SubCnt_SubCnt_NameEn" columns="50" />
+        <dataField fieldName="PJcntmf_Prj_Cstm_Cstm_Nm" />
+        <dataField fieldName="PJcntmf_Prj_Cstm_AreaArea_name" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Sub Cnt Itmd">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Sub Cnt Itmd" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Ac_No1" aliasFieldName="TheAc_No1Ac_Nm1" hyperlinkFormatString="~/Pages/Prjbudgac1.aspx?Ac_No1={Ac_No1}&amp;_controller=Prjbudgac1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="SubCnt_No" aliasFieldName="SubCnt_Sub_Disc" hyperlinkFormatString="~/Pages/Subcntmf.aspx?Sub_No={SubCnt_No}&amp;_controller=Subcntmf&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="PJcntmf_Prj_No" aliasFieldName="PJcntmf_Prj_Prj_Nm" hyperlinkFormatString="~/Pages/PJcntmf.aspx?Prj_No={PJcntmf_Prj_No}&amp;_controller=PJcntmf&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Qu" columns="15" />
+            <dataField fieldName="Pr_Mo" dataFormatString="c" columns="15" />
+            <dataField fieldName="Itmval" dataFormatString="c" columns="15" />
+            <dataField fieldName="Pymval" dataFormatString="c" columns="15" />
+            <dataField fieldName="ItmBal" dataFormatString="c" columns="15" />
+            <dataField fieldName="Itm_stdate" columns="10" />
+            <dataField fieldName="Itm_Endate" columns="10" />
+            <dataField fieldName="PymDt" columns="10" />
+            <dataField fieldName="PymPer" columns="15" />
+            <dataField fieldName="ItmDisc" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="SubCnt_SubCnt_NameEn" columns="50" />
+            <dataField fieldName="PJcntmf_Prj_Cstm_Cstm_Nm" />
+            <dataField fieldName="PJcntmf_Prj_Cstm_AreaArea_name" />
+            <dataField fieldName="PJcntmf_Prj_Cstm_EvaluationEvaluation_name" />
+            <dataField fieldName="PJcntmf_Prj_Cstm_acc_Acc_Nm" />
+            <dataField fieldName="PJcntmf_Prj_Cstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="PJcntmf_Prj_Cstm_curncy_Curncy_Nm" />
+            <dataField fieldName="PJcntmf_Prj_Cstm_TSNEFTSNEF_name" />
+            <dataField fieldName="PJcntmf_Prj_Cstm_TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="PJcntmf_Prj_Cstm_Slm_Slm_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Sub Cnt Itmd">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Sub Cnt Itmd" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ItmNo" columns="15" />
+            <dataField fieldName="Ac_No1" aliasFieldName="TheAc_No1Ac_Nm1" />
+            <dataField fieldName="SubCnt_No" aliasFieldName="SubCnt_Sub_Disc" />
+            <dataField fieldName="PJcntmf_Prj_No" aliasFieldName="PJcntmf_Prj_Prj_Nm" />
+            <dataField fieldName="Qu" columns="15" />
+            <dataField fieldName="Pr_Mo" dataFormatString="c" columns="15" />
+            <dataField fieldName="Itmval" dataFormatString="c" columns="15" />
+            <dataField fieldName="Pymval" dataFormatString="c" columns="15" />
+            <dataField fieldName="ItmBal" dataFormatString="c" columns="15" />
+            <dataField fieldName="Itm_stdate" columns="10" />
+            <dataField fieldName="Itm_Endate" columns="10" />
+            <dataField fieldName="PymDt" columns="10" />
+            <dataField fieldName="PymPer" columns="15" />
+            <dataField fieldName="ItmDisc" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

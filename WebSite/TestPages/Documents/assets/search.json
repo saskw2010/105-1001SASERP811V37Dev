@@ -1,0 +1,437 @@
+﻿[
+    {
+        "title":  "SASERP V37 - Architecture",
+        "path":  "ARCHITECTURE.md",
+        "text":  "# SASERP V37 - Architecture This document provides a detailed overview of the technical architecture of the SASERP V37 application. ## 1. Core Technology Stack - **Backend:** ASP.NET WebForms with VB."
+    },
+    {
+        "title":  "Configuration Overview",
+        "path":  "configuration.md",
+        "text":  "# Configuration Overview Source: `web.config` - Globalization: en-GB - targetFramework: 4.7.2 - MachineKey: configured (AES/SHA1) - SessionState: InProc, timeout=300 - Authentication: Forms, loginUrl="
+    },
+    {
+        "title":  "SASERP V37 - Functionality Overview",
+        "path":  "FUNCTIONALITY.md",
+        "text":  "# SASERP V37 - Functionality Overview This document provides a high-level overview of the key functionalities within the SASERP V37 application. ## Core Modules The ERP system is organized into severa"
+    },
+    {
+        "title":  "SASERP V37 - Project Documentation Hub",
+        "path":  "index.md",
+        "text":  "# SASERP V37 - Project Documentation Hub Welcome to the documentation hub for SASERP V37 (ASP.NET WebForms VB.NET, .NET 4.7.2). - Start here: TOC.md - Flows and Call Graph: flows/call-graph.md - API E"
+    },
+    {
+        "title":  "Background Jobs / Schedules",
+        "path":  "jobs.md",
+        "text":  "# Background Jobs / Schedules - No Windows service or scheduler detected in repo. - Session-based OnlineActiveUsers update on Session_End. - Report/image generation via handlers (ChartImg.axd, Report."
+    },
+    {
+        "title":  "Migration Map (WebForms -\u003e Modern)",
+        "path":  "migration-map.md",
+        "text":  "# Migration Map (WebForms -\u003e Modern) - Navigation - Source: Web.sitemap + SiteMapProvider - New: JSON endpoint (Pages/MenuApi.aspx/GetMenuTree) consumed by modern drawer (js/modern-menu-once.js, css/m"
+    },
+    {
+        "title":  "SASERP V37 - README",
+        "path":  "README.md",
+        "text":  "# SASERP V37 - README This document provides a comprehensive overview of the SASERP V37 project. It is intended for developers, system administrators, and anyone involved in the maintenance and develo"
+    },
+    {
+        "title":  "SASERP V37 - Development Roadmap",
+        "path":  "ROADMAP.md",
+        "text":  "# SASERP V37 - Development Roadmap This document outlines the development roadmap for the SASERP V37 project. It includes completed milestones, current work, and future plans. ## Completed Milestones "
+    },
+    {
+        "title":  "Security Overview",
+        "path":  "security.md",
+        "text":  "# Security Overview - Authentication: Forms auth (Login.aspx) - Authorization: Extensive \u003clocation\u003e based role restrictions in web.config - Membership/Roles/Profile: SQL providers (encrypted password)"
+    },
+    {
+        "title":  "SASERP V37 - Project Structure",
+        "path":  "STRUCTURE.md",
+        "text":  "# SASERP V37 - Project Structure This document outlines the folder and file structure of the SASERP V37 project. ## Root Directory - `Main.master`: The primary master page for the application. - `Univ"
+    },
+    {
+        "title":  "Table of Contents",
+        "path":  "TOC.md",
+        "text":  "# Table of Contents - Overview (index.md) - Architecture (../TestPages/docs/architecture.html) - Structure (../TestPages/docs/structure.html) - Functionality (../TestPages/docs/functionality.html) - R"
+    },
+    {
+        "title":  "API Endpoints",
+        "path":  "api/endpoints.md",
+        "text":  "# API Endpoints - Pages/MenuApi.aspx [WebMethod] - POST GetMenuTree: returns { version, items: MenuNodeDto[] } built from Web.sitemap with IsAccessibleToUser trimming and CacheDependency on web.sitema"
+    },
+    {
+        "title":  "Database Schema (Initial Inventory)",
+        "path":  "db/schema.md",
+        "text":  "# Database Schema (Initial Inventory) ConnectionStrings all target SQL Server `173.214.167.37` (ALSADEQezeekw) with multiple names. This repo does not include .sql schema files. Schema is inferred at "
+    },
+    {
+        "title":  "File: App_Code/AdvancedMenuBuilder.vb",
+        "path":  "files/App_Code_AdvancedMenuBuilder.vb.md",
+        "text":  "# File: App_Code/AdvancedMenuBuilder.vb - Builds menu model/HTML with role checks and icon mapping. - Enforces max depth of 3 levels (0..2). - Integrates translation via translatemeyamosso. - Provides"
+    },
+    {
+        "title":  "File: App_Code/Services/DataControllerService.vb",
+        "path":  "files/App_Code_Services_DataControllerService.vb.md",
+        "text":  "# File: App_Code/Services/DataControllerService.vb Service layer for data operations used by search and data pages (Code On Time stack). ### Function: GetPage - Signature: Public Function GetPage(cont"
+    },
+    {
+        "title":  "Function: GetPage - App_Code_Services_DataControllerService.vb",
+        "path":  "files/App_Code_Services_DataControllerService.vb.md?anchor=function-GetPage",
+        "text":  "Function GetPage in App_Code_Services_DataControllerService.vb"
+    },
+    {
+        "title":  "Function: GetListOfValues - App_Code_Services_DataControllerService.vb",
+        "path":  "files/App_Code_Services_DataControllerService.vb.md?anchor=function-GetListOfValues",
+        "text":  "Function GetListOfValues in App_Code_Services_DataControllerService.vb"
+    },
+    {
+        "title":  "Function: Execute - App_Code_Services_DataControllerService.vb",
+        "path":  "files/App_Code_Services_DataControllerService.vb.md?anchor=function-Execute",
+        "text":  "Function Execute in App_Code_Services_DataControllerService.vb"
+    },
+    {
+        "title":  "Function: GetCompletionList - App_Code_Services_DataControllerService.vb",
+        "path":  "files/App_Code_Services_DataControllerService.vb.md?anchor=function-GetCompletionList",
+        "text":  "Function GetCompletionList in App_Code_Services_DataControllerService.vb"
+    },
+    {
+        "title":  "Function: Login - App_Code_Services_DataControllerService.vb",
+        "path":  "files/App_Code_Services_DataControllerService.vb.md?anchor=function-Login",
+        "text":  "Function Login in App_Code_Services_DataControllerService.vb"
+    },
+    {
+        "title":  "Function: Logout - App_Code_Services_DataControllerService.vb",
+        "path":  "files/App_Code_Services_DataControllerService.vb.md?anchor=function-Logout",
+        "text":  "Function Logout in App_Code_Services_DataControllerService.vb"
+    },
+    {
+        "title":  "Function: Roles - App_Code_Services_DataControllerService.vb",
+        "path":  "files/App_Code_Services_DataControllerService.vb.md?anchor=function-Roles",
+        "text":  "Function Roles in App_Code_Services_DataControllerService.vb"
+    },
+    {
+        "title":  "File: App_Code/Services/RepresentationalStateTransfer.vb",
+        "path":  "files/App_Code_Services_RepresentationalStateTransfer.vb.md",
+        "text":  "# File: App_Code/Services/RepresentationalStateTransfer.vb Implements a custom REST/JSON/JSONP gateway for controllers/views, handling GET/POST/PUT/DELETE, content negotiation (JSON/XML), compression,"
+    },
+    {
+        "title":  "Function: PerformRequest - App_Code_Services_RepresentationalStateTransfer.vb",
+        "path":  "files/App_Code_Services_RepresentationalStateTransfer.vb.md?anchor=function-PerformRequest",
+        "text":  "Function PerformRequest in App_Code_Services_RepresentationalStateTransfer.vb"
+    },
+    {
+        "title":  "Function: ExecuteHttpGetRequest - App_Code_Services_RepresentationalStateTransfer.vb",
+        "path":  "files/App_Code_Services_RepresentationalStateTransfer.vb.md?anchor=function-ExecuteHttpGetRequest",
+        "text":  "Function ExecuteHttpGetRequest in App_Code_Services_RepresentationalStateTransfer.vb"
+    },
+    {
+        "title":  "Function: ExecuteActionRequest - App_Code_Services_RepresentationalStateTransfer.vb",
+        "path":  "files/App_Code_Services_RepresentationalStateTransfer.vb.md?anchor=function-ExecuteActionRequest",
+        "text":  "Function ExecuteActionRequest in App_Code_Services_RepresentationalStateTransfer.vb"
+    },
+    {
+        "title":  "Function: CombineScripts - App_Code_Services_RepresentationalStateTransfer.vb",
+        "path":  "files/App_Code_Services_RepresentationalStateTransfer.vb.md?anchor=function-CombineScripts",
+        "text":  "Function CombineScripts in App_Code_Services_RepresentationalStateTransfer.vb"
+    },
+    {
+        "title":  "Function: InvokeControllerMethod - App_Code_Services_RepresentationalStateTransfer.vb",
+        "path":  "files/App_Code_Services_RepresentationalStateTransfer.vb.md?anchor=function-InvokeControllerMethod",
+        "text":  "Function InvokeControllerMethod in App_Code_Services_RepresentationalStateTransfer.vb"
+    },
+    {
+        "title":  "Function: BeginResponsePadding - App_Code_Services_RepresentationalStateTransfer.vb",
+        "path":  "files/App_Code_Services_RepresentationalStateTransfer.vb.md?anchor=function-BeginResponsePadding",
+        "text":  "Function BeginResponsePadding in App_Code_Services_RepresentationalStateTransfer.vb"
+    },
+    {
+        "title":  "File: css/modern-menu.css",
+        "path":  "files/css_modern-menu.css.md",
+        "text":  "# File: css/modern-menu.css - Styling for modern drawer panel and tree components (.pm-*). - Theming vars; badges; expanded state; tools. - Includes topbar helpers and responsive adjustments. "
+    },
+    {
+        "title":  "File: Global.asax",
+        "path":  "files/Global.asax.md",
+        "text":  "# File: Global.asax - Application_Start -\u003e eZee.Services.ApplicationServices.Initialize() - Session_Start sets Session(\"wcp\") - Session_End -\u003e OnlineActiveUsers.OnlineUsersInstance.OnlineUsers.UpdateF"
+    },
+    {
+        "title":  "Function: Application_Start - Global.asax",
+        "path":  "files/Global.asax.md?anchor=function-Application_Start",
+        "text":  "Function Application_Start in Global.asax"
+    },
+    {
+        "title":  "Function: Application_BeginRequest - Global.asax",
+        "path":  "files/Global.asax.md?anchor=function-Application_BeginRequest",
+        "text":  "Function Application_BeginRequest in Global.asax"
+    },
+    {
+        "title":  "Function: Session_Start - Global.asax",
+        "path":  "files/Global.asax.md?anchor=function-Session_Start",
+        "text":  "Function Session_Start in Global.asax"
+    },
+    {
+        "title":  "Function: Session_End - Global.asax",
+        "path":  "files/Global.asax.md?anchor=function-Session_End",
+        "text":  "Function Session_End in Global.asax"
+    },
+    {
+        "title":  "File: js/modern-menu-once.js",
+        "path":  "files/js_modern-menu-once.js.md",
+        "text":  "# File: js/modern-menu-once.js - One-time initializer for modern drawer menu. - Lazy-fetches menu JSON from /Pages/MenuApi.aspx/GetMenuTree. - Renders accessible tree with expand/collapse, filter, bad"
+    },
+    {
+        "title":  "Function: initModernMenuOnce - js_modern-menu-once.js",
+        "path":  "files/js_modern-menu-once.js.md?anchor=function-initModernMenuOnce",
+        "text":  "Function initModernMenuOnce in js_modern-menu-once.js"
+    },
+    {
+        "title":  "File: Main.master",
+        "path":  "files/Main.master.md",
+        "text":  "# File: Main.master - Cleaned inline CSS/JS; references css/modern-menu.css and js/modern-menu-once.js. - Hosts ModernMenuHost drawer and single #menuToggleBtn. Legacy PageMenuBar remains hidden for c"
+    },
+    {
+        "title":  "Function: Page_Load - Main.master",
+        "path":  "files/Main.master.md?anchor=function-Page_Load",
+        "text":  "Function Page_Load in Main.master"
+    },
+    {
+        "title":  "File: Pages/MenuApi.aspx.vb",
+        "path":  "files/Pages_MenuApi.aspx.vb.md",
+        "text":  "# File: Pages/MenuApi.aspx.vb - WebMethod GetMenuTree(): returns {version, items[]} where items are MenuNodeDto built from Web.sitemap. - Trims by user access (IsAccessibleToUser). - CacheDependency o"
+    },
+    {
+        "title":  "Function: GetMenuTree - Pages_MenuApi.aspx.vb",
+        "path":  "files/Pages_MenuApi.aspx.vb.md?anchor=function-GetMenuTree",
+        "text":  "Function GetMenuTree in Pages_MenuApi.aspx.vb"
+    },
+    {
+        "title":  "Function: BuildNode - Pages_MenuApi.aspx.vb",
+        "path":  "files/Pages_MenuApi.aspx.vb.md?anchor=function-BuildNode",
+        "text":  "Function BuildNode in Pages_MenuApi.aspx.vb"
+    },
+    {
+        "title":  "Function: GetMenuVersion - Pages_MenuApi.aspx.vb",
+        "path":  "files/Pages_MenuApi.aspx.vb.md?anchor=function-GetMenuVersion",
+        "text":  "Function GetMenuVersion in Pages_MenuApi.aspx.vb"
+    },
+    {
+        "title":  "Function: SafeAttr - Pages_MenuApi.aspx.vb",
+        "path":  "files/Pages_MenuApi.aspx.vb.md?anchor=function-SafeAttr",
+        "text":  "Function SafeAttr in Pages_MenuApi.aspx.vb"
+    },
+    {
+        "title":  "File: TestPages/TestDashboardData.aspx.vb",
+        "path":  "files/TestPages_TestDashboardData.aspx.vb.md",
+        "text":  "# File: TestPages/TestDashboardData.aspx.vb - Loads dashboard sample data (Financial/HR/Operations/Reports) and exposes helpers. - WebMethods: GetLiveData(), GetQuickStats() returning JSON via JavaScr"
+    },
+    {
+        "title":  "File: web.config",
+        "path":  "files/web.config.md",
+        "text":  "# File: web.config - Framework: 4.7.2; AjaxControlToolkit; ReportViewer; Charts. - AuthN/AuthZ: Forms auth; many page-level role restrictions. - Providers: SqlMembership, SqlRoleProvider, SqlProfilePr"
+    },
+    {
+        "title":  "Flows and Call Graph (Initial)",
+        "path":  "flows/call-graph.md",
+        "text":  "# Flows and Call Graph (Initial) Entry points: - Global.asax: ApplicationServices.Initialize(); Session hooks - Master pages: Main.master, UniversalNavMaster.master (layout, menu) - Default.aspx (home"
+    },
+    {
+        "title":  "Deep-dive: Steps H â†’ L (WebForms Generic Flow)",
+        "path":  "flows/h-to-l-deep-dive.md",
+        "text":  "# Deep-dive: Steps H â†’ L (WebForms Generic Flow) Scope: Analyze Hâ€“L from TestPages/Documents/SystemFlows/flow-webforms-generic.html and produce AS-IS/TO-BE with links. - H = Call ASMX / WebMethod "
+    },
+    {
+        "title":  "Hâ†’L Mapping Table",
+        "path":  "flows/h-to-l-mapping-table.md",
+        "text":  "# Hâ†’L Mapping Table | Step | Old File:Function | Callers | Callees | HTTP/DB Details | New Endpoint/DTO | New Module (file) | Notes/Risks | |------|--------------------|---------|---------|---------"
+    },
+    {
+        "title":  "Modern Sequence (Hâ†’L)",
+        "path":  "flows/h-to-l-modern-sequence.md",
+        "text":  "# Modern Sequence (Hâ†’L) Links: - DataControllerService (legacy): ../TestPages/Documents/docs-html/files/App_Code_Services_DataControllerService.vb.html - Main.master: ../TestPages/Documents/docs-htm"
+    },
+    {
+        "title":  "Folder: appsitemap",
+        "path":  "folders/appsitemap.md",
+        "text":  "# Folder: appsitemap Purpose: additional sitemap files for specific modules/areas. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: App_Code",
+        "path":  "folders/App_Code.md",
+        "text":  "# Folder: App_Code - Purpose: Shared VB.NET code (services, models, utils) compiled at runtime in Web Site projects. - Notable subfolders: Data/, Handlers/, Rules/, Security/, Services/, VBCode/, Web/"
+    },
+    {
+        "title":  "Folder: App_Data",
+        "path":  "folders/App_Data.md",
+        "text":  "# Folder: App_Data Purpose: runtime data, logs, local DB files, controller configs (if any). Notes: - Do not deploy secrets here. - Code On Time often keeps controller XML here; review on server. Back"
+    },
+    {
+        "title":  "Folder: App_Themes",
+        "path":  "folders/App_Themes.md",
+        "text":  "# Folder: App_Themes Purpose: ASP.NET Themes (skins, CSS). Themes include Citrus, eZee. Usage: Set via \u003cpages theme=\"...\"/\u003e in web.config. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: App_WebReferences",
+        "path":  "folders/App_WebReferences.md",
+        "text":  "# Folder: App_WebReferences Purpose: legacy ASMX web service references (e.g., sms providers). Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: assets",
+        "path":  "folders/assets.md",
+        "text":  "# Folder: assets Purpose: generic assets used by docs or UI (images, icons, etc.). Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: Backup",
+        "path":  "folders/Backup.md",
+        "text":  "# Folder: Backup Purpose: backup copies and historical files. Not used at runtime. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: Bin",
+        "path":  "folders/Bin.md",
+        "text":  "# Folder: Bin Purpose: compiled assemblies and dependencies. Managed by deployment. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: Controllers",
+        "path":  "folders/Controllers.md",
+        "text":  "# Folder: Controllers Purpose: page/controller definitions (Code On Time). May contain XML/JS. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: Controls",
+        "path":  "folders/Controls.md",
+        "text":  "# Folder: Controls Purpose: reusable ASCX user controls and their .vb code-behind. Patterns: Bind in .ascx.vb; keep client IDs stable for JS. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: css",
+        "path":  "folders/css.md",
+        "text":  "# Folder: css Purpose: site-wide CSS (modern-menu.css, themes helpers). Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: fonts",
+        "path":  "folders/fonts.md",
+        "text":  "# Folder: fonts Purpose: font files (e.g., webfonts for icons/typography). Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: Handlers",
+        "path":  "folders/Handlers.md",
+        "text":  "# Folder: Handlers - Purpose: Low-level HTTP handlers (.ashx) for binary/file/event operations. - Examples: ThemeApplier.ashx. At root: Blob.ashx, Report.ashx, Import.ashx, Export.ashx, WebClientPrint"
+    },
+    {
+        "title":  "Folder: Help",
+        "path":  "folders/Help.md",
+        "text":  "# Folder: Help Purpose: help files and guides. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: images",
+        "path":  "folders/images.md",
+        "text":  "# Folder: images Purpose: site images and icons. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: js",
+        "path":  "folders/js.md",
+        "text":  "# Folder: js Purpose: JavaScript files (modern-menu-once.js, utilities). Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: login",
+        "path":  "folders/login.md",
+        "text":  "# Folder: login Purpose: login page assets. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: packages",
+        "path":  "folders/packages.md",
+        "text":  "# Folder: packages Purpose: NuGet packages management (packages.config) and related cache. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: Pages",
+        "path":  "folders/Pages.md",
+        "text":  "# Folder: Pages - Purpose: Main application pages (ASPX) with business modules; role-protected via web.config \u003clocation\u003e. - Menu source: Web.sitemap (security trimmed). Menu JSON via Pages/MenuApi.asp"
+    },
+    {
+        "title":  "Folder: Properties",
+        "path":  "folders/Properties.md",
+        "text":  "# Folder: Properties Purpose: solution/project properties and user settings. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: Reports",
+        "path":  "folders/Reports.md",
+        "text":  "# Folder: Reports Purpose: report definitions/templates (RDLC/HTML/etc.). Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: Reportsdata",
+        "path":  "folders/Reportsdata.md",
+        "text":  "# Folder: Reportsdata Purpose: data sources and resources for reports. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: Scripts",
+        "path":  "folders/Scripts.md",
+        "text":  "# Folder: Scripts Purpose: legacy scripts (jQuery, helpers) referenced by pages. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: Services",
+        "path":  "folders/Services.md",
+        "text":  "# Folder: Services Purpose: ASMX services and supporting code under App_Code/Services. - DataControllerService.asmx (+ .vb): ScriptService exposing CRUD/auth. Back to hub: ../index.md | TOC: ../TOC.md"
+    },
+    {
+        "title":  "Folder: TestPages",
+        "path":  "folders/TestPages.md",
+        "text":  "# Folder: TestPages - Hub for QA/testing: PagesIndex.aspx, TestDashboardData.aspx, docs/ landing. - docs/: Vue landing + topic pages (architecture.html, structure.html, functionality.html, roadmap.htm"
+    },
+    {
+        "title":  "Folder: ThemeCenter",
+        "path":  "folders/ThemeCenter.md",
+        "text":  "# Folder: ThemeCenter Purpose: theme integration assets (CSS/JS) for look-and-feel. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: themeEngine",
+        "path":  "folders/themeEngine.md",
+        "text":  "# Folder: themeEngine Purpose: theme runtime switching and engine scripts. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: ThemeSelector",
+        "path":  "folders/ThemeSelector.md",
+        "text":  "# Folder: ThemeSelector Purpose: theme selector UI/components and redirectors. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: VueCss",
+        "path":  "folders/VueCss.md",
+        "text":  "# Folder: VueCss Purpose: Vue-specific CSS assets (if used by docs/demo UIs). Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Folder: Vuejs",
+        "path":  "folders/Vuejs.md",
+        "text":  "# Folder: Vuejs Purpose: Vue runtime (vue.global.prod.js) for docs/demo. Back to hub: ../index.md | TOC: ../TOC.md "
+    },
+    {
+        "title":  "Hâ†’L Migration Playbook (Strangler-Fig)",
+        "path":  "migration/h-to-l-playbook.md",
+        "text":  "# Hâ†’L Migration Playbook (Strangler-Fig) ## Phase 0: Inventory \u0026 Contracts - Confirm callers of ASMX and REST (browser, server-side). - Freeze legacy contracts for H/J shapes (PageRequest, ViewPage,"
+    },
+    {
+        "title":  "File: js/dataview-runtime-adapter.js",
+        "path":  "files/js_dataview-runtime-adapter.js.md",
+        "text":  "Minimal client adapter for ViewPage JSON rendering into classic DataView DOM."
+    },
+    {
+        "title":  "Function: fetchViewPageAsmx - dataview-runtime-adapter.js",
+        "path":  "files/js_dataview-runtime-adapter.js.md?anchor=function-fetchViewPageAsmx",
+        "text":  "fetchViewPageAsmx in dataview-runtime-adapter.js"
+    },
+    {
+        "title":  "Function: fetchViewPageRest - dataview-runtime-adapter.js",
+        "path":  "files/js_dataview-runtime-adapter.js.md?anchor=function-fetchViewPageRest",
+        "text":  "fetchViewPageRest in dataview-runtime-adapter.js"
+    },
+    {
+        "title":  "Function: buildModel - dataview-runtime-adapter.js",
+        "path":  "files/js_dataview-runtime-adapter.js.md?anchor=function-buildModel",
+        "text":  "buildModel in dataview-runtime-adapter.js"
+    },
+    {
+        "title":  "Function: renderDataView - dataview-runtime-adapter.js",
+        "path":  "files/js_dataview-runtime-adapter.js.md?anchor=function-renderDataView",
+        "text":  "renderDataView in dataview-runtime-adapter.js"
+    },
+    {
+        "title":  "Function: mountDataView - dataview-runtime-adapter.js",
+        "path":  "files/js_dataview-runtime-adapter.js.md?anchor=function-mountDataView",
+        "text":  "mountDataView in dataview-runtime-adapter.js"
+    }
+]

@@ -1,0 +1,53 @@
+﻿<div class="doc-banner">
+  <span class="crumbs">files â€؛ App_Code_Services_RepresentationalStateTransfer.vb</span>
+  <a class="source" href="App_Code_Services_RepresentationalStateTransfer.vb.md.txt" target="_blank" rel="noopener">View source (.md)</a>
+</div>
+<div class="doc-body">
+<h1>File: App_Code/Services/RepresentationalStateTransfer.vb</h1>
+<h2>Overview</h2>
+<ul>
+<li>Namespace: eZee.Services</li>
+<li>Core types:</li>
+<li>`UriRestConfig` â€” parses <restConfig> and request constraints</li>
+<li>`RepresentationalStateTransfer`/`RepresentationalStateTransferBase` â€” IHttpHandler that processes REST requests</li>
+<h3 id="function-PerformRequest">Function: PerformRequest</h3>
+<li>Signature: Private Sub PerformRequest(context As HttpContext, output As Stream, json As Boolean, controllerName As String)</li>
+<li>Purpose: Resolve controller/view/action from route/query, authorize, build filters, and dispatch to GET/Action handlers.</li>
+<li>Params/Returns: Writes response to `output` (JSON or XML); sets HTTP status codes (404/400) on failures.</li>
+<li>Calls:</li>
+<li>`DataControllerBase.CreateConfigurationInstance`</li>
+<li>`AuthorizeRequest`</li>
+<li>`AnalyzeRouteValues`</li>
+<li>`ExecuteHttpGetRequest` or `ExecuteActionRequest`</li>
+<li>Called by: `IHttpHandler.ProcessRequest`</li>
+<li>Links:</li>
+<li>Calls â†’ ExecuteHttpGetRequest, ExecuteActionRequest</li>
+<h3 id="function-ExecuteHttpGetRequest">Function: ExecuteHttpGetRequest</h3>
+<li>Signature: Protected Overridable Sub ExecuteHttpGetRequest(request As HttpRequest, response As HttpResponse, output As Stream, json As Boolean, controllerName As String, view As String, filter As List(Of String), keyIsAvailable As Boolean)</li>
+<li>Purpose: Build PageRequest from query, call IDataController.GetPage, and stream JSON/XML (with optional JSONP padding).</li>
+<li>HTTP: GET</li>
+<li>Serialization: Manual writer; dates via ConvertDateToJSON; optional JSONP via callback/_instance.</li>
+<li>Calls: `ControllerFactory.CreateDataController().GetPage`, `BeginResponsePadding`, `WriteJSONValue`, `EndResponsePadding`.</li>
+<li>Returns: Writes a JSON object `{ totalRowCount, pageSize, pageIndex, rowCount, [controllerName]: [...] }` or XML `<items>`.</li>
+<h3 id="function-ExecuteActionRequest">Function: ExecuteActionRequest</h3>
+<li>Signature: Private Sub ExecuteActionRequest(request As HttpRequest, response As HttpResponse, output As Stream, json As Boolean, config As ControllerConfiguration, controllerName As String, view As String, key As String, filter As List(Of String), actionGroupId As String, actionId As String)</li>
+<li>Purpose: Build ActionArgs from request/form, execute Insert/Update/Delete/Custom, and serialize ActionResult (JSON or XML).</li>
+<li>HTTP: POST/PUT/DELETE (also GET with query in some paths)</li>
+<li>Calls: `ControllerFactory.CreateDataController().Execute`</li>
+<li>Serialization: Manual JSON writer, includes rowsAffected, errors[], clientScript, navigateUrl, and returned values.</li>
+<h3 id="function-CombineScripts">Function: CombineScripts</h3>
+<li>Signature: Protected Overridable Sub CombineScripts(context As HttpContext, isSaaS As Boolean, scriptName As String, culture As String, version As String)</li>
+<li>Purpose: Script combiner for SaaS/combined resources; injects CSS links and culture JS when needed.</li>
+<li>Notes: Not core to Hâ€“L but part of the same handler.</li>
+<h3 id="function-InvokeControllerMethod">Function: InvokeControllerMethod</h3>
+<li>Signature: Protected Overridable Sub InvokeControllerMethod(context As HttpContext)</li>
+<li>Purpose: JSONP invoker for GetPage/GetListOfValues/Execute using args payload; used under `_invoke` route.</li>
+<h3 id="function-BeginResponsePadding">Function: BeginResponsePadding / EndResponsePadding</h3>
+<li>Purpose: JSONP/callback wrapping for GET responses.</li>
+<h3>Function Links</h3>
+<li>Node | File | Function | Link</li>
+<li>H/J | App_Code/Services/RepresentationalStateTransfer.vb | ExecuteHttpGetRequest | /TestPages/Documents/docs-html/files/App_Code_Services_RepresentationalStateTransfer.vb.html#function-ExecuteHttpGetRequest</li>
+<li>H/J | App_Code/Services/RepresentationalStateTransfer.vb | ExecuteActionRequest | /TestPages/Documents/docs-html/files/App_Code_Services_RepresentationalStateTransfer.vb.html#function-ExecuteActionRequest</li>
+<li>H/J | App_Code/Services/RepresentationalStateTransfer.vb | PerformRequest | /TestPages/Documents/docs-html/files/App_Code_Services_RepresentationalStateTransfer.vb.html#function-PerformRequest</li>
+
+</div>

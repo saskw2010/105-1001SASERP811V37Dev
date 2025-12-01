@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Result" conflictDetection="overwriteChanges" label="Result" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Result"."tmpid" "tmpid"
+	,"Result"."ea" "ea"
+	,"Result"."record_year" "record_year"
+	,"Result"."school" "school"
+	,"Result"."st_level" "st_level"
+	,"Result"."st_class" "st_class"
+	,"Result"."subj1" "subj1"
+	,"Result"."subj2" "subj2"
+	,"Result"."subj3" "subj3"
+	,"Result"."subj4" "subj4"
+	,"Result"."subj5" "subj5"
+	,"Result"."subj6" "subj6"
+	,"Result"."subj7" "subj7"
+	,"Result"."subj8" "subj8"
+	,"Result"."subj9" "subj9"
+	,"Result"."subj10" "subj10"
+	,"Result"."subj11" "subj11"
+	,"Result"."subj12" "subj12"
+	,"Result"."subj13" "subj13"
+	,"Result"."subj14" "subj14"
+	,"Result"."subj15" "subj15"
+	,"Result"."mark1" "mark1"
+	,"Result"."mark2" "mark2"
+	,"Result"."mark3" "mark3"
+	,"Result"."mark4" "mark4"
+	,"Result"."mark5" "mark5"
+	,"Result"."mark6" "mark6"
+	,"Result"."mark7" "mark7"
+	,"Result"."mark8" "mark8"
+	,"Result"."mark9" "mark9"
+	,"Result"."mark10" "mark10"
+	,"Result"."mark11" "mark11"
+	,"Result"."mark12" "mark12"
+	,"Result"."mark13" "mark13"
+	,"Result"."mark14" "mark14"
+	,"Result"."mark15" "mark15"
+	,"Result"."st_name" "st_name"
+	,"Result"."week" "week"
+	,"Result"."serial" "serial"
+	,"Result"."total" "total"
+	,"Result"."nat" "nat"
+	,"Result"."result" "result"
+	,"Result"."name_1" "name_1"
+	,"Result"."name_5" "name_5"
+	,"Result"."name_6" "name_6"
+	,"Result"."work1" "work1"
+	,"Result"."work2" "work2"
+	,"Result"."work3" "work3"
+	,"Result"."work4" "work4"
+	,"Result"."work5" "work5"
+	,"Result"."work6" "work6"
+	,"Result"."work7" "work7"
+	,"Result"."work8" "work8"
+	,"Result"."work9" "work9"
+	,"Result"."work10" "work10"
+	,"Result"."work11" "work11"
+	,"Result"."work12" "work12"
+	,"Result"."work13" "work13"
+	,"Result"."work14" "work14"
+	,"Result"."work15" "work15"
+	,"Result"."exam1" "exam1"
+	,"Result"."exam2" "exam2"
+	,"Result"."exam3" "exam3"
+	,"Result"."exam4" "exam4"
+	,"Result"."exam5" "exam5"
+	,"Result"."exam6" "exam6"
+	,"Result"."exam7" "exam7"
+	,"Result"."exam8" "exam8"
+	,"Result"."exam9" "exam9"
+	,"Result"."exam10" "exam10"
+	,"Result"."exam11" "exam11"
+	,"Result"."exam12" "exam12"
+	,"Result"."exam13" "exam13"
+	,"Result"."exam14" "exam14"
+	,"Result"."exam15" "exam15"
+	,"Result"."unify1" "unify1"
+	,"Result"."unify2" "unify2"
+	,"Result"."unify3" "unify3"
+	,"Result"."unify4" "unify4"
+	,"Result"."unify5" "unify5"
+	,"Result"."unify6" "unify6"
+	,"Result"."unify7" "unify7"
+	,"Result"."unify8" "unify8"
+	,"Result"."unify9" "unify9"
+	,"Result"."unify10" "unify10"
+	,"Result"."unify11" "unify11"
+	,"Result"."unify12" "unify12"
+	,"Result"."unify13" "unify13"
+	,"Result"."unify14" "unify14"
+	,"Result"."unify15" "unify15"
+	,"Result"."cert_sort" "cert_sort"
+	,"Result"."unify" "unify"
+	,"Result"."min1" "min1"
+	,"Result"."min2" "min2"
+	,"Result"."min3" "min3"
+	,"Result"."min4" "min4"
+	,"Result"."min5" "min5"
+	,"Result"."min6" "min6"
+	,"Result"."min7" "min7"
+	,"Result"."min8" "min8"
+	,"Result"."min9" "min9"
+	,"Result"."min10" "min10"
+	,"Result"."min11" "min11"
+	,"Result"."min12" "min12"
+	,"Result"."min13" "min13"
+	,"Result"."min14" "min14"
+	,"Result"."min15" "min15"
+	,"Result"."perc" "perc"
+	,"Result"."abs1" "abs1"
+	,"Result"."abs2" "abs2"
+	,"Result"."grade" "grade"
+	,"Result"."eval1" "eval1"
+	,"Result"."eval2" "eval2"
+	,"Result"."eval3" "eval3"
+	,"Result"."eval4" "eval4"
+	,"Result"."eval5" "eval5"
+	,"Result"."eval6" "eval6"
+	,"Result"."eval7" "eval7"
+	,"Result"."eval8" "eval8"
+	,"Result"."eval9" "eval9"
+	,"Result"."eval10" "eval10"
+	,"Result"."eval11" "eval11"
+	,"Result"."eval12" "eval12"
+	,"Result"."eval13" "eval13"
+	,"Result"."eval14" "eval14"
+	,"Result"."eval15" "eval15"
+	,"Result"."F126" "F126"
+from "dbo"."Result" "Result"
+]]></text>
+    </command>
+    <command id="tmpidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="tmpid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="tmpid" type="Int64" allowNulls="false" label="Tmpid" readOnly="true" showInSummary="true" />
+    <field name="ea" type="Double" label="Ea" showInSummary="true" />
+    <field name="record_year" type="Double" label="Record Year" showInSummary="true" />
+    <field name="school" type="Double" label="School" showInSummary="true" />
+    <field name="st_level" type="Double" label="St Level" showInSummary="true" />
+    <field name="st_class" type="Double" label="St Class" />
+    <field name="subj1" type="Double" label="Subj1" />
+    <field name="subj2" type="Double" label="Subj2" />
+    <field name="subj3" type="Double" label="Subj3" />
+    <field name="subj4" type="Double" label="Subj4" />
+    <field name="subj5" type="Double" label="Subj5" />
+    <field name="subj6" type="Double" label="Subj6" />
+    <field name="subj7" type="Double" label="Subj7" />
+    <field name="subj8" type="Double" label="Subj8" />
+    <field name="subj9" type="Double" label="Subj9" />
+    <field name="subj10" type="Double" label="Subj10" />
+    <field name="subj11" type="Double" label="Subj11" />
+    <field name="subj12" type="Double" label="Subj12" />
+    <field name="subj13" type="Double" label="Subj13" />
+    <field name="subj14" type="String" label="Subj14" length="50" />
+    <field name="subj15" type="String" label="Subj15" length="50" />
+    <field name="mark1" type="String" label="Mark1" length="50" />
+    <field name="mark2" type="String" label="Mark2" length="50" />
+    <field name="mark3" type="String" label="Mark3" length="50" />
+    <field name="mark4" type="String" label="Mark4" length="50" />
+    <field name="mark5" type="String" label="Mark5" length="50" />
+    <field name="mark6" type="String" label="Mark6" length="50" />
+    <field name="mark7" type="String" label="Mark7" length="50" />
+    <field name="mark8" type="String" label="Mark8" length="50" />
+    <field name="mark9" type="String" label="Mark9" length="50" />
+    <field name="mark10" type="String" label="Mark10" length="50" />
+    <field name="mark11" type="String" label="Mark11" length="50" />
+    <field name="mark12" type="String" label="Mark12" length="50" />
+    <field name="mark13" type="String" label="Mark13" length="50" />
+    <field name="mark14" type="String" label="Mark14" length="50" />
+    <field name="mark15" type="String" label="Mark15" length="50" />
+    <field name="st_name" type="String" label="St Name" length="50" />
+    <field name="week" type="Double" label="Week" />
+    <field name="serial" type="Double" label="Serial" />
+    <field name="total" type="Double" label="Total" />
+    <field name="nat" type="Double" label="Nat" />
+    <field name="result" type="String" label="Result" length="50" />
+    <field name="name_1" type="String" label="Name 1" length="50" />
+    <field name="name_5" type="Double" label="Name 5" />
+    <field name="name_6" type="String" label="Name 6" length="50" />
+    <field name="work1" type="String" label="Work1" length="50" />
+    <field name="work2" type="String" label="Work2" length="50" />
+    <field name="work3" type="String" label="Work3" length="50" />
+    <field name="work4" type="String" label="Work4" length="50" />
+    <field name="work5" type="String" label="Work5" length="50" />
+    <field name="work6" type="String" label="Work6" length="50" />
+    <field name="work7" type="String" label="Work7" length="50" />
+    <field name="work8" type="String" label="Work8" length="50" />
+    <field name="work9" type="String" label="Work9" length="50" />
+    <field name="work10" type="String" label="Work10" length="50" />
+    <field name="work11" type="String" label="Work11" length="50" />
+    <field name="work12" type="String" label="Work12" length="50" />
+    <field name="work13" type="String" label="Work13" length="50" />
+    <field name="work14" type="String" label="Work14" length="50" />
+    <field name="work15" type="String" label="Work15" length="50" />
+    <field name="exam1" type="String" label="Exam1" length="50" />
+    <field name="exam2" type="String" label="Exam2" length="50" />
+    <field name="exam3" type="String" label="Exam3" length="50" />
+    <field name="exam4" type="String" label="Exam4" length="50" />
+    <field name="exam5" type="String" label="Exam5" length="50" />
+    <field name="exam6" type="String" label="Exam6" length="50" />
+    <field name="exam7" type="String" label="Exam7" length="50" />
+    <field name="exam8" type="String" label="Exam8" length="50" />
+    <field name="exam9" type="String" label="Exam9" length="50" />
+    <field name="exam10" type="String" label="Exam10" length="50" />
+    <field name="exam11" type="String" label="Exam11" length="50" />
+    <field name="exam12" type="String" label="Exam12" length="50" />
+    <field name="exam13" type="String" label="Exam13" length="50" />
+    <field name="exam14" type="String" label="Exam14" length="50" />
+    <field name="exam15" type="String" label="Exam15" length="50" />
+    <field name="unify1" type="String" label="Unify1" length="50" />
+    <field name="unify2" type="String" label="Unify2" length="50" />
+    <field name="unify3" type="String" label="Unify3" length="50" />
+    <field name="unify4" type="String" label="Unify4" length="50" />
+    <field name="unify5" type="String" label="Unify5" length="50" />
+    <field name="unify6" type="String" label="Unify6" length="50" />
+    <field name="unify7" type="String" label="Unify7" length="50" />
+    <field name="unify8" type="String" label="Unify8" length="50" />
+    <field name="unify9" type="String" label="Unify9" length="50" />
+    <field name="unify10" type="String" label="Unify10" length="50" />
+    <field name="unify11" type="String" label="Unify11" length="50" />
+    <field name="unify12" type="String" label="Unify12" length="50" />
+    <field name="unify13" type="String" label="Unify13" length="50" />
+    <field name="unify14" type="String" label="Unify14" length="50" />
+    <field name="unify15" type="String" label="Unify15" length="50" />
+    <field name="cert_sort" type="Double" label="Cert Sort" />
+    <field name="unify" type="String" label="Unify" length="50" />
+    <field name="min1" type="Double" label="Min1" />
+    <field name="min2" type="Double" label="Min2" />
+    <field name="min3" type="Double" label="Min3" />
+    <field name="min4" type="Double" label="Min4" />
+    <field name="min5" type="Double" label="Min5" />
+    <field name="min6" type="Double" label="Min6" />
+    <field name="min7" type="Double" label="Min7" />
+    <field name="min8" type="Double" label="Min8" />
+    <field name="min9" type="Double" label="Min9" />
+    <field name="min10" type="Double" label="Min10" />
+    <field name="min11" type="Double" label="Min11" />
+    <field name="min12" type="Double" label="Min12" />
+    <field name="min13" type="Double" label="Min13" />
+    <field name="min14" type="String" label="Min14" length="50" />
+    <field name="min15" type="String" label="Min15" length="50" />
+    <field name="perc" type="Double" label="Perc" />
+    <field name="abs1" type="Double" label="Abs1" />
+    <field name="abs2" type="Double" label="Abs2" />
+    <field name="grade" type="String" label="Grade" length="50" />
+    <field name="eval1" type="Double" label="Eval1" />
+    <field name="eval2" type="Double" label="Eval2" />
+    <field name="eval3" type="Double" label="Eval3" />
+    <field name="eval4" type="Double" label="Eval4" />
+    <field name="eval5" type="Double" label="Eval5" />
+    <field name="eval6" type="Double" label="Eval6" />
+    <field name="eval7" type="Double" label="Eval7" />
+    <field name="eval8" type="Double" label="Eval8" />
+    <field name="eval9" type="Double" label="Eval9" />
+    <field name="eval10" type="Double" label="Eval10" />
+    <field name="eval11" type="Double" label="Eval11" />
+    <field name="eval12" type="Double" label="Eval12" />
+    <field name="eval13" type="Double" label="Eval13" />
+    <field name="eval14" type="String" label="Eval14" length="50" />
+    <field name="eval15" type="String" label="Eval15" length="50" />
+    <field name="F126" type="String" label="F126" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Result">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="tmpid" columns="15" />
+        <dataField fieldName="ea" columns="15" />
+        <dataField fieldName="record_year" columns="15" />
+        <dataField fieldName="school" columns="15" />
+        <dataField fieldName="st_level" columns="15" />
+        <dataField fieldName="st_class" columns="15" />
+        <dataField fieldName="subj1" columns="15" />
+        <dataField fieldName="subj2" columns="15" />
+        <dataField fieldName="subj3" columns="15" />
+        <dataField fieldName="subj4" columns="15" />
+        <dataField fieldName="subj5" columns="15" />
+        <dataField fieldName="subj6" columns="15" />
+        <dataField fieldName="subj7" columns="15" />
+        <dataField fieldName="subj8" columns="15" />
+        <dataField fieldName="subj9" columns="15" />
+        <dataField fieldName="subj10" columns="15" />
+        <dataField fieldName="subj11" columns="15" />
+        <dataField fieldName="subj12" columns="15" />
+        <dataField fieldName="subj13" columns="15" />
+        <dataField fieldName="subj14" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Result">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Result" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="tmpid" columns="15" />
+            <dataField fieldName="ea" columns="15" />
+            <dataField fieldName="record_year" columns="15" />
+            <dataField fieldName="school" columns="15" />
+            <dataField fieldName="st_level" columns="15" />
+            <dataField fieldName="st_class" columns="15" />
+            <dataField fieldName="subj1" columns="15" />
+            <dataField fieldName="subj2" columns="15" />
+            <dataField fieldName="subj3" columns="15" />
+            <dataField fieldName="subj4" columns="15" />
+            <dataField fieldName="subj5" columns="15" />
+            <dataField fieldName="subj6" columns="15" />
+            <dataField fieldName="subj7" columns="15" />
+            <dataField fieldName="subj8" columns="15" />
+            <dataField fieldName="subj9" columns="15" />
+            <dataField fieldName="subj10" columns="15" />
+            <dataField fieldName="subj11" columns="15" />
+            <dataField fieldName="subj12" columns="15" />
+            <dataField fieldName="subj13" columns="15" />
+            <dataField fieldName="subj14" columns="50" />
+            <dataField fieldName="subj15" columns="50" />
+            <dataField fieldName="mark1" columns="50" />
+            <dataField fieldName="mark2" columns="50" />
+            <dataField fieldName="mark3" columns="50" />
+            <dataField fieldName="mark4" columns="50" />
+            <dataField fieldName="mark5" columns="50" />
+            <dataField fieldName="mark6" columns="50" />
+            <dataField fieldName="mark7" columns="50" />
+            <dataField fieldName="mark8" columns="50" />
+            <dataField fieldName="mark9" columns="50" />
+            <dataField fieldName="mark10" columns="50" />
+            <dataField fieldName="mark11" columns="50" />
+            <dataField fieldName="mark12" columns="50" />
+            <dataField fieldName="mark13" columns="50" />
+            <dataField fieldName="mark14" columns="50" />
+            <dataField fieldName="mark15" columns="50" />
+            <dataField fieldName="st_name" columns="50" />
+            <dataField fieldName="week" columns="15" />
+            <dataField fieldName="serial" columns="15" />
+            <dataField fieldName="total" columns="15" />
+            <dataField fieldName="nat" columns="15" />
+            <dataField fieldName="result" columns="50" />
+            <dataField fieldName="name_1" columns="50" />
+            <dataField fieldName="name_5" columns="15" />
+            <dataField fieldName="name_6" columns="50" />
+            <dataField fieldName="work1" columns="50" />
+            <dataField fieldName="work2" columns="50" />
+            <dataField fieldName="work3" columns="50" />
+            <dataField fieldName="work4" columns="50" />
+            <dataField fieldName="work5" columns="50" />
+            <dataField fieldName="work6" columns="50" />
+            <dataField fieldName="work7" columns="50" />
+            <dataField fieldName="work8" columns="50" />
+            <dataField fieldName="work9" columns="50" />
+            <dataField fieldName="work10" columns="50" />
+            <dataField fieldName="work11" columns="50" />
+            <dataField fieldName="work12" columns="50" />
+            <dataField fieldName="work13" columns="50" />
+            <dataField fieldName="work14" columns="50" />
+            <dataField fieldName="work15" columns="50" />
+            <dataField fieldName="exam1" columns="50" />
+            <dataField fieldName="exam2" columns="50" />
+            <dataField fieldName="exam3" columns="50" />
+            <dataField fieldName="exam4" columns="50" />
+            <dataField fieldName="exam5" columns="50" />
+            <dataField fieldName="exam6" columns="50" />
+            <dataField fieldName="exam7" columns="50" />
+            <dataField fieldName="exam8" columns="50" />
+            <dataField fieldName="exam9" columns="50" />
+            <dataField fieldName="exam10" columns="50" />
+            <dataField fieldName="exam11" columns="50" />
+            <dataField fieldName="exam12" columns="50" />
+            <dataField fieldName="exam13" columns="50" />
+            <dataField fieldName="exam14" columns="50" />
+            <dataField fieldName="exam15" columns="50" />
+            <dataField fieldName="unify1" columns="50" />
+            <dataField fieldName="unify2" columns="50" />
+            <dataField fieldName="unify3" columns="50" />
+            <dataField fieldName="unify4" columns="50" />
+            <dataField fieldName="unify5" columns="50" />
+            <dataField fieldName="unify6" columns="50" />
+            <dataField fieldName="unify7" columns="50" />
+            <dataField fieldName="unify8" columns="50" />
+            <dataField fieldName="unify9" columns="50" />
+            <dataField fieldName="unify10" columns="50" />
+            <dataField fieldName="unify11" columns="50" />
+            <dataField fieldName="unify12" columns="50" />
+            <dataField fieldName="unify13" columns="50" />
+            <dataField fieldName="unify14" columns="50" />
+            <dataField fieldName="unify15" columns="50" />
+            <dataField fieldName="cert_sort" columns="15" />
+            <dataField fieldName="unify" columns="50" />
+            <dataField fieldName="min1" columns="15" />
+            <dataField fieldName="min2" columns="15" />
+            <dataField fieldName="min3" columns="15" />
+            <dataField fieldName="min4" columns="15" />
+            <dataField fieldName="min5" columns="15" />
+            <dataField fieldName="min6" columns="15" />
+            <dataField fieldName="min7" columns="15" />
+            <dataField fieldName="min8" columns="15" />
+            <dataField fieldName="min9" columns="15" />
+            <dataField fieldName="min10" columns="15" />
+            <dataField fieldName="min11" columns="15" />
+            <dataField fieldName="min12" columns="15" />
+            <dataField fieldName="min13" columns="15" />
+            <dataField fieldName="min14" columns="50" />
+            <dataField fieldName="min15" columns="50" />
+            <dataField fieldName="perc" columns="15" />
+            <dataField fieldName="abs1" columns="15" />
+            <dataField fieldName="abs2" columns="15" />
+            <dataField fieldName="grade" columns="50" />
+            <dataField fieldName="eval1" columns="15" />
+            <dataField fieldName="eval2" columns="15" />
+            <dataField fieldName="eval3" columns="15" />
+            <dataField fieldName="eval4" columns="15" />
+            <dataField fieldName="eval5" columns="15" />
+            <dataField fieldName="eval6" columns="15" />
+            <dataField fieldName="eval7" columns="15" />
+            <dataField fieldName="eval8" columns="15" />
+            <dataField fieldName="eval9" columns="15" />
+            <dataField fieldName="eval10" columns="15" />
+            <dataField fieldName="eval11" columns="15" />
+            <dataField fieldName="eval12" columns="15" />
+            <dataField fieldName="eval13" columns="15" />
+            <dataField fieldName="eval14" columns="50" />
+            <dataField fieldName="eval15" columns="50" />
+            <dataField fieldName="F126" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Result">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Result" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ea" columns="15" />
+            <dataField fieldName="record_year" columns="15" />
+            <dataField fieldName="school" columns="15" />
+            <dataField fieldName="st_level" columns="15" />
+            <dataField fieldName="st_class" columns="15" />
+            <dataField fieldName="subj1" columns="15" />
+            <dataField fieldName="subj2" columns="15" />
+            <dataField fieldName="subj3" columns="15" />
+            <dataField fieldName="subj4" columns="15" />
+            <dataField fieldName="subj5" columns="15" />
+            <dataField fieldName="subj6" columns="15" />
+            <dataField fieldName="subj7" columns="15" />
+            <dataField fieldName="subj8" columns="15" />
+            <dataField fieldName="subj9" columns="15" />
+            <dataField fieldName="subj10" columns="15" />
+            <dataField fieldName="subj11" columns="15" />
+            <dataField fieldName="subj12" columns="15" />
+            <dataField fieldName="subj13" columns="15" />
+            <dataField fieldName="subj14" columns="50" />
+            <dataField fieldName="subj15" columns="50" />
+            <dataField fieldName="mark1" columns="50" />
+            <dataField fieldName="mark2" columns="50" />
+            <dataField fieldName="mark3" columns="50" />
+            <dataField fieldName="mark4" columns="50" />
+            <dataField fieldName="mark5" columns="50" />
+            <dataField fieldName="mark6" columns="50" />
+            <dataField fieldName="mark7" columns="50" />
+            <dataField fieldName="mark8" columns="50" />
+            <dataField fieldName="mark9" columns="50" />
+            <dataField fieldName="mark10" columns="50" />
+            <dataField fieldName="mark11" columns="50" />
+            <dataField fieldName="mark12" columns="50" />
+            <dataField fieldName="mark13" columns="50" />
+            <dataField fieldName="mark14" columns="50" />
+            <dataField fieldName="mark15" columns="50" />
+            <dataField fieldName="st_name" columns="50" />
+            <dataField fieldName="week" columns="15" />
+            <dataField fieldName="serial" columns="15" />
+            <dataField fieldName="total" columns="15" />
+            <dataField fieldName="nat" columns="15" />
+            <dataField fieldName="result" columns="50" />
+            <dataField fieldName="name_1" columns="50" />
+            <dataField fieldName="name_5" columns="15" />
+            <dataField fieldName="name_6" columns="50" />
+            <dataField fieldName="work1" columns="50" />
+            <dataField fieldName="work2" columns="50" />
+            <dataField fieldName="work3" columns="50" />
+            <dataField fieldName="work4" columns="50" />
+            <dataField fieldName="work5" columns="50" />
+            <dataField fieldName="work6" columns="50" />
+            <dataField fieldName="work7" columns="50" />
+            <dataField fieldName="work8" columns="50" />
+            <dataField fieldName="work9" columns="50" />
+            <dataField fieldName="work10" columns="50" />
+            <dataField fieldName="work11" columns="50" />
+            <dataField fieldName="work12" columns="50" />
+            <dataField fieldName="work13" columns="50" />
+            <dataField fieldName="work14" columns="50" />
+            <dataField fieldName="work15" columns="50" />
+            <dataField fieldName="exam1" columns="50" />
+            <dataField fieldName="exam2" columns="50" />
+            <dataField fieldName="exam3" columns="50" />
+            <dataField fieldName="exam4" columns="50" />
+            <dataField fieldName="exam5" columns="50" />
+            <dataField fieldName="exam6" columns="50" />
+            <dataField fieldName="exam7" columns="50" />
+            <dataField fieldName="exam8" columns="50" />
+            <dataField fieldName="exam9" columns="50" />
+            <dataField fieldName="exam10" columns="50" />
+            <dataField fieldName="exam11" columns="50" />
+            <dataField fieldName="exam12" columns="50" />
+            <dataField fieldName="exam13" columns="50" />
+            <dataField fieldName="exam14" columns="50" />
+            <dataField fieldName="exam15" columns="50" />
+            <dataField fieldName="unify1" columns="50" />
+            <dataField fieldName="unify2" columns="50" />
+            <dataField fieldName="unify3" columns="50" />
+            <dataField fieldName="unify4" columns="50" />
+            <dataField fieldName="unify5" columns="50" />
+            <dataField fieldName="unify6" columns="50" />
+            <dataField fieldName="unify7" columns="50" />
+            <dataField fieldName="unify8" columns="50" />
+            <dataField fieldName="unify9" columns="50" />
+            <dataField fieldName="unify10" columns="50" />
+            <dataField fieldName="unify11" columns="50" />
+            <dataField fieldName="unify12" columns="50" />
+            <dataField fieldName="unify13" columns="50" />
+            <dataField fieldName="unify14" columns="50" />
+            <dataField fieldName="unify15" columns="50" />
+            <dataField fieldName="cert_sort" columns="15" />
+            <dataField fieldName="unify" columns="50" />
+            <dataField fieldName="min1" columns="15" />
+            <dataField fieldName="min2" columns="15" />
+            <dataField fieldName="min3" columns="15" />
+            <dataField fieldName="min4" columns="15" />
+            <dataField fieldName="min5" columns="15" />
+            <dataField fieldName="min6" columns="15" />
+            <dataField fieldName="min7" columns="15" />
+            <dataField fieldName="min8" columns="15" />
+            <dataField fieldName="min9" columns="15" />
+            <dataField fieldName="min10" columns="15" />
+            <dataField fieldName="min11" columns="15" />
+            <dataField fieldName="min12" columns="15" />
+            <dataField fieldName="min13" columns="15" />
+            <dataField fieldName="min14" columns="50" />
+            <dataField fieldName="min15" columns="50" />
+            <dataField fieldName="perc" columns="15" />
+            <dataField fieldName="abs1" columns="15" />
+            <dataField fieldName="abs2" columns="15" />
+            <dataField fieldName="grade" columns="50" />
+            <dataField fieldName="eval1" columns="15" />
+            <dataField fieldName="eval2" columns="15" />
+            <dataField fieldName="eval3" columns="15" />
+            <dataField fieldName="eval4" columns="15" />
+            <dataField fieldName="eval5" columns="15" />
+            <dataField fieldName="eval6" columns="15" />
+            <dataField fieldName="eval7" columns="15" />
+            <dataField fieldName="eval8" columns="15" />
+            <dataField fieldName="eval9" columns="15" />
+            <dataField fieldName="eval10" columns="15" />
+            <dataField fieldName="eval11" columns="15" />
+            <dataField fieldName="eval12" columns="15" />
+            <dataField fieldName="eval13" columns="15" />
+            <dataField fieldName="eval14" columns="50" />
+            <dataField fieldName="eval15" columns="50" />
+            <dataField fieldName="F126" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

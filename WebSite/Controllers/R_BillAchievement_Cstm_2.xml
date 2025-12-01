@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="R_BillAchievement_Cstm_2" conflictDetection="overwriteChanges" label="R Bill Achievement Cstm 2" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"R_BillAchievement_Cstm_2"."Cstm_No" "Cstm_No"
+	,"R_BillAchievement_Cstm_2"."Prj_No" "Prj_No"
+	,"R_BillAchievement_Cstm_2"."No" "No"
+	,"R_BillAchievement_Cstm_2"."itmCode" "itmCode"
+	,"R_BillAchievement_Cstm_2"."Exec_Priv" "Exec_Priv"
+	,"R_BillAchievement_Cstm_2"."Exec_Prs" "Exec_Prs"
+	,"R_BillAchievement_Cstm_2"."OutPut" "OutPut"
+	,"R_BillAchievement_Cstm_2"."Discou" "Discou"
+	,"R_BillAchievement_Cstm_2"."Pure" "Pure"
+	,"R_BillAchievement_Cstm_2"."Exec_Date" "Exec_Date"
+	,"R_BillAchievement_Cstm_2"."Pr_Mo" "Pr_Mo"
+	,"R_BillAchievement_Cstm_2"."Qu" "Qu"
+	,"R_BillAchievement_Cstm_2"."Itmval" "Itmval"
+	,"R_BillAchievement_Cstm_2"."Itm_stdate" "Itm_stdate"
+	,"R_BillAchievement_Cstm_2"."Itm_Endate" "Itm_Endate"
+	,"R_BillAchievement_Cstm_2"."Cstm_Nm" "Cstm_Nm"
+	,"R_BillAchievement_Cstm_2"."Cstm_Rsp" "Cstm_Rsp"
+	,"R_BillAchievement_Cstm_2"."Ac_Nm1" "Ac_Nm1"
+	,"R_BillAchievement_Cstm_2"."AC_Mo" "AC_Mo"
+	,"R_BillAchievement_Cstm_2"."Prj_Nm" "Prj_Nm"
+from "dbo"."R_BillAchievement_Cstm_2" "R_BillAchievement_Cstm_2"
+]]></text>
+    </command>
+    <command id="Cstm_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Cstm_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Cstm_No" type="Int64" label="Cstm No" readOnly="true" showInSummary="true" />
+    <field name="Prj_No" type="Int64" label="Prj No" showInSummary="true" />
+    <field name="No" type="Int64" label="No" showInSummary="true" />
+    <field name="itmCode" type="Int64" label="itm Code" showInSummary="true" />
+    <field name="Exec_Priv" type="Double" label="Exec Priv" showInSummary="true" />
+    <field name="Exec_Prs" type="Double" label="Exec Prs" />
+    <field name="OutPut" type="Decimal" label="Out Put" />
+    <field name="Discou" type="Decimal" label="Discou" />
+    <field name="Pure" type="Decimal" label="Pure" />
+    <field name="Exec_Date" type="DateTime" label="Exec Date" />
+    <field name="Pr_Mo" type="Decimal" label="Pr Mo" />
+    <field name="Qu" type="Int64" label="Qu" />
+    <field name="Itmval" type="Decimal" label="Itmval" />
+    <field name="Itm_stdate" type="DateTime" label="Itm stdate" />
+    <field name="Itm_Endate" type="DateTime" label="Itm Endate" />
+    <field name="Cstm_Nm" type="String" label="Cstm Nm" length="155" />
+    <field name="Cstm_Rsp" type="String" label="Cstm Rsp" length="155" />
+    <field name="Ac_Nm1" type="String" label="Ac Nm1" length="100" />
+    <field name="AC_Mo" type="String" label="AC Mo" length="50" />
+    <field name="Prj_Nm" type="String" label="Prj Nm" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="R Bill Achievement Cstm 2">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Cstm_No" columns="15" />
+        <dataField fieldName="Prj_No" columns="15" />
+        <dataField fieldName="No" columns="15" />
+        <dataField fieldName="itmCode" columns="15" />
+        <dataField fieldName="Exec_Priv" columns="15" />
+        <dataField fieldName="Exec_Prs" columns="15" />
+        <dataField fieldName="OutPut" dataFormatString="c" columns="15" />
+        <dataField fieldName="Discou" dataFormatString="c" columns="15" />
+        <dataField fieldName="Pure" dataFormatString="c" columns="15" />
+        <dataField fieldName="Exec_Date" columns="10" />
+        <dataField fieldName="Pr_Mo" dataFormatString="c" columns="15" />
+        <dataField fieldName="Qu" columns="15" />
+        <dataField fieldName="Itmval" dataFormatString="c" columns="15" />
+        <dataField fieldName="Itm_stdate" columns="10" />
+        <dataField fieldName="Itm_Endate" columns="10" />
+        <dataField fieldName="Cstm_Nm" />
+        <dataField fieldName="Cstm_Rsp" />
+        <dataField fieldName="Ac_Nm1" />
+        <dataField fieldName="AC_Mo" columns="50" />
+        <dataField fieldName="Prj_Nm" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review R Bill Achievement Cstm 2">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="R Bill Achievement Cstm 2" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="Prj_No" columns="15" />
+            <dataField fieldName="No" columns="15" />
+            <dataField fieldName="itmCode" columns="15" />
+            <dataField fieldName="Exec_Priv" columns="15" />
+            <dataField fieldName="Exec_Prs" columns="15" />
+            <dataField fieldName="OutPut" dataFormatString="c" columns="15" />
+            <dataField fieldName="Discou" dataFormatString="c" columns="15" />
+            <dataField fieldName="Pure" dataFormatString="c" columns="15" />
+            <dataField fieldName="Exec_Date" columns="10" />
+            <dataField fieldName="Pr_Mo" dataFormatString="c" columns="15" />
+            <dataField fieldName="Qu" columns="15" />
+            <dataField fieldName="Itmval" dataFormatString="c" columns="15" />
+            <dataField fieldName="Itm_stdate" columns="10" />
+            <dataField fieldName="Itm_Endate" columns="10" />
+            <dataField fieldName="Cstm_Nm" />
+            <dataField fieldName="Cstm_Rsp" />
+            <dataField fieldName="Ac_Nm1" />
+            <dataField fieldName="AC_Mo" columns="50" />
+            <dataField fieldName="Prj_Nm" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New R Bill Achievement Cstm 2">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New R Bill Achievement Cstm 2" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Prj_No" columns="15" />
+            <dataField fieldName="No" columns="15" />
+            <dataField fieldName="itmCode" columns="15" />
+            <dataField fieldName="Exec_Priv" columns="15" />
+            <dataField fieldName="Exec_Prs" columns="15" />
+            <dataField fieldName="OutPut" dataFormatString="c" columns="15" />
+            <dataField fieldName="Discou" dataFormatString="c" columns="15" />
+            <dataField fieldName="Pure" dataFormatString="c" columns="15" />
+            <dataField fieldName="Exec_Date" columns="10" />
+            <dataField fieldName="Pr_Mo" dataFormatString="c" columns="15" />
+            <dataField fieldName="Qu" columns="15" />
+            <dataField fieldName="Itmval" dataFormatString="c" columns="15" />
+            <dataField fieldName="Itm_stdate" columns="10" />
+            <dataField fieldName="Itm_Endate" columns="10" />
+            <dataField fieldName="Cstm_Nm" />
+            <dataField fieldName="Cstm_Rsp" />
+            <dataField fieldName="Ac_Nm1" />
+            <dataField fieldName="AC_Mo" columns="50" />
+            <dataField fieldName="Prj_Nm" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

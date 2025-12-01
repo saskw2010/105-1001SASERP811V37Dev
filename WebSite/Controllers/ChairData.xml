@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="ChairData" conflictDetection="overwriteChanges" label="Chair Data" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"ChairData"."ChairID" "ChairID"
+	,"ChairData"."HallID" "HallID"
+	,"Hall"."LayoutName" "HallLayoutName"
+	,"ChairData"."MovieID" "MovieID"
+	,"ChairData"."ShowID" "ShowID"
+	,"Show"."DateName" "ShowDateName"
+	,"ChairData"."TimeID" "TimeID"
+	,"Time"."Time" "TimeTime"
+	,"TimeShow"."DateName" "TimeShowDateName"
+	,"ChairData"."UserID" "UserID"
+	,"ChairData"."AdminID" "AdminID"
+	,"ChairData"."BookID" "BookID"
+	,"ChairData"."Location" "Location"
+	,"ChairData"."Book" "Book"
+	,"ChairData"."Status" "Status"
+	,"ChairData"."Rows" "Rows"
+	,"ChairData"."Cols" "Cols"
+	,"ChairData"."ModifiedBy" "ModifiedBy"
+	,"ChairData"."ModifiedByUserId" "ModifiedByUserId"
+	,"ChairData"."ModifiedOn" "ModifiedOn"
+	,"ChairData"."CreatedBy" "CreatedBy"
+	,"ChairData"."CreatedById" "CreatedById"
+	,"ChairData"."CreatedOn" "CreatedOn"
+from "dbo"."ChairData" "ChairData"
+	left join "dbo"."HallLayout" "Hall" on "ChairData"."HallID" = "Hall"."HallID"
+	left join "dbo"."ShowDate" "Show" on "ChairData"."ShowID" = "Show"."ShowID"
+	left join "dbo"."ShowTime" "Time" on "ChairData"."TimeID" = "Time"."TimeID"
+	left join "dbo"."ShowDate" "TimeShow" on "Time"."ShowID" = "TimeShow"."ShowID"
+]]></text>
+    </command>
+    <command id="ChairIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ChairID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ChairID" type="Int32" allowNulls="false" isPrimaryKey="true" label="Chair#" readOnly="true" />
+    <field name="HallID" type="Int32" allowNulls="false" label="Hall#" showInSummary="true">
+      <items style="Lookup" dataController="HallLayout" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="HallLayoutName" type="String" readOnly="true" label="Hall Layout Name" length="50" />
+    <field name="MovieID" type="Int32" allowNulls="false" label="Movie#" showInSummary="true" />
+    <field name="ShowID" type="Int32" allowNulls="false" label="Show#" showInSummary="true">
+      <items style="Lookup" dataController="ShowDate" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ShowDateName" type="String" readOnly="true" label="Show Date Name" length="50" />
+    <field name="TimeID" type="Int32" allowNulls="false" label="Time#" showInSummary="true">
+      <items style="Lookup" dataController="ShowTime" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TimeTime" type="String" readOnly="true" label="Time" length="10" />
+    <field name="TimeShowDateName" type="String" readOnly="true" label="Time Show Date Name" length="50" />
+    <field name="UserID" type="Int32" label="User#" showInSummary="true" />
+    <field name="AdminID" type="Int32" label="Admin#" />
+    <field name="BookID" type="Int32" label="Book#" />
+    <field name="Location" type="String" allowNulls="false" label="Location" length="10" />
+    <field name="Book" type="Boolean" label="Book" />
+    <field name="Status" type="Int32" allowNulls="false" label="Status" />
+    <field name="Rows" type="Int32" label="Rows" />
+    <field name="Cols" type="Int32" label="Cols" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedByUserId" type="Guid" label="Modified By User#" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedById" type="Guid" label="Created By#" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Chair Data">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="HallID" aliasFieldName="HallLayoutName" />
+        <dataField fieldName="MovieID" columns="15" />
+        <dataField fieldName="ShowID" aliasFieldName="ShowDateName" hyperlinkFormatString="~/Pages/ShowDate.aspx?ShowID={ShowID}&amp;_controller=ShowDate&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="TimeID" aliasFieldName="TimeTime" hyperlinkFormatString="~/Pages/ShowTime.aspx?TimeID={TimeID}&amp;_controller=ShowTime&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="UserID" columns="15" />
+        <dataField fieldName="AdminID" columns="15" />
+        <dataField fieldName="BookID" columns="15" />
+        <dataField fieldName="Location" columns="10" />
+        <dataField fieldName="Book" />
+        <dataField fieldName="Status" columns="15" />
+        <dataField fieldName="Rows" columns="15" />
+        <dataField fieldName="Cols" columns="15" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedByUserId" columns="15" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedById" columns="15" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="TimeShowDateName" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Chair Data">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Chair Data" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="HallID" aliasFieldName="HallLayoutName" hyperlinkFormatString="~/Pages/HallLayout.aspx?HallID={HallID}&amp;_controller=HallLayout&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="MovieID" columns="15" />
+            <dataField fieldName="ShowID" aliasFieldName="ShowDateName" hyperlinkFormatString="~/Pages/ShowDate.aspx?ShowID={ShowID}&amp;_controller=ShowDate&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="TimeID" aliasFieldName="TimeTime" hyperlinkFormatString="~/Pages/ShowTime.aspx?TimeID={TimeID}&amp;_controller=ShowTime&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="UserID" columns="15" />
+            <dataField fieldName="AdminID" columns="15" />
+            <dataField fieldName="BookID" columns="15" />
+            <dataField fieldName="Location" columns="10" />
+            <dataField fieldName="Book" />
+            <dataField fieldName="Status" columns="15" />
+            <dataField fieldName="Rows" columns="15" />
+            <dataField fieldName="Cols" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedByUserId" columns="15" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedById" columns="15" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="TimeShowDateName" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Chair Data">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Chair Data" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="HallID" aliasFieldName="HallLayoutName" />
+            <dataField fieldName="MovieID" columns="15" />
+            <dataField fieldName="ShowID" aliasFieldName="ShowDateName" />
+            <dataField fieldName="TimeID" aliasFieldName="TimeTime" />
+            <dataField fieldName="UserID" columns="15" />
+            <dataField fieldName="AdminID" columns="15" />
+            <dataField fieldName="BookID" columns="15" />
+            <dataField fieldName="Location" columns="10" />
+            <dataField fieldName="Book" />
+            <dataField fieldName="Status" columns="15" />
+            <dataField fieldName="Rows" columns="15" />
+            <dataField fieldName="Cols" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedByUserId" columns="15" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedById" columns="15" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

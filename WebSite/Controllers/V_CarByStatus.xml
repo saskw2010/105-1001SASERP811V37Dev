@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="V_CarByStatus" conflictDetection="overwriteChanges" label="V Car By Status" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"V_CarByStatus"."F_EMPCODE" "F_EMPCODE"
+	,"V_CarByStatus"."F_EMPLOYEENAME" "F_EMPLOYEENAME"
+	,"V_CarByStatus"."F_CarStatus" "F_CarStatus"
+	,"V_CarByStatus"."F_CarNo" "F_CarNo"
+	,"V_CarByStatus"."F_CarType" "F_CarType"
+	,"V_CarByStatus"."F_CarOwner" "F_CarOwner"
+	,"V_CarByStatus"."F_DOCUMENTENDDATE" "F_DOCUMENTENDDATE"
+	,"V_CarByStatus"."F_NO" "F_NO"
+	,"V_CarByStatus"."EnglishEmployeName" "EnglishEmployeName"
+from "dbo"."V_CarByStatus" "V_CarByStatus"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="F_EMPCODE" type="String" label="F Empcode" length="10" showInSummary="true" />
+    <field name="F_EMPLOYEENAME" type="String" label="F Employeename" length="50" showInSummary="true" />
+    <field name="F_CarStatus" type="Decimal" label="F Car Status" showInSummary="true" />
+    <field name="F_CarNo" type="String" label="F Car No" length="15" showInSummary="true" />
+    <field name="F_CarType" type="Decimal" label="F Car Type" showInSummary="true" />
+    <field name="F_CarOwner" type="String" label="F Car Owner" length="50" />
+    <field name="F_DOCUMENTENDDATE" type="DateTime" label="F Documentenddate" />
+    <field name="F_NO" type="String" label="F No" length="15" />
+    <field name="EnglishEmployeName" type="String" label="English Employe Name" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="V Car By Status">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="F_EMPCODE" columns="10" />
+        <dataField fieldName="F_EMPLOYEENAME" columns="50" />
+        <dataField fieldName="F_CarStatus" columns="15" />
+        <dataField fieldName="F_CarNo" columns="15" />
+        <dataField fieldName="F_CarType" columns="15" />
+        <dataField fieldName="F_CarOwner" columns="50" />
+        <dataField fieldName="F_DOCUMENTENDDATE" columns="10" />
+        <dataField fieldName="F_NO" columns="15" />
+        <dataField fieldName="EnglishEmployeName" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review V Car By Status">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="V Car By Status" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="F_EMPCODE" columns="10" />
+            <dataField fieldName="F_EMPLOYEENAME" columns="50" />
+            <dataField fieldName="F_CarStatus" columns="15" />
+            <dataField fieldName="F_CarNo" columns="15" />
+            <dataField fieldName="F_CarType" columns="15" />
+            <dataField fieldName="F_CarOwner" columns="50" />
+            <dataField fieldName="F_DOCUMENTENDDATE" columns="10" />
+            <dataField fieldName="F_NO" columns="15" />
+            <dataField fieldName="EnglishEmployeName" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New V Car By Status">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New V Car By Status" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="F_EMPCODE" columns="10" />
+            <dataField fieldName="F_EMPLOYEENAME" columns="50" />
+            <dataField fieldName="F_CarStatus" columns="15" />
+            <dataField fieldName="F_CarNo" columns="15" />
+            <dataField fieldName="F_CarType" columns="15" />
+            <dataField fieldName="F_CarOwner" columns="50" />
+            <dataField fieldName="F_DOCUMENTENDDATE" columns="10" />
+            <dataField fieldName="F_NO" columns="15" />
+            <dataField fieldName="EnglishEmployeName" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="QCrossTabPaymentDetails101posted" conflictDetection="overwriteChanges" label="Q Cross Tab Payment Details101posted" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"QCrossTabPaymentDetails101posted"."schvchdlyhdregid" "schvchdlyhdregid"
+	,"QCrossTabPaymentDetails101posted"."vouchertyp" "vouchertyp"
+	,"QCrossTabPaymentDetails101posted"."paymentid" "paymentid"
+	,"QCrossTabPaymentDetails101posted"."cash" "cash"
+	,"QCrossTabPaymentDetails101posted"."cheq  Bank" "cheqBank"
+	,"QCrossTabPaymentDetails101posted"."cheq" "cheq"
+	,"QCrossTabPaymentDetails101posted"."K Net" "KNet"
+	,"QCrossTabPaymentDetails101posted"."Visa credit" "Visacredit"
+	,"QCrossTabPaymentDetails101posted"."others" "others"
+	,"QCrossTabPaymentDetails101posted"."Transfer" "Transfer"
+	,"QCrossTabPaymentDetails101posted"."Distribution" "Distribution"
+from "dbo"."QCrossTabPaymentDetails101posted" "QCrossTabPaymentDetails101posted"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="schvchdlyhdregid" type="Int64" allowNulls="false" label="Schvchdlyhdregid" showInSummary="true" />
+    <field name="vouchertyp" type="Int32" allowNulls="false" label="Vouchertyp" readOnly="true" showInSummary="true" />
+    <field name="paymentid" type="Int32" allowNulls="false" label="Paymentid" readOnly="true" showInSummary="true" />
+    <field name="cash" type="Decimal" allowNulls="false" label="Cash" readOnly="true" showInSummary="true" />
+    <field name="cheqBank" type="Decimal" allowNulls="false" label="cheq Bank" readOnly="true" showInSummary="true" />
+    <field name="cheq" type="Decimal" allowNulls="false" label="Cheq" readOnly="true" />
+    <field name="KNet" type="Decimal" allowNulls="false" label="K Net" readOnly="true" />
+    <field name="Visacredit" type="Decimal" allowNulls="false" label="Visacredit" readOnly="true" />
+    <field name="others" type="Decimal" allowNulls="false" label="Others" readOnly="true" />
+    <field name="Transfer" type="Decimal" allowNulls="false" label="Transfer" readOnly="true" />
+    <field name="Distribution" type="Decimal" allowNulls="false" label="Distribution" readOnly="true" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Q Cross Tab Payment Details101posted">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="schvchdlyhdregid" columns="15" />
+        <dataField fieldName="vouchertyp" columns="15" />
+        <dataField fieldName="paymentid" columns="15" />
+        <dataField fieldName="cash" dataFormatString="c" columns="15" />
+        <dataField fieldName="cheqBank" dataFormatString="c" columns="15" />
+        <dataField fieldName="cheq" dataFormatString="c" columns="15" />
+        <dataField fieldName="KNet" dataFormatString="c" columns="15" />
+        <dataField fieldName="Visacredit" dataFormatString="c" columns="15" />
+        <dataField fieldName="others" dataFormatString="c" columns="15" />
+        <dataField fieldName="Transfer" dataFormatString="c" columns="15" />
+        <dataField fieldName="Distribution" dataFormatString="c" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Q Cross Tab Payment Details101posted">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Q Cross Tab Payment Details101posted" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="schvchdlyhdregid" columns="15" />
+            <dataField fieldName="vouchertyp" columns="15" />
+            <dataField fieldName="paymentid" columns="15" />
+            <dataField fieldName="cash" dataFormatString="c" columns="15" />
+            <dataField fieldName="cheqBank" dataFormatString="c" columns="15" />
+            <dataField fieldName="cheq" dataFormatString="c" columns="15" />
+            <dataField fieldName="KNet" dataFormatString="c" columns="15" />
+            <dataField fieldName="Visacredit" dataFormatString="c" columns="15" />
+            <dataField fieldName="others" dataFormatString="c" columns="15" />
+            <dataField fieldName="Transfer" dataFormatString="c" columns="15" />
+            <dataField fieldName="Distribution" dataFormatString="c" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Q Cross Tab Payment Details101posted">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Q Cross Tab Payment Details101posted" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="schvchdlyhdregid" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

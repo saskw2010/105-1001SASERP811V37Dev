@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="TablCustomerforview" conflictDetection="overwriteChanges" label="Tabl Customerforview" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.TablCustomerforviewBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"TablCustomerforview"."Rainbow_no" "Rainbow_no"
+	,"TablCustomerforview"."Rainbow_PowerNozle" "Rainbow_PowerNozle"
+	,"TablCustomerforview"."Customer_no" "Customer_no"
+	,"TablCustomerforview"."Unified_Customer_no" "Unified_Customer_no"
+	,"TablCustomerforview"."Civil_ID" "Civil_ID"
+	,"TablCustomerforview"."Arabic_Name" "Arabic_Name"
+	,"TablCustomerforview"."English_Name" "English_Name"
+	,"TablCustomerforview"."Nationality" "Nationality"
+	,"TablCustomerforview"."Region" "Region"
+	,"TablCustomerforview"."Segment" "Segment"
+	,"TablCustomerforview"."Street" "Street"
+	,"TablCustomerforview"."Avenue" "Avenue"
+	,"TablCustomerforview"."Building_Home" "Building_Home"
+	,"TablCustomerforview"."Floor" "Floor"
+	,"TablCustomerforview"."Appartment" "Appartment"
+	,"TablCustomerforview"."HomePhone" "HomePhone"
+	,"TablCustomerforview"."MobilePhone" "MobilePhone"
+	,"TablCustomerforview"."Workphone" "Workphone"
+	,"TablCustomerforview"."Value" "Value"
+	,"TablCustomerforview"."Invoiceno" "Invoiceno"
+	,"TablCustomerforview"."MD_Name" "MD_Name"
+	,"TablCustomerforview"."Dealer_name" "Dealer_name"
+	,"TablCustomerforview"."FirstPayment" "FirstPayment"
+	,"TablCustomerforview"."Installment" "Installment"
+	,"TablCustomerforview"."StartingDate" "StartingDate"
+	,"TablCustomerforview"."FinalPayment" "FinalPayment"
+	,"TablCustomerforview"."Purchase_Date" "Purchase_Date"
+	,"TablCustomerforview"."Address" "Address"
+	,"TablCustomerforview"."Flag" "Flag"
+	,"TablCustomerforview"."Ref_Name" "Ref_Name"
+	,"TablCustomerforview"."Ref_Phone" "Ref_Phone"
+	,"TablCustomerforview"."Ref_Kind" "Ref_Kind"
+	,"TablCustomerforview"."Tele_Mark_Sec" "Tele_Mark_Sec"
+	,"TablCustomerforview"."flag1" "flag1"
+	,"TablCustomerforview"."Sales_Status" "Sales_Status"
+	,"TablCustomerforview"."BlackList" "BlackList"
+	,"TablCustomerforview"."Serial_Warranty" "Serial_Warranty"
+	,"TablCustomerforview"."Warranty_date" "Warranty_date"
+	,"TablCustomerforview"."nextvisit" "nextvisit"
+	,"TablCustomerforview"."Remark_Visit" "Remark_Visit"
+	,"TablCustomerforview"."Remark_Warranty" "Remark_Warranty"
+	,"TablCustomerforview"."Chaek" "Chaek"
+	,"TablCustomerforview"."Old_machin" "Old_machin"
+	,"TablCustomerforview"."Conversiondate" "Conversiondate"
+	,"TablCustomerforview"."ModifiedBy" "ModifiedBy"
+	,"TablCustomerforview"."ModifiedOn" "ModifiedOn"
+	,"TablCustomerforview"."CreatedBy" "CreatedBy"
+	,"TablCustomerforview"."CreatedOn" "CreatedOn"
+	,"TablCustomerforview"."ALMOSADAD" "ALMOSADAD"
+	,"TablCustomerforview"."Restamount" "Restamount"
+	,"TablCustomerforview"."Totalamosadad" "Totalamosadad"
+	,"TablCustomerforview"."RestGadwal" "RestGadwal"
+	,"TablCustomerforview"."Item_Code" "Item_Code"
+	,"TablCustomerforview"."replacement" "replacement"
+	,"TablCustomerforview"."Collector_name" "Collector_name"
+	,"TablCustomerforview"."collectmdname" "collectmdname"
+	,"TablCustomerforview"."enter_usre" "enter_usre"
+	,"TablCustomerforview"."FirstpaymentDate" "FirstpaymentDate"
+	,"TablCustomerforview"."modelno" "modelno"
+	,"TablCustomerforview"."compyalanumber" "compyalanumber"
+	,"TablCustomerforview"."Replaceid" "Replaceid"
+	,"TablCustomerforview"."arname" "arname"
+	,"TablCustomerforview"."flag2" "flag2"
+	,"TablCustomerforview"."flag3" "flag3"
+	,"TablCustomerforview"."flag4" "flag4"
+	,"TablCustomerforview"."flag5" "flag5"
+	,"TablCustomerforview"."workaddress" "workaddress"
+	,"TablCustomerforview"."IDATUTO" "IDATUTO"
+from "dbo"."TablCustomerforview" "TablCustomerforview"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="Rainbow_no" type="Decimal" allowNulls="false" label="Rainbow no" showInSummary="true" isPrimaryKey="true" />
+    <field name="Rainbow_PowerNozle" type="Int64" label="Rainbow Power Nozle" showInSummary="true" />
+    <field name="Customer_no" type="Double" label="Customer no" showInSummary="true" />
+    <field name="Unified_Customer_no" type="Int64" label="Unified Customer no" showInSummary="true" />
+    <field name="Civil_ID" type="Double" label="Civil#" showInSummary="true" />
+    <field name="Arabic_Name" type="String" label="Arabic Name" length="100" />
+    <field name="English_Name" type="String" label="English Name" length="100" />
+    <field name="Nationality" type="String" label="Nationality" length="25" />
+    <field name="Region" type="String" label="Region" length="50">
+      <items style="AutoComplete" dataController="Tbl_Regions" dataView="grid1" dataTextField="Region" dataValueField="Region" />
+    </field>
+    <field name="Segment" type="Int64" label="Segment" />
+    <field name="Street" type="String" label="Street" length="255" />
+    <field name="Avenue" type="String" label="Avenue" length="255" />
+    <field name="Building_Home" type="String" label="Building Home" length="255" />
+    <field name="Floor" type="String" label="Floor" length="255" />
+    <field name="Appartment" type="String" allowQBE="false" allowSorting="false" label="Appartment" length="-1" />
+    <field name="HomePhone" type="String" label="Home Phone" length="100" />
+    <field name="MobilePhone" type="String" label="Mobile Phone" length="100" />
+    <field name="Workphone" type="String" label="Workphone" length="100" />
+    <field name="Value" type="Double" label="Value" />
+    <field name="Invoiceno" type="String" label="Invoiceno" length="100" />
+    <field name="MD_Name" type="String" label="MD Name" length="50" />
+    <field name="Dealer_name" type="String" label="Dealer name" length="50" />
+    <field name="FirstPayment" type="Double" label="First Payment" />
+    <field name="Installment" type="Double" label="Installment" />
+    <field name="StartingDate" type="DateTime" label="Starting Date" />
+    <field name="FinalPayment" type="Double" label="Final Payment" />
+    <field name="Purchase_Date" type="DateTime" label="Purchase Date" />
+    <field name="Address" type="String" label="Address" length="255" />
+    <field name="Flag" type="Boolean" label="Flag" />
+    <field name="Ref_Name" type="String" label="Ref Name" length="50" />
+    <field name="Ref_Phone" type="String" label="Ref Phone" length="15" />
+    <field name="Ref_Kind" type="String" label="Ref Kind" length="10" />
+    <field name="Tele_Mark_Sec" type="String" label="Tele Mark Sec" length="50" />
+    <field name="flag1" type="String" allowQBE="false" allowSorting="false" label="Flag1" length="-1" />
+    <field name="Sales_Status" type="String" allowQBE="false" allowSorting="false" label="Sales Status" length="-1" />
+    <field name="BlackList" type="Boolean" label="Black List" />
+    <field name="Serial_Warranty" type="Int64" label="Serial Warranty" />
+    <field name="Warranty_date" type="DateTime" label="Warranty date" />
+    <field name="nextvisit" type="DateTime" label="Nextvisit" />
+    <field name="Remark_Visit" type="String" allowQBE="false" allowSorting="false" label="Remark Visit" length="-1" />
+    <field name="Remark_Warranty" type="String" label="Remark Warranty" length="50" />
+    <field name="Chaek" type="Boolean" label="Chaek" />
+    <field name="Old_machin" type="Int64" label="Old machin" />
+    <field name="Conversiondate" type="DateTime" label="Conversiondate" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="ALMOSADAD" type="Decimal" label="Almosadad" />
+    <field name="Restamount" type="Double" label="Restamount" readOnly="true" />
+    <field name="Totalamosadad" type="Double" label="Totalamosadad" readOnly="true" />
+    <field name="RestGadwal" type="Decimal" label="Rest Gadwal" />
+    <field name="Item_Code" type="String" label="Item Code" length="25" />
+    <field name="replacement" type="Int32" allowNulls="false" label="Replacement" readOnly="true" />
+    <field name="Collector_name" type="String" label="Collector name" length="50" />
+    <field name="collectmdname" type="String" label="Collectmdname" length="100" />
+    <field name="enter_usre" type="String" allowQBE="false" allowSorting="false" label="Enter Usre" length="-1" />
+    <field name="FirstpaymentDate" type="DateTime" label="Firstpayment Date" />
+    <field name="modelno" type="Int64" label="Modelno" />
+    <field name="compyalanumber" type="String" label="Compyalanumber" length="150" />
+    <field name="Replaceid" type="Int64" label="Replaceid" />
+    <field name="arname" type="String" label="Arname" length="150" />
+    <field name="flag2" type="Boolean" label="Flag2" />
+    <field name="flag3" type="Boolean" label="Flag3" />
+    <field name="flag4" type="Boolean" label="Flag4" />
+    <field name="flag5" type="Boolean" label="Flag5" />
+    <field name="workaddress" type="String" label="Workaddress" length="255" />
+    <field name="IDATUTO" type="Int64" label="Idatuto" />
+    <field name="phonesearch" type="String" allowNulls="false" readOnly="true" label="phonesearch" computed="true" showInSummary="true" hidden="false">
+      <items letters="false" />
+      <formula>CAST(TablCustomerforview.HomePhone AS nvarchar(9)) + N'N|' + CAST(ISNULL(TablCustomerforview.MobilePhone, 0) AS nvarchar(9))
++ N'N|' + CAST(ISNULL(TablCustomerforview.Workphone, 0) AS nvarchar(9))</formula>
+    </field>
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Tabl Customerforview">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="BlackList" />
+        <dataField fieldName="Customer_no" columns="15" search="Suggested" />
+        <dataField fieldName="phonesearch" search="Suggested" columns="5" searchOptions="$contains,*,$disableautocomplete" rows="3" />
+        <dataField fieldName="Arabic_Name" search="Suggested" />
+        <dataField fieldName="Region" columns="50" search="Suggested" />
+        <dataField fieldName="Value" columns="15" />
+        <dataField fieldName="FirstPayment" columns="15" />
+        <dataField fieldName="ALMOSADAD" columns="15" aggregate="Sum" />
+        <dataField fieldName="Totalamosadad" aggregate="Sum" columns="15" />
+        <dataField fieldName="Installment" columns="15" />
+        <dataField fieldName="Restamount" aggregate="Sum" columns="15" />
+        <dataField fieldName="RestGadwal" columns="15" aggregate="Sum" hidden="true" />
+        <dataField fieldName="Segment" columns="15" />
+        <dataField fieldName="Street" columns="10" />
+        <dataField fieldName="Avenue" columns="10" />
+        <dataField fieldName="Building_Home" columns="10" />
+        <dataField fieldName="Floor" columns="10" />
+        <dataField fieldName="Appartment" rows="5" columns="10" />
+        <dataField fieldName="Purchase_Date" columns="10" />
+        <dataField fieldName="Civil_ID" columns="10" hidden="true"/>
+        <dataField fieldName="FinalPayment" columns="10" />
+        <dataField fieldName="Nationality" columns="10" hidden="true"/>
+        <dataField fieldName="Rainbow_no" columns="10" hidden="true" search="Suggested" rows="2" />
+        <dataField fieldName="Dealer_name" columns="15" />
+        <dataField fieldName="MD_Name" search="Suggested" hidden="true" />
+		  <dataField fieldName="FirstpaymentDate" columns="10" />
+      </dataFields>
+      <styles>
+        <expression type="ClientScript" result="HighDiscount" test="[BlackList]==true" />
+        <expression type="ClientScript" result="TooExpensive" test="[BlackList]==false" />
+      </styles>
+    </view>
+<view id="grid2" type="Grid" commandId="command1" label="grid2">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="BlackList" />
+        <dataField fieldName="Customer_no" columns="15" search="Suggested" />
+        <dataField fieldName="phonesearch" search="Suggested" columns="5" searchOptions="$contains,*,$disableautocomplete" rows="3" />
+        <dataField fieldName="Arabic_Name" search="Suggested" />
+        <dataField fieldName="Region" columns="50" search="Suggested" />
+        <dataField fieldName="Value" columns="15" />
+        <dataField fieldName="FirstPayment" columns="15" />
+        <dataField fieldName="ALMOSADAD" columns="15" aggregate="Sum" />
+        <dataField fieldName="Totalamosadad" aggregate="Sum" columns="15" />
+        <dataField fieldName="Installment" columns="15" />
+        <dataField fieldName="Restamount" aggregate="Sum" columns="15" />
+        <dataField fieldName="RestGadwal" columns="15" aggregate="Sum" hidden="true" />
+        <dataField fieldName="Segment" columns="15" />
+        <dataField fieldName="Street" columns="10" />
+        <dataField fieldName="Avenue" columns="10" />
+        <dataField fieldName="Building_Home" columns="10" />
+        <dataField fieldName="Floor" columns="10" />
+        <dataField fieldName="Appartment" rows="5" columns="10" />
+        <dataField fieldName="Purchase_Date" columns="10" />
+        <dataField fieldName="Civil_ID" columns="10" />
+        <dataField fieldName="FinalPayment" columns="10" />
+        <dataField fieldName="Nationality" columns="10" />
+        <dataField fieldName="Rainbow_no" columns="10" search="Suggested" rows="2" />
+        <dataField fieldName="Dealer_name" columns="15" />
+        <dataField fieldName="MD_Name" search="Suggested"  />
+		  <dataField fieldName="FirstpaymentDate" columns="10" />
+      </dataFields>
+      <styles>
+        <expression type="ClientScript" result="HighDiscount" test="[BlackList]==true" />
+        <expression type="ClientScript" result="TooExpensive" test="[BlackList]==false" />
+      </styles>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Tabl Customerforview">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Tabl Customerforview" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Rainbow_no" columns="15" />
+            <dataField fieldName="Rainbow_PowerNozle" columns="15" />
+            <dataField fieldName="Customer_no" columns="15" />
+            <dataField fieldName="Unified_Customer_no" columns="15" />
+            <dataField fieldName="Civil_ID" columns="15" />
+            <dataField fieldName="Arabic_Name" />
+            <dataField fieldName="English_Name" />
+            <dataField fieldName="Nationality" columns="25" />
+            <dataField fieldName="Region" columns="50" />
+            <dataField fieldName="Segment" columns="15" />
+            <dataField fieldName="Street" />
+            <dataField fieldName="Avenue" />
+            <dataField fieldName="Building_Home" />
+            <dataField fieldName="Floor" />
+            <dataField fieldName="Appartment" rows="5" />
+            <dataField fieldName="HomePhone" />
+            <dataField fieldName="MobilePhone" />
+            <dataField fieldName="Workphone" />
+            <dataField fieldName="Value" columns="15" />
+            <dataField fieldName="Invoiceno" />
+            <dataField fieldName="MD_Name" columns="50" />
+            <dataField fieldName="Dealer_name" columns="50" />
+            <dataField fieldName="FirstPayment" columns="15" />
+            <dataField fieldName="Installment" columns="15" />
+            <dataField fieldName="StartingDate" columns="10" />
+            <dataField fieldName="FinalPayment" columns="15" />
+            <dataField fieldName="Purchase_Date" columns="10" />
+            <dataField fieldName="Address" />
+            <dataField fieldName="Flag" />
+            <dataField fieldName="Ref_Name" columns="50" />
+            <dataField fieldName="Ref_Phone" columns="15" />
+            <dataField fieldName="Ref_Kind" columns="10" />
+            <dataField fieldName="Tele_Mark_Sec" columns="50" />
+            <dataField fieldName="flag1" rows="5" />
+            <dataField fieldName="Sales_Status" rows="5" />
+            <dataField fieldName="BlackList" />
+            <dataField fieldName="Serial_Warranty" columns="15" />
+            <dataField fieldName="Warranty_date" columns="10" />
+            <dataField fieldName="nextvisit" columns="10" />
+            <dataField fieldName="Remark_Visit" rows="5" />
+            <dataField fieldName="Remark_Warranty" columns="50" />
+            <dataField fieldName="Chaek" />
+            <dataField fieldName="Old_machin" columns="15" />
+            <dataField fieldName="Conversiondate" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="ALMOSADAD" columns="15" />
+            <dataField fieldName="Restamount" columns="15" />
+            <dataField fieldName="Totalamosadad" columns="15" />
+            <dataField fieldName="RestGadwal" columns="15" />
+            <dataField fieldName="Item_Code" columns="25" />
+            <dataField fieldName="replacement" columns="15" />
+            <dataField fieldName="Collector_name" columns="50" />
+            <dataField fieldName="collectmdname" />
+            <dataField fieldName="enter_usre" rows="5" />
+            <dataField fieldName="FirstpaymentDate" columns="10" />
+            <dataField fieldName="modelno" columns="15" />
+            <dataField fieldName="compyalanumber" />
+            <dataField fieldName="Replaceid" columns="15" />
+            <dataField fieldName="arname" />
+            <dataField fieldName="flag2" />
+            <dataField fieldName="flag3" />
+            <dataField fieldName="flag4" />
+            <dataField fieldName="flag5" />
+            <dataField fieldName="workaddress" />
+            <dataField fieldName="IDATUTO" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Tabl Customerforview">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Tabl Customerforview" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Rainbow_no" columns="15" />
+            <dataField fieldName="Rainbow_PowerNozle" columns="15" />
+            <dataField fieldName="Customer_no" columns="15" />
+            <dataField fieldName="Unified_Customer_no" columns="15" />
+            <dataField fieldName="Civil_ID" columns="15" />
+            <dataField fieldName="Arabic_Name" />
+            <dataField fieldName="English_Name" />
+            <dataField fieldName="Nationality" columns="25" />
+            <dataField fieldName="Region" columns="50" />
+            <dataField fieldName="Segment" columns="15" />
+            <dataField fieldName="Street" />
+            <dataField fieldName="Avenue" />
+            <dataField fieldName="Building_Home" />
+            <dataField fieldName="Floor" />
+            <dataField fieldName="Appartment" rows="5" />
+            <dataField fieldName="HomePhone" />
+            <dataField fieldName="MobilePhone" />
+            <dataField fieldName="Workphone" />
+            <dataField fieldName="Value" columns="15" />
+            <dataField fieldName="Invoiceno" />
+            <dataField fieldName="MD_Name" columns="50" />
+            <dataField fieldName="Dealer_name" columns="50" />
+            <dataField fieldName="FirstPayment" columns="15" />
+            <dataField fieldName="Installment" columns="15" />
+            <dataField fieldName="StartingDate" columns="10" />
+            <dataField fieldName="FinalPayment" columns="15" />
+            <dataField fieldName="Purchase_Date" columns="10" />
+            <dataField fieldName="Address" />
+            <dataField fieldName="Flag" />
+            <dataField fieldName="Ref_Name" columns="50" />
+            <dataField fieldName="Ref_Phone" columns="15" />
+            <dataField fieldName="Ref_Kind" columns="10" />
+            <dataField fieldName="Tele_Mark_Sec" columns="50" />
+            <dataField fieldName="flag1" rows="5" />
+            <dataField fieldName="Sales_Status" rows="5" />
+            <dataField fieldName="BlackList" />
+            <dataField fieldName="Serial_Warranty" columns="15" />
+            <dataField fieldName="Warranty_date" columns="10" />
+            <dataField fieldName="nextvisit" columns="10" />
+            <dataField fieldName="Remark_Visit" rows="5" />
+            <dataField fieldName="Remark_Warranty" columns="50" />
+            <dataField fieldName="Chaek" />
+            <dataField fieldName="Old_machin" columns="15" />
+            <dataField fieldName="Conversiondate" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="ALMOSADAD" columns="15" />
+            <dataField fieldName="RestGadwal" columns="15" />
+            <dataField fieldName="Item_Code" columns="25" />
+            <dataField fieldName="Collector_name" columns="50" />
+            <dataField fieldName="collectmdname" />
+            <dataField fieldName="enter_usre" rows="5" />
+            <dataField fieldName="FirstpaymentDate" columns="10" />
+            <dataField fieldName="modelno" columns="15" />
+            <dataField fieldName="compyalanumber" />
+            <dataField fieldName="Replaceid" columns="15" />
+            <dataField fieldName="arname" />
+            <dataField fieldName="flag2" />
+            <dataField fieldName="flag3" />
+            <dataField fieldName="flag4" />
+            <dataField fieldName="flag5" />
+            <dataField fieldName="workaddress" />
+            <dataField fieldName="IDATUTO" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a6" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true" />
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true" />
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record" />
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row" />
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action commandName="Custom" commandArgument="Createinstall" id="a101" roles="Administrators,Administrator,collectadmin" headerText="جدولة" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="Createinstallr101" commandName="Custom" commandArgument="Createinstall" type="Code" phase="Execute" />
+  </businessRules>
+</dataController>

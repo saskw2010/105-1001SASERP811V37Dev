@@ -1,0 +1,28 @@
+﻿<div class="doc-banner">
+  <span class="crumbs">migration-map.</span>
+  <a class="source" href="migration-map..md.txt" target="_blank" rel="noopener">View source (.md)</a>
+</div>
+<div class="doc-body">
+<h1>Migration Map (WebForms -> Modern)</h1>
+<ul>
+<li>Navigation</li>
+<li>Source: Web.sitemap + SiteMapProvider</li>
+<li>New: JSON endpoint (Pages/MenuApi.aspx/GetMenuTree) consumed by modern drawer (js/modern-menu-once.js, css/modern-menu.css)</li>
+<li>WebMethods / ASMX</li>
+<li>Replace ASMX ScriptService with Web API (ASP.NET Core minimal APIs or controllers)</li>
+<li>DataControllerService methods map to REST endpoints</li>
+<li>Handlers (*.ashx)</li>
+<li>Replace with middleware/controllers (IActionResult returning FileStreamResult etc.)</li>
+<li>UI Pages (.aspx/.ascx)</li>
+<li>Migrate to Razor pages/components; preserve master layout in _Layout</li>
+<li>Use Bootstrap/FA classes; reuse existing HTML/CSS patterns</li>
+<li>Serialization</li>
+<li>Replace JavaScriptSerializer with System.Text.Json</li>
+<li>Localization</li>
+<li>Implement IStringLocalizer and resource files to replace translatemeyamosso</li>
+<li>AuthZ</li>
+<li>Forms -> Cookie auth with ASP.NET Core Identity; map Roles to policies</li>
+<li>Config</li>
+<li>web.config -> appsettings.json (connection strings, feature flags)</li>
+
+</div>

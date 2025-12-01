@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Sidebar Hierarchy Test</title>
+    <link rel="stylesheet" href="css/sidebar-enhanced.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .test-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .test-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            min-height: 600px;
+        }
+        
+        .sidebar-test {
+            background: rgba(248, 250, 252, 0.8);
+            border-left: 1px solid #e2e8f0;
+        }
+        
+        .main-content {
+            padding: 2rem;
+        }
+        
+        .test-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .test-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+        
+        .debug-info {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        
+        /* Mock PageMenuBar for testing */
+        #PageMenuBar {
+            display: none;
+        }
+        
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Toggle Button -->
+    <button class="menu-toggle" onclick="toggleLegacyMenu()">
+        <i class="fas fa-bars" style="font-size: 1.5rem; color: #667eea;"></i>
+    </button>
+
+    <!-- Mock PageMenuBar with 3-level hierarchy -->
+    <div id="PageMenuBar" style="display: none;">
+        <table>
+            <tr>
+                <td>
+                    <a href="/hr">الموارد البشرية</a>
+                    <table>
+                        <tr>
+                            <td style="padding-left: 20px;">
+                                <a href="/hr/employees">الموظفين</a>
+                                <ul>
+                                    <li style="padding-left: 40px;"><a href="/hr/employees/add">إضافة موظف</a></li>
+                                    <li style="padding-left: 40px;"><a href="/hr/employees/list">قائمة الموظفين</a></li>
+                                    <li style="padding-left: 40px;"><a href="/hr/employees/reports">تقارير الموظفين</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;">
+                                <a href="/hr/payroll">الرواتب</a>
+                                <ul>
+                                    <li style="padding-left: 40px;"><a href="/hr/payroll/calculate">حساب الراتب</a></li>
+                                    <li style="padding-left: 40px;"><a href="/hr/payroll/history">تاريخ الرواتب</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/finance">المالية</a>
+                    <table>
+                        <tr>
+                            <td style="padding-left: 20px;">
+                                <a href="/finance/accounts">الحسابات</a>
+                                <ul>
+                                    <li style="padding-left: 40px;"><a href="/finance/accounts/receivable">الذمم المدينة</a></li>
+                                    <li style="padding-left: 40px;"><a href="/finance/accounts/payable">الذمم الدائنة</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;"><a href="/finance/reports">التقارير المالية</a></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="/inventory">المخزون</a></td>
+            </tr>
+            <tr>
+                <td><a href="/sales">المبيعات</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="test-container">
+        <div class="test-header">
+            <h1><i class="fas fa-cogs"></i> Enhanced Sidebar Hierarchy Test</h1>
+            <p>اختبار النظام المحسن لقراءة التسلسل الهرمي 3 مستويات من PageMenuBar</p>
+        </div>
+        
+        <div class="test-content">
+            <div class="sidebar-test">
+                <!-- Enhanced Sidebar will be rendered here -->
+                <div class="enhanced-sidebar" id="enhanced-sidebar" aria-hidden="true">
+                    <div class="sidebar-header">
+                        <h3><i class="fas fa-bars"></i> القائمة المحسنة</h3>
+                    </div>
+                    <div class="sidebar-content">
+                        <div class="sidebar-menu" id="sidebar-menu-list">
+                            <!-- Menu items will be dynamically generated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h2><i class="fas fa-bug"></i> Test Controls</h2>
+                
+                <button class="test-btn" onclick="testMenuExtraction()">
+                    <i class="fas fa-play"></i> Test Menu Extraction
+                </button>
+                
+                <button class="test-btn" onclick="showDebugInfo()">
+                    <i class="fas fa-info-circle"></i> Show Debug Info
+                </button>
+                
+                <button class="test-btn" onclick="simulatePageMenuBar()">
+                    <i class="fas fa-refresh"></i> Simulate PageMenuBar
+                </button>
+                
+                <button class="test-btn" onclick="testHierarchyRendering()">
+                    <i class="fas fa-sitemap"></i> Test Hierarchy Rendering
+                </button>
+                
+                <button class="test-btn" onclick="clearAndReload()">
+                    <i class="fas fa-redo"></i> Clear & Reload
+                </button>
+                
+                <div id="debug-output" class="debug-info">
+                    <strong>Debug Output:</strong><br>
+                    Ready for testing...
+                </div>
+                
+                <h3><i class="fas fa-list"></i> Expected Results:</h3>
+                <ul>
+                    <li>✅ Should extract 4 main menu items</li>
+                    <li>✅ الموارد البشرية should have 2 level-2 children</li>
+                    <li>✅ الموظفين should have 3 level-3 children</li>
+                    <li>✅ الرواتب should have 2 level-3 children</li>
+                    <li>✅ المالية should have 2 level-2 children</li>
+                    <li>✅ الحسابات should have 2 level-3 children</li>
+                    <li>✅ Proper 3-level hierarchy display</li>
+                </ul>
+                
+                <h3><i class="fas fa-code"></i> Current Menu Data:</h3>
+                <pre id="menu-data-display" style="background: #f8f9fa; padding: 1rem; border-radius: 8px; overflow-x: auto;">
+Loading...
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Scripts -->
+    <script src="js/modern-sidebar-enhanced.js"></script>
+    
+    <script>
+        // Verify script loading
+        console.log("Script loading check:", typeof window.toggleLegacyMenu);
+        
+        // Wait for script to fully load
+        function waitForFunctions() {
+            var maxAttempts = 10;
+            var attempt = 0;
+            
+            function checkFunctions() {
+                attempt++;
+                console.log("Checking functions - attempt", attempt);
+                
+                if (typeof window.extractMenuFromPageMenuBar !== 'undefined') {
+                    console.log("✅ Functions loaded successfully!");
+                    return true;
+                } else if (attempt < maxAttempts) {
+                    console.log("⏳ Functions not ready yet, retrying...");
+                    setTimeout(checkFunctions, 200);
+                } else {
+                    console.log("❌ Functions failed to load after", maxAttempts, "attempts");
+                    // Try manual reload
+                    console.log("Attempting manual script reload...");
+                    var script = document.createElement('script');
+                    script.src = 'js/modern-sidebar-enhanced.js?t=' + Date.now();
+                    script.onload = function() {
+                        console.log("Manual script reload completed");
+                    };
+                    document.head.appendChild(script);
+                }
+                return false;
+            }
+            
+            checkFunctions();
+        }
+        
+        // Start checking after DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', waitForFunctions);
+        } else {
+            waitForFunctions();
+        }
+    
+    <script>
+        // Test functions
+        function testMenuExtraction() {
+            console.log("🧪 Testing menu extraction...");
+            logDebug("Starting menu extraction test...");
+            
+            // Make PageMenuBar visible for testing
+            document.getElementById('PageMenuBar').style.display = 'block';
+            
+            // Check if functions are available
+            logDebug("Functions available:");
+            logDebug("- extractMenuFromPageMenuBar: " + (typeof window.extractMenuFromPageMenuBar !== 'undefined'));
+            logDebug("- initializeSidebar: " + (typeof window.initializeSidebar !== 'undefined'));
+            logDebug("- toggleLegacyMenu: " + (typeof window.toggleLegacyMenu !== 'undefined'));
+            logDebug("- debugSidebar: " + (typeof window.debugSidebar !== 'undefined'));
+            
+            // Force re-extraction
+            if (window.extractMenuFromPageMenuBar) {
+                try {
+                    var result = window.extractMenuFromPageMenuBar();
+                    logDebug("Extraction result: " + (result ? result.length + " items" : "null"));
+                    
+                    if (result && result.length > 0) {
+                        logDebug("✅ Successfully extracted " + result.length + " main items");
+                        displayMenuData(result);
+                        
+                        // Show hierarchy details
+                        result.forEach(function(item, index) {
+                            logDebug("Item " + (index + 1) + ": " + item.title + " (" + (item.children ? item.children.length : 0) + " children)");
+                            if (item.children && item.children.length > 0) {
+                                item.children.forEach(function(child, childIndex) {
+                                    logDebug("  └─ " + child.title + " (" + (child.children ? child.children.length : 0) + " children)");
+                                    if (child.children && child.children.length > 0) {
+                                        child.children.forEach(function(grandChild) {
+                                            logDebug("     └─ " + grandChild.title);
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    } else {
+                        logDebug("❌ Failed to extract menu data");
+                    }
+                } catch (error) {
+                    logDebug("❌ Error during extraction: " + error.message);
+                    console.error("Extraction error:", error);
+                }
+            } else {
+                logDebug("❌ extractMenuFromPageMenuBar function not available");
+                
+                // Try alternative approach through EnhancedModernSidebar
+                if (window.EnhancedModernSidebar) {
+                    logDebug("📋 Trying through EnhancedModernSidebar...");
+                    window.EnhancedModernSidebar.loadMenuData();
+                    var data = window.EnhancedModernSidebar.getData();
+                    if (data && data.length > 0) {
+                        logDebug("✅ Got data through EnhancedModernSidebar: " + data.length + " items");
+                        displayMenuData(data);
+                    } else {
+                        logDebug("❌ No data from EnhancedModernSidebar");
+                    }
+                }
+            }
+            
+            // Hide PageMenuBar again
+            document.getElementById('PageMenuBar').style.display = 'none';
+        }
+        
+        function showDebugInfo() {
+            logDebug("=== Enhanced Debug Information ===");
+            logDebug("PageMenuBar exists: " + !!document.getElementById('PageMenuBar'));
+            logDebug("Enhanced sidebar exists: " + !!document.getElementById('enhanced-sidebar'));
+            
+            // Check all available functions
+            logDebug("Available functions:");
+            logDebug("- toggleLegacyMenu: " + (typeof window.toggleLegacyMenu !== 'undefined'));
+            logDebug("- extractMenuFromPageMenuBar: " + (typeof window.extractMenuFromPageMenuBar !== 'undefined'));
+            logDebug("- initializeSidebar: " + (typeof window.initializeSidebar !== 'undefined'));
+            logDebug("- debugSidebar: " + (typeof window.debugSidebar !== 'undefined'));
+            logDebug("- EnhancedModernSidebar: " + (typeof window.EnhancedModernSidebar !== 'undefined'));
+            
+            var pageMenuBar = document.getElementById('PageMenuBar');
+            if (pageMenuBar) {
+                logDebug("PageMenuBar details:");
+                logDebug("- Children: " + pageMenuBar.children.length);
+                logDebug("- Links: " + pageMenuBar.querySelectorAll('a').length);
+                logDebug("- Tables: " + pageMenuBar.querySelectorAll('table').length);
+                logDebug("- List items: " + pageMenuBar.querySelectorAll('li').length);
+                
+                // Show structure
+                pageMenuBar.style.display = 'block';
+                var links = pageMenuBar.querySelectorAll('a');
+                logDebug("Links found:");
+                for (var i = 0; i < Math.min(links.length, 10); i++) {
+                    var link = links[i];
+                    var text = (link.textContent || link.innerText || '').trim();
+                    logDebug("  " + (i + 1) + ". " + text + " -> " + link.href);
+                }
+                if (links.length > 10) {
+                    logDebug("  ... and " + (links.length - 10) + " more links");
+                }
+                pageMenuBar.style.display = 'none';
+            }
+            
+            // Test debug function if available
+            if (window.debugSidebar) {
+                var sidebarInfo = window.debugSidebar();
+                logDebug("Sidebar state: " + JSON.stringify(sidebarInfo, null, 2));
+            }
+        }
+        
+        function simulatePageMenuBar() {
+            logDebug("🔄 Simulating PageMenuBar population...");
+            var pageMenuBar = document.getElementById('PageMenuBar');
+            pageMenuBar.style.display = 'block';
+            
+            // Trigger the sidebar initialization
+            setTimeout(function() {
+                if (window.initializeSidebar) {
+                    var result = window.initializeSidebar();
+                    logDebug("✅ Sidebar re-initialized: " + result);
+                } else {
+                    logDebug("❌ initializeSidebar function not available");
+                }
+                pageMenuBar.style.display = 'none';
+            }, 100);
+        }
+        
+        function testHierarchyRendering() {
+            logDebug("🧪 Testing hierarchy rendering...");
+            
+            // Create mock 3-level data
+            var mockData = [
+                {
+                    id: 1,
+                    title: "الموارد البشرية",
+                    url: "/hr",
+                    icon: "fas fa-users",
+                    children: [
+                        {
+                            id: 101,
+                            title: "الموظفين",
+                            url: "/hr/employees",
+                            icon: "fas fa-user",
+                            children: [
+                                { id: 10101, title: "إضافة موظف", url: "/hr/employees/add", icon: "fas fa-user-plus", children: [] },
+                                { id: 10102, title: "قائمة الموظفين", url: "/hr/employees/list", icon: "fas fa-list", children: [] },
+                                { id: 10103, title: "تقارير الموظفين", url: "/hr/employees/reports", icon: "fas fa-chart-bar", children: [] }
+                            ]
+                        },
+                        {
+                            id: 102,
+                            title: "الرواتب",
+                            url: "/hr/payroll",
+                            icon: "fas fa-money-bill",
+                            children: [
+                                { id: 10201, title: "حساب الراتب", url: "/hr/payroll/calculate", icon: "fas fa-calculator", children: [] },
+                                { id: 10202, title: "تاريخ الرواتب", url: "/hr/payroll/history", icon: "fas fa-history", children: [] }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    title: "المالية",
+                    url: "/finance",
+                    icon: "fas fa-chart-line",
+                    children: [
+                        {
+                            id: 201,
+                            title: "الحسابات",
+                            url: "/finance/accounts",
+                            icon: "fas fa-book",
+                            children: [
+                                { id: 20101, title: "الذمم المدينة", url: "/finance/accounts/receivable", icon: "fas fa-arrow-up", children: [] },
+                                { id: 20102, title: "الذمم الدائنة", url: "/finance/accounts/payable", icon: "fas fa-arrow-down", children: [] }
+                            ]
+                        },
+                        {
+                            id: 202,
+                            title: "التقارير المالية",
+                            url: "/finance/reports",
+                            icon: "fas fa-chart-pie",
+                            children: []
+                        }
+                    ]
+                }
+            ];
+            
+            logDebug("🎯 Testing with mock 3-level data: " + mockData.length + " root items");
+            
+            if (window.EnhancedModernSidebar) {
+                try {
+                    window.EnhancedModernSidebar.updateMenuData(mockData);
+                    logDebug("✅ Successfully updated menu with mock data");
+                    displayMenuData(mockData);
+                } catch (error) {
+                    logDebug("❌ Error updating menu: " + error.message);
+                }
+            } else {
+                logDebug("❌ EnhancedModernSidebar not available");
+            }
+        }
+        
+        function clearAndReload() {
+            logDebug("🔄 Clearing and reloading...");
+            document.getElementById('debug-output').innerHTML = '<strong>Debug Output:</strong><br>Cleared and reloading...';
+            document.getElementById('menu-data-display').textContent = 'Cleared...';
+            
+            // Clear sidebar content
+            var menuList = document.getElementById('sidebar-menu-list');
+            if (menuList) {
+                menuList.innerHTML = '<p style="padding: 1rem; color: #64748b; text-align: center;">Loading...</p>';
+            }
+            
+            // Reload after a brief delay
+            setTimeout(function() {
+                location.reload();
+            }, 500);
+        }
+        
+        function logDebug(message) {
+            var output = document.getElementById('debug-output');
+            var timestamp = new Date().toLocaleTimeString();
+            output.innerHTML += '<br>[' + timestamp + '] ' + message;
+            output.scrollTop = output.scrollHeight;
+            console.log(message);
+        }
+        
+        function displayMenuData(data) {
+            var display = document.getElementById('menu-data-display');
+            display.textContent = JSON.stringify(data, null, 2);
+        }
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            logDebug("🚀 Test page loaded");
+            showDebugInfo();
+            
+            // Auto-test after a delay
+            setTimeout(function() {
+                testMenuExtraction();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="schglpaydlyhdregcash" conflictDetection="overwriteChanges" label="Schglpaydlyhdregcash" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"schglpaydlyhdregcash"."schglpaydlyhdregid" "schglpaydlyhdregid"
+	,"schglpaydlyhdregcash"."sgm" "sgm"
+	,"sgm"."sgm_Nm" "sgmsgm_Nm"
+	,"sgmOpco"."OpcoName" "sgmOpcoOpcoName"
+	,"schglpaydlyhdregcash"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"Thebranchsgm"."sgm_Nm" "Thebranchsgmsgm_Nm"
+	,"ThebranchsgmOpco"."OpcoName" "ThebranchsgmOpcoOpcoName"
+	,"ThebranchGender"."Gender" "ThebranchGenderGender"
+	,"Thebranchstage"."ShortDesc1" "ThebranchstageShortDesc1"
+	,"Thebranchschtyp"."schtypDesc" "ThebranchschtypschtypDesc"
+	,"schglpaydlyhdregcash"."Trs_Dt" "Trs_Dt"
+	,"schglpaydlyhdregcash"."payBalance" "payBalance"
+	,"schglpaydlyhdregcash"."payReferanceNo" "payReferanceNo"
+	,"schglpaydlyhdregcash"."payIDregorg" "payIDregorg"
+	,"payIDregorg"."NAME_1" "payIDregorgNAME_1"
+	,"schglpaydlyhdregcash"."payDelevername" "payDelevername"
+	,"schglpaydlyhdregcash"."payDelevercivil" "payDelevercivil"
+	,"schglpaydlyhdregcash"."payDeleverTel" "payDeleverTel"
+	,"schglpaydlyhdregcash"."payNotes" "payNotes"
+	,"schglpaydlyhdregcash"."approved" "approved"
+	,"schglpaydlyhdregcash"."posted" "posted"
+	,"schglpaydlyhdregcash"."deleted" "deleted"
+	,"schglpaydlyhdregcash"."havdetails" "havdetails"
+	,"schglpaydlyhdregcash"."ModifiedBy" "ModifiedBy"
+	,"schglpaydlyhdregcash"."ModifiedOn" "ModifiedOn"
+	,"schglpaydlyhdregcash"."CreatedBy" "CreatedBy"
+	,"schglpaydlyhdregcash"."CreatedOn" "CreatedOn"
+	,"schglpaydlyhdregcash"."acdcode" "acdcode"
+	,"acd"."AcademicYear" "acdAcademicYear"
+	,"schglpaydlyhdregcash"."auditing" "auditing"
+	,"schglpaydlyhdregcash"."auditnotes" "auditnotes"
+	,"schglpaydlyhdregcash"."Pymnt_No" "Pymnt_No"
+	,"Pymnt_"."Pymnt_Nm" "Pymnt_Pymnt_Nm"
+	,"Pymnt_pymnt_acc"."Acc_Nm" "Pymnt_pymnt_accAcc_Nm"
+	,"Pymnt_pymnt_accClsacc_"."Acc_Nm" "Pymnt_pymnt_accClsacc_Acc_Nm"
+	,"Pymnt_pymnt_accAcc_Bnd"."Acc_Nm" "Pymnt_pymnt_accAcc_BndAcc_Nm"
+	,"Pymnt_sgm"."sgm_Nm" "Pymnt_sgmsgm_Nm"
+	,"Pymnt_sgmOpco"."OpcoName" "Pymnt_sgmOpcoOpcoName"
+	,"schglpaydlyhdregcash"."jr_ty" "jr_ty"
+from "dbo"."schglpaydlyhdregcash" "schglpaydlyhdregcash"
+	left join "dbo"."glmulcmp" "sgm" on "schglpaydlyhdregcash"."sgm" = "sgm"."sgmid"
+	left join "dbo"."OpCo" "sgmOpco" on "sgm"."OpcoID" = "sgmOpco"."OpcoIDidentity"
+	left join "dbo"."schBranch" "Thebranch" on "schglpaydlyhdregcash"."branch" = "Thebranch"."branch"
+	left join "dbo"."glmulcmp" "Thebranchsgm" on "Thebranch"."sgm" = "Thebranchsgm"."sgmid"
+	left join "dbo"."OpCo" "ThebranchsgmOpco" on "Thebranchsgm"."OpcoID" = "ThebranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "ThebranchGender" on "Thebranch"."Genderid" = "ThebranchGender"."Genderid"
+	left join "dbo"."schStage" "Thebranchstage" on "Thebranch"."stagecode" = "Thebranchstage"."Code"
+	left join "dbo"."schtyp" "Thebranchschtyp" on "Thebranch"."schtypid" = "Thebranchschtyp"."schtypid"
+	left join "dbo"."REG_ORGANIZATIONS" "payIDregorg" on "schglpaydlyhdregcash"."payIDregorg" = "payIDregorg"."IDIDregorg"
+	left join "dbo"."schAcademicyear" "acd" on "schglpaydlyhdregcash"."acdcode" = "acd"."Code"
+	left join "dbo"."Pymntype" "Pymnt_" on "schglpaydlyhdregcash"."Pymnt_No" = "Pymnt_"."Pymnt_No"
+	left join "dbo"."GLmstrfl" "Pymnt_pymnt_acc" on "Pymnt_"."pymnt_acc" = "Pymnt_pymnt_acc"."Acc_No"
+	left join "dbo"."GLmfbab" "Pymnt_pymnt_accClsacc_" on "Pymnt_pymnt_acc"."Clsacc_No" = "Pymnt_pymnt_accClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Pymnt_pymnt_accAcc_Bnd" on "Pymnt_pymnt_acc"."Acc_Bnd" = "Pymnt_pymnt_accAcc_Bnd"."Acc_Bnd"
+	left join "dbo"."glmulcmp" "Pymnt_sgm" on "Pymnt_"."sgm" = "Pymnt_sgm"."sgmid"
+	left join "dbo"."OpCo" "Pymnt_sgmOpco" on "Pymnt_sgm"."OpcoID" = "Pymnt_sgmOpco"."OpcoIDidentity"
+]]></text>
+    </command>
+    <command id="schglpaydlyhdregidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="schglpaydlyhdregid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="schglpaydlyhdregid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Schglpaydlyhdregid" readOnly="true" />
+    <field name="sgm" type="Int64" allowNulls="false" label="Sgm" showInSummary="true">
+      <items style="DropDownList" dataController="glmulcmp" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sgmsgm_Nm" type="String" readOnly="true" label="sgmsgm Nm" length="255" />
+    <field name="sgmOpcoOpcoName" type="String" readOnly="true" label="sgm Opco Name" length="50" />
+    <field name="branch" type="Int64" allowNulls="false" label="Branch" showInSummary="true">
+      <items style="DropDownList" dataController="schBranch" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ThebranchDesc1" type="String" readOnly="true" label="Thebranch Desc1" length="50" />
+    <field name="Thebranchsgmsgm_Nm" type="String" readOnly="true" label="Thebranchsgmsgm Nm" length="255" />
+    <field name="ThebranchsgmOpcoOpcoName" type="String" readOnly="true" label="Thebranchsgm Opco Name" length="50" />
+    <field name="ThebranchGenderGender" type="String" readOnly="true" label="Thebranch Gender" length="100" />
+    <field name="ThebranchstageShortDesc1" type="String" readOnly="true" label="Thebranchstage Short Desc1" length="50" />
+    <field name="ThebranchschtypschtypDesc" type="String" readOnly="true" label="Thebranchschtypschtyp Desc" length="150" />
+    <field name="Trs_Dt" type="DateTime" allowNulls="false" default="(getdate())" label="Trs Dt" showInSummary="true" />
+    <field name="payBalance" type="Decimal" label="pay Balance" showInSummary="true" />
+    <field name="payReferanceNo" type="Int64" label="pay Referance No" showInSummary="true" />
+    <field name="payIDregorg" type="Int64" label="pay I Dregorg">
+      <items style="Lookup" dataController="REG_ORGANIZATIONS" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="payIDregorgNAME_1" type="String" readOnly="true" label="pay I Dregorg NAME 1" length="50" />
+    <field name="payDelevername" type="String" label="pay Delevername" length="100" />
+    <field name="payDelevercivil" type="String" label="pay Delevercivil" length="12" />
+    <field name="payDeleverTel" type="String" label="pay Delever Tel" length="50" />
+    <field name="payNotes" type="String" label="pay Notes" length="100" />
+    <field name="approved" type="Boolean" default="((0))" label="Approved" />
+    <field name="posted" type="Boolean" default="((0))" label="Posted" />
+    <field name="deleted" type="Boolean" default="((0))" label="Deleted" />
+    <field name="havdetails" type="Boolean" default="((0))" label="Havdetails" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="acdcode" type="Int64" allowNulls="false" label="Acdcode">
+      <items style="DropDownList" dataController="schAcademicyear" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="acdAcademicYear" type="String" readOnly="true" label="acd Academic Year" length="150" />
+    <field name="auditing" type="Boolean" label="Auditing" />
+    <field name="auditnotes" type="String" allowQBE="false" allowSorting="false" label="Auditnotes" length="-1" />
+    <field name="Pymnt_No" type="Int64" label="Pymnt No">
+      <items style="Lookup" dataController="Pymntype" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Pymnt_Pymnt_Nm" type="String" readOnly="true" label="Pymnt Nm" length="255" />
+    <field name="Pymnt_pymnt_accAcc_Nm" type="String" readOnly="true" label="Pymnt pymnt acc Acc Nm" length="255" />
+    <field name="Pymnt_pymnt_accClsacc_Acc_Nm" type="String" readOnly="true" label="Pymnt pymnt acc Clsacc Acc Nm" length="250" />
+    <field name="Pymnt_pymnt_accAcc_BndAcc_Nm" type="String" readOnly="true" label="Pymnt pymnt acc Acc Bnd Acc Nm" length="50" />
+    <field name="Pymnt_sgmsgm_Nm" type="String" readOnly="true" label="Pymnt sgmsgm Nm" length="255" />
+    <field name="Pymnt_sgmOpcoOpcoName" type="String" readOnly="true" label="Pymnt sgm Opco Name" length="50" />
+    <field name="jr_ty" type="Int64" label="Jr Ty" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Schglpaydlyhdregcash">
+  
+      <dataFields>
+	  <dataField fieldName="payReferanceNo" columns="15" />
+        <dataField fieldName="Trs_Dt" columns="10" />
+        <dataField fieldName="payBalance" dataFormatString="n3"  aggregate="Sum" />
+        
+        <dataField fieldName="payIDregorg" aliasFieldName="payIDregorgNAME_1" hyperlinkFormatString="~/Pages/REG_ORGANIZATIONS.aspx?IDIDregorg={payIDregorg}&amp;_controller=REG_ORGANIZATIONS&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="payDelevername" />
+        <dataField fieldName="payDelevercivil" columns="12" />
+        <dataField fieldName="payDeleverTel" columns="50" />
+        <dataField fieldName="payNotes" />
+        <dataField fieldName="approved" />
+        <dataField fieldName="posted"  hidden="true"/>
+        <dataField fieldName="deleted"  hidden="true"/>
+        <dataField fieldName="havdetails"  hidden="true"/>
+        <dataField fieldName="ModifiedBy" columns="50" hidden="true"/>
+        <dataField fieldName="ModifiedOn" columns="10" hidden="true"/>
+        <dataField fieldName="CreatedBy" columns="50" hidden="true"/>
+        <dataField fieldName="CreatedOn" columns="10" hidden="true"/>
+        <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" hyperlinkFormatString="~/Pages/schAcademicyear.aspx?Code={acdcode}&amp;_controller=schAcademicyear&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="auditing"  hidden="true"/>
+		 <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" />
+		 		  <dataField fieldName="schglpaydlyhdregid"  />
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+
+      </dataFields>
+    </view>
+  <view id="editForm1" type="Form" commandId="command1" label="Review Schglpaydlyhdreg">
+     
+      <categories>
+        <category id="c1" headerText="New Schglpaydlyhdreg" flow="NewColumn"  newColumn="true">
+        
+          <dataFields>
+
+
+            <dataField fieldName="schglpaydlyhdregid" />
+            <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" />
+            <dataField fieldName="Trs_Dt" columns="10" />
+            
+         
+
+          </dataFields>
+        </category>
+
+
+        <category headerText="MoreDetailes" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+		     <dataField fieldName="payReferanceNo" columns="15" />
+			 <dataField fieldName="payBalance" columns="15" />
+            <dataField fieldName="sumofdebit" hidden="true"/>
+            <dataField fieldName="payDeleverTel" columns="50" hidden="true"/>
+            <dataField fieldName="payDelevername" hidden="true"/>
+            <dataField fieldName="payDelevercivil" columns="12" hidden="true"/>
+            <dataField fieldName="payNotes" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Schglpaydlyhdreg">
+  
+      <categories>
+        <category id="c1" headerText="New Schglpaydlyhdreg" flow="NewColumn"  newColumn="true">
+        
+          <dataFields>
+            <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" />
+            <dataField fieldName="Trs_Dt" columns="10" />
+            <dataField fieldName="payBalance" columns="15" />
+            <dataField fieldName="payReferanceNo" columns="15" />
+ 
+          </dataFields>
+        </category>
+        <category headerText="MoreDetailes" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="payDeleverTel" columns="50" />
+            <dataField fieldName="payDelevername" />
+            <dataField fieldName="payDelevercivil" columns="12" />
+
+            <dataField fieldName="payNotes" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+    
+     <action commandName="SQL" commandArgument="New" headerText="Newvoucher" cssClass="NewIcon" id="a102" >
+        <data><![CDATA[
+		insert into schglpaydlyhdregcash(branch,sgm,jr_ty,acdcode,trs_dt,approved,posted,deleted,havdetails, [ModifiedBy] ,[ModifiedOn]
+           ,[CreatedBy] ,[CreatedOn])
+  VALUES(1,1,4,55,getdate(),0,0,0,0,@BusinessRules_UserName,getdate(),@BusinessRules_UserName,getdate())
+ -- find ID of duplicated order
+declare @newschvchdlyhdregid int;
+select @newschvchdlyhdregid = @@IDENTITY;
+exec [dbo].[updateReferanceglpaycash] @newschvchdlyhdregid
+-- open edit form for duplicate order
+set @Result_NavigateUrl = 'schglpaydlyhdregcash.aspx?schglpaydlyhdregid=' + cast( @newschvchdlyhdregid  as nvarchar)
+                          + '&_controller=schglpaydlyhdregcash&_commandName=Edit'
+                          + '&_commandArgument=editForm1'
+]]></data>
+      </action>
+	<action id="a1" commandName="New"  commandArgument="createForm1" cssClass="NewIcon" />
+	</actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+	       <action commandName="SQL" commandArgument="New" headerText="post" id="a102" roles="administrator">
+        <data><![CDATA[
+		update schglpaydlyhdregcash set posted=1 where schglpaydlyhdregid=@schglpaydlyhdregid
+		]]></data>
+      </action>
+
+
+	  <action commandName="SQL" commandArgument="New" headerText="unpost" id="a102un" roles="administrator">
+        <data><![CDATA[
+		update schglpaydlyhdregcash set posted=0 where schglpaydlyhdregid=@schglpaydlyhdregid
+		]]></data>
+      </action>
+    </actionGroup>
+  </actions>
+    <businessRules>
+  
+  	<rule id="r101" commandName="Update" type="Sql" phase="Before"> <![CDATA[
+	declare @countrowdetails int
+	set @countrowdetails=(select count(schglpaydlydetailpaymentid) from schglpaydlydetailpaymentcash where schglpaydlyhdregid=@schglpaydlyhdregid)
+	if @countrowdetails=0
+    begin 
+	 /* prevent the default action processing */
+    set @BusinessRules_PreventDefault = 1
+    /* set the focus on the field and display an error */
+    set @Result_Focus = 'payBalance, السند غير متزن .'  
+	
+	end
+	
+	declare @Tr_Db real
+	declare @Tr_Cr real
+ 	
+  set @Tr_Db=(select Sum(isnull(Mony_Paid,0)) from Schglpaydlydetailregcash where schglpaydlyhdregid=@schglpaydlyhdregid)
+  set @Tr_Cr=(select Sum(isnull(moneypaidto,0)) from schglpaydlydetailpaymentcash where schglpaydlyhdregid=@schglpaydlyhdregid)
+  if @Tr_Db!=@Tr_Cr
+  begin
+   update schglpaydlyhdregcash set approved=0,havdetails=0 where schglpaydlyhdregid=@schglpaydlyhdregid
+   update schglpaydlyhdregcash set payBalance=0 where schglpaydlyhdregid=@schglpaydlyhdregid
+  
+    /* prevent the default action processing */
+    set @BusinessRules_PreventDefault = 1
+    /* set the focus on the field and display an error */
+    set @Result_Focus = 'payBalance, السند غير متزن .'  
+	
+	end
+	]]></rule>
+	<rule id="r102" commandName="Update" type="Sql" phase="After"  ><![CDATA[
+  
+  declare @totalbalance real
+  set @totalbalance=(select Sum(Mony_Paid) from schglpaydlydetailregcash where schglpaydlyhdregid=@schglpaydlyhdregid)
+  if @totalbalance>0
+  begin
+  update schglpaydlyhdregcash set approved=1 where schglpaydlyhdregid=@schglpaydlyhdregid
+  update schglpaydlyhdregcash set payBalance=@totalbalance where schglpaydlyhdregid=@schglpaydlyhdregid
+  DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+ set @Result_NavigateUrl = 'webreportviwer.aspx?reportquery=' + @Arguments_Controller    + '&idfilter=' + cast(@schglpaydlyhdregid as nvarchar) 
+  end
+  ]]></rule>
+    </businessRules>
+</dataController>

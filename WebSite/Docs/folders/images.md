@@ -1,0 +1,5 @@
+# Folder: images
+
+Purpose: site images and icons.
+
+Back to hub: ../index.md | TOC: ../TOC.md

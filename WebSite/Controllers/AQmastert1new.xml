@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="AQmastert1new" conflictDetection="overwriteChanges" label="A Qmastert1new" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"AQmastert1new"."Emp_No" "Emp_No"
+	,"AQmastert1new"."Emp_NOt" "Emp_NOt"
+	,"AQmastert1new"."Emp_Nm" "Emp_Nm"
+	,"AQmastert1new"."EMP_EMAIL" "EMP_EMAIL"
+	,"AQmastert1new"."Job_Stu" "Job_Stu"
+	,"AQmastert1new"."ESdPLC" "ESdPLC"
+	,"AQmastert1new"."doc_numb" "doc_numb"
+	,"AQmastert1new"."startdate" "startdate"
+	,"AQmastert1new"."enddate" "enddate"
+	,"AQmastert1new"."messionstst" "messionstst"
+	,"AQmastert1new"."doc_id" "doc_id"
+	,"AQmastert1new"."doc_name" "doc_name"
+	,"AQmastert1new"."doc_alrm" "doc_alrm"
+	,"AQmastert1new"."alrm_nots" "alrm_nots"
+	,"AQmastert1new"."memo1" "memo1"
+	,"AQmastert1new"."Restday" "Restday"
+	,"AQmastert1new"."Cntry_No" "Cntry_No"
+	,"AQmastert1new"."Ttrad_Nm1" "Ttrad_Nm1"
+	,"AQmastert1new"."Emp_Tel" "Emp_Tel"
+from "dbo"."AQmastert1new" "AQmastert1new"
+]]></text>
+    </command>
+    <command id="Emp_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Emp_No" />
+      </output>
+    </command>
+    <command id="doc_idIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="doc_id" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Emp_No" type="Int64" allowNulls="false" label="Emp No" readOnly="true" showInSummary="true" />
+    <field name="Emp_NOt" type="String" allowNulls="false" label="Emp N Ot" length="50" showInSummary="true" />
+    <field name="Emp_Nm" type="String" label="Emp Nm" length="255" showInSummary="true" />
+    <field name="EMP_EMAIL" type="String" label="Emp Email" length="255" showInSummary="true" />
+    <field name="Job_Stu" type="Int64" label="Job Stu" showInSummary="true" />
+    <field name="ESdPLC" type="String" label="E Sd PLC" length="255" />
+    <field name="doc_numb" type="String" label="Doc Numb" length="50" />
+    <field name="startdate" type="DateTime" label="Startdate" />
+    <field name="enddate" type="DateTime" label="Enddate" />
+    <field name="messionstst" type="Int32" allowNulls="false" label="Messionstst" />
+    <field name="doc_id" type="Int32" allowNulls="false" label="Doc#" readOnly="true" />
+    <field name="doc_name" type="String" label="Doc Name" length="50" />
+    <field name="doc_alrm" type="Int64" label="Doc Alrm" />
+    <field name="alrm_nots" type="String" allowQBE="false" allowSorting="false" label="Alrm Nots" />
+    <field name="memo1" type="String" allowQBE="false" allowSorting="false" label="Memo1" length="4000" />
+    <field name="Restday" type="Int32" label="Restday" readOnly="true" />
+    <field name="Cntry_No" type="Int64" label="Cntry No" />
+    <field name="Ttrad_Nm1" type="String" label="Ttrad Nm1" readOnly="true" length="220" />
+    <field name="Emp_Tel" type="String" label="Emp Tel" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="A Qmastert1new">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Emp_No" columns="15" />
+        <dataField fieldName="Emp_NOt" columns="50" />
+        <dataField fieldName="Emp_Nm" />
+        <dataField fieldName="EMP_EMAIL" />
+        <dataField fieldName="Job_Stu" columns="15" />
+        <dataField fieldName="ESdPLC" />
+        <dataField fieldName="doc_numb" columns="50" />
+        <dataField fieldName="startdate" columns="10" />
+        <dataField fieldName="enddate" columns="10" />
+        <dataField fieldName="messionstst" columns="15" />
+        <dataField fieldName="doc_id" columns="15" />
+        <dataField fieldName="doc_name" columns="50" />
+        <dataField fieldName="doc_alrm" columns="15" />
+        <dataField fieldName="alrm_nots" rows="5" />
+        <dataField fieldName="memo1" rows="5" />
+        <dataField fieldName="Restday" columns="15" />
+        <dataField fieldName="Cntry_No" columns="15" />
+        <dataField fieldName="Ttrad_Nm1" />
+        <dataField fieldName="Emp_Tel" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review A Qmastert1new">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="A Qmastert1new" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_No" columns="15" />
+            <dataField fieldName="Emp_NOt" columns="50" />
+            <dataField fieldName="Emp_Nm" />
+            <dataField fieldName="EMP_EMAIL" />
+            <dataField fieldName="Job_Stu" columns="15" />
+            <dataField fieldName="ESdPLC" />
+            <dataField fieldName="doc_numb" columns="50" />
+            <dataField fieldName="startdate" columns="10" />
+            <dataField fieldName="enddate" columns="10" />
+            <dataField fieldName="messionstst" columns="15" />
+            <dataField fieldName="doc_id" columns="15" />
+            <dataField fieldName="doc_name" columns="50" />
+            <dataField fieldName="doc_alrm" columns="15" />
+            <dataField fieldName="alrm_nots" rows="5" />
+            <dataField fieldName="memo1" rows="5" />
+            <dataField fieldName="Restday" columns="15" />
+            <dataField fieldName="Cntry_No" columns="15" />
+            <dataField fieldName="Ttrad_Nm1" />
+            <dataField fieldName="Emp_Tel" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New A Qmastert1new">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New A Qmastert1new" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_NOt" columns="50" />
+            <dataField fieldName="Emp_Nm" />
+            <dataField fieldName="EMP_EMAIL" />
+            <dataField fieldName="Job_Stu" columns="15" />
+            <dataField fieldName="ESdPLC" />
+            <dataField fieldName="doc_numb" columns="50" />
+            <dataField fieldName="startdate" columns="10" />
+            <dataField fieldName="enddate" columns="10" />
+            <dataField fieldName="messionstst" columns="15" />
+            <dataField fieldName="doc_name" columns="50" />
+            <dataField fieldName="doc_alrm" columns="15" />
+            <dataField fieldName="alrm_nots" rows="5" />
+            <dataField fieldName="memo1" rows="5" />
+            <dataField fieldName="Cntry_No" columns="15" />
+            <dataField fieldName="Emp_Tel" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

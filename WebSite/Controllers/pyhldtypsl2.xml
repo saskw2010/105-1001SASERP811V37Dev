@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="pyhldtypsl1" conflictDetection="overwriteChanges" label="Pyhldtypsl1" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+SELECT        pyhldtypsl1.Req_Typ, pyhldtypsl1.Req_NM, pyhldtypsl1.DESCRP1, pyhldtypsl1.DESCRP2, pyhldtypsl1.DESCRP3, pyhldtypsl1.DESCRP4, pyhldtypsl1.ModifiedBy, pyhldtypsl1.ModifiedOn, 
+                         pyhldtypsl1.CreatedBy, pyhldtypsl1.CreatedOn, pyhldtypsl1.Cstm_No, dbo.Stcustmr.Cstm_Nm
+FROM            dbo.pyhldtypsl1 AS pyhldtypsl1 LEFT OUTER JOIN
+                         dbo.Stcustmr ON pyhldtypsl1.Cstm_No = dbo.Stcustmr.Cstm_No
+]]></text>
+    </command>
+    <command id="Req_TypIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Req_Typ" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Req_Typ" type="Int64" allowNulls="false" isPrimaryKey="true" label="Req Typ" readOnly="true" />
+    <field name="Cstm_No" type="Int64" label="Cstm No">
+      <items style="Lookup" dataController="Stcustmr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Cstm_Nm" type="String" label="Cstm_Nm" length="255" readOnly="true"  />
+	<field name="Req_NM" type="String" label="Sub-Customer-Name(EN)" length="255" showInSummary="true" />
+    <field name="DESCRP1" type="String" label="Sub-Customer-Name" length="255" showInSummary="true" />
+    <field name="DESCRP2" type="String" label="Sub-Custumer-Code" length="255" showInSummary="true" />
+    <field name="DESCRP3" type="String" label="Descrp3" length="255" showInSummary="true" />
+    <field name="DESCRP4" type="String" label="Descrp4" length="255" showInSummary="true" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Pyhldtypsl1">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Req_NM" />
+        <dataField fieldName="DESCRP1" />
+        <dataField fieldName="DESCRP2" hidden="true"/>
+        <dataField fieldName="DESCRP3" hidden="true"/>
+        <dataField fieldName="DESCRP4" hidden="true"/>
+		<dataField fieldName="Cstm_No" aliasFieldName="Cstm_Nm" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        
+
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Pyhldtypsl1">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Pyhldtypsl1" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+        <dataField fieldName="Req_NM" />
+        <dataField fieldName="DESCRP1" />
+        <dataField fieldName="DESCRP2" hidden="true"/>
+        <dataField fieldName="DESCRP3" hidden="true"/>
+        <dataField fieldName="DESCRP4" hidden="true"/>
+		<dataField fieldName="Cstm_No" aliasFieldName="Cstm_Nm" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        
+
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Pyhldtypsl1">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Pyhldtypsl1" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+        <dataField fieldName="Req_NM" />
+        <dataField fieldName="DESCRP1" />
+        <dataField fieldName="DESCRP2" hidden="true"/>
+        <dataField fieldName="DESCRP3" hidden="true"/>
+        <dataField fieldName="DESCRP4" hidden="true"/>
+		<dataField fieldName="Cstm_No" aliasFieldName="Cstm_Nm" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

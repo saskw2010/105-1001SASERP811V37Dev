@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="lastbalnclose" conflictDetection="overwriteChanges" label="Lastbalnclose" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"lastbalnclose"."typ" "typ"
+	,"lastbalnclose"."GlFinperiodID" "GlFinperiodID"
+	,"lastbalnclose"."sgm" "sgm"
+	,"lastbalnclose"."branch" "branch"
+	,"lastbalnclose"."Fin_period_Strat" "Fin_period_Strat"
+	,"lastbalnclose"."Fin_period_end" "Fin_period_end"
+	,"lastbalnclose"."closedperiod" "closedperiod"
+	,"lastbalnclose"."Acc_no" "Acc_no"
+	,"lastbalnclose"."Fin_period_info" "Fin_period_info"
+	,"lastbalnclose"."acdcode" "acdcode"
+	,"lastbalnclose"."balanc1" "balanc1"
+from "dbo"."lastbalnclose" "lastbalnclose"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="typ" type="String" allowNulls="false" label="Typ" length="15" showInSummary="true" />
+    <field name="GlFinperiodID" type="Int64" label="Gl Finperiod#" showInSummary="true" />
+    <field name="sgm" type="Int32" allowNulls="false" label="Sgm" showInSummary="true" />
+    <field name="branch" type="Int64" label="Branch" showInSummary="true" />
+    <field name="Fin_period_Strat" type="DateTime" label="Fin period Strat" showInSummary="true" />
+    <field name="Fin_period_end" type="DateTime" label="Fin period end" />
+    <field name="closedperiod" type="Int64" label="Closedperiod" />
+    <field name="Acc_no" type="Int64" label="Acc no" />
+    <field name="Fin_period_info" type="String" label="Fin period info" length="150" />
+    <field name="acdcode" type="Int64" label="Acdcode" />
+    <field name="balanc1" type="Decimal" label="Balanc1" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Lastbalnclose">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="typ" columns="15" />
+        <dataField fieldName="GlFinperiodID" columns="15" />
+        <dataField fieldName="sgm" columns="15" />
+        <dataField fieldName="branch" columns="15" />
+        <dataField fieldName="Fin_period_Strat" columns="10" />
+        <dataField fieldName="Fin_period_end" columns="10" />
+        <dataField fieldName="closedperiod" columns="15" />
+        <dataField fieldName="Acc_no" columns="15" />
+        <dataField fieldName="Fin_period_info" />
+        <dataField fieldName="acdcode" columns="15" />
+        <dataField fieldName="balanc1" dataFormatString="c" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Lastbalnclose">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Lastbalnclose" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="typ" columns="15" />
+            <dataField fieldName="GlFinperiodID" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="Fin_period_Strat" columns="10" />
+            <dataField fieldName="Fin_period_end" columns="10" />
+            <dataField fieldName="closedperiod" columns="15" />
+            <dataField fieldName="Acc_no" columns="15" />
+            <dataField fieldName="Fin_period_info" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="balanc1" dataFormatString="c" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Lastbalnclose">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Lastbalnclose" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="typ" columns="15" />
+            <dataField fieldName="GlFinperiodID" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="Fin_period_Strat" columns="10" />
+            <dataField fieldName="Fin_period_end" columns="10" />
+            <dataField fieldName="closedperiod" columns="15" />
+            <dataField fieldName="Acc_no" columns="15" />
+            <dataField fieldName="Fin_period_info" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="balanc1" dataFormatString="c" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

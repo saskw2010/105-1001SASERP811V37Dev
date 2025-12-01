@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="EVOL_Contact" conflictDetection="overwriteChanges" label="EVOL Contact" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"EVOL_Contact"."ID" "ID"
+	,"EVOL_Contact"."Firstname" "Firstname"
+	,"EVOL_Contact"."Middlename" "Middlename"
+	,"EVOL_Contact"."Lastname" "Lastname"
+	,"EVOL_Contact"."Suffix" "Suffix"
+	,"EVOL_Contact"."JobTitle" "JobTitle"
+	,"EVOL_Contact"."Title" "Title"
+	,"EVOL_Contact"."Company" "Company"
+	,"EVOL_Contact"."CategoryID" "CategoryID"
+	,"EVOL_Contact"."Phone" "Phone"
+	,"EVOL_Contact"."Phoneh" "Phoneh"
+	,"EVOL_Contact"."Phonem" "Phonem"
+	,"EVOL_Contact"."Fax" "Fax"
+	,"EVOL_Contact"."emailAddress" "emailAddress"
+	,"EVOL_Contact"."url" "url"
+	,"EVOL_Contact"."AddressLine1" "AddressLine1"
+	,"EVOL_Contact"."AddressLine2" "AddressLine2"
+	,"EVOL_Contact"."City" "City"
+	,"EVOL_Contact"."State" "State"
+	,"EVOL_Contact"."Zip" "Zip"
+	,"EVOL_Contact"."Country" "Country"
+	,"EVOL_Contact"."Notes" "Notes"
+	,"EVOL_Contact"."Custom1" "Custom1"
+	,"EVOL_Contact"."Custom2" "Custom2"
+	,"EVOL_Contact"."Custom3" "Custom3"
+	,"EVOL_Contact"."Custom4" "Custom4"
+	,"EVOL_Contact"."Publish" "Publish"
+	,"EVOL_Contact"."UserID" "UserID"
+	,"EVOL_Contact"."CommentCount" "CommentCount"
+	,"EVOL_Contact"."creationdate" "creationdate"
+	,"EVOL_Contact"."ModifiedBy" "ModifiedBy"
+	,"EVOL_Contact"."ModifiedByUserId" "ModifiedByUserId"
+	,"EVOL_Contact"."ModifiedOn" "ModifiedOn"
+	,"EVOL_Contact"."CreatedBy" "CreatedBy"
+	,"EVOL_Contact"."CreatedById" "CreatedById"
+	,"EVOL_Contact"."CreatedOn" "CreatedOn"
+from "dbo"."EVOL_Contact" "EVOL_Contact"
+]]></text>
+    </command>
+    <command id="IDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ID" type="Int32" allowNulls="false" isPrimaryKey="true" label="Id" readOnly="true" />
+    <field name="Firstname" type="String" label="Firstname" length="100" showInSummary="true" />
+    <field name="Middlename" type="String" label="Middlename" length="10" showInSummary="true" />
+    <field name="Lastname" type="String" allowNulls="false" label="Lastname" length="100" showInSummary="true" />
+    <field name="Suffix" type="String" label="Suffix" length="20" showInSummary="true" />
+    <field name="JobTitle" type="String" label="Job Title" length="100" showInSummary="true" />
+    <field name="Title" type="String" label="Title" length="100" />
+    <field name="Company" type="String" label="Company" length="100" />
+    <field name="CategoryID" type="Int32" allowNulls="false" label="Category#" />
+    <field name="Phone" type="String" label="Phone" length="30" />
+    <field name="Phoneh" type="String" label="Phoneh" length="30" />
+    <field name="Phonem" type="String" label="Phonem" length="30" />
+    <field name="Fax" type="String" label="Fax" length="30" />
+    <field name="emailAddress" type="String" label="email Address" length="510" />
+    <field name="url" type="String" label="Url" length="510" />
+    <field name="AddressLine1" type="String" label="Address Line1" length="500" />
+    <field name="AddressLine2" type="String" label="Address Line2" length="500" />
+    <field name="City" type="String" label="City" length="200" />
+    <field name="State" type="String" label="State" length="4" />
+    <field name="Zip" type="String" label="Zip" length="30" />
+    <field name="Country" type="String" label="Country" length="120" />
+    <field name="Notes" type="String" label="Notes" length="1600" />
+    <field name="Custom1" type="String" label="Custom1" length="500" />
+    <field name="Custom2" type="String" label="Custom2" length="500" />
+    <field name="Custom3" type="String" label="Custom3" length="500" />
+    <field name="Custom4" type="String" label="Custom4" length="500" />
+    <field name="Publish" type="Int32" label="Publish" />
+    <field name="UserID" type="Int32" default="((1))" label="User#" />
+    <field name="CommentCount" type="Int32" default="((0))" label="Comment Count" />
+    <field name="creationdate" type="DateTime" default="(getdate())" label="Creationdate" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedByUserId" type="Guid" label="Modified By User#" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedById" type="Guid" label="Created By#" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="EVOL Contact">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Lastname" />
+        <dataField fieldName="Firstname" />
+        <dataField fieldName="Middlename" columns="10" />
+        <dataField fieldName="Suffix" columns="20" />
+        <dataField fieldName="JobTitle" />
+        <dataField fieldName="Title" />
+        <dataField fieldName="Company" />
+        <dataField fieldName="CategoryID" columns="15" />
+        <dataField fieldName="Phone" columns="30" />
+        <dataField fieldName="Phoneh" columns="30" />
+        <dataField fieldName="Phonem" columns="30" />
+        <dataField fieldName="Fax" columns="30" />
+        <dataField fieldName="emailAddress" />
+        <dataField fieldName="url" />
+        <dataField fieldName="AddressLine1" />
+        <dataField fieldName="AddressLine2" />
+        <dataField fieldName="City" />
+        <dataField fieldName="State" columns="4" />
+        <dataField fieldName="Zip" columns="30" />
+        <dataField fieldName="Country" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review EVOL Contact">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="EVOL Contact" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Firstname" />
+            <dataField fieldName="Middlename" columns="10" />
+            <dataField fieldName="Lastname" />
+            <dataField fieldName="Suffix" columns="20" />
+            <dataField fieldName="JobTitle" />
+            <dataField fieldName="Title" />
+            <dataField fieldName="Company" />
+            <dataField fieldName="CategoryID" columns="15" />
+            <dataField fieldName="Phone" columns="30" />
+            <dataField fieldName="Phoneh" columns="30" />
+            <dataField fieldName="Phonem" columns="30" />
+            <dataField fieldName="Fax" columns="30" />
+            <dataField fieldName="emailAddress" />
+            <dataField fieldName="url" />
+            <dataField fieldName="AddressLine1" />
+            <dataField fieldName="AddressLine2" />
+            <dataField fieldName="City" />
+            <dataField fieldName="State" columns="4" />
+            <dataField fieldName="Zip" columns="30" />
+            <dataField fieldName="Country" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="Custom1" />
+            <dataField fieldName="Custom2" />
+            <dataField fieldName="Custom3" />
+            <dataField fieldName="Custom4" />
+            <dataField fieldName="Publish" columns="15" />
+            <dataField fieldName="UserID" columns="15" />
+            <dataField fieldName="CommentCount" columns="15" />
+            <dataField fieldName="creationdate" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedByUserId" columns="15" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedById" columns="15" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New EVOL Contact">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New EVOL Contact" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Firstname" />
+            <dataField fieldName="Middlename" columns="10" />
+            <dataField fieldName="Lastname" />
+            <dataField fieldName="Suffix" columns="20" />
+            <dataField fieldName="JobTitle" />
+            <dataField fieldName="Title" />
+            <dataField fieldName="Company" />
+            <dataField fieldName="CategoryID" columns="15" />
+            <dataField fieldName="Phone" columns="30" />
+            <dataField fieldName="Phoneh" columns="30" />
+            <dataField fieldName="Phonem" columns="30" />
+            <dataField fieldName="Fax" columns="30" />
+            <dataField fieldName="emailAddress" />
+            <dataField fieldName="url" />
+            <dataField fieldName="AddressLine1" />
+            <dataField fieldName="AddressLine2" />
+            <dataField fieldName="City" />
+            <dataField fieldName="State" columns="4" />
+            <dataField fieldName="Zip" columns="30" />
+            <dataField fieldName="Country" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="Custom1" />
+            <dataField fieldName="Custom2" />
+            <dataField fieldName="Custom3" />
+            <dataField fieldName="Custom4" />
+            <dataField fieldName="Publish" columns="15" />
+            <dataField fieldName="UserID" columns="15" />
+            <dataField fieldName="CommentCount" columns="15" />
+            <dataField fieldName="creationdate" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedByUserId" columns="15" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedById" columns="15" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

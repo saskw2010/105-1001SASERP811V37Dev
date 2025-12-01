@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="PyCmpGovCnt" conflictDetection="overwriteChanges" label="Py Cmp Gov Cnt" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"PyCmpGovCnt"."Cnt_No" "Cnt_No"
+	,"PyCmpGovCnt"."cnt_dt" "cnt_dt"
+	,"PyCmpGovCnt"."Cnt_Dsc" "Cnt_Dsc"
+	,"PyCmpGovCnt"."Cnt_DscE" "Cnt_DscE"
+	,"PyCmpGovCnt"."Cmp_No" "Cmp_No"
+	,"Cmp_"."Ownr_ID" "Cmp_Ownr_ID"
+	,"Cmp_cmp_"."Grp_Nm" "Cmp_cmp_Grp_Nm"
+	,"Cmp_cmp_Grp_"."Grp_Nm" "Cmp_cmp_Grp_Grp_Nm"
+	,"PyCmpGovCnt"."Cnt_VL" "Cnt_VL"
+	,"PyCmpGovCnt"."Cnt_StDt" "Cnt_StDt"
+	,"PyCmpGovCnt"."Cnt_EnDt" "Cnt_EnDt"
+	,"PyCmpGovCnt"."Ext_Emp" "Ext_Emp"
+	,"PyCmpGovCnt"."Int_Emp" "Int_Emp"
+	,"PyCmpGovCnt"."Gov_Site" "Gov_Site"
+	,"PyCmpGovCnt"."Gov_SiteE" "Gov_SiteE"
+	,"PyCmpGovCnt"."Site_Mngr" "Site_Mngr"
+	,"PyCmpGovCnt"."Site_MngrE" "Site_MngrE"
+	,"PyCmpGovCnt"."Contct_Prsn" "Contct_Prsn"
+	,"PyCmpGovCnt"."Contct_PrsnE" "Contct_PrsnE"
+	,"PyCmpGovCnt"."Tel1" "Tel1"
+	,"PyCmpGovCnt"."Tel2" "Tel2"
+	,"PyCmpGovCnt"."Mob" "Mob"
+	,"PyCmpGovCnt"."Fax" "Fax"
+	,"PyCmpGovCnt"."Email" "Email"
+	,"PyCmpGovCnt"."cnt1" "cnt1"
+	,"PyCmpGovCnt"."cnt2" "cnt2"
+	,"PyCmpGovCnt"."cnt3" "cnt3"
+	,"PyCmpGovCnt"."cnt4" "cnt4"
+	,"PyCmpGovCnt"."cnt5" "cnt5"
+	,"PyCmpGovCnt"."cnt6" "cnt6"
+	,"PyCmpGovCnt"."cnt7" "cnt7"
+	,"PyCmpGovCnt"."cntd1" "cntd1"
+	,"PyCmpGovCnt"."cntd2" "cntd2"
+	,"PyCmpGovCnt"."cntop1" "cntop1"
+	,"PyCmpGovCnt"."cntop2" "cntop2"
+	,"PyCmpGovCnt"."cnt1txt" "cnt1txt"
+	,"PyCmpGovCnt"."cnt2txt" "cnt2txt"
+	,"PyCmpGovCnt"."sgm" "sgm"
+	,"PyCmpGovCnt"."ModifiedBy" "ModifiedBy"
+	,"PyCmpGovCnt"."ModifiedOn" "ModifiedOn"
+	,"PyCmpGovCnt"."CreatedBy" "CreatedBy"
+	,"PyCmpGovCnt"."CreatedOn" "CreatedOn"
+from "dbo"."PyCmpGovCnt" "PyCmpGovCnt"
+	left join "dbo"."Pyownrmf" "Cmp_" on "PyCmpGovCnt"."Cmp_No" = "Cmp_"."Ownr_No"
+	left join "dbo"."Pycnstnt" "Cmp_cmp_" on "Cmp_"."cmp_no" = "Cmp_cmp_"."Cmp_No"
+	left join "dbo"."Groupcnst" "Cmp_cmp_Grp_" on "Cmp_cmp_"."Grp_No" = "Cmp_cmp_Grp_"."Grp_No"
+]]></text>
+    </command>
+    <command id="Cnt_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Cnt_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Cnt_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Cnt No" readOnly="true" />
+    <field name="cnt_dt" type="DateTime" label="Cnt Dt" showInSummary="true" />
+    <field name="Cnt_Dsc" type="String" label="Cnt Dsc" length="255" showInSummary="true" />
+    <field name="Cnt_DscE" type="String" label="Cnt Dsc E" length="255" showInSummary="true" />
+    <field name="Cmp_No" type="Int64" label="Cmp No" showInSummary="true">
+      <items style="Lookup" dataController="Pyownrmf" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Cmp_Ownr_ID" type="String" readOnly="true" label="Cmp Ownr#" length="15" />
+    <field name="Cmp_cmp_Grp_Nm" type="String" readOnly="true" label="Cmp cmp Grp Nm" length="255" />
+    <field name="Cmp_cmp_Grp_Grp_Nm" type="String" readOnly="true" label="Cmp cmp Grp Nm" length="200" />
+    <field name="Cnt_VL" type="Decimal" label="Cnt VL" showInSummary="true" />
+    <field name="Cnt_StDt" type="DateTime" label="Cnt St Dt" />
+    <field name="Cnt_EnDt" type="DateTime" label="Cnt En Dt" />
+    <field name="Ext_Emp" type="Int64" label="Ext Emp" />
+    <field name="Int_Emp" type="Int64" label="Int Emp" />
+    <field name="Gov_Site" type="String" label="Gov Site" length="255" />
+    <field name="Gov_SiteE" type="String" label="Gov Site E" length="255" />
+    <field name="Site_Mngr" type="String" label="Site Mngr" length="255" />
+    <field name="Site_MngrE" type="String" label="Site Mngr E" length="255" />
+    <field name="Contct_Prsn" type="String" label="Contct Prsn" length="255" />
+    <field name="Contct_PrsnE" type="String" label="Contct Prsn E" length="255" />
+    <field name="Tel1" type="String" label="Tel1" length="50" />
+    <field name="Tel2" type="String" label="Tel2" length="50" />
+    <field name="Mob" type="String" label="Mob" length="50" />
+    <field name="Fax" type="String" label="Fax" length="50" />
+    <field name="Email" type="String" label="Email" length="255" />
+    <field name="cnt1" type="Int64" label="Cnt1" />
+    <field name="cnt2" type="Int64" label="Cnt2" />
+    <field name="cnt3" type="Int64" label="Cnt3" />
+    <field name="cnt4" type="Int64" label="Cnt4" />
+    <field name="cnt5" type="Int64" label="Cnt5" />
+    <field name="cnt6" type="Int64" label="Cnt6" />
+    <field name="cnt7" type="Int64" label="Cnt7" />
+    <field name="cntd1" type="DateTime" label="Cntd1" />
+    <field name="cntd2" type="DateTime" label="Cntd2" />
+    <field name="cntop1" type="Int16" label="Cntop1" />
+    <field name="cntop2" type="Int16" label="Cntop2" />
+    <field name="cnt1txt" type="String" label="Cnt1txt" length="255" />
+    <field name="cnt2txt" type="String" label="Cnt2txt" length="255" />
+    <field name="sgm" type="Int64" label="Sgm" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Py Cmp Gov Cnt">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="cnt_dt" columns="10" />
+        <dataField fieldName="Cnt_Dsc" />
+        <dataField fieldName="Cnt_DscE" />
+        <dataField fieldName="Cmp_No" aliasFieldName="Cmp_Ownr_ID" hyperlinkFormatString="~/Pages/Pyownrmf.aspx?Ownr_No={Cmp_No}&amp;_controller=Pyownrmf&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Cnt_VL" dataFormatString="c" columns="15" />
+        <dataField fieldName="Cnt_StDt" columns="10" />
+        <dataField fieldName="Cnt_EnDt" columns="10" />
+        <dataField fieldName="Ext_Emp" columns="15" />
+        <dataField fieldName="Int_Emp" columns="15" />
+        <dataField fieldName="Gov_Site" />
+        <dataField fieldName="Gov_SiteE" />
+        <dataField fieldName="Site_Mngr" />
+        <dataField fieldName="Site_MngrE" />
+        <dataField fieldName="Contct_Prsn" />
+        <dataField fieldName="Contct_PrsnE" />
+        <dataField fieldName="Tel1" columns="50" />
+        <dataField fieldName="Tel2" columns="50" />
+        <dataField fieldName="Mob" columns="50" />
+        <dataField fieldName="Fax" columns="50" />
+        <dataField fieldName="Email" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Py Cmp Gov Cnt">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Py Cmp Gov Cnt" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="cnt_dt" columns="10" />
+            <dataField fieldName="Cnt_Dsc" />
+            <dataField fieldName="Cnt_DscE" />
+            <dataField fieldName="Cmp_No" aliasFieldName="Cmp_Ownr_ID" hyperlinkFormatString="~/Pages/Pyownrmf.aspx?Ownr_No={Cmp_No}&amp;_controller=Pyownrmf&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Cnt_VL" dataFormatString="c" columns="15" />
+            <dataField fieldName="Cnt_StDt" columns="10" />
+            <dataField fieldName="Cnt_EnDt" columns="10" />
+            <dataField fieldName="Ext_Emp" columns="15" />
+            <dataField fieldName="Int_Emp" columns="15" />
+            <dataField fieldName="Gov_Site" />
+            <dataField fieldName="Gov_SiteE" />
+            <dataField fieldName="Site_Mngr" />
+            <dataField fieldName="Site_MngrE" />
+            <dataField fieldName="Contct_Prsn" />
+            <dataField fieldName="Contct_PrsnE" />
+            <dataField fieldName="Tel1" columns="50" />
+            <dataField fieldName="Tel2" columns="50" />
+            <dataField fieldName="Mob" columns="50" />
+            <dataField fieldName="Fax" columns="50" />
+            <dataField fieldName="Email" />
+            <dataField fieldName="cnt1" columns="15" />
+            <dataField fieldName="cnt2" columns="15" />
+            <dataField fieldName="cnt3" columns="15" />
+            <dataField fieldName="cnt4" columns="15" />
+            <dataField fieldName="cnt5" columns="15" />
+            <dataField fieldName="cnt6" columns="15" />
+            <dataField fieldName="cnt7" columns="15" />
+            <dataField fieldName="cntd1" columns="10" />
+            <dataField fieldName="cntd2" columns="10" />
+            <dataField fieldName="cntop1" columns="15" />
+            <dataField fieldName="cntop2" columns="15" />
+            <dataField fieldName="cnt1txt" />
+            <dataField fieldName="cnt2txt" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Cmp_cmp_Grp_Nm" />
+            <dataField fieldName="Cmp_cmp_Grp_Grp_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Py Cmp Gov Cnt">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Py Cmp Gov Cnt" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="cnt_dt" columns="10" />
+            <dataField fieldName="Cnt_Dsc" />
+            <dataField fieldName="Cnt_DscE" />
+            <dataField fieldName="Cmp_No" aliasFieldName="Cmp_Ownr_ID" />
+            <dataField fieldName="Cnt_VL" dataFormatString="c" columns="15" />
+            <dataField fieldName="Cnt_StDt" columns="10" />
+            <dataField fieldName="Cnt_EnDt" columns="10" />
+            <dataField fieldName="Ext_Emp" columns="15" />
+            <dataField fieldName="Int_Emp" columns="15" />
+            <dataField fieldName="Gov_Site" />
+            <dataField fieldName="Gov_SiteE" />
+            <dataField fieldName="Site_Mngr" />
+            <dataField fieldName="Site_MngrE" />
+            <dataField fieldName="Contct_Prsn" />
+            <dataField fieldName="Contct_PrsnE" />
+            <dataField fieldName="Tel1" columns="50" />
+            <dataField fieldName="Tel2" columns="50" />
+            <dataField fieldName="Mob" columns="50" />
+            <dataField fieldName="Fax" columns="50" />
+            <dataField fieldName="Email" />
+            <dataField fieldName="cnt1" columns="15" />
+            <dataField fieldName="cnt2" columns="15" />
+            <dataField fieldName="cnt3" columns="15" />
+            <dataField fieldName="cnt4" columns="15" />
+            <dataField fieldName="cnt5" columns="15" />
+            <dataField fieldName="cnt6" columns="15" />
+            <dataField fieldName="cnt7" columns="15" />
+            <dataField fieldName="cntd1" columns="10" />
+            <dataField fieldName="cntd2" columns="10" />
+            <dataField fieldName="cntop1" columns="15" />
+            <dataField fieldName="cntop2" columns="15" />
+            <dataField fieldName="cnt1txt" />
+            <dataField fieldName="cnt2txt" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

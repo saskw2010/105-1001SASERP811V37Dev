@@ -1,0 +1,668 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <mosConnection1 Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>mosConnection1</Alias>
+        <ConnectionStringEncrypted>9HDhSEQJQxl7TJyE5RQlJ9FYs41FGNKFaUfoyWoY4yrDVrXrT0zTzUVHpVhhhHd/+XiV6tdVk7zpS6GE83BtL8NwZS1NXbvVzE3t3GFw7WLZOGXDYkyTgct9nGzk+KR721TB68wFo20=</ConnectionStringEncrypted>
+        <Name>mosConnection1</Name>
+      </mosConnection1>
+    </Databases>
+    <DataSources isList="true" count="4">
+      <mosDataSource1 Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>mosDataSource1</Alias>
+        <Columns isList="true" count="34">
+          <value>schglpaydlyhdregid,System.Int64</value>
+          <value>sgm,System.Int64</value>
+          <value>sgmsgm_Nm,System.String</value>
+          <value>sgmOpcoOpcoName,System.String</value>
+          <value>branch,System.Int64</value>
+          <value>ThebranchDesc1,System.String</value>
+          <value>Thebranchsgmsgm_Nm,System.String</value>
+          <value>ThebranchsgmOpcoOpcoName,System.String</value>
+          <value>ThebranchGenderGender,System.String</value>
+          <value>ThebranchschtypschtypDesc,System.String</value>
+          <value>Trs_Dt,System.DateTime</value>
+          <value>Balance,System.Decimal</value>
+          <value>ReferanceNo,System.String</value>
+          <value>IDregorg,System.Int64</value>
+          <value>IDregorgNAME_1,System.String</value>
+          <value>Delevername,System.String</value>
+          <value>Delevercivil,System.String</value>
+          <value>DeleverTel,System.String</value>
+          <value>Notes,System.String</value>
+          <value>approved,System.Boolean</value>
+          <value>posted,System.Boolean</value>
+          <value>deleted,System.Boolean</value>
+          <value>havdetails,System.Boolean</value>
+          <value>ModifiedBy,System.String</value>
+          <value>ModifiedOn,System.DateTime</value>
+          <value>CreatedBy,System.String</value>
+          <value>CreatedOn,System.DateTime</value>
+          <value>currencywordsnew,System.String</value>
+          <value>acdcode,System.Int64</value>
+          <value>Cstm_nm,System.String</value>
+          <value>classacc,System.Int64</value>
+          <value>Cstm_no,System.Int64</value>
+          <value>SubledgerDescrption,System.String</value>
+          <value>SubledgeTable,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>mosDataSource1</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>Parameter1,,0,0</value>
+        </Parameters>
+        <SqlCommand>SELECT        schglpaydlyhdreg.schglpaydlyhdregid, schglpaydlyhdreg.sgm, sgm.sgm_Nm AS sgmsgm_Nm, sgmOpco.OpcoName AS sgmOpcoOpcoName, 
+                         schglpaydlyhdreg.branch, Thebranch.Desc1 AS ThebranchDesc1, Thebranchsgm.sgm_Nm AS Thebranchsgmsgm_Nm, 
+                         ThebranchsgmOpco.OpcoName AS ThebranchsgmOpcoOpcoName, ThebranchGender.Gender AS ThebranchGenderGender, 
+                         Thebranchschtyp.schtypDesc AS ThebranchschtypschtypDesc, schglpaydlyhdreg.Trs_Dt, schglpaydlyhdreg.payBalance AS Balance, 
+                         schglpaydlyhdreg.payReferanceNo AS ReferanceNo, schglpaydlyhdreg.payIDregorg AS IDregorg, IDregorg.NAME_1 AS IDregorgNAME_1, 
+                         schglpaydlyhdreg.payDelevername AS Delevername, schglpaydlyhdreg.payDelevercivil AS Delevercivil, schglpaydlyhdreg.payDeleverTel AS DeleverTel, 
+                         schglpaydlyhdreg.payNotes AS Notes, schglpaydlyhdreg.approved, schglpaydlyhdreg.posted, schglpaydlyhdreg.deleted, schglpaydlyhdreg.havdetails, 
+                         schglpaydlyhdreg.ModifiedBy, schglpaydlyhdreg.ModifiedOn, schglpaydlyhdreg.CreatedBy, schglpaydlyhdreg.CreatedOn, 
+                         dbo.DI_Tafkeet(schglpaydlyhdreg.payBalance) AS currencywordsnew, schglpaydlyhdreg.acdcode, dbo.GLSubledgertyplist.SubledgerDescrption, 
+                         dbo.GLSubledgertyplist.SubledgeTable
+FROM            dbo.REG_ORGANIZATIONS AS IDregorg RIGHT OUTER JOIN
+                         dbo.schglpaydlyhdreg AS schglpaydlyhdreg ON IDregorg.IDIDregorg = schglpaydlyhdreg.payIDregorg LEFT OUTER JOIN
+                         dbo.GLSubledgertyplist ON schglpaydlyhdreg.payDeleverTel = dbo.GLSubledgertyplist.Subledgerid LEFT OUTER JOIN
+                         dbo.schBranch AS Thebranch LEFT OUTER JOIN
+                         dbo.PyGender AS ThebranchGender ON Thebranch.Genderid = ThebranchGender.Genderid LEFT OUTER JOIN
+                         dbo.schtyp AS Thebranchschtyp ON Thebranch.schtypid = Thebranchschtyp.schtypid ON schglpaydlyhdreg.branch = Thebranch.branch LEFT OUTER JOIN
+                         dbo.glmulcmp AS Thebranchsgm ON Thebranch.sgm = Thebranchsgm.sgmid LEFT OUTER JOIN
+                         dbo.OpCo AS ThebranchsgmOpco ON Thebranchsgm.OpcoID = ThebranchsgmOpco.OpcoIDidentity LEFT OUTER JOIN
+                         dbo.OpCo AS sgmOpco RIGHT OUTER JOIN
+                         dbo.glmulcmp AS sgm ON sgmOpco.OpcoIDidentity = sgm.OpcoID ON schglpaydlyhdreg.sgm = sgm.sgmid
+WHERE        (schglpaydlyhdreg.schglpaydlyhdregid =@Parameter1)</SqlCommand>
+      </mosDataSource1>
+      <mosDataSource2 Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>mosDataSource2</Alias>
+        <Columns isList="true" count="45">
+          <value>schglpaydlydetailpaymentid,System.Int64</value>
+          <value>schglpaydlyhdregid,System.Int64</value>
+          <value>schglpaydlyhdregReferanceNo,System.String</value>
+          <value>schglpaydlyhdregsgmsgm_Nm,System.String</value>
+          <value>schglpaydlyhdregsgmOpcoOpcoName,System.String</value>
+          <value>schglpaydlyhdregIDregorgNAME_1,System.String</value>
+          <value>schglpaydlyhdregbranchDesc1,System.String</value>
+          <value>schglpaydlyhdregbranchsgmsgm_Nm,System.String</value>
+          <value>schglpaydlyhdregbranchGenderGender,System.String</value>
+          <value>schglpaydlyhdregbranchschtypschtypDesc,System.String</value>
+          <value>Pymnt_No,System.Int64</value>
+          <value>Pymnt_Pymnt_Nm,System.String</value>
+          <value>Pymnt_pymnt_accAcc_Nm,System.String</value>
+          <value>Pymnt_pymnt_accClsacc_Acc_Nm,System.String</value>
+          <value>Pymnt_pymnt_accAcc_BndAcc_Nm,System.String</value>
+          <value>Pymnt_sgmsgm_Nm,System.String</value>
+          <value>Pymnt_sgmOpcoOpcoName,System.String</value>
+          <value>Acc_no,System.Int64</value>
+          <value>Acc_Acc_Nm,System.String</value>
+          <value>Acc_Clsacc_Acc_Nm,System.String</value>
+          <value>Acc_Acc_BndAcc_Nm,System.String</value>
+          <value>Acc_Acc_Bndaccclassaccountclass,System.String</value>
+          <value>Acc_Acc_BndAcc_BabAcc_Nm,System.String</value>
+          <value>paymentwaynumber,System.String</value>
+          <value>schBnk_No,System.Int64</value>
+          <value>schBnk_schBnk_Nm,System.String</value>
+          <value>checkAccount,System.String</value>
+          <value>checkdate,System.DateTime</value>
+          <value>moneypaidto,System.Decimal</value>
+          <value>paymentnotes,System.String</value>
+          <value>SubledgerDescrption,System.String</value>
+          <value>Cstm_no,System.Int64</value>
+          <value>Cstm_nm,System.String</value>
+          <value>Cstm_nme,System.String</value>
+          <value>classacc,System.Int64</value>
+          <value>typ,System.Int64</value>
+          <value>Acc_Bnd,System.Int64</value>
+          <value>Acc_Mag,System.String</value>
+          <value>Acc_Bab,System.String</value>
+          <value>Acc_Nm,System.String</value>
+          <value>Acc_Nme,System.String</value>
+          <value>Cstm_tel,System.String</value>
+          <value>Cstm_adr,System.String</value>
+          <value>glcostcntr,System.Int64</value>
+          <value>glcostcntr1,System.Int64</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>mosDataSource2</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>Parameter2,,0,0</value>
+        </Parameters>
+        <SqlCommand>SELECT schglpaydlydetailpayment.schglpaydlydetailpaymentid,
+  schglpaydlydetailpayment.schglpaydlyhdregid, schglpaydlyhdreg.payReferanceNo
+  AS schglpaydlyhdregReferanceNo,
+  schglpaydlyhdregsgm.sgm_Nm AS schglpaydlyhdregsgmsgm_Nm,
+  schglpaydlyhdregsgmOpco.OpcoName AS schglpaydlyhdregsgmOpcoOpcoName,
+  schglpaydlyhdregIDregorg.NAME_1 AS schglpaydlyhdregIDregorgNAME_1,
+  schglpaydlyhdregbranch.Desc1 AS schglpaydlyhdregbranchDesc1,
+  schglpaydlyhdregbranchsgm.sgm_Nm AS schglpaydlyhdregbranchsgmsgm_Nm,
+  schglpaydlyhdregbranchGender.Gender AS schglpaydlyhdregbranchGenderGender,
+  schglpaydlyhdregbranchschtyp.schtypDesc AS
+  schglpaydlyhdregbranchschtypschtypDesc, schglpaydlydetailpayment.Pymnt_No,
+  Pymnt_.Pymnt_Nm AS Pymnt_Pymnt_Nm,
+  Pymnt_pymnt_acc.Acc_Nm AS Pymnt_pymnt_accAcc_Nm, Pymnt_pymnt_accClsacc_.Acc_Nm
+  AS Pymnt_pymnt_accClsacc_Acc_Nm, Pymnt_pymnt_accAcc_Bnd.Acc_Nm AS
+  Pymnt_pymnt_accAcc_BndAcc_Nm, Pymnt_sgm.sgm_Nm AS Pymnt_sgmsgm_Nm,
+  Pymnt_sgmOpco.OpcoName AS Pymnt_sgmOpcoOpcoName,
+  schglpaydlydetailpayment.Acc_no, Acc_.Acc_Nm AS Acc_Acc_Nm,
+  Acc_Clsacc_.Acc_Nm AS Acc_Clsacc_Acc_Nm,
+  Acc_Acc_Bnd.Acc_Nm AS Acc_Acc_BndAcc_Nm, Acc_Acc_Bndaccclass.accountclass AS
+  Acc_Acc_Bndaccclassaccountclass,
+  Acc_Acc_BndAcc_Bab.Acc_Nm AS Acc_Acc_BndAcc_BabAcc_Nm,
+  schglpaydlydetailpayment.paymentwaynumber, schglpaydlydetailpayment.schBnk_No,
+  schBnk_.schBnk_Nm AS schBnk_schBnk_Nm, schglpaydlydetailpayment.checkAccount,
+  schglpaydlydetailpayment.checkdate, schglpaydlydetailpayment.moneypaidto,
+  schglpaydlydetailpayment.paymentnotes,
+  dbo.GLSubledgertyplist.SubledgerDescrption, dbo.Qsupcstmr.Cstm_no,
+  dbo.Qsupcstmr.Cstm_nm, dbo.Qsupcstmr.Cstm_nme, dbo.Qsupcstmr.classacc,
+  dbo.Qsupcstmr.typ, dbo.Qsupcstmr.Acc_Bnd, dbo.Qsupcstmr.Acc_Mag,
+  dbo.Qsupcstmr.Acc_Bab, dbo.Qsupcstmr.Acc_Nm, dbo.Qsupcstmr.Acc_Nme,
+  dbo.Qsupcstmr.Cstm_tel, dbo.Qsupcstmr.Cstm_adr,
+  schglpaydlydetailpayment.glcostcntr, schglpaydlydetailpayment.glcostcntr1
+FROM dbo.schglpaydlydetailpayment AS schglpaydlydetailpayment LEFT OUTER JOIN
+  dbo.Qsupcstmr ON schglpaydlydetailpayment.cstyp_no = dbo.Qsupcstmr.typ AND
+    schglpaydlydetailpayment.subaccountno = dbo.Qsupcstmr.Cstm_no
+  LEFT OUTER JOIN
+  dbo.GLSubledgertyplist ON schglpaydlydetailpayment.cstyp_no =
+    dbo.GLSubledgertyplist.Subledgerid LEFT OUTER JOIN
+  dbo.schglpaydlyhdreg AS schglpaydlyhdreg ON
+    schglpaydlydetailpayment.schglpaydlyhdregid =
+    schglpaydlyhdreg.schglpaydlyhdregid LEFT OUTER JOIN
+  dbo.glmulcmp AS schglpaydlyhdregsgm ON schglpaydlyhdreg.sgm =
+    schglpaydlyhdregsgm.sgmid LEFT OUTER JOIN
+  dbo.OpCo AS schglpaydlyhdregsgmOpco ON schglpaydlyhdregsgm.OpcoID =
+    schglpaydlyhdregsgmOpco.OpcoIDidentity LEFT OUTER JOIN
+  dbo.REG_ORGANIZATIONS AS schglpaydlyhdregIDregorg ON schglpaydlyhdreg.payIDregorg
+    = schglpaydlyhdregIDregorg.IDIDregorg LEFT OUTER JOIN
+  dbo.schBranch AS schglpaydlyhdregbranch ON schglpaydlyhdreg.branch =
+    schglpaydlyhdregbranch.branch LEFT OUTER JOIN
+  dbo.glmulcmp AS schglpaydlyhdregbranchsgm ON schglpaydlyhdregbranch.sgm =
+    schglpaydlyhdregbranchsgm.sgmid LEFT OUTER JOIN
+  dbo.PyGender AS schglpaydlyhdregbranchGender ON
+    schglpaydlyhdregbranch.Genderid = schglpaydlyhdregbranchGender.Genderid
+  LEFT OUTER JOIN
+  dbo.schtyp AS schglpaydlyhdregbranchschtyp ON schglpaydlyhdregbranch.schtypid
+    = schglpaydlyhdregbranchschtyp.schtypid LEFT OUTER JOIN
+  dbo.Pymntype AS Pymnt_ ON schglpaydlydetailpayment.Pymnt_No = Pymnt_.Pymnt_No
+  LEFT OUTER JOIN
+  dbo.GLmstrfl AS Pymnt_pymnt_acc ON Pymnt_.pymnt_acc = Pymnt_pymnt_acc.Acc_No
+  LEFT OUTER JOIN
+  dbo.GLmfbab AS Pymnt_pymnt_accClsacc_ ON Pymnt_pymnt_acc.Clsacc_No =
+    Pymnt_pymnt_accClsacc_.Acc_Bab LEFT OUTER JOIN
+  dbo.GLmfband AS Pymnt_pymnt_accAcc_Bnd ON Pymnt_pymnt_acc.Acc_Bnd =
+    Pymnt_pymnt_accAcc_Bnd.Acc_Bnd LEFT OUTER JOIN
+  dbo.glmulcmp AS Pymnt_sgm ON Pymnt_.sgm = Pymnt_sgm.sgmid LEFT OUTER JOIN
+  dbo.OpCo AS Pymnt_sgmOpco ON Pymnt_sgm.OpcoID = Pymnt_sgmOpco.OpcoIDidentity
+  LEFT OUTER JOIN
+  dbo.GLmstrfl AS Acc_ ON schglpaydlydetailpayment.Acc_no = Acc_.Acc_No
+  LEFT OUTER JOIN
+  dbo.GLmfbab AS Acc_Clsacc_ ON Acc_.Clsacc_No = Acc_Clsacc_.Acc_Bab
+  LEFT OUTER JOIN
+  dbo.GLmfband AS Acc_Acc_Bnd ON Acc_.Acc_Bnd = Acc_Acc_Bnd.Acc_Bnd
+  LEFT OUTER JOIN
+  dbo.accountclasslist AS Acc_Acc_Bndaccclass ON Acc_Acc_Bnd.accclass =
+    Acc_Acc_Bndaccclass.accountclassid LEFT OUTER JOIN
+  dbo.GLmfbab AS Acc_Acc_BndAcc_Bab ON Acc_Acc_Bnd.Acc_Bab =
+    Acc_Acc_BndAcc_Bab.Acc_Bab LEFT OUTER JOIN
+  dbo.schGLacnBnk AS schBnk_ ON schglpaydlydetailpayment.schBnk_No =
+    schBnk_.schBnk_No
+WHERE (schglpaydlydetailpayment.schglpaydlyhdregid = @Parameter2)</SqlCommand>
+      </mosDataSource2>
+      <mosDataSource3 Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>mosDataSource3</Alias>
+        <Columns isList="true" count="50">
+          <value>Trs_No,System.Int64</value>
+          <value>schglpaydlyhdregid,System.Int64</value>
+          <value>schglpaydlyhdregReferanceNo,System.String</value>
+          <value>schglpaydlyhdregsgmsgm_Nm,System.String</value>
+          <value>schglpaydlyhdregsgmOpcoOpcoName,System.String</value>
+          <value>schglpaydlyhdregIDregorgNAME_1,System.String</value>
+          <value>schglpaydlyhdregbranchDesc1,System.String</value>
+          <value>schglpaydlyhdregbranchsgmsgm_Nm,System.String</value>
+          <value>schglpaydlyhdregbranchGenderGender,System.String</value>
+          <value>schglpaydlyhdregbranchschtypschtypDesc,System.String</value>
+          <value>branch,System.Int64</value>
+          <value>ThebranchDesc1,System.String</value>
+          <value>Thebranchsgmsgm_Nm,System.String</value>
+          <value>ThebranchsgmOpcoOpcoName,System.String</value>
+          <value>ThebranchGenderGender,System.String</value>
+          <value>ThebranchschtypschtypDesc,System.String</value>
+          <value>acdcode,System.Int64</value>
+          <value>acdFin_period_info,System.String</value>
+          <value>acdaccountnumberAcc_Nm,System.String</value>
+          <value>acdaccountnumberClsacc_Acc_Nm,System.String</value>
+          <value>acdaccountnumberAcc_BndAcc_Nm,System.String</value>
+          <value>Acc_no,System.Int64</value>
+          <value>Acc_Acc_Nm,System.String</value>
+          <value>Acc_Clsacc_Acc_Nm,System.String</value>
+          <value>Acc_Acc_BndAcc_Nm,System.String</value>
+          <value>Acc_Acc_Bndaccclassaccountclass,System.String</value>
+          <value>Acc_Acc_BndAcc_BabAcc_Nm,System.String</value>
+          <value>cstyp_no,System.Int64</value>
+          <value>subaccountno,System.Int64</value>
+          <value>Trs_Dt,System.DateTime</value>
+          <value>schpaymenttypeid,System.Int64</value>
+          <value>schpaymenttypeschpaymenttypenm,System.String</value>
+          <value>schpaymenttypedebitaccountAcc_Nm,System.String</value>
+          <value>schpaymenttypedebitaccountClsacc_Acc_Nm,System.String</value>
+          <value>schpaymenttypedebitaccountAcc_BndAcc_Nm,System.String</value>
+          <value>schpaymenttypecreditaccountAcc_Nm,System.String</value>
+          <value>schpaymenttypecreditaccountClsacc_Acc_Nm,System.String</value>
+          <value>schpaymenttypecreditaccountAcc_BndAcc_Nm,System.String</value>
+          <value>Mony_Paid,System.Decimal</value>
+          <value>Notes,System.String</value>
+          <value>totalbalance,System.Decimal</value>
+          <value>Sumofdebitcal,System.Decimal</value>
+          <value>Sumofdebitcal1,System.Decimal</value>
+          <value>Sumofcerditcal,System.Decimal</value>
+          <value>totalbalance1,System.Decimal</value>
+          <value>FirstName1,System.String</value>
+          <value>schstEmail,System.String</value>
+          <value>glcostcntr,System.Int64</value>
+          <value>glcostcntr1,System.Int64</value>
+          <value>CSMSUP_NM,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>mosDataSource3</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>Parameter3,,0,0</value>
+        </Parameters>
+        <SqlCommand>SELECT schglpaydlydetailreg.Trs_No Trs_No,
+  schglpaydlydetailreg.schglpaydlyhdregid schglpaydlyhdregid,
+  schglpaydlyhdreg.payReferanceNo schglpaydlyhdregReferanceNo,
+  schglpaydlyhdregsgm.sgm_Nm schglpaydlyhdregsgmsgm_Nm,
+  schglpaydlyhdregsgmOpco.OpcoName schglpaydlyhdregsgmOpcoOpcoName,
+  schglpaydlyhdregIDregorg.NAME_1 schglpaydlyhdregIDregorgNAME_1,
+  schglpaydlyhdregbranch.Desc1 schglpaydlyhdregbranchDesc1,
+  schglpaydlyhdregbranchsgm.sgm_Nm schglpaydlyhdregbranchsgmsgm_Nm,
+  schglpaydlyhdregbranchGender.Gender schglpaydlyhdregbranchGenderGender,
+  schglpaydlyhdregbranchschtyp.schtypDesc
+  schglpaydlyhdregbranchschtypschtypDesc, schglpaydlydetailreg.branch branch,
+  Thebranch.Desc1 ThebranchDesc1, Thebranchsgm.sgm_Nm Thebranchsgmsgm_Nm,
+  ThebranchsgmOpco.OpcoName ThebranchsgmOpcoOpcoName,
+  ThebranchGender.Gender ThebranchGenderGender, Thebranchschtyp.schtypDesc
+  ThebranchschtypschtypDesc, schglpaydlydetailreg.acdcode acdcode,
+  acd.Fin_period_info acdFin_period_info,
+  acdaccountnumber.Acc_Nm acdaccountnumberAcc_Nm, acdaccountnumberClsacc_.Acc_Nm
+  acdaccountnumberClsacc_Acc_Nm,
+  acdaccountnumberAcc_Bnd.Acc_Nm acdaccountnumberAcc_BndAcc_Nm,
+  schglpaydlydetailreg.Acc_no Acc_no, Acc_.Acc_Nm Acc_Acc_Nm,
+  Acc_Clsacc_.Acc_Nm Acc_Clsacc_Acc_Nm, Acc_Acc_Bnd.Acc_Nm Acc_Acc_BndAcc_Nm,
+  Acc_Acc_Bndaccclass.accountclass Acc_Acc_Bndaccclassaccountclass,
+  Acc_Acc_BndAcc_Bab.Acc_Nm Acc_Acc_BndAcc_BabAcc_Nm,
+  schglpaydlydetailreg.cstyp_no cstyp_no, schglpaydlydetailreg.subaccountno
+  subaccountno, schglpaydlydetailreg.Trs_Dt Trs_Dt,
+  schglpaydlydetailreg.schpaymenttypeid schpaymenttypeid,
+  schpaymenttype.schpaymenttypenm schpaymenttypeschpaymenttypenm,
+  schpaymenttypedebitaccount.Acc_Nm schpaymenttypedebitaccountAcc_Nm,
+  schpaymenttypedebitaccountClsacc_.Acc_Nm
+  schpaymenttypedebitaccountClsacc_Acc_Nm,
+  schpaymenttypedebitaccountAcc_Bnd.Acc_Nm
+  schpaymenttypedebitaccountAcc_BndAcc_Nm, schpaymenttypecreditaccount.Acc_Nm
+  schpaymenttypecreditaccountAcc_Nm, schpaymenttypecreditaccountClsacc_.Acc_Nm
+  schpaymenttypecreditaccountClsacc_Acc_Nm,
+  schpaymenttypecreditaccountAcc_Bnd.Acc_Nm
+  schpaymenttypecreditaccountAcc_BndAcc_Nm, schglpaydlydetailreg.Mony_Paid
+  Mony_Paid, schglpaydlydetailreg.Notes Notes, schglpaydlydetailreg.glcostcntr,
+  schglpaydlydetailreg.glcostcntr1, schglpaydlydetailreg.CSMSUP_NM
+FROM dbo.schglpaydlydetailreg schglpaydlydetailreg LEFT JOIN
+  dbo.schglpaydlyhdreg schglpaydlyhdreg ON
+    schglpaydlydetailreg.schglpaydlyhdregid =
+    schglpaydlyhdreg.schglpaydlyhdregid LEFT JOIN
+  dbo.glmulcmp schglpaydlyhdregsgm ON schglpaydlyhdreg.sgm =
+    schglpaydlyhdregsgm.sgmid LEFT JOIN
+  dbo.OpCo schglpaydlyhdregsgmOpco ON schglpaydlyhdregsgm.OpcoID =
+    schglpaydlyhdregsgmOpco.OpcoIDidentity LEFT JOIN
+  dbo.REG_ORGANIZATIONS schglpaydlyhdregIDregorg ON schglpaydlyhdreg.payIDregorg
+    = schglpaydlyhdregIDregorg.IDIDregorg LEFT JOIN
+  dbo.schBranch schglpaydlyhdregbranch ON schglpaydlyhdreg.branch =
+    schglpaydlyhdregbranch.branch LEFT JOIN
+  dbo.glmulcmp schglpaydlyhdregbranchsgm ON schglpaydlyhdregbranch.sgm =
+    schglpaydlyhdregbranchsgm.sgmid LEFT JOIN
+  dbo.PyGender schglpaydlyhdregbranchGender ON schglpaydlyhdregbranch.Genderid =
+    schglpaydlyhdregbranchGender.Genderid LEFT JOIN
+  dbo.schtyp schglpaydlyhdregbranchschtyp ON schglpaydlyhdregbranch.schtypid =
+    schglpaydlyhdregbranchschtyp.schtypid LEFT JOIN
+  dbo.schBranch Thebranch ON schglpaydlydetailreg.branch = Thebranch.branch
+  LEFT JOIN
+  dbo.glmulcmp Thebranchsgm ON Thebranch.sgm = Thebranchsgm.sgmid LEFT JOIN
+  dbo.OpCo ThebranchsgmOpco ON Thebranchsgm.OpcoID =
+    ThebranchsgmOpco.OpcoIDidentity LEFT JOIN
+  dbo.PyGender ThebranchGender ON Thebranch.Genderid = ThebranchGender.Genderid
+  LEFT JOIN
+  dbo.schtyp Thebranchschtyp ON Thebranch.schtypid = Thebranchschtyp.schtypid
+  LEFT JOIN
+  dbo.GlFinanceperiod acd ON schglpaydlydetailreg.acdcode = acd.GlFinperiodID
+  LEFT JOIN
+  dbo.GLmstrfl acdaccountnumber ON acd.accountnumber = acdaccountnumber.Acc_No
+  LEFT JOIN
+  dbo.GLmfbab acdaccountnumberClsacc_ ON acdaccountnumber.Clsacc_No =
+    acdaccountnumberClsacc_.Acc_Bab LEFT JOIN
+  dbo.GLmfband acdaccountnumberAcc_Bnd ON acdaccountnumber.Acc_Bnd =
+    acdaccountnumberAcc_Bnd.Acc_Bnd LEFT JOIN
+  dbo.GLmstrfl Acc_ ON schglpaydlydetailreg.Acc_no = Acc_.Acc_No LEFT JOIN
+  dbo.GLmfbab Acc_Clsacc_ ON Acc_.Clsacc_No = Acc_Clsacc_.Acc_Bab LEFT JOIN
+  dbo.GLmfband Acc_Acc_Bnd ON Acc_.Acc_Bnd = Acc_Acc_Bnd.Acc_Bnd LEFT JOIN
+  dbo.accountclasslist Acc_Acc_Bndaccclass ON Acc_Acc_Bnd.accclass =
+    Acc_Acc_Bndaccclass.accountclassid LEFT JOIN
+  dbo.GLmfbab Acc_Acc_BndAcc_Bab ON Acc_Acc_Bnd.Acc_Bab =
+    Acc_Acc_BndAcc_Bab.Acc_Bab LEFT JOIN
+  dbo.schpaymenttype schpaymenttype ON schglpaydlydetailreg.schpaymenttypeid =
+    schpaymenttype.schpaymenttypeid LEFT JOIN
+  dbo.GLmstrfl schpaymenttypedebitaccount ON schpaymenttype.debitaccount =
+    schpaymenttypedebitaccount.Acc_No LEFT JOIN
+  dbo.GLmfbab schpaymenttypedebitaccountClsacc_ ON
+    schpaymenttypedebitaccount.Clsacc_No =
+    schpaymenttypedebitaccountClsacc_.Acc_Bab LEFT JOIN
+  dbo.GLmfband schpaymenttypedebitaccountAcc_Bnd ON
+    schpaymenttypedebitaccount.Acc_Bnd =
+    schpaymenttypedebitaccountAcc_Bnd.Acc_Bnd LEFT JOIN
+  dbo.GLmstrfl schpaymenttypecreditaccount ON schpaymenttype.creditaccount =
+    schpaymenttypecreditaccount.Acc_No LEFT JOIN
+  dbo.GLmfbab schpaymenttypecreditaccountClsacc_ ON
+    schpaymenttypecreditaccount.Clsacc_No =
+    schpaymenttypecreditaccountClsacc_.Acc_Bab LEFT JOIN
+  dbo.GLmfband schpaymenttypecreditaccountAcc_Bnd ON
+    schpaymenttypecreditaccount.Acc_Bnd =
+    schpaymenttypecreditaccountAcc_Bnd.Acc_Bnd
+WHERE schglpaydlydetailreg.schglpaydlyhdregid = @Parameter3</SqlCommand>
+      </mosDataSource3>
+      <schattachglpaylists Ref="6" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>schattachglpaylists</Alias>
+        <Columns isList="true" count="7">
+          <value>schattachglpayid,System.Int64</value>
+          <value>schglpaydlyhdregid,System.Int64</value>
+          <value>schattachglpaytype,System.String</value>
+          <value>schattachglpayrefno,System.String</value>
+          <value>schattachglpayrefdate,System.DateTime</value>
+          <value>schattachglpayrefpagesno,System.String</value>
+          <value>notes,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>schattachglpaylists</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from schattachglpaylists</SqlCommand>
+      </schattachglpaylists>
+    </DataSources>
+    <Relations isList="true" count="3">
+      <Relation1pdp Ref="7" type="DataRelation" isKey="true">
+        <Alias>Relation1pdp</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>schglpaydlyhdregid</value>
+        </ChildColumns>
+        <ChildSource isRef="4" />
+        <Dictionary isRef="1" />
+        <Name>Relation1pdp</Name>
+        <NameInSource>Relation1pdp</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>schglpaydlyhdregid</value>
+        </ParentColumns>
+        <ParentSource isRef="3" />
+      </Relation1pdp>
+      <Relation1sadf Ref="8" type="DataRelation" isKey="true">
+        <Alias>Relation1sadf</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>schglpaydlyhdregid</value>
+        </ChildColumns>
+        <ChildSource isRef="5" />
+        <Dictionary isRef="1" />
+        <Name>Relation1sadf</Name>
+        <NameInSource>Relation1sadf</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>schglpaydlyhdregid</value>
+        </ParentColumns>
+        <ParentSource isRef="3" />
+      </Relation1sadf>
+      <Name Ref="9" type="DataRelation" isKey="true">
+        <Alias>Name</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>schglpaydlyhdregid</value>
+        </ChildColumns>
+        <ChildSource isRef="6" />
+        <Dictionary isRef="1" />
+        <Name>Name</Name>
+        <NameInSource>Relation</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>schglpaydlyhdregid</value>
+        </ParentColumns>
+        <ParentSource isRef="3" />
+      </Name>
+    </Relations>
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="10" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="5">
+        <GroupHeaderBand3 Ref="11" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.2,7.72,7.3</ClientRectangle>
+          <Components isList="true" count="4">
+            <Text3 Ref="12" type="Text" isKey="true">
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>3.5,1.9,0.4,4.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,16,Bold</Font>
+              <Guid>9d33db4279ffa67d60b0879be7598a3a</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>{mosDataSource1.currencywordsnew}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=False, Angle=90, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>DataColumn</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text3>
+            <Text1 Ref="13" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.1,0.1,0.4,1.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>7ce21afd2d5590e73148879be7590b17</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{Today}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="14" type="DateFormat" isKey="true">
+                <StringFormat>dd/MM/yyyy</StringFormat>
+              </TextFormat>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=False, Angle=90, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>SystemVariables</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+            <Text2 Ref="15" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3,1.8,0.5,4.5</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Times New Roman,16</Font>
+              <Guid>5277c420e4c681deeaa7879be759842b</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource1.Delevername}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=90, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>DataColumn</Type>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text2>
+            <Text4 Ref="16" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.9,0.1,0.4,1.5</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>24c6ccd4a8f7909d8b0d879be759e317</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>#{Round(mosDataSource1.Balance,3)}#</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="17" type="NumberFormat" isKey="true">
+                <DecimalDigits>3</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>0</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=False, Angle=90, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>Expression</Type>
+            </Text4>
+          </Components>
+          <Condition>{mosDataSource1.schglpaydlyhdregid}</Condition>
+          <Conditions isList="true" count="0" />
+          <Name>GroupHeaderBand3</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+          <PrintOn>OnlyFirstPage</PrintOn>
+        </GroupHeaderBand3>
+        <DataBand3 Ref="18" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,7.9,7.72,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <DataSourceName>mosDataSource1</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand3</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+          <Sort isList="true" count="0" />
+        </DataBand3>
+        <DataBand1 Ref="19" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,8.3,7.72,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <DataRelationName>Relation1pdp</DataRelationName>
+          <DataSourceName>mosDataSource2</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+          <Sort isList="true" count="2">
+            <value>ASC</value>
+            <value>schglpaydlydetailpaymentid</value>
+          </Sort>
+        </DataBand1>
+        <DataBand2 Ref="20" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,8.7,7.72,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <DataRelationName>Relation1sadf</DataRelationName>
+          <DataSourceName>mosDataSource3</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand2</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+          <Sort isList="true" count="2">
+            <value>ASC</value>
+            <value>Trs_No</value>
+          </Sort>
+        </DataBand2>
+        <Dataschattachglpaylists Ref="21" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,9.1,7.72,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <DataRelationName>Relation</DataRelationName>
+          <DataSourceName>schattachglpaylists</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>Dataschattachglpaylists</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+          <Sort isList="true" count="2">
+            <value>ASC</value>
+            <value>schattachglpayid</value>
+          </Sort>
+        </Dataschattachglpaylists>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>8038ee44c7ab4799b130ae92f225461c</Guid>
+      <Margins>0.39,0.39,0.39,0.39</Margins>
+      <Name>Page1</Name>
+      <PageHeight>11</PageHeight>
+      <PageWidth>8.5</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="22" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="23" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>schglpaydlyhdregcheck6</ReportAlias>
+  <ReportChanged>2/24/2016 5:41:19 PM</ReportChanged>
+  <ReportCreated>8/18/2013 8:22:02 AM</ReportCreated>
+  <ReportFile />
+  <ReportGuid>bc3c389861c7dc31e21d13ba22f0103a</ReportGuid>
+  <ReportName>schglpaydlyhdregcheck6</ReportName>
+  <ReportUnit>Inches</ReportUnit>
+  <ReportVersion>2016.3.1</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

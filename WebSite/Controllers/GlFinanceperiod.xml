@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="GlFinanceperiod" conflictDetection="overwriteChanges" label="Gl Financeperiod" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.GlFinanceperiodBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"GlFinanceperiod"."GlFinperiodID" "GlFinperiodID"
+	,"GlFinanceperiod"."Fin_period_info" "Fin_period_info"
+	,"GlFinanceperiod"."Fin_period_Strat" "Fin_period_Strat"
+	,"GlFinanceperiod"."Fin_period_end" "Fin_period_end"
+	,"GlFinanceperiod"."closedperiod" "closedperiod"
+	,"GlFinanceperiod"."accountnumber" "accountnumber"
+	,"accountnumber"."Acc_Nm" "accountnumberAcc_Nm"
+	,"accountnumberClsacc_"."Acc_Nm" "accountnumberClsacc_Acc_Nm"
+	,"accountnumberAcc_Bnd"."Acc_Nm" "accountnumberAcc_BndAcc_Nm"
+	,"accountnumberAcc_Bndaccclass"."accountclass" "accountnumberAcc_Bndaccclassaccountclass"
+	,"accountnumberAcc_BndAcc_Bab"."Acc_Nm" "accountnumberAcc_BndAcc_BabAcc_Nm"
+from "dbo"."GlFinanceperiod" "GlFinanceperiod"
+	left join "dbo"."GLmstrfl" "accountnumber" on "GlFinanceperiod"."accountnumber" = "accountnumber"."Acc_No"
+	left join "dbo"."GLmfbab" "accountnumberClsacc_" on "accountnumber"."Clsacc_No" = "accountnumberClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "accountnumberAcc_Bnd" on "accountnumber"."Acc_Bnd" = "accountnumberAcc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "accountnumberAcc_Bndaccclass" on "accountnumberAcc_Bnd"."accclass" = "accountnumberAcc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "accountnumberAcc_BndAcc_Bab" on "accountnumberAcc_Bnd"."Acc_Bab" = "accountnumberAcc_BndAcc_Bab"."Acc_Bab"
+]]></text>
+    </command>
+    <command id="GlFinperiodIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="GlFinperiodID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="GlFinperiodID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Gl Finperiod#" readOnly="true" />
+    <field name="Fin_period_info" type="String" label="Fin period info" length="150" showInSummary="true" />
+    <field name="Fin_period_Strat" type="DateTime" label="Fin period Strat" showInSummary="true" />
+    <field name="Fin_period_end" type="DateTime" label="Fin period end" showInSummary="true" />
+    <field name="closedperiod" type="Int64" default="((0))" label="Closedperiod" showInSummary="true" hidden="false" allowNulls="false">
+      <items style="CheckBox" />
+    </field>
+    <field name="accountnumber" type="Int64" label="Accountnumber" showInSummary="true" allowNulls="false">
+      <items style="Lookup" dataController="GLmstrfl" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="accountnumberAcc_Nm" type="String" readOnly="true" label="accountnumber Acc Nm" length="255" />
+    <field name="accountnumberClsacc_Acc_Nm" type="String" readOnly="true" label="accountnumber Clsacc Acc Nm" length="250" />
+    <field name="accountnumberAcc_BndAcc_Nm" type="String" readOnly="true" label="accountnumber Acc Bnd Acc Nm" length="50" />
+    <field name="accountnumberAcc_Bndaccclassaccountclass" type="String" readOnly="true" label="accountnumber Acc Bndaccclassaccountclass" length="100" />
+    <field name="accountnumberAcc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="accountnumber Acc Bnd Acc Bab Acc Nm" length="250" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Gl Financeperiod">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Fin_period_info" />
+        <dataField fieldName="Fin_period_Strat" columns="10" />
+        <dataField fieldName="Fin_period_end" columns="10" />
+        <dataField fieldName="closedperiod" columns="15" />
+        <dataField fieldName="accountnumber" aliasFieldName="accountnumberAcc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={accountnumber}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="accountnumberClsacc_Acc_Nm" />
+        <dataField fieldName="accountnumberAcc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="accountnumberAcc_Bndaccclassaccountclass" />
+        <dataField fieldName="accountnumberAcc_BndAcc_BabAcc_Nm" />
+        <dataField fieldName="GlFinperiodID" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Gl Financeperiod">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Gl Financeperiod" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Fin_period_info" />
+            <dataField fieldName="Fin_period_Strat" columns="10" />
+            <dataField fieldName="Fin_period_end" columns="10" />
+            <dataField fieldName="closedperiod" columns="15" />
+            <dataField fieldName="accountnumber" aliasFieldName="accountnumberAcc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={accountnumber}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="accountnumberClsacc_Acc_Nm" />
+            <dataField fieldName="accountnumberAcc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="accountnumberAcc_Bndaccclassaccountclass" />
+            <dataField fieldName="accountnumberAcc_BndAcc_BabAcc_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Gl Financeperiod">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Gl Financeperiod" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Fin_period_info" />
+            <dataField fieldName="Fin_period_Strat" columns="10" />
+            <dataField fieldName="Fin_period_end" columns="10" />
+            <dataField fieldName="closedperiod" columns="15" />
+            <dataField fieldName="accountnumber" aliasFieldName="accountnumberAcc_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+<action id="a101" commandName="SQL" headerText="open This Period" description="Open Period" confirmation="Are you sure To Open  This Period?" roles="ADMINGL,Administrators,Administrator">
+        <data><![CDATA[delete from GLjrnvchperiodf where GlFinperiodID = @GlFinperiodID
+update GlFinanceperiod set closedperiod=0 where GlFinperiodID = @GlFinperiodID
+]]></data>
+      </action>
+      <action id="a100" commandName="SQL" headerText="Close This Period" description="Close Period" confirmation="Are you sure To Close  This Period?" roles="ADMINGL,Administrators,Administrator">
+        <data><![CDATA[delete from GLjrnvchperiodf where GlFinperiodID = @GlFinperiodID
+update GlFinanceperiod set closedperiod=1 where GlFinperiodID = @GlFinperiodID
+INSERT INTO [GLjrnvchperiodf]([Jr_Ty],[Tr_No],[Tr_Dt],[Acc_No],[Tr_Db],[Tr_Cr],[Dc_No],[Tr_Ds],[Clsacc_No],[Costcntr_No],[Tr_Dsc1],[curno],[curprice],[curvalue],[cstyp_NO],[CSMSUP_NO],[sgm],[branch],[acdcode],[GlFinperiodID])
+SELECT [Jr_Ty],[Tr_No],[Tr_Dt],[Acc_No],[Tr_Db],[Tr_Cr],[Dc_No],[Tr_Ds],[Clsacc_No],[Costcntr_No],[Tr_Dsc1],[curno],[curprice],[curvalue],[cstyp_NO],[CSMSUP_NO],[sgm],[branch],[acdcode],[GlFinperiodID]  FROM [dbo].[QincomestatmentclosingTOT] where GlFinperiodID = @GlFinperiodID
+]]></data>
+      </action>
+    </actionGroup>
+  </actions>
+</dataController>

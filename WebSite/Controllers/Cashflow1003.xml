@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Cashflow1003" conflictDetection="overwriteChanges" label="Cashflow1003" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Cashflow1003"."Acc_No" "Acc_No"
+	,"Cashflow1003"."Acc_Nm" "Acc_Nm"
+	,"Cashflow1003"."Acc_Nme" "Acc_Nme"
+	,"Cashflow1003"."jr_ty" "jr_ty"
+	,"Cashflow1003"."Tr_no" "Tr_no"
+	,"Cashflow1003"."Transcr" "Transcr"
+	,"Cashflow1003"."Transdb" "Transdb"
+	,"Cashflow1003"."branch" "branch"
+	,"Cashflow1003"."acdcode" "acdcode"
+	,"Cashflow1003"."tr_cr" "tr_cr"
+	,"Cashflow1003"."Tr_db" "Tr_db"
+	,"Cashflow1003"."Tr_Dsc1" "Tr_Dsc1"
+	,"Cashflow1003"."Tr_Ds" "Tr_Ds"
+	,"Cashflow1003"."cstyp_NO" "cstyp_NO"
+	,"Cashflow1003"."CSMSUP_NO" "CSMSUP_NO"
+	,"Cashflow1003"."Tr_Dt" "Tr_Dt"
+	,"Cashflow1003"."Acc_no1" "Acc_no1"
+	,"Cashflow1003"."sgm" "sgm"
+from "dbo"."Cashflow1003" "Cashflow1003"
+]]></text>
+    </command>
+    <command id="branchIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="branch" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Acc_No" type="Int64" allowNulls="false" label="Acc No" showInSummary="true" />
+    <field name="Acc_Nm" type="String" label="Acc Nm" length="255" showInSummary="true" />
+    <field name="Acc_Nme" type="String" label="Acc Nme" length="255" showInSummary="true" />
+    <field name="jr_ty" type="Int64" label="Jr Ty" showInSummary="true" />
+    <field name="Tr_no" type="Int64" label="Tr no" showInSummary="true" />
+    <field name="Transcr" type="Decimal" label="Transcr" />
+    <field name="Transdb" type="Decimal" label="Transdb" />
+    <field name="branch" type="Int64" label="Branch" readOnly="true" />
+    <field name="acdcode" type="Int64" label="Acdcode" />
+    <field name="tr_cr" type="Decimal" label="Tr Cr" />
+    <field name="Tr_db" type="Decimal" label="Tr db" />
+    <field name="Tr_Dsc1" type="String" allowQBE="false" allowSorting="false" label="Tr Dsc1" length="-1" />
+    <field name="Tr_Ds" type="String" allowQBE="false" allowSorting="false" label="Tr Ds" length="-1" />
+    <field name="cstyp_NO" type="Int64" label="cstyp NO" />
+    <field name="CSMSUP_NO" type="Int64" label="Csmsup No" />
+    <field name="Tr_Dt" type="DateTime" label="Tr Dt" />
+    <field name="Acc_no1" type="Decimal" label="Acc no1" />
+    <field name="sgm" type="Int64" label="Sgm" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Cashflow1003">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Acc_No" columns="15" />
+        <dataField fieldName="Acc_Nm" />
+        <dataField fieldName="Acc_Nme" />
+        <dataField fieldName="jr_ty" columns="15" />
+        <dataField fieldName="Tr_no" columns="15" />
+        <dataField fieldName="Transcr" columns="15" />
+        <dataField fieldName="Transdb" columns="15" />
+        <dataField fieldName="branch" columns="15" />
+        <dataField fieldName="acdcode" columns="15" />
+        <dataField fieldName="tr_cr" columns="15" />
+        <dataField fieldName="Tr_db" columns="15" />
+        <dataField fieldName="Tr_Dsc1" rows="5" />
+        <dataField fieldName="Tr_Ds" rows="5" />
+        <dataField fieldName="cstyp_NO" columns="15" />
+        <dataField fieldName="CSMSUP_NO" columns="15" />
+        <dataField fieldName="Tr_Dt" columns="10" />
+        <dataField fieldName="Acc_no1" columns="15" />
+        <dataField fieldName="sgm" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Cashflow1003">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Cashflow1003" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="Acc_Nm" />
+            <dataField fieldName="Acc_Nme" />
+            <dataField fieldName="jr_ty" columns="15" />
+            <dataField fieldName="Tr_no" columns="15" />
+            <dataField fieldName="Transcr" columns="15" />
+            <dataField fieldName="Transdb" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="tr_cr" columns="15" />
+            <dataField fieldName="Tr_db" columns="15" />
+            <dataField fieldName="Tr_Dsc1" rows="5" />
+            <dataField fieldName="Tr_Ds" rows="5" />
+            <dataField fieldName="cstyp_NO" columns="15" />
+            <dataField fieldName="CSMSUP_NO" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="Acc_no1" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Cashflow1003">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Cashflow1003" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="Acc_Nm" />
+            <dataField fieldName="Acc_Nme" />
+            <dataField fieldName="jr_ty" columns="15" />
+            <dataField fieldName="Tr_no" columns="15" />
+            <dataField fieldName="Transcr" columns="15" />
+            <dataField fieldName="Transdb" columns="15" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="tr_cr" columns="15" />
+            <dataField fieldName="Tr_db" columns="15" />
+            <dataField fieldName="Tr_Dsc1" rows="5" />
+            <dataField fieldName="Tr_Ds" rows="5" />
+            <dataField fieldName="cstyp_NO" columns="15" />
+            <dataField fieldName="CSMSUP_NO" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="Acc_no1" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

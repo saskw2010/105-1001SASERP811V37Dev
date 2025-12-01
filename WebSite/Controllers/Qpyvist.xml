@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Qpyvist" conflictDetection="overwriteChanges" label="Qpyvist" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Qpyvist"."Emp_No" "Emp_No"
+	,"Qpyvist"."Work_Spcl" "Work_Spcl"
+	,"Qpyvist"."Emp_Nm" "Emp_Nm"
+	,"Qpyvist"."Emp_Nme" "Emp_Nme"
+	,"Qpyvist"."Pasprt_No" "Pasprt_No"
+	,"Qpyvist"."Cntry_No" "Cntry_No"
+	,"Qpyvist"."Cntry_Nm" "Cntry_Nm"
+	,"Qpyvist"."Resd_NO" "Resd_NO"
+	,"Qpyvist"."Resd_Sdt" "Resd_Sdt"
+	,"Qpyvist"."Resd_Edt" "Resd_Edt"
+	,"Qpyvist"."Work_Nots" "Work_Nots"
+	,"Qpyvist"."Depm_No" "Depm_No"
+	,"Qpyvist"."Depm_Nm" "Depm_Nm"
+	,"Qpyvist"."Job_Nm" "Job_Nm"
+	,"Qpyvist"."Entr_dt" "Entr_dt"
+	,"Qpyvist"."Resp" "Resp"
+	,"Qpyvist"."viscost" "viscost"
+	,"Qpyvist"."visapp" "visapp"
+	,"Qpyvist"."IDORG" "IDORG"
+	,"Qpyvist"."Name" "Name"
+	,"Qpyvist"."Org Name (A)" "OrgNameA"
+	,"Qpyvist"."OrgName" "OrgName"
+	,"Qpyvist"."visaname" "visaname"
+	,"Qpyvist"."flagevisa" "flagevisa"
+	,"Qpyvist"."Depm_Nme" "Depm_Nme"
+	,"Qpyvist"."Depm_Lic" "Depm_Lic"
+	,"Qpyvist"."Civl_No" "Civl_No"
+from "dbo"."Qpyvist" "Qpyvist"
+]]></text>
+    </command>
+    <command id="Cntry_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Cntry_No" />
+      </output>
+    </command>
+    <command id="Depm_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Depm_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Emp_No" type="Int64" label="Emp No" showInSummary="true" />
+    <field name="Work_Spcl" type="String" label="Work Spcl" length="50" showInSummary="true" />
+    <field name="Emp_Nm" type="String" label="Emp Nm" length="100" showInSummary="true" />
+    <field name="Emp_Nme" type="String" label="Emp Nme" length="100" showInSummary="true" />
+    <field name="Pasprt_No" type="String" label="Pasprt No" length="50" showInSummary="true" />
+    <field name="Cntry_No" type="Int64" label="Cntry No" readOnly="true" />
+    <field name="Cntry_Nm" type="String" label="Cntry Nm" length="255" />
+    <field name="Resd_NO" type="String" label="Resd NO" length="50" />
+    <field name="Resd_Sdt" type="DateTime" label="Resd Sdt" />
+    <field name="Resd_Edt" type="DateTime" label="Resd Edt" />
+    <field name="Work_Nots" type="String" label="Work Nots" length="255" />
+    <field name="Depm_No" type="Int64" label="Depm No" readOnly="true" />
+    <field name="Depm_Nm" type="String" label="Depm Nm" length="255" />
+    <field name="Job_Nm" type="String" label="Job Nm" length="255" />
+    <field name="Entr_dt" type="DateTime" label="Entr dt" />
+    <field name="Resp" type="String" label="Resp" length="255" />
+    <field name="viscost" type="Decimal" label="Viscost" />
+    <field name="visapp" type="Int64" label="Visapp" />
+    <field name="IDORG" type="Double" label="Idorg" />
+    <field name="Name" type="String" label="Name" length="255" />
+    <field name="OrgNameA" type="String" label="Org Name A" length="255" />
+    <field name="OrgName" type="String" label="Org Name" length="255" />
+    <field name="visaname" type="String" label="Visaname" length="50" />
+    <field name="flagevisa" type="Int64" label="Flagevisa" />
+    <field name="Depm_Nme" type="String" label="Depm Nme" length="255" />
+    <field name="Depm_Lic" type="String" label="Depm Lic" length="15" />
+    <field name="Civl_No" type="String" label="Civl No" length="15" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Qpyvist">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Emp_No" columns="15" />
+        <dataField fieldName="Work_Spcl" columns="50" />
+        <dataField fieldName="Emp_Nm" />
+        <dataField fieldName="Emp_Nme" />
+        <dataField fieldName="Pasprt_No" columns="50" />
+        <dataField fieldName="Cntry_No" columns="15" />
+        <dataField fieldName="Cntry_Nm" />
+        <dataField fieldName="Resd_NO" columns="50" />
+        <dataField fieldName="Resd_Sdt" columns="10" />
+        <dataField fieldName="Resd_Edt" columns="10" />
+        <dataField fieldName="Work_Nots" />
+        <dataField fieldName="Depm_No" columns="15" />
+        <dataField fieldName="Depm_Nm" />
+        <dataField fieldName="Job_Nm" />
+        <dataField fieldName="Entr_dt" columns="10" />
+        <dataField fieldName="Resp" />
+        <dataField fieldName="viscost" dataFormatString="c" columns="15" />
+        <dataField fieldName="visapp" columns="15" />
+        <dataField fieldName="IDORG" columns="15" />
+        <dataField fieldName="Name" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Qpyvist">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Qpyvist" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_No" columns="15" />
+            <dataField fieldName="Work_Spcl" columns="50" />
+            <dataField fieldName="Emp_Nm" />
+            <dataField fieldName="Emp_Nme" />
+            <dataField fieldName="Pasprt_No" columns="50" />
+            <dataField fieldName="Cntry_No" columns="15" />
+            <dataField fieldName="Cntry_Nm" />
+            <dataField fieldName="Resd_NO" columns="50" />
+            <dataField fieldName="Resd_Sdt" columns="10" />
+            <dataField fieldName="Resd_Edt" columns="10" />
+            <dataField fieldName="Work_Nots" />
+            <dataField fieldName="Depm_No" columns="15" />
+            <dataField fieldName="Depm_Nm" />
+            <dataField fieldName="Job_Nm" />
+            <dataField fieldName="Entr_dt" columns="10" />
+            <dataField fieldName="Resp" />
+            <dataField fieldName="viscost" dataFormatString="c" columns="15" />
+            <dataField fieldName="visapp" columns="15" />
+            <dataField fieldName="IDORG" columns="15" />
+            <dataField fieldName="Name" />
+            <dataField fieldName="OrgNameA" />
+            <dataField fieldName="OrgName" />
+            <dataField fieldName="visaname" columns="50" />
+            <dataField fieldName="flagevisa" columns="15" />
+            <dataField fieldName="Depm_Nme" />
+            <dataField fieldName="Depm_Lic" columns="15" />
+            <dataField fieldName="Civl_No" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Qpyvist">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Qpyvist" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_No" columns="15" />
+            <dataField fieldName="Work_Spcl" columns="50" />
+            <dataField fieldName="Emp_Nm" />
+            <dataField fieldName="Emp_Nme" />
+            <dataField fieldName="Pasprt_No" columns="50" />
+            <dataField fieldName="Cntry_Nm" />
+            <dataField fieldName="Resd_NO" columns="50" />
+            <dataField fieldName="Resd_Sdt" columns="10" />
+            <dataField fieldName="Resd_Edt" columns="10" />
+            <dataField fieldName="Work_Nots" />
+            <dataField fieldName="Depm_Nm" />
+            <dataField fieldName="Job_Nm" />
+            <dataField fieldName="Entr_dt" columns="10" />
+            <dataField fieldName="Resp" />
+            <dataField fieldName="viscost" dataFormatString="c" columns="15" />
+            <dataField fieldName="visapp" columns="15" />
+            <dataField fieldName="IDORG" columns="15" />
+            <dataField fieldName="Name" />
+            <dataField fieldName="OrgNameA" />
+            <dataField fieldName="OrgName" />
+            <dataField fieldName="visaname" columns="50" />
+            <dataField fieldName="flagevisa" columns="15" />
+            <dataField fieldName="Depm_Nme" />
+            <dataField fieldName="Depm_Lic" columns="15" />
+            <dataField fieldName="Civl_No" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

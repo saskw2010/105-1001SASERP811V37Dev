@@ -1,0 +1,5 @@
+# Background Jobs / Schedules
+
+- No Windows service or scheduler detected in repo.
+- Session-based OnlineActiveUsers update on Session_End.
+- Report/image generation via handlers (ChartImg.axd, Report.ashx) are request-driven.

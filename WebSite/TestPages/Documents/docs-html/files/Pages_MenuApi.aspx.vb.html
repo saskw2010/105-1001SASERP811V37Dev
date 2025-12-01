@@ -1,0 +1,32 @@
+﻿<div class="doc-banner">
+  <span class="crumbs">files â€؛ Pages_MenuApi.aspx.vb</span>
+  <a class="source" href="Pages_MenuApi.aspx.vb.md.txt" target="_blank" rel="noopener">View source (.md)</a>
+</div>
+<div class="doc-body">
+<h1>File: Pages/MenuApi.aspx.vb</h1>
+<ul>
+<li>WebMethod GetMenuTree(): returns {version, items[]} where items are MenuNodeDto built from Web.sitemap.</li>
+<li>Trims by user access (IsAccessibleToUser).</li>
+<li>CacheDependency on web.sitemap; per-user cache key; 2-4h TTL.</li>
+<li>Node fields: Title, Url, BadgeText, BadgeType, Icon, Children[].</li>
+<h3 id="function-GetMenuTree">Function: GetMenuTree</h3>
+<li>Signature: <WebMethod()> Public Shared Function GetMenuTree() As Object</li>
+<li>Purpose: Return the menu JSON for the current user.</li>
+<li>Returns: { version As String, items As List(Of MenuNodeDto) }</li>
+<li>Calls: GetMenuVersion(HttpContext), BuildNode(SiteMapNode, HttpContext)</li>
+<li>Called by: POST /Pages/MenuApi.aspx/GetMenuTree</li>
+<h3 id="function-BuildNode">Function: BuildNode</h3>
+<li>Signature: Private Shared Function BuildNode(node As SiteMapNode, ctx As HttpContext) As MenuNodeDto</li>
+<li>Purpose: Convert a SiteMapNode to MenuNodeDto, recursively.</li>
+<li>Calls: SafeAttr(SiteMapNode, String)</li>
+<li>Called by: GetMenuTree()</li>
+<h3 id="function-GetMenuVersion">Function: GetMenuVersion</h3>
+<li>Signature: Private Shared Function GetMenuVersion(ctx As HttpContext) As String</li>
+<li>Purpose: Create a version string for cache invalidation.</li>
+<li>Called by: GetMenuTree()</li>
+<h3 id="function-SafeAttr">Function: SafeAttr</h3>
+<li>Signature: Private Shared Function SafeAttr(n As SiteMapNode, key As String) As String</li>
+<li>Purpose: Safely read node attributes.</li>
+<li>Called by: BuildNode()</li>
+
+</div>

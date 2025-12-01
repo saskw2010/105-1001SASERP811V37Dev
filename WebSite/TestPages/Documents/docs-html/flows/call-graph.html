@@ -1,0 +1,32 @@
+﻿<div class="doc-banner">
+  <span class="crumbs">flows â€؛ call-graph</span>
+  <a class="source" href="call-graph.md.txt" target="_blank" rel="noopener">View source (.md)</a>
+</div>
+<div class="doc-body">
+<h1>Flows and Call Graph (Initial)</h1>
+<ul>
+<li>Global.asax: ApplicationServices.Initialize(); Session hooks</li>
+<li>Master pages: Main.master, UniversalNavMaster.master (layout, menu)</li>
+<li>Default.aspx (home)</li>
+<li>Services/DataControllerService.asmx (ScriptService WebMethods)</li>
+<li>Pages/MenuApi.aspx (WebMethod GetMenuTree)</li>
+<li>Numerous ASPX/ASCX pages under Pages/ with code-behind events</li>
+<li>Request -> Global.asax -> Authenticate (Forms) -> Authorization (<location>) -> Master Page Init/Load -> Page_Init/Page_Load -> controls lifecycle -> render -> client JS</li>
+<li>Client click toggle -> js/modern-menu-once.js -> POST /Pages/MenuApi.aspx/GetMenuTree -> MenuApi.GetMenuTree() -> SiteMap.RootNode children -> BuildNode() recursive -> CacheDependency(web.sitemap) -> JSON -> renderTree()</li>
+<li>Client script -> ASMX -> ControllerFactory.* -> eZee.Data controllers -> DB</li>
+<li>Global.asax</li>
+<li>Application_Start -> eZee.Services.ApplicationServices.Initialize()</li>
+<li>Session_Start -> Session.Add("wcp","started")</li>
+<li>Session_End -> OnlineActiveUsers.OnlineUsersInstance.OnlineUsers.UpdateForUserLeave()</li>
+<li>Pages/MenuApi.aspx.vb</li>
+<li>GetMenuTree() -> GetMenuVersion(HttpContext) -> BuildNode(SiteMapNode, HttpContext) -> SafeAttr(node, key)</li>
+<li>App_Code/Services/DataControllerService.vb</li>
+<li>GetPage/GetListOfValues/Execute -> ControllerFactory.CreateDataController()</li>
+<li>GetCompletionList -> ControllerFactory.CreateAutoCompleteManager()</li>
+<li>Login/Logout/Roles -> ApplicationServices.*</li>
+<li>In every per-file doc under /docs/files/*.md, add sections using "### Function: <Name>".</li>
+<li>The builder outputs anchors id="function-<Name>" in the HTML mirrors.</li>
+<li>In flows, provide a fallback "Function Links" table under each diagram with columns: Node, File, Function, Link.</li>
+<li>Update search.json to include function-level entries so users can jump directly to a function via search.</li>
+
+</div>

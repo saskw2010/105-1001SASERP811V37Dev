@@ -1,0 +1,871 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="schvchdlyhdreg1001" label="schvchdlyhdreg1001" conflictDetection="overwriteChanges" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.schvchdlyhdreg1001BusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text" tableName="schvchdlyhdreg" custom="true">
+      <text><![CDATA[
+
+SELECT 
+               schvchdlyhdreg.schpaymenttypeid,
+               schvchdlyhdreg.schvchdlyhdregid, schvchdlyhdreg.sgm, sgm.sgm_Nm AS sgmsgm_Nm, sgmOpco.OpcoName AS sgmOpcoOpcoName, schvchdlyhdreg.Trs_Dt, 
+               schvchdlyhdreg.Balance, schvchdlyhdreg.ReferanceNo, schvchdlyhdreg.IDregorg, schvchdlyhdreg.IDregorg AS IDregorglookup, 
+               schvchdlyhdreg.IDregorg AS IDregorgsearch, IDregorg.NAME_1 AS IDregorgNAME_1, schvchdlyhdreg.Delevername, schvchdlyhdreg.Delevercivil, 
+               schvchdlyhdreg.DeleverTel, schvchdlyhdreg.Notes, schvchdlyhdreg.approved, schvchdlyhdreg.posted, schvchdlyhdreg.deleted, schvchdlyhdreg.havdetails, 
+               schvchdlyhdreg.branch, Thebranch.Desc1 AS ThebranchDesc1, Thebranchsgm.sgm_Nm AS Thebranchsgmsgm_Nm, 
+               ThebranchsgmOpco.OpcoName AS ThebranchsgmOpcoOpcoName, ThebranchGender.Gender AS ThebranchGenderGender, 
+               Thebranchstage.ShortDesc1 AS ThebranchstageShortDesc1, Thebranchschtyp.schtypDesc AS ThebranchschtypschtypDesc, schvchdlyhdreg.ModifiedBy, 
+               schvchdlyhdreg.ModifiedOn, schvchdlyhdreg.CreatedBy, schvchdlyhdreg.CreatedOn, dbo.Qschvchdlydetailreg1002.countofdetails, 
+               dbo.Qschvchdlydetailreg1002.countofpayments, dbo.Qschvchdlydetailreg1002.studentlist, schvchdlyhdreg.acdcode, dbo.schAcademicyear.AcademicYear, 
+               dbo.schAcademicyear.startdate, dbo.schAcademicyear.enddate, dbo.schAcademicyear.GlFinperiodID, dbo.schAcademicyear.startdatein, 
+               dbo.schAcademicyear.startdatepaystart, schvchdlyhdreg.rosom, schvchdlyhdreg.Bookrosom, schvchdlyhdreg.Transportation, schvchdlyhdreg.rosomregister, 
+               schvchdlyhdreg.Cash, schvchdlyhdreg.keynet, schvchdlyhdreg.transno, schvchdlyhdreg.checkvalue, schvchdlyhdreg.checknumber, schvchdlyhdreg.TRANSFER, 
+               schvchdlyhdreg.DISTRIBUTION, schvchdlyhdreg.Sumofdebitcal1, schvchdlyhdreg.Sumofcerditcal, schvchdlyhdreg.totalbalance1,schvchdlyhdreg.auditnotes,
+	           schvchdlyhdreg.auditing, schvchdlyhdreg.moneypaidto, schvchdlyhdreg.checkdate,
+               schvchdlyhdreg.sumofdebit, schvchdlyhdreg.Pymnt_No, schvchdlyhdreg.schBnk_No, schvchdlyhdreg.checkAccount ,schvchdlyhdreg.disrosom , schvchdlyhdreg.distrans
+FROM  dbo.schvchdlyhdreg AS schvchdlyhdreg LEFT OUTER JOIN
+               dbo.schAcademicyear ON schvchdlyhdreg.acdcode = dbo.schAcademicyear.Code LEFT OUTER JOIN
+               dbo.Qschvchdlydetailreg1002 ON schvchdlyhdreg.schvchdlyhdregid = dbo.Qschvchdlydetailreg1002.schvchdlyhdregid LEFT OUTER JOIN
+               dbo.glmulcmp AS sgm ON schvchdlyhdreg.sgm = sgm.sgmid LEFT OUTER JOIN
+               dbo.OpCo AS sgmOpco ON sgm.OpcoID = sgmOpco.OpcoIDidentity LEFT OUTER JOIN
+               dbo.REG_ORGANIZATIONS AS IDregorg ON schvchdlyhdreg.IDregorg = IDregorg.IDIDregorg LEFT OUTER JOIN
+               dbo.schBranch AS Thebranch ON schvchdlyhdreg.branch = Thebranch.branch LEFT OUTER JOIN
+               dbo.glmulcmp AS Thebranchsgm ON Thebranch.sgm = Thebranchsgm.sgmid LEFT OUTER JOIN
+               dbo.OpCo AS ThebranchsgmOpco ON Thebranchsgm.OpcoID = ThebranchsgmOpco.OpcoIDidentity LEFT OUTER JOIN
+               dbo.PyGender AS ThebranchGender ON Thebranch.Genderid = ThebranchGender.Genderid LEFT OUTER JOIN
+               dbo.schStage AS Thebranchstage ON Thebranch.stagecode = Thebranchstage.Code LEFT OUTER JOIN
+               dbo.schtyp AS Thebranchschtyp ON Thebranch.schtypid = Thebranchschtyp.schtypid]]></text>
+    </command>
+    <command id="schvchdlyhdregidIdentityCommand" type="Text" event="Inserted" tableName="schvchdlyhdreg" custom="true">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="schvchdlyhdregid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+
+
+<field name="schpaymenttypeid" type="Int64"  label="schpaymenttypeid" >
+      <items style="DropDownList" dataController="schpaymenttype1001" newDataView="createForm1" searchOnStart="true"   />
+    </field>
+    <field name="schvchdlyhdregid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Schvchdlyhdregid" readOnly="true" />
+    <field name="sgm" type="Int64" allowNulls="false" label="Sgm" showInSummary="true" allowLEV="true">
+      <items style="DropDownList" dataController="glmulcmp" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="sgm_Nm" dataValueField="sgm" />
+    </field>
+    <field name="sgmsgm_Nm" type="String" readOnly="true" label="sgmsgm Nm" length="255" />
+    <field name="sgmOpcoOpcoName" type="String" readOnly="true" label="sgm Opco Name" length="50" />
+    <field name="Trs_Dt" type="DateTime" default="(getdate())" label="Trs Dt" showInSummary="true" />
+    <field name="Balance" type="Decimal" label="Balance" showInSummary="true" />
+    <field name="ReferanceNo" type="Int64" label="Referance No" showInSummary="true" contextFields="sgm,branch,Trs_Dt" calculated="true" allowNulls="false" maskType="Number" />
+    <field name="IDregorg" type="Int64" label="fathfirstname1" >
+      <items style="Lookup" dataController="schFather1001" searchOnStart="true" dataView="Grid2" dataTextField="fathfirstname1" dataValueField="FatherCode" copy="Delevername=fathfirstname1&#xD;&#xA;Delevercivil=fathCivilidNumber&#xD;&#xA;DeleverTel=FatherCode" />
+    </field>
+    <field name="IDregorgNAME_1" type="String" readOnly="true" label="I Dregorg NAME 1" length="10" />
+    <field name="DeleverTel" type="Int64" label="FatherCode" allowNulls="false" length="10"/>
+    <field name="Delevername" type="String" label="fathername" length="50"   contextFields="DeleverTel,Delevercivil,IDregorg"  calculated="true" />
+    <field name="Delevercivil" type="String" allowQBE="true" allowSorting="true" label="Delevercivil"  length="50"/>
+    <field name="Notes" type="String" label="Notes"  contextFields="schvchdlydetailreg,schvchdlydetailpayment" />
+    <field name="approved" type="Boolean" default="((0))" label="Approved" />
+    <field name="posted" type="Boolean" default="((0))" label="Posted" />
+    <field name="deleted" type="Boolean" default="((0))" label="Deleted" />
+    <field name="havdetails" type="Boolean" default="((0))" label="Havdetails" />
+    <field name="branch" type="Int64" allowNulls="false" label="Branch" showInSummary="true" allowLEV="true">
+      <items style="DropDownList" dataController="schBranch" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Desc1" copy="sgm=sgm" dataValueField="branch" />
+    </field>
+    <field name="ThebranchDesc1" type="String" readOnly="true" label="Thebranch Desc1" length="50" />
+    <field name="Thebranchsgmsgm_Nm" type="String" readOnly="true" label="Thebranchsgmsgm Nm" length="255" />
+    <field name="ThebranchsgmOpcoOpcoName" type="String" readOnly="true" label="Thebranchsgm Opco Name" length="50" />
+    <field name="ThebranchGenderGender" type="String" readOnly="true" label="Thebranch Gender" length="100" />
+    <field name="ThebranchstageShortDesc1" type="String" readOnly="true" label="Thebranchstage Short Desc1" length="50" />
+    <field name="ThebranchschtypschtypDesc" type="String" readOnly="true" label="Thebranchschtypschtyp Desc" length="150" />
+    <field name="acdcode" type="Int64" allowNulls="false"  label="Acdcode" allowLEV="true">
+      <items style="DropDownList" dataController="schAcademicyear" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="acdGlFinperiodFin_period_info" type="String" readOnly="true" label="acd Gl Finperiod Fin period info" length="150" />
+    <field name="acdGlFinperiodaccountnumberAcc_Nm" type="String" readOnly="true" label="acd Gl Finperiodaccountnumber Acc Nm" length="255" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="auditing" type="Boolean" label="Auditing" />
+    <field name="auditnotes" type="String" allowQBE="false" allowSorting="false" label="Auditnotes" length="-1" />
+    <field name="sumofdebit" type="Decimal" label="Sumofdebit" contextFields="schvchdlydetailreg1001,schvchdlydetailpayment1001,IDregorg">
+      <formula>select count(*) from schvchdlydetailreg where schvchdlyhdregid=@schvchdlyhdregid  and acdcode=@acdcode</formula>
+    </field>
+    <field name="countofdetails" type="Int64" readOnly="true" label="countofdetails" hidden="false">
+      <items letters="false" />
+      <formula />
+    </field>
+    <field name="countofpayments" type="Int64" readOnly="true" label="countofpayments" hidden="false">
+      <items letters="false" />
+      <formula />
+    </field>
+    <field name="studentlist" type="String" readOnly="true" label="studentlist" hidden="false" >
+      <items letters="false" />
+    </field>
+    <field name="AcademicYear" type="String" readOnly="true" label="AcademicYear" hidden="false">
+      <items letters="false" />
+    </field>
+    <field name="rosom" type="Decimal" label="Rosom" allowNulls="false" contextFields="transno"  calculated="true" />
+    <field name="Bookrosom" type="Decimal" label="Bookrosom" allowNulls="false" />
+    <field name="Transportation" type="Decimal" label="Transportation" allowNulls="false"  contextFields="totalbalance1"  calculated="true" />
+    <field name="rosomregister" type="Decimal" label="Rosomregister" allowNulls="false" />
+    <field name="Cash" type="Decimal" label="Cash" />
+    <field name="keynet" type="Decimal" label="Keynet" />
+    <field name="transno" type="Int64" label="Transnoforyear" >
+ <items style="DropDownList" dataController="transnolist"   />
+    </field>
+	
+    <field name="disrosom" type="Decimal" label="disrosom" default="((0))" />
+    <field name="distrans" type="Decimal" label="distrans" default="((0))" />	
+	
+    <field name="checkvalue" type="Decimal" label="Checkvalue" />
+    <field name="checknumber" type="Decimal" label="Checknumber" />
+    <field name="TRANSFER" type="Decimal" label="Transfer" />
+    <field name="DISTRIBUTION" type="Decimal" label="Distribution" />
+    <field name="Sumofdebitcal1" type="Decimal" label="Sumofdebitcal1" />
+    <field name="Sumofcerditcal" type="Decimal" label="Sumofcerditcal" />
+    <field name="totalbalance1" type="Decimal" label="Totalbalance1" contextFields="rosom,Transportation"  calculated="true" />
+   
+    <field name="Pymnt_No" type="Int64" allowNulls="false" label="Pymnt No" showInSummary="true"  >
+      <items style="DropDownList" dataController="Pymntype" newDataView="createForm1" searchOnStart="true" />
+    </field>
+<field name="schBnk_No" type="Int64" label="sch Bnk No">
+      <items style="DropDownList" dataController="schGLacnBnk" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="checkAccount" type="String" label="check Account" length="50" />
+    <field name="moneypaidto" type="Decimal" label="Moneypaidto"  contextFields="rosom,Bookrosom,rosomregister,Transportation,transno"  calculated="true" />
+    <field name="checkdate" type="DateTime" label="Checkdate" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Schvchdlyhdreg" sortExpression="schvchdlyhdregid Desc" filter="approved='False' and CreatedBy= @BusinessRules_UserName ">
+      <headerText />
+      <dataFields>
+         <dataField fieldName="schvchdlyhdregid" />
+        <dataField fieldName="Trs_Dt" columns="10" textMode="Static" />
+        <dataField fieldName="Balance" columns="15" textMode="Static"  />
+        <dataField fieldName="ReferanceNo" columns="10" />
+        <dataField fieldName="IDregorg" hidden="true"/>
+        <dataField fieldName="Delevername" columns="50"/>
+        <dataField fieldName="Delevercivil" columns="50" hidden="true"/>
+        <dataField fieldName="DeleverTel" columns="50" />
+        <dataField fieldName="Notes" />
+        <dataField fieldName="approved" />
+        <dataField fieldName="posted"  hidden="true"/>
+        <dataField fieldName="deleted"  hidden="true"/>
+        <dataField fieldName="havdetails"  hidden="true"/>
+        <dataField fieldName="ModifiedBy" columns="50" hidden="true"/>
+        <dataField fieldName="ModifiedOn" columns="10" hidden="true"/>
+        <dataField fieldName="CreatedBy" columns="50"  />
+        <dataField fieldName="CreatedOn" columns="10"  hidden="true"/>
+        <dataField fieldName="auditing"  hidden="true"/>
+        <dataField fieldName="countofdetails" columns="15"  hidden="true"/>
+        <dataField fieldName="countofpayments" columns="15"  hidden="true"/>
+        <dataField fieldName="acdcode"  aliasFieldName="AcademicYear"/>
+        <dataField fieldName="AcademicYear" hidden="true"/>
+		<dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm"  hidden="true"/>
+		<dataField fieldName="sgmsgm_Nm" hidden="true"/>
+		<dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hidden="true"/>
+		<dataField fieldName="ThebranchDesc1" hidden="true"/>
+		<dataField fieldName="disrosom" />
+		<dataField fieldName="distrans" hidden="true" />	  
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Schvchdlyhdreg">
+     
+      <categories>
+        <category id="c1" newColumn="true">
+          
+          <dataFields>
+            <dataField fieldName="acdcode" textMode="Static"/>
+            <dataField fieldName="schvchdlyhdregid"  />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />         
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" hidden="true" />
+	        <dataField fieldName="approved" hidden="true" />
+            <dataField fieldName="Trs_Dt" columns="10" textMode="Text" />
+            <dataField fieldName="ReferanceNo" textMode="Static"/>
+            <dataField fieldName="IDregorg" />
+            <dataField fieldName="DeleverTel" columns="5" />
+            <dataField fieldName="Delevercivil" />
+            <dataField fieldName="Delevername"  />
+            <dataField fieldName="DISTRIBUTION"  />
+            <dataField fieldName="Notes"   />
+            <dataField fieldName="deleted" hidden="true" />
+            <dataField fieldName="sumofdebit"  columns="5" hidden="true" />
+          </dataFields>
+        </category>
+        <category id="c3" newColumn="true">
+          <dataFields>
+             <dataField fieldName="transno" columns="15" />
+			
+			<dataField fieldName="totalbalance1" columns="15" />
+			<dataField fieldName="Transportation" columns="15" />
+            <dataField fieldName="rosom" columns="15" />
+            <dataField fieldName="Bookrosom" columns="15" hidden="true" />
+           
+            <dataField fieldName="rosomregister" columns="15" hidden="true" />
+            <dataField fieldName="schpaymenttypeid" />
+            <dataField fieldName="Pymnt_No" columns="15" />
+            <dataField fieldName="moneypaidto" columns="15"  textMode="Static" />
+            <dataField fieldName="checkAccount" columns="50" hidden="true" />
+            <dataField fieldName="schBnk_No" columns="15" />
+            <dataField fieldName="checkdate" columns="10" hidden="true" />
+            <dataField fieldName="checknumber" columns="15" />
+            <dataField fieldName="Balance" columns="15"   />
+			<dataField fieldName="disrosom"   />
+			<dataField fieldName="distrans" hidden="true"  />	
+ <dataField fieldName="CreatedBy" columns="50"  hidden="true" />
+          </dataFields>
+        </category>
+        
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Schvchdlyhdreg">
+     
+      <categories>
+        <category id="c1" newColumn="true">
+         
+          <dataFields>
+            <dataField fieldName="acdcode" textMode="Static"/>
+            <dataField fieldName="schvchdlyhdregid" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" textMode="Static" />
+            <dataField fieldName="IDregorg" aliasFieldName="IDregorgNAME_1" />
+            <dataField fieldName="Balance" columns="15" textMode="Static" />
+            <dataField fieldName="auditing" />
+            <dataField fieldName="auditnotes" rows="5" />
+            <dataField fieldName="deleted" hidden="true" />
+            <dataField fieldName="havdetails" hidden="true" />
+            <dataField fieldName="approved" hidden="true" />
+			 <dataField fieldName="CreatedBy" columns="50"  hidden="true" />	  
+				  <dataField fieldName="disrosom" />
+				  <dataField fieldName="distrans" hidden="true" />	
+          </dataFields>
+        </category>
+        <category id="c3" newColumn="true">
+          <dataFields>
+          
+            <dataField fieldName="Trs_Dt" columns="10" textMode="Text" />
+            <dataField fieldName="ReferanceNo" columns="10"  />
+            <dataField fieldName="DeleverTel" columns="12" />
+            <dataField fieldName="Delevercivil" rows="5" />
+            <dataField fieldName="Delevername" columns="50" />
+            <dataField fieldName="Notes" rows="1" columns="50" />
+            <dataField fieldName="sumofdebit" dataFormatString="n3" columns="15" textMode="Static" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="grid2" commandId="command1" type="Grid" label="grid2" filter="(approved='True' and havdetails='True' and posted='True' )&#xD;&#xA;">
+      <dataFields>
+        <dataField fieldName="schvchdlyhdregid" />
+        <dataField fieldName="Trs_Dt" columns="10" textMode="Static" />
+        <dataField fieldName="Balance" dataFormatString="n3" columns="15" textMode="Static" />
+        <dataField fieldName="Notes" />
+        <dataField fieldName="approved" />
+        <dataField fieldName="posted" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="sumofdebit" textMode="Static" />
+			  
+				  <dataField fieldName="disrosom"  />
+				  <dataField fieldName="distrans" hidden="true" />	
+      </dataFields>
+    </view>
+    <view id="GRIDALL" commandId="command1" type="Grid" label="GRIDALL" baseViewId="grid1" filter="(approved='True')&#xD;&#xA;"/>
+    <view id="chartcollection" commandId="command1" type="Chart" label="chartcollection" legend="true">
+      <dataFields>
+        <dataField fieldName="Balance" aggregate="Sum" chart="Bar-Cylinder" />
+        <dataField fieldName="ThebranchDesc1" chart="XValue" />
+      </dataFields>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" roles="Administrators,Administrator,Cashierauditer" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+      <action commandName="Custom" commandArgument="FullDuplicatewithDetails" headerText="FullDuplicatewithDetails" confirmation="Are you sure you want to duplicate ?" id="a100" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+<action id="ax4" whenLastCommandName="Edit" commandName="SQL"  cssClass="NewIcon" headerText="خصم للاب">
+<data><![CDATA[
+update schFather set discountamount=@DISTRIBUTION where schFather.FatherCode=@DeleverTel
+update schFather set pervbalance=@disrosom where schFather.FatherCode=@DeleverTel
+--update schvchdlydetailreg set Sumofdebitcal1=Sumofdebitcal1-@DISTRIBUTION where schvchdlydetailreg.FatherCode=@DeleverTel and schpaymenttypeid=2
+   ]]></data>
+      </action>
+	
+ 	  <action id="a14" whenLastCommandName="Edit" commandName="Update"  commandArgument="SQLnew"  headerText="سند جديد لنفس الاب"/>
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="ok"/>
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Edit" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+	
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+
+     <action id="a1" commandName="SQL" commandArgument="editForm1" cssClass="NewIcon" headerText="Newwitnumber">
+        <data><![CDATA[
+		INSERT INTO [dbo].[schvchdlyhdreg]
+           ([sgm]
+           ,[Trs_Dt]
+           ,[Balance]
+           ,[ReferanceNo]
+           ,[IDregorg]
+           ,[Delevername]
+           ,[Delevercivil]
+           ,[DeleverTel]
+           ,[Notes]
+           ,[approved]
+           ,[posted]
+           ,[deleted]
+           ,[havdetails]
+           ,[branch]
+           ,[acdcode]
+            ,[CreatedBy]
+           ,[CreatedOn]
+           )
+values(1,getdate(),0 ,0 ,0,0,0,0,N'-',0,0 ,0 ,0 ,1,58,@BusinessRules_UserName,getdate())
+-- find ID of duplicated order
+declare @newschvchdlyhdregid int;
+select @newschvchdlyhdregid = @@IDENTITY;
+exec updateReferancevch  @newschvchdlyhdregid
+-- open edit form for duplicate order
+set @Result_NavigateUrl = 'ReciptVoucher1_2.aspx?schvchdlyhdregid=' + cast( @newschvchdlyhdregid  as nvarchar)
+                          + '&_controller=schvchdlyhdreg1001&_commandName=Edit'
+                          + '&_commandArgument=editForm1'
+                          
+                          
+                          
+                          ]]></data>
+      </action>
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+ 	<actionGroup id="ag5glvch" scope="ActionBar" headerText="أوامر حاصة ">
+	
+	  	<action commandName="SQL" headerText="إدراج رقم سند " confirmation="_controller=CustomINsert1001&#xD;&#xA;_width=500&#xD;&#xA;_title=Insert new&#xD;&#xA;_shortcut=true&#xD;&#xA;_view=createForm2&#xD;&#xA;" id="a100newserial">
+        <data><![CDATA[
+
+INSERT [dbo].[schvchdlyhdreg] (ReferanceNo, [CreatedBy], [CreatedOn]) VALUES (@Parameters_Recalldateagain, @BusinessRules_UserName, GETDATE())
+
+
+ ]]></data>
+ 
+      </action>
+	  	  <action commandName="SQL" headerText="تغير رقم السند الحالى" confirmation="_controller=CustomINsert1001&#xD;&#xA;_width=500&#xD;&#xA;_title=Insert new&#xD;&#xA;_shortcut=true&#xD;&#xA;_view=createForm2&#xD;&#xA;" id="a100newcode">
+          <data><![CDATA[
+		 update schvchdlyhdreg set  ReferanceNo=@Parameters_Recalldateagain,ModifiedBy=@BusinessRules_UserName where schvchdlyhdregid=@schvchdlyhdregid
+ ]]></data>
+          </action>
+	<action commandName="SQL" headerText="إدراج رقم سند اتوماتيكى" confirmation="_controller=CustomINsert1001&#xD;&#xA;_width=500&#xD;&#xA;_title=Insert new&#xD;&#xA;_shortcut=true&#xD;&#xA;_view=createForm2&#xD;&#xA;" id="a100newserialxx">
+        <data><![CDATA[
+SET IDENTITY_INSERT [dbo].[schvchdlyhdreg] ON 
+INSERT [dbo].[schvchdlyhdreg] (schvchdlyhdregid,ReferanceNo, [CreatedBy], [CreatedOn]) VALUES (@Parameters_Recalldateagain,0, @BusinessRules_UserName, GETDATE())
+SET IDENTITY_INSERT [dbo].[schvchdlyhdreg] OFF
+
+ ]]></data>
+ 
+      </action>
+     <action commandName="SQL" headerText="posting" roles="postvglvch" confirmation="_controller=CustomINsert1001&#xD;&#xA;_width=500&#xD;&#xA;_title=Insert new&#xD;&#xA;_shortcut=true&#xD;&#xA;_view=createForm2&#xD;&#xA;" id="a100cost">
+          <data><![CDATA[
+ update schvchdlyhdreg set  posted=1,ModifiedBy=@BusinessRules_UserName where schvchdlyhdregid<=@Parameters_Recalldateagain
+
+ ]]></data>
+      </action>
+	   </actionGroup>
+   <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+       <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" roles="Administrators,Administrator,Cashierauditer" />
+     <action commandName="SQL" headerText="print"  id="a119">
+        <data><![CDATA[ 
+		set @Result_NavigateUrl ='_blank:webreportviwerpdf.aspx?reportquery=schvchdlyhdreg1001&idfilter=' + cast( @schvchdlyhdregid  as nvarchar) + '&sosoname=' + cast( @transno  as nvarchar) 
+ ]]></data>
+      </action>
+    </actionGroup>
+  </actions>
+  <businessRules>
+  <rule id="r108c" type="JavaScript" commandName="Update" phase="Before" >
+  <![CDATA[
+  var fieldValue = [moneypaidto];
+if (fieldValue == null) {
+    // prevent the default action processing
+    this.preventDefault();
+    // set the focus on the field and display an error
+    this.result.focus('moneypaidto', 'Required amount  field.');
+                         }
+if (fieldValue == 0) {
+    // prevent the default action processing
+    this.preventDefault();
+    // set the focus on the field and display an error
+    this.result.focus('moneypaidto', 'Required amount field.');
+                         }
+
+]]></rule>
+ <rule id="r101" commandName="Custom" commandArgument="FullDuplicatewithDetails" type="Sql" phase="Execute"><![CDATA[-- duplicate the order
+INSERT INTO [dbo].[schvchdlyhdreg]
+           ([sgm]
+           ,[Trs_Dt]
+           ,[Balance]
+           ,[ReferanceNo]
+           ,[IDregorg]
+           ,[Delevername]
+           ,[Delevercivil]
+           ,[DeleverTel]
+           ,[Notes]
+           ,[approved]
+           ,[posted]
+           ,[deleted]
+           ,[havdetails]
+           ,[branch]
+           ,[acdcode]
+           ,[CreatedBy]
+           ,[CreatedOn]
+           )
+select [sgm]
+           ,[Trs_Dt]
+           ,[Balance]
+           ,0 as [ReferanceNo]
+           ,[IDregorg]
+           ,[Delevername]
+           ,[Delevercivil]
+           ,[DeleverTel]
+           ,[Notes]
+           ,0 as [approved]
+           ,0 as [posted]
+           ,0 as [deleted]
+           ,0 as [havdetails]
+           ,[branch]
+           ,[acdcode]
+            ,[CreatedBy]
+           ,[CreatedOn]
+from [dbo].[schvchdlyhdreg]
+where schvchdlyhdregid = @schvchdlyhdregid
+
+-- find ID of duplicated order
+declare @newschvchdlyhdregid int;
+select @newschvchdlyhdregid = @@IDENTITY;
+
+-- duplicate order details
+INSERT INTO [dbo].[schvchdlydetailreg]
+           ([schvchdlyhdregid]
+           ,[branch]
+           ,[acdcode]
+           ,[StudentCode]
+           ,[FatherCode]
+           ,[Trsd_Dt]
+           ,[schpaymenttypeid]
+           ,[Mony_Paid]
+           ,[Notes])
+SELECT 
+@newschvchdlyhdregid 
+           ,[branch]
+           ,[acdcode]
+           ,[StudentCode]
+           ,[FatherCode]
+           ,[Trsd_Dt]
+           ,[schpaymenttypeid]
+           ,[Mony_Paid]
+           ,[Notes]
+
+from [dbo].[schvchdlydetailreg]
+where schvchdlyhdregid =@schvchdlyhdregid 
+--
+-- duplicate order details
+INSERT INTO [dbo].[schvchdlydetailpayment]
+           ([schvchdlyhdregid]
+           ,[Pymnt_No]
+           ,[paymentwaynumber]
+           ,[cstyp_no]
+           ,[subaccountno]
+           ,[Acc_no]
+           ,[schBnk_No]
+           ,[checkAccount]
+           ,[checkdate]
+           ,[moneypaidto])
+
+SELECT 
+
+@newschvchdlyhdregid 
+      ,[Pymnt_No]
+      ,[paymentwaynumber]
+      ,[cstyp_no]
+      ,[subaccountno]
+      ,[Acc_no]
+      ,[schBnk_No]
+      ,[checkAccount]
+      ,[checkdate]
+      ,[moneypaidto]
+
+      FROM [dbo].[schvchdlydetailpayment]
+where schvchdlyhdregid =@schvchdlyhdregid 
+
+-- open edit form for duplicate order
+set @Result_NavigateUrl = 'ReciptVoucher1_2.aspx?schvchdlyhdregid=' + cast( @newschvchdlyhdregid  as nvarchar)
+                          + '&_controller=schvchdlyhdreg&_commandName=Edit'
+                          + '&_commandArgument=editForm1']]></rule>
+ <rule id="r100" commandName="Calculate" type="Sql" phase="Execute"   commandArgument="Delevername">
+<![CDATA[
+
+delete from [dbo].[SchStudentPay] where schvchdlyhdregid=@schvchdlyhdregid 
+set  @Delevername=(select schFather.fathfirstname1 from schFather where schFather.FatherCode=@DeleverTel)       
+set  @Delevercivil=(select schFather.fathCivilidNumber  from schFather where schFather.FatherCode=@DeleverTel)   
+set @moneypaidto=@rosom+@Transportation+@rosomregister       
+set @DISTRIBUTION=(select schFather.discountamount  from schFather where schFather.FatherCode=@DeleverTel) 
+set @disrosom=(select schFather.pervbalance  from schFather where schFather.FatherCode=@DeleverTel) 
+exec dbo.schfatherdetailinsert   @schvchdlyhdregid,@DeleverTel,58
+set @transno=1
+set @rosom=0
+set @Transportation=0
+set @rosomregister=0
+set @moneypaidto=0
+set @Balance=0
+set @Result_RefreshChildren=1
+
+]]></rule>
+
+ <rule id="r100x" commandName="Calculate" type="Sql" phase="Execute"   commandArgument="moneypaidto">
+<![CDATA[
+ if @Pymnt_No is null
+begin
+set @Pymnt_No=1
+end
+set @moneypaidto=@rosom+@Transportation+@rosomregister
+declare @Balance1 real 
+if @transno=1 and @DeleverTel>0
+begin
+set @Balance1=(select round(sum(isnull(Balance,0)),3) FROM [dbo].[GLschassmentBalance1001f1001]   where  [FatherCode]=@DeleverTel and acdcode=58)
+
+end
+if @transno=2 and @DeleverTel>0
+begin
+set @Balance1=(select round(sum(isnull(Balance,0)),3) FROM [dbo].[GLschassmentBalance1001f1001]   where  [FatherCode]=@DeleverTel and acdcode=59)
+
+end
+set @Balance=@Balance1 -@moneypaidto
+ ]]>
+</rule>
+ <rule id="r100xx" commandName="Calculate" type="Sql" phase="Execute"   commandArgument="rosom">
+<![CDATA[
+
+if @transno=1 and @DeleverTel>0
+begin
+set  @Delevername=(select schFather.fathfirstname1 from schFather where schFather.FatherCode=@DeleverTel)       
+set  @Delevercivil=(select schFather.fathCivilidNumber  from schFather where schFather.FatherCode=@DeleverTel)   
+set @moneypaidto=@rosom+@Transportation+@rosomregister       
+set @DISTRIBUTION=(select schFather.discountamount  from schFather where schFather.FatherCode=@DeleverTel) 
+set @disrosom=(select schFather.pervbalance  from schFather where schFather.FatherCode=@DeleverTel) 
+exec dbo.schfatherdetailinsert   @schvchdlyhdregid,@DeleverTel,58
+set @totalbalance1=0
+set @rosom=0
+set @Transportation=0
+set @rosomregister=0
+set @moneypaidto=0
+set @Balance=0
+declare @Balance2 real 
+if @transno=1 and @DeleverTel>0
+begin
+set @Balance2=(select round(sum(isnull(Balance,0)),3) FROM [dbo].[GLschassmentBalance1001f1001]   where  [FatherCode]=@DeleverTel and acdcode=58)
+
+end
+if @transno=2 and @DeleverTel>0
+begin
+set @Balance2=(select round(sum(isnull(Balance,0)),3) FROM [dbo].[GLschassmentBalance1001f1001]   where  [FatherCode]=@DeleverTel and acdcode=59)
+
+end
+set @Balance=@Balance2 -@moneypaidto
+set @Result_RefreshChildren=1
+
+end
+
+
+if @transno=2 
+begin
+set  @Delevername=(select schFather.fathfirstname1 from schFather where schFather.FatherCode=@DeleverTel)       
+set  @Delevercivil=(select schFather.fathCivilidNumber  from schFather where schFather.FatherCode=@DeleverTel)   
+set @moneypaidto=@rosom+@Transportation+@rosomregister       
+set @DISTRIBUTION=(select schFather.discountamount  from schFather where schFather.FatherCode=@DeleverTel) 
+set @disrosom=(select schFather.pervbalance  from schFather where schFather.FatherCode=@DeleverTel) 
+exec dbo.schfatherdetailinsertnxt   @schvchdlyhdregid,@DeleverTel,59
+set @totalbalance1=0
+set @rosom=0
+set @Transportation=0
+set @rosomregister=0
+set @moneypaidto=0
+set @Balance=0
+
+
+
+declare @Balance3 real 
+if @transno=1 and @DeleverTel>0
+begin
+set @Balance3=(select round(sum(isnull(Balance,0)),3) FROM [dbo].[GLschassmentBalance1001f1001]   where  [FatherCode]=@DeleverTel and acdcode=58)
+
+end
+if @transno=2 and @DeleverTel>0
+begin
+set @Balance3=(select round(sum(isnull(Balance,0)),3) FROM [dbo].[GLschassmentBalance1001f1001]   where  [FatherCode]=@DeleverTel and acdcode=59)
+
+end
+set @Balance=@Balance3 -@moneypaidto
+
+set @Result_RefreshChildren=1
+end
+
+
+
+
+ ]]>
+    </rule>
+<rule id="r100xxT" commandName="Calculate" type="Sql" phase="Execute"   commandArgument="totalbalance1">
+<![CDATA[
+	set @rosom=@totalbalance1-@Transportation
+	declare @Balance5 real 
+if @transno=1 and @DeleverTel>0
+begin
+set @Balance5=(select round(sum(isnull(Balance,0)),3) FROM [dbo].[GLschassmentBalance1001f1001]   where  [FatherCode]=@DeleverTel and acdcode=58)
+
+end
+if @transno=2 and @DeleverTel>0
+begin
+set @Balance5=(select round(sum(isnull(Balance,0)),3) FROM [dbo].[GLschassmentBalance1001f1001]   where  [FatherCode]=@DeleverTel and acdcode=59)
+
+end
+set @moneypaidto=@rosom+@Transportation+@rosomregister
+set @Balance=@Balance5 -@moneypaidto
+
+	]]>
+    </rule>
+<rule id="r100xxT" commandName="Calculate" type="Sql" phase="Execute"   commandArgument="Transportation">
+<![CDATA[
+	set @rosom=@totalbalance1-@Transportation
+	declare @Balance6 real 
+if @transno=1 and @DeleverTel>0
+begin
+set @Balance6=(select round(sum(isnull(Balance,0)),3) FROM [dbo].[GLschassmentBalance1001f1001]   where  [FatherCode]=@DeleverTel and acdcode=58)
+
+end
+if @transno=2 and @DeleverTel>0
+begin
+set @Balance6=(select round(sum(isnull(Balance,0)),3) FROM [dbo].[GLschassmentBalance1001f1001]   where  [FatherCode]=@DeleverTel and acdcode=59)
+
+end
+set @moneypaidto=@rosom+@Transportation+@rosomregister
+set @Balance=@Balance6 -@moneypaidto
+
+   ]]> </rule>
+ <rule id="r102" commandName="Update" type="Sql" phase="After" commandArgument="SQLnew">
+      <![CDATA[
+ update  [dbo].[schvchdlyhdreg]  set approved=1   where   schvchdlyhdregid=@schvchdlyhdregid
+ INSERT INTO [dbo].[schvchdlyhdreg]
+           ([sgm]
+           ,[Trs_Dt]
+           ,[Balance]
+           ,[ReferanceNo]
+           ,[IDregorg]
+           ,[Delevername]
+           ,[Delevercivil]
+           ,[DeleverTel]
+           ,[Notes]
+           ,[approved]
+           ,[posted]
+           ,[deleted]
+           ,[havdetails]
+           ,[branch]
+           ,[acdcode]
+		    ,[CreatedBy]
+           ,[CreatedOn]
+            )
+values(1,getdate(),0 ,0 ,@IDregorg,@Delevername,@Delevercivil,@DeleverTel,N'-',0,0 ,0 ,0 ,1,58,@BusinessRules_UserName,getdate())
+-- find ID of duplicated order
+declare @newschvchdlyhdregid int;
+select @newschvchdlyhdregid = @@IDENTITY;
+exec updateReferancevch  @newschvchdlyhdregid
+-- open edit form for duplicate order
+set @Result_NavigateUrl = 'ReciptVoucher1_2.aspx?schvchdlyhdregid=' + cast( @newschvchdlyhdregid  as nvarchar)
+                          + '&_controller=schvchdlyhdreg1001&_commandName=Edit'
+                          + '&_commandArgument=editForm1'
+ 
+ 
+ ]]>
+
+    </rule>
+ <rule id="r102" commandName="Update" type="Sql" phase="After" commandArgument="ok">
+      <![CDATA[
+--set @Result_NavigateUrl = '_blank:webreportviwerpdf.aspx?reportquery=' + @Arguments_Controller    + '&idfilter=' + cast(@schvchdlyhdregid as nvarchar)
+
+update  [dbo].[schvchdlyhdreg]  set approved=1   where   schvchdlyhdregid=@schvchdlyhdregid
+INSERT INTO [dbo].[schvchdlyhdreg]
+           ([sgm]
+           ,[Trs_Dt]
+           ,[Balance]
+           ,[ReferanceNo]
+           ,[IDregorg]
+           ,[Delevername]
+           ,[Delevercivil]
+           ,[DeleverTel]
+           ,[Notes]
+           ,[approved]
+           ,[posted]
+           ,[deleted]
+           ,[havdetails]
+           ,[branch]
+           ,[acdcode]
+           ,[CreatedBy]
+           ,[CreatedOn]
+           )
+values(1,getdate(),0 ,0 ,0,0,0,0,N'-',0,0 ,0 ,0 ,1,58,@BusinessRules_UserName,getdate())
+
+-- find ID of duplicated order
+declare @newschvchdlyhdregid int;
+select @newschvchdlyhdregid = @@IDENTITY;
+
+exec updateReferancevch  @newschvchdlyhdregid
+
+set @Result_NavigateUrl = 'ReciptVoucher1_2.aspx?schvchdlyhdregid=' + cast( @newschvchdlyhdregid  as nvarchar)
+                          + '&_controller=schvchdlyhdreg1001&_commandName=Edit'
+                          + '&_commandArgument=editForm1'
+   
+ ]]>
+
+    </rule>
+<rule id="r14xx" commandName="Update" type="JavaScript" phase="After" >
+
+      <![CDATA[
+ var baseDoc_No = [schvchdlyhdregid];
+ var baseBrn_No = [transno];
+ var url= 'webreportviwerpdf.aspx?reportquery=schvchdlyhdreg1001&idfilter=' + baseDoc_No +'&sosoname=' + baseBrn_No ;
+ 
+      var win = window.open(url, "_blank", "toolbar=no, scrollbars=no, resizable=yes, top=500, left=500, width=400, height=400");
+if(win){
+    //Browser has allowed it to be opened
+    win.focus();
+}else{
+ 
+    //Broswer has blocked it
+    alert('Please allow popups for this site');
+}
+
+
+
+]]>
+    </rule>
+<rule id="r102x" commandName="Update" type="Sql" phase="Before" >
+      <![CDATA[
+
+	
+	  
+	  
+if @schpaymenttypeid is null
+begin
+set @schpaymenttypeid=22
+end
+
+if @Pymnt_No is null
+begin
+set @Pymnt_No=1
+end
+
+
+
+set @moneypaidto=@rosom+@Transportation+@rosomregister
+declare @checkrosom bigint
+declare @checktrans bigint
+
+
+set @checktrans =(select count(*) from schvchdlydetailreg   where schvchdlyhdregid = @schvchdlyhdregid and schpaymenttypeid=4 )
+if @checktrans =0 
+begin
+insert into schvchdlydetailreg (StudentCode,acdcode,branch,schvchdlyhdregid ,fathercode,schpaymenttypeid)values(0,58,1,@schvchdlyhdregid ,@DeleverTel,4)
+end 
+set @checkrosom=(select count(*) from schvchdlydetailreg   where schvchdlyhdregid = @schvchdlyhdregid and schpaymenttypeid=2 )
+if @checkrosom=0 
+begin
+insert into schvchdlydetailreg (StudentCode,acdcode,branch,schvchdlyhdregid ,fathercode,schpaymenttypeid)values(0,58,1,@schvchdlyhdregid ,@DeleverTel,2)
+end 
+update schvchdlydetailreg set mony_paid=@rosom ,Sumofcerditcal=Sumofcerditcal + @rosom, totalbalance1=totalbalance1 - @rosom
+where schvchdlyhdregid = @schvchdlyhdregid and schpaymenttypeid=2 
+update schvchdlydetailreg set mony_paid=@Transportation ,Sumofcerditcal=Sumofcerditcal + @Transportation, totalbalance1=totalbalance1 - @Transportation
+where schvchdlyhdregid = @schvchdlyhdregid and schpaymenttypeid=4
+
+
+ ]]>
+    </rule>
+<rule id="r102xd" commandName="Delete" type="Sql" phase="Before" >
+      <![CDATA[
+	  
+delete from schvchdlydetailpayment where schvchdlyhdregid =@schvchdlyhdregid
+ ]]>
+    </rule>
+<rule id="r14xxb" commandName="SQL" type="JavaScript" phase="Before" commandArgument="SQLnew">
+
+      <![CDATA[
+ var baseDoc_No = [schvchdlyhdregid];
+ var baseBrn_No = [transno];
+ var url= 'webreportviwerpdf.aspx?reportquery=schvchdlyhdreg1001&idfilter=' + baseDoc_No +'&sosoname=' + baseBrn_No ;
+ 
+      var win = window.open(url, "_blank", "toolbar=no, scrollbars=no, resizable=yes, top=500, left=500, width=400, height=400");
+if(win){
+    //Browser has allowed it to be opened
+    win.focus();
+}else{
+ 
+    //Broswer has blocked it
+    alert('Please allow popups for this site');
+}
+
+
+
+]]>
+    </rule>
+  </businessRules>
+</dataController>

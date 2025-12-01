@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="ProgramsLongTerm" conflictDetection="overwriteChanges" label="Programs Long Term" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"ProgramsLongTerm"."Program_Code" "Program_Code"
+	,"ProgramsLongTerm"."prostermcode" "prostermcode"
+	,"prosterm"."ProgramStDesc" "prostermProgramStDesc"
+	,"prostermplantype"."plantypeDesc" "prostermplantypeplantypeDesc"
+	,"ProgramsLongTerm"."ProgramStart_Date" "ProgramStart_Date"
+	,"ProgramsLongTerm"."ProgramEnd_Date" "ProgramEnd_Date"
+	,"ProgramsLongTerm"."KM_Penalty" "KM_Penalty"
+	,"ProgramsLongTerm"."Day_Penalty" "Day_Penalty"
+	,"ProgramsLongTerm"."InsuranceAgainstOthers" "InsuranceAgainstOthers"
+	,"ProgramsLongTerm"."InsuranceAgainstOthers_VAL" "InsuranceAgainstOthers_VAL"
+	,"InsuranceAgainstOthers_VAL"."Description" "InsuranceAgainstOthers_VALDescription"
+	,"ProgramsLongTerm"."InsuranceComprehensive" "InsuranceComprehensive"
+	,"ProgramsLongTerm"."InsuranceComprehensive_VAL" "InsuranceComprehensive_VAL"
+	,"InsuranceComprehensive_VAL"."Description" "InsuranceComprehensive_VALDescription"
+	,"ProgramsLongTerm"."InsuranceNonRecourseInsurance" "InsuranceNonRecourseInsurance"
+	,"ProgramsLongTerm"."InsuranceNonRecourseInsurance_VAL" "InsuranceNonRecourseInsurance_VAL"
+	,"InsuranceNonRecourseInsurance_VAL"."Description" "InsuranceNonRecourseInsurance_VALDescription"
+	,"ProgramsLongTerm"."MaintenanceRoad" "MaintenanceRoad"
+	,"ProgramsLongTerm"."MaintenanceRoad_VAL" "MaintenanceRoad_VAL"
+	,"MaintenanceRoad_VAL"."Description" "MaintenanceRoad_VALDescription"
+	,"ProgramsLongTerm"."MaintenanceEmergency" "MaintenanceEmergency"
+	,"ProgramsLongTerm"."MaintenanceEmergency_VAL" "MaintenanceEmergency_VAL"
+	,"MaintenanceEmergency_VAL"."Description" "MaintenanceEmergency_VALDescription"
+	,"ProgramsLongTerm"."MaintenanceExpenses" "MaintenanceExpenses"
+	,"ProgramsLongTerm"."MaintenanceExpenses_VAL" "MaintenanceExpenses_VAL"
+	,"MaintenanceExpenses_VAL"."Description" "MaintenanceExpenses_VALDescription"
+	,"ProgramsLongTerm"."AdministrativeExpenses" "AdministrativeExpenses"
+	,"ProgramsLongTerm"."AdministrativeExpenses_VAL" "AdministrativeExpenses_VAL"
+	,"ProgramsLongTerm"."TrafficCharges" "TrafficCharges"
+	,"ProgramsLongTerm"."TrafficCharges_VAL" "TrafficCharges_VAL"
+	,"TrafficCharges_VAL"."Description" "TrafficCharges_VALDescription"
+	,"ProgramsLongTerm"."Commissions" "Commissions"
+	,"ProgramsLongTerm"."Commissions_VAL" "Commissions_VAL"
+	,"Commissions_VAL"."Description" "Commissions_VALDescription"
+	,"ProgramsLongTerm"."CarAlternativeCost" "CarAlternativeCost"
+	,"ProgramsLongTerm"."CarAlternativeCost_VAL" "CarAlternativeCost_VAL"
+	,"CarAlternativeCost_VAL"."Description" "CarAlternativeCost_VALDescription"
+	,"ProgramsLongTerm"."Discount" "Discount"
+	,"ProgramsLongTerm"."Discount_VAL" "Discount_VAL"
+	,"Discount_VAL"."Description" "Discount_VALDescription"
+	,"ProgramsLongTerm"."Gifts" "Gifts"
+	,"ProgramsLongTerm"."Gifts_VAL" "Gifts_VAL"
+	,"Gifts_VAL"."Description" "Gifts_VALDescription"
+from "dbo"."ProgramsLongTerm" "ProgramsLongTerm"
+	left join "dbo"."ProsTerm" "prosterm" on "ProgramsLongTerm"."prostermcode" = "prosterm"."prostermcode"
+	left join "dbo"."Carplantypelist" "prostermplantype" on "prosterm"."plantypeid" = "prostermplantype"."plantypeid"
+	left join "dbo"."Val_Per" "InsuranceAgainstOthers_VAL" on "ProgramsLongTerm"."InsuranceAgainstOthers_VAL" = "InsuranceAgainstOthers_VAL"."Code"
+	left join "dbo"."Val_Per" "InsuranceComprehensive_VAL" on "ProgramsLongTerm"."InsuranceComprehensive_VAL" = "InsuranceComprehensive_VAL"."Code"
+	left join "dbo"."Val_Per" "InsuranceNonRecourseInsurance_VAL" on "ProgramsLongTerm"."InsuranceNonRecourseInsurance_VAL" = "InsuranceNonRecourseInsurance_VAL"."Code"
+	left join "dbo"."Val_Per" "MaintenanceRoad_VAL" on "ProgramsLongTerm"."MaintenanceRoad_VAL" = "MaintenanceRoad_VAL"."Code"
+	left join "dbo"."Val_Per" "MaintenanceEmergency_VAL" on "ProgramsLongTerm"."MaintenanceEmergency_VAL" = "MaintenanceEmergency_VAL"."Code"
+	left join "dbo"."Val_Per" "MaintenanceExpenses_VAL" on "ProgramsLongTerm"."MaintenanceExpenses_VAL" = "MaintenanceExpenses_VAL"."Code"
+	left join "dbo"."Val_Per" "TrafficCharges_VAL" on "ProgramsLongTerm"."TrafficCharges_VAL" = "TrafficCharges_VAL"."Code"
+	left join "dbo"."Val_Per" "Commissions_VAL" on "ProgramsLongTerm"."Commissions_VAL" = "Commissions_VAL"."Code"
+	left join "dbo"."Val_Per" "CarAlternativeCost_VAL" on "ProgramsLongTerm"."CarAlternativeCost_VAL" = "CarAlternativeCost_VAL"."Code"
+	left join "dbo"."Val_Per" "Discount_VAL" on "ProgramsLongTerm"."Discount_VAL" = "Discount_VAL"."Code"
+	left join "dbo"."Val_Per" "Gifts_VAL" on "ProgramsLongTerm"."Gifts_VAL" = "Gifts_VAL"."Code"
+]]></text>
+    </command>
+    <command id="Program_CodeIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Program_Code" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Program_Code" type="Int64" allowNulls="false" isPrimaryKey="true" label="Program Code" readOnly="true" />
+    <field name="prostermcode" type="Int64" label="Prostermcode" showInSummary="true">
+      <items style="Lookup" dataController="ProsTerm" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="prostermProgramStDesc" type="String" readOnly="true" label="prosterm Program St Desc" length="255" />
+    <field name="prostermplantypeplantypeDesc" type="String" readOnly="true" label="prostermplantypeplantype Desc" length="50" />
+    <field name="ProgramStart_Date" type="DateTime" label="Program Start Date" showInSummary="true" />
+    <field name="ProgramEnd_Date" type="DateTime" label="Program End Date" showInSummary="true" />
+    <field name="KM_Penalty" type="Decimal" label="KM Penalty" showInSummary="true" />
+    <field name="Day_Penalty" type="Decimal" label="Day Penalty" showInSummary="true" />
+    <field name="InsuranceAgainstOthers" type="Decimal" label="Insurance Against Others" />
+    <field name="InsuranceAgainstOthers_VAL" type="Int32" label="Insurance Against Others VAL">
+      <items style="Lookup" dataController="Val_Per" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="InsuranceAgainstOthers_VALDescription" type="String" readOnly="true" label="Insurance Against Others VAL Description" length="50" />
+    <field name="InsuranceComprehensive" type="Decimal" label="Insurance Comprehensive" />
+    <field name="InsuranceComprehensive_VAL" type="Int32" label="Insurance Comprehensive VAL">
+      <items style="Lookup" dataController="Val_Per" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="InsuranceComprehensive_VALDescription" type="String" readOnly="true" label="Insurance Comprehensive VAL Description" length="50" />
+    <field name="InsuranceNonRecourseInsurance" type="Decimal" label="Insurance Non Recourse Insurance" />
+    <field name="InsuranceNonRecourseInsurance_VAL" type="Int32" label="Insurance Non Recourse Insurance VAL">
+      <items style="Lookup" dataController="Val_Per" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="InsuranceNonRecourseInsurance_VALDescription" type="String" readOnly="true" label="Insurance Non Recourse Insurance VAL Description" length="50" />
+    <field name="MaintenanceRoad" type="Decimal" label="Maintenance Road" />
+    <field name="MaintenanceRoad_VAL" type="Int32" label="Maintenance Road VAL">
+      <items style="Lookup" dataController="Val_Per" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="MaintenanceRoad_VALDescription" type="String" readOnly="true" label="Maintenance Road VAL Description" length="50" />
+    <field name="MaintenanceEmergency" type="Decimal" label="Maintenance Emergency" />
+    <field name="MaintenanceEmergency_VAL" type="Int32" label="Maintenance Emergency VAL">
+      <items style="Lookup" dataController="Val_Per" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="MaintenanceEmergency_VALDescription" type="String" readOnly="true" label="Maintenance Emergency VAL Description" length="50" />
+    <field name="MaintenanceExpenses" type="Decimal" label="Maintenance Expenses" />
+    <field name="MaintenanceExpenses_VAL" type="Int32" label="Maintenance Expenses VAL">
+      <items style="Lookup" dataController="Val_Per" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="MaintenanceExpenses_VALDescription" type="String" readOnly="true" label="Maintenance Expenses VAL Description" length="50" />
+    <field name="AdministrativeExpenses" type="Decimal" label="Administrative Expenses" />
+    <field name="AdministrativeExpenses_VAL" type="Int32" label="Administrative Expenses VAL" />
+    <field name="TrafficCharges" type="Decimal" label="Traffic Charges" />
+    <field name="TrafficCharges_VAL" type="Int32" label="Traffic Charges VAL">
+      <items style="Lookup" dataController="Val_Per" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TrafficCharges_VALDescription" type="String" readOnly="true" label="Traffic Charges VAL Description" length="50" />
+    <field name="Commissions" type="Decimal" label="Commissions" />
+    <field name="Commissions_VAL" type="Int32" label="Commissions VAL">
+      <items style="Lookup" dataController="Val_Per" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Commissions_VALDescription" type="String" readOnly="true" label="Commissions VAL Description" length="50" />
+    <field name="CarAlternativeCost" type="Decimal" label="Car Alternative Cost" />
+    <field name="CarAlternativeCost_VAL" type="Int32" label="Car Alternative Cost VAL">
+      <items style="Lookup" dataController="Val_Per" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="CarAlternativeCost_VALDescription" type="String" readOnly="true" label="Car Alternative Cost VAL Description" length="50" />
+    <field name="Discount" type="Decimal" label="Discount" />
+    <field name="Discount_VAL" type="Int32" label="Discount VAL">
+      <items style="Lookup" dataController="Val_Per" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Discount_VALDescription" type="String" readOnly="true" label="Discount VAL Description" length="50" />
+    <field name="Gifts" type="Decimal" label="Gifts" />
+    <field name="Gifts_VAL" type="Int32" label="Gifts VAL">
+      <items style="Lookup" dataController="Val_Per" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Gifts_VALDescription" type="String" readOnly="true" label="Gifts VAL Description" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Programs Long Term">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="prostermcode" aliasFieldName="prostermProgramStDesc" />
+        <dataField fieldName="ProgramStart_Date" columns="10" />
+        <dataField fieldName="ProgramEnd_Date" columns="10" />
+        <dataField fieldName="KM_Penalty" columns="15" />
+        <dataField fieldName="Day_Penalty" columns="15" />
+        <dataField fieldName="InsuranceAgainstOthers" columns="15" />
+        <dataField fieldName="InsuranceAgainstOthers_VAL" aliasFieldName="InsuranceAgainstOthers_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={InsuranceAgainstOthers_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="InsuranceComprehensive" columns="15" />
+        <dataField fieldName="InsuranceComprehensive_VAL" aliasFieldName="InsuranceComprehensive_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={InsuranceComprehensive_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="InsuranceNonRecourseInsurance" columns="15" />
+        <dataField fieldName="InsuranceNonRecourseInsurance_VAL" aliasFieldName="InsuranceNonRecourseInsurance_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={InsuranceNonRecourseInsurance_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="MaintenanceRoad" columns="15" />
+        <dataField fieldName="MaintenanceRoad_VAL" aliasFieldName="MaintenanceRoad_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={MaintenanceRoad_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="MaintenanceEmergency" columns="15" />
+        <dataField fieldName="MaintenanceEmergency_VAL" aliasFieldName="MaintenanceEmergency_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={MaintenanceEmergency_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="MaintenanceExpenses" columns="15" />
+        <dataField fieldName="MaintenanceExpenses_VAL" aliasFieldName="MaintenanceExpenses_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={MaintenanceExpenses_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="AdministrativeExpenses" columns="15" />
+        <dataField fieldName="AdministrativeExpenses_VAL" columns="15" />
+        <dataField fieldName="TrafficCharges" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Programs Long Term">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Programs Long Term" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="prostermcode" aliasFieldName="prostermProgramStDesc" hyperlinkFormatString="~/Pages/ProsTerm.aspx?prostermcode={prostermcode}&amp;_controller=ProsTerm&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ProgramStart_Date" columns="10" />
+            <dataField fieldName="ProgramEnd_Date" columns="10" />
+            <dataField fieldName="KM_Penalty" columns="15" />
+            <dataField fieldName="Day_Penalty" columns="15" />
+            <dataField fieldName="InsuranceAgainstOthers" columns="15" />
+            <dataField fieldName="InsuranceAgainstOthers_VAL" aliasFieldName="InsuranceAgainstOthers_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={InsuranceAgainstOthers_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="InsuranceComprehensive" columns="15" />
+            <dataField fieldName="InsuranceComprehensive_VAL" aliasFieldName="InsuranceComprehensive_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={InsuranceComprehensive_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="InsuranceNonRecourseInsurance" columns="15" />
+            <dataField fieldName="InsuranceNonRecourseInsurance_VAL" aliasFieldName="InsuranceNonRecourseInsurance_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={InsuranceNonRecourseInsurance_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="MaintenanceRoad" columns="15" />
+            <dataField fieldName="MaintenanceRoad_VAL" aliasFieldName="MaintenanceRoad_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={MaintenanceRoad_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="MaintenanceEmergency" columns="15" />
+            <dataField fieldName="MaintenanceEmergency_VAL" aliasFieldName="MaintenanceEmergency_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={MaintenanceEmergency_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="MaintenanceExpenses" columns="15" />
+            <dataField fieldName="MaintenanceExpenses_VAL" aliasFieldName="MaintenanceExpenses_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={MaintenanceExpenses_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="AdministrativeExpenses" columns="15" />
+            <dataField fieldName="AdministrativeExpenses_VAL" columns="15" />
+            <dataField fieldName="TrafficCharges" columns="15" />
+            <dataField fieldName="TrafficCharges_VAL" aliasFieldName="TrafficCharges_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={TrafficCharges_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Commissions" columns="15" />
+            <dataField fieldName="Commissions_VAL" aliasFieldName="Commissions_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={Commissions_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="CarAlternativeCost" columns="15" />
+            <dataField fieldName="CarAlternativeCost_VAL" aliasFieldName="CarAlternativeCost_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={CarAlternativeCost_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Discount" columns="15" />
+            <dataField fieldName="Discount_VAL" aliasFieldName="Discount_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={Discount_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Gifts" columns="15" />
+            <dataField fieldName="Gifts_VAL" aliasFieldName="Gifts_VALDescription" hyperlinkFormatString="~/Pages/Val_Per.aspx?Code={Gifts_VAL}&amp;_controller=Val_Per&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="prostermplantypeplantypeDesc" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Programs Long Term">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Programs Long Term" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="prostermcode" aliasFieldName="prostermProgramStDesc" />
+            <dataField fieldName="ProgramStart_Date" columns="10" />
+            <dataField fieldName="ProgramEnd_Date" columns="10" />
+            <dataField fieldName="KM_Penalty" columns="15" />
+            <dataField fieldName="Day_Penalty" columns="15" />
+            <dataField fieldName="InsuranceAgainstOthers" columns="15" />
+            <dataField fieldName="InsuranceAgainstOthers_VAL" aliasFieldName="InsuranceAgainstOthers_VALDescription" />
+            <dataField fieldName="InsuranceComprehensive" columns="15" />
+            <dataField fieldName="InsuranceComprehensive_VAL" aliasFieldName="InsuranceComprehensive_VALDescription" />
+            <dataField fieldName="InsuranceNonRecourseInsurance" columns="15" />
+            <dataField fieldName="InsuranceNonRecourseInsurance_VAL" aliasFieldName="InsuranceNonRecourseInsurance_VALDescription" />
+            <dataField fieldName="MaintenanceRoad" columns="15" />
+            <dataField fieldName="MaintenanceRoad_VAL" aliasFieldName="MaintenanceRoad_VALDescription" />
+            <dataField fieldName="MaintenanceEmergency" columns="15" />
+            <dataField fieldName="MaintenanceEmergency_VAL" aliasFieldName="MaintenanceEmergency_VALDescription" />
+            <dataField fieldName="MaintenanceExpenses" columns="15" />
+            <dataField fieldName="MaintenanceExpenses_VAL" aliasFieldName="MaintenanceExpenses_VALDescription" />
+            <dataField fieldName="AdministrativeExpenses" columns="15" />
+            <dataField fieldName="AdministrativeExpenses_VAL" columns="15" />
+            <dataField fieldName="TrafficCharges" columns="15" />
+            <dataField fieldName="TrafficCharges_VAL" aliasFieldName="TrafficCharges_VALDescription" />
+            <dataField fieldName="Commissions" columns="15" />
+            <dataField fieldName="Commissions_VAL" aliasFieldName="Commissions_VALDescription" />
+            <dataField fieldName="CarAlternativeCost" columns="15" />
+            <dataField fieldName="CarAlternativeCost_VAL" aliasFieldName="CarAlternativeCost_VALDescription" />
+            <dataField fieldName="Discount" columns="15" />
+            <dataField fieldName="Discount_VAL" aliasFieldName="Discount_VALDescription" />
+            <dataField fieldName="Gifts" columns="15" />
+            <dataField fieldName="Gifts_VAL" aliasFieldName="Gifts_VALDescription" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

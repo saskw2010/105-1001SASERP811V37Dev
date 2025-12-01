@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="R_pjitm" conflictDetection="overwriteChanges" label="R pjitm" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"R_pjitm"."ItmNo" "ItmNo"
+	,"R_pjitm"."ItmDisc" "ItmDisc"
+	,"R_pjitm"."Ac_Mo" "Ac_Mo"
+	,"R_pjitm"."Pr_Mo" "Pr_Mo"
+	,"R_pjitm"."Qu" "Qu"
+	,"R_pjitm"."Itmval" "Itmval"
+	,"R_pjitm"."Pymval" "Pymval"
+	,"R_pjitm"."ItmBal" "ItmBal"
+	,"R_pjitm"."Itm_stdate" "Itm_stdate"
+	,"R_pjitm"."Itm_Endate" "Itm_Endate"
+	,"R_pjitm"."PymDt" "PymDt"
+	,"R_pjitm"."PymPer" "PymPer"
+	,"R_pjitm"."Prj_No" "Prj_No"
+	,"R_pjitm"."Cstm_No" "Cstm_No"
+	,"R_pjitm"."Prj_Nm" "Prj_Nm"
+	,"R_pjitm"."Description" "Description"
+	,"R_pjitm"."Payment" "Payment"
+	,"R_pjitm"."RestGuarantee" "RestGuarantee"
+	,"R_pjitm"."RestExce" "RestExce"
+	,"R_pjitm"."LetterCredit" "LetterCredit"
+	,"R_pjitm"."Prj_Stus" "Prj_Stus"
+	,"R_pjitm"."Expr1" "Expr1"
+	,"R_pjitm"."Cstm_Nm" "Cstm_Nm"
+	,"R_pjitm"."Cstm_Tel" "Cstm_Tel"
+	,"R_pjitm"."Cstm_Adr" "Cstm_Adr"
+	,"R_pjitm"."Cstm_Email" "Cstm_Email"
+	,"R_pjitm"."Cstm_Rsp" "Cstm_Rsp"
+	,"R_pjitm"."Slm_No" "Slm_No"
+from "dbo"."R_pjitm" "R_pjitm"
+]]></text>
+    </command>
+    <command id="Cstm_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Cstm_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ItmNo" type="Int32" allowNulls="false" label="Itm No" showInSummary="true" />
+    <field name="ItmDisc" type="String" label="Itm Disc" length="255" showInSummary="true" />
+    <field name="Ac_Mo" type="String" label="Ac Mo" length="50" showInSummary="true" />
+    <field name="Pr_Mo" type="Int32" label="Pr Mo" showInSummary="true" />
+    <field name="Qu" type="Int32" label="Qu" showInSummary="true" />
+    <field name="Itmval" type="String" label="Itmval" length="10" />
+    <field name="Pymval" type="String" label="Pymval" length="10" />
+    <field name="ItmBal" type="String" label="Itm Bal" length="10" />
+    <field name="Itm_stdate" type="String" label="Itm stdate" length="10" />
+    <field name="Itm_Endate" type="String" label="Itm Endate" length="10" />
+    <field name="PymDt" type="String" label="Pym Dt" length="10" />
+    <field name="PymPer" type="Int32" label="Pym Per" />
+    <field name="Prj_No" type="Int16" allowNulls="false" label="Prj No" />
+    <field name="Cstm_No" type="String" label="Cstm No" readOnly="true" length="10" />
+    <field name="Prj_Nm" type="String" label="Prj Nm" length="50" />
+    <field name="Description" type="String" label="Description" length="100" />
+    <field name="Payment" type="Decimal" label="Payment" />
+    <field name="RestGuarantee" type="Int64" label="Rest Guarantee" />
+    <field name="RestExce" type="Int64" label="Rest Exce" />
+    <field name="LetterCredit" type="Int64" label="Letter Credit" />
+    <field name="Prj_Stus" type="Int64" label="Prj Stus" />
+    <field name="Expr1" type="Int64" label="Expr1" />
+    <field name="Cstm_Nm" type="String" label="Cstm Nm" length="155" />
+    <field name="Cstm_Tel" type="String" label="Cstm Tel" length="8" />
+    <field name="Cstm_Adr" type="String" label="Cstm Adr" length="155" />
+    <field name="Cstm_Email" type="String" label="Cstm Email" length="155" />
+    <field name="Cstm_Rsp" type="String" label="Cstm Rsp" length="155" />
+    <field name="Slm_No" type="Int64" label="Slm No" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="R pjitm">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="ItmNo" columns="15" />
+        <dataField fieldName="ItmDisc" />
+        <dataField fieldName="Ac_Mo" columns="50" />
+        <dataField fieldName="Pr_Mo" columns="15" />
+        <dataField fieldName="Qu" columns="15" />
+        <dataField fieldName="Itmval" columns="10" />
+        <dataField fieldName="Pymval" columns="10" />
+        <dataField fieldName="ItmBal" columns="10" />
+        <dataField fieldName="Itm_stdate" columns="10" />
+        <dataField fieldName="Itm_Endate" columns="10" />
+        <dataField fieldName="PymDt" columns="10" />
+        <dataField fieldName="PymPer" columns="15" />
+        <dataField fieldName="Prj_No" columns="15" />
+        <dataField fieldName="Cstm_No" columns="10" />
+        <dataField fieldName="Prj_Nm" columns="50" />
+        <dataField fieldName="Description" />
+        <dataField fieldName="Payment" columns="15" />
+        <dataField fieldName="RestGuarantee" columns="15" />
+        <dataField fieldName="RestExce" columns="15" />
+        <dataField fieldName="LetterCredit" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review R pjitm">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="R pjitm" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ItmNo" columns="15" />
+            <dataField fieldName="ItmDisc" />
+            <dataField fieldName="Ac_Mo" columns="50" />
+            <dataField fieldName="Pr_Mo" columns="15" />
+            <dataField fieldName="Qu" columns="15" />
+            <dataField fieldName="Itmval" columns="10" />
+            <dataField fieldName="Pymval" columns="10" />
+            <dataField fieldName="ItmBal" columns="10" />
+            <dataField fieldName="Itm_stdate" columns="10" />
+            <dataField fieldName="Itm_Endate" columns="10" />
+            <dataField fieldName="PymDt" columns="10" />
+            <dataField fieldName="PymPer" columns="15" />
+            <dataField fieldName="Prj_No" columns="15" />
+            <dataField fieldName="Cstm_No" columns="10" />
+            <dataField fieldName="Prj_Nm" columns="50" />
+            <dataField fieldName="Description" />
+            <dataField fieldName="Payment" columns="15" />
+            <dataField fieldName="RestGuarantee" columns="15" />
+            <dataField fieldName="RestExce" columns="15" />
+            <dataField fieldName="LetterCredit" columns="15" />
+            <dataField fieldName="Prj_Stus" columns="15" />
+            <dataField fieldName="Expr1" columns="15" />
+            <dataField fieldName="Cstm_Nm" />
+            <dataField fieldName="Cstm_Tel" columns="8" />
+            <dataField fieldName="Cstm_Adr" />
+            <dataField fieldName="Cstm_Email" />
+            <dataField fieldName="Cstm_Rsp" />
+            <dataField fieldName="Slm_No" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New R pjitm">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New R pjitm" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ItmNo" columns="15" />
+            <dataField fieldName="ItmDisc" />
+            <dataField fieldName="Ac_Mo" columns="50" />
+            <dataField fieldName="Pr_Mo" columns="15" />
+            <dataField fieldName="Qu" columns="15" />
+            <dataField fieldName="Itmval" columns="10" />
+            <dataField fieldName="Pymval" columns="10" />
+            <dataField fieldName="ItmBal" columns="10" />
+            <dataField fieldName="Itm_stdate" columns="10" />
+            <dataField fieldName="Itm_Endate" columns="10" />
+            <dataField fieldName="PymDt" columns="10" />
+            <dataField fieldName="PymPer" columns="15" />
+            <dataField fieldName="Prj_No" columns="15" />
+            <dataField fieldName="Prj_Nm" columns="50" />
+            <dataField fieldName="Description" />
+            <dataField fieldName="Payment" columns="15" />
+            <dataField fieldName="RestGuarantee" columns="15" />
+            <dataField fieldName="RestExce" columns="15" />
+            <dataField fieldName="LetterCredit" columns="15" />
+            <dataField fieldName="Prj_Stus" columns="15" />
+            <dataField fieldName="Expr1" columns="15" />
+            <dataField fieldName="Cstm_Nm" />
+            <dataField fieldName="Cstm_Tel" columns="8" />
+            <dataField fieldName="Cstm_Adr" />
+            <dataField fieldName="Cstm_Email" />
+            <dataField fieldName="Cstm_Rsp" />
+            <dataField fieldName="Slm_No" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

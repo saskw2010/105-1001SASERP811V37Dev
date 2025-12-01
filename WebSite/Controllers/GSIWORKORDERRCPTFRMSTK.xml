@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="GSIWORKORDERRCPTFRMSTK" conflictDetection="overwriteChanges" label="Gsiworkorderrcptfrmstk" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"GSIWORKORDERRCPTFRMSTK"."Brn_trnferno" "Brn_trnferno"
+	,"GSIWORKORDERRCPTFRMSTK"."MasterID" "MasterID"
+	,"GSIWORKORDERRCPTFRMSTK"."Cstm_No" "Cstm_No"
+	,"GSIWORKORDERRCPTFRMSTK"."WORKORDERDate" "WORKORDERDate"
+	,"GSIWORKORDERRCPTFRMSTK"."Delverydate" "Delverydate"
+	,"GSIWORKORDERRCPTFRMSTK"."WORKORDERDSC" "WORKORDERDSC"
+	,"GSIWORKORDERRCPTFRMSTK"."Entringdate" "Entringdate"
+	,"GSIWORKORDERRCPTFRMSTK"."GSIworkid" "GSIworkid"
+	,"GSIWORKORDERRCPTFRMSTK"."masterln_no" "masterln_no"
+	,"GSIWORKORDERRCPTFRMSTK"."DetailData" "DetailData"
+	,"GSIWORKORDERRCPTFRMSTK"."Brn_no" "Brn_no"
+	,"GSIWORKORDERRCPTFRMSTK"."farshcode" "farshcode"
+	,"GSIWORKORDERRCPTFRMSTK"."pricesales" "pricesales"
+	,"GSIWORKORDERRCPTFRMSTK"."ln_no" "ln_no"
+	,"GSIWORKORDERRCPTFRMSTK"."MasterIDSEC" "MasterIDSEC"
+	,"GSIWORKORDERRCPTFRMSTK"."ln_details" "ln_details"
+	,"GSIWORKORDERRCPTFRMSTK"."Req_Typcmpline" "Req_Typcmpline"
+	,"GSIWORKORDERRCPTFRMSTK"."ID_compline" "ID_compline"
+	,"GSIWORKORDERRCPTFRMSTK"."countrdus" "countrdus"
+	,"GSIWORKORDERRCPTFRMSTK"."ID_comp" "ID_comp"
+	,"GSIWORKORDERRCPTFRMSTK"."azndate" "azndate"
+	,"GSIWORKORDERRCPTFRMSTK"."req_typ" "req_typ"
+	,"GSIWORKORDERRCPTFRMSTK"."Length" "Length"
+	,"GSIWORKORDERRCPTFRMSTK"."Width" "Width"
+	,"GSIWORKORDERRCPTFRMSTK"."highst" "highst"
+	,"GSIWORKORDERRCPTFRMSTK"."Quantity" "Quantity"
+	,"GSIWORKORDERRCPTFRMSTK"."Equationl" "Equationl"
+	,"GSIWORKORDERRCPTFRMSTK"."Equationh" "Equationh"
+	,"GSIWORKORDERRCPTFRMSTK"."Equationw" "Equationw"
+	,"GSIWORKORDERRCPTFRMSTK"."Notes" "Notes"
+	,"GSIWORKORDERRCPTFRMSTK"."Equationlplus" "Equationlplus"
+	,"GSIWORKORDERRCPTFRMSTK"."Equationwplus" "Equationwplus"
+	,"GSIWORKORDERRCPTFRMSTK"."Equationhplus" "Equationhplus"
+	,"GSIWORKORDERRCPTFRMSTK"."l" "l"
+	,"GSIWORKORDERRCPTFRMSTK"."firstsign1" "firstsign1"
+	,"GSIWORKORDERRCPTFRMSTK"."w" "w"
+	,"GSIWORKORDERRCPTFRMSTK"."firstsign2" "firstsign2"
+	,"GSIWORKORDERRCPTFRMSTK"."h" "h"
+	,"GSIWORKORDERRCPTFRMSTK"."firstsign3" "firstsign3"
+	,"GSIWORKORDERRCPTFRMSTK"."generalfactor" "generalfactor"
+from "dbo"."GSIWORKORDERRCPTFRMSTK" "GSIWORKORDERRCPTFRMSTK"
+]]></text>
+    </command>
+    <command id="ln_noIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ln_no" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Brn_trnferno" type="Int64" label="Brn trnferno" showInSummary="true" />
+    <field name="MasterID" type="Int64" label="Master#" showInSummary="true" />
+    <field name="Cstm_No" type="Int64" label="Cstm No" showInSummary="true" />
+    <field name="WORKORDERDate" type="DateTime" label="WORKORDER Date" showInSummary="true" />
+    <field name="Delverydate" type="DateTime" label="Delverydate" showInSummary="true" />
+    <field name="WORKORDERDSC" type="String" label="Workorderdsc" length="250" />
+    <field name="Entringdate" type="DateTime" label="Entringdate" />
+    <field name="GSIworkid" type="Int64" label="GS Iworkid" />
+    <field name="masterln_no" type="Int64" allowNulls="false" label="Masterln No" />
+    <field name="DetailData" type="String" label="Detail Data" length="250" />
+    <field name="Brn_no" type="Int64" label="Brn no" />
+    <field name="farshcode" type="Int64" label="Farshcode" />
+    <field name="pricesales" type="Decimal" label="Pricesales" />
+    <field name="ln_no" type="Int64" allowNulls="false" label="Ln No" readOnly="true" />
+    <field name="MasterIDSEC" type="Int64" allowNulls="false" label="Master IDSEC" />
+    <field name="ln_details" type="String" label="Ln Details" length="250" />
+    <field name="Req_Typcmpline" type="Int64" label="Req Typcmpline" />
+    <field name="ID_compline" type="Int64" label="ID compline" />
+    <field name="countrdus" type="Int64" label="Countrdus" />
+    <field name="ID_comp" type="Int64" label="ID comp" />
+    <field name="azndate" type="DateTime" label="Azndate" />
+    <field name="req_typ" type="Int64" label="Req Typ" />
+    <field name="Length" type="Decimal" label="Length" />
+    <field name="Width" type="Decimal" label="Width" />
+    <field name="highst" type="Decimal" label="Highst" />
+    <field name="Quantity" type="Decimal" label="Quantity" />
+    <field name="Equationl" type="String" label="Equationl" length="10" />
+    <field name="Equationh" type="String" label="Equationh" length="10" />
+    <field name="Equationw" type="String" label="Equationw" length="10" />
+    <field name="Notes" type="String" label="Notes" length="255" />
+    <field name="Equationlplus" type="String" label="Equationlplus" length="10" />
+    <field name="Equationwplus" type="String" label="Equationwplus" length="10" />
+    <field name="Equationhplus" type="String" label="Equationhplus" length="10" />
+    <field name="l" type="Decimal" label="L" readOnly="true" />
+    <field name="firstsign1" type="String" label="Firstsign1" length="1" />
+    <field name="w" type="Decimal" label="W" readOnly="true" />
+    <field name="firstsign2" type="String" label="Firstsign2" length="1" />
+    <field name="h" type="Decimal" label="H" readOnly="true" />
+    <field name="firstsign3" type="String" label="Firstsign3" length="1" />
+    <field name="generalfactor" type="Single" label="Generalfactor" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Gsiworkorderrcptfrmstk">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="masterln_no" columns="15" />
+        <dataField fieldName="Brn_trnferno" columns="15" />
+        <dataField fieldName="MasterID" columns="15" />
+        <dataField fieldName="Cstm_No" columns="15" />
+        <dataField fieldName="WORKORDERDate" columns="10" />
+        <dataField fieldName="Delverydate" columns="10" />
+        <dataField fieldName="WORKORDERDSC" />
+        <dataField fieldName="Entringdate" columns="10" />
+        <dataField fieldName="GSIworkid" columns="15" />
+        <dataField fieldName="DetailData" />
+        <dataField fieldName="Brn_no" columns="15" />
+        <dataField fieldName="farshcode" columns="15" />
+        <dataField fieldName="pricesales" columns="15" />
+        <dataField fieldName="ln_no" columns="15" />
+        <dataField fieldName="MasterIDSEC" columns="15" />
+        <dataField fieldName="ln_details" />
+        <dataField fieldName="Req_Typcmpline" columns="15" />
+        <dataField fieldName="ID_compline" columns="15" />
+        <dataField fieldName="countrdus" columns="15" />
+        <dataField fieldName="ID_comp" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Gsiworkorderrcptfrmstk">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Gsiworkorderrcptfrmstk" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Brn_trnferno" columns="15" />
+            <dataField fieldName="MasterID" columns="15" />
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="WORKORDERDate" columns="10" />
+            <dataField fieldName="Delverydate" columns="10" />
+            <dataField fieldName="WORKORDERDSC" />
+            <dataField fieldName="Entringdate" columns="10" />
+            <dataField fieldName="GSIworkid" columns="15" />
+            <dataField fieldName="masterln_no" columns="15" />
+            <dataField fieldName="DetailData" />
+            <dataField fieldName="Brn_no" columns="15" />
+            <dataField fieldName="farshcode" columns="15" />
+            <dataField fieldName="pricesales" columns="15" />
+            <dataField fieldName="ln_no" columns="15" />
+            <dataField fieldName="MasterIDSEC" columns="15" />
+            <dataField fieldName="ln_details" />
+            <dataField fieldName="Req_Typcmpline" columns="15" />
+            <dataField fieldName="ID_compline" columns="15" />
+            <dataField fieldName="countrdus" columns="15" />
+            <dataField fieldName="ID_comp" columns="15" />
+            <dataField fieldName="azndate" columns="10" />
+            <dataField fieldName="req_typ" columns="15" />
+            <dataField fieldName="Length" columns="15" />
+            <dataField fieldName="Width" columns="15" />
+            <dataField fieldName="highst" columns="15" />
+            <dataField fieldName="Quantity" columns="15" />
+            <dataField fieldName="Equationl" columns="10" />
+            <dataField fieldName="Equationh" columns="10" />
+            <dataField fieldName="Equationw" columns="10" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="Equationlplus" columns="10" />
+            <dataField fieldName="Equationwplus" columns="10" />
+            <dataField fieldName="Equationhplus" columns="10" />
+            <dataField fieldName="l" columns="15" />
+            <dataField fieldName="firstsign1" columns="1" />
+            <dataField fieldName="w" columns="15" />
+            <dataField fieldName="firstsign2" columns="1" />
+            <dataField fieldName="h" columns="15" />
+            <dataField fieldName="firstsign3" columns="1" />
+            <dataField fieldName="generalfactor" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Gsiworkorderrcptfrmstk">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Gsiworkorderrcptfrmstk" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Brn_trnferno" columns="15" />
+            <dataField fieldName="MasterID" columns="15" />
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="WORKORDERDate" columns="10" />
+            <dataField fieldName="Delverydate" columns="10" />
+            <dataField fieldName="WORKORDERDSC" />
+            <dataField fieldName="Entringdate" columns="10" />
+            <dataField fieldName="GSIworkid" columns="15" />
+            <dataField fieldName="masterln_no" columns="15" />
+            <dataField fieldName="DetailData" />
+            <dataField fieldName="Brn_no" columns="15" />
+            <dataField fieldName="farshcode" columns="15" />
+            <dataField fieldName="pricesales" columns="15" />
+            <dataField fieldName="MasterIDSEC" columns="15" />
+            <dataField fieldName="ln_details" />
+            <dataField fieldName="Req_Typcmpline" columns="15" />
+            <dataField fieldName="ID_compline" columns="15" />
+            <dataField fieldName="countrdus" columns="15" />
+            <dataField fieldName="ID_comp" columns="15" />
+            <dataField fieldName="azndate" columns="10" />
+            <dataField fieldName="req_typ" columns="15" />
+            <dataField fieldName="Length" columns="15" />
+            <dataField fieldName="Width" columns="15" />
+            <dataField fieldName="highst" columns="15" />
+            <dataField fieldName="Quantity" columns="15" />
+            <dataField fieldName="Equationl" columns="10" />
+            <dataField fieldName="Equationh" columns="10" />
+            <dataField fieldName="Equationw" columns="10" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="Equationlplus" columns="10" />
+            <dataField fieldName="Equationwplus" columns="10" />
+            <dataField fieldName="Equationhplus" columns="10" />
+            <dataField fieldName="firstsign1" columns="1" />
+            <dataField fieldName="firstsign2" columns="1" />
+            <dataField fieldName="firstsign3" columns="1" />
+            <dataField fieldName="generalfactor" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

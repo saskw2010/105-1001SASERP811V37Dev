@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Structure - SASERP V37 Docs</title>
+  <link rel="stylesheet" href="/VueCss/ModernTheme.css" />
+  <style>
+    body { padding: 20px; }
+    .container { max-width: 960px; margin: 0 auto; }
+    a.back-link { display: inline-block; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="./index.html" class="back-link">&larr; Back to Docs Home</a>
+    <div class="panel">
+      <div class="panel-header"><h1>SASERP V37 - Project Structure</h1></div>
+      <div class="panel-body">
+        <p>This document outlines the folder and file structure of the SASERP V37 project.</p>
+        <h2>Root Directory</h2>
+        <ul>
+          <li><code>Main.master</code>: The primary master page for the application.</li>
+          <li><code>UniversalNavMaster.master</code>: A master page providing universal navigation.</li>
+          <li><code>web.config</code>: The main configuration file for the ASP.NET application.</li>
+          <li><code>Web.Sitemap</code>: Defines the navigation structure of the site.</li>
+          <li><code>Global.asax</code>: Handles global application-level events.</li>
+          <li><code>RunSASERP.ps1</code>: A PowerShell script to easily start the application.</li>
+          <li><code>Docs/</code>: Contains all project documentation in Markdown format.</li>
+        </ul>
+        <h2>Key Folders</h2>
+        <h3><code>/App_Code/</code></h3>
+        <p>This is the heart of the application's backend logic.</p>
+        <ul>
+          <li><code>DashboardModels.vb</code>: Contains the data models for all dashboards.</li>
+          <li><code>AdvancedMenuBuilder.vb</code>: Logic for building and customizing the navigation menu.</li>
+          <li><code>MyUtils.vb</code>: A collection of utility functions.</li>
+          <li><code>Services/</code>: Contains web services and API endpoints.</li>
+          <li><code>Security/</code>: Code related to authentication and authorization.</li>
+        </ul>
+        <h3><code>/Controls/</code></h3>
+        <p>Contains reusable ASP.NET User Controls (<code>.ascx</code>).</p>
+        <ul>
+          <li><code>*Dashboard.ascx</code>: A set of controls for the various dashboards (Financial, HR, etc.).</li>
+          <li><code>UniversalHamburgerMenu.ascx</code>: The user control for the main navigation menu.</li>
+          <li><code>HomeTableOfContents.ascx</code>: The control for the table of contents on the home page.</li>
+        </ul>
+        <h3><code>/Pages/</code></h3>
+        <p>Contains the individual pages (<code>.aspx</code>) of the application. This directory is extensive and contains thousands of pages, each corresponding to a specific feature or view in the ERP system.</p>
+        <h3><code>/TestPages/</code></h3>
+        <p>A directory for testing and documentation.</p>
+        <ul>
+          <li><code>PagesIndex.aspx</code>: An index of all test pages and system guides.</li>
+          <li><code>TestDashboardData.aspx</code>: A page with WebMethods for testing dashboard data.</li>
+          <li><code>docs/</code>: Contains the Vue-based interactive documentation site.</li>
+        </ul>
+        <h3><code>/css/</code></h3>
+        <p>Contains the application's stylesheets.</p>
+        <ul>
+          <li><code>modern-menu.css</code>: Styles for the modern navigation drawer.</li>
+          <li><code>pagemenubar.css</code>: Styles for the legacy menu system.</li>
+          <li><code>notifications.css</code>: Styles for UI notifications.</li>
+        </ul>
+        <h3><code>/js/</code></h3>
+        <p>Contains the application's JavaScript files.</p>
+        <ul>
+          <li><code>modern-menu-once.js</code>: The primary script for the modern navigation drawer.</li>
+          <li><code>pagemenubar-mobile.js</code>: JavaScript for the legacy mobile menu.</li>
+          <li><code>notifications.js</code>: A helper for displaying UI notifications.</li>
+        </ul>
+        <h3><code>/VueCss/</code> & <code>/Vuejs/</code></h3>
+        <p>These folders contain assets related to the Vue.js framework, used for modern UI components and the interactive documentation pages.</p>
+        <ul>
+          <li><code>/Vuejs/vue.global.prod.js</code>: The Vue 3 runtime.</li>
+          <li><code>/VueCss/ModernTheme.css</code>: A modern theme used by Vue components.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

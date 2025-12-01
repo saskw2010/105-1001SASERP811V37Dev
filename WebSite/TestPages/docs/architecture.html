@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Architecture - SASERP V37 Docs</title>
+  <link rel="stylesheet" href="/VueCss/ModernTheme.css" />
+  <style>
+    body { padding: 20px; }
+    .container { max-width: 960px; margin: 0 auto; }
+    a.back-link { display: inline-block; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="./index.html" class="back-link">&larr; Back to Docs Home</a>
+    <div class="panel">
+      <div class="panel-header"><h1>SASERP V37 - Architecture</h1></div>
+      <div class="panel-body">
+        <p>This document provides a detailed overview of the technical architecture of the SASERP V37 application.</p>
+        <h2>1. Core Technology Stack</h2>
+        <ul>
+          <li><strong>Backend:</strong> ASP.NET WebForms with VB.NET</li>
+          <li><strong>Framework:</strong> .NET Framework 4.7.2</li>
+          <li><strong>Web Server:</strong> IIS / IIS Express</li>
+          <li><strong>Database:</strong> (Not specified, but typically SQL Server for such applications)</li>
+          <li><strong>Frontend:</strong> HTML, CSS, JavaScript, Bootstrap, Font Awesome</li>
+        </ul>
+        <h2>2. Architectural Layers</h2>
+        <p>The application follows a traditional n-tier architecture, logically separated into the following layers:</p>
+        <h3>2.1. Presentation Layer</h3>
+        <p>This is what the user interacts with. It is composed of:</p>
+        <ul>
+          <li><strong>ASPX Pages:</strong> The main entry points for user requests. They contain the markup and references to user controls.</li>
+          <li><strong>User Controls (.ascx):</strong> Reusable UI components that encapsulate specific functionality (e.g., dashboards, forms, menus). They have their own markup and code-behind.</li>
+          <li><strong>Master Pages (.master):</strong> Provide the overall page layout, navigation, and global styles/scripts. <code>Main.master</code> and <code>UniversalNavMaster.master</code> are the key master pages.</li>
+          <li><strong>CSS & JavaScript:</strong>
+            <ul>
+              <li><code>/css/</code>: Contains stylesheets for the application, including <code>modern-menu.css</code> for the navigation drawer.</li>
+              <li><code>/js/</code>: Contains JavaScript files, including <code>modern-menu-once.js</code> for the main navigation logic.</li>
+              <li><code>/VueCss/</code> & <code>/Vuejs/</code>: Contain Vue-related assets for modern UI components and documentation pages.</li>
+            </ul>
+          </li>
+        </ul>
+        <h3>2.2. Business Logic Layer</h3>
+        <p>This layer contains the core business rules and application logic. It is primarily located in the <code>App_Code</code> directory:</p>
+        <ul>
+          <li><strong>VB.NET Classes:</strong> Files like <code>DashboardModels.vb</code> and <code>AdvancedMenuBuilder.vb</code> contain the application's business logic.</li>
+          <li><strong>Services:</strong> The <code>/App_Code/Services/</code> directory is intended for web services or API-like functionality.</li>
+          <li><strong>Rules:</strong> The <code>/App_Code/Rules/</code> directory is for business rule definitions and validation logic.</li>
+        </ul>
+        <h3>2.3. Data Access Layer</h3>
+        <p>This layer is responsible for interacting with the database.</p>
+        <ul>
+          <li><strong>Data Models:</strong> The classes within <code>DashboardModels.vb</code> represent the data structures used in the application.</li>
+          <li><strong>Database Connectivity:</strong> Connection strings and data source configurations are managed in <code>web.config</code>. The actual data access logic is likely within the business layer or a dedicated data access component.</li>
+        </ul>
+        <h2>3. Key Architectural Patterns</h2>
+        <ul>
+          <li><strong>Web Site Project Model:</strong> This project is an ASP.NET Web Site, which means there is no <code>.vbproj</code> file, and compilation occurs dynamically at runtime. This allows for easy changes and updates without needing to recompile the entire application.</li>
+          <li><strong>Server-Side Rendering:</strong> As a classic WebForms application, most of the UI is rendered on the server.</li>
+          <li><strong>AJAX with UpdatePanels:</strong> The application may use <code>UpdatePanel</code> controls for partial page updates to provide a more responsive user experience without full page reloads.</li>
+          <li><strong>JSON Serialization:</strong> The application uses the built-in <code>System.Web.Script.Serialization.JavaScriptSerializer</code> for serializing .NET objects to JSON, avoiding external dependencies like Newtonsoft.Json.</li>
+        </ul>
+        <h2>4. Navigation System</h2>
+        <p>The navigation is a hybrid system:</p>
+        <ul>
+          <li><strong>Legacy System:</strong> Uses <code>Web.Sitemap</code> with a <code>SiteMapDataSource</code> and the <code>aquarium:MenuExtender</code> to generate the main menu (<code>PageMenuBar</code>).</li>
+          <li><strong>Modern System:</strong> A modern, accessible navigation drawer is implemented in <code>js/modern-menu-once.js</code>. It fetches menu data from a JSON endpoint (<code>/Pages/MenuApi.aspx/GetMenuTree</code>) and renders it on the client-side. The legacy menu is hidden but remains as a data source and for compatibility.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

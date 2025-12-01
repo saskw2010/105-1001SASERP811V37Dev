@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Cardstudent" label="Cardstudent" conflictDetection="overwriteChanges" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.CardstudentBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <fields>
+    <field name="rosom" type="Decimal" allowNulls="false" label="rosom" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false" causesCalculate="true">
+      <items letters="false" />
+    </field>
+    <field name="Bookrosom" type="Decimal" allowNulls="false" label="Bookrosom" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false" causesCalculate="true">
+      <items letters="false" />
+    </field>
+    <field name="Transportation" type="Decimal" allowNulls="false" label="Transportation" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false" causesCalculate="true">
+      <items letters="false" />
+    </field>
+    <field name="rosomregister" type="Decimal" allowNulls="false" label="rosomregister" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false" causesCalculate="true">
+      <items letters="false" />
+    </field>
+    <field name="Cash" type="Decimal" allowNulls="false" label="Cash" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false">
+      <items letters="false" />
+    </field>
+    <field name="keynet" type="Decimal" allowNulls="false" label="keynet" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false">
+      <items letters="false" />
+    </field>
+    <field name="checkvalue" type="Decimal" allowNulls="false" label="checkvalue" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false">
+      <items letters="false" />
+    </field>
+    <field name="checknumber" type="Decimal" allowNulls="false" label="checknumber" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false">
+      <items letters="false" />
+    </field>
+    <field name="transno" type="Int64" allowNulls="false" label="transno" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false">
+      <items letters="false" />
+    </field>
+    <field name="TRANSFER" type="Decimal" allowNulls="false" label="TRANSFER" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false">
+      <items letters="false" />
+    </field>
+    <field name="DISTRIBUTION" type="Decimal" allowNulls="false" label="DISTRIBUTION" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false">
+      <items letters="false" />
+    </field>
+    <field name="Pymnt_No" type="Int64" allowNulls="false" label="Pymnt No" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false">
+      <items letters="false" style="DropDownList" dataController="Pymntype" dataView="grid1" dataTextField="Pymnt_Nm" dataValueField="Pymnt_No" />
+    </field>
+    <field name="checkAccount" type="String" label="check Account" length="50" />
+    <field name="moneypaidto" type="Decimal" allowNulls="false" label="Moneypaidto" contextFields="rosom,Bookrosom,Transportation,rosomregister" calculated="true" computed="true" causesCalculate="true">
+      <formula>rosom+Bookrosom+Transportation+rosomregister</formula>
+    </field>
+    <field name="schBnk_No" type="Int64" label="sch Bnk No">
+      <items style="Lookup" dataController="schGLacnBnk" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="checkdate" type="DateTime" label="Checkdate" />
+  </fields>
+  <views>
+    <view id="CreateForm1" type="Form" label="CreateForm1" commandId="command1">
+      <categories>
+        <category headerText="Madfoaa" id="c1" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="rosom" columns="15" />
+            <dataField fieldName="Bookrosom" columns="15" />
+            <dataField fieldName="Transportation" columns="15" />
+            <dataField fieldName="rosomregister" columns="15" />
+            <dataField fieldName="Pymnt_No" columns="15" />
+            <dataField fieldName="moneypaidto" columns="15" />
+            <dataField fieldName="transno" columns="15" textMode="Static" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="grid1" commandId="command1" type="Grid" label="grid1" />
+    <view id="editForm1" commandId="command1" type="Grid" label="editForm1" />
+    <view id="createForm1" commandId="command1" type="Grid" label="createForm1" />
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Insert|Update" type="Code" phase="Execute" />
+    <rule id="r101" commandName="Insert|Update" type="Code" phase="Before" />
+    <rule id="r103" type="Code" commandName="Calculate|Insert|Update" phase="Before" name="moneypaidto_Converter" />
+  </businessRules>
+  <commands>
+    <command id="command1" type="Text" custom="true">
+      <text><![CDATA[select * from schvchdlydetailregBOX]]></text>
+    </command>
+  </commands>
+</dataController>

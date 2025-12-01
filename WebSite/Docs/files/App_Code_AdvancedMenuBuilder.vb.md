@@ -1,0 +1,6 @@
+# File: App_Code/AdvancedMenuBuilder.vb
+
+- Builds menu model/HTML with role checks and icon mapping.
+- Enforces max depth of 3 levels (0..2).
+- Integrates translation via translatemeyamosso.
+- Provides GenerateMenuJson(); note it currently uses Newtonsoft.Json — consider built-in JavaScriptSerializer for consistency.

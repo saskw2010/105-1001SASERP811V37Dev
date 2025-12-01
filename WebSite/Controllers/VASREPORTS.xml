@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="VASREPORTS" conflictDetection="overwriteChanges" label="Vasreports" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"VASREPORTS"."YearTRS" "YearTRS"
+	,"VASREPORTS"."Monthtrs" "Monthtrs"
+	,"VASREPORTS"."shortcodeFIT" "shortcodeFIT"
+	,"VASREPORTS"."shortcodeFOP" "shortcodeFOP"
+	,"VASREPORTS"."ITHits" "ITHits"
+	,"VASREPORTS"."OPHits" "OPHits"
+	,"VASREPORTS"."shortcode" "shortcode"
+	,"VASREPORTS"."typeofshortDescription" "typeofshortDescription"
+	,"VASREPORTS"."typeofshortcodemain" "typeofshortcodemain"
+	,"VASREPORTS"."typeofServiceCategoryDescription" "typeofServiceCategoryDescription"
+	,"VASREPORTS"."typeofServiceCategoryDescription1" "typeofServiceCategoryDescription1"
+	,"VASREPORTS"."typeofServiceCategorymain" "typeofServiceCategorymain"
+	,"VASREPORTS"."SHORTCODEOWNERName" "SHORTCODEOWNERName"
+	,"VASREPORTS"."SHORTCODEOWNERName1" "SHORTCODEOWNERName1"
+	,"VASREPORTS"."VASoperatorcodeDescription" "VASoperatorcodeDescription"
+	,"VASREPORTS"."Taxs" "Taxs"
+	,"VASREPORTS"."withdrawalTax" "withdrawalTax"
+	,"VASREPORTS"."appliedflag" "appliedflag"
+	,"VASREPORTS"."VasRegioncode" "VasRegioncode"
+	,"VASREPORTS"."VasCurrenceyCode" "VasCurrenceyCode"
+	,"VASREPORTS"."VASopCategory" "VASopCategory"
+	,"VASREPORTS"."CADEOWNERDescription" "CADEOWNERDescription"
+	,"VASREPORTS"."SHORTCADEOWNERMain" "SHORTCADEOWNERMain"
+	,"VASREPORTS"."shortcodeDescription" "shortcodeDescription"
+	,"VASREPORTS"."SHORTCODEOWNER" "SHORTCODEOWNER"
+	,"VASREPORTS"."typeofshortcode" "typeofshortcode"
+	,"VASREPORTS"."typeofService" "typeofService"
+	,"VASREPORTS"."Rent" "Rent"
+	,"VASREPORTS"."isysRentpercentage" "isysRentpercentage"
+	,"VASREPORTS"."Rate" "Rate"
+	,"VASREPORTS"."operatorShare" "operatorShare"
+	,"VASREPORTS"."sistershare" "sistershare"
+	,"VASREPORTS"."Cpshare" "Cpshare"
+	,"VASREPORTS"."Subprovidershare" "Subprovidershare"
+	,"VASREPORTS"."IsysShare" "IsysShare"
+	,"VASREPORTS"."Expr12" "Expr12"
+	,"VASREPORTS"."Expr13" "Expr13"
+	,"VASREPORTS"."shortcodeold" "shortcodeold"
+	,"VASREPORTS"."notes1001" "notes1001"
+	,"VASREPORTS"."notes10011" "notes10011"
+	,"VASREPORTS"."notes10013" "notes10013"
+	,"VASREPORTS"."notes10014" "notes10014"
+	,"VASREPORTS"."notes10012" "notes10012"
+	,"VASREPORTS"."notes10015" "notes10015"
+	,"VASREPORTS"."notes10016" "notes10016"
+	,"VASREPORTS"."notes10017" "notes10017"
+	,"VASREPORTS"."notes10018" "notes10018"
+	,"VASREPORTS"."VasCurrenceyDescription" "VasCurrenceyDescription"
+	,"VASREPORTS"."VasCurrenceyDescription1" "VasCurrenceyDescription1"
+	,"VASREPORTS"."VasCurrenceyPrice" "VasCurrenceyPrice"
+	,"VASREPORTS"."typeofServiceDescription" "typeofServiceDescription"
+	,"VASREPORTS"."typeofServiceDescriptionen" "typeofServiceDescriptionen"
+	,"VASREPORTS"."typeofServiceCategory" "typeofServiceCategory"
+	,"VASREPORTS"."VasRegiondescription" "VasRegiondescription"
+	,"VASREPORTS"."VasRegioncodemain" "VasRegioncodemain"
+	,"VASREPORTS"."VASopCategoryDescription" "VASopCategoryDescription"
+	,"VASREPORTS"."VASopCategorymain" "VASopCategorymain"
+from "dbo"."VASREPORTS" "VASREPORTS"
+]]></text>
+    </command>
+    <command id="VasRegioncodeIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="VasRegioncode" />
+      </output>
+    </command>
+    <command id="VasCurrenceyCodeIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="VasCurrenceyCode" />
+      </output>
+    </command>
+    <command id="VASopCategoryIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="VASopCategory" />
+      </output>
+    </command>
+    <command id="SHORTCODEOWNERIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="SHORTCODEOWNER" />
+      </output>
+    </command>
+    <command id="typeofshortcodeIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="typeofshortcode" />
+      </output>
+    </command>
+    <command id="typeofServiceIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="typeofService" />
+      </output>
+    </command>
+    <command id="typeofServiceCategoryIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="typeofServiceCategory" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="YearTRS" type="Int32" label="Year TRS" showInSummary="true" />
+    <field name="Monthtrs" type="Int32" label="Monthtrs" showInSummary="true" />
+    <field name="shortcodeFIT" type="Int64" label="shortcode FIT" showInSummary="true" />
+    <field name="shortcodeFOP" type="Int64" label="shortcode FOP" showInSummary="true" />
+    <field name="ITHits" type="Int32" label="IT Hits" showInSummary="true" />
+    <field name="OPHits" type="Int64" label="OP Hits" />
+    <field name="shortcode" type="Int64" allowNulls="false" label="Shortcode" />
+    <field name="typeofshortDescription" type="String" label="typeofshort Description" length="50" />
+    <field name="typeofshortcodemain" type="Int64" label="Typeofshortcodemain" />
+    <field name="typeofServiceCategoryDescription" type="String" label="typeof Service Category Description" length="150" />
+    <field name="typeofServiceCategoryDescription1" type="String" label="typeof Service Category Description1" length="150" />
+    <field name="typeofServiceCategorymain" type="Int64" label="typeof Service Categorymain" />
+    <field name="SHORTCODEOWNERName" type="String" label="SHORTCODEOWNER Name" length="150" />
+    <field name="SHORTCODEOWNERName1" type="String" label="SHORTCODEOWNER Name1" length="150" />
+    <field name="VASoperatorcodeDescription" type="String" label="VA Soperatorcode Description" length="150" />
+    <field name="Taxs" type="Decimal" label="Taxs" />
+    <field name="withdrawalTax" type="Decimal" label="withdrawal Tax" />
+    <field name="appliedflag" type="Boolean" label="Appliedflag" />
+    <field name="VasRegioncode" type="Int64" label="Vas Regioncode" readOnly="true" />
+    <field name="VasCurrenceyCode" type="Int64" label="Vas Currencey Code" readOnly="true" />
+    <field name="VASopCategory" type="Int64" label="VA Sop Category" readOnly="true" />
+    <field name="CADEOWNERDescription" type="Int64" label="CADEOWNER Description" />
+    <field name="SHORTCADEOWNERMain" type="Int64" label="SHORTCADEOWNER Main" />
+    <field name="shortcodeDescription" type="String" allowNulls="false" label="shortcode Description" length="150" />
+    <field name="SHORTCODEOWNER" type="Int64" allowNulls="false" label="Shortcodeowner" readOnly="true" />
+    <field name="typeofshortcode" type="Int64" allowNulls="false" label="Typeofshortcode" readOnly="true" />
+    <field name="typeofService" type="Int64" allowNulls="false" label="typeof Service" readOnly="true" />
+    <field name="Rent" type="Decimal" allowNulls="false" label="Rent" />
+    <field name="isysRentpercentage" type="Decimal" allowNulls="false" label="isys Rentpercentage" />
+    <field name="Rate" type="Decimal" allowNulls="false" label="Rate" />
+    <field name="operatorShare" type="Decimal" allowNulls="false" label="operator Share" />
+    <field name="sistershare" type="Decimal" allowNulls="false" label="Sistershare" />
+    <field name="Cpshare" type="Decimal" allowNulls="false" label="Cpshare" />
+    <field name="Subprovidershare" type="Decimal" allowNulls="false" label="Subprovidershare" />
+    <field name="IsysShare" type="Decimal" allowNulls="false" label="Isys Share" />
+    <field name="Expr12" type="Decimal" allowNulls="false" label="Expr12" />
+    <field name="Expr13" type="Decimal" label="Expr13" />
+    <field name="shortcodeold" type="Int64" label="Shortcodeold" />
+    <field name="notes1001" type="String" label="Notes1001" length="150" />
+    <field name="notes10011" type="String" label="Notes10011" length="150" />
+    <field name="notes10013" type="String" label="Notes10013" length="150" />
+    <field name="notes10014" type="String" label="Notes10014" length="150" />
+    <field name="notes10012" type="String" label="Notes10012" length="150" />
+    <field name="notes10015" type="String" label="Notes10015" length="150" />
+    <field name="notes10016" type="String" label="Notes10016" length="150" />
+    <field name="notes10017" type="String" label="Notes10017" length="150" />
+    <field name="notes10018" type="String" label="Notes10018" length="150" />
+    <field name="VasCurrenceyDescription" type="String" label="Vas Currencey Description" length="150" />
+    <field name="VasCurrenceyDescription1" type="String" label="Vas Currencey Description1" length="150" />
+    <field name="VasCurrenceyPrice" type="Decimal" label="Vas Currencey Price" />
+    <field name="typeofServiceDescription" type="String" label="typeof Service Description" length="150" />
+    <field name="typeofServiceDescriptionen" type="String" label="typeof Service Descriptionen" length="150" />
+    <field name="typeofServiceCategory" type="Int64" label="typeof Service Category" readOnly="true" />
+    <field name="VasRegiondescription" type="String" label="Vas Regiondescription" length="150" />
+    <field name="VasRegioncodemain" type="Int64" label="Vas Regioncodemain" />
+    <field name="VASopCategoryDescription" type="String" label="VA Sop Category Description" length="150" />
+    <field name="VASopCategorymain" type="Int64" label="VA Sop Categorymain" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Vasreports">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="shortcode" columns="15" />
+        <dataField fieldName="YearTRS" columns="15" />
+        <dataField fieldName="Monthtrs" columns="15" />
+        <dataField fieldName="shortcodeFIT" columns="15" />
+        <dataField fieldName="shortcodeFOP" columns="15" />
+        <dataField fieldName="ITHits" columns="15" />
+        <dataField fieldName="OPHits" columns="15" />
+        <dataField fieldName="typeofshortDescription" columns="50" />
+        <dataField fieldName="typeofshortcodemain" columns="15" />
+        <dataField fieldName="typeofServiceCategoryDescription" />
+        <dataField fieldName="typeofServiceCategoryDescription1" />
+        <dataField fieldName="typeofServiceCategorymain" columns="15" />
+        <dataField fieldName="SHORTCODEOWNERName" />
+        <dataField fieldName="SHORTCODEOWNERName1" />
+        <dataField fieldName="VASoperatorcodeDescription" />
+        <dataField fieldName="Taxs" columns="15" />
+        <dataField fieldName="withdrawalTax" columns="15" />
+        <dataField fieldName="appliedflag" />
+        <dataField fieldName="VasRegioncode" columns="15" />
+        <dataField fieldName="VasCurrenceyCode" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Vasreports">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Vasreports" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="YearTRS" columns="15" />
+            <dataField fieldName="Monthtrs" columns="15" />
+            <dataField fieldName="shortcodeFIT" columns="15" />
+            <dataField fieldName="shortcodeFOP" columns="15" />
+            <dataField fieldName="ITHits" columns="15" />
+            <dataField fieldName="OPHits" columns="15" />
+            <dataField fieldName="shortcode" columns="15" />
+            <dataField fieldName="typeofshortDescription" columns="50" />
+            <dataField fieldName="typeofshortcodemain" columns="15" />
+            <dataField fieldName="typeofServiceCategoryDescription" />
+            <dataField fieldName="typeofServiceCategoryDescription1" />
+            <dataField fieldName="typeofServiceCategorymain" columns="15" />
+            <dataField fieldName="SHORTCODEOWNERName" />
+            <dataField fieldName="SHORTCODEOWNERName1" />
+            <dataField fieldName="VASoperatorcodeDescription" />
+            <dataField fieldName="Taxs" columns="15" />
+            <dataField fieldName="withdrawalTax" columns="15" />
+            <dataField fieldName="appliedflag" />
+            <dataField fieldName="VasRegioncode" columns="15" />
+            <dataField fieldName="VasCurrenceyCode" columns="15" />
+            <dataField fieldName="VASopCategory" columns="15" />
+            <dataField fieldName="CADEOWNERDescription" columns="15" />
+            <dataField fieldName="SHORTCADEOWNERMain" columns="15" />
+            <dataField fieldName="shortcodeDescription" />
+            <dataField fieldName="SHORTCODEOWNER" columns="15" />
+            <dataField fieldName="typeofshortcode" columns="15" />
+            <dataField fieldName="typeofService" columns="15" />
+            <dataField fieldName="Rent" columns="15" />
+            <dataField fieldName="isysRentpercentage" columns="15" />
+            <dataField fieldName="Rate" columns="15" />
+            <dataField fieldName="operatorShare" columns="15" />
+            <dataField fieldName="sistershare" columns="15" />
+            <dataField fieldName="Cpshare" columns="15" />
+            <dataField fieldName="Subprovidershare" columns="15" />
+            <dataField fieldName="IsysShare" columns="15" />
+            <dataField fieldName="Expr12" columns="15" />
+            <dataField fieldName="Expr13" columns="15" />
+            <dataField fieldName="shortcodeold" columns="15" />
+            <dataField fieldName="notes1001" />
+            <dataField fieldName="notes10011" />
+            <dataField fieldName="notes10013" />
+            <dataField fieldName="notes10014" />
+            <dataField fieldName="notes10012" />
+            <dataField fieldName="notes10015" />
+            <dataField fieldName="notes10016" />
+            <dataField fieldName="notes10017" />
+            <dataField fieldName="notes10018" />
+            <dataField fieldName="VasCurrenceyDescription" />
+            <dataField fieldName="VasCurrenceyDescription1" />
+            <dataField fieldName="VasCurrenceyPrice" columns="15" />
+            <dataField fieldName="typeofServiceDescription" />
+            <dataField fieldName="typeofServiceDescriptionen" />
+            <dataField fieldName="typeofServiceCategory" columns="15" />
+            <dataField fieldName="VasRegiondescription" />
+            <dataField fieldName="VasRegioncodemain" columns="15" />
+            <dataField fieldName="VASopCategoryDescription" />
+            <dataField fieldName="VASopCategorymain" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Vasreports">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Vasreports" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="YearTRS" columns="15" />
+            <dataField fieldName="Monthtrs" columns="15" />
+            <dataField fieldName="shortcodeFIT" columns="15" />
+            <dataField fieldName="shortcodeFOP" columns="15" />
+            <dataField fieldName="ITHits" columns="15" />
+            <dataField fieldName="OPHits" columns="15" />
+            <dataField fieldName="shortcode" columns="15" />
+            <dataField fieldName="typeofshortDescription" columns="50" />
+            <dataField fieldName="typeofshortcodemain" columns="15" />
+            <dataField fieldName="typeofServiceCategoryDescription" />
+            <dataField fieldName="typeofServiceCategoryDescription1" />
+            <dataField fieldName="typeofServiceCategorymain" columns="15" />
+            <dataField fieldName="SHORTCODEOWNERName" />
+            <dataField fieldName="SHORTCODEOWNERName1" />
+            <dataField fieldName="VASoperatorcodeDescription" />
+            <dataField fieldName="Taxs" columns="15" />
+            <dataField fieldName="withdrawalTax" columns="15" />
+            <dataField fieldName="appliedflag" />
+            <dataField fieldName="CADEOWNERDescription" columns="15" />
+            <dataField fieldName="SHORTCADEOWNERMain" columns="15" />
+            <dataField fieldName="shortcodeDescription" />
+            <dataField fieldName="Rent" columns="15" />
+            <dataField fieldName="isysRentpercentage" columns="15" />
+            <dataField fieldName="Rate" columns="15" />
+            <dataField fieldName="operatorShare" columns="15" />
+            <dataField fieldName="sistershare" columns="15" />
+            <dataField fieldName="Cpshare" columns="15" />
+            <dataField fieldName="Subprovidershare" columns="15" />
+            <dataField fieldName="IsysShare" columns="15" />
+            <dataField fieldName="Expr12" columns="15" />
+            <dataField fieldName="Expr13" columns="15" />
+            <dataField fieldName="shortcodeold" columns="15" />
+            <dataField fieldName="notes1001" />
+            <dataField fieldName="notes10011" />
+            <dataField fieldName="notes10013" />
+            <dataField fieldName="notes10014" />
+            <dataField fieldName="notes10012" />
+            <dataField fieldName="notes10015" />
+            <dataField fieldName="notes10016" />
+            <dataField fieldName="notes10017" />
+            <dataField fieldName="notes10018" />
+            <dataField fieldName="VasCurrenceyDescription" />
+            <dataField fieldName="VasCurrenceyDescription1" />
+            <dataField fieldName="VasCurrenceyPrice" columns="15" />
+            <dataField fieldName="typeofServiceDescription" />
+            <dataField fieldName="typeofServiceDescriptionen" />
+            <dataField fieldName="VasRegiondescription" />
+            <dataField fieldName="VasRegioncodemain" columns="15" />
+            <dataField fieldName="VASopCategoryDescription" />
+            <dataField fieldName="VASopCategorymain" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

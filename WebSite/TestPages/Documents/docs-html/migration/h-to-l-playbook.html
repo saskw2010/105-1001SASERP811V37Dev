@@ -1,0 +1,36 @@
+﻿<div class="doc-banner">
+  <span class="crumbs">migration â€؛ h-to-l-playbook</span>
+  <a class="source" href="h-to-l-playbook.md.txt" target="_blank" rel="noopener">View source (.md)</a>
+</div>
+<div class="doc-body">
+<h1>Hâ†’L Migration Playbook (Strangler-Fig)</h1>
+<h2>Phase 0: Inventory & Contracts</h2>
+<ul>
+<li>Confirm callers of ASMX and REST (browser, server-side).</li>
+<li>Freeze legacy contracts for H/J shapes (PageRequest, ViewPage, ActionArgs/Result).</li>
+<li>Add per-function anchors in docs if missing.</li>
+<h2>Phase 1: Carve out H (Services)</h2>
+<li>Introduce ASP.NET Core 8 API (side-by-side or separate host).</li>
+<li>Implement GET /api/{controller} and POST /api/{controller}/actions/{action} with DTOs.</li>
+<li>Add auth (JWT/Cookies), FluentValidation, ProblemDetails.</li>
+<li>Telemetry: log request ids, timings.</li>
+<h2>Phase 2: Switch I (DAL)</h2>
+<li>Implement DbContext and repositories; map legacy filters to expression trees.</li>
+<li>Add migrations; seed minimal data.</li>
+<li>Introduce retry (Polly), transactions.</li>
+<h2>Phase 3: Implement J (Serialization)</h2>
+<li>System.Text.Json camelCase; remove JSONP.</li>
+<li>ProblemDetails for errors; consistent date/times (UTC).</li>
+<h2>Phase 4: Modern K (UI Binding)</h2>
+<li>Build React (Vite) or Blazor modules for key pages.</li>
+<li>Replace server binding with client components; use React Query/SWR.</li>
+<li>A11y and responsive UI.</li>
+<h2>Phase 5: Finalize L (Render)</h2>
+<li>Introduce SPA shell under legacy master/route or separate host.</li>
+<li>Route mapping/hybrid hosting.</li>
+<li>Decommission legacy paths when coverage >= 95%.</li>
+<li>Feature flags to flip traffic back to legacy.</li>
+<li>Keep compatibility adapter for PageRequest/ViewPage until decommission.</li>
+<li>Add structured logs, metrics, tracing across API/DB/frontend.</li>
+
+</div>

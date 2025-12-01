@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Qchecklist" conflictDetection="overwriteChanges" label="Qchecklist" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Qchecklist"."FormId" "FormId"
+	,"Qchecklist"."EN" "EN"
+	,"Qchecklist"."AR" "AR"
+	,"Qchecklist"."MenuID" "MenuID"
+	,"Qchecklist"."MenuAr" "MenuAr"
+	,"Qchecklist"."MenuEng" "MenuEng"
+	,"Qchecklist"."GroupAr" "GroupAr"
+	,"Qchecklist"."GroupEng" "GroupEng"
+	,"Qchecklist"."MODAr" "MODAr"
+	,"Qchecklist"."MODEng" "MODEng"
+	,"Qchecklist"."FormNamenet" "FormNamenet"
+	,"Qchecklist"."IDGroup" "IDGroup"
+	,"Qchecklist"."MODID" "MODID"
+	,"Qchecklist"."formname" "formname"
+from "dbo"."Qchecklist" "Qchecklist"
+]]></text>
+    </command>
+    <command id="MenuIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="MenuID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="FormId" type="Decimal" allowNulls="false" label="Form#" showInSummary="true" />
+    <field name="EN" type="String" label="En" length="255" showInSummary="true" />
+    <field name="AR" type="String" label="Ar" length="255" showInSummary="true" />
+    <field name="MenuID" type="Int64" label="Menu#" readOnly="true" showInSummary="true" />
+    <field name="MenuAr" type="String" label="Menu Ar" length="50" showInSummary="true" />
+    <field name="MenuEng" type="String" label="Menu Eng" length="50" />
+    <field name="GroupAr" type="String" label="Group Ar" length="50" />
+    <field name="GroupEng" type="String" label="Group Eng" length="50" />
+    <field name="MODAr" type="String" label="MOD Ar" length="50" />
+    <field name="MODEng" type="String" label="MOD Eng" length="50" />
+    <field name="FormNamenet" type="String" allowNulls="false" label="Form Namenet" length="50" />
+    <field name="IDGroup" type="Int64" label="ID Group" />
+    <field name="MODID" type="Int64" label="Modid" />
+    <field name="formname" type="String" allowNulls="false" label="Formname" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Qchecklist">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="FormId" columns="15" />
+        <dataField fieldName="EN" />
+        <dataField fieldName="AR" />
+        <dataField fieldName="MenuID" columns="15" />
+        <dataField fieldName="MenuAr" columns="50" />
+        <dataField fieldName="MenuEng" columns="50" />
+        <dataField fieldName="GroupAr" columns="50" />
+        <dataField fieldName="GroupEng" columns="50" />
+        <dataField fieldName="MODAr" columns="50" />
+        <dataField fieldName="MODEng" columns="50" />
+        <dataField fieldName="FormNamenet" columns="50" />
+        <dataField fieldName="IDGroup" columns="15" />
+        <dataField fieldName="MODID" columns="15" />
+        <dataField fieldName="formname" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Qchecklist">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Qchecklist" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="FormId" columns="15" />
+            <dataField fieldName="EN" />
+            <dataField fieldName="AR" />
+            <dataField fieldName="MenuID" columns="15" />
+            <dataField fieldName="MenuAr" columns="50" />
+            <dataField fieldName="MenuEng" columns="50" />
+            <dataField fieldName="GroupAr" columns="50" />
+            <dataField fieldName="GroupEng" columns="50" />
+            <dataField fieldName="MODAr" columns="50" />
+            <dataField fieldName="MODEng" columns="50" />
+            <dataField fieldName="FormNamenet" columns="50" />
+            <dataField fieldName="IDGroup" columns="15" />
+            <dataField fieldName="MODID" columns="15" />
+            <dataField fieldName="formname" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Qchecklist">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Qchecklist" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="FormId" columns="15" />
+            <dataField fieldName="EN" />
+            <dataField fieldName="AR" />
+            <dataField fieldName="MenuAr" columns="50" />
+            <dataField fieldName="MenuEng" columns="50" />
+            <dataField fieldName="GroupAr" columns="50" />
+            <dataField fieldName="GroupEng" columns="50" />
+            <dataField fieldName="MODAr" columns="50" />
+            <dataField fieldName="MODEng" columns="50" />
+            <dataField fieldName="FormNamenet" columns="50" />
+            <dataField fieldName="IDGroup" columns="15" />
+            <dataField fieldName="MODID" columns="15" />
+            <dataField fieldName="formname" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,1602 @@
+<%@ Master Language="VB" AutoEventWireup="false" CodeFile="LegacyMenuModernMaster.master.vb" Inherits="Main" %>
+<!DOCTYPE html>
+<html xml:lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>" lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SKYsaas - نظام إدارة الموارد المؤسسية الحديث مع المنيو الليجاسي</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="نظام إدارة الموارد المؤسسية المتطور - SKYsaas ERP مع المنيو الليجاسي المدمج" />
+
+    <!-- Modern CSS Framework -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Custom Stylesheets -->
+    <link rel="shortcut icon" href="/favicon.png" />
+    <link href="/css/pagemenubar.css" rel="stylesheet" type="text/css" />
+    <link href="/css/notifications.css" rel="stylesheet" type="text/css" />
+
+    <!-- Legacy Menu Integration CSS -->
+    <link href="/css/legacy-menu-modern-integration.css" rel="stylesheet" type="text/css" />
+
+    <!-- Ultra Modern Design System -->
+    <style>
+        /* CSS Variables for Dynamic Theming */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --danger-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+
+            --shadow-soft: 0 2px 15px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            --header-height: 70px;
+            --sidebar-width: 280px;
+
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-border: rgba(255, 255, 255, 0.2);
+
+            /* Legacy Menu Integration Variables */
+            --legacy-menu-bg: #2c3e50;
+            --legacy-menu-text: #ffffff;
+            --legacy-menu-accent: #3498db;
+            --legacy-menu-hover: #34495e;
+        }
+
+        /* Global Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #334155;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Background */
+        .app-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: -2;
+        }
+
+        .app-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></svg>');
+            z-index: -1;
+        }
+
+        /* Membership Top Bar */
+        .membership-top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 45px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1001;
+            color: white;
+            font-size: 0.875rem;
+        }
+
+        .membership-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 0 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .welcome-text {
+            color: #94a3b8;
+        }
+
+        .username {
+            color: #67e8f9;
+            font-weight: 600;
+        }
+
+        .membership-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .membership-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            white-space: nowrap;
+        }
+
+        .membership-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .membership-btn i {
+            font-size: 0.8rem;
+        }
+
+        .language-selector {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-selector:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Ultra Modern Header - Adjusted for membership bar */
+        .ultra-header {
+            position: fixed;
+            top: 45px;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 0 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Brand Logo */
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 800;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .brand-logo:hover {
+            color: #667eea;
+            transform: scale(1.02);
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* Legacy Menu Integration - Desktop Horizontal Menu */
+        .legacy-menu-desktop {
+            display: none;
+            flex: 1;
+            justify-content: center;
+            padding: 0 2rem;
+            align-items: center;
+        }
+
+        .legacy-nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 0.5rem 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .legacy-nav-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            color: #64748b;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .legacy-nav-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #667eea;
+            transform: translateY(-1px);
+        }
+
+        .legacy-nav-item.active {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .legacy-nav-item i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Legacy Menu Dropdown */
+        .legacy-nav-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-strong);
+            min-width: 250px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1002;
+            backdrop-filter: blur(20px);
+        }
+
+        .legacy-nav-item:hover .legacy-nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(8px);
+        }
+
+        .legacy-nav-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: #334155;
+            text-decoration: none;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .legacy-nav-dropdown-item:hover {
+            background: rgba(103, 126, 234, 0.1);
+            color: #667eea;
+        }
+
+        .legacy-nav-dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .legacy-nav-dropdown-item i {
+            width: 18px;
+            text-align: center;
+            color: #64748b;
+        }
+
+        /* User Section */
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notification-btn, .user-btn {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .notification-btn:hover, .user-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+            color: #667eea;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 18px;
+            height: 18px;
+            background: var(--danger-gradient);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(250, 112, 154, 0.3);
+        }
+
+        /* Legacy Mobile Menu Button (Hidden on Desktop) */
+        .legacy-mobile-menu-btn {
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: #64748b;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .legacy-mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            color: #667eea;
+            border-color: rgba(103, 126, 234, 0.3);
+            box-shadow: 0 4px 20px rgba(103, 126, 234, 0.2);
+        }
+
+        .legacy-mobile-menu-btn i {
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        /* Legacy Menu Overlay - Modern Glass Design */
+        .legacy-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(4px);
+        }
+
+        .legacy-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Legacy Menu Sidebar - Modern Design */
+        .legacy-menu-sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 320px;
+            max-width: 85vw;
+            height: 100vh;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-strong);
+            transform: translateX(100%);
+            transition: var(--transition);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .legacy-menu-overlay.active .legacy-menu-sidebar {
+            transform: translateX(0);
+        }
+
+        /* Legacy Menu Header */
+        .legacy-menu-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .legacy-menu-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .legacy-menu-subtitle {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        /* Legacy Menu Search */
+        .legacy-menu-search {
+            position: relative;
+            margin: 1rem;
+        }
+
+        .legacy-menu-search-input {
+            width: 100%;
+            padding: 0.75rem 2.5rem 0.75rem 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            background: rgba(255, 255, 255, 0.8);
+            color: #334155;
+            font-size: 0.875rem;
+            transition: var(--transition);
+        }
+
+        .legacy-menu-search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(103, 126, 234, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .legacy-menu-search-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            pointer-events: none;
+        }
+
+        /* Legacy Menu Items */
+        .legacy-menu-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem 0;
+            
+            /* Loading state */
+            .spinner-border {
+                width: 2rem;
+                height: 2rem;
+                border-width: 0.2em;
+            }
+            
+            /* Menu items */
+            .legacy-menu-item {
+                display: flex;
+                align-items: center;
+                padding: 0.75rem 1.5rem;
+                color: var(--legacy-menu-text);
+                text-decoration: none;
+                transition: all 0.2s ease;
+                border-left: 3px solid transparent;
+                
+                &:hover, &.active {
+                    background-color: rgba(255, 255, 255, 0.1);
+                    border-left-color: var(--legacy-menu-accent);
+                }
+                
+                .legacy-menu-item-icon {
+                    width: 24px;
+                    text-align: center;
+                    margin-left: 0.5rem;
+                    color: var(--legacy-menu-accent);
+                }
+                
+                .legacy-menu-item-text {
+                    flex: 1;
+                    overflow: hidden;
+                }
+                
+                .legacy-menu-item-title {
+                    display: block;
+                    font-weight: 500;
+                }
+                
+                .legacy-menu-item-desc {
+                    display: block;
+                    font-size: 0.75rem;
+                    opacity: 0.8;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                
+                /* Chevron for items with children */
+                .fa-chevron-down {
+                    transition: transform 0.2s ease;
+                    font-size: 0.8em;
+                    opacity: 0.7;
+                }
+                
+                /* Submenu styles */
+                .legacy-submenu {
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.3s ease;
+                    background-color: rgba(0, 0, 0, 0.1);
+                    margin: 0 -1.5rem;
+                    padding: 0 1.5rem 0 3rem;
+                }
+                
+                /* Open state for items with children */
+                &.open {
+                    > a .fa-chevron-down {
+                        transform: rotate(180deg);
+                    }
+                    
+                    > .legacy-submenu {
+                        max-height: 1000px; /* Adjust based on your needs */
+                        padding: 0.5rem 1.5rem 0.5rem 3rem;
+                    }
+                }
+            }
+            
+            /* Submenu items */
+            .legacy-submenu-item {
+                display: flex;
+                align-items: center;
+                padding: 0.5rem 0;
+                color: var(--legacy-menu-text);
+                text-decoration: none;
+                opacity: 0.8;
+                font-size: 0.9rem;
+                transition: all 0.2s ease;
+                
+                &:hover {
+                    opacity: 1;
+                    color: var(--legacy-menu-accent);
+                }
+                
+                i {
+                    font-size: 0.6em;
+                }
+            }
+        }
+
+        .legacy-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1.5rem;
+            color: #334155;
+            text-decoration: none;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            margin: 0 1rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .legacy-menu-item:hover {
+            background: rgba(103, 126, 234, 0.1);
+            border-left-color: #667eea;
+            color: #667eea;
+        }
+
+        .legacy-menu-item.active {
+            background: var(--primary-gradient);
+            color: white;
+            border-left-color: #667eea;
+        }
+
+        .legacy-menu-item-icon {
+            width: 24px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .legacy-menu-item-text {
+            flex: 1;
+        }
+
+        .legacy-menu-item-title {
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: block;
+        }
+
+        .legacy-menu-item-description {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 0.125rem;
+        }
+
+        .legacy-menu-item.active .legacy-menu-item-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Legacy Menu Sub-items */
+        .legacy-menu-subitems {
+            background: rgba(0, 0, 0, 0.05);
+            border-left: 2px solid #667eea;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .legacy-menu-item.has-children.open .legacy-menu-subitems {
+            max-height: 300px;
+        }
+
+        .legacy-menu-subitem {
+            padding: 0.5rem 1.5rem 0.5rem 3rem;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.875rem;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .legacy-menu-subitem:hover {
+            background: rgba(103, 126, 234, 0.05);
+            color: #667eea;
+        }
+
+        /* Legacy Menu Footer */
+        .legacy-menu-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .legacy-menu-footer-text {
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+
+        /* Legacy Menu Close Button */
+        .legacy-menu-close {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #64748b;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .legacy-menu-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #667eea;
+        }
+
+        /* Content Area Adjustments */
+        .main-content {
+            margin-top: 115px; /* Account for header + membership bar */
+            padding: 2rem;
+            min-height: calc(100vh - 115px);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 992px) {
+            .legacy-menu-desktop {
+                display: flex;
+            }
+
+            .legacy-mobile-menu-btn {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .legacy-menu-desktop {
+                display: none;
+            }
+
+            .legacy-mobile-menu-btn {
+                display: flex;
+            }
+
+            .legacy-menu-sidebar {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .header-content {
+                padding: 0 1rem;
+            }
+
+            .membership-content {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .brand-logo {
+                font-size: 1.25rem;
+            }
+
+            .brand-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .user-section {
+                gap: 0.5rem;
+            }
+
+            .notification-btn, .user-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .main-content {
+                margin-top: 115px;
+                padding: 1rem;
+            }
+        }
+
+        /* Loading States */
+        .legacy-menu-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: #64748b;
+        }
+
+        /* Dark Theme Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --glass-bg: rgba(15, 23, 42, 0.95);
+                --glass-border: rgba(255, 255, 255, 0.1);
+            }
+
+            body {
+                color: #e2e8f0;
+            }
+
+            .brand-logo {
+                color: #f1f5f9;
+            }
+
+            .legacy-menu-item {
+                color: #e2e8f0;
+            }
+
+            .legacy-menu-item-description {
+                color: #94a3b8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Glassmorphism Background -->
+    <div class="app-background"></div>
+
+    <form id="form1" runat="server">
+        <!-- ASP.NET Essential Controls -->
+        <act:ToolkitScriptManager ID="sm" runat="server" ScriptMode="Release" EnableScriptGlobalization="True" OnResolveScriptReference="sm_ResolveScriptReference" />
+        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+
+        <!-- Membership Top Bar -->
+        <div class="membership-top-bar">
+            <div class="membership-content">
+                <div class="user-info">
+                    <span class="welcome-text">مرحباً،</span>
+                    <span class="username" id="currentUserName">المستخدم</span>
+                </div>
+                <div class="membership-actions">
+                    <button class="membership-btn" onclick="showProfile()" title="الملف الشخصي">
+                        <i class="fas fa-user"></i>
+                        <span>الملف الشخصي</span>
+                    </button>
+                    <button class="membership-btn" onclick="showHistory()" title="السجل">
+                        <i class="fas fa-history"></i>
+                        <span>السجل</span>
+                    </button>
+                    <button class="membership-btn" onclick="showHelp()" title="المساعدة">
+                        <i class="fas fa-question-circle"></i>
+                        <span>المساعدة</span>
+                    </button>
+                    <button class="membership-btn" onclick="showSettings()" title="الإعدادات">
+                        <i class="fas fa-cog"></i>
+                        <span>الإعدادات</span>
+                    </button>
+                    <button class="membership-btn" onclick="logout()" title="تسجيل الخروج">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>خروج</span>
+                    </button>
+                    <select class="language-selector" onchange="changeLanguage(this.value)">
+                        <option value="ar-SA">العربية</option>
+                        <option value="en-US">English</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden Membership Bar (for functionality) -->
+        <div style="position: absolute; left: -9999px; top: -9999px; visibility: hidden; opacity: 0;">
+            <aquarium:MembershipBar ID="mb" runat="server" RememberMeSet="False" DisplayLogin="False" IdleUserTimeout="15000" EnableHistory="False" EnablePermalinks="False" />
+        </div>
+
+        <!-- Legacy Data Bridge - Hidden but accessible for data extraction -->
+        <div id="LegacyDataBridge" style="position: absolute; left: -9999px; top: -9999px; visibility: hidden; opacity: 0;">
+            <!-- This will be populated by the legacy membership system -->
+        </div>
+
+        <!-- Ultra Modern Header -->
+        <header class="ultra-header">
+            <div class="header-content">
+                <!-- Brand Section -->
+                <div class="brand-section">
+                    <a href="/Default.aspx" class="brand-logo">
+                        <div class="brand-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span>SKYsaas ERP</span>
+                    </a>
+                </div>
+
+                <!-- Legacy Menu Integration -->
+                <div class="legacy-menu-desktop">
+                    <nav class="legacy-nav-menu">
+                        <a href="/Default.aspx" class="legacy-nav-item active">
+                            <i class="fas fa-home"></i>
+                            <span>الرئيسية</span>
+                        </a>
+                        <div class="legacy-nav-item" onclick="toggleDropdown(this)">
+                            <i class="fas fa-boxes"></i>
+                            <span>المخازن</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                            <div class="legacy-nav-dropdown">
+                                <a href="/Pages/Inventory.aspx" class="legacy-nav-dropdown-item">
+                                    <i class="fas fa-warehouse"></i>
+                                    <span>إدارة المخازن</span>
+                                </a>
+                                <a href="/Pages/Stock.aspx" class="legacy-nav-dropdown-item">
+                                    <i class="fas fa-cubes"></i>
+                                    <span>جرد المخزون</span>
+                                </a>
+                                <a href="/Pages/Transfer.aspx" class="legacy-nav-dropdown-item">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>تحويلات</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="legacy-nav-item" onclick="toggleDropdown(this)">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>المبيعات</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                            <div class="legacy-nav-dropdown">
+                                <a href="/Pages/Sales.aspx" class="legacy-nav-dropdown-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>فواتير المبيعات</span>
+                                </a>
+                                <a href="/Pages/Customers.aspx" class="legacy-nav-dropdown-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>العملاء</span>
+                                </a>
+                                <a href="/Pages/Quotes.aspx" class="legacy-nav-dropdown-item">
+                                    <i class="fas fa-file-contract"></i>
+                                    <span>عروض الأسعار</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="legacy-nav-item" onclick="toggleDropdown(this)">
+                            <i class="fas fa-truck"></i>
+                            <span>المشتريات</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                            <div class="legacy-nav-dropdown">
+                                <a href="/Pages/Purchases.aspx" class="legacy-nav-dropdown-item">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>فواتير المشتريات</span>
+                                </a>
+                                <a href="/Pages/Suppliers.aspx" class="legacy-nav-dropdown-item">
+                                    <i class="fas fa-truck-loading"></i>
+                                    <span>الموردين</span>
+                                </a>
+                                <a href="/Pages/Orders.aspx" class="legacy-nav-dropdown-item">
+                                    <i class="fas fa-clipboard-list"></i>
+                                    <span>طلبات الشراء</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="legacy-nav-item" onclick="toggleDropdown(this)">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>التقارير</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                            <div class="legacy-nav-dropdown">
+                                <a href="/Pages/FinancialReports.aspx" class="legacy-nav-dropdown-item">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <span>التقارير المالية</span>
+                                </a>
+                                <a href="/Pages/SalesReports.aspx" class="legacy-nav-dropdown-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>تقارير المبيعات</span>
+                                </a>
+                                <a href="/Pages/InventoryReports.aspx" class="legacy-nav-dropdown-item">
+                                    <i class="fas fa-warehouse"></i>
+                                    <span>تقارير المخازن</span>
+                                </a>
+                            </div>
+                        </div>
+                        <a href="/Pages/Settings.aspx" class="legacy-nav-item">
+                            <i class="fas fa-cog"></i>
+                            <span>الإعدادات</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="legacy-mobile-menu-btn" onclick="toggleLegacyMenu()">
+                    <i class="fas fa-bars"></i>
+                    <span class="menu-label">القائمة</span>
+                </button>
+
+                <!-- User Section -->
+                <div class="user-section">
+                    <button class="notification-btn" onclick="showNotifications()" title="الإشعارات">
+                        <i class="fas fa-bell"></i>
+                        <div class="notification-badge">3</div>
+                    </button>
+                    <button class="user-btn" onclick="showUserMenu()" title="قائمة المستخدم">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Legacy Menu Overlay -->
+        <div class="legacy-menu-overlay" id="legacyMenuOverlay" onclick="closeLegacyMenu()"></div>
+
+        <!-- Legacy Menu Sidebar -->
+        <div class="legacy-menu-sidebar" id="legacyMenuSidebar">
+            <div class="legacy-menu-header">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <button class="legacy-menu-close" onclick="closeLegacyMenu()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <button id="refreshMenuBtn" class="btn btn-sm btn-outline-light ms-2" title="تحديث القائمة">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <div class="legacy-menu-logo">
+                    <img src="/images/logo.png" alt="SKYsaas Logo" />
+                    <h3>SKYsaas ERP</h3>
+                </div>
+            </div>
+            <div class="legacy-menu-user">
+                <div class="legacy-menu-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="legacy-menu-user-info">
+                    <h4 id="currentUserName">المستخدم</h4>
+                    <span id="currentUserRole">مدير النظام</span>
+                </div>
+            </div>
+            <div class="legacy-menu-search p-3 border-bottom">
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-sm" placeholder="بحث في القائمة..." id="menuSearchInput">
+                    <button class="btn btn-outline-secondary" type="button" id="menuSearchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="legacy-menu-items" id="legacyMenuItems">
+                <!-- Menu items will be loaded here dynamically -->
+                <div class="text-center p-4">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">جاري التحميل...</span>
+                    </div>
+                    <p class="mt-2 text-muted">جاري تحميل القائمة...</p>
+                    <i class="fas fa-chevron-left"></i>
+                    <div class="legacy-menu-subitems">
+                        <a href="/Pages/Inventory.aspx" class="legacy-menu-subitem">إدارة المخازن</a>
+                        <a href="/Pages/Stock.aspx" class="legacy-menu-subitem">جرد المخزون</a>
+                        <a href="/Pages/Transfer.aspx" class="legacy-menu-subitem">تحويلات</a>
+                    </div>
+                </div>
+
+                <div class="legacy-menu-item has-children" onclick="toggleLegacySubMenu(this)">
+                    <i class="fas fa-shopping-cart legacy-menu-item-icon"></i>
+                    <div class="legacy-menu-item-text">
+                        <span class="legacy-menu-item-title">المبيعات</span>
+                        <span class="legacy-menu-item-description">إدارة عمليات البيع</span>
+                    </div>
+                    <i class="fas fa-chevron-left"></i>
+                    <div class="legacy-menu-subitems">
+                        <a href="/Pages/Sales.aspx" class="legacy-menu-subitem">فواتير المبيعات</a>
+                        <a href="/Pages/Customers.aspx" class="legacy-menu-subitem">العملاء</a>
+                        <a href="/Pages/Quotes.aspx" class="legacy-menu-subitem">عروض الأسعار</a>
+                    </div>
+                </div>
+
+                <div class="legacy-menu-item has-children" onclick="toggleLegacySubMenu(this)">
+                    <i class="fas fa-truck legacy-menu-item-icon"></i>
+                    <div class="legacy-menu-item-text">
+                        <span class="legacy-menu-item-title">المشتريات</span>
+                        <span class="legacy-menu-item-description">إدارة عمليات الشراء</span>
+                    </div>
+                    <i class="fas fa-chevron-left"></i>
+                    <div class="legacy-menu-subitems">
+                        <a href="/Pages/Purchases.aspx" class="legacy-menu-subitem">فواتير المشتريات</a>
+                        <a href="/Pages/Suppliers.aspx" class="legacy-menu-subitem">الموردين</a>
+                        <a href="/Pages/Orders.aspx" class="legacy-menu-subitem">طلبات الشراء</a>
+                    </div>
+                </div>
+
+                <div class="legacy-menu-item has-children" onclick="toggleLegacySubMenu(this)">
+                    <i class="fas fa-chart-pie legacy-menu-item-icon"></i>
+                    <div class="legacy-menu-item-text">
+                        <span class="legacy-menu-item-title">التقارير</span>
+                        <span class="legacy-menu-item-description">التقارير والإحصائيات</span>
+                    </div>
+                    <i class="fas fa-chevron-left"></i>
+                    <div class="legacy-menu-subitems">
+                        <a href="/Pages/FinancialReports.aspx" class="legacy-menu-subitem">التقارير المالية</a>
+                        <a href="/Pages/SalesReports.aspx" class="legacy-menu-subitem">تقارير المبيعات</a>
+                        <a href="/Pages/InventoryReports.aspx" class="legacy-menu-subitem">تقارير المخازن</a>
+                    </div>
+                </div>
+
+                <a href="/Pages/Settings.aspx" class="legacy-menu-item">
+                    <i class="fas fa-cog legacy-menu-item-icon"></i>
+                    <div class="legacy-menu-item-text">
+                        <span class="legacy-menu-item-title">الإعدادات</span>
+                        <span class="legacy-menu-item-description">إعدادات النظام</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="legacy-menu-footer">
+                <p class="legacy-menu-footer-text">&copy; 2025 SKYsaas ERP - الإصدار 1.1.37</p>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </main>
+
+        <!-- Legacy Elements (Hidden but Functional) -->
+        <div class="legacy-hidden" aria-hidden="true">
+            <div id="PageMenuBar" runat="server" class="PageMenuBar"></div>
+            <aquarium:MenuExtender ID="Menu1" runat="server"
+                DataSourceID="SiteMapDataSource1"
+                TargetControlID="PageMenuBar"
+                HoverStyle="Auto"
+                PopupPosition="Left"
+                ShowSiteActions="False" />
+
+            <asp:ContentPlaceHolder ID="PageTitleContentPlaceHolder" runat="server">الصفحة الرئيسية</asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="SideBarPlaceHolder" runat="server" />
+            <asp:ContentPlaceHolder ID="PageHeaderContentPlaceHolder" runat="server">SKYsaas ERP</asp:ContentPlaceHolder>
+            <asp:Label ID="lblDomainName" runat="server" />
+            <asp:HiddenField ID="AsmxBaseField" runat="server" />
+        </div>
+    </form>
+
+    <!-- Legacy Menu Integration JavaScript -->
+    <script type="text/javascript">
+        // Global menu data and state
+        window.LegacyMenu = {
+            data: [],
+            isLoaded: false,
+            
+            // Initialize the menu
+            init: function() {
+                this.loadMenuData();
+                this.bindEvents();
+            },
+            
+            // Load menu data from server
+            loadMenuData: function() {
+                const self = this;
+                
+                // Show loading state
+                const menuItems = document.getElementById('legacyMenuItems');
+                if (menuItems) {
+                    menuItems.innerHTML = '<div class="text-center p-4"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">جاري التحميل...</span></div><p class="mt-2">جاري تحميل القائمة...</p></div>';
+                }
+                
+                // Make AJAX call to get menu data
+                $.ajax({
+                    type: 'POST',
+                    url: '/Services/MenuService.asmx/GetMenuData',
+                    data: '{}',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function(response) {
+                        try {
+                            const result = typeof response.d === 'string' ? JSON.parse(response.d) : response.d;
+                            if (result.success) {
+                                self.data = result.data || [];
+                                self.isLoaded = true;
+                                self.renderMenu();
+                                console.log('Menu data loaded successfully', self.data);
+                            } else {
+                                console.error('Error loading menu data:', result.message);
+                                self.showError('حدث خطأ أثناء تحميل القائمة');
+                            }
+                        } catch (e) {
+                            console.error('Error parsing menu data:', e);
+                            self.showError('خطأ في معالجة بيانات القائمة');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX Error:', status, error);
+                        self.showError('فشل الاتصال بالخادم');
+                    }
+                });
+            },
+            
+            // Render the menu based on loaded data
+            renderMenu: function() {
+                const menuItems = document.getElementById('legacyMenuItems');
+                if (!menuItems) return;
+                
+                let html = '';
+                
+                this.data.forEach(function(item) {
+                    if (item.hasChildren) {
+                        // Menu item with children
+                        html += `
+                        <div class="legacy-menu-item has-children">
+                            <a href="${item.url || '#'}" class="d-flex align-items-center">
+                                <i class="${item.icon || 'fas fa-folder'} legacy-menu-item-icon"></i>
+                                <div class="legacy-menu-item-text">
+                                    <span class="legacy-menu-item-title">${item.title}</span>
+                                    <small class="legacy-menu-item-desc">${item.description || ''}</small>
+                                </div>
+                                <i class="fas fa-chevron-down ms-auto"></i>
+                            </a>
+                            <div class="legacy-submenu">`;
+                        
+                        // Add children
+                        if (item.children && item.children.length > 0) {
+                            item.children.forEach(function(child) {
+                                html += `
+                                <a href="${child.url || '#'}" class="legacy-submenu-item">
+                                    <i class="${child.icon || 'fas fa-circle'} me-2"></i>
+                                    <span>${child.title}</span>
+                                </a>`;
+                            });
+                        }
+                        
+                        html += `
+                            </div>
+                        </div>`;
+                    } else {
+                        // Single menu item
+                        const isActive = window.location.pathname.toLowerCase() === item.url.toLowerCase();
+                        html += `
+                        <a href="${item.url || '#'}" class="legacy-menu-item ${isActive ? 'active' : ''}">
+                            <i class="${item.icon || 'fas fa-circle'} legacy-menu-item-icon"></i>
+                            <div class="legacy-menu-item-text">
+                                <span class="legacy-menu-item-title">${item.title}</span>
+                                ${item.description ? `<small class="legacy-menu-item-desc">${item.description}</small>` : ''}
+                            </div>
+                        </a>`;
+                    }
+                });
+                
+                menuItems.innerHTML = html || '<div class="p-3 text-muted">لا توجد عناصر في القائمة</div>';
+                this.initializeSubmenus();
+            },
+            
+            // Initialize submenu toggles
+            initializeSubmenus: function() {
+                document.querySelectorAll('.legacy-menu-item.has-children > a').forEach(function(link) {
+                    link.addEventListener('click', function(e) {
+                        // Only prevent default if it's a dropdown toggle
+                        if (this.getAttribute('href') === '#') {
+                            e.preventDefault();
+                        }
+                        this.parentElement.classList.toggle('open');
+                    });
+                });
+            },
+            
+            // Show error message
+            showError: function(message) {
+                const menuItems = document.getElementById('legacyMenuItems');
+                if (menuItems) {
+                    menuItems.innerHTML = `
+                        <div class="alert alert-danger m-3">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            ${message}
+                            <button class="btn btn-sm btn-outline-secondary ms-2" onclick="LegacyMenu.loadMenuData()">
+                                <i class="fas fa-sync-alt me-1"></i> إعادة المحاولة
+                            </button>
+                        </div>`;
+                }
+            },
+            
+            // Bind events
+            bindEvents: function() {
+                const self = this;
+                
+                // Refresh menu button
+                const refreshBtn = document.getElementById('refreshMenuBtn');
+                if (refreshBtn) {
+                    refreshBtn.addEventListener('click', function() {
+                        self.loadMenuData();
+                    });
+                }
+            }
+        };
+        
+        // Legacy Menu Toggle Function
+        function toggleLegacyMenu() {
+            const overlay = document.getElementById('legacyMenuOverlay');
+            const sidebar = document.getElementById('legacyMenuSidebar');
+
+            if (overlay && sidebar) {
+                overlay.classList.toggle('active');
+                sidebar.classList.toggle('active');
+                document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+            }
+        }
+
+        function closeLegacyMenu() {
+            const overlay = document.getElementById('legacyMenuOverlay');
+            const sidebar = document.getElementById('legacyMenuSidebar');
+
+            if (overlay && sidebar) {
+                overlay.classList.remove('active');
+                sidebar.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function toggleLegacySubMenu(item) {
+            item.classList.toggle('open');
+        }
+
+        function toggleDropdown(item) {
+            // Close all other dropdowns first
+            document.querySelectorAll('.legacy-nav-item').forEach(navItem => {
+                if (navItem !== item) {
+                    navItem.classList.remove('dropdown-open');
+                }
+            });
+
+            // Toggle current dropdown
+            item.classList.toggle('dropdown-open');
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.legacy-nav-item')) {
+                document.querySelectorAll('.legacy-nav-item').forEach(item => {
+                    item.classList.remove('dropdown-open');
+                });
+            }
+        });
+
+        // Search functionality
+        document.getElementById('legacyMenuSearch')?.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const menuItems = document.querySelectorAll('.legacy-menu-item');
+
+            menuItems.forEach(item => {
+                const title = item.querySelector('.legacy-menu-item-title')?.textContent.toLowerCase();
+                const description = item.querySelector('.legacy-menu-item-description')?.textContent.toLowerCase();
+
+                if (title?.includes(searchTerm) || description?.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = searchTerm ? 'none' : 'flex';
+                }
+            });
+        });
+
+        // User Menu Functions
+        function showUserMenu() {
+            console.log('عرض قائمة المستخدم');
+            // Implementation for user menu
+        }
+
+        function showNotifications() {
+            console.log('عرض الإشعارات');
+            // Implementation for notifications
+        }
+
+        // Language change function
+        function changeLanguage(lang) {
+            console.log('تغيير اللغة إلى:', lang);
+            // Implementation for language change
+        }
+
+        // Profile and other functions (same as original)
+        function showProfile() {
+            console.log('عرض الملف الشخصي');
+            try {
+                // Try to open user profile
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.showProfile) {
+                        membership.showProfile();
+                        return;
+                    }
+                }
+
+                // Fallback: open membership page
+                window.open('/Pages/Membership.aspx', '_blank');
+            } catch (e) {
+                console.error('User profile failed:', e);
+                alert('لا يمكن فتح الملف الشخصي في الوقت الحالي');
+            }
+        }
+
+        function showSettings() {
+            console.log('عرض الإعدادات');
+            try {
+                // Try to open settings or preferences
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.help) {
+                        membership.help();
+                        return;
+                    }
+                }
+
+                // Fallback: navigate to settings page
+                window.location.href = '/Pages/Settings.aspx';
+            } catch (e) {
+                console.error('Settings failed:', e);
+                alert('لا يمكن فتح الإعدادات في الوقت الحالي');
+            }
+        }
+
+        function logout() {
+            try {
+                // Use legacy membership logout function
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.logout) {
+                        if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                            membership.logout();
+                        }
+                        return;
+                    }
+                }
+
+                // Fallback logout
+                if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                    window.location.href = '/logout.aspx';
+                }
+            } catch (e) {
+                console.error('Logout failed:', e);
+                if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                    window.location.href = '/Login.aspx';
+                }
+            }
+        }
+
+        function showHistory() {
+            try {
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.showHistory) {
+                        membership.showHistory();
+                        return;
+                    }
+                }
+                alert('ميزة السجل غير متاحة حالياً');
+            } catch (e) {
+                console.error('History failed:', e);
+                alert('لا يمكن عرض السجل في الوقت الحالي');
+            }
+        }
+
+        function showHelp() {
+            try {
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.help) {
+                        membership.help();
+                        return;
+                    }
+                }
+                // Fallback: open help in new window
+                window.open('/help/', '_blank');
+            } catch (e) {
+                console.error('Help failed:', e);
+                alert('لا يمكن فتح المساعدة في الوقت الحالي');
+            }
+        }
+
+        // Update username function
+        function updateUserName() {
+            try {
+                // Try to get username from legacy membership bar
+                const legacyMembershipBar = document.getElementById('Membership_Login');
+                const userNameElement = document.getElementById('currentUserName');
+
+                if (legacyMembershipBar && userNameElement) {
+                    // Extract username from legacy membership bar
+                    const welcomeText = legacyMembershipBar.innerText || legacyMembershipBar.textContent;
+                    let username = 'المستخدم';
+
+                    // Try different patterns to extract username
+                    if (welcomeText) {
+                        // Pattern 1: "Welcome, username"
+                        const welcomeMatch = welcomeText.match(/Welcome[,\s]+([^|]+)/i);
+                        if (welcomeMatch) {
+                            username = welcomeMatch[1].trim();
+                        }
+                        // Pattern 2: Arabic welcome patterns
+                        const arabicMatch = welcomeText.match(/مرحبا[ً،\s]+([^|]+)/);
+                        if (arabicMatch) {
+                            username = arabicMatch[1].trim();
+                        }
+                        // Pattern 3: Extract from any text before pipe or logout
+                        const beforePipeMatch = welcomeText.match(/^([^|]+)/);
+                        if (beforePipeMatch && beforePipeMatch[1].trim() && !beforePipeMatch[1].includes('Welcome')) {
+                            username = beforePipeMatch[1].trim();
+                        }
+                    }
+
+                    userNameElement.textContent = username;
+                }
+
+                // Also try to get from server-side if available
+                if (typeof __username !== 'undefined' && __username) {
+                    document.getElementById('currentUserName').textContent = __username;
+                } else if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membershipInstance = Web.Membership._instance;
+                    if (membershipInstance.get_user && membershipInstance.get_user()) {
+                        document.getElementById('currentUserName').textContent = membershipInstance.get_user();
+                    }
+                }
+            } catch (e) {
+                console.log('Unable to update username:', e);
+            }
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the menu system
+            window.LegacyMenu.init();
+            
+            // Update username with real data
+            updateUserName();
+
+            // Update current time
+            updateCurrentTime();
+            setInterval(updateCurrentTime, 60000);
+
+            // Initialize tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const sidebar = document.getElementById('legacyMenuSidebar');
+                const menuBtn = document.querySelector('.legacy-mobile-menu-btn');
+                
+                if (sidebar && sidebar.classList.contains('active') && 
+                    !sidebar.contains(event.target) && 
+                    (!menuBtn || !menuBtn.contains(event.target))) {
+                    closeLegacyMenu();
+                }
+            });
+        });
+
+        // Set active menu item based on current URL
+        function setActiveMenuItem() {
+            const currentPath = window.location.pathname.toLowerCase();
+            const menuItems = document.querySelectorAll('.legacy-nav-item, .legacy-menu-item');
+
+            menuItems.forEach(item => {
+                const href = item.getAttribute('href')?.toLowerCase();
+                if (href && currentPath.includes(href)) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            // Close mobile menu on resize to desktop
+            if (window.innerWidth >= 992) {
+                closeLegacyMenu();
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // ESC to close menu
+            if (e.key === 'Escape') {
+                closeLegacyMenu();
+            }
+
+            // Ctrl/Cmd + K to open search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                const searchInput = document.getElementById('legacyMenuSearch');
+                if (searchInput) {
+                    searchInput.focus();
+                    toggleLegacyMenu();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

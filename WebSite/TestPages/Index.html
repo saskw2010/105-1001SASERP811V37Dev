@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Pages Index - الفهرس الرئيسي لصفحات الاختبار</title>
+    <meta name="description" content="الفهرس الرئيسي الشامل لجميع صفحات الاختبار والتطوير في النظام">
+    <meta name="keywords" content="Test Pages, ASPX, HTML, Index, فهرس الصفحات, اختبار">
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --primary-light: #34495e;
+            --secondary-color: #3498db;
+            --secondary-light: #5dade2;
+            --accent-color: #e74c3c;
+            --accent-light: #ec7063;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --text-primary: #2c3e50;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --background-primary: #fff;
+            --background-secondary: #f8f9fa;
+            --background-dark: #2c3e50;
+            --border-color: #e1e5e9;
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-medium: 0 4px 20px rgba(0,0,0,0.15);
+            --shadow-heavy: 0 8px 30px rgba(0,0,0,0.2);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--warning-color));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--background-secondary);
+            direction: rtl;
+            text-align: right;
+            overflow-x: hidden;
+        }
+        
+        /* Header Section */
+        .hero-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .hero-stat {
+            text-align: center;
+        }
+        
+        .hero-stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .hero-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        /* Main Categories Section */
+        .categories-section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        
+        .category-card {
+            background: var(--background-primary);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-primary);
+        }
+        
+        .category-card.aspx::before {
+            background: var(--gradient-primary);
+        }
+        
+        .category-card.html::before {
+            background: var(--gradient-accent);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-heavy);
+        }
+        
+        .category-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .category-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .category-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-stat {
+            text-align: center;
+            padding: 0.8rem;
+            background: var(--background-secondary);
+            border-radius: 10px;
+            flex: 1;
+            margin: 0 0.3rem;
+        }
+        
+        .category-stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        .category-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        .category-link {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+        
+        .category-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .html .category-link {
+            background: var(--gradient-accent);
+        }
+        
+        /* Quick Access Section */
+        .quick-access-section {
+            background: var(--background-primary);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .quick-access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .quick-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--background-secondary);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        
+        .quick-link:hover {
+            background: var(--secondary-color);
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .quick-link-icon {
+            font-size: 1.5rem;
+            margin-left: 1rem;
+        }
+        
+        .quick-link-text {
+            font-weight: 500;
+        }
+        
+        /* Features Section */
+        .features-section {
+            margin-bottom: 3rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-item {
+            background: var(--background-primary);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--background-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--secondary-light);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .category-stats {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .category-stat {
+                margin: 0;
+            }
+            
+            .quick-access-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Loading States */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content fade-in">
+            <h1 class="hero-title">🏠 الفهرس الرئيسي لصفحات الاختبار</h1>
+            <p class="hero-subtitle">مركز شامل لجميع صفحات الاختبار والتطوير في النظام</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number">29+</span>
+                    <span class="hero-stat-label">صفحة اختبار</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">3</span>
+                    <span class="hero-stat-label">أقسام رئيسية</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">100%</span>
+                    <span class="hero-stat-label">منظم ومرتب</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Main Categories -->
+        <div class="categories-section slide-up">
+            <h2 class="section-title">📂 الأقسام الرئيسية</h2>
+            <div class="categories-grid">
+                <!-- ASPX Pages Category -->
+                <div class="category-card aspx">
+                    <span class="category-icon">🖥️</span>
+                    <h3 class="category-title">صفحات ASPX</h3>
+                    <p class="category-description">
+                        مجموعة شاملة من صفحات ASP.NET Web Forms للاختبار والتطوير، تشمل اختبارات المستخدمين، 
+                        التحويل، والتحليل، مع دعم كامل لإطار عمل Code On Time.
+                    </p>
+                    <div class="category-stats">
+                        <div class="category-stat">
+                            <div class="category-stat-number">11</div>
+                            <div class="category-stat-label">صفحة</div>
+                        </div>
+                        <div class="category-stat">
+                            <div class="category-stat-number">VB.NET</div>
+                            <div class="category-stat-label">لغة البرمجة</div>
+                        </div>
+                        <div class="category-stat">
+                            <div class="category-stat-number">100%</div>
+                            <div class="category-stat-label">متوافق</div>
+                        </div>
+                    </div>
+                    <a href="ASPX/Index.aspx" class="category-link">استكشاف صفحات ASPX</a>
+                </div>
+                
+                <!-- Advanced ASPX Pages Category -->
+                <div class="category-card aspx">
+                    <span class="category-icon">📋</span>
+                    <h3 class="category-title">الصفحات المتقدمة</h3>
+                    <p class="category-description">
+                        مجموعة متخصصة من الصفحات المتقدمة للتحليل المالي، كشوف العملاء، لوحات التحكم التفاعلية 
+                        مع إصدارات محسنة ومُحدثة للنظام المالي.
+                    </p>
+                    <div class="category-stats">
+                        <div class="category-stat">
+                            <div class="category-stat-number">12</div>
+                            <div class="category-stat-label">صفحة</div>
+                        </div>
+                        <div class="category-stat">
+                            <div class="category-stat-number">متقدم</div>
+                            <div class="category-stat-label">المستوى</div>
+                        </div>
+                        <div class="category-stat">
+                            <div class="category-stat-number">مالي</div>
+                            <div class="category-stat-label">التخصص</div>
+                        </div>
+                    </div>
+                    <a href="ASPXadv/Index.aspx" class="category-link">استكشاف الصفحات المتقدمة</a>
+                </div>
+                
+                <!-- HTML Pages Category -->
+                <div class="category-card html">
+                    <span class="category-icon">🌐</span>
+                    <h3 class="category-title">صفحات HTML</h3>
+                    <p class="category-description">
+                        مجموعة متنوعة من صفحات HTML التفاعلية للعرض التوضيحي والاختبار، تشمل أنظمة الثيمات، 
+                        لوحات التحكم، واختبارات CSS المتقدمة.
+                    </p>
+                    <div class="category-stats">
+                        <div class="category-stat">
+                            <div class="category-stat-number">6</div>
+                            <div class="category-stat-label">صفحة</div>
+                        </div>
+                        <div class="category-stat">
+                            <div class="category-stat-number">ES6+</div>
+                            <div class="category-stat-label">JavaScript</div>
+                        </div>
+                        <div class="category-stat">
+                            <div class="category-stat-number">CSS3</div>
+                            <div class="category-stat-label">تصميم</div>
+                        </div>
+                    </div>
+                    <a href="HTML/Index.html" class="category-link">استكشاف صفحات HTML</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Access Section -->
+        <div class="quick-access-section slide-up">
+            <h3 class="section-title">⚡ الوصول السريع</h3>
+            <div class="quick-access-grid">
+                <a href="ASPX/ModernTestPage.aspx" class="quick-link">
+                    <span class="quick-link-icon">🚀</span>
+                    <span class="quick-link-text">الصفحة الحديثة الرئيسية</span>
+                </a>
+                <a href="ASPXadv/Index.aspx" class="quick-link">
+                    <span class="quick-link-icon">📋</span>
+                    <span class="quick-link-text">الصفحات المتقدمة</span>
+                </a>
+                <a href="ASPX/TestLogin.aspx" class="quick-link">
+                    <span class="quick-link-icon">🔐</span>
+                    <span class="quick-link-text">اختبار تسجيل الدخول</span>
+                </a>
+                <a href="HTML/css-manager-dashboard.html" class="quick-link">
+                    <span class="quick-link-icon">🎛️</span>
+                    <span class="quick-link-text">لوحة تحكم CSS</span>
+                </a>
+                <a href="HTML/theme-system-test.html" class="quick-link">
+                    <span class="quick-link-icon">🎨</span>
+                    <span class="quick-link-text">اختبار نظام الثيمات</span>
+                </a>
+                <a href="ASPX/width-analysis.aspx" class="quick-link">
+                    <span class="quick-link-icon">📏</span>
+                    <span class="quick-link-text">تحليل العرض</span>
+                </a>
+                <a href="HTML/modern-theme-demo.html" class="quick-link">
+                    <span class="quick-link-icon">🎭</span>
+                    <span class="quick-link-text">عرض التصميم الحديث</span>
+                </a>
+                <a href="ASPXadv/FinancialAnalysisPro.aspx" class="quick-link">
+                    <span class="quick-link-icon">📊</span>
+                    <span class="quick-link-text">التحليل المالي الاحترافي</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Features Section -->
+        <div class="features-section slide-up">
+            <h3 class="section-title">✨ المميزات</h3>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <h4 class="feature-title">تصميم متجاوب</h4>
+                    <p class="feature-description">جميع الصفحات مصممة للعمل على جميع الأجهزة والشاشات</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔧</div>
+                    <h4 class="feature-title">قابل للتخصيص</h4>
+                    <p class="feature-description">نظام ثيمات متقدم مع إمكانيات تخصيص شاملة</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h4 class="feature-title">أداء عالي</h4>
+                    <p class="feature-description">محسن للأداء السريع والتحميل الفوري</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🛡️</div>
+                    <h4 class="feature-title">آمن وموثوق</h4>
+                    <p class="feature-description">تطبيق معايير الأمان وأفضل الممارسات</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📊</div>
+                    <h4 class="feature-title">تحليلات شاملة</h4>
+                    <p class="feature-description">أدوات تحليل ومراقبة متقدمة</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌍</div>
+                    <h4 class="feature-title">دعم متعدد اللغات</h4>
+                    <p class="feature-description">واجهة مستخدم باللغة العربية والإنجليزية</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="../Default.aspx" class="footer-link">الصفحة الرئيسية</a>
+                <a href="../Login.aspx" class="footer-link">تسجيل الدخول</a>
+                <a href="../Help/Default.aspx" class="footer-link">المساعدة</a>
+                <a href="ASPX/Index.aspx" class="footer-link">صفحات ASPX</a>
+                <a href="ASPXadv/Index.aspx" class="footer-link">الصفحات المتقدمة</a>
+                <a href="HTML/Index.html" class="footer-link">صفحات HTML</a>
+            </div>
+            <p>&copy; 2025 نظام إدارة صفحات الاختبار - جميع الحقوق محفوظة</p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Test Pages Main Index loaded');
+            
+            // Initialize animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            // Observe all animatable elements
+            document.querySelectorAll('.category-card, .feature-item, .quick-link').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Add interactive effects
+            const categoryCards = document.querySelectorAll('.category-card');
+            categoryCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.borderColor = 'var(--secondary-color)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.borderColor = 'var(--border-color)';
+                });
+            });
+            
+            // Quick link interactions
+            const quickLinks = document.querySelectorAll('.quick-link');
+            quickLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Add loading state
+                    this.classList.add('loading');
+                    
+                    // Remove loading state after navigation
+                    setTimeout(() => {
+                        this.classList.remove('loading');
+                    }, 1000);
+                });
+            });
+            
+            // Add keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey) {
+                    switch(e.key) {
+                        case '1':
+                            e.preventDefault();
+                            window.location.href = 'ASPX/Index.aspx';
+                            break;
+                        case '2':
+                            e.preventDefault();
+                            window.location.href = 'ASPXadv/Index.aspx';
+                            break;
+                        case '3':
+                            e.preventDefault();
+                            window.location.href = 'HTML/Index.html';
+                            break;
+                        case 'h':
+                            e.preventDefault();
+                            window.location.href = '../Default.aspx';
+                            break;
+                    }
+                }
+            });
+            
+            // Dynamic stats update
+            updateStats();
+        });
+        
+        function updateStats() {
+            // This could be enhanced to fetch real-time data
+            const stats = {
+                totalPages: 16,
+                aspxPages: 10,
+                htmlPages: 6,
+                lastUpdate: new Date().toLocaleDateString('ar-EG')
+            };
+            
+            console.log('Stats updated:', stats);
+        }
+        
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            const loadTime = performance.now();
+            console.log(`Page loaded in ${loadTime.toFixed(2)}ms`);
+        });
+    </script>
+</body>
+</html>

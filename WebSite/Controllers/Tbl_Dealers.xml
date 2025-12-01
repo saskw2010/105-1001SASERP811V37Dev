@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Tbl_Dealers" conflictDetection="overwriteChanges" label="Tbl Dealers" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Tbl_Dealers"."DealerID" "DealerID"
+	,"Tbl_Dealers"."Dealer_name" "Dealer_name"
+	,"Tbl_Dealers"."MDID" "MDID"
+	,"MD"."MD_Name" "MDMD_Name"
+	,"Tbl_Dealers"."activeflageD" "activeflageD"
+	,"Tbl_Dealers"."Dealer_name1" "Dealer_name1"
+	,"Tbl_Dealers"."joindate" "joindate"
+	,"Tbl_Dealers"."usercodename" "usercodename"
+    ,"Tbl_Dealers"."branch" "branch"	
+from "dbo"."Tbl_Dealers" "Tbl_Dealers"
+	left join "dbo"."Tbl_MD" "MD" on "Tbl_Dealers"."MDID" = "MD"."MDID"
+]]></text>
+    </command>
+    <command id="DealerIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="DealerID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="DealerID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Dealer#" readOnly="true" />
+    <field name="Dealer_name" type="String" allowNulls="false" label="Dealer name" length="50" showInSummary="true" />
+    <field name="MDID" type="Int64" label="Mdid" showInSummary="true">
+      <items style="Lookup" dataController="Tbl_MD" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="MDMD_Name" type="String" readOnly="true" label="MDMD Name" length="50" />
+    <field name="activeflageD" type="Boolean" allowNulls="false" default="((1))" label="activeflage D" showInSummary="true" />
+    <field name="Dealer_name1" type="String" label="Dealer name1" length="50" showInSummary="true" />
+    <field name="joindate" type="DateTime" label="Joindate" showInSummary="true" />
+    <field name="usercodename" type="String" label="Usercodename" length="50" />
+    <field name="branch" type="Int64" label="Branch" showInSummary="true">
+      <items style="DropDownList" dataController="schBranch" newDataView="createForm1" searchOnStart="true" />
+    </field>
+	
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Tbl Dealers">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+	  <dataField fieldName="DealerID"	  columns="50" />
+        <dataField fieldName="Dealer_name" columns="50" />
+        <dataField fieldName="MDID" aliasFieldName="MDMD_Name" hyperlinkFormatString="~/Pages/Tbl_MD.aspx?MDID={MDID}&amp;_controller=Tbl_MD&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="activeflageD" />
+        <dataField fieldName="Dealer_name1" columns="50" />
+        <dataField fieldName="joindate" columns="10" />
+        <dataField fieldName="usercodename" columns="50" />
+	    <dataField fieldName="branch" aliasFieldName="ThebranchDesc1"  />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Tbl Dealers">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Tbl Dealers" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+		   <dataField fieldName="DealerID"	  columns="50" />
+            <dataField fieldName="Dealer_name" columns="50" />
+            <dataField fieldName="MDID" aliasFieldName="MDMD_Name" hyperlinkFormatString="~/Pages/Tbl_MD.aspx?MDID={MDID}&amp;_controller=Tbl_MD&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="activeflageD" />
+            <dataField fieldName="Dealer_name1" columns="50" />
+            <dataField fieldName="joindate" columns="10" />
+            <dataField fieldName="usercodename" columns="50" />
+		  <dataField fieldName="branch" aliasFieldName="ThebranchDesc1"  />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Tbl Dealers">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Tbl Dealers" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Dealer_name" columns="50" />
+            <dataField fieldName="MDID" aliasFieldName="MDMD_Name" />
+            <dataField fieldName="activeflageD" />
+			 <dataField fieldName="branch" aliasFieldName="ThebranchDesc1"  />
+            <dataField fieldName="Dealer_name1" columns="50" />
+            <dataField fieldName="joindate" columns="10" />
+            <dataField fieldName="usercodename" columns="50" />
+			
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+ 
+    <rule id="r100" commandName="Insert|Update" type="Sql" phase="After" name="updateArchive"><![CDATA[
+	update  TblAppointments set    branch=@branch where DealerID=@DealerID ]]></rule>
+    
+  </businessRules>
+  
+</dataController>

@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="QuizTaken" conflictDetection="overwriteChanges" label="Quiz Taken" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"QuizTaken"."QuizTakenid" "QuizTakenid"
+	,"QuizTaken"."SessionTime" "SessionTime"
+	,"QuizTaken"."CacheUserName" "CacheUserName"
+	,"QuizTaken"."recordTime1" "recordTime1"
+	,"QuizTaken"."catid2" "catid2"
+	,"QuizTaken"."catid3" "catid3"
+	,"QuizTaken"."catid4" "catid4"
+	,"QuizTaken"."catid5" "catid5"
+	,"QuizTaken"."catid1" "catid1"
+	,"QuizTaken"."catid6" "catid6"
+	,"QuizTaken"."catid7" "catid7"
+	,"QuizTaken"."catid8" "catid8"
+	,"QuizTaken"."catid9" "catid9"
+	,"QuizTaken"."catid10" "catid10"
+	,"QuizTaken"."catid11" "catid11"
+	,"QuizTaken"."catid12" "catid12"
+	,"QuizTaken"."catid13" "catid13"
+	,"QuizTaken"."catid14" "catid14"
+	,"QuizTaken"."flagcompleteansers" "flagcompleteansers"
+from "dbo"."QuizTaken" "QuizTaken"
+]]></text>
+    </command>
+    <command id="QuizTakenidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="QuizTakenid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="QuizTakenid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Quiz Takenid" readOnly="true" />
+    <field name="SessionTime" type="DateTime" allowNulls="false" label="Session Time" showInSummary="true" />
+    <field name="CacheUserName" type="String" allowNulls="false" label="Cache User Name" length="40" showInSummary="true" />
+    <field name="recordTime1" type="DateTime" allowNulls="false" label="record Time1" showInSummary="true" />
+    <field name="catid2" type="Int64" allowNulls="false" label="Catid2" showInSummary="true" />
+    <field name="catid3" type="Int64" allowNulls="false" label="Catid3" showInSummary="true" />
+    <field name="catid4" type="Int64" allowNulls="false" label="Catid4" />
+    <field name="catid5" type="Int64" allowNulls="false" label="Catid5" />
+    <field name="catid1" type="Int64" label="Catid1" />
+    <field name="catid6" type="Int64" label="Catid6" />
+    <field name="catid7" type="Int64" label="Catid7" />
+    <field name="catid8" type="Int64" label="Catid8" />
+    <field name="catid9" type="Int64" label="Catid9" />
+    <field name="catid10" type="Int64" label="Catid10" />
+    <field name="catid11" type="Int64" label="Catid11" />
+    <field name="catid12" type="Int64" label="Catid12" />
+    <field name="catid13" type="Int64" label="Catid13" />
+    <field name="catid14" type="Int64" label="Catid14" />
+    <field name="flagcompleteansers" type="Boolean" label="Flagcompleteansers" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Quiz Taken">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="SessionTime" dataFormatString="t" columns="10" />
+        <dataField fieldName="CacheUserName" columns="40" />
+        <dataField fieldName="recordTime1" dataFormatString="t" columns="10" />
+        <dataField fieldName="catid2" columns="15" />
+        <dataField fieldName="catid3" columns="15" />
+        <dataField fieldName="catid4" columns="15" />
+        <dataField fieldName="catid5" columns="15" />
+        <dataField fieldName="catid1" columns="15" />
+        <dataField fieldName="catid6" columns="15" />
+        <dataField fieldName="catid7" columns="15" />
+        <dataField fieldName="catid8" columns="15" />
+        <dataField fieldName="catid9" columns="15" />
+        <dataField fieldName="catid10" columns="15" />
+        <dataField fieldName="catid11" columns="15" />
+        <dataField fieldName="catid12" columns="15" />
+        <dataField fieldName="catid13" columns="15" />
+        <dataField fieldName="catid14" columns="15" />
+        <dataField fieldName="flagcompleteansers" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Quiz Taken">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Quiz Taken" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="SessionTime" dataFormatString="t" columns="10" />
+            <dataField fieldName="CacheUserName" columns="40" />
+            <dataField fieldName="recordTime1" dataFormatString="t" columns="10" />
+            <dataField fieldName="catid2" columns="15" />
+            <dataField fieldName="catid3" columns="15" />
+            <dataField fieldName="catid4" columns="15" />
+            <dataField fieldName="catid5" columns="15" />
+            <dataField fieldName="catid1" columns="15" />
+            <dataField fieldName="catid6" columns="15" />
+            <dataField fieldName="catid7" columns="15" />
+            <dataField fieldName="catid8" columns="15" />
+            <dataField fieldName="catid9" columns="15" />
+            <dataField fieldName="catid10" columns="15" />
+            <dataField fieldName="catid11" columns="15" />
+            <dataField fieldName="catid12" columns="15" />
+            <dataField fieldName="catid13" columns="15" />
+            <dataField fieldName="catid14" columns="15" />
+            <dataField fieldName="flagcompleteansers" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Quiz Taken">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Quiz Taken" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="SessionTime" dataFormatString="t" columns="10" />
+            <dataField fieldName="CacheUserName" columns="40" />
+            <dataField fieldName="recordTime1" dataFormatString="t" columns="10" />
+            <dataField fieldName="catid2" columns="15" />
+            <dataField fieldName="catid3" columns="15" />
+            <dataField fieldName="catid4" columns="15" />
+            <dataField fieldName="catid5" columns="15" />
+            <dataField fieldName="catid1" columns="15" />
+            <dataField fieldName="catid6" columns="15" />
+            <dataField fieldName="catid7" columns="15" />
+            <dataField fieldName="catid8" columns="15" />
+            <dataField fieldName="catid9" columns="15" />
+            <dataField fieldName="catid10" columns="15" />
+            <dataField fieldName="catid11" columns="15" />
+            <dataField fieldName="catid12" columns="15" />
+            <dataField fieldName="catid13" columns="15" />
+            <dataField fieldName="catid14" columns="15" />
+            <dataField fieldName="flagcompleteansers" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

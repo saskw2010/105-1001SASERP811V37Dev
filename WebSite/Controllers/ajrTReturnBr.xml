@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="ajrTReturnBr" conflictDetection="overwriteChanges" label="ajr T Return Br" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"ajrTReturnBr"."TReturnBrid" "TReturnBrid"
+	,"ajrTReturnBr"."CarTripID" "CarTripID"
+	,"CarTrip"."StartTime" "CarTripStartTime"
+	,"CarTripEmp_"."Emp_Nmdriver" "CarTripEmp_Emp_Nmdriver"
+	,"CarTripEmp_sgm"."sgm_Nm" "CarTripEmp_sgmsgm_Nm"
+	,"CarTripEmp_Emp_no1"."Emp_NOt" "CarTripEmp_Emp_no1Emp_NOt"
+	,"CarTripcar_"."PLAT_No" "CarTripcar_PLAT_No"
+	,"CarTripcar_Car_Type"."Styl_Nm" "CarTripcar_Car_TypeStyl_Nm"
+	,"CarTripcar_EMP_"."Emp_Nmdriver" "CarTripcar_EMP_Emp_Nmdriver"
+	,"CarTripcar_caseoperationdesc"."caseoperationdesc" "CarTripcar_caseoperationdesccaseoperationdesc"
+	,"CarTripcar_carclass"."carclassname" "CarTripcar_carclasscarclassname"
+	,"CarTripcar_Insu_Cmp"."Insu_Cmpname" "CarTripcar_Insu_CmpInsu_Cmpname"
+	,"CarTripcar_Insu_Cmp1"."Insu_Cmpname" "CarTripcar_Insu_Cmp1Insu_Cmpname"
+	,"CarTripcar_Insu_Cmp2"."Insu_Cmpname" "CarTripcar_Insu_Cmp2Insu_Cmpname"
+	,"CarTripcar_kind"."carkinddesc" "CarTripcar_kindcarkinddesc"
+	,"CarTripcar_carstutus_"."carstutus_name" "CarTripcar_carstutus_carstutus_name"
+	,"CarTripcar_Car_Colr"."Color_name" "CarTripcar_Car_ColrColor_name"
+	,"CarTripcar_fuelllevel"."FuellevelDisplayname" "CarTripcar_fuelllevelFuellevelDisplayname"
+	,"CarTripcar_sgm"."sgm_Nm" "CarTripcar_sgmsgm_Nm"
+	,"CarTripcar_Guarantee"."Guaranteename" "CarTripcar_GuaranteeGuaranteename"
+	,"CarTripcar_Insurance_type"."Insurance_name" "CarTripcar_Insurance_typeInsurance_name"
+	,"CarTripcar_Car_Lik"."Like_name" "CarTripcar_Car_LikLike_name"
+	,"CarTripcar_padnatureway"."padnatureway" "CarTripcar_padnaturewaypadnatureway"
+	,"CarTripcar_Fbrct_Cntry"."Cntry_Nm" "CarTripcar_Fbrct_CntryCntry_Nm"
+	,"CarTripcar_Ownr_"."Ownr_ID" "CarTripcar_Ownr_Ownr_ID"
+	,"CarTripcar_Cstm_"."Cstm_Nm" "CarTripcar_Cstm_Cstm_Nm"
+	,"CarTripcar_Sup_"."Sup_Nm" "CarTripcar_Sup_Sup_Nm"
+	,"CarTripcar_Tamweelreq"."Tamweeldeatails" "CarTripcar_TamweelreqTamweeldeatails"
+	,"CarTripcntst"."status_name" "CarTripcntststatus_name"
+	,"CarTripFuel"."Fuellevelname" "CarTripFuelFuellevelname"
+	,"CarTripRtFuel"."Fuellevelname" "CarTripRtFuelFuellevelname"
+	,"CarTripsgm"."sgm_Nm" "CarTripsgmsgm_Nm"
+	,"CarTripsgmOpco"."OpcoName" "CarTripsgmOpcoOpcoName"
+	,"CarTripTripKind"."TripKindDesc" "CarTripTripKindTripKindDesc"
+	,"ajrTReturnBr"."Brokenlistid" "Brokenlistid"
+	,"Brokenlist"."BrokenlistDesc" "BrokenlistBrokenlistDesc"
+	,"ajrTReturnBr"."Brokenlistamount" "Brokenlistamount"
+	,"ajrTReturnBr"."Notes" "Notes"
+	,"ajrTReturnBr"."ModifiedBy" "ModifiedBy"
+	,"ajrTReturnBr"."ModifiedByUserId" "ModifiedByUserId"
+	,"ajrTReturnBr"."ModifiedOn" "ModifiedOn"
+	,"ajrTReturnBr"."CreatedBy" "CreatedBy"
+	,"ajrTReturnBr"."CreatedById" "CreatedById"
+	,"ajrTReturnBr"."CreatedOn" "CreatedOn"
+from "dbo"."ajrTReturnBr" "ajrTReturnBr"
+	left join "dbo"."CarTrip" "CarTrip" on "ajrTReturnBr"."CarTripID" = "CarTrip"."CarTripID"
+	left join "dbo"."Cadriver" "CarTripEmp_" on "CarTrip"."Emp_No" = "CarTripEmp_"."Emp_No"
+	left join "dbo"."glmulcmp" "CarTripEmp_sgm" on "CarTripEmp_"."sgm" = "CarTripEmp_sgm"."sgmid"
+	left join "dbo"."Pyempmfs" "CarTripEmp_Emp_no1" on "CarTripEmp_"."Emp_no1" = "CarTripEmp_Emp_no1"."Emp_No"
+	left join "dbo"."CarInfom" "CarTripcar_" on "CarTrip"."car_no" = "CarTripcar_"."Car_No"
+	left join "dbo"."CaCrstyl" "CarTripcar_Car_Type" on "CarTripcar_"."Car_Type" = "CarTripcar_Car_Type"."Styl_No"
+	left join "dbo"."Cadriver" "CarTripcar_EMP_" on "CarTripcar_"."EMP_NO" = "CarTripcar_EMP_"."Emp_No"
+	left join "dbo"."carcaseoperationdesc" "CarTripcar_caseoperationdesc" on "CarTripcar_"."caseoperationdescid" = "CarTripcar_caseoperationdesc"."caseoperationdescid"
+	left join "dbo"."carclass" "CarTripcar_carclass" on "CarTripcar_"."carclass" = "CarTripcar_carclass"."carclass"
+	left join "dbo"."carInsuCmplist" "CarTripcar_Insu_Cmp" on "CarTripcar_"."Insu_Cmp" = "CarTripcar_Insu_Cmp"."Insu_Cmp"
+	left join "dbo"."carInsuCmplist" "CarTripcar_Insu_Cmp1" on "CarTripcar_"."Insu_Cmp1" = "CarTripcar_Insu_Cmp1"."Insu_Cmp"
+	left join "dbo"."carInsuCmplist" "CarTripcar_Insu_Cmp2" on "CarTripcar_"."Insu_Cmp2" = "CarTripcar_Insu_Cmp2"."Insu_Cmp"
+	left join "dbo"."carkindlist" "CarTripcar_kind" on "CarTripcar_"."kind" = "CarTripcar_kind"."carkindid"
+	left join "dbo"."carstutuslist" "CarTripcar_carstutus_" on "CarTripcar_"."carstutus_no" = "CarTripcar_carstutus_"."carstutus_no"
+	left join "dbo"."Colorlist" "CarTripcar_Car_Colr" on "CarTripcar_"."Car_Colr" = "CarTripcar_Car_Colr"."ColorNo"
+	left join "dbo"."FuellevelDisplay" "CarTripcar_fuelllevel" on "CarTripcar_"."fuelllevel" = "CarTripcar_fuelllevel"."FuellevelDisplayid"
+	left join "dbo"."glmulcmp" "CarTripcar_sgm" on "CarTripcar_"."sgm" = "CarTripcar_sgm"."sgmid"
+	left join "dbo"."Guaranteelist" "CarTripcar_Guarantee" on "CarTripcar_"."Guarantee" = "CarTripcar_Guarantee"."Guarantee"
+	left join "dbo"."Insurancetype" "CarTripcar_Insurance_type" on "CarTripcar_"."Insurance_type" = "CarTripcar_Insurance_type"."Insurance_type"
+	left join "dbo"."Likelist" "CarTripcar_Car_Lik" on "CarTripcar_"."Car_Lik" = "CarTripcar_Car_Lik"."LikeNo"
+	left join "dbo"."padnaturewaylist" "CarTripcar_padnatureway" on "CarTripcar_"."padnaturewayid" = "CarTripcar_padnatureway"."padnaturewayid"
+	left join "dbo"."PYCntry" "CarTripcar_Fbrct_Cntry" on "CarTripcar_"."Fbrct_Cntry" = "CarTripcar_Fbrct_Cntry"."Cntry_No"
+	left join "dbo"."Pyownrmf" "CarTripcar_Ownr_" on "CarTripcar_"."Ownr_No" = "CarTripcar_Ownr_"."Ownr_No"
+	left join "dbo"."Stcustmr" "CarTripcar_Cstm_" on "CarTripcar_"."Cstm_No" = "CarTripcar_Cstm_"."Cstm_No"
+	left join "dbo"."Stsuplir" "CarTripcar_Sup_" on "CarTripcar_"."Sup_No" = "CarTripcar_Sup_"."Sup_No"
+	left join "dbo"."Tamweelrequest" "CarTripcar_Tamweelreq" on "CarTripcar_"."Tamweelreqid" = "CarTripcar_Tamweelreq"."Tamweelreqid"
+	left join "dbo"."contractstatus" "CarTripcntst" on "CarTrip"."cntstcode" = "CarTripcntst"."cntstcode"
+	left join "dbo"."Fuellevel" "CarTripFuel" on "CarTrip"."Fuel" = "CarTripFuel"."Fuellevelid"
+	left join "dbo"."Fuellevel" "CarTripRtFuel" on "CarTrip"."RtFuel" = "CarTripRtFuel"."Fuellevelid"
+	left join "dbo"."glmulcmp" "CarTripsgm" on "CarTrip"."sgm" = "CarTripsgm"."sgmid"
+	left join "dbo"."OpCo" "CarTripsgmOpco" on "CarTripsgm"."OpcoID" = "CarTripsgmOpco"."OpcoIDidentity"
+	left join "dbo"."TripKindlist" "CarTripTripKind" on "CarTrip"."TripKindid" = "CarTripTripKind"."TripKindid"
+	left join "dbo"."ajrBrokenlist" "Brokenlist" on "ajrTReturnBr"."Brokenlistid" = "Brokenlist"."Brokenlistid"
+]]></text>
+    </command>
+    <command id="TReturnBridIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="TReturnBrid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="TReturnBrid" type="Int64" allowNulls="false" isPrimaryKey="true" label="T Return Brid" readOnly="true" />
+    <field name="CarTripID" type="Int64" allowNulls="false" label="Car Trip#" showInSummary="true">
+      <items searchOnStart="true" />
+    </field>
+    <field name="CarTripStartTime" type="String" readOnly="true" label="Car Trip Start Time" length="50" />
+    <field name="CarTripEmp_Emp_Nmdriver" type="String" readOnly="true" label="Car Trip Emp Nmdriver" length="60" />
+    <field name="CarTripEmp_sgmsgm_Nm" type="String" readOnly="true" label="Car Trip Emp sgmsgm Nm" length="255" />
+    <field name="CarTripEmp_Emp_no1Emp_NOt" type="String" readOnly="true" label="Car Trip Emp no1 Emp N Ot" length="50" />
+    <field name="CarTripcar_PLAT_No" type="String" readOnly="true" label="Car Tripcar PLAT No" length="20" />
+    <field name="CarTripcar_Car_TypeStyl_Nm" type="String" readOnly="true" label="Car Tripcar Car Type Styl Nm" length="60" />
+    <field name="CarTripcar_EMP_Emp_Nmdriver" type="String" readOnly="true" label="Car Tripcar EMP Emp Nmdriver" length="60" />
+    <field name="CarTripcar_caseoperationdesccaseoperationdesc" type="String" readOnly="true" label="Car Tripcar caseoperationdesccaseoperationdesc" length="150" />
+    <field name="CarTripcar_carclasscarclassname" type="String" readOnly="true" label="Car Tripcar carclasscarclassname" length="60" />
+    <field name="CarTripcar_Insu_CmpInsu_Cmpname" type="String" readOnly="true" label="Car Tripcar Insu Cmp Insu Cmpname" length="150" />
+    <field name="CarTripcar_Insu_Cmp1Insu_Cmpname" type="String" readOnly="true" label="Car Tripcar Insu Cmp1 Insu Cmpname" length="150" />
+    <field name="CarTripcar_Insu_Cmp2Insu_Cmpname" type="String" readOnly="true" label="Car Tripcar Insu Cmp2 Insu Cmpname" length="150" />
+    <field name="CarTripcar_kindcarkinddesc" type="String" readOnly="true" label="Car Tripcar kindcarkinddesc" length="150" />
+    <field name="CarTripcar_carstutus_carstutus_name" type="String" readOnly="true" label="Car Tripcar carstutus name" length="50" />
+    <field name="CarTripcar_Car_ColrColor_name" type="String" readOnly="true" label="Car Tripcar Car Colr Color name" length="50" />
+    <field name="CarTripcar_fuelllevelFuellevelDisplayname" type="String" readOnly="true" label="Car Tripcar fuelllevel Fuellevel Displayname" length="60" />
+    <field name="CarTripcar_sgmsgm_Nm" type="String" readOnly="true" label="Car Tripcar sgmsgm Nm" length="255" />
+    <field name="CarTripcar_GuaranteeGuaranteename" type="String" readOnly="true" label="Car Tripcar Guarantee Guaranteename" length="150" />
+    <field name="CarTripcar_Insurance_typeInsurance_name" type="String" readOnly="true" label="Car Tripcar Insurance type Insurance name" length="150" />
+    <field name="CarTripcar_Car_LikLike_name" type="String" readOnly="true" label="Car Tripcar Car Lik Like name" length="50" />
+    <field name="CarTripcar_padnaturewaypadnatureway" type="String" readOnly="true" label="Car Tripcar padnaturewaypadnatureway" length="50" />
+    <field name="CarTripcar_Fbrct_CntryCntry_Nm" type="String" readOnly="true" label="Car Tripcar Fbrct Cntry Nm" length="255" />
+    <field name="CarTripcar_Ownr_Ownr_ID" type="String" readOnly="true" label="Car Tripcar Ownr#" length="15" />
+    <field name="CarTripcar_Cstm_Cstm_Nm" type="String" readOnly="true" label="Car Tripcar Cstm Nm" length="155" />
+    <field name="CarTripcar_Sup_Sup_Nm" type="String" readOnly="true" label="Car Tripcar Sup Nm" length="255" />
+    <field name="CarTripcar_TamweelreqTamweeldeatails" type="String" readOnly="true" label="Car Tripcar Tamweelreq Tamweeldeatails" length="50" />
+    <field name="CarTripcntststatus_name" type="String" readOnly="true" label="Car Tripcntststatus name" length="50" />
+    <field name="CarTripFuelFuellevelname" type="String" readOnly="true" label="Car Trip Fuel Fuellevelname" length="60" />
+    <field name="CarTripRtFuelFuellevelname" type="String" readOnly="true" label="Car Trip Rt Fuel Fuellevelname" length="60" />
+    <field name="CarTripsgmsgm_Nm" type="String" readOnly="true" label="Car Tripsgmsgm Nm" length="255" />
+    <field name="CarTripsgmOpcoOpcoName" type="String" readOnly="true" label="Car Tripsgm Opco Name" length="50" />
+    <field name="CarTripTripKindTripKindDesc" type="String" readOnly="true" label="Car Trip Kind Desc" length="50" />
+    <field name="Brokenlistid" type="Int64" allowNulls="false" label="Brokenlistid" showInSummary="true">
+      <items style="Lookup" dataController="ajrBrokenlist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="BrokenlistBrokenlistDesc" type="String" readOnly="true" label="Brokenlist Desc" length="50" />
+    <field name="Brokenlistamount" type="Decimal" label="Brokenlistamount" showInSummary="true" />
+    <field name="Notes" type="String" label="Notes" length="50" showInSummary="true" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" showInSummary="true" />
+    <field name="ModifiedByUserId" type="Guid" label="Modified By User#" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedById" type="Guid" label="Created By#" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="ajr T Return Br">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="CarTripID" aliasFieldName="CarTripStartTime" />
+        <dataField fieldName="Brokenlistid" aliasFieldName="BrokenlistBrokenlistDesc" hyperlinkFormatString="~/Pages/ajrBrokenlist.aspx?Brokenlistid={Brokenlistid}&amp;_controller=ajrBrokenlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Brokenlistamount" columns="15" />
+        <dataField fieldName="Notes" columns="50" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedByUserId" columns="15" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedById" columns="15" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="CarTripEmp_Emp_Nmdriver" />
+        <dataField fieldName="CarTripEmp_sgmsgm_Nm" />
+        <dataField fieldName="CarTripEmp_Emp_no1Emp_NOt" columns="50" />
+        <dataField fieldName="CarTripcar_PLAT_No" columns="20" />
+        <dataField fieldName="CarTripcar_Car_TypeStyl_Nm" />
+        <dataField fieldName="CarTripcar_EMP_Emp_Nmdriver" />
+        <dataField fieldName="CarTripcar_caseoperationdesccaseoperationdesc" />
+        <dataField fieldName="CarTripcar_carclasscarclassname" />
+        <dataField fieldName="CarTripcar_Insu_CmpInsu_Cmpname" />
+        <dataField fieldName="CarTripcar_Insu_Cmp1Insu_Cmpname" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review ajr T Return Br">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="ajr T Return Br" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CarTripID" aliasFieldName="CarTripStartTime" hyperlinkFormatString="~/Pages/CarTrip.aspx?CarTripID={CarTripID}&amp;_controller=CarTrip&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Brokenlistid" aliasFieldName="BrokenlistBrokenlistDesc" hyperlinkFormatString="~/Pages/ajrBrokenlist.aspx?Brokenlistid={Brokenlistid}&amp;_controller=ajrBrokenlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Brokenlistamount" columns="15" />
+            <dataField fieldName="Notes" columns="50" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedByUserId" columns="15" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedById" columns="15" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CarTripEmp_Emp_Nmdriver" />
+            <dataField fieldName="CarTripEmp_sgmsgm_Nm" />
+            <dataField fieldName="CarTripEmp_Emp_no1Emp_NOt" columns="50" />
+            <dataField fieldName="CarTripcar_PLAT_No" columns="20" />
+            <dataField fieldName="CarTripcar_Car_TypeStyl_Nm" />
+            <dataField fieldName="CarTripcar_EMP_Emp_Nmdriver" />
+            <dataField fieldName="CarTripcar_caseoperationdesccaseoperationdesc" />
+            <dataField fieldName="CarTripcar_carclasscarclassname" />
+            <dataField fieldName="CarTripcar_Insu_CmpInsu_Cmpname" />
+            <dataField fieldName="CarTripcar_Insu_Cmp1Insu_Cmpname" />
+            <dataField fieldName="CarTripcar_Insu_Cmp2Insu_Cmpname" />
+            <dataField fieldName="CarTripcar_kindcarkinddesc" />
+            <dataField fieldName="CarTripcar_carstutus_carstutus_name" columns="50" />
+            <dataField fieldName="CarTripcar_Car_ColrColor_name" columns="50" />
+            <dataField fieldName="CarTripcar_fuelllevelFuellevelDisplayname" />
+            <dataField fieldName="CarTripcar_sgmsgm_Nm" />
+            <dataField fieldName="CarTripcar_GuaranteeGuaranteename" />
+            <dataField fieldName="CarTripcar_Insurance_typeInsurance_name" />
+            <dataField fieldName="CarTripcar_Car_LikLike_name" columns="50" />
+            <dataField fieldName="CarTripcar_padnaturewaypadnatureway" columns="50" />
+            <dataField fieldName="CarTripcar_Fbrct_CntryCntry_Nm" />
+            <dataField fieldName="CarTripcar_Ownr_Ownr_ID" columns="15" />
+            <dataField fieldName="CarTripcar_Cstm_Cstm_Nm" />
+            <dataField fieldName="CarTripcar_Sup_Sup_Nm" />
+            <dataField fieldName="CarTripcar_TamweelreqTamweeldeatails" columns="50" />
+            <dataField fieldName="CarTripcntststatus_name" columns="50" />
+            <dataField fieldName="CarTripFuelFuellevelname" />
+            <dataField fieldName="CarTripRtFuelFuellevelname" />
+            <dataField fieldName="CarTripsgmsgm_Nm" />
+            <dataField fieldName="CarTripsgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="CarTripTripKindTripKindDesc" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New ajr T Return Br">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New ajr T Return Br" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CarTripID" aliasFieldName="CarTripStartTime" />
+            <dataField fieldName="Brokenlistid" aliasFieldName="BrokenlistBrokenlistDesc" />
+            <dataField fieldName="Brokenlistamount" columns="15" />
+            <dataField fieldName="Notes" columns="50" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedByUserId" columns="15" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedById" columns="15" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

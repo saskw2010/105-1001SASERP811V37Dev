@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="UQGLTRS" conflictDetection="overwriteChanges" label="Uqgltrs" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"UQGLTRS"."Jr_Ty" "Jr_Ty"
+	,"UQGLTRS"."Tr_No" "Tr_No"
+	,"UQGLTRS"."Tr_Dt" "Tr_Dt"
+	,"UQGLTRS"."Acc_No" "Acc_No"
+	,"UQGLTRS"."Tr_db" "Tr_db"
+	,"UQGLTRS"."tr_cr" "tr_cr"
+	,"UQGLTRS"."DC_No" "DC_No"
+	,"UQGLTRS"."Tr_Ds" "Tr_Ds"
+	,"UQGLTRS"."Costcntr_No" "Costcntr_No"
+	,"UQGLTRS"."Tr_Dsc1" "Tr_Dsc1"
+	,"UQGLTRS"."curno" "curno"
+	,"UQGLTRS"."curprice" "curprice"
+	,"UQGLTRS"."curvalue" "curvalue"
+	,"UQGLTRS"."CSMSUP_No" "CSMSUP_No"
+	,"UQGLTRS"."cstyp_NO" "cstyp_NO"
+	,"UQGLTRS"."CSMSUP_NM" "CSMSUP_NM"
+	,"UQGLTRS"."classacc" "classacc"
+	,"UQGLTRS"."Cstm_Nme" "Cstm_Nme"
+	,"UQGLTRS"."typ" "typ"
+	,"UQGLTRS"."Cstm_Tel" "Cstm_Tel"
+	,"UQGLTRS"."Mcost_No" "Mcost_No"
+	,"UQGLTRS"."maincostname1" "maincostname1"
+	,"UQGLTRS"."maincostname2" "maincostname2"
+	,"UQGLTRS"."Manalysis_No" "Manalysis_No"
+	,"UQGLTRS"."mainanalname1" "mainanalname1"
+	,"UQGLTRS"."mainanalname2" "mainanalname2"
+	,"UQGLTRS"."Jrty_Nme" "Jrty_Nme"
+	,"UQGLTRS"."Jrty_Nm" "Jrty_Nm"
+	,"UQGLTRS"."Costcntr_Nm" "Costcntr_Nm"
+	,"UQGLTRS"."Costcntr_Nme" "Costcntr_Nme"
+	,"UQGLTRS"."Costcntr_Nm1" "Costcntr_Nm1"
+	,"UQGLTRS"."Costcntr_Nme1" "Costcntr_Nme1"
+	,"UQGLTRS"."YEARTRS" "YEARTRS"
+	,"UQGLTRS"."Monthtrs" "Monthtrs"
+	,"UQGLTRS"."branch" "branch"
+	,"UQGLTRS"."Costcntr_No1" "Costcntr_No1"
+	,"UQGLTRS"."clsacc_no" "clsacc_no"
+	,"UQGLTRS"."Balnce" "Balnce"
+	,"UQGLTRS"."autoid" "autoid"
+	,"UQGLTRS"."GLSTMACCID" "GLSTMACCID"
+	,"UQGLTRS"."ModifiedBy" "ModifiedBy"
+	,"UQGLTRS"."d1" "d1"
+	,"UQGLTRS"."d2" "d2"
+	,"UQGLTRS"."CreatedBy" "CreatedBy"
+	,"UQGLTRS"."CreatedOn" "CreatedOn"
+	,"UQGLTRS"."ModifiedOn" "ModifiedOn"
+	,"UQGLTRS"."usercashid" "usercashid"
+	,"UQGLTRS"."ln_no" "ln_no"
+	,"UQGLTRS"."acdcode" "acdcode"
+	,"UQGLTRS"."GlFinperiodID" "GlFinperiodID"
+	,"UQGLTRS"."schpaymenttypeid" "schpaymenttypeid"
+	,"UQGLTRS"."schpaymenttypenm" "schpaymenttypenm"
+	,"UQGLTRS"."schpaymenttypenme" "schpaymenttypenme"
+	,"UQGLTRS"."foracdcode" "foracdcode"
+from "dbo"."UQGLTRS" "UQGLTRS"
+]]></text>
+    </command>
+    <command id="Costcntr_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Costcntr_No" />
+      </output>
+    </command>
+    <command id="autoidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="autoid" />
+      </output>
+    </command>
+    <command id="schpaymenttypeidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="schpaymenttypeid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Jr_Ty" type="Int64" label="Jr Ty" showInSummary="true" />
+    <field name="Tr_No" type="Int64" label="Tr No" showInSummary="true" />
+    <field name="Tr_Dt" type="DateTime" label="Tr Dt" showInSummary="true" />
+    <field name="Acc_No" type="Int64" label="Acc No" showInSummary="true" />
+    <field name="Tr_db" type="Decimal" allowNulls="false" label="Tr db" readOnly="true" showInSummary="true" />
+    <field name="tr_cr" type="Decimal" allowNulls="false" label="Tr Cr" readOnly="true" />
+    <field name="DC_No" type="String" label="DC No" length="50" />
+    <field name="Tr_Ds" type="String" allowQBE="false" allowSorting="false" label="Tr Ds" length="-1" />
+    <field name="Costcntr_No" type="Int64" label="Costcntr No" readOnly="true" />
+    <field name="Tr_Dsc1" type="String" allowQBE="false" allowSorting="false" label="Tr Dsc1" length="-1" />
+    <field name="curno" type="Int64" label="Curno" />
+    <field name="curprice" type="Decimal" label="Curprice" />
+    <field name="curvalue" type="Decimal" label="Curvalue" />
+    <field name="CSMSUP_No" type="Int64" label="CSMSUP No" />
+    <field name="cstyp_NO" type="Int64" label="cstyp NO" />
+    <field name="CSMSUP_NM" type="String" label="Csmsup Nm" length="255" />
+    <field name="classacc" type="Int64" label="Classacc" />
+    <field name="Cstm_Nme" type="String" label="Cstm Nme" length="255" />
+    <field name="typ" type="Int64" label="Typ" />
+    <field name="Cstm_Tel" type="String" label="Cstm Tel" length="50" />
+    <field name="Mcost_No" type="Int64" label="Mcost No" />
+    <field name="maincostname1" type="String" label="Maincostname1" length="255" />
+    <field name="maincostname2" type="String" label="Maincostname2" length="255" />
+    <field name="Manalysis_No" type="Int64" label="Manalysis No" />
+    <field name="mainanalname1" type="String" label="Mainanalname1" length="255" />
+    <field name="mainanalname2" type="String" label="Mainanalname2" length="255" />
+    <field name="Jrty_Nme" type="String" label="Jrty Nme" length="255" />
+    <field name="Jrty_Nm" type="String" label="Jrty Nm" length="255" />
+    <field name="Costcntr_Nm" type="String" label="Costcntr Nm" length="255" />
+    <field name="Costcntr_Nme" type="String" label="Costcntr Nme" length="255" />
+    <field name="Costcntr_Nm1" type="String" label="Costcntr Nm1" length="255" />
+    <field name="Costcntr_Nme1" type="String" label="Costcntr Nme1" length="255" />
+    <field name="YEARTRS" type="Int32" label="Yeartrs" readOnly="true" />
+    <field name="Monthtrs" type="Int32" label="Monthtrs" readOnly="true" />
+    <field name="branch" type="Int64" label="Branch" />
+    <field name="Costcntr_No1" type="Int64" label="Costcntr No1" />
+    <field name="clsacc_no" type="Int64" label="Clsacc No" />
+    <field name="Balnce" type="Decimal" label="Balnce" />
+    <field name="autoid" type="Int64" label="Autoid" readOnly="true" />
+    <field name="GLSTMACCID" type="Int64" allowNulls="false" label="Glstmaccid" />
+    <field name="ModifiedBy" type="String" allowNulls="false" label="Modified By" length="50" />
+    <field name="d1" type="DateTime" allowNulls="false" label="D1" />
+    <field name="d2" type="DateTime" allowNulls="false" label="D2" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="usercashid" type="Int64" label="Usercashid" />
+    <field name="ln_no" type="Int64" allowNulls="false" label="Ln No" />
+    <field name="acdcode" type="Int64" label="Acdcode" />
+    <field name="GlFinperiodID" type="Int32" allowNulls="false" label="Gl Finperiod#" readOnly="true" />
+    <field name="schpaymenttypeid" type="Int64" label="Schpaymenttypeid" readOnly="true" />
+    <field name="schpaymenttypenm" type="String" label="Schpaymenttypenm" length="50" />
+    <field name="schpaymenttypenme" type="String" label="Schpaymenttypenme" length="50" />
+    <field name="foracdcode" type="Int64" label="Foracdcode" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Uqgltrs">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Tr_db" dataFormatString="c" columns="15" />
+        <dataField fieldName="Jr_Ty" columns="15" />
+        <dataField fieldName="Tr_No" columns="15" />
+        <dataField fieldName="Tr_Dt" columns="10" />
+        <dataField fieldName="Acc_No" columns="15" />
+        <dataField fieldName="tr_cr" dataFormatString="c" columns="15" />
+        <dataField fieldName="DC_No" columns="50" />
+        <dataField fieldName="Tr_Ds" rows="5" />
+        <dataField fieldName="Costcntr_No" columns="15" />
+        <dataField fieldName="Tr_Dsc1" rows="5" />
+        <dataField fieldName="curno" columns="15" />
+        <dataField fieldName="curprice" dataFormatString="c" columns="15" />
+        <dataField fieldName="curvalue" dataFormatString="c" columns="15" />
+        <dataField fieldName="CSMSUP_No" columns="15" />
+        <dataField fieldName="cstyp_NO" columns="15" />
+        <dataField fieldName="CSMSUP_NM" />
+        <dataField fieldName="classacc" columns="15" />
+        <dataField fieldName="Cstm_Nme" />
+        <dataField fieldName="typ" columns="15" />
+        <dataField fieldName="Cstm_Tel" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Uqgltrs">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Uqgltrs" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Jr_Ty" columns="15" />
+            <dataField fieldName="Tr_No" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="Tr_db" dataFormatString="c" columns="15" />
+            <dataField fieldName="tr_cr" dataFormatString="c" columns="15" />
+            <dataField fieldName="DC_No" columns="50" />
+            <dataField fieldName="Tr_Ds" rows="5" />
+            <dataField fieldName="Costcntr_No" columns="15" />
+            <dataField fieldName="Tr_Dsc1" rows="5" />
+            <dataField fieldName="curno" columns="15" />
+            <dataField fieldName="curprice" dataFormatString="c" columns="15" />
+            <dataField fieldName="curvalue" dataFormatString="c" columns="15" />
+            <dataField fieldName="CSMSUP_No" columns="15" />
+            <dataField fieldName="cstyp_NO" columns="15" />
+            <dataField fieldName="CSMSUP_NM" />
+            <dataField fieldName="classacc" columns="15" />
+            <dataField fieldName="Cstm_Nme" />
+            <dataField fieldName="typ" columns="15" />
+            <dataField fieldName="Cstm_Tel" columns="50" />
+            <dataField fieldName="Mcost_No" columns="15" />
+            <dataField fieldName="maincostname1" />
+            <dataField fieldName="maincostname2" />
+            <dataField fieldName="Manalysis_No" columns="15" />
+            <dataField fieldName="mainanalname1" />
+            <dataField fieldName="mainanalname2" />
+            <dataField fieldName="Jrty_Nme" />
+            <dataField fieldName="Jrty_Nm" />
+            <dataField fieldName="Costcntr_Nm" />
+            <dataField fieldName="Costcntr_Nme" />
+            <dataField fieldName="Costcntr_Nm1" />
+            <dataField fieldName="Costcntr_Nme1" />
+            <dataField fieldName="YEARTRS" columns="15" />
+            <dataField fieldName="Monthtrs" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="Costcntr_No1" columns="15" />
+            <dataField fieldName="clsacc_no" columns="15" />
+            <dataField fieldName="Balnce" dataFormatString="c" columns="15" />
+            <dataField fieldName="autoid" columns="15" />
+            <dataField fieldName="GLSTMACCID" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="d1" columns="10" />
+            <dataField fieldName="d2" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="usercashid" columns="15" />
+            <dataField fieldName="ln_no" columns="15" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="GlFinperiodID" columns="15" />
+            <dataField fieldName="schpaymenttypeid" columns="15" />
+            <dataField fieldName="schpaymenttypenm" columns="50" />
+            <dataField fieldName="schpaymenttypenme" columns="50" />
+            <dataField fieldName="foracdcode" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Uqgltrs">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Uqgltrs" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Jr_Ty" columns="15" />
+            <dataField fieldName="Tr_No" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="DC_No" columns="50" />
+            <dataField fieldName="Tr_Ds" rows="5" />
+            <dataField fieldName="Tr_Dsc1" rows="5" />
+            <dataField fieldName="curno" columns="15" />
+            <dataField fieldName="curprice" dataFormatString="c" columns="15" />
+            <dataField fieldName="curvalue" dataFormatString="c" columns="15" />
+            <dataField fieldName="CSMSUP_No" columns="15" />
+            <dataField fieldName="cstyp_NO" columns="15" />
+            <dataField fieldName="CSMSUP_NM" />
+            <dataField fieldName="classacc" columns="15" />
+            <dataField fieldName="Cstm_Nme" />
+            <dataField fieldName="typ" columns="15" />
+            <dataField fieldName="Cstm_Tel" columns="50" />
+            <dataField fieldName="Mcost_No" columns="15" />
+            <dataField fieldName="maincostname1" />
+            <dataField fieldName="maincostname2" />
+            <dataField fieldName="Manalysis_No" columns="15" />
+            <dataField fieldName="mainanalname1" />
+            <dataField fieldName="mainanalname2" />
+            <dataField fieldName="Jrty_Nme" />
+            <dataField fieldName="Jrty_Nm" />
+            <dataField fieldName="Costcntr_Nm" />
+            <dataField fieldName="Costcntr_Nme" />
+            <dataField fieldName="Costcntr_Nm1" />
+            <dataField fieldName="Costcntr_Nme1" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="Costcntr_No1" columns="15" />
+            <dataField fieldName="clsacc_no" columns="15" />
+            <dataField fieldName="Balnce" dataFormatString="c" columns="15" />
+            <dataField fieldName="GLSTMACCID" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="d1" columns="10" />
+            <dataField fieldName="d2" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="usercashid" columns="15" />
+            <dataField fieldName="ln_no" columns="15" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="schpaymenttypenm" columns="50" />
+            <dataField fieldName="schpaymenttypenme" columns="50" />
+            <dataField fieldName="foracdcode" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

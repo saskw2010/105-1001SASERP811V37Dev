@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 اختبار نظام الثيمات - Theme System Test</title>
+    
+    <!-- Theme System CSS -->
+    <link href="/css/themes/theme-integration.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Additional Demo Styles -->
+    <style>
+        body {
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .demo-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius-lg);
+            transition: var(--transition);
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .demo-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            transition: var(--transition);
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        [data-theme="ai"] .demo-card:hover {
+            box-shadow: var(--shadow-ai);
+        }
+        
+        .demo-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        
+        .demo-form {
+            display: grid;
+            gap: 1rem;
+            max-width: 400px;
+        }
+        
+        .demo-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .demo-table th {
+            background: var(--primary);
+            color: var(--text-inverse);
+            padding: 0.75rem;
+            text-align: right;
+        }
+        
+        [data-theme="ai"] .demo-table th {
+            background: var(--ai-gradient);
+        }
+        
+        .demo-table td {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border-primary);
+        }
+        
+        .demo-table tr:nth-child(even) td {
+            background: var(--bg-secondary);
+        }
+        
+        .demo-table tr:hover td {
+            background: var(--bg-hover);
+        }
+        
+        [data-theme="ai"] .demo-table tr:hover td {
+            background: var(--ai-gradient-light);
+        }
+        
+        .gradient-demo {
+            padding: 2rem;
+            text-align: center;
+            border-radius: var(--border-radius-lg);
+            margin: 1rem 0;
+        }
+        
+        [data-theme="ai"] .gradient-demo {
+            background: var(--ai-gradient);
+            color: var(--text-inverse);
+        }
+        
+        .status-indicators {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-full);
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        
+        .status-success {
+            background: var(--success);
+            color: white;
+        }
+        
+        .status-warning {
+            background: var(--warning);
+            color: white;
+        }
+        
+        .status-danger {
+            background: var(--danger);
+            color: white;
+        }
+        
+        .status-info {
+            background: var(--info);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <header style="text-align: center; margin-bottom: 3rem;">
+            <h1>🎨 اختبار نظام الثيمات المتقدم</h1>
+            <p>قم بتجربة تبديل الثيمات باستخدام الأزرار في أعلى يمين الشاشة</p>
+            
+            <div class="status-indicators" style="justify-content: center; margin-top: 1rem;">
+                <span class="status-badge status-success">✅ نظام جاهز</span>
+                <span class="status-badge status-info">🎯 3 ثيمات متاحة</span>
+                <span class="status-badge status-warning">⚡ تبديل فوري</span>
+            </div>
+        </header>
+
+        <!-- Buttons Demo -->
+        <div class="demo-section">
+            <h2>🔘 الأزرار والعناصر التفاعلية</h2>
+            <div class="demo-buttons">
+                <button>زر أساسي</button>
+                <button style="background: var(--success); border-color: var(--success);">زر نجاح</button>
+                <button style="background: var(--warning); border-color: var(--warning);">زر تحذير</button>
+                <button style="background: var(--danger); border-color: var(--danger);">زر خطر</button>
+            </div>
+            
+            <div class="demo-buttons">
+                <a href="#" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-edit"></i> تحرير
+                </a>
+                <a href="#" style="background: var(--danger); border-color: var(--danger); display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-trash"></i> حذف
+                </a>
+                <a href="#" style="background: var(--info); border-color: var(--info); display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-eye"></i> عرض
+                </a>
+            </div>
+        </div>
+
+        <!-- Form Demo -->
+        <div class="demo-section">
+            <h2>📝 النماذج والمدخلات</h2>
+            <div class="demo-grid">
+                <div class="demo-form">
+                    <label>الاسم الكامل:</label>
+                    <input type="text" placeholder="أدخل اسمك الكامل">
+                    
+                    <label>البريد الإلكتروني:</label>
+                    <input type="email" placeholder="example@domain.com">
+                    
+                    <label>كلمة المرور:</label>
+                    <input type="password" placeholder="••••••••">
+                    
+                    <label>التاريخ:</label>
+                    <input type="date">
+                    
+                    <label>الملاحظات:</label>
+                    <textarea rows="3" placeholder="اكتب ملاحظاتك هنا..."></textarea>
+                    
+                    <label>الدولة:</label>
+                    <select>
+                        <option>السعودية</option>
+                        <option>مصر</option>
+                        <option>الإمارات</option>
+                        <option>الكويت</option>
+                    </select>
+                </div>
+                
+                <div class="demo-card">
+                    <h3>خيارات متقدمة</h3>
+                    <div style="margin: 1rem 0;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
+                            <input type="checkbox"> موافق على الشروط والأحكام
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
+                            <input type="checkbox" checked> تلقي النشرة الإخبارية
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
+                            <input type="checkbox"> حفظ بيانات تسجيل الدخول
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Demo -->
+        <div class="demo-section">
+            <h2>📊 الجداول والبيانات</h2>
+            <table class="demo-table">
+                <thead>
+                    <tr>
+                        <th>الاسم</th>
+                        <th>البريد الإلكتروني</th>
+                        <th>المنصب</th>
+                        <th>الحالة</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>أحمد محمد</td>
+                        <td>ahmed@example.com</td>
+                        <td>مطور ويب</td>
+                        <td><span class="status-badge status-success">نشط</span></td>
+                        <td>
+                            <button style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">تحرير</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>فاطمة علي</td>
+                        <td>fatma@example.com</td>
+                        <td>مصممة UI/UX</td>
+                        <td><span class="status-badge status-warning">معلق</span></td>
+                        <td>
+                            <button style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">تحرير</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>خالد سالم</td>
+                        <td>khalid@example.com</td>
+                        <td>مدير المشروع</td>
+                        <td><span class="status-badge status-success">نشط</span></td>
+                        <td>
+                            <button style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">تحرير</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Cards Demo -->
+        <div class="demo-section">
+            <h2>🃏 البطاقات والعناصر</h2>
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <h3>📈 الإحصائيات</h3>
+                    <p>عدد المستخدمين: <strong>1,234</strong></p>
+                    <p>عدد الطلبات: <strong>5,678</strong></p>
+                    <p>المبيعات: <strong>$12,345</strong></p>
+                </div>
+                
+                <div class="demo-card">
+                    <h3>⚙️ الإعدادات</h3>
+                    <p>آخر تحديث: اليوم</p>
+                    <p>حالة النظام: <span class="status-badge status-success">يعمل</span></p>
+                    <p>النسخة: v2.1.0</p>
+                </div>
+                
+                <div class="demo-card">
+                    <h3>📢 الإشعارات</h3>
+                    <p>لديك 3 رسائل جديدة</p>
+                    <p>تحديث أمني متاح</p>
+                    <p>النسخة الاحتياطية تمت بنجاح</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Theme Special Demo -->
+        <div class="demo-section">
+            <h2>🤖 تأثيرات ثيم الذكاء الاصطناعي</h2>
+            <div class="gradient-demo">
+                <h3 class="gradient-text">نص بتدرج الذكاء الاصطناعي</h3>
+                <p>هذا القسم يظهر التأثيرات الخاصة لثيم الذكاء الاصطناعي</p>
+            </div>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <p><strong>تعليمات التبديل:</strong></p>
+                <p>☀️ للثيم الفاتح | 🌙 للثيم الداكن | 🤖 لثيم الذكاء الاصطناعي</p>
+                <p><kbd>Ctrl + Shift + L/D/A</kbd> للتبديل باستخدام لوحة المفاتيح</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Switcher JavaScript -->
+    <script src="/js/theme-switcher.js"></script>
+    
+    <!-- Demo Enhancement Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click effects to demo cards
+            document.querySelectorAll('.demo-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+            
+            // Listen for theme changes
+            document.addEventListener('themeChanged', function(e) {
+                console.log('🎨 Theme changed to:', e.detail.theme);
+                
+                // Add special effects for AI theme
+                if (e.detail.theme === 'ai') {
+                    document.body.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
+                    document.body.style.backgroundAttachment = 'fixed';
+                } else {
+                    document.body.style.background = '';
+                    document.body.style.backgroundAttachment = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

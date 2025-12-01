@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Sidebar Test - Simple</title>
+    <link rel="stylesheet" href="css/sidebar-enhanced.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-weight: 600;
+        }
+        
+        .btn:hover {
+            background: #5a67d8;
+        }
+        
+        .debug-output {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Toggle Button -->
+    <button class="menu-toggle" onclick="testToggleMenu()">
+        <i class="fas fa-bars" style="font-size: 1.5rem; color: #667eea;"></i>
+    </button>
+
+    <!-- Mock PageMenuBar -->
+    <div id="PageMenuBar" style="display: none;">
+        <table>
+            <tr>
+                <td>
+                    <a href="/hr">الموارد البشرية</a>
+                    <table>
+                        <tr>
+                            <td style="padding-left: 20px;">
+                                <a href="/hr/employees">الموظفين</a>
+                                <ul>
+                                    <li style="padding-left: 40px;"><a href="/hr/employees/add">إضافة موظف</a></li>
+                                    <li style="padding-left: 40px;"><a href="/hr/employees/list">قائمة الموظفين</a></li>
+                                    <li style="padding-left: 40px;"><a href="/hr/employees/reports">تقارير الموظفين</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;">
+                                <a href="/hr/payroll">الرواتب</a>
+                                <ul>
+                                    <li style="padding-left: 40px;"><a href="/hr/payroll/calculate">حساب الراتب</a></li>
+                                    <li style="padding-left: 40px;"><a href="/hr/payroll/history">تاريخ الرواتب</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/finance">المالية</a>
+                    <table>
+                        <tr>
+                            <td style="padding-left: 20px;">
+                                <a href="/finance/accounts">الحسابات</a>
+                                <ul>
+                                    <li style="padding-left: 40px;"><a href="/finance/accounts/receivable">الذمم المدينة</a></li>
+                                    <li style="padding-left: 40px;"><a href="/finance/accounts/payable">الذمم الدائنة</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;"><a href="/finance/reports">التقارير المالية</a></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="/inventory">المخزون</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Enhanced Sidebar -->
+    <div class="enhanced-sidebar" id="enhanced-sidebar" aria-hidden="true">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-bars"></i> القائمة المحسنة</h3>
+        </div>
+        <div class="sidebar-content">
+            <div class="sidebar-menu" id="sidebar-menu-list">
+                <p style="padding: 1rem; color: #64748b; text-align: center;">Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <div class="test-container">
+        <h1><i class="fas fa-cogs"></i> Enhanced Sidebar Test</h1>
+        <p>اختبار النظام المحسن لقراءة التسلسل الهرمي 3 مستويات</p>
+        
+        <div>
+            <button class="btn" onclick="checkFunctions()">
+                <i class="fas fa-search"></i> Check Functions
+            </button>
+            
+            <button class="btn" onclick="testExtraction()">
+                <i class="fas fa-play"></i> Test Extraction
+            </button>
+            
+            <button class="btn" onclick="showPageMenuBar()">
+                <i class="fas fa-eye"></i> Show PageMenuBar
+            </button>
+            
+            <button class="btn" onclick="reloadScript()">
+                <i class="fas fa-refresh"></i> Reload Script
+            </button>
+        </div>
+        
+        <div id="debug-output" class="debug-output">
+            <strong>Debug Output:</strong><br>
+            Ready for testing...
+        </div>
+    </div>
+
+    <!-- Load the enhanced sidebar script -->
+    <script src="js/modern-sidebar-enhanced.js"></script>
+    
+    <script>
+        function log(message) {
+            var output = document.getElementById('debug-output');
+            var timestamp = new Date().toLocaleTimeString();
+            output.innerHTML += '<br>[' + timestamp + '] ' + message;
+            output.scrollTop = output.scrollHeight;
+            console.log(message);
+        }
+        
+        function checkFunctions() {
+            log("=== Function Check ===");
+            log("toggleLegacyMenu: " + (typeof window.toggleLegacyMenu !== 'undefined'));
+            log("extractMenuFromPageMenuBar: " + (typeof window.extractMenuFromPageMenuBar !== 'undefined'));
+            log("initializeSidebar: " + (typeof window.initializeSidebar !== 'undefined'));
+            log("debugSidebar: " + (typeof window.debugSidebar !== 'undefined'));
+            log("EnhancedModernSidebar: " + (typeof window.EnhancedModernSidebar !== 'undefined'));
+            
+            if (window.debugSidebar) {
+                var info = window.debugSidebar();
+                log("Sidebar state: " + JSON.stringify(info, null, 2));
+            }
+        }
+        
+        function testExtraction() {
+            log("=== Testing Extraction ===");
+            
+            // Make PageMenuBar visible
+            document.getElementById('PageMenuBar').style.display = 'block';
+            
+            if (window.extractMenuFromPageMenuBar) {
+                try {
+                    var result = window.extractMenuFromPageMenuBar();
+                    log("Extraction result: " + (result ? result.length + " items" : "null"));
+                    
+                    if (result && result.length > 0) {
+                        log("✅ Successfully extracted " + result.length + " main items");
+                        
+                        result.forEach(function(item, index) {
+                            log("Item " + (index + 1) + ": " + item.title + " (" + (item.children ? item.children.length : 0) + " children)");
+                            if (item.children && item.children.length > 0) {
+                                item.children.forEach(function(child) {
+                                    log("  └─ " + child.title + " (" + (child.children ? child.children.length : 0) + " children)");
+                                    if (child.children && child.children.length > 0) {
+                                        child.children.forEach(function(grandChild) {
+                                            log("     └─ " + grandChild.title);
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    } else {
+                        log("❌ No data extracted");
+                    }
+                } catch (error) {
+                    log("❌ Error: " + error.message);
+                }
+            } else {
+                log("❌ extractMenuFromPageMenuBar not available");
+            }
+            
+            // Hide PageMenuBar
+            document.getElementById('PageMenuBar').style.display = 'none';
+        }
+        
+        function showPageMenuBar() {
+            var pageMenuBar = document.getElementById('PageMenuBar');
+            log("=== PageMenuBar Info ===");
+            log("Exists: " + !!pageMenuBar);
+            if (pageMenuBar) {
+                log("Children: " + pageMenuBar.children.length);
+                log("Links: " + pageMenuBar.querySelectorAll('a').length);
+                log("Tables: " + pageMenuBar.querySelectorAll('table').length);
+                
+                pageMenuBar.style.display = 'block';
+                var links = pageMenuBar.querySelectorAll('a');
+                log("First 10 links:");
+                for (var i = 0; i < Math.min(links.length, 10); i++) {
+                    var link = links[i];
+                    var text = (link.textContent || '').trim();
+                    log("  " + (i + 1) + ". " + text);
+                }
+                pageMenuBar.style.display = 'none';
+            }
+        }
+        
+        function testToggleMenu() {
+            if (window.toggleLegacyMenu) {
+                window.toggleLegacyMenu();
+                log("🔄 Menu toggled");
+            } else {
+                log("❌ toggleLegacyMenu not available");
+            }
+        }
+        
+        function reloadScript() {
+            log("🔄 Reloading script...");
+            var script = document.createElement('script');
+            script.src = 'js/modern-sidebar-enhanced.js?t=' + Date.now();
+            script.onload = function() {
+                log("✅ Script reloaded");
+                setTimeout(checkFunctions, 500);
+            };
+            script.onerror = function() {
+                log("❌ Script reload failed");
+            };
+            document.head.appendChild(script);
+        }
+        
+        // Auto-check on load
+        window.addEventListener('load', function() {
+            log("🚀 Page loaded");
+            setTimeout(function() {
+                checkFunctions();
+                showPageMenuBar();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

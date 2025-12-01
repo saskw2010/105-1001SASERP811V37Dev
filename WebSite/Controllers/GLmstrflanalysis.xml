@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="GLmstrflanalysis" conflictDetection="overwriteChanges" label="G Lmstrflanalysis" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"GLmstrflanalysis"."acdcode" "acdcode"
+	,"acd"."AcademicYear" "acdAcademicYear"
+	,"acdGlFinperiod"."Fin_period_info" "acdGlFinperiodFin_period_info"
+	,"acdGlFinperiodaccountnumber"."Acc_Nm" "acdGlFinperiodaccountnumberAcc_Nm"
+	,"GLmstrflanalysis"."Acc_No" "Acc_No"
+	,"Acc_"."Acc_Nm" "Acc_Acc_Nm"
+	,"Acc_Clsacc_"."Acc_Nm" "Acc_Clsacc_Acc_Nm"
+	,"Acc_Acc_Bnd"."Acc_Nm" "Acc_Acc_BndAcc_Nm"
+	,"Acc_Acc_Bndaccclass"."accountclass" "Acc_Acc_Bndaccclassaccountclass"
+	,"Acc_Acc_BndAcc_Bab"."Acc_Nm" "Acc_Acc_BndAcc_BabAcc_Nm"
+	,"GLmstrflanalysis"."CostcntrNo" "CostcntrNo"
+	,"Costcntr"."Costcntr_Nm" "CostcntrCostcntr_Nm"
+	,"Costcntrcost_typ"."Costcntr_Nm" "Costcntrcost_typCostcntr_Nm"
+	,"GLmstrflanalysis"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"Thebranchsgm"."sgm_Nm" "Thebranchsgmsgm_Nm"
+	,"ThebranchsgmOpco"."OpcoName" "ThebranchsgmOpcoOpcoName"
+	,"ThebranchGender"."Gender" "ThebranchGenderGender"
+	,"Thebranchstage"."ShortDesc1" "ThebranchstageShortDesc1"
+	,"Thebranchschtyp"."schtypDesc" "ThebranchschtypschtypDesc"
+	,"GLmstrflanalysis"."ZDB11" "ZDB11"
+	,"GLmstrflanalysis"."ZCR11" "ZCR11"
+	,"GLmstrflanalysis"."ZDB12" "ZDB12"
+	,"GLmstrflanalysis"."ZCR12" "ZCR12"
+	,"GLmstrflanalysis"."ZDB13" "ZDB13"
+	,"GLmstrflanalysis"."ZCR13" "ZCR13"
+	,"GLmstrflanalysis"."ZDB14" "ZDB14"
+	,"GLmstrflanalysis"."ZCR14" "ZCR14"
+	,"GLmstrflanalysis"."ZDB15" "ZDB15"
+	,"GLmstrflanalysis"."ZCR15" "ZCR15"
+	,"GLmstrflanalysis"."ZDB16" "ZDB16"
+	,"GLmstrflanalysis"."ZCR16" "ZCR16"
+	,"GLmstrflanalysis"."ZDB17" "ZDB17"
+	,"GLmstrflanalysis"."ZCR17" "ZCR17"
+	,"GLmstrflanalysis"."ZDB18" "ZDB18"
+	,"GLmstrflanalysis"."ZCR18" "ZCR18"
+	,"GLmstrflanalysis"."ZDB19" "ZDB19"
+	,"GLmstrflanalysis"."ZCR19" "ZCR19"
+	,"GLmstrflanalysis"."ZDB20" "ZDB20"
+	,"GLmstrflanalysis"."ZCR20" "ZCR20"
+	,"GLmstrflanalysis"."ZDB21" "ZDB21"
+	,"GLmstrflanalysis"."ZCR21" "ZCR21"
+	,"GLmstrflanalysis"."ZDB22" "ZDB22"
+	,"GLmstrflanalysis"."ZCR22" "ZCR22"
+	,"GLmstrflanalysis"."ZDBTotal" "ZDBTotal"
+	,"GLmstrflanalysis"."ZCRTotal" "ZCRTotal"	
+	,"GLmstrflanalysis"."ZDBTotal1" "ZDBTotal1"
+	,"GLmstrflanalysis"."ZCRTotal1" "ZCRTotal1"	
+	,"GLmstrflanalysis"."acdcode1" "acdcode1"
+	,"GLmstrflanalysis"."ModifiedBy" "ModifiedBy"
+	,"GLmstrflanalysis"."ModifiedOn" "ModifiedOn"
+	,"GLmstrflanalysis"."CreatedBy" "CreatedBy"
+	,"GLmstrflanalysis"."CreatedOn" "CreatedOn"
+from "dbo"."GLmstrflanalysis" "GLmstrflanalysis"
+	left join "dbo"."schAcademicyear" "acd" on "GLmstrflanalysis"."acdcode" = "acd"."Code"
+	left join "dbo"."GlFinanceperiod" "acdGlFinperiod" on "acd"."GlFinperiodID" = "acdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."GLmstrfl" "acdGlFinperiodaccountnumber" on "acdGlFinperiod"."accountnumber" = "acdGlFinperiodaccountnumber"."Acc_No"
+	left join "dbo"."GLmstrfl" "Acc_" on "GLmstrflanalysis"."Acc_No" = "Acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "Acc_Clsacc_" on "Acc_"."Clsacc_No" = "Acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Acc_Acc_Bnd" on "Acc_"."Acc_Bnd" = "Acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "Acc_Acc_Bndaccclass" on "Acc_Acc_Bnd"."accclass" = "Acc_Acc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "Acc_Acc_BndAcc_Bab" on "Acc_Acc_Bnd"."Acc_Bab" = "Acc_Acc_BndAcc_Bab"."Acc_Bab"
+	left join "dbo"."GLcostcntr" "Costcntr" on "GLmstrflanalysis"."CostcntrNo" = "Costcntr"."Costcntr_No"
+	left join "dbo"."Glcostcentgruop" "Costcntrcost_typ" on "Costcntr"."cost_typ" = "Costcntrcost_typ"."Costcntr_No"
+	left join "dbo"."schBranch" "Thebranch" on "GLmstrflanalysis"."branch" = "Thebranch"."branch"
+	left join "dbo"."glmulcmp" "Thebranchsgm" on "Thebranch"."sgm" = "Thebranchsgm"."sgmid"
+	left join "dbo"."OpCo" "ThebranchsgmOpco" on "Thebranchsgm"."OpcoID" = "ThebranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "ThebranchGender" on "Thebranch"."Genderid" = "ThebranchGender"."Genderid"
+	left join "dbo"."schStage" "Thebranchstage" on "Thebranch"."stagecode" = "Thebranchstage"."Code"
+	left join "dbo"."schtyp" "Thebranchschtyp" on "Thebranch"."schtypid" = "Thebranchschtyp"."schtypid"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="acdcode" type="Int64" allowNulls="false" isPrimaryKey="true" label="Acdcode" showInSummary="true">
+      <items style="Lookup" dataController="schAcademicyear" newDataView="createForm1" searchOnStart="true" />
+    </field>
+	<field name="acdcode1" type="Int64"   label="Acdcodefrom" showInSummary="true">
+      <items style="Lookup" dataController="schAcademicyear"  searchOnStart="true" />
+    </field>
+    <field name="acdAcademicYear" type="String" readOnly="true" oneToOne="AcademicYear" label="acd Academic Year" length="150" />
+    <field name="acdGlFinperiodFin_period_info" type="String" readOnly="true" label="acd Gl Finperiod Fin period info" length="150" />
+    <field name="acdGlFinperiodaccountnumberAcc_Nm" type="String" readOnly="true" label="acd Gl Finperiodaccountnumber Acc Nm" length="255" />
+    <field name="Acc_No" type="Int64" allowNulls="false" label="Acc No" showInSummary="true">
+      <items style="Lookup" dataController="GLmstrfl" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Acc_Acc_Nm" type="String" readOnly="true" oneToOne="Acc_Nm" label="Acc Nm" length="255" />
+    <field name="Acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Acc Clsacc Acc Nm" length="250" />
+    <field name="Acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Nm" length="50" />
+    <field name="Acc_Acc_Bndaccclassaccountclass" type="String" readOnly="true" label="Acc Bndaccclassaccountclass" length="100" />
+    <field name="Acc_Acc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Bab Acc Nm" length="250" />
+    <field name="CostcntrNo" type="Int64" allowNulls="false" label="Costcntr No" showInSummary="true">
+      <items style="Lookup" dataController="GLcostcntr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="CostcntrCostcntr_Nm" type="String" readOnly="true" oneToOne="Costcntr_Nm" label="Costcntr Nm" length="255" />
+    <field name="Costcntrcost_typCostcntr_Nm" type="String" readOnly="true" label="Costcntrcost typ Costcntr Nm" length="255" />
+    <field name="branch" type="Int64" allowNulls="false" label="Branch" showInSummary="true">
+      <items style="Lookup" dataController="schBranch" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ThebranchDesc1" type="String" readOnly="true" oneToOne="Desc1" label="Thebranch Desc1" length="50" />
+    <field name="Thebranchsgmsgm_Nm" type="String" readOnly="true" label="Thebranchsgmsgm Nm" length="255" />
+    <field name="ThebranchsgmOpcoOpcoName" type="String" readOnly="true" label="Thebranchsgm Opco Name" length="50" />
+    <field name="ThebranchGenderGender" type="String" readOnly="true" label="Thebranch Gender" length="100" />
+    <field name="ThebranchstageShortDesc1" type="String" readOnly="true" label="Thebranchstage Short Desc1" length="50" />
+    <field name="ThebranchschtypschtypDesc" type="String" readOnly="true" label="Thebranchschtypschtyp Desc" length="150" />
+    <field name="ZDB11" type="Decimal" default="((0))" label="Zdb11" showInSummary="true" />
+    <field name="ZCR11" type="Decimal" default="((0))" label="Zcr11" />
+    <field name="ZDB12" type="Decimal" default="((0))" label="Zdb12" />
+    <field name="ZCR12" type="Decimal" default="((0))" label="Zcr12" />
+    <field name="ZDB13" type="Decimal" default="((0))" label="Zdb13" />
+    <field name="ZCR13" type="Decimal" default="((0))" label="Zcr13" />
+    <field name="ZDB14" type="Decimal" default="((0))" label="Zdb14" />
+    <field name="ZCR14" type="Decimal" default="((0))" label="Zcr14" />
+    <field name="ZDB15" type="Decimal" default="((0))" label="Zdb15" />
+    <field name="ZCR15" type="Decimal" default="((0))" label="Zcr15" />
+    <field name="ZDB16" type="Decimal" default="((0))" label="Zdb16" />
+    <field name="ZCR16" type="Decimal" default="((0))" label="Zcr16" />
+    <field name="ZDB17" type="Decimal" default="((0))" label="Zdb17" />
+    <field name="ZCR17" type="Decimal" default="((0))" label="Zcr17" />
+    <field name="ZDB18" type="Decimal" default="((0))" label="Zdb18" />
+    <field name="ZCR18" type="Decimal" default="((0))" label="Zcr18" />
+    <field name="ZDB19" type="Decimal" default="((0))" label="Zdb19" />
+    <field name="ZCR19" type="Decimal" default="((0))" label="Zcr19" />
+    <field name="ZDB20" type="Decimal" default="((0))" label="Zdb20" />
+    <field name="ZCR20" type="Decimal" default="((0))" label="Zcr20" />
+    <field name="ZDB21" type="Decimal" default="((0))" label="Zdb21" />
+    <field name="ZCR21" type="Decimal" default="((0))" label="Zcr21" />
+    <field name="ZDB22" type="Decimal" default="((0))" label="Zdb22" />
+    <field name="ZCR22" type="Decimal" default="((0))" label="Zcr22" />
+	 <field name="ZDBTotal" type="Decimal" default="((0))" label="ZDBTotal" />
+    <field name="ZCRTotal" type="Decimal" default="((0))" label="ZCRTotal" />
+	 <field name="ZDBTotal1" type="Decimal" default="((0))" label="ZDBTotal1" />
+    <field name="ZCRTotal1" type="Decimal" default="((0))" label="ZCRTotal1" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" default="(getdate())" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" default="(getdate())" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="G Lmstrflanalysis">
+     
+      <dataFields>
+        <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" />
+        <dataField fieldName="Acc_No" aliasFieldName="Acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={Acc_No}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="CostcntrNo" aliasFieldName="CostcntrCostcntr_Nm" hyperlinkFormatString="~/Pages/GLcostcntr.aspx?Costcntr_No={CostcntrNo}&amp;_controller=GLcostcntr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="acdcode1"  />
+		<dataField fieldName="ZDBTotal" dataFormatString="n3" aggregate="Sum" columns="15" />
+        <dataField fieldName="ZCRTotal" dataFormatString="n3" aggregate="Sum" columns="15" />
+		<dataField fieldName="ZDBTotal1" dataFormatString="n3" aggregate="Sum" columns="15" />
+        <dataField fieldName="ZCRTotal1" dataFormatString="n3" aggregate="Sum" columns="15" />	
+		<dataField fieldName="ZDB11" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZCR11" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZDB12" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZCR12" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZDB13" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZCR13" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZDB14" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZCR14" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZDB15" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZCR15" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZDB16" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZCR16" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZDB17" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZCR17" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZDB18" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+        <dataField fieldName="ZCR18" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+		<dataField fieldName="ZDB19" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+            <dataField fieldName="ZCR19" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+            <dataField fieldName="ZDB20" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+            <dataField fieldName="ZCR20" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+            <dataField fieldName="ZDB21" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+            <dataField fieldName="ZCR21" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+            <dataField fieldName="ZDB22" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+            <dataField fieldName="ZCR22" dataFormatString="n3" aggregate="Sum" columns="15" hidden="true"/>
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review G Lmstrflanalysis">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="G Lmstrflanalysis" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" hyperlinkFormatString="~/Pages/schAcademicyear.aspx?Code={acdcode}&amp;_controller=schAcademicyear&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Acc_No" aliasFieldName="Acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={Acc_No}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="CostcntrNo" aliasFieldName="CostcntrCostcntr_Nm" hyperlinkFormatString="~/Pages/GLcostcntr.aspx?Costcntr_No={CostcntrNo}&amp;_controller=GLcostcntr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+      <dataField fieldName="acdcode1"  />
+		<dataField fieldName="ZDBTotal" dataFormatString="n3" aggregate="Sum" columns="15" />
+        <dataField fieldName="ZCRTotal" dataFormatString="n3" aggregate="Sum" columns="15" />
+		<dataField fieldName="ZDBTotal1" dataFormatString="n3" aggregate="Sum" columns="15" />
+        <dataField fieldName="ZCRTotal1" dataFormatString="n3" aggregate="Sum" columns="15" />	
+			
+			<dataField fieldName="ZDB11" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR11" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB12" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR12" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB13" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR13" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB14" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR14" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB15" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR15" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB16" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR16" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB17" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR17" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB18" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR18" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB19" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR19" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB20" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR20" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB21" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR21" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB22" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR22" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="acdGlFinperiodFin_period_info" />
+            <dataField fieldName="acdGlFinperiodaccountnumberAcc_Nm" />
+            <dataField fieldName="Acc_Clsacc_Acc_Nm" />
+            <dataField fieldName="Acc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="Acc_Acc_Bndaccclassaccountclass" />
+            <dataField fieldName="Acc_Acc_BndAcc_BabAcc_Nm" />
+            <dataField fieldName="Costcntrcost_typCostcntr_Nm" />
+            <dataField fieldName="Thebranchsgmsgm_Nm" />
+            <dataField fieldName="ThebranchsgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="ThebranchGenderGender" />
+            <dataField fieldName="ThebranchstageShortDesc1" columns="50" />
+            <dataField fieldName="ThebranchschtypschtypDesc" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New G Lmstrflanalysis">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New G Lmstrflanalysis" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" />
+            <dataField fieldName="Acc_No" aliasFieldName="Acc_Acc_Nm" />
+            <dataField fieldName="CostcntrNo" aliasFieldName="CostcntrCostcntr_Nm" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />
+		 <dataField fieldName="acdcode1"  />
+		<dataField fieldName="ZDBTotal" dataFormatString="n3" aggregate="Sum" columns="15" />
+        <dataField fieldName="ZCRTotal" dataFormatString="n3" aggregate="Sum" columns="15" />
+		<dataField fieldName="ZDBTotal1" dataFormatString="n3" aggregate="Sum" columns="15" />
+        <dataField fieldName="ZCRTotal1" dataFormatString="n3" aggregate="Sum" columns="15" />	
+            <dataField fieldName="ZDB11" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR11" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB12" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR12" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB13" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR13" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB14" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR14" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB15" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR15" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB16" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR16" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB17" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR17" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB18" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR18" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB19" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR19" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB20" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR20" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB21" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR21" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZDB22" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ZCR22" dataFormatString="n3" aggregate="Sum" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+	  <action  commandName="SQL" headerText="budjetfromprvyear"    id="axx222"  description="Details" confirmation="_controller=CustomINsertbuget&#xD;&#xA;_width=600 &#xD;&#xA;_title=Insert new &#xD;&#xA;_shortcut=true&#xD;&#xA;_view=createForm2"   >
+ <data><![CDATA[exec dbo.GetFinalReporttotal @Parameters_branch,@Parameters_acdcode,@Parameters_acdcode1,@Parameters_percentage,@BusinessRules_UserName
+ set @Result_Refresh = 1
+set @Result_ShowViewMessage = ' update done '
+ ]]></data> 
+      </action>
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

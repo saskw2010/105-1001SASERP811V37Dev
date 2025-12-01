@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Dznditalp" conflictDetection="overwriteChanges" label="Dznditalp" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Dznditalp"."ln_no" "ln_no"
+	,"Dznditalp"."countrdus" "countrdus"
+	,"Thecountrdus"."Notes" "ThecountrdusNotes"
+	,"Dznditalp"."req_typ" "req_typ"
+	,"req_typ"."Req_NM" "req_typReq_NM"
+	,"Dznditalp"."Equationlplus" "Equationlplus"
+	,"Dznditalp"."Equationl" "Equationl"
+	,"Dznditalp"."firstsign1" "firstsign1"
+	,"Dznditalp"."Equationwplus" "Equationwplus"
+	,"Dznditalp"."Equationw" "Equationw"
+	,"Dznditalp"."firstsign2" "firstsign2"
+	,"Dznditalp"."Equationhplus" "Equationhplus"
+	,"Dznditalp"."Equationh" "Equationh"
+	,"Dznditalp"."firstsign3" "firstsign3"
+	,"Dznditalp"."generalfactor" "generalfactor"
+	,"Dznditalp"."ModifiedBy" "ModifiedBy"
+	,"Dznditalp"."ModifiedOn" "ModifiedOn"
+	,"Dznditalp"."CreatedBy" "CreatedBy"
+	,"Dznditalp"."CreatedOn" "CreatedOn"
+from "dbo"."Dznditalp" "Dznditalp"
+	left join "dbo"."Dznmastp" "Thecountrdus" on "Dznditalp"."countrdus" = "Thecountrdus"."countrdus"
+	left join "dbo"."pyhldtypsl1" "req_typ" on "Dznditalp"."req_typ" = "req_typ"."Req_Typ"
+]]></text>
+    </command>
+    <command id="ln_noIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ln_no" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ln_no" type="Int64" allowNulls="false" isPrimaryKey="true" label="Ln No" readOnly="true" />
+    <field name="countrdus" type="Int64" allowNulls="false" label="Countrdus" showInSummary="true">
+      <items style="Lookup" dataController="Dznmastp" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ThecountrdusNotes" type="String" readOnly="true" label="Thecountrdus Notes" length="255" />
+    <field name="req_typ" type="Int64" allowNulls="false" label="Req Typ" showInSummary="true">
+      <items style="Lookup" dataController="pyhldtypsl1" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="req_typReq_NM" type="String" readOnly="true" label="req typ Req NM" length="255" />
+    <field name="Equationlplus" type="String" label="Equationlplus" length="10" showInSummary="true" />
+    <field name="Equationl" type="String" label="Equationl" length="10" showInSummary="true" />
+    <field name="firstsign1" type="String" label="Firstsign1" length="1" showInSummary="true" />
+    <field name="Equationwplus" type="String" label="Equationwplus" length="10" />
+    <field name="Equationw" type="String" label="Equationw" length="10" />
+    <field name="firstsign2" type="String" label="Firstsign2" length="1" />
+    <field name="Equationhplus" type="String" label="Equationhplus" length="10" />
+    <field name="Equationh" type="String" label="Equationh" length="10" />
+    <field name="firstsign3" type="String" label="Firstsign3" length="1" />
+    <field name="generalfactor" type="Single" label="Generalfactor" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Dznditalp">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="countrdus" aliasFieldName="ThecountrdusNotes" />
+        <dataField fieldName="req_typ" aliasFieldName="req_typReq_NM" hyperlinkFormatString="~/Pages/pyhldtypsl1.aspx?Req_Typ={req_typ}&amp;_controller=pyhldtypsl1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Equationlplus" columns="10" />
+        <dataField fieldName="Equationl" columns="10" />
+        <dataField fieldName="firstsign1" columns="1" />
+        <dataField fieldName="Equationwplus" columns="10" />
+        <dataField fieldName="Equationw" columns="10" />
+        <dataField fieldName="firstsign2" columns="1" />
+        <dataField fieldName="Equationhplus" columns="10" />
+        <dataField fieldName="Equationh" columns="10" />
+        <dataField fieldName="firstsign3" columns="1" />
+        <dataField fieldName="generalfactor" columns="15" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Dznditalp">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Dznditalp" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="countrdus" aliasFieldName="ThecountrdusNotes" hyperlinkFormatString="~/Pages/Dznmastp.aspx?countrdus={countrdus}&amp;_controller=Dznmastp&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="req_typ" aliasFieldName="req_typReq_NM" hyperlinkFormatString="~/Pages/pyhldtypsl1.aspx?Req_Typ={req_typ}&amp;_controller=pyhldtypsl1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Equationlplus" columns="10" />
+            <dataField fieldName="Equationl" columns="10" />
+            <dataField fieldName="firstsign1" columns="1" />
+            <dataField fieldName="Equationwplus" columns="10" />
+            <dataField fieldName="Equationw" columns="10" />
+            <dataField fieldName="firstsign2" columns="1" />
+            <dataField fieldName="Equationhplus" columns="10" />
+            <dataField fieldName="Equationh" columns="10" />
+            <dataField fieldName="firstsign3" columns="1" />
+            <dataField fieldName="generalfactor" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Dznditalp">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Dznditalp" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="countrdus" aliasFieldName="ThecountrdusNotes" />
+            <dataField fieldName="req_typ" aliasFieldName="req_typReq_NM" />
+            <dataField fieldName="Equationlplus" columns="10" />
+            <dataField fieldName="Equationl" columns="10" />
+            <dataField fieldName="firstsign1" columns="1" />
+            <dataField fieldName="Equationwplus" columns="10" />
+            <dataField fieldName="Equationw" columns="10" />
+            <dataField fieldName="firstsign2" columns="1" />
+            <dataField fieldName="Equationhplus" columns="10" />
+            <dataField fieldName="Equationh" columns="10" />
+            <dataField fieldName="firstsign3" columns="1" />
+            <dataField fieldName="generalfactor" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

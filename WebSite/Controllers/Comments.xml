@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Comments" conflictDetection="overwriteChanges" label="Comments" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Comments"."IssueId" "IssueId"
+	,"Issue"."priority_code" "Issuepriority_code"
+	,"Issuecat_"."cat_name" "Issuecat_cat_name"
+	,"Issuepriority_"."ModifiedBy" "Issuepriority_ModifiedBy"
+	,"Issuereq_"."req_details" "Issuereq_req_details"
+	,"Issuereq_Deduc_"."Deduc_Nm" "Issuereq_Deduc_Deduc_Nm"
+	,"Issuereq_emp_"."Emp_NOt" "Issuereq_emp_Emp_NOt"
+	,"Issuereq_reqcat_"."reqcat_name" "Issuereq_reqcat_reqcat_name"
+	,"Issuestatus_"."status_name" "Issuestatus_status_name"
+	,"Comments"."CommentId" "CommentId"
+	,"Comments"."CommentEvent" "CommentEvent"
+	,"Comments"."Comment" "Comment"
+	,"Comments"."IsHtml" "IsHtml"
+	,"Comments"."CommentedBy" "CommentedBy"
+	,"Comments"."CommentedDate" "CommentedDate"
+	,"Comments"."ModifiedBy" "ModifiedBy"
+	,"Comments"."ModifiedOn" "ModifiedOn"
+	,"Comments"."CreatedBy" "CreatedBy"
+	,"Comments"."CreatedOn" "CreatedOn"
+from "dbo"."Comments" "Comments"
+	left join "dbo"."Issue" "Issue" on "Comments"."IssueId" = "Issue"."iss_id"
+	left join "dbo"."category" "Issuecat_" on "Issue"."cat_id" = "Issuecat_"."cat_id"
+	left join "dbo"."priority" "Issuepriority_" on "Issue"."priority_code" = "Issuepriority_"."priority_code"
+	left join "dbo"."Request" "Issuereq_" on "Issue"."req_id" = "Issuereq_"."reqID"
+	left join "dbo"."Pydedctyp" "Issuereq_Deduc_" on "Issuereq_"."Deduc_No" = "Issuereq_Deduc_"."Deduc_No"
+	left join "dbo"."Pyempmfs" "Issuereq_emp_" on "Issuereq_"."emp_no" = "Issuereq_emp_"."Emp_No"
+	left join "dbo"."RequestCategories" "Issuereq_reqcat_" on "Issuereq_"."reqcat_id" = "Issuereq_reqcat_"."reqcat_id"
+	left join "dbo"."status" "Issuestatus_" on "Issue"."status_code" = "Issuestatus_"."status_code"
+]]></text>
+    </command>
+    <command id="CommentIdIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="CommentId" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="IssueId" type="Int64" allowNulls="false" label="Issue#" showInSummary="true">
+      <items style="Lookup" dataController="Issue" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Issuepriority_code" type="String" readOnly="true" label="Issuepriority code" length="20">
+      <items style="Lookup" dataController="priority" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Issuecat_cat_name" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Issuecat cat name" />
+    <field name="Issuepriority_ModifiedBy" type="String" readOnly="true" label="Issuepriority Modified By" length="50" />
+    <field name="Issuereq_req_details" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Issuereq req details" />
+    <field name="Issuereq_Deduc_Deduc_Nm" type="String" readOnly="true" label="Issuereq Deduc Nm" length="100" />
+    <field name="Issuereq_emp_Emp_NOt" type="String" readOnly="true" label="Issuereq emp Emp N Ot" length="50" />
+    <field name="Issuereq_reqcat_reqcat_name" type="String" readOnly="true" label="Issuereq reqcat name" length="100" />
+    <field name="Issuestatus_status_name" type="String" readOnly="true" label="Issuestatus status name" length="100" />
+    <field name="CommentId" type="Int64" allowNulls="false" isPrimaryKey="true" label="Comment#" readOnly="true" />
+    <field name="CommentEvent" type="String" label="Comment Event" length="1000" showInSummary="true" />
+    <field name="Comment" type="String" allowQBE="false" allowSorting="false" label="Comment" showInSummary="true" />
+    <field name="IsHtml" type="Boolean" default="((0))" label="Is Html" showInSummary="true" />
+    <field name="CommentedBy" type="String" allowQBE="false" allowSorting="false" label="Commented By" showInSummary="true" />
+    <field name="CommentedDate" type="DateTime" default="(getdate())" label="Commented Date" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Comments">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IssueId" aliasFieldName="Issuepriority_code" />
+        <dataField fieldName="CommentEvent" />
+        <dataField fieldName="Comment" rows="5" />
+        <dataField fieldName="IsHtml" />
+        <dataField fieldName="CommentedBy" rows="5" />
+        <dataField fieldName="CommentedDate" columns="10" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="Issuecat_cat_name" rows="5" />
+        <dataField fieldName="Issuepriority_ModifiedBy" columns="50" />
+        <dataField fieldName="Issuereq_req_details" rows="5" />
+        <dataField fieldName="Issuereq_Deduc_Deduc_Nm" />
+        <dataField fieldName="Issuereq_emp_Emp_NOt" columns="50" />
+        <dataField fieldName="Issuereq_reqcat_reqcat_name" />
+        <dataField fieldName="Issuestatus_status_name" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Comments">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Comments" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IssueId" aliasFieldName="Issuepriority_code" hyperlinkFormatString="~/Pages/Issue.aspx?iss_id={IssueId}&amp;_controller=Issue&amp;_command=Select&amp;_argument=editForm1" />
+            <dataField fieldName="CommentEvent" />
+            <dataField fieldName="Comment" rows="5" />
+            <dataField fieldName="IsHtml" />
+            <dataField fieldName="CommentedBy" rows="5" />
+            <dataField fieldName="CommentedDate" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Issuecat_cat_name" rows="5" />
+            <dataField fieldName="Issuepriority_ModifiedBy" columns="50" />
+            <dataField fieldName="Issuereq_req_details" rows="5" />
+            <dataField fieldName="Issuereq_Deduc_Deduc_Nm" />
+            <dataField fieldName="Issuereq_emp_Emp_NOt" columns="50" />
+            <dataField fieldName="Issuereq_reqcat_reqcat_name" />
+            <dataField fieldName="Issuestatus_status_name" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Comments">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Comments" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IssueId" aliasFieldName="Issuepriority_code" />
+            <dataField fieldName="CommentEvent" />
+            <dataField fieldName="Comment" rows="5" />
+            <dataField fieldName="IsHtml" />
+            <dataField fieldName="CommentedBy" rows="5" />
+            <dataField fieldName="CommentedDate" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

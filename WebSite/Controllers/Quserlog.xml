@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Quserlog" conflictDetection="overwriteChanges" label="Quserlog" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Quserlog"."auditid" "auditid"
+	,"Quserlog"."userid" "userid"
+	,"Quserlog"."buttonnm" "buttonnm"
+	,"Quserlog"."frmnm" "frmnm"
+	,"Quserlog"."buttonnm1" "buttonnm1"
+	,"Quserlog"."frmnm1" "frmnm1"
+	,"Quserlog"."computername" "computername"
+	,"Quserlog"."windowsusername" "windowsusername"
+	,"Quserlog"."computerip" "computerip"
+	,"Quserlog"."datetimevalue" "datetimevalue"
+	,"Quserlog"."typ" "typ"
+	,"Quserlog"."FormNamenet" "FormNamenet"
+	,"Quserlog"."ControlEN" "ControlEN"
+	,"Quserlog"."ControlAR" "ControlAR"
+	,"Quserlog"."CtlTyp" "CtlTyp"
+	,"Quserlog"."EN" "EN"
+	,"Quserlog"."AR" "AR"
+	,"Quserlog"."MenuID" "MenuID"
+	,"Quserlog"."FormId" "FormId"
+	,"Quserlog"."UserName" "UserName"
+	,"Quserlog"."UserPass" "UserPass"
+	,"Quserlog"."user_dispname" "user_dispname"
+	,"Quserlog"."UserTyp" "UserTyp"
+	,"Quserlog"."user_email" "user_email"
+	,"Quserlog"."userarea_id" "userarea_id"
+	,"Quserlog"."userurl" "userurl"
+	,"Quserlog"."user_question" "user_question"
+	,"Quserlog"."user_answer" "user_answer"
+	,"Quserlog"."Usersgm" "Usersgm"
+from "dbo"."Quserlog" "Quserlog"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="auditid" type="Int64" allowNulls="false" label="Auditid" showInSummary="true" />
+    <field name="userid" type="Int64" label="Userid" showInSummary="true" />
+    <field name="buttonnm" type="String" label="Buttonnm" length="50" showInSummary="true" />
+    <field name="frmnm" type="String" label="Frmnm" length="50" showInSummary="true" />
+    <field name="buttonnm1" type="String" label="Buttonnm1" length="50" showInSummary="true" />
+    <field name="frmnm1" type="String" label="Frmnm1" length="50" />
+    <field name="computername" type="String" label="Computername" length="50" />
+    <field name="windowsusername" type="String" label="Windowsusername" length="50" />
+    <field name="computerip" type="String" label="Computerip" length="50" />
+    <field name="datetimevalue" type="DateTime" label="Datetimevalue" />
+    <field name="typ" type="Int64" label="Typ" />
+    <field name="FormNamenet" type="String" label="Form Namenet" length="50" />
+    <field name="ControlEN" type="String" label="Control EN" length="255" />
+    <field name="ControlAR" type="String" label="Control AR" length="255" />
+    <field name="CtlTyp" type="String" label="Ctl Typ" length="50" />
+    <field name="EN" type="String" label="En" length="255" />
+    <field name="AR" type="String" label="Ar" length="255" />
+    <field name="MenuID" type="Int64" label="Menu#" />
+    <field name="FormId" type="Decimal" label="Form#" />
+    <field name="UserName" type="String" label="User Name" length="50" />
+    <field name="UserPass" type="String" label="User Pass" length="50" />
+    <field name="user_dispname" type="String" label="User Dispname" length="50" />
+    <field name="UserTyp" type="Int64" label="User Typ" />
+    <field name="user_email" type="String" label="User Email" length="150" />
+    <field name="userarea_id" type="Int64" label="Userarea#" />
+    <field name="userurl" type="String" label="Userurl" length="255" />
+    <field name="user_question" type="String" label="User Question" length="250" />
+    <field name="user_answer" type="String" label="User Answer" length="250" />
+    <field name="Usersgm" type="Int64" label="Usersgm" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Quserlog">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="auditid" columns="15" />
+        <dataField fieldName="userid" columns="15" />
+        <dataField fieldName="buttonnm" columns="50" />
+        <dataField fieldName="frmnm" columns="50" />
+        <dataField fieldName="buttonnm1" columns="50" />
+        <dataField fieldName="frmnm1" columns="50" />
+        <dataField fieldName="computername" columns="50" />
+        <dataField fieldName="windowsusername" columns="50" />
+        <dataField fieldName="computerip" columns="50" />
+        <dataField fieldName="datetimevalue" dataFormatString="t" columns="10" />
+        <dataField fieldName="typ" columns="15" />
+        <dataField fieldName="FormNamenet" columns="50" />
+        <dataField fieldName="ControlEN" />
+        <dataField fieldName="ControlAR" />
+        <dataField fieldName="CtlTyp" columns="50" />
+        <dataField fieldName="EN" />
+        <dataField fieldName="AR" />
+        <dataField fieldName="MenuID" columns="15" />
+        <dataField fieldName="FormId" columns="15" />
+        <dataField fieldName="UserName" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Quserlog">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Quserlog" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="auditid" columns="15" />
+            <dataField fieldName="userid" columns="15" />
+            <dataField fieldName="buttonnm" columns="50" />
+            <dataField fieldName="frmnm" columns="50" />
+            <dataField fieldName="buttonnm1" columns="50" />
+            <dataField fieldName="frmnm1" columns="50" />
+            <dataField fieldName="computername" columns="50" />
+            <dataField fieldName="windowsusername" columns="50" />
+            <dataField fieldName="computerip" columns="50" />
+            <dataField fieldName="datetimevalue" dataFormatString="t" columns="10" />
+            <dataField fieldName="typ" columns="15" />
+            <dataField fieldName="FormNamenet" columns="50" />
+            <dataField fieldName="ControlEN" />
+            <dataField fieldName="ControlAR" />
+            <dataField fieldName="CtlTyp" columns="50" />
+            <dataField fieldName="EN" />
+            <dataField fieldName="AR" />
+            <dataField fieldName="MenuID" columns="15" />
+            <dataField fieldName="FormId" columns="15" />
+            <dataField fieldName="UserName" columns="50" />
+            <dataField fieldName="UserPass" columns="50" />
+            <dataField fieldName="user_dispname" columns="50" />
+            <dataField fieldName="UserTyp" columns="15" />
+            <dataField fieldName="user_email" />
+            <dataField fieldName="userarea_id" columns="15" />
+            <dataField fieldName="userurl" />
+            <dataField fieldName="user_question" />
+            <dataField fieldName="user_answer" />
+            <dataField fieldName="Usersgm" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Quserlog">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Quserlog" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="auditid" columns="15" />
+            <dataField fieldName="userid" columns="15" />
+            <dataField fieldName="buttonnm" columns="50" />
+            <dataField fieldName="frmnm" columns="50" />
+            <dataField fieldName="buttonnm1" columns="50" />
+            <dataField fieldName="frmnm1" columns="50" />
+            <dataField fieldName="computername" columns="50" />
+            <dataField fieldName="windowsusername" columns="50" />
+            <dataField fieldName="computerip" columns="50" />
+            <dataField fieldName="datetimevalue" dataFormatString="t" columns="10" />
+            <dataField fieldName="typ" columns="15" />
+            <dataField fieldName="FormNamenet" columns="50" />
+            <dataField fieldName="ControlEN" />
+            <dataField fieldName="ControlAR" />
+            <dataField fieldName="CtlTyp" columns="50" />
+            <dataField fieldName="EN" />
+            <dataField fieldName="AR" />
+            <dataField fieldName="MenuID" columns="15" />
+            <dataField fieldName="FormId" columns="15" />
+            <dataField fieldName="UserName" columns="50" />
+            <dataField fieldName="UserPass" columns="50" />
+            <dataField fieldName="user_dispname" columns="50" />
+            <dataField fieldName="UserTyp" columns="15" />
+            <dataField fieldName="user_email" />
+            <dataField fieldName="userarea_id" columns="15" />
+            <dataField fieldName="userurl" />
+            <dataField fieldName="user_question" />
+            <dataField fieldName="user_answer" />
+            <dataField fieldName="Usersgm" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

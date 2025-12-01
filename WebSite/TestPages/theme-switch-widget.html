@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 أداة تبديل الثيمات السريعة</title>
+    
+    <!-- Theme Integration CSS -->
+    <link href="../ThemeCenter/CSS/theme-integration.css" rel="stylesheet" type="text/css" />
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: var(--spacing-lg);
+            font-family: var(--font-family-primary);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .widget-container {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: var(--spacing-xl);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .widget-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-lg);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .quick-themes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .theme-button {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-primary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            cursor: pointer;
+            transition: var(--theme-transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .theme-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+        
+        .theme-button.active {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        
+        .theme-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                var(--theme-primary, #3b82f6) 0%, 
+                var(--theme-secondary, #64748b) 50%, 
+                var(--theme-accent, #06d6a0) 100%);
+        }
+        
+        .theme-icon {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .theme-name {
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .theme-description {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: var(--spacing-xs);
+        }
+        
+        .keyboard-shortcuts {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .shortcuts-title {
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            font-size: 0.875rem;
+        }
+        
+        .shortcut-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-xs);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .shortcut-keys {
+            background: var(--bg-primary);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.7rem;
+        }
+        
+        .widget-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            background: var(--primary);
+            color: var(--text-inverse);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-sm) var(--spacing-md);
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: var(--theme-transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .action-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+        
+        .action-btn.secondary {
+            background: var(--secondary);
+        }
+        
+        .action-btn.accent {
+            background: var(--accent);
+        }
+        
+        .status-indicator {
+            position: fixed;
+            top: var(--spacing-lg);
+            right: var(--spacing-lg);
+            background: var(--success);
+            color: var(--text-inverse);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius-full);
+            font-size: 0.875rem;
+            transform: translateY(-100px);
+            transition: var(--theme-transition);
+            z-index: 1000;
+        }
+        
+        .status-indicator.show {
+            transform: translateY(0);
+        }
+        
+        .theme-preview-panel {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            display: none;
+        }
+        
+        .theme-preview-panel.show {
+            display: block;
+        }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .color-preview {
+            height: 40px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        /* Theme-specific button styles */
+        .theme-button[data-theme="light"] {
+            --theme-primary: #3b82f6;
+            --theme-secondary: #64748b;
+            --theme-accent: #06d6a0;
+        }
+        
+        .theme-button[data-theme="dark"] {
+            --theme-primary: #60a5fa;
+            --theme-secondary: #94a3b8;
+            --theme-accent: #34d399;
+        }
+        
+        .theme-button[data-theme="ai"] {
+            --theme-primary: #8b5cf6;
+            --theme-secondary: #a78bfa;
+            --theme-accent: #06d6a0;
+        }
+        
+        .theme-button[data-theme="citrus"] {
+            --theme-primary: #f59e0b;
+            --theme-secondary: #eab308;
+            --theme-accent: #84cc16;
+        }
+        
+        .theme-button[data-theme="emerald"] {
+            --theme-primary: #10b981;
+            --theme-secondary: #059669;
+            --theme-accent: #06d6a0;
+        }
+        
+        .theme-button[data-theme="rose"] {
+            --theme-primary: #f43f5e;
+            --theme-secondary: #ec4899;
+            --theme-accent: #06d6a0;
+        }
+        
+        @media (max-width: 480px) {
+            .quick-themes {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .shortcut-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .widget-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="widget-container">
+        <h1 class="widget-title">
+            <i class="fas fa-palette"></i>
+            تبديل الثيمات السريع
+        </h1>
+        
+        <!-- Quick Theme Buttons -->
+        <div class="quick-themes">
+            <button class="theme-button" data-theme="light" onclick="switchTheme('light')">
+                <div class="theme-icon">☀️</div>
+                <div class="theme-name">فاتح</div>
+                <div class="theme-description">Light</div>
+            </button>
+            
+            <button class="theme-button" data-theme="dark" onclick="switchTheme('dark')">
+                <div class="theme-icon">🌙</div>
+                <div class="theme-name">داكن</div>
+                <div class="theme-description">Dark</div>
+            </button>
+            
+            <button class="theme-button" data-theme="ai" onclick="switchTheme('ai')">
+                <div class="theme-icon">🤖</div>
+                <div class="theme-name">ذكي</div>
+                <div class="theme-description">AI</div>
+            </button>
+            
+            <button class="theme-button" data-theme="citrus" onclick="switchTheme('citrus')">
+                <div class="theme-icon">🍊</div>
+                <div class="theme-name">حمضي</div>
+                <div class="theme-description">Citrus</div>
+            </button>
+            
+            <button class="theme-button" data-theme="emerald" onclick="switchTheme('emerald')">
+                <div class="theme-icon">💎</div>
+                <div class="theme-name">زمردي</div>
+                <div class="theme-description">Emerald</div>
+            </button>
+            
+            <button class="theme-button" data-theme="rose" onclick="switchTheme('rose')">
+                <div class="theme-icon">🌹</div>
+                <div class="theme-name">وردي</div>
+                <div class="theme-description">Rose</div>
+            </button>
+        </div>
+        
+        <!-- Keyboard Shortcuts -->
+        <div class="keyboard-shortcuts">
+            <div class="shortcuts-title">
+                <i class="fas fa-keyboard"></i>
+                اختصارات لوحة المفاتيح
+            </div>
+            <div class="shortcut-list">
+                <div class="shortcut-item">
+                    <span>ثيم فاتح</span>
+                    <span class="shortcut-keys">Ctrl+Shift+L</span>
+                </div>
+                <div class="shortcut-item">
+                    <span>ثيم داكن</span>
+                    <span class="shortcut-keys">Ctrl+Shift+D</span>
+                </div>
+                <div class="shortcut-item">
+                    <span>ثيم ذكي</span>
+                    <span class="shortcut-keys">Ctrl+Shift+A</span>
+                </div>
+                <div class="shortcut-item">
+                    <span>تبديل تلقائي</span>
+                    <span class="shortcut-keys">Ctrl+Shift+T</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Theme Preview Panel -->
+        <div class="theme-preview-panel" id="theme-preview">
+            <div class="shortcuts-title">معاينة الألوان الحالية</div>
+            <div class="preview-grid" id="color-preview-grid">
+                <!-- Colors will be populated by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Actions -->
+        <div class="widget-actions">
+            <button class="action-btn" onclick="openThemeManager()">
+                <i class="fas fa-cog"></i>
+                إدارة متقدمة
+            </button>
+            <button class="action-btn secondary" onclick="togglePreview()">
+                <i class="fas fa-eye"></i>
+                معاينة الألوان
+            </button>
+            <button class="action-btn accent" onclick="autoDetectTheme()">
+                <i class="fas fa-magic"></i>
+                اكتشاف تلقائي
+            </button>
+        </div>
+    </div>
+    
+    <!-- Status Indicator -->
+    <div class="status-indicator" id="status-indicator">
+        تم تطبيق الثيم بنجاح!
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/theme-switcher.js"></script>
+    <script src="../js/theme-manager.js"></script>
+    
+    <script>
+        let currentTheme = 'light';
+        let previewVisible = false;
+        
+        // Switch theme function
+        function switchTheme(themeKey) {
+            if (window.advancedThemeSystem) {
+                window.advancedThemeSystem.setTheme(themeKey);
+                currentTheme = themeKey;
+                updateActiveButton(themeKey);
+                showStatus(`تم تطبيق ثيم ${getThemeNameAr(themeKey)}`);
+                
+                if (previewVisible) {
+                    updateColorPreview();
+                }
+            }
+        }
+        
+        // Get Arabic theme name
+        function getThemeNameAr(themeKey) {
+            const names = {
+                light: 'فاتح',
+                dark: 'داكن',
+                ai: 'ذكي',
+                citrus: 'حمضي',
+                emerald: 'زمردي',
+                rose: 'وردي'
+            };
+            return names[themeKey] || themeKey;
+        }
+        
+        // Update active button
+        function updateActiveButton(themeKey) {
+            document.querySelectorAll('.theme-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-theme="${themeKey}"]`).classList.add('active');
+        }
+        
+        // Show status message
+        function showStatus(message) {
+            const indicator = document.getElementById('status-indicator');
+            indicator.textContent = message;
+            indicator.classList.add('show');
+            
+            setTimeout(() => {
+                indicator.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Open theme manager console
+        function openThemeManager() {
+            window.open('theme-management-console.html', '_blank');
+        }
+        
+        // Toggle color preview
+        function togglePreview() {
+            const panel = document.getElementById('theme-preview');
+            previewVisible = !previewVisible;
+            
+            if (previewVisible) {
+                panel.classList.add('show');
+                updateColorPreview();
+            } else {
+                panel.classList.remove('show');
+            }
+        }
+        
+        // Update color preview
+        function updateColorPreview() {
+            const grid = document.getElementById('color-preview-grid');
+            const style = getComputedStyle(document.documentElement);
+            
+            const colors = {
+                'أساسي': style.getPropertyValue('--primary'),
+                'ثانوي': style.getPropertyValue('--secondary'),
+                'تمييز': style.getPropertyValue('--accent'),
+                'خلفية': style.getPropertyValue('--bg-primary'),
+                'نص': style.getPropertyValue('--text-primary')
+            };
+            
+            let html = '';
+            Object.entries(colors).forEach(([name, color]) => {
+                html += `
+                    <div class="color-preview" style="background-color: ${color.trim()};">
+                        ${name}
+                    </div>
+                `;
+            });
+            
+            grid.innerHTML = html;
+        }
+        
+        // Auto detect theme based on time
+        function autoDetectTheme() {
+            const hour = new Date().getHours();
+            let suggestedTheme;
+            
+            if (hour >= 6 && hour < 12) {
+                suggestedTheme = 'citrus'; // Morning - energetic
+            } else if (hour >= 12 && hour < 18) {
+                suggestedTheme = 'light'; // Afternoon - neutral
+            } else if (hour >= 18 && hour < 22) {
+                suggestedTheme = 'emerald'; // Evening - calm
+            } else {
+                suggestedTheme = 'dark'; // Night - dark
+            }
+            
+            switchTheme(suggestedTheme);
+            showStatus(`تم اكتشاف الثيم المناسب للوقت الحالي: ${getThemeNameAr(suggestedTheme)}`);
+        }
+        
+        // Detect system preference
+        function detectSystemPreference() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
+        }
+        
+        // Initialize widget
+        function initializeWidget() {
+            // Detect current theme from localStorage or system
+            let savedTheme = localStorage.getItem('selectedTheme');
+            if (!savedTheme) {
+                savedTheme = detectSystemPreference();
+            }
+            
+            currentTheme = savedTheme;
+            updateActiveButton(currentTheme);
+            
+            // Apply saved theme if theme system is available
+            if (window.advancedThemeSystem) {
+                window.advancedThemeSystem.setTheme(savedTheme);
+            }
+            
+            // Listen for system theme changes
+            if (window.matchMedia) {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                    if (localStorage.getItem('systemPreferenceSync') !== 'false') {
+                        const newTheme = e.matches ? 'dark' : 'light';
+                        switchTheme(newTheme);
+                        showStatus('تم تحديث الثيم تلقائياً حسب إعدادات النظام');
+                    }
+                });
+            }
+        }
+        
+        // Listen for theme changes from other windows
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'selectedTheme') {
+                currentTheme = e.newValue;
+                updateActiveButton(currentTheme);
+                if (previewVisible) {
+                    updateColorPreview();
+                }
+            }
+        });
+        
+        // Handle keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.shiftKey) {
+                switch (e.key.toLowerCase()) {
+                    case 'l':
+                        e.preventDefault();
+                        switchTheme('light');
+                        break;
+                    case 'd':
+                        e.preventDefault();
+                        switchTheme('dark');
+                        break;
+                    case 'a':
+                        e.preventDefault();
+                        switchTheme('ai');
+                        break;
+                    case 't':
+                        e.preventDefault();
+                        autoDetectTheme();
+                        break;
+                }
+            }
+        });
+        
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for theme system to load
+            setTimeout(initializeWidget, 500);
+        });
+        
+        // Add some visual feedback for theme switching
+        document.querySelectorAll('.theme-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Add a ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.6);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+                
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (event.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (event.clientY - rect.top - size / 2) + 'px';
+                
+                this.style.position = 'relative';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+        
+        // Add ripple animation to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

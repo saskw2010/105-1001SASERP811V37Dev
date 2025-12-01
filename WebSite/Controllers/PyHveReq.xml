@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="PyHveReq" conflictDetection="overwriteChanges" label="Py Hve Req" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"PyHveReq"."Req_No" "Req_No"
+	,"PyHveReq"."Req_TY" "Req_TY"
+	,"PyHveReq"."Req_Dt" "Req_Dt"
+	,"PyHveReq"."Emp_Not" "Emp_Not"
+	,"PyHveReq"."depmno" "depmno"
+	,"PyHveReq"."Emp_Tel" "Emp_Tel"
+	,"PyHveReq"."Hve_No" "Hve_No"
+	,"PyHveReq"."Reciv_Dt" "Reciv_Dt"
+	,"PyHveReq"."Must_DT" "Must_DT"
+	,"PyHveReq"."Monthhv" "Monthhv"
+	,"PyHveReq"."yearhv" "yearhv"
+	,"PyHveReq"."Notes" "Notes"
+	,"PyHveReq"."dilvry" "dilvry"
+	,"PyHveReq"."auth_No1" "auth_No1"
+	,"PyHveReq"."approved1" "approved1"
+	,"PyHveReq"."auth_No2" "auth_No2"
+	,"PyHveReq"."approved2" "approved2"
+	,"PyHveReq"."Hvtyp" "Hvtyp"
+	,"PyHveReq"."Serialnno" "Serialnno"
+	,"PyHveReq"."HveNOld" "HveNOld"
+	,"PyHveReq"."Serialnno1" "Serialnno1"
+	,"PyHveReq"."days" "days"
+	,"PyHveReq"."days1" "days1"
+	,"PyHveReq"."days2" "days2"
+	,"PyHveReq"."days3" "days3"
+	,"PyHveReq"."linetyp" "linetyp"
+	,"PyHveReq"."User_No" "User_No"
+	,"PyHveReq"."Username" "Username"
+	,"PyHveReq"."sgm" "sgm"
+	,"PyHveReq"."ModifiedBy" "ModifiedBy"
+	,"PyHveReq"."ModifiedOn" "ModifiedOn"
+	,"PyHveReq"."CreatedBy" "CreatedBy"
+	,"PyHveReq"."CreatedOn" "CreatedOn"
+from "dbo"."PyHveReq" "PyHveReq"
+]]></text>
+    </command>
+    <command id="Req_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Req_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Req_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Req No" readOnly="true" />
+    <field name="Req_TY" type="String" label="Req TY" length="10" showInSummary="true" />
+    <field name="Req_Dt" type="String" label="Req Dt" length="50" showInSummary="true" />
+    <field name="Emp_Not" type="String" label="Emp Not" length="50" showInSummary="true" />
+    <field name="depmno" type="Int64" label="Depmno" showInSummary="true" />
+    <field name="Emp_Tel" type="String" label="Emp Tel" length="10" showInSummary="true" />
+    <field name="Hve_No" type="String" label="Hve No" length="10" />
+    <field name="Reciv_Dt" type="DateTime" label="Reciv Dt" />
+    <field name="Must_DT" type="DateTime" label="Must DT" />
+    <field name="Monthhv" type="Int64" label="Monthhv" />
+    <field name="yearhv" type="Int64" label="Yearhv" />
+    <field name="Notes" type="String" label="Notes" length="255" />
+    <field name="dilvry" type="Byte" label="Dilvry" />
+    <field name="auth_No1" type="String" label="auth No1" length="50" />
+    <field name="approved1" type="Int64" label="Approved1" />
+    <field name="auth_No2" type="String" label="auth No2" length="50" />
+    <field name="approved2" type="Boolean" label="Approved2" />
+    <field name="Hvtyp" type="Int64" label="Hvtyp" />
+    <field name="Serialnno" type="String" label="Serialnno" length="50" />
+    <field name="HveNOld" type="String" label="Hve N Old" length="50" />
+    <field name="Serialnno1" type="String" label="Serialnno1" length="50" />
+    <field name="days" type="Int64" label="Days" />
+    <field name="days1" type="Int64" label="Days1" />
+    <field name="days2" type="Int64" label="Days2" />
+    <field name="days3" type="Int64" label="Days3" />
+    <field name="linetyp" type="Int64" label="Linetyp" />
+    <field name="User_No" type="Int64" label="User No" />
+    <field name="Username" type="String" label="Username" length="255" />
+    <field name="sgm" type="Int64" label="Sgm" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Py Hve Req">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Req_TY" columns="10" />
+        <dataField fieldName="Req_Dt" columns="50" />
+        <dataField fieldName="Emp_Not" columns="50" />
+        <dataField fieldName="depmno" columns="15" />
+        <dataField fieldName="Emp_Tel" columns="10" />
+        <dataField fieldName="Hve_No" columns="10" />
+        <dataField fieldName="Reciv_Dt" columns="10" />
+        <dataField fieldName="Must_DT" columns="10" />
+        <dataField fieldName="Monthhv" columns="15" />
+        <dataField fieldName="yearhv" columns="15" />
+        <dataField fieldName="Notes" />
+        <dataField fieldName="dilvry" columns="15" />
+        <dataField fieldName="auth_No1" columns="50" />
+        <dataField fieldName="approved1" columns="15" />
+        <dataField fieldName="auth_No2" columns="50" />
+        <dataField fieldName="approved2" />
+        <dataField fieldName="Hvtyp" columns="15" />
+        <dataField fieldName="Serialnno" columns="50" />
+        <dataField fieldName="HveNOld" columns="50" />
+        <dataField fieldName="Serialnno1" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Py Hve Req">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Py Hve Req" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Req_TY" columns="10" />
+            <dataField fieldName="Req_Dt" columns="50" />
+            <dataField fieldName="Emp_Not" columns="50" />
+            <dataField fieldName="depmno" columns="15" />
+            <dataField fieldName="Emp_Tel" columns="10" />
+            <dataField fieldName="Hve_No" columns="10" />
+            <dataField fieldName="Reciv_Dt" columns="10" />
+            <dataField fieldName="Must_DT" columns="10" />
+            <dataField fieldName="Monthhv" columns="15" />
+            <dataField fieldName="yearhv" columns="15" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="dilvry" columns="15" />
+            <dataField fieldName="auth_No1" columns="50" />
+            <dataField fieldName="approved1" columns="15" />
+            <dataField fieldName="auth_No2" columns="50" />
+            <dataField fieldName="approved2" />
+            <dataField fieldName="Hvtyp" columns="15" />
+            <dataField fieldName="Serialnno" columns="50" />
+            <dataField fieldName="HveNOld" columns="50" />
+            <dataField fieldName="Serialnno1" columns="50" />
+            <dataField fieldName="days" columns="15" />
+            <dataField fieldName="days1" columns="15" />
+            <dataField fieldName="days2" columns="15" />
+            <dataField fieldName="days3" columns="15" />
+            <dataField fieldName="linetyp" columns="15" />
+            <dataField fieldName="User_No" columns="15" />
+            <dataField fieldName="Username" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Py Hve Req">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Py Hve Req" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Req_TY" columns="10" />
+            <dataField fieldName="Req_Dt" columns="50" />
+            <dataField fieldName="Emp_Not" columns="50" />
+            <dataField fieldName="depmno" columns="15" />
+            <dataField fieldName="Emp_Tel" columns="10" />
+            <dataField fieldName="Hve_No" columns="10" />
+            <dataField fieldName="Reciv_Dt" columns="10" />
+            <dataField fieldName="Must_DT" columns="10" />
+            <dataField fieldName="Monthhv" columns="15" />
+            <dataField fieldName="yearhv" columns="15" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="dilvry" columns="15" />
+            <dataField fieldName="auth_No1" columns="50" />
+            <dataField fieldName="approved1" columns="15" />
+            <dataField fieldName="auth_No2" columns="50" />
+            <dataField fieldName="approved2" />
+            <dataField fieldName="Hvtyp" columns="15" />
+            <dataField fieldName="Serialnno" columns="50" />
+            <dataField fieldName="HveNOld" columns="50" />
+            <dataField fieldName="Serialnno1" columns="50" />
+            <dataField fieldName="days" columns="15" />
+            <dataField fieldName="days1" columns="15" />
+            <dataField fieldName="days2" columns="15" />
+            <dataField fieldName="days3" columns="15" />
+            <dataField fieldName="linetyp" columns="15" />
+            <dataField fieldName="User_No" columns="15" />
+            <dataField fieldName="Username" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,636 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Gljrnvchhdr" conflictDetection="overwriteChanges" label="Gljrnvchhdr" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.GljrnvchhdrBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text" tableName="Gljrnvchhdr" custom="true">
+      <text><![CDATA[select
+	"Gljrnvchhdr"."Tr_No" "Tr_No"
+	,"Gljrnvchhdr"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"Thebranchsgm"."sgm_Nm" "Thebranchsgmsgm_Nm"
+	,"ThebranchsgmOpco"."OpcoName" "ThebranchsgmOpcoOpcoName"
+	,"ThebranchGender"."Gender" "ThebranchGenderGender"
+	,"Thebranchstage"."ShortDesc1" "ThebranchstageShortDesc1"
+	,"Thebranchschtyp"."schtypDesc" "ThebranchschtypschtypDesc"
+	,"Gljrnvchhdr"."sgm" "sgm"
+	,"sgm"."sgm_Nm" "sgmsgm_Nm"
+	,"sgmOpco"."OpcoName" "sgmOpcoOpcoName"
+	,"Gljrnvchhdr"."Jr_Ty" "Jr_Ty"
+	,"TheJr_Ty"."Jrty_Nme" "TheJr_TyJrty_Nme"
+	,"Gljrnvchhdr"."GlFinperiodID" "GlFinperiodID"
+	,"GlFinperiod"."Fin_period_info" "GlFinperiodFin_period_info"
+	,"GlFinperiod"."acdcode" "acdcode"
+	,"GlFinperiodaccountnumber"."Acc_Nm" "GlFinperiodaccountnumberAcc_Nm"
+	,"GlFinperiodaccountnumberClsacc_"."Acc_Nm" "GlFinperiodaccountnumberClsacc_Acc_Nm"
+	,"GlFinperiodaccountnumberAcc_Bnd"."Acc_Nm" "GlFinperiodaccountnumberAcc_BndAcc_Nm"
+	,"Gljrnvchhdr"."Trs_Dt" "Trs_Dt"
+	,"Gljrnvchhdr"."Manualcode" "Manualcode"
+	,"Gljrnvchhdr"."Tr_Ds" "Tr_Ds"
+	,"Gljrnvchhdr"."Balance" "Balance"
+	,"Gljrnvchhdr"."Notes" "Notes"
+	,"Gljrnvchhdr"."approved" "approved"
+	,"Gljrnvchhdr"."posted" "posted"
+	,"Gljrnvchhdr"."deleted" "deleted"
+	,"Gljrnvchhdr"."havdetails" "havdetails"
+	,"Gljrnvchhdr"."ModifiedBy" "ModifiedBy"
+	,"Gljrnvchhdr"."ModifiedOn" "ModifiedOn"
+	,"Gljrnvchhdr"."CreatedBy" "CreatedBy"
+	,"Gljrnvchhdr"."CreatedOn" "CreatedOn"
+	,"Gljrnvchhdr"."auditing" "auditing"
+	,"Gljrnvchhdr"."auditnotes" "auditnotes"
+    , dbo.Qbalancegljrnvch.Expr1, dbo.Qbalancegljrnvch.Expr2
+from "dbo"."Gljrnvchhdr" "Gljrnvchhdr"
+LEFT OUTER JOIN  dbo.Qbalancegljrnvch ON Gljrnvchhdr.Tr_No = dbo.Qbalancegljrnvch.Tr_No
+	left join "dbo"."schBranch" "Thebranch" on "Gljrnvchhdr"."branch" = "Thebranch"."branch"
+	left join "dbo"."glmulcmp" "Thebranchsgm" on "Thebranch"."sgm" = "Thebranchsgm"."sgmid"
+	left join "dbo"."OpCo" "ThebranchsgmOpco" on "Thebranchsgm"."OpcoID" = "ThebranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "ThebranchGender" on "Thebranch"."Genderid" = "ThebranchGender"."Genderid"
+	left join "dbo"."schStage" "Thebranchstage" on "Thebranch"."stagecode" = "Thebranchstage"."Code"
+	left join "dbo"."schtyp" "Thebranchschtyp" on "Thebranch"."schtypid" = "Thebranchschtyp"."schtypid"
+	left join "dbo"."glmulcmp" "sgm" on "Gljrnvchhdr"."sgm" = "sgm"."sgmid"
+	left join "dbo"."OpCo" "sgmOpco" on "sgm"."OpcoID" = "sgmOpco"."OpcoIDidentity"
+	left join "dbo"."GLjrntyp" "TheJr_Ty" on "Gljrnvchhdr"."Jr_Ty" = "TheJr_Ty"."Jr_Ty"
+	left join "dbo"."GlFinanceperiod" "GlFinperiod" on "Gljrnvchhdr"."GlFinperiodID" = "GlFinperiod"."GlFinperiodID"
+	left join "dbo"."GLmstrfl" "GlFinperiodaccountnumber" on "GlFinperiod"."accountnumber" = "GlFinperiodaccountnumber"."Acc_No"
+	left join "dbo"."GLmfbab" "GlFinperiodaccountnumberClsacc_" on "GlFinperiodaccountnumber"."Clsacc_No" = "GlFinperiodaccountnumberClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "GlFinperiodaccountnumberAcc_Bnd" on "GlFinperiodaccountnumber"."Acc_Bnd" = "GlFinperiodaccountnumberAcc_Bnd"."Acc_Bnd"
+]]></text>
+    </command>
+    <command id="Tr_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Tr_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Tr_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Tr No" readOnly="true" />
+    <field name="branch" type="Int64" allowNulls="false" label="Branch" showInSummary="true">
+      <items style="DropDownList" dataController="schBranch" newDataView="createForm1" searchOnStart="true" copy="sgm=sgm" dataView="grid1" dataTextField="Desc1" dataValueField="branch" />
+    </field>
+    <field name="ThebranchDesc1" type="String" readOnly="true" label="Thebranch Desc1" length="50" />
+    <field name="Thebranchsgmsgm_Nm" type="String" readOnly="true" label="Thebranchsgmsgm Nm" length="255" />
+    <field name="ThebranchsgmOpcoOpcoName" type="String" readOnly="true" label="Thebranchsgm Opco Name" length="50" />
+    <field name="ThebranchGenderGender" type="String" readOnly="true" label="Thebranch Gender" length="100" />
+    <field name="ThebranchstageShortDesc1" type="String" readOnly="true" label="Thebranchstage Short Desc1" length="50" />
+    <field name="ThebranchschtypschtypDesc" type="String" readOnly="true" label="Thebranchschtypschtyp Desc" length="150" />
+    <field name="sgm" type="Int64" allowNulls="false" label="Sgm" showInSummary="true">
+      <items style="DropDownList" dataController="glmulcmp" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="sgm_Nm" dataValueField="sgm" />
+    </field>
+    <field name="sgmsgm_Nm" type="String" readOnly="true" label="sgmsgm Nm" length="255" />
+    <field name="sgmOpcoOpcoName" type="String" readOnly="true" label="sgm Opco Name" length="50" />
+    <field name="Jr_Ty" type="Int64" allowNulls="false" label="Jr Ty" showInSummary="true">
+      <items style="DropDownList" dataController="GLjrntyp" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheJr_TyJrty_Nme" type="String" readOnly="true" label="Jr Ty Jrty Nme" length="255" />
+    <field name="GlFinperiodID" type="Int64" allowNulls="false" label="Gl Finperiod#" showInSummary="true">
+      <items style="DropDownList" dataController="GlFinanceperiod" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Fin_period_info" dataValueField="GlFinperiodID" />
+    </field>
+    <field name="GlFinperiodFin_period_info" type="String" readOnly="true" label="Gl Finperiod Fin period info" length="150" />
+    <field name="GlFinperiodaccountnumberAcc_Nm" type="String" readOnly="true" label="Gl Finperiodaccountnumber Acc Nm" length="255" />
+    <field name="GlFinperiodaccountnumberClsacc_Acc_Nm" type="String" readOnly="true" label="Gl Finperiodaccountnumber Clsacc Acc Nm" length="250" />
+    <field name="GlFinperiodaccountnumberAcc_BndAcc_Nm" type="String" readOnly="true" label="Gl Finperiodaccountnumber Acc Bnd Acc Nm" length="50" />
+    <field name="Trs_Dt" type="DateTime" default="(getdate())" label="Trs Dt" showInSummary="true" />
+    <field name="Manualcode" type="String" label="Manualcode" length="15" contextFields="sgm,branch,acdcode" calculated="true" />
+    <field name="Tr_Ds" type="String" label="Tr Ds" length="255" />
+    <field name="Balance" type="Decimal" readOnly="true" label="Balance" />
+    <field name="Notes" type="String" label="Notes" length="60" />
+	<field name="acdcode" type="Int64" allowNulls="false" label="Acdcode" readOnly="true"/>
+      
+    <field name="approved" type="Boolean" allowNulls="false" readOnly="true" default="((0))" label="Approved">
+      <items style="CheckBox" />
+    </field>
+    <field name="posted" type="Boolean" allowNulls="false" default="((0))" label="Posted">
+      <items style="CheckBox" />
+    </field>
+    <field name="deleted" type="Boolean" default="((0))" label="Deleted" allowNulls="false">
+      <items style="CheckBox" />
+    </field>
+    <field name="havdetails" type="Boolean" default="((0))" readOnly="true" label="Havdetails" allowNulls="false">
+      <items style="CheckBox" />
+    </field>
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="auditing" type="Boolean" label="Auditing" allowNulls="false">
+      <items style="CheckBox" />
+    </field>
+    <field name="auditnotes" type="String" allowQBE="false" allowSorting="false" label="Auditnotes" length="-1" />
+   
+   
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Gljrnvchhdr" sortExpression="Tr_No Desc" filter="posted=0">
+      <headerText />
+      <dataFields>
+        <dataField fieldName="Tr_No" aggregate="Count" />
+        <dataField fieldName="Trs_Dt" columns="10" />
+        <dataField fieldName="Notes" />
+		 <dataField fieldName="Tr_Ds" />
+         <dataField fieldName="Balance" columns="15" aggregate="Sum" />
+        <dataField fieldName="approved" textMode="Static"/>
+        <dataField fieldName="posted" textMode="Static"/>
+        <dataField fieldName="deleted" textMode="Static"/>
+        <dataField fieldName="havdetails" textMode="Static"/>
+        <dataField fieldName="auditing" textMode="Static" hidden="true" />
+        <dataField fieldName="Manualcode" columns="15" />
+        <dataField fieldName="auditnotes" rows="5" hidden="true" />
+        <dataField fieldName="GlFinperiodFin_period_info" hidden="true" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="sgmsgm_Nm" hidden="true" />
+        <dataField fieldName="sgmOpcoOpcoName" hidden="true" />
+        <dataField fieldName="ThebranchGenderGender" hidden="true" />
+        <dataField fieldName="ThebranchschtypschtypDesc" hidden="true" />
+        <dataField fieldName="TheJr_TyJrty_Nme" hidden="true" />
+		<dataField fieldName="acdcode"  hidden="true" />
+		<dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />
+        <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" />
+        <dataField fieldName="Jr_Ty" aliasFieldName="TheJr_TyJrty_Nme" />
+        <dataField fieldName="GlFinperiodID" aliasFieldName="GlFinperiodFin_period_info" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Gljrnvchhdr">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Gljrnvchhdr" flow="NewColumn"  newColumn="true">
+          <description />
+          <dataFields>
+          
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hidden="true"/>
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" hidden="true"/>
+            <dataField fieldName="Jr_Ty" aliasFieldName="TheJr_TyJrty_Nme" />
+            <dataField fieldName="GlFinperiodID" aliasFieldName="GlFinperiodFin_period_info" />
+            <dataField fieldName="auditing"  hidden="true"/>
+            <dataField fieldName="auditnotes" rows="5"  hidden="true"/>
+         
+			 	<dataField fieldName="Tr_Ds" /> 
+				   <dataField fieldName="Notes" />
+          </dataFields>
+        </category>
+        <category headerText="MoreDetailes" id="c3" flow="NewColumn"  newColumn="true">
+          <dataFields>
+		     <dataField fieldName="Balance"  columns="15" />
+		    <dataField fieldName="Tr_No" />
+		    <dataField fieldName="Trs_Dt" columns="10" />
+		 
+            <dataField fieldName="Manualcode" columns="15" />
+            <dataField fieldName="approved" hidden="true" />
+            <dataField fieldName="posted" hidden="true" />
+            <dataField fieldName="deleted" hidden="true" />
+            <dataField fieldName="havdetails" hidden="true" />
+			<dataField fieldName="acdcode"   hidden="true"/>
+		
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Gljrnvchhdr">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Gljrnvchhdr" flow="NewColumn"  newColumn="true">
+          <description />
+          <dataFields>
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1"   hidden="true"/>
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm"   hidden="true"/>
+            <dataField fieldName="Jr_Ty" aliasFieldName="TheJr_TyJrty_Nme"   hidden="true"/>
+            <dataField fieldName="GlFinperiodID" aliasFieldName="GlFinperiodFin_period_info" />
+            <dataField fieldName="Trs_Dt" columns="10" />
+            <dataField fieldName="auditing" hidden="true"/>
+            <dataField fieldName="auditnotes" rows="5" hidden="true"/>
+            <dataField fieldName="Notes" />
+          </dataFields>
+        </category>
+        <category headerText="More Detailes" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="Balance"  columns="15" />
+            <dataField fieldName="Manualcode" columns="15" />
+             <dataField fieldName="approved"  hidden="true"/>
+            <dataField fieldName="posted"  hidden="true"/>
+            <dataField fieldName="deleted"  hidden="true"/>
+            <dataField fieldName="havdetails"  hidden="true"/>
+			<dataField fieldName="Tr_Ds" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+      <action commandName="Custom" commandArgument="FullDuplicatewithDetails" headerText="FullDuplicatewithDetails" confirmation="Are you sure you want to duplicate ?" id="a100" />
+      <action commandName="Custom" commandArgument="ReveseDetails" headerText="ReveseDetails" id="a101" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Edit" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+       <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+	  <action commandName="SQL" commandArgument="New" headerText="Newvoucher" id="a102" >
+        <data><![CDATA[
+		insert into gljrnvchhdr(branch,sgm,jr_ty,glfinperiodid,trs_dt,approved,posted,deleted,havdetails, [ModifiedBy] ,[ModifiedOn]
+           ,[CreatedBy] ,[CreatedOn])
+  VALUES(1,1,4,55,getdate(),0,0,0,0,@BusinessRules_UserName,getdate(),@BusinessRules_UserName,getdate())
+ -- find ID of duplicated order
+declare @newschvchdlyhdregid int;
+select @newschvchdlyhdregid = @@IDENTITY;
+--
+-- open edit form for duplicate order
+set @Result_NavigateUrl = 'GLjrnvchhdr.aspx?Tr_No=' + cast( @newschvchdlyhdregid  as nvarchar)
+                          + '&_controller=Gljrnvchhdr1&_commandName=Edit'
+                          + '&_commandArgument=editForm1'
+]]></data>
+      </action>
+
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+      <action commandName="SQL" commandArgument="New" headerText="post" id="a102" roles="administrator">
+        <data><![CDATA[
+		update gljrnvchhdr set posted=1 where Tr_No=@Tr_No
+		]]></data>
+      </action>
+
+
+	  <action commandName="SQL" commandArgument="New" headerText="unpost" id="a102un" roles="administrator">
+        <data><![CDATA[
+		update gljrnvchhdr set posted=0 where Tr_No=@Tr_No
+		]]></data>
+      </action>
+    </actionGroup>
+  </actions>
+  <businessRules>
+  <rule id="r107" commandName="Calculate" type="Sql" phase="Execute">
+  <![CDATA[
+    -- duplicate the order
+if @Manualcode is null or @Manualcode=0
+begin
+if @branch is not null and @acdcode is not null
+begin
+    set @sgm=(select sgm from [schbranch] where branch=@branch)
+    set @@Manualcode = (select isnull(max(Manualcode),0) from [gljrnvchhdr] where sgm=@sgm)
+set @@Manualcode=@@Manualcode+1
+end 
+end
+  
+  set @Manualcode=@moso
+  ]]></rule>
+   <rule id="rth" commandName="Update" type="Sql" phase="After">
+      <![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Tr_No,@branch,@acdcode
+]]>
+    </rule>
+  
+    
+    <rule id="r101" commandName="Custom" commandArgument="FullDuplicatewithDetails" type="Sql" phase="Execute"><![CDATA[-- duplicate the order
+INSERT INTO [dbo].[Gljrnvchhdr]
+           ([branch]
+           ,[sgm]
+           ,[Jr_Ty]
+           ,[GlFinperiodID]
+           ,[Trs_Dt]
+           ,[Manualcode]
+           ,[Tr_Ds]
+           ,[Balance]
+           ,[Notes]
+           ,[approved]
+           ,[posted]
+           ,[deleted]
+           ,[havdetails]
+           ,[ModifiedBy]
+           ,[ModifiedOn]
+           ,[CreatedBy]
+           ,[CreatedOn])
+select  [branch]
+           ,[sgm]
+           ,[Jr_Ty]
+           ,[GlFinperiodID]
+           ,[Trs_Dt]
+           ,[Manualcode]
+           ,[Tr_Ds]
+           ,[Balance]
+           ,[Notes]
+           ,[approved]
+           ,[posted]
+           ,[deleted]
+           ,[havdetails]
+           ,[ModifiedBy]
+           ,[ModifiedOn]
+           ,[CreatedBy]
+           ,[CreatedOn]
+from [dbo].[Gljrnvchhdr]
+where Tr_No = @Tr_No
+
+-- find ID of duplicated order
+declare @newschvchdlyhdregid int;
+select @newschvchdlyhdregid = @@IDENTITY;
+
+-- duplicate  details
+INSERT INTO [dbo].[GLjrnvch]
+           ([Tr_No]
+           ,[Tr_Dt]
+           ,[Acc_No]
+           ,[Tr_Db]
+           ,[Tr_Cr]
+           ,[Dc_No]
+           ,[Clsacc_No]
+           ,[Costcntr_No]
+           ,[Tr_Dsc1]
+           ,[docrelno]
+           ,[docreltyp]
+           ,[curno]
+           ,[curprice]
+           ,[curvalue]
+           ,[cstyp_NO]
+           ,[CSMSUP_NO]
+           ,[Chq_No]
+           ,[Bnk_Nm]
+           ,[Rcpt_By]
+           ,[Pymnt_No]
+           ,[trs_dt1]
+           ,[ModifiedBy]
+           ,[ModifiedOn]
+           ,[CreatedBy]
+           ,[CreatedOn]
+           ,[branch]
+           ,[acdcode]
+           ,[studentsefaid]
+           ,[schpaymenttypeid])
+SELECT 
+@newschvchdlyhdregid 
+           ,[Tr_Dt]
+           ,[Acc_No]
+           ,[Tr_Db]
+           ,[Tr_Cr]
+           ,[Dc_No]
+           ,[Clsacc_No]
+           ,[Costcntr_No]
+           ,[Tr_Dsc1]
+           ,[docrelno]
+           ,[docreltyp]
+           ,[curno]
+           ,[curprice]
+           ,[curvalue]
+           ,[cstyp_NO]
+           ,[CSMSUP_NO]
+           ,[Chq_No]
+           ,[Bnk_Nm]
+           ,[Rcpt_By]
+           ,[Pymnt_No]
+           ,[trs_dt1]
+           ,[ModifiedBy]
+           ,[ModifiedOn]
+           ,[CreatedBy]
+           ,[CreatedOn]
+           ,[branch]
+           ,[acdcode]
+           ,[studentsefaid]
+           ,[schpaymenttypeid]
+
+from [dbo].[GLjrnvch]
+where Tr_No = @Tr_No
+--
+-- open edit form for duplicate order
+set @Result_NavigateUrl = 'GLjrnvchhdr.aspx?Tr_No=' + cast( @newschvchdlyhdregid  as nvarchar)
+                          + '&_controller=Gljrnvchhdr1&_commandName=Edit'
+                          + '&_commandArgument=editForm1']]></rule>
+    <rule id="r100" commandName="Custom" type="Sql" phase="Execute" commandArgument="ReveseDetails"><![CDATA[-- duplicate the order
+INSERT INTO [dbo].[Gljrnvchhdr]
+           ([branch]
+           ,[sgm]
+           ,[Jr_Ty]
+           ,[GlFinperiodID]
+           ,[Trs_Dt]
+           ,[Manualcode]
+           ,[Tr_Ds]
+           ,[Balance]
+           ,[Notes]
+           ,[approved]
+           ,[posted]
+           ,[deleted]
+           ,[havdetails]
+           ,[ModifiedBy]
+           ,[ModifiedOn]
+           ,[CreatedBy]
+           ,[CreatedOn])
+select  [branch]
+           ,[sgm]
+           ,[Jr_Ty]
+           ,[GlFinperiodID]
+           ,[Trs_Dt]
+           ,[Manualcode]
+           ,[Tr_Ds]
+           ,[Balance]
+           ,[Notes]
+           ,[approved]
+           ,[posted]
+           ,[deleted]
+           ,[havdetails]
+           ,[ModifiedBy]
+           ,[ModifiedOn]
+           ,[CreatedBy]
+           ,[CreatedOn]
+from [dbo].[Gljrnvchhdr]
+where Tr_No = @Tr_No
+
+-- find ID of duplicated order
+declare @newschvchdlyhdregid int;
+select @newschvchdlyhdregid = @@IDENTITY;
+
+-- duplicate  details
+INSERT INTO [dbo].[GLjrnvch]
+           ([Tr_No]
+           ,[Tr_Dt]
+           ,[Acc_No]
+           ,[Tr_Cr]
+           ,[Tr_Db]
+           ,[Dc_No]
+           ,[Clsacc_No]
+           ,[Costcntr_No]
+           ,[Tr_Dsc1]
+           ,[docrelno]
+           ,[docreltyp]
+           ,[curno]
+           ,[curprice]
+           ,[curvalue]
+           ,[cstyp_NO]
+           ,[CSMSUP_NO]
+           ,[Chq_No]
+           ,[Bnk_Nm]
+           ,[Rcpt_By]
+           ,[Pymnt_No]
+           ,[trs_dt1]
+           ,[ModifiedBy]
+           ,[ModifiedOn]
+           ,[CreatedBy]
+           ,[CreatedOn]
+           ,[branch]
+           ,[acdcode]
+           ,[studentsefaid]
+           ,[schpaymenttypeid])
+SELECT 
+@newschvchdlyhdregid 
+           ,[Tr_Dt]
+           ,[Acc_No]
+           ,[Tr_Db]
+           ,[Tr_Cr]
+           ,[Dc_No]
+           ,[Clsacc_No]
+           ,[Costcntr_No]
+           ,[Tr_Dsc1]
+           ,[docrelno]
+           ,[docreltyp]
+           ,[curno]
+           ,[curprice]
+           ,[curvalue]
+           ,[cstyp_NO]
+           ,[CSMSUP_NO]
+           ,[Chq_No]
+           ,[Bnk_Nm]
+           ,[Rcpt_By]
+           ,[Pymnt_No]
+           ,[trs_dt1]
+           ,[ModifiedBy]
+           ,[ModifiedOn]
+           ,[CreatedBy]
+           ,[CreatedOn]
+           ,[branch]
+           ,[acdcode]
+           ,[studentsefaid]
+           ,[schpaymenttypeid]
+
+from [dbo].[GLjrnvch]
+where Tr_No = @Tr_No
+--
+-- open edit form for duplicate order
+set @Result_NavigateUrl = 'GLjrnvchhdr.aspx?Tr_No=' + cast( @newschvchdlyhdregid  as nvarchar)
+                          + '&_controller=Gljrnvchhdr1&_commandName=Edit'
+                          + '&_commandArgument=editForm1']]></rule>
+	<rule id="Gljrnvchhdr100" commandName="Update" type="Sql" phase="After"> <![CDATA[
+	declare @Tr_Db real
+	declare @Tr_Cr real
+    declare @branchhdr real
+    declare @acdcodehdr real	
+  set @Tr_Db=(select Sum(Tr_Db) from GLjrnvch where Tr_No=@Tr_No)
+  set @Tr_Cr=(select Sum(Tr_Cr) from GLjrnvch where Tr_No=@Tr_No)
+  set @branchhdr = (select branch from Gljrnvchhdr where Tr_No=@Tr_No)
+  set @acdcodehdr = (select GlFinperiodID from Gljrnvchhdr where Tr_No=@Tr_No)
+  update GLjrnvch set branch = @branchhdr where Tr_No=@Tr_No
+  update GLjrnvch set acdcode = @acdcodehdr where Tr_No=@Tr_No  
+  --update GLjrnvch set Tr_Dsc1 = @Tr_Ds where GLjrnvch.Tr_No=@Tr_No  and GLjrnvch.Tr_Ds is null
+  
+  
+  if @Tr_Db=@Tr_Cr
+  begin
+  update Gljrnvchhdr set approved=1,havdetails=1 where Tr_No=@Tr_No
+  update Gljrnvchhdr set Balance=@Tr_Db where Tr_No=@Tr_No
+ set @Result_NavigateUrl = 'webreportviwer.aspx?reportquery=' + @Arguments_Controller    + '&idfilter=' + cast(@Tr_No as nvarchar) 
+  end
+  if @Tr_Db!=@Tr_Cr
+  begin
+  update Gljrnvchhdr set approved=1,havdetails=1 where Tr_No=@Tr_No
+  update Gljrnvchhdr set Balance=@Tr_Db where Tr_No=@Tr_No
+ --set @Result_NavigateUrl = 'webreportviwer.aspx?reportquery=' + @Arguments_Controller    + '&idfilter=' + cast(@Tr_No as nvarchar) 
+
+
+	end
+	]]></rule>
+	
+	    <rule id="Gljrnvchhdr101" commandName="Update" type="Sql" phase="Before"> <![CDATA[
+	declare @Tr_Db real
+	declare @Tr_Cr real
+    declare @branchhdr real
+    declare @acdcodehdr real	
+  set @Tr_Db=(select Sum(Tr_Db) from GLjrnvch where Tr_No=@Tr_No)
+  set @Tr_Cr=(select Sum(Tr_Cr) from GLjrnvch where Tr_No=@Tr_No)
+
+
+
+  if @Tr_Db!=@Tr_Cr
+  begin
+   update Gljrnvchhdr set approved=0,havdetails=0 where Tr_No=@Tr_No 
+  update Gljrnvchhdr set Balance=0 where Tr_No=@Tr_No
+  
+    /* prevent the default action processing */
+    set @BusinessRules_PreventDefault = 1
+    /* set the focus on the field and display an error */
+    set @Result_Focus = 'Balance, السند غير متزن .'  
+	
+	end
+	]]></rule>
+	 <rule id="r111jv" commandName="Update" type="Sql" phase="Before"><![CDATA[
+
+	
+declare @datetocheck datetime=@Trs_Dt
+
+
+declare @result int=0
+set @result=(Select count(*) from schAcademicyear where code= @GlFinperiodID and  [dbo].[F_LappingDays](Startdate,EndDate,@datetocheck,@datetocheck)=1)
+if @result=0
+begin
+    /* prevent the default action processing */
+    set @BusinessRules_PreventDefault = 1
+    /* set the focus on the field and display an error */
+    set @Result_Focus = 'Trs_Dt, check the date it must be in period'
+end
+]]></rule>
+ </businessRules>
+</dataController>

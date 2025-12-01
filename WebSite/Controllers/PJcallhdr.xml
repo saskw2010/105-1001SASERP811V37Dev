@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="PJcallhdr" conflictDetection="overwriteChanges" label="P Jcallhdr" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"PJcallhdr"."Emp_No" "Emp_No"
+	,"PJcallhdr"."Cstm_No" "Cstm_No"
+	,"PJcallhdr"."Call_No" "Call_No"
+	,"PJcallhdr"."Call_Dt" "Call_Dt"
+	,"PJcallhdr"."Call_Ty" "Call_Ty"
+	,"PJcallhdr"."User_Id" "User_Id"
+	,"PJcallhdr"."Post" "Post"
+	,"PJcallhdr"."Phone_No" "Phone_No"
+	,"PJcallhdr"."Notes" "Notes"
+	,"PJcallhdr"."Call_Status" "Call_Status"
+	,"PJcallhdr"."City_No" "City_No"
+	,"PJcallhdr"."Call_Time" "Call_Time"
+	,"PJcallhdr"."Req_Time" "Req_Time"
+	,"PJcallhdr"."Req_Dt" "Req_Dt"
+	,"PJcallhdr"."sgm" "sgm"
+	,"PJcallhdr"."ModifiedBy" "ModifiedBy"
+	,"PJcallhdr"."ModifiedOn" "ModifiedOn"
+	,"PJcallhdr"."CreatedBy" "CreatedBy"
+	,"PJcallhdr"."CreatedOn" "CreatedOn"
+from "dbo"."PJcallhdr" "PJcallhdr"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="Emp_No" type="Int16" isPrimaryKey="true" label="Emp No" />
+    <field name="Cstm_No" type="Int16" label="Cstm No" showInSummary="true" />
+    <field name="Call_No" type="Int16" label="Call No" showInSummary="true" />
+    <field name="Call_Dt" type="String" label="Call Dt" length="10" showInSummary="true" />
+    <field name="Call_Ty" type="Int16" label="Call Ty" showInSummary="true" />
+    <field name="User_Id" type="Int16" label="User#" showInSummary="true" />
+    <field name="Post" type="Boolean" allowNulls="false" label="Post" />
+    <field name="Phone_No" type="String" label="Phone No" length="40" />
+    <field name="Notes" type="String" label="Notes" length="50" />
+    <field name="Call_Status" type="Int16" label="Call Status" />
+    <field name="City_No" type="Int16" label="City No" />
+    <field name="Call_Time" type="String" label="Call Time" length="10" />
+    <field name="Req_Time" type="String" label="Req Time" length="10" />
+    <field name="Req_Dt" type="String" label="Req Dt" length="10" />
+    <field name="sgm" type="Int64" label="Sgm" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="P Jcallhdr">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Post" />
+        <dataField fieldName="Cstm_No" columns="15" />
+        <dataField fieldName="Call_No" columns="15" />
+        <dataField fieldName="Call_Dt" columns="10" />
+        <dataField fieldName="Call_Ty" columns="15" />
+        <dataField fieldName="User_Id" columns="15" />
+        <dataField fieldName="Phone_No" columns="40" />
+        <dataField fieldName="Notes" columns="50" />
+        <dataField fieldName="Call_Status" columns="15" />
+        <dataField fieldName="City_No" columns="15" />
+        <dataField fieldName="Call_Time" columns="10" />
+        <dataField fieldName="Req_Time" columns="10" />
+        <dataField fieldName="Req_Dt" columns="10" />
+        <dataField fieldName="sgm" columns="15" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review P Jcallhdr">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="P Jcallhdr" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="Call_No" columns="15" />
+            <dataField fieldName="Call_Dt" columns="10" />
+            <dataField fieldName="Call_Ty" columns="15" />
+            <dataField fieldName="User_Id" columns="15" />
+            <dataField fieldName="Post" />
+            <dataField fieldName="Phone_No" columns="40" />
+            <dataField fieldName="Notes" columns="50" />
+            <dataField fieldName="Call_Status" columns="15" />
+            <dataField fieldName="City_No" columns="15" />
+            <dataField fieldName="Call_Time" columns="10" />
+            <dataField fieldName="Req_Time" columns="10" />
+            <dataField fieldName="Req_Dt" columns="10" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New P Jcallhdr">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New P Jcallhdr" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_No" columns="15" />
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="Call_No" columns="15" />
+            <dataField fieldName="Call_Dt" columns="10" />
+            <dataField fieldName="Call_Ty" columns="15" />
+            <dataField fieldName="User_Id" columns="15" />
+            <dataField fieldName="Post" />
+            <dataField fieldName="Phone_No" columns="40" />
+            <dataField fieldName="Notes" columns="50" />
+            <dataField fieldName="Call_Status" columns="15" />
+            <dataField fieldName="City_No" columns="15" />
+            <dataField fieldName="Call_Time" columns="10" />
+            <dataField fieldName="Req_Time" columns="10" />
+            <dataField fieldName="Req_Dt" columns="10" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

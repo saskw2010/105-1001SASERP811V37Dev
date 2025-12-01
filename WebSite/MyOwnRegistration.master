@@ -1,0 +1,70 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeFile="MyOwnRegistration.master.vb" Inherits="Myownreg" %>
+
+<!DOCTYPE html >
+<html xml:lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>" lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>"><head runat="server">
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Main</title>
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+  </head>
+  <body runat="server">
+    <form id="form1" runat="server">
+      <div>
+        <act:ToolkitScriptManager ID="sm" runat="server" ScriptMode="Release" EnableScriptGlobalization="True" OnResolveScriptReference="sm_ResolveScriptReference" />
+        <aquarium:MembershipBar ID="mb" runat="server" RememberMeSet="True" Visible="false" DisplaySignUp="False" DisplayLogin="False" IdleUserTimeout="3600" EnableHistory="True" EnablePermalinks="True"  />
+        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+        <div id="PageHeader" style="display: none;">
+          <div id="PageHeaderBar" style="display: none;">
+            <asp:ContentPlaceHolder ID="PageHeaderContentPlaceHolder" runat="server">SKY  ERP </asp:ContentPlaceHolder>
+          </div>
+          <div id="PageMenuBar" runat="server" class="PageMenuBar" style="display: none;"></div>
+        </div>
+        <aquarium:MenuExtender ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" TargetControlID="PageMenuBar" HoverStyle="Auto" PopupPosition="Left" ShowSiteActions="true" />
+        <table id="PageBody">
+          <tr>
+            <td id="PageHeaderSideBar" style="display: none;">
+              <asp:Image ID="Image5" runat="server" SkinID="PageLogo" CssClass="PageLogo" />
+            </td>
+            <td id="PageHeaderLeftSide" style="display: none;"><span class="placeholder"> </span></td>
+            <td id="PageHeaderContent" style="display: none;">
+              <div class="Header" style="display: none;">
+                <asp:SiteMapPath ID="SiteMapPath1" runat="server" SkinID="SiteMapPath" />
+                <div class="Title" style="display: none;">
+                  <asp:ContentPlaceHolder ID="PageTitleContentPlaceHolder" runat="server">Page Title</asp:ContentPlaceHolder>
+                </div>
+              </div>
+            </td>
+            <td id="PageHeaderRightSide" style="display: none;"><span class="placeholder"> </span></td>
+          </tr>
+            <tr>
+                <td>
+            <div  class="themeheader">
+				
+			<div class="najatlogo" style=" margin-top:10px;">
+                </div></div></td>
+                </tr>
+          
+            <td id="PageContentSideBar" style="display: none;">
+              <div class="SideBarBody">
+                <asp:ContentPlaceHolder ID="SideBarPlaceHolder" runat="server" /><span class="placeholder"> </span></div>
+            </td>
+            <td id="PageContentLeftSide" style="display: none;"><span class="placeholder"> </span></td>
+
+            <td id="PageContent">
+              <asp:ContentPlaceHolder ID="PageContentPlaceHolder" runat="server" />
+            </td>
+            <td id="PageContentRightSide" style="display: none;"><span class="placeholder"> </span></td>
+          </>
+          <tr>
+            <td id="PageFooterSideBar" style="display: none;"><span class="placeholder"> </span></td>
+            <td id="PageFooterLeftSide" style="display: none;"><span class="placeholder"> </span></td>
+            <td id="PageFooterContent" style="display: none;"><span class="placeholder"> </span></td>
+            <td id="PageFooterRightSide" style="display: none;"><span class="placeholder"> </span></td>
+          </tr>
+        </table>
+        <div id="PageFooterBar">
+          <asp:ContentPlaceHolder ID="PageFooterContentPlaceHolder" runat="server">whitesky Solutions</asp:ContentPlaceHolder>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+/* Pro Sidebar (Persistent Navigation) - isolated styles */
+#ProSidebarHost { position: fixed; top: 45px; bottom: 0; left: 0; width: 280px; background: #0f172a; color: #cbd5e1; z-index: 1050; transform: translateX(-100%); transition: transform 0.3s ease, width 0.2s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.25); display: flex; flex-direction: column; }
+html[dir="rtl"] #ProSidebarHost { left: auto; right: 0; transform: translateX(100%); }
+body.sidebar-open #ProSidebarHost { transform: translateX(0); }
+body.sidebar-collapsed #ProSidebarHost { width: 76px; }
+
+#ProSidebarHost .psb-header { padding: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; }
+#ProSidebarHost .psb-title { font-weight: 700; color: #e2e8f0; font-size: 0.95rem; }
+#ProSidebarHost .psb-tools { display: flex; gap: 0.25rem; }
+#ProSidebarHost .psb-btn { background: transparent; border: none; color: #94a3b8; width: 32px; height: 32px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+#ProSidebarHost .psb-btn:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+#ProSidebarHost .psb-search { padding: 0.5rem 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+#ProSidebarHost .psb-search input { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: #e2e8f0; padding: 0.5rem 0.75rem; border-radius: 8px; outline: none; }
+#ProSidebarHost .psb-search input::placeholder { color: #94a3b8; }
+
+#ProSidebarHost .psb-scroll { overflow: auto; padding: 0.5rem; }
+#ProSidebarHost .psb-list { list-style: none; margin: 0; padding: 0; }
+#ProSidebarHost .psb-list > li { margin: 2px 0; }
+#ProSidebarHost .psb-row { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 8px; color: #cbd5e1; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+#ProSidebarHost .psb-row:hover { background: rgba(255,255,255,0.08); transform: translateY(-1px); }
+#ProSidebarHost .psb-row.active { background: rgba(103,126,234,0.2); color: #fff; }
+#ProSidebarHost .psb-icon { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,0.08); display: inline-flex; align-items: center; justify-content: center; color: #fff; flex: 0 0 28px; font-size: 0.95rem; }
+#ProSidebarHost .psb-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.sidebar-collapsed #ProSidebarHost .psb-text { display: none; }
+
+/* child group */
+#ProSidebarHost ul { list-style: none; margin: 4px 0 4px 0; padding: 0 0 0 10px; border-left: 2px solid rgba(255,255,255,0.06); }
+html[dir="rtl"] #ProSidebarHost ul { margin: 4px 10px 4px 0; padding: 0 10px 0 0; border-left: 0; border-right: 2px solid rgba(255,255,255,0.06); }
+
+/* level colors */
+#ProSidebarHost li[data-level="1"] > .psb-row-wrap .psb-icon { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+#ProSidebarHost li[data-level="2"] > .psb-row-wrap .psb-icon { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+#ProSidebarHost li[data-level="3"] > .psb-row-wrap .psb-icon { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+#ProSidebarHost li[data-level="4"] > .psb-row-wrap .psb-icon { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+
+/* caret and collapse */
+#ProSidebarHost .psb-toggle { background: transparent; border: none; color: #94a3b8; width: 24px; height: 24px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+#ProSidebarHost .psb-toggle:hover { background: rgba(255,255,255,0.08); color: #fff; }
+#ProSidebarHost .caret { transition: transform 0.2s ease; display: inline-block; }
+#ProSidebarHost li[aria-expanded="true"] > .psb-row-wrap .caret { transform: rotate(90deg); }
+#ProSidebarHost li[aria-expanded="false"] > ul { display: none; }
+
+/* page content offset when sidebar open */
+body.sidebar-open .app-container { padding-inline-start: 280px; }
+body.sidebar-open.sidebar-collapsed .app-container { padding-inline-start: 76px; }
+html[dir="rtl"] body.sidebar-open .app-container { padding-inline-start: 0; padding-inline-end: 280px; }
+html[dir="rtl"] body.sidebar-open.sidebar-collapsed .app-container { padding-inline-end: 76px; }
+
+@media (max-width: 992px) {
+  /* auto-collapse on tablets/phones */
+  body.sidebar-open .app-container { padding-inline-start: 76px; }
+  html[dir="rtl"] body.sidebar-open .app-container { padding-inline-start: 0; padding-inline-end: 76px; }
+}
+
+/* Static Quick Access section */
+#ProSidebarHost .psb-static { margin-top: 8px; padding: 8px 10px; border-top: 1px solid rgba(255,255,255,0.08); }
+#ProSidebarHost .psb-static-title { color: #9ca3af; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+#ProSidebarHost .psb-quick { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+#ProSidebarHost .psb-quick-link { display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: rgba(255,255,255,0.06); border-radius: 8px; color: #e5e7eb; text-decoration: none; transition: background .2s, transform .2s; }
+#ProSidebarHost .psb-quick-link:hover { background: rgba(255,255,255,0.12); transform: translateY(-1px); }
+#ProSidebarHost .psb-quick-link .qi { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: .9rem; flex: 0 0 28px; }
+#ProSidebarHost .psb-quick-link .qt { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 600; font-size: .85rem; }
+body.sidebar-collapsed #ProSidebarHost .psb-quick { grid-template-columns: 1fr; }
+body.sidebar-collapsed #ProSidebarHost .psb-quick-link .qt { display: none; }

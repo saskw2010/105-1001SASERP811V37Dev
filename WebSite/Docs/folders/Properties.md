@@ -1,0 +1,5 @@
+# Folder: Properties
+
+Purpose: solution/project properties and user settings.
+
+Back to hub: ../index.md | TOC: ../TOC.md

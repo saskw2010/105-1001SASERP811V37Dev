@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Wine" conflictDetection="overwriteChanges" label="Wine" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Wine"."ID" "ID"
+	,"Wine"."UserID" "UserID"
+	,"Wine"."Publish" "Publish"
+	,"Wine"."Name" "Name"
+	,"Wine"."Appellation" "Appellation"
+	,"Wine"."PictureFileName" "PictureFileName"
+	,"Wine"."GrapeID" "GrapeID"
+	,"Wine"."Vintage" "Vintage"
+	,"Wine"."Winery" "Winery"
+	,"Wine"."TypeID" "TypeID"
+	,"Wine"."BuyingDate" "BuyingDate"
+	,"Wine"."Price" "Price"
+	,"Wine"."CurrentValue" "CurrentValue"
+	,"Wine"."Robe" "Robe"
+	,"Wine"."Nose" "Nose"
+	,"Wine"."Taste" "Taste"
+	,"Wine"."Notes" "Notes"
+	,"Wine"."BottleID" "BottleID"
+	,"Wine"."BottlesIni" "BottlesIni"
+	,"Wine"."BottlesR" "BottlesR"
+	,"Wine"."YearDrink" "YearDrink"
+	,"Wine"."YearDrinkEnd" "YearDrinkEnd"
+	,"Wine"."YearPeak" "YearPeak"
+	,"Wine"."YearPeakEnd" "YearPeakEnd"
+	,"Wine"."Food" "Food"
+	,"Wine"."ScoreID" "ScoreID"
+	,"Wine"."ScoreParker" "ScoreParker"
+	,"Wine"."ScoreWineSpec" "ScoreWineSpec"
+	,"Wine"."Comments" "Comments"
+	,"Wine"."CountryID" "CountryID"
+	,"Wine"."Region" "Region"
+	,"Wine"."Area" "Area"
+	,"Wine"."CommentCount" "CommentCount"
+	,"Wine"."ModifiedBy" "ModifiedBy"
+	,"Wine"."ModifiedByUserId" "ModifiedByUserId"
+	,"Wine"."ModifiedOn" "ModifiedOn"
+	,"Wine"."CreatedBy" "CreatedBy"
+	,"Wine"."CreatedById" "CreatedById"
+	,"Wine"."CreatedOn" "CreatedOn"
+from "dbo"."Wine" "Wine"
+]]></text>
+    </command>
+    <command id="IDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ID" type="Int32" allowNulls="false" isPrimaryKey="true" label="Id" readOnly="true" />
+    <field name="UserID" type="Int32" default="((1))" label="User#" showInSummary="true" />
+    <field name="Publish" type="Boolean" default="((1))" label="Publish" showInSummary="true" />
+    <field name="Name" type="String" allowNulls="false" default="('[Untitled]')" label="Name" length="300" showInSummary="true" />
+    <field name="Appellation" type="String" label="Appellation" length="300" showInSummary="true" />
+    <field name="PictureFileName" type="String" label="Picture File Name" length="200" showInSummary="true" />
+    <field name="GrapeID" type="Int32" label="Grape#" />
+    <field name="Vintage" type="Int32" label="Vintage" />
+    <field name="Winery" type="String" label="Winery" length="200" />
+    <field name="TypeID" type="Int32" allowNulls="false" label="Type#" />
+    <field name="BuyingDate" type="DateTime" label="Buying Date" />
+    <field name="Price" type="Decimal" label="Price" />
+    <field name="CurrentValue" type="Decimal" label="Current Value" />
+    <field name="Robe" type="String" label="Robe" length="200" />
+    <field name="Nose" type="String" label="Nose" length="200" />
+    <field name="Taste" type="String" label="Taste" length="200" />
+    <field name="Notes" type="String" label="Notes" length="300" />
+    <field name="BottleID" type="Int32" label="Bottle#" />
+    <field name="BottlesIni" type="Int32" label="Bottles Ini" />
+    <field name="BottlesR" type="Int32" label="Bottles R" />
+    <field name="YearDrink" type="Int32" label="Year Drink" />
+    <field name="YearDrinkEnd" type="Int32" label="Year Drink End" />
+    <field name="YearPeak" type="Int32" label="Year Peak" />
+    <field name="YearPeakEnd" type="Int32" label="Year Peak End" />
+    <field name="Food" type="String" label="Food" length="400" />
+    <field name="ScoreID" type="Int32" allowNulls="false" label="Score#" />
+    <field name="ScoreParker" type="Int32" label="Score Parker" />
+    <field name="ScoreWineSpec" type="Int32" label="Score Wine Spec" />
+    <field name="Comments" type="String" label="Comments" length="600" />
+    <field name="CountryID" type="Int32" label="Country#" />
+    <field name="Region" type="String" label="Region" length="300" />
+    <field name="Area" type="String" label="Area" length="300" />
+    <field name="CommentCount" type="Int32" default="((0))" label="Comment Count" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedByUserId" type="Guid" label="Modified By User#" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedById" type="Guid" label="Created By#" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Wine">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Name" />
+        <dataField fieldName="UserID" columns="15" />
+        <dataField fieldName="Publish" />
+        <dataField fieldName="Appellation" />
+        <dataField fieldName="PictureFileName" />
+        <dataField fieldName="GrapeID" columns="15" />
+        <dataField fieldName="Vintage" columns="15" />
+        <dataField fieldName="Winery" />
+        <dataField fieldName="TypeID" columns="15" />
+        <dataField fieldName="BuyingDate" columns="10" />
+        <dataField fieldName="Price" dataFormatString="c" columns="15" />
+        <dataField fieldName="CurrentValue" dataFormatString="c" columns="15" />
+        <dataField fieldName="Robe" />
+        <dataField fieldName="Nose" />
+        <dataField fieldName="Taste" />
+        <dataField fieldName="Notes" />
+        <dataField fieldName="BottleID" columns="15" />
+        <dataField fieldName="BottlesIni" columns="15" />
+        <dataField fieldName="BottlesR" columns="15" />
+        <dataField fieldName="YearDrink" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Wine">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Wine" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="UserID" columns="15" />
+            <dataField fieldName="Publish" />
+            <dataField fieldName="Name" />
+            <dataField fieldName="Appellation" />
+            <dataField fieldName="PictureFileName" />
+            <dataField fieldName="GrapeID" columns="15" />
+            <dataField fieldName="Vintage" columns="15" />
+            <dataField fieldName="Winery" />
+            <dataField fieldName="TypeID" columns="15" />
+            <dataField fieldName="BuyingDate" columns="10" />
+            <dataField fieldName="Price" dataFormatString="c" columns="15" />
+            <dataField fieldName="CurrentValue" dataFormatString="c" columns="15" />
+            <dataField fieldName="Robe" />
+            <dataField fieldName="Nose" />
+            <dataField fieldName="Taste" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="BottleID" columns="15" />
+            <dataField fieldName="BottlesIni" columns="15" />
+            <dataField fieldName="BottlesR" columns="15" />
+            <dataField fieldName="YearDrink" columns="15" />
+            <dataField fieldName="YearDrinkEnd" columns="15" />
+            <dataField fieldName="YearPeak" columns="15" />
+            <dataField fieldName="YearPeakEnd" columns="15" />
+            <dataField fieldName="Food" />
+            <dataField fieldName="ScoreID" columns="15" />
+            <dataField fieldName="ScoreParker" columns="15" />
+            <dataField fieldName="ScoreWineSpec" columns="15" />
+            <dataField fieldName="Comments" />
+            <dataField fieldName="CountryID" columns="15" />
+            <dataField fieldName="Region" />
+            <dataField fieldName="Area" />
+            <dataField fieldName="CommentCount" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedByUserId" columns="15" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedById" columns="15" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Wine">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Wine" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="UserID" columns="15" />
+            <dataField fieldName="Publish" />
+            <dataField fieldName="Name" />
+            <dataField fieldName="Appellation" />
+            <dataField fieldName="PictureFileName" />
+            <dataField fieldName="GrapeID" columns="15" />
+            <dataField fieldName="Vintage" columns="15" />
+            <dataField fieldName="Winery" />
+            <dataField fieldName="TypeID" columns="15" />
+            <dataField fieldName="BuyingDate" columns="10" />
+            <dataField fieldName="Price" dataFormatString="c" columns="15" />
+            <dataField fieldName="CurrentValue" dataFormatString="c" columns="15" />
+            <dataField fieldName="Robe" />
+            <dataField fieldName="Nose" />
+            <dataField fieldName="Taste" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="BottleID" columns="15" />
+            <dataField fieldName="BottlesIni" columns="15" />
+            <dataField fieldName="BottlesR" columns="15" />
+            <dataField fieldName="YearDrink" columns="15" />
+            <dataField fieldName="YearDrinkEnd" columns="15" />
+            <dataField fieldName="YearPeak" columns="15" />
+            <dataField fieldName="YearPeakEnd" columns="15" />
+            <dataField fieldName="Food" />
+            <dataField fieldName="ScoreID" columns="15" />
+            <dataField fieldName="ScoreParker" columns="15" />
+            <dataField fieldName="ScoreWineSpec" columns="15" />
+            <dataField fieldName="Comments" />
+            <dataField fieldName="CountryID" columns="15" />
+            <dataField fieldName="Region" />
+            <dataField fieldName="Area" />
+            <dataField fieldName="CommentCount" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedByUserId" columns="15" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedById" columns="15" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

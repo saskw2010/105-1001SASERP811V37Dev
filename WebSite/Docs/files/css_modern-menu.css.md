@@ -1,0 +1,5 @@
+# File: css/modern-menu.css
+
+- Styling for modern drawer panel and tree components (.pm-*).
+- Theming vars; badges; expanded state; tools.
+- Includes topbar helpers and responsive adjustments.

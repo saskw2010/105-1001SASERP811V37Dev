@@ -1,0 +1,5 @@
+# Folder: Scripts
+
+Purpose: legacy scripts (jQuery, helpers) referenced by pages.
+
+Back to hub: ../index.md | TOC: ../TOC.md

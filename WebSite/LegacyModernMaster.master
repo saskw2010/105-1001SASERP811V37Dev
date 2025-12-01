@@ -1,0 +1,1124 @@
+<%@ Master Language="VB" AutoEventWireup="false" CodeFile="LegacyModernMaster.master.vb" Inherits="Main" %>
+<!DOCTYPE html>
+<html xml:lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>" lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SKYsaas - نظام إدارة الموارد المؤسسية الحديث مع المنيو الليجاسي</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="نظام إدارة الموارد المؤسسية المتطور - SKYsaas ERP مع المنيو الليجاسي المدمج" />
+
+    <!-- Modern CSS Framework -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Custom Stylesheets -->
+    <link rel="shortcut icon" href="/favicon.png" />
+    <link href="/css/pagemenubar.css" rel="stylesheet" type="text/css" />
+    <link href="/css/notifications.css" rel="stylesheet" type="text/css" />
+
+    <!-- Legacy Menu Integration CSS -->
+    <link href="/css/legacy-menu-modern-integration.css" rel="stylesheet" type="text/css" />
+
+    <!-- Ultra Modern Design System with Legacy Integration -->
+    <style>
+        /* CSS Variables for Dynamic Theming */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --danger-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+
+            --shadow-soft: 0 2px 15px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            --header-height: 70px;
+            --sidebar-width: 280px;
+
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-border: rgba(255, 255, 255, 0.2);
+
+            /* Legacy Menu Integration Variables */
+            --legacy-menu-bg: #2c3e50;
+            --legacy-menu-text: #ffffff;
+            --legacy-menu-accent: #3498db;
+            --legacy-menu-hover: #34495e;
+        }
+
+        /* Global Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #334155;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Background */
+        .app-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: -2;
+        }
+
+        .app-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></svg>');
+            z-index: -1;
+        }
+
+        /* Membership Top Bar */
+        .membership-top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 45px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1001;
+            color: white;
+            font-size: 0.875rem;
+        }
+
+        .membership-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 0 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .welcome-text {
+            color: #94a3b8;
+        }
+
+        .username {
+            color: #67e8f9;
+            font-weight: 600;
+        }
+
+        .membership-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .membership-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            white-space: nowrap;
+        }
+
+        .membership-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .membership-btn i {
+            font-size: 0.8rem;
+        }
+
+        .language-selector {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-selector:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Ultra Modern Header - Adjusted for membership bar */
+        .ultra-header {
+            position: fixed;
+            top: 45px;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 0 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Brand Logo */
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 800;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .brand-logo:hover {
+            color: #667eea;
+            transform: scale(1.02);
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* Navigation Section - Enhanced for Legacy Menu */
+        .nav-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 0 2rem;
+            align-items: center;
+        }
+
+        /* Modern Menu Toggle Button with Legacy Integration */
+        .menu-toggle-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: #64748b;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .menu-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            color: #667eea;
+            border-color: rgba(103, 126, 234, 0.3);
+            box-shadow: 0 4px 20px rgba(103, 126, 234, 0.2);
+        }
+
+        .menu-toggle-btn i {
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .menu-toggle-btn:hover i {
+            transform: rotate(90deg);
+        }
+
+        .menu-label {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* User Section */
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notification-btn, .user-btn {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .notification-btn:hover, .user-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+            color: #667eea;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 18px;
+            height: 18px;
+            background: var(--danger-gradient);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            border: 2px solid white;
+        }
+
+        /* Main Content Area with Legacy Integration */
+        .main-content {
+            margin-top: calc(45px + var(--header-height) + 2rem);
+            padding: 2rem;
+            min-height: calc(100vh - 45px - var(--header-height) - 4rem);
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            background: var(--glass-bg);
+            border-radius: var(--border-radius-lg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-strong);
+        }
+
+        /* Legacy Menu Overlay */
+        .legacy-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .legacy-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Legacy Menu Sidebar */
+        .legacy-menu-sidebar {
+            position: fixed;
+            top: 0;
+            left: -400px;
+            width: 350px;
+            height: 100vh;
+            background: var(--legacy-menu-bg);
+            color: var(--legacy-menu-text);
+            z-index: 1000;
+            transition: var(--transition);
+            overflow-y: auto;
+            box-shadow: var(--shadow-strong);
+        }
+
+        .legacy-menu-sidebar.open {
+            left: 0;
+        }
+
+        .legacy-menu-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .legacy-menu-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--legacy-menu-text);
+        }
+
+        .legacy-menu-close {
+            background: none;
+            border: none;
+            color: var(--legacy-menu-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .legacy-menu-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        .legacy-menu-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem 0;
+        }
+
+        .legacy-menu-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: var(--legacy-menu-text);
+            text-decoration: none;
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+            margin-bottom: 0.25rem;
+        }
+
+        .legacy-menu-item:hover {
+            background: var(--legacy-menu-hover);
+            border-left-color: var(--legacy-menu-accent);
+            color: var(--legacy-menu-text);
+        }
+
+        .legacy-menu-item.active {
+            background: var(--legacy-menu-accent);
+            border-left-color: var(--legacy-menu-accent);
+        }
+
+        .legacy-menu-item i {
+            width: 24px;
+            margin-right: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .legacy-menu-item span {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .legacy-menu-item .submenu-arrow {
+            margin-left: auto;
+            transition: var(--transition);
+        }
+
+        .legacy-menu-item.has-submenu .submenu-arrow {
+            transform: rotate(0deg);
+        }
+
+        .legacy-menu-item.has-submenu.open .submenu-arrow {
+            transform: rotate(180deg);
+        }
+
+        .legacy-menu-subitems {
+            background: rgba(0, 0, 0, 0.05);
+            border-left: 2px solid var(--legacy-menu-accent);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .legacy-menu-subitem {
+            padding: 0.75rem 1.5rem 0.75rem 3.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .legacy-menu-subitem:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--legacy-menu-text);
+        }
+
+        /* Legacy Menu Desktop Navigation */
+        .legacy-menu-desktop {
+            display: none;
+        }
+
+        @media (min-width: 992px) {
+            .legacy-menu-desktop {
+                display: block;
+            }
+
+            .legacy-menu-mobile {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 280px;
+                margin-top: calc(45px + var(--header-height) + 2rem);
+            }
+
+            .legacy-menu-sidebar {
+                position: fixed;
+                top: 45px;
+                left: 0;
+                width: 280px;
+                height: calc(100vh - 45px);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .membership-content {
+                padding: 0 1rem;
+            }
+
+            .header-content {
+                padding: 0 1rem;
+            }
+
+            .nav-section {
+                padding: 0 1rem;
+            }
+
+            .menu-toggle-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+
+            .main-content {
+                margin-top: calc(45px + var(--header-height) + 1rem);
+                padding: 1rem;
+                border-radius: var(--border-radius);
+            }
+
+            .legacy-menu-sidebar {
+                width: 300px;
+                left: -300px;
+            }
+        }
+
+        /* Glass Card Effect */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+        }
+
+        .glass-card:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-2px);
+        }
+
+        /* Loading States */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .spinner-border {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        /* Enhanced Focus States */
+        .menu-toggle-btn:focus,
+        .notification-btn:focus,
+        .user-btn:focus {
+            outline: 2px solid rgba(103, 126, 234, 0.5);
+            outline-offset: 2px;
+        }
+
+        /* Print Styles */
+        @media print {
+            .membership-top-bar,
+            .ultra-header,
+            .legacy-menu-sidebar,
+            .legacy-menu-overlay {
+                display: none !important;
+            }
+
+            .main-content {
+                margin: 0 !important;
+                box-shadow: none !important;
+                background: white !important;
+            }
+        }
+    </style>
+
+    <!-- Scripts -->
+    <script src="/js/notifications.js"></script>
+    <script src="/js/pagemenubar-mobile.js"></script>
+</head>
+<body id="Body" runat="server" class="ultra-modern-app">
+    <!-- Background Effects -->
+    <div class="app-background"></div>
+
+    <form id="form1" runat="server">
+        <!-- ASP.NET Essential Controls -->
+        <act:ToolkitScriptManager ID="sm" runat="server" ScriptMode="Release" EnableScriptGlobalization="True" OnResolveScriptReference="sm_ResolveScriptReference" />
+        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+
+        <!-- Hidden field for domain name -->
+        <asp:HiddenField ID="lblDomainName" runat="server" />
+
+        <header class="ultra-header">
+            <div class="header-content">
+                <!-- Brand Section -->
+                <div class="brand-section">
+                    <a href="/Default.aspx" class="brand-logo">
+                        <div class="brand-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <span>SKYsaas</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Section -->
+                <div class="nav-section">
+                    <button class="menu-toggle-btn" onclick="toggleLegacyMenu()">
+                        <i class="fas fa-bars"></i>
+                        <span class="menu-label">المنيو</span>
+                    </button>
+                </div>
+
+                <!-- User Section -->
+                <div class="user-section">
+                    <button class="notification-btn" onclick="showNotifications()">
+                        <i class="fas fa-bell"></i>
+                        <div class="notification-badge" id="notificationCount">0</div>
+                    </button>
+                    <button class="user-btn" onclick="showUserProfile()">
+                        <i class="fas fa-user"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Legacy Menu Overlay -->
+        <div class="legacy-menu-overlay" id="legacyMenuOverlay" onclick="closeLegacyMenu()"></div>
+
+        <!-- Legacy Menu Sidebar -->
+        <div class="legacy-menu-sidebar" id="legacyMenuSidebar">
+            <div class="legacy-menu-header">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <h3 class="legacy-menu-title">المنيو الرئيسي</h3>
+                    <button class="legacy-menu-close" onclick="closeLegacyMenu()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="text-center mt-2">
+                    <small class="text-muted" id="currentUserName">المستخدم</small>
+                </div>
+            </div>
+
+            <div class="legacy-menu-items" id="legacyMenuItems">
+                <!-- Menu items will be loaded here dynamically -->
+                <div class="text-center p-4">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">جاري التحميل...</span>
+                    </div>
+                    <div class="mt-2">جاري تحميل المنيو...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </main>
+    </form>
+
+    <!-- Legacy Menu Integration JavaScript -->
+    <script type="text/javascript">
+        // Global menu data and state
+        window.LegacyMenu = {
+            data: [],
+            isLoaded: false,
+
+            // Initialize the menu
+            init: function() {
+                console.log('Initializing legacy menu system...');
+                this.loadMenuData();
+                this.bindEvents();
+            },
+
+            // Load menu data from server
+            loadMenuData: function() {
+                const menuItems = document.getElementById('legacyMenuItems');
+                if (!menuItems) return;
+
+                // Show loading state
+                menuItems.innerHTML = `
+                    <div class="text-center p-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">جاري التحميل...</span>
+                        </div>
+                        <div class="mt-2">جاري تحميل المنيو...</div>
+                    </div>
+                `;
+
+                // Try to load from server-side data first
+                if (typeof window.LegacyMenuData !== 'undefined' && window.LegacyMenuData) {
+                    console.log('Loading menu data from server-side');
+                    this.data = window.LegacyMenuData;
+                    this.renderMenu();
+                    this.isLoaded = true;
+                } else {
+                    // Fallback to AJAX call
+                    this.loadFromAjax();
+                }
+            },
+
+            // Load menu data via AJAX
+            loadFromAjax: function() {
+                console.log('Loading menu data via AJAX...');
+
+                // Create XMLHttpRequest
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/Services/MenuService.asmx/GetMenuData', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            try {
+                                const response = JSON.parse(xhr.responseText);
+                                if (response.d) {
+                                    this.data = JSON.parse(response.d);
+                                    this.renderMenu();
+                                    this.isLoaded = true;
+                                    console.log('Menu data loaded successfully');
+                                }
+                            } catch (e) {
+                                console.error('Error parsing menu data:', e);
+                                this.loadDefaultMenu();
+                            }
+                        } else {
+                            console.error('Failed to load menu data:', xhr.status);
+                            this.loadDefaultMenu();
+                        }
+                    }
+                };
+
+                xhr.send();
+            },
+
+            // Load default menu if AJAX fails
+            loadDefaultMenu: function() {
+                console.log('Loading default menu...');
+                this.data = [
+                    {
+                        id: 1,
+                        title: 'الرئيسية',
+                        url: '/Default.aspx',
+                        icon: 'fas fa-home',
+                        children: []
+                    },
+                    {
+                        id: 2,
+                        title: 'المخازن',
+                        url: '#',
+                        icon: 'fas fa-boxes',
+                        children: [
+                            { id: 21, title: 'إدارة المخازن', url: '/Pages/Inventory.aspx', icon: 'fas fa-warehouse' },
+                            { id: 22, title: 'جرد المخزون', url: '/Pages/Stock.aspx', icon: 'fas fa-cubes' },
+                            { id: 23, title: 'تحويلات', url: '/Pages/Transfer.aspx', icon: 'fas fa-exchange-alt' }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        title: 'المبيعات',
+                        url: '#',
+                        icon: 'fas fa-shopping-cart',
+                        children: [
+                            { id: 31, title: 'فواتير المبيعات', url: '/Pages/Sales.aspx', icon: 'fas fa-file-invoice-dollar' },
+                            { id: 32, title: 'العملاء', url: '/Pages/Customers.aspx', icon: 'fas fa-users' },
+                            { id: 33, title: 'عروض الأسعار', url: '/Pages/Quotes.aspx', icon: 'fas fa-file-alt' }
+                        ]
+                    },
+                    {
+                        id: 4,
+                        title: 'المشتريات',
+                        url: '#',
+                        icon: 'fas fa-shopping-bag',
+                        children: [
+                            { id: 41, title: 'فواتير المشتريات', url: '/Pages/Purchases.aspx', icon: 'fas fa-file-invoice' },
+                            { id: 42, title: 'الموردين', url: '/Pages/Suppliers.aspx', icon: 'fas fa-truck' },
+                            { id: 43, title: 'طلبات الشراء', url: '/Pages/PurchaseOrders.aspx', icon: 'fas fa-clipboard-list' }
+                        ]
+                    },
+                    {
+                        id: 5,
+                        title: 'التقارير',
+                        url: '#',
+                        icon: 'fas fa-chart-pie',
+                        children: [
+                            { id: 51, title: 'التقارير المالية', url: '/Pages/FinancialReports.aspx', icon: 'fas fa-chart-line' },
+                            { id: 52, title: 'تقارير المبيعات', url: '/Pages/SalesReports.aspx', icon: 'fas fa-chart-bar' },
+                            { id: 53, title: 'تقارير المخازن', url: '/Pages/InventoryReports.aspx', icon: 'fas fa-warehouse' }
+                        ]
+                    },
+                    {
+                        id: 6,
+                        title: 'الإعدادات',
+                        url: '/Pages/Settings.aspx',
+                        icon: 'fas fa-cog',
+                        children: []
+                    }
+                ];
+                this.renderMenu();
+                this.isLoaded = true;
+            },
+
+            // Render menu items
+            renderMenu: function() {
+                const menuItems = document.getElementById('legacyMenuItems');
+                if (!menuItems) return;
+
+                let html = '';
+
+                this.data.forEach(item => {
+                    const hasChildren = item.children && item.children.length > 0;
+                    const isActive = this.isCurrentPage(item.url);
+
+                    html += `
+                        <div class="legacy-menu-item ${hasChildren ? 'has-submenu' : ''} ${isActive ? 'active' : ''}" data-url="${item.url}" onclick="${hasChildren ? 'toggleSubmenu(this)' : 'navigateToPage(this)'}">
+                            <i class="${item.icon}"></i>
+                            <span>${item.title}</span>
+                            ${hasChildren ? '<i class="fas fa-chevron-down submenu-arrow"></i>' : ''}
+                        </div>
+                    `;
+
+                    if (hasChildren) {
+                        html += '<div class="legacy-menu-subitems">';
+                        item.children.forEach(child => {
+                            const isChildActive = this.isCurrentPage(child.url);
+                            html += `
+                                <a href="${child.url}" class="legacy-menu-subitem ${isChildActive ? 'active' : ''}">
+                                    <i class="${child.icon}"></i>
+                                    <span>${child.title}</span>
+                                </a>
+                            `;
+                        });
+                        html += '</div>';
+                    }
+                });
+
+                menuItems.innerHTML = html;
+            },
+
+            // Check if current page matches menu item
+            isCurrentPage: function(url) {
+                if (!url || url === '#') return false;
+                const currentPath = window.location.pathname;
+                return currentPath === url || currentPath.startsWith(url);
+            },
+
+            // Bind event listeners
+            bindEvents: function() {
+                // Handle submenu toggles
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.legacy-menu-item.has-submenu')) {
+                        this.closeAllSubmenus();
+                    }
+                });
+            },
+
+            // Close all submenus
+            closeAllSubmenus: function() {
+                document.querySelectorAll('.legacy-menu-item.has-submenu.open').forEach(item => {
+                    item.classList.remove('open');
+                    const submenu = item.nextElementSibling;
+                    if (submenu && submenu.classList.contains('legacy-menu-subitems')) {
+                        submenu.style.maxHeight = '0px';
+                    }
+                });
+            }
+        };
+
+        // Toggle submenu
+        function toggleSubmenu(element) {
+            const submenu = element.nextElementSibling;
+            const isOpen = element.classList.contains('open');
+
+            // Close all other submenus first
+            window.LegacyMenu.closeAllSubmenus();
+
+            if (!isOpen && submenu && submenu.classList.contains('legacy-menu-subitems')) {
+                element.classList.add('open');
+                submenu.style.maxHeight = submenu.scrollHeight + 'px';
+            }
+        }
+
+        // Navigate to page
+        function navigateToPage(element) {
+            const url = element.getAttribute('data-url');
+            if (url && url !== '#') {
+                window.location.href = url;
+            }
+        }
+
+        // Legacy Menu Toggle Functions
+        function toggleLegacyMenu() {
+            const overlay = document.getElementById('legacyMenuOverlay');
+            const sidebar = document.getElementById('legacyMenuSidebar');
+
+            overlay.classList.toggle('active');
+            sidebar.classList.toggle('open');
+
+            // Prevent body scroll when menu is open
+            if (sidebar.classList.contains('open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeLegacyMenu() {
+            const overlay = document.getElementById('legacyMenuOverlay');
+            const sidebar = document.getElementById('legacyMenuSidebar');
+
+            overlay.classList.remove('active');
+            sidebar.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // User Profile Functions
+        function showUserProfile() {
+            console.log('عرض الملف الشخصي');
+            try {
+                // Try to open user profile from legacy system
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.userProfile) {
+                        membership.userProfile();
+                        return;
+                    }
+                }
+
+                // Fallback: open membership page
+                window.open('/Pages/Membership.aspx', '_blank');
+            } catch (e) {
+                console.error('User profile failed:', e);
+                alert('لا يمكن فتح الملف الشخصي في الوقت الحالي');
+            }
+        }
+
+        function showNotifications() {
+            console.log('عرض الإشعارات');
+            try {
+                // Try to show notifications from legacy system
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.notifications) {
+                        membership.notifications();
+                        return;
+                    }
+                }
+
+                // Fallback: open notifications page
+                window.open('/Pages/Notifications.aspx', '_blank');
+            } catch (e) {
+                console.error('Notifications failed:', e);
+                alert('لا يمكن عرض الإشعارات في الوقت الحالي');
+            }
+        }
+
+        function showSettings() {
+            console.log('عرض الإعدادات');
+            try {
+                // Try to open settings or preferences
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.help) {
+                        membership.help();
+                        return;
+                    }
+                }
+
+                // Fallback: navigate to settings page
+                window.location.href = '/Pages/Settings.aspx';
+            } catch (e) {
+                console.error('Settings failed:', e);
+                alert('لا يمكن فتح الإعدادات في الوقت الحالي');
+            }
+        }
+
+        function logout() {
+            try {
+                // Use legacy membership logout function
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.logout) {
+                        if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                            membership.logout();
+                        }
+                        return;
+                    }
+                }
+
+                // Fallback logout
+                if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                    window.location.href = '/logout.aspx';
+                }
+            } catch (e) {
+                console.error('Logout failed:', e);
+                if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                    window.location.href = '/Login.aspx';
+                }
+            }
+        }
+
+        // History and Help Functions
+        function showHistory() {
+            try {
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.showHistory) {
+                        membership.showHistory();
+                        return;
+                    }
+                }
+                alert('ميزة السجل غير متاحة حالياً');
+            } catch (e) {
+                console.error('History failed:', e);
+                alert('لا يمكن عرض السجل في الوقت الحالي');
+            }
+        }
+
+        function showHelp() {
+            try {
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.help) {
+                        membership.help();
+                        return;
+                    }
+                }
+                // Fallback: open help in new window
+                window.open('/help/', '_blank');
+            } catch (e) {
+                console.error('Help failed:', e);
+                alert('لا يمكن فتح المساعدة في الوقت الحالي');
+            }
+        }
+
+        // Real-time data bridge - Connect legacy system to modern UI
+        function initLegacyDataBridge() {
+            try {
+                // Wait for legacy membership to initialize
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+
+                    // Get real username
+                    if (membership.get_user) {
+                        const realUsername = membership.get_user();
+                        if (realUsername) {
+                            document.getElementById('currentUserName').textContent = realUsername;
+                        }
+                    }
+
+                    // Check if user is authenticated
+                    if (membership.get_isAuthenticated && membership.get_isAuthenticated()) {
+                        console.log('User is authenticated via legacy system');
+                        document.body.classList.add('user-authenticated');
+                    }
+
+                    // Get available cultures/languages
+                    if (membership.get_cultures && membership.get_cultures()) {
+                        updateLanguageSelector(membership.get_cultures());
+                    }
+
+                    console.log('Legacy data bridge initialized successfully');
+                } else {
+                    // Retry after a short delay
+                    setTimeout(initLegacyDataBridge, 500);
+                }
+            } catch (e) {
+                console.log('Legacy data bridge initialization failed:', e);
+            }
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the menu system
+            window.LegacyMenu.init();
+
+            // Initialize legacy data bridge
+            initLegacyDataBridge();
+
+            // Try to update after legacy system loads
+            setTimeout(() => {
+                initLegacyDataBridge();
+            }, 1000);
+
+            // Check periodically for updates
+            setInterval(() => {
+                // Update user info periodically
+            }, 5000);
+        });
+
+        // Performance optimization
+        window.addEventListener('load', function() {
+            // Remove any loading states
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏠 فهرس نظام الثيمات المتقدم</title>
+    
+    <!-- Theme Integration CSS -->
+    <link href="../ThemeCenter/CSS/theme-integration.css" rel="stylesheet" type="text/css" />
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: var(--font-family-primary);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            margin: 0;
+            padding: var(--spacing-lg);
+            min-height: 100vh;
+        }
+        
+        .index-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: var(--primary-gradient);
+            color: var(--text-inverse);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin: 0 0 var(--spacing-md) 0;
+        }
+        
+        .header p {
+            font-size: 1.125rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        .status-banner {
+            background: var(--success);
+            color: var(--text-inverse);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .page-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            transition: var(--theme-transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .page-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--page-accent, var(--primary));
+        }
+        
+        .page-icon {
+            font-size: 3rem;
+            color: var(--page-accent, var(--primary));
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+        }
+        
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+            text-align: center;
+        }
+        
+        .page-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        .page-features {
+            list-style: none;
+            padding: 0;
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .page-features li {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .page-features li i {
+            color: var(--page-accent, var(--primary));
+            width: 16px;
+        }
+        
+        .page-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            justify-content: center;
+        }
+        
+        .page-btn {
+            background: var(--page-accent, var(--primary));
+            color: var(--text-inverse);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-decoration: none;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--theme-transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .page-btn:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+        
+        .page-btn.secondary {
+            background: var(--secondary);
+        }
+        
+        /* Page-specific accent colors */
+        .page-card.management {
+            --page-accent: #3b82f6;
+        }
+        
+        .page-card.switcher {
+            --page-accent: #06d6a0;
+        }
+        
+        .page-card.demo {
+            --page-accent: #8b5cf6;
+        }
+        
+        .page-card.guide {
+            --page-accent: #f59e0b;
+        }
+        
+        .quick-start {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .quick-start h2 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .step-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: var(--spacing-md);
+            background: var(--primary);
+            color: var(--text-inverse);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            padding-top: var(--spacing-sm);
+        }
+        
+        .step-description {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .stats-overview {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .stats-title {
+            color: var(--primary);
+            margin-bottom: var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-primary);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: var(--spacing-xl);
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-primary);
+        }
+        
+        @media (max-width: 768px) {
+            .pages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="index-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🎨 نظام الثيمات المتقدم</h1>
+            <p>مركز شامل لإدارة وتخصيص ثيمات التطبيق</p>
+        </div>
+        
+        <!-- Status Banner -->
+        <div class="status-banner">
+            <i class="fas fa-check-circle"></i>
+            <span>النظام جاهز ومتاح للاستخدام | جميع المكونات محملة بنجاح</span>
+        </div>
+        
+        <!-- Quick Start Guide -->
+        <div class="quick-start">
+            <h2>
+                <i class="fas fa-rocket"></i>
+                دليل البدء السريع
+            </h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-title">استكشف الثيمات</div>
+                    <div class="step-description">ابدأ بصفحة التجريب لرؤية جميع الثيمات المتاحة</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-title">جرب التبديل السريع</div>
+                    <div class="step-description">استخدم أداة التبديل السريع للانتقال بين الثيمات</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-title">أنشئ ثيمك الخاص</div>
+                    <div class="step-description">استخدم لوحة الإدارة لإنشاء ثيمات مخصصة</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-title">اقرأ الدليل</div>
+                    <div class="step-description">راجع الدليل الشامل للحصول على المساعدة</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Pages Grid -->
+        <div class="pages-grid">
+            <!-- Theme Management Console -->
+            <div class="page-card management">
+                <div class="page-icon">🎛️</div>
+                <h2 class="page-title">لوحة إدارة الثيمات</h2>
+                <p class="page-description">
+                    واجهة شاملة لإدارة جميع جوانب نظام الثيمات مع إحصائيات متقدمة وأدوات تحليل الأداء.
+                </p>
+                <ul class="page-features">
+                    <li><i class="fas fa-chart-bar"></i> لوحة تحكم بالإحصائيات</li>
+                    <li><i class="fas fa-palette"></i> إدارة شاملة للثيمات</li>
+                    <li><i class="fas fa-plus-circle"></i> منشئ الثيمات المخصصة</li>
+                    <li><i class="fas fa-download"></i> تصدير واستيراد الثيمات</li>
+                    <li><i class="fas fa-cog"></i> إعدادات النظام المتقدمة</li>
+                    <li><i class="fas fa-bolt"></i> مراقبة الأداء المباشر</li>
+                </ul>
+                <div class="page-actions">
+                    <a href="theme-management-console.html" class="page-btn" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        فتح لوحة الإدارة
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Quick Theme Switcher -->
+            <div class="page-card switcher">
+                <div class="page-icon">🎨</div>
+                <h2 class="page-title">أداة التبديل السريع</h2>
+                <p class="page-description">
+                    واجهة مبسطة وسريعة للتبديل بين الثيمات مع معاينة فورية ودعم اختصارات لوحة المفاتيح.
+                </p>
+                <ul class="page-features">
+                    <li><i class="fas fa-mouse-pointer"></i> تبديل بنقرة واحدة</li>
+                    <li><i class="fas fa-keyboard"></i> اختصارات لوحة المفاتيح</li>
+                    <li><i class="fas fa-eye"></i> معاينة الألوان المباشرة</li>
+                    <li><i class="fas fa-magic"></i> اكتشاف تلقائي للثيم</li>
+                    <li><i class="fas fa-mobile-alt"></i> واجهة متجاوبة</li>
+                    <li><i class="fas fa-clock"></i> تبديل حسب الوقت</li>
+                </ul>
+                <div class="page-actions">
+                    <a href="theme-switch-widget.html" class="page-btn" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        فتح أداة التبديل
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Advanced Demo -->
+            <div class="page-card demo">
+                <div class="page-icon">🧪</div>
+                <h2 class="page-title">صفحة التجريب المتقدمة</h2>
+                <p class="page-description">
+                    بيئة اختبار شاملة تعرض جميع مكونات الواجهة مع الثيمات المختلفة ومراقبة الأداء المباشر.
+                </p>
+                <ul class="page-features">
+                    <li><i class="fas fa-flask"></i> اختبار جميع المكونات</li>
+                    <li><i class="fas fa-stopwatch"></i> مراقبة الأداء المباشر</li>
+                    <li><i class="fas fa-paint-brush"></i> عرض تفاعلي للثيمات</li>
+                    <li><i class="fas fa-code"></i> عرض كود CSS المولد</li>
+                    <li><i class="fas fa-mobile-alt"></i> اختبار الاستجابة</li>
+                    <li><i class="fas fa-bug"></i> أدوات اكتشاف الأخطاء</li>
+                </ul>
+                <div class="page-actions">
+                    <a href="advanced-theme-demo.html" class="page-btn" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        فتح صفحة التجريب
+                    </a>
+                </div>
+            </div>
+            
+            <!-- System Guide -->
+            <div class="page-card guide">
+                <div class="page-icon">📚</div>
+                <h2 class="page-title">الدليل الشامل</h2>
+                <p class="page-description">
+                    دليل تفصيلي لجميع مميزات نظام الثيمات مع أمثلة عملية وحلول للمشاكل الشائعة.
+                </p>
+                <ul class="page-features">
+                    <li><i class="fas fa-book"></i> شرح مفصل لجميع المميزات</li>
+                    <li><i class="fas fa-code"></i> أمثلة عملية بالكود</li>
+                    <li><i class="fas fa-question-circle"></i> استكشاف الأخطاء</li>
+                    <li><i class="fas fa-graduation-cap"></i> دروس تطبيقية</li>
+                    <li><i class="fas fa-search"></i> فهرس سهل التصفح</li>
+                    <li><i class="fas fa-print"></i> قابل للطباعة</li>
+                </ul>
+                <div class="page-actions">
+                    <a href="theme-system-guide.html" class="page-btn" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        فتح الدليل
+                    </a>
+                    <a href="theme-system-guide.md" class="page-btn secondary" target="_blank">
+                        <i class="fas fa-file-alt"></i>
+                        نسخة Markdown
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- System Statistics -->
+        <div class="stats-overview">
+            <h2 class="stats-title">
+                <i class="fas fa-chart-pie"></i>
+                إحصائيات النظام
+            </h2>
+            <div class="stats-grid" id="system-stats">
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">ثيمات جاهزة</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="custom-themes-count">0</div>
+                    <div class="stat-label">ثيمات مخصصة</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="total-switches">0</div>
+                    <div class="stat-label">إجمالي التبديلات</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="current-theme">غير محدد</div>
+                    <div class="stat-label">الثيم الحالي</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>
+                نظام الثيمات المتقدم | تم التطوير باستخدام أحدث تقنيات الويب
+                <br>
+                <strong>الإصدار 1.0.0</strong> | آخر تحديث: ديسمبر 2024
+            </p>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="../js/theme-switcher.js"></script>
+    <script src="../js/theme-manager.js"></script>
+    
+    <script>
+        // Update system statistics
+        function updateStats() {
+            try {
+                if (window.themeManager) {
+                    const stats = window.themeManager.getStatistics();
+                    
+                    document.getElementById('custom-themes-count').textContent = stats.customThemeCount || 0;
+                    document.getElementById('total-switches').textContent = stats.totalSwitches || 0;
+                }
+                
+                if (window.advancedThemeSystem) {
+                    const currentTheme = window.advancedThemeSystem.getCurrentTheme();
+                    const themeNames = {
+                        light: 'فاتح',
+                        dark: 'داكن',
+                        ai: 'ذكي',
+                        citrus: 'حمضي',
+                        emerald: 'زمردي',
+                        rose: 'وردي'
+                    };
+                    
+                    document.getElementById('current-theme').textContent = themeNames[currentTheme] || currentTheme;
+                }
+            } catch (error) {
+                console.log('بعض الإحصائيات غير متاحة:', error.message);
+            }
+        }
+        
+        // Check system status
+        function checkSystemStatus() {
+            const statusBanner = document.querySelector('.status-banner');
+            const statusIcon = statusBanner.querySelector('i');
+            const statusText = statusBanner.querySelector('span');
+            
+            let allSystemsReady = true;
+            let statusMessage = 'النظام جاهز ومتاح للاستخدام | جميع المكونات محملة بنجاح';
+            
+            // Check if theme system is loaded
+            if (typeof window.advancedThemeSystem === 'undefined') {
+                allSystemsReady = false;
+                statusMessage = 'تحذير: نظام التبديل الأساسي غير محمل';
+            }
+            
+            // Check if theme manager is loaded
+            if (typeof window.themeManager === 'undefined') {
+                allSystemsReady = false;
+                statusMessage = 'تحذير: نظام الإدارة المتقدم غير محمل';
+            }
+            
+            // Update status display
+            if (!allSystemsReady) {
+                statusBanner.style.background = 'var(--warning)';
+                statusIcon.className = 'fas fa-exclamation-triangle';
+                statusText.textContent = statusMessage;
+            }
+        }
+        
+        // Apply current theme from localStorage
+        function applyCurrentTheme() {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'light';
+            if (window.advancedThemeSystem) {
+                window.advancedThemeSystem.setTheme(savedTheme);
+            }
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Apply current theme
+            applyCurrentTheme();
+            
+            // Check system status after a short delay
+            setTimeout(() => {
+                checkSystemStatus();
+                updateStats();
+            }, 1000);
+            
+            // Update stats periodically
+            setInterval(updateStats, 5000);
+        });
+        
+        // Add click tracking for page cards
+        document.querySelectorAll('.page-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.tagName !== 'A' && e.target.tagName !== 'BUTTON') {
+                    const link = this.querySelector('.page-btn');
+                    if (link) {
+                        link.click();
+                    }
+                }
+            });
+        });
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            // Quick navigation shortcuts
+            if (e.ctrlKey && e.shiftKey) {
+                switch (e.key.toLowerCase()) {
+                    case 'm':
+                        e.preventDefault();
+                        window.open('theme-management-console.html', '_blank');
+                        break;
+                    case 'w':
+                        e.preventDefault();
+                        window.open('theme-switch-widget.html', '_blank');
+                        break;
+                    case 'r':
+                        e.preventDefault();
+                        window.open('advanced-theme-demo.html', '_blank');
+                        break;
+                    case 'h':
+                        e.preventDefault();
+                        window.open('theme-system-guide.html', '_blank');
+                        break;
+                }
+            }
+        });
+        
+        // Add some visual feedback
+        document.querySelectorAll('.page-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="AspNetUsers" conflictDetection="overwriteChanges" label="Asp Net Users" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"AspNetUsers"."Id" "Id"
+	,"AspNetUsers"."UserName" "UserName"
+	,"AspNetUsers"."IsApproved" "IsApproved"
+	,"AspNetUsers"."IsLockedOut" "IsLockedOut"
+	,"AspNetUsers"."Email" "Email"
+	,"AspNetUsers"."FailedPasswordAttemptCount" "FailedPasswordAttemptCount"
+	,"AspNetUsers"."FailedPasswordAttemptWindowStart" "FailedPasswordAttemptWindowStart"
+	,"AspNetUsers"."FirstName" "FirstName"
+	,"AspNetUsers"."LastName" "LastName"
+	,"AspNetUsers"."Bio" "Bio"
+	,"AspNetUsers"."AvatarUrl" "AvatarUrl"
+	,"AspNetUsers"."CreatedOn" "CreatedOn"
+	,"AspNetUsers"."ModifiedOn" "ModifiedOn"
+	,"AspNetUsers"."IsDeleted" "IsDeleted"
+	,"AspNetUsers"."DeletedOn" "DeletedOn"
+	,"AspNetUsers"."EmailConfirmed" "EmailConfirmed"
+	,"AspNetUsers"."PasswordHash" "PasswordHash"
+	,"AspNetUsers"."SecurityStamp" "SecurityStamp"
+	,"AspNetUsers"."Discriminator" "Discriminator"
+	,"AspNetUsers"."ApplicationId" "ApplicationId"
+	,"AspNetUsers"."LegacyPasswordHash" "LegacyPasswordHash"
+	,"AspNetUsers"."IsAnonymous" "IsAnonymous"
+	,"AspNetUsers"."LastActivityDate" "LastActivityDate"
+	,"AspNetUsers"."PasswordQuestion" "PasswordQuestion"
+	,"AspNetUsers"."PasswordAnswer" "PasswordAnswer"
+	,"AspNetUsers"."CreateDate" "CreateDate"
+	,"AspNetUsers"."LastLoginDate" "LastLoginDate"
+	,"AspNetUsers"."LastPasswordChangedDate" "LastPasswordChangedDate"
+	,"AspNetUsers"."LastLockoutDate" "LastLockoutDate"
+	,"AspNetUsers"."FailedPasswordAnswerAttemptCount" "FailedPasswordAnswerAttemptCount"
+	,"AspNetUsers"."FailedPasswordAnswerAttemptWindowStart" "FailedPasswordAnswerAttemptWindowStart"
+	,"AspNetUsers"."Comment" "Comment"
+	,"AspNetUsers"."Profile_DateOfBirth" "Profile_DateOfBirth"
+	,"AspNetUsers"."Profile_City" "Profile_City"
+	,"AspNetUsers"."Profile_UserStats_Height" "Profile_UserStats_Height"
+	,"AspNetUsers"."Profile_UserStats_Weight" "Profile_UserStats_Weight"
+	,"AspNetUsers"."PhoneNumber" "PhoneNumber"
+	,"AspNetUsers"."PhoneNumberConfirmed" "PhoneNumberConfirmed"
+	,"AspNetUsers"."TwoFactorEnabled" "TwoFactorEnabled"
+	,"AspNetUsers"."LockoutEndDateUtc" "LockoutEndDateUtc"
+	,"AspNetUsers"."LockoutEnabled" "LockoutEnabled"
+	,"AspNetUsers"."AccessFailedCount" "AccessFailedCount"
+	,"AspNetUsers"."userurl" "userurl"
+	,"AspNetUsers"."ModifiedBy" "ModifiedBy"
+	,"AspNetUsers"."CreatedBy" "CreatedBy"
+	,"AspNetUsers"."Picture" "Picture"
+	,"AspNetUsers"."PictureFileName" "PictureFileName"
+	,"AspNetUsers"."PictureContentType" "PictureContentType"
+	,"AspNetUsers"."PictureLength" "PictureLength"
+	,"AspNetUsers"."LastLockedOutDate" "LastLockedOutDate"
+	,"AspNetUsers"."CreationDate" "CreationDate"
+from "dbo"."AspNetUsers" "AspNetUsers"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="Id" type="String" allowNulls="false" isPrimaryKey="true" default="(newid())" label="Id" length="128" showInSummary="true" />
+    <field name="UserName" type="String" allowQBE="false" allowSorting="false" label="User Name" length="-1" showInSummary="true" />
+    <field name="IsApproved" type="Boolean" default="((0))" label="Is Approved" showInSummary="true" />
+    <field name="IsLockedOut" type="Boolean" default="((0))" label="Is Locked Out" showInSummary="true" />
+    <field name="Email" type="String" label="Email" length="256" showInSummary="true" />
+    <field name="FailedPasswordAttemptCount" type="Int32" default="((0))" label="Failed Password Attempt Count" />
+    <field name="FailedPasswordAttemptWindowStart" type="DateTime" label="Failed Password Attempt Window Start" />
+    <field name="FirstName" type="String" label="First Name" length="50" />
+    <field name="LastName" type="String" label="Last Name" length="50" />
+    <field name="Bio" type="String" allowQBE="false" allowSorting="false" label="Bio" length="2000" />
+    <field name="AvatarUrl" type="String" label="Avatar Url" length="500" />
+    <field name="CreatedOn" type="DateTime" default="(getdate())" label="Created On" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="IsDeleted" type="Boolean" default="((0))" label="Is Deleted" />
+    <field name="DeletedOn" type="DateTime" label="Deleted On" />
+    <field name="EmailConfirmed" type="Boolean" default="((1))" label="Email Confirmed" />
+    <field name="PasswordHash" type="String" allowQBE="false" allowSorting="false" label="Password Hash" length="-1" />
+    <field name="SecurityStamp" type="String" allowQBE="false" allowSorting="false" label="Security Stamp" length="-1" />
+    <field name="Discriminator" type="String" label="Discriminator" length="128" />
+    <field name="ApplicationId" type="String" label="Application#" length="128" />
+    <field name="LegacyPasswordHash" type="String" allowQBE="false" allowSorting="false" label="Legacy Password Hash" length="-1" />
+    <field name="IsAnonymous" type="Boolean" default="((0))" label="Is Anonymous" />
+    <field name="LastActivityDate" type="DateTime" default="(getdate())" label="Last Activity Date" />
+    <field name="PasswordQuestion" type="String" label="Password Question" length="256" />
+    <field name="PasswordAnswer" type="String" label="Password Answer" length="128" />
+    <field name="CreateDate" type="DateTime" default="(getdate())" label="Create Date" />
+    <field name="LastLoginDate" type="DateTime" label="Last Login Date" />
+    <field name="LastPasswordChangedDate" type="DateTime" label="Last Password Changed Date" />
+    <field name="LastLockoutDate" type="DateTime" label="Last Lockout Date" />
+    <field name="FailedPasswordAnswerAttemptCount" type="Int32" default="((0))" label="Failed Password Answer Attempt Count" />
+    <field name="FailedPasswordAnswerAttemptWindowStart" type="DateTime" label="Failed Password Answer Attempt Window Start" />
+    <field name="Comment" type="String" allowQBE="false" allowSorting="false" label="Comment" />
+    <field name="Profile_DateOfBirth" type="DateTime" label="Profile Date Of Birth" />
+    <field name="Profile_City" type="String" allowQBE="false" allowSorting="false" label="Profile City" length="-1" />
+    <field name="Profile_UserStats_Height" type="Int32" label="Profile User Stats Height" />
+    <field name="Profile_UserStats_Weight" type="Int32" label="Profile User Stats Weight" />
+    <field name="PhoneNumber" type="String" allowQBE="false" allowSorting="false" label="Phone Number" length="-1" />
+    <field name="PhoneNumberConfirmed" type="Boolean" default="((1))" label="Phone Number Confirmed" />
+    <field name="TwoFactorEnabled" type="Boolean" default="((0))" label="Two Factor Enabled" />
+    <field name="LockoutEndDateUtc" type="DateTime" label="Lockout End Date Utc" />
+    <field name="LockoutEnabled" type="Boolean" default="((0))" label="Lockout Enabled" />
+    <field name="AccessFailedCount" type="Int32" default="((0))" label="Access Failed Count" />
+    <field name="userurl" type="String" label="Userurl" length="255" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="128" />
+    <field name="CreatedBy" type="String" label="Created By" length="128" />
+    <field name="Picture" type="Byte[]" onDemand="true" sourceFields="Id" onDemandHandler="AspNetUsersPicture" onDemandStyle="Thumbnail" allowQBE="false" allowSorting="false" label="Picture" />
+    <field name="PictureFileName" type="String" label="Picture File Name" length="200" />
+    <field name="PictureContentType" type="String" label="Picture Content Type" length="100" />
+    <field name="PictureLength" type="Int32" label="Picture Length" />
+    <field name="LastLockedOutDate" type="DateTime" label="Last Locked Out Date" />
+    <field name="CreationDate" type="DateTime" label="Creation Date" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Asp Net Users">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Id" />
+        <dataField fieldName="UserName" rows="5" />
+        <dataField fieldName="IsApproved" />
+        <dataField fieldName="IsLockedOut" />
+        <dataField fieldName="Email" />
+        <dataField fieldName="FirstName" columns="50" />
+        <dataField fieldName="LastName" columns="50" />
+        <dataField fieldName="Bio" rows="5" />
+        <dataField fieldName="AvatarUrl" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="IsDeleted" />
+        <dataField fieldName="DeletedOn" columns="10" />
+        <dataField fieldName="EmailConfirmed" />
+        <dataField fieldName="SecurityStamp" rows="5" />
+        <dataField fieldName="Discriminator" />
+        <dataField fieldName="ApplicationId" />
+        <dataField fieldName="IsAnonymous" />
+        <dataField fieldName="LastActivityDate" columns="10" />
+        <dataField fieldName="CreateDate" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Asp Net Users">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Asp Net Users" flow="NewColumn">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Id" />
+            <dataField fieldName="UserName" rows="5" />
+            <dataField fieldName="IsApproved" />
+            <dataField fieldName="IsLockedOut" />
+            <dataField fieldName="Email" />
+            <dataField fieldName="FailedPasswordAttemptCount" columns="15" />
+            <dataField fieldName="FailedPasswordAttemptWindowStart" columns="10" />
+            <dataField fieldName="FirstName" columns="50" />
+            <dataField fieldName="LastName" columns="50" />
+            <dataField fieldName="Bio" rows="5" />
+            <dataField fieldName="AvatarUrl" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="IsDeleted" />
+            <dataField fieldName="DeletedOn" columns="10" />
+            <dataField fieldName="EmailConfirmed" />
+            <dataField fieldName="PasswordHash" rows="5" />
+            <dataField fieldName="SecurityStamp" rows="5" />
+            <dataField fieldName="Discriminator" />
+            <dataField fieldName="ApplicationId" />
+            <dataField fieldName="LegacyPasswordHash" rows="5" />
+            <dataField fieldName="IsAnonymous" />
+            <dataField fieldName="LastActivityDate" columns="10" />
+            <dataField fieldName="PasswordQuestion" />
+            <dataField fieldName="PasswordAnswer" />
+            <dataField fieldName="CreateDate" columns="10" />
+            <dataField fieldName="LastLoginDate" columns="10" />
+            <dataField fieldName="LastPasswordChangedDate" columns="10" />
+            <dataField fieldName="LastLockoutDate" columns="10" />
+            <dataField fieldName="FailedPasswordAnswerAttemptCount" columns="15" />
+            <dataField fieldName="FailedPasswordAnswerAttemptWindowStart" columns="10" />
+            <dataField fieldName="Comment" rows="5" />
+            <dataField fieldName="Profile_DateOfBirth" columns="10" />
+            <dataField fieldName="Profile_City" rows="5" />
+            <dataField fieldName="Profile_UserStats_Height" columns="15" />
+            <dataField fieldName="Profile_UserStats_Weight" columns="15" />
+            <dataField fieldName="PhoneNumber" rows="5" />
+            <dataField fieldName="PhoneNumberConfirmed" />
+            <dataField fieldName="TwoFactorEnabled" />
+            <dataField fieldName="LockoutEndDateUtc" columns="10" />
+            <dataField fieldName="LockoutEnabled" />
+            <dataField fieldName="AccessFailedCount" columns="15" />
+            <dataField fieldName="userurl" />
+            <dataField fieldName="ModifiedBy" />
+            <dataField fieldName="CreatedBy" />
+            <dataField fieldName="Picture" columns="15" />
+            <dataField fieldName="PictureFileName" />
+            <dataField fieldName="PictureContentType" />
+            <dataField fieldName="PictureLength" columns="15" />
+            <dataField fieldName="LastLockedOutDate" columns="10" />
+            <dataField fieldName="CreationDate" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Asp Net Users">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Asp Net Users" flow="NewColumn">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Id" />
+            <dataField fieldName="UserName" rows="5" />
+            <dataField fieldName="IsApproved" />
+            <dataField fieldName="IsLockedOut" />
+            <dataField fieldName="Email" />
+            <dataField fieldName="FailedPasswordAttemptCount" columns="15" />
+            <dataField fieldName="FailedPasswordAttemptWindowStart" columns="10" />
+            <dataField fieldName="FirstName" columns="50" />
+            <dataField fieldName="LastName" columns="50" />
+            <dataField fieldName="Bio" rows="5" />
+            <dataField fieldName="AvatarUrl" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="IsDeleted" />
+            <dataField fieldName="DeletedOn" columns="10" />
+            <dataField fieldName="EmailConfirmed" />
+            <dataField fieldName="PasswordHash" rows="5" />
+            <dataField fieldName="SecurityStamp" rows="5" />
+            <dataField fieldName="Discriminator" />
+            <dataField fieldName="ApplicationId" />
+            <dataField fieldName="LegacyPasswordHash" rows="5" />
+            <dataField fieldName="IsAnonymous" />
+            <dataField fieldName="LastActivityDate" columns="10" />
+            <dataField fieldName="PasswordQuestion" />
+            <dataField fieldName="PasswordAnswer" />
+            <dataField fieldName="CreateDate" columns="10" />
+            <dataField fieldName="LastLoginDate" columns="10" />
+            <dataField fieldName="LastPasswordChangedDate" columns="10" />
+            <dataField fieldName="LastLockoutDate" columns="10" />
+            <dataField fieldName="FailedPasswordAnswerAttemptCount" columns="15" />
+            <dataField fieldName="FailedPasswordAnswerAttemptWindowStart" columns="10" />
+            <dataField fieldName="Comment" rows="5" />
+            <dataField fieldName="Profile_DateOfBirth" columns="10" />
+            <dataField fieldName="Profile_City" rows="5" />
+            <dataField fieldName="Profile_UserStats_Height" columns="15" />
+            <dataField fieldName="Profile_UserStats_Weight" columns="15" />
+            <dataField fieldName="PhoneNumber" rows="5" />
+            <dataField fieldName="PhoneNumberConfirmed" />
+            <dataField fieldName="TwoFactorEnabled" />
+            <dataField fieldName="LockoutEndDateUtc" columns="10" />
+            <dataField fieldName="LockoutEnabled" />
+            <dataField fieldName="AccessFailedCount" columns="15" />
+            <dataField fieldName="userurl" />
+            <dataField fieldName="ModifiedBy" />
+            <dataField fieldName="CreatedBy" />
+            <dataField fieldName="PictureFileName" />
+            <dataField fieldName="PictureContentType" />
+            <dataField fieldName="PictureLength" columns="15" />
+            <dataField fieldName="LastLockedOutDate" columns="10" />
+            <dataField fieldName="CreationDate" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

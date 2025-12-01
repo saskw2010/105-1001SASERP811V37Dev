@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="nwaging" conflictDetection="overwriteChanges" label="Nwaging" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"nwaging"."cstyp_NO" "cstyp_NO"
+	,"nwaging"."Acc_No" "Acc_No"
+	,"nwaging"."CSMSUP_No" "CSMSUP_No"
+	,"nwaging"."CSMSUP_NM" "CSMSUP_NM"
+	,"nwaging"."Tr_db" "Tr_db"
+	,"nwaging"."tr_cr" "tr_cr"
+	,"nwaging"."balance" "balance"
+	,"nwaging"."Jr_Ty" "Jr_Ty"
+	,"nwaging"."Tr_No" "Tr_No"
+	,"nwaging"."Ln_No" "Ln_No"
+	,"nwaging"."Tr_Year" "Tr_Year"
+	,"nwaging"."Tr_Mnth" "Tr_Mnth"
+	,"nwaging"."Tr_Dt" "Tr_Dt"
+	,"nwaging"."DC_No" "DC_No"
+	,"nwaging"."Tr_Ds" "Tr_Ds"
+	,"nwaging"."Acc_Nm" "Acc_Nm"
+	,"nwaging"."curno" "curno"
+	,"nwaging"."curprice" "curprice"
+	,"nwaging"."Jrty_Nm" "Jrty_Nm"
+	,"nwaging"."Curncy_No" "Curncy_No"
+	,"nwaging"."Curncy_Nm" "Curncy_Nm"
+	,"nwaging"."Curncy_Rate" "Curncy_Rate"
+	,"nwaging"."factor" "factor"
+	,"nwaging"."Today" "Today"
+	,"nwaging"."numbertoday" "numbertoday"
+	,"nwaging"."nametoday" "nametoday"
+	,"nwaging"."GLSTMACCID" "GLSTMACCID"
+from "dbo"."nwaging" "nwaging"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="cstyp_NO" type="Int64" label="cstyp NO" showInSummary="true" />
+    <field name="Acc_No" type="Int64" label="Acc No" showInSummary="true" />
+    <field name="CSMSUP_No" type="Int64" label="CSMSUP No" showInSummary="true" />
+    <field name="CSMSUP_NM" type="String" label="Csmsup Nm" length="255" showInSummary="true" />
+    <field name="Tr_db" type="Decimal" allowNulls="false" label="Tr db" readOnly="true" showInSummary="true" />
+    <field name="tr_cr" type="Decimal" allowNulls="false" label="Tr Cr" readOnly="true" />
+    <field name="balance" type="Decimal" label="Balance" readOnly="true" />
+    <field name="Jr_Ty" type="Int64" label="Jr Ty" />
+    <field name="Tr_No" type="Int64" label="Tr No" />
+    <field name="Ln_No" type="Int64" allowNulls="false" label="Ln No" />
+    <field name="Tr_Year" type="Int32" label="Tr Year" readOnly="true" />
+    <field name="Tr_Mnth" type="Int32" label="Tr Mnth" readOnly="true" />
+    <field name="Tr_Dt" type="DateTime" label="Tr Dt" />
+    <field name="DC_No" type="String" label="DC No" length="50" />
+    <field name="Tr_Ds" type="String" allowQBE="false" allowSorting="false" label="Tr Ds" length="-1" />
+    <field name="Acc_Nm" type="String" label="Acc Nm" length="255" />
+    <field name="curno" type="Int64" label="Curno" />
+    <field name="curprice" type="Decimal" label="Curprice" />
+    <field name="Jrty_Nm" type="String" label="Jrty Nm" length="255" />
+    <field name="Curncy_No" type="Int64" label="Curncy No" />
+    <field name="Curncy_Nm" type="String" label="Curncy Nm" length="200" />
+    <field name="Curncy_Rate" type="Decimal" label="Curncy Rate" />
+    <field name="factor" type="String" label="Factor" length="100" />
+    <field name="Today" type="Int32" label="Today" readOnly="true" />
+    <field name="numbertoday" type="Int64" label="Numbertoday" />
+    <field name="nametoday" type="String" label="Nametoday" length="50" />
+    <field name="GLSTMACCID" type="Int64" allowNulls="false" label="Glstmaccid" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Nwaging">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Tr_db" dataFormatString="c" columns="15" />
+        <dataField fieldName="cstyp_NO" columns="15" />
+        <dataField fieldName="Acc_No" columns="15" />
+        <dataField fieldName="CSMSUP_No" columns="15" />
+        <dataField fieldName="CSMSUP_NM" />
+        <dataField fieldName="tr_cr" dataFormatString="c" columns="15" />
+        <dataField fieldName="balance" dataFormatString="c" columns="15" />
+        <dataField fieldName="Jr_Ty" columns="15" />
+        <dataField fieldName="Tr_No" columns="15" />
+        <dataField fieldName="Ln_No" columns="15" />
+        <dataField fieldName="Tr_Year" columns="15" />
+        <dataField fieldName="Tr_Mnth" columns="15" />
+        <dataField fieldName="Tr_Dt" columns="10" />
+        <dataField fieldName="DC_No" columns="50" />
+        <dataField fieldName="Tr_Ds" rows="5" />
+        <dataField fieldName="Acc_Nm" />
+        <dataField fieldName="curno" columns="15" />
+        <dataField fieldName="curprice" dataFormatString="c" columns="15" />
+        <dataField fieldName="Jrty_Nm" />
+        <dataField fieldName="Curncy_No" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Nwaging">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Nwaging" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="cstyp_NO" columns="15" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="CSMSUP_No" columns="15" />
+            <dataField fieldName="CSMSUP_NM" />
+            <dataField fieldName="Tr_db" dataFormatString="c" columns="15" />
+            <dataField fieldName="tr_cr" dataFormatString="c" columns="15" />
+            <dataField fieldName="balance" dataFormatString="c" columns="15" />
+            <dataField fieldName="Jr_Ty" columns="15" />
+            <dataField fieldName="Tr_No" columns="15" />
+            <dataField fieldName="Ln_No" columns="15" />
+            <dataField fieldName="Tr_Year" columns="15" />
+            <dataField fieldName="Tr_Mnth" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="DC_No" columns="50" />
+            <dataField fieldName="Tr_Ds" rows="5" />
+            <dataField fieldName="Acc_Nm" />
+            <dataField fieldName="curno" columns="15" />
+            <dataField fieldName="curprice" dataFormatString="c" columns="15" />
+            <dataField fieldName="Jrty_Nm" />
+            <dataField fieldName="Curncy_No" columns="15" />
+            <dataField fieldName="Curncy_Nm" />
+            <dataField fieldName="Curncy_Rate" columns="15" />
+            <dataField fieldName="factor" />
+            <dataField fieldName="Today" columns="15" />
+            <dataField fieldName="numbertoday" columns="15" />
+            <dataField fieldName="nametoday" columns="50" />
+            <dataField fieldName="GLSTMACCID" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Nwaging">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Nwaging" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="cstyp_NO" columns="15" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="CSMSUP_No" columns="15" />
+            <dataField fieldName="CSMSUP_NM" />
+            <dataField fieldName="Jr_Ty" columns="15" />
+            <dataField fieldName="Tr_No" columns="15" />
+            <dataField fieldName="Ln_No" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="DC_No" columns="50" />
+            <dataField fieldName="Tr_Ds" rows="5" />
+            <dataField fieldName="Acc_Nm" />
+            <dataField fieldName="curno" columns="15" />
+            <dataField fieldName="curprice" dataFormatString="c" columns="15" />
+            <dataField fieldName="Jrty_Nm" />
+            <dataField fieldName="Curncy_No" columns="15" />
+            <dataField fieldName="Curncy_Nm" />
+            <dataField fieldName="Curncy_Rate" columns="15" />
+            <dataField fieldName="factor" />
+            <dataField fieldName="numbertoday" columns="15" />
+            <dataField fieldName="nametoday" columns="50" />
+            <dataField fieldName="GLSTMACCID" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

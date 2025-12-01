@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="qcheckinout11" conflictDetection="overwriteChanges" label="Alarm Log" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text>
+    <![CDATA[
+select
+	"qcheckinout11"."USERID" "USERID"
+	,"qcheckinout11"."CHECKTIME" "CHECKTIME"
+  ,"qcheckinout11"."CHECKTIME" "CHECKDate"
+  ,year("qcheckinout11"."CHECKTIME") "CHECKYEAR"
+  ,MONTH("qcheckinout11"."CHECKTIME") "CHECKMONTH"
+  ,DAY("qcheckinout11"."CHECKTIME") "CHECKDAY"
+	,"qcheckinout11"."Emp_No" "Emp_No"
+	,"qcheckinout11"."Emp_Emp_NOt" "Emp_Emp_NOt"
+ ,"qcheckinout11"."Emp_Emp_Nm" "Emp_Emp_Nm"
+	,"qcheckinout11"."Emp_Cntry_Cntry_Nm" "Emp_Cntry_Cntry_Nm"
+	,"qcheckinout11"."Emp_Depm_Depm_Nm" "Emp_Depm_Depm_Nm"
+	,"qcheckinout11"."Emp_Educt_TypeEduct_Nm" "Emp_Educt_TypeEduct_Nm"
+	,"qcheckinout11"."Emp_Job_StuEmp_Stunm" "Emp_Job_StuEmp_Stunm"
+	,"qcheckinout11"."Emp_Earning_Earning_Nm" "Emp_Earning_Earning_Nm"
+	,"qcheckinout11"."Emp_GenderGender" "Emp_GenderGender"
+	,"qcheckinout11"."Emp_Job_Job_Nm" "Emp_Job_Job_Nm"
+	,"qcheckinout11"."Emp_Loc_Loc_Nm" "Emp_Loc_Loc_Nm"
+	,"qcheckinout11"."Emp_Ownr_Ownr_ID" "Emp_Ownr_Ownr_ID"
+	,"qcheckinout11"."Emp_ReljanReljan_nm" "Emp_ReljanReljan_nm"
+	,"qcheckinout11"."Emp_Status_TypeStatus_Nm" "Emp_Status_TypeStatus_Nm"
+	,"qcheckinout11"."Emp_branchDesc1" "Emp_branchDesc1"
+	,"qcheckinout11"."Emp_branchsgmsgm_Nm" "Emp_branchsgmsgm_Nm"
+	,"qcheckinout11"."Emp_branchGenderGender" "Emp_branchGenderGender"
+	,"qcheckinout11"."Emp_branchstageShortDesc1" "Emp_branchstageShortDesc1"
+	,"qcheckinout11"."Emp_branchschtypschtypDesc" "Emp_branchschtypschtypDesc"
+	,"qcheckinout11"."branch" "branch"
+	,"qcheckinout11"."ThebranchDesc1" "ThebranchDesc1"
+	,"qcheckinout11"."Thebranchsgmsgm_Nm" "Thebranchsgmsgm_Nm"
+	,"qcheckinout11"."ThebranchsgmOpcoOpcoName" "ThebranchsgmOpcoOpcoName"
+	,"qcheckinout11"."ThebranchGenderGender" "ThebranchGenderGender"
+	,"qcheckinout11"."ThebranchstageShortDesc1" "ThebranchstageShortDesc1"
+	,"qcheckinout11"."ThebranchschtypschtypDesc" "ThebranchschtypschtypDesc"
+	,"qcheckinout11"."LogTime" "LogTime"
+	,"qcheckinout11"."Operator" "Operator"
+	,"qcheckinout11"."EnrollNumber" "EnrollNumber"
+	,"qcheckinout11"."MachineAlias" "MachineAlias"
+	,"qcheckinout11"."AlarmType" "AlarmType"
+	,"qcheckinout11"."Characters" "Characters"
+        ,"qcheckinout11"."notes" "notes"
+
+  ,"qcheckinout11"."NUMRUNNAME" "NUMRUNNAME"
+from "dbo"."qcheckinout11" "qcheckinout11"
+
+]]></text>
+    </command>
+    <command id="USERIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="USERID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="USERID" type="Int64" allowNulls="false" isPrimaryKey="true"  label="Userid" showInSummary="true" readOnly="true" />
+    <field name="CHECKTIME" type="DateTime" label="Checktime" showInSummary="true" />
+    <field name="CHECKDATE" type="DateTime" label="CHECKDATE" showInSummary="true" />
+    <field name="CHECKYEAR" type="DateTime" label="CHECKYEAR" showInSummary="true" />
+     <field name="Emp_No" type="Int64" label="Emp No" showInSummary="true" />
+    <field name="Emp_Emp_Nm" type="String" label="Emp_Emp_Nm" length="50" showInSummary="true" />
+    <field name="Emp_Blood_TypeModifiedBy" type="String" label="Emp Blood Type Modified By" length="50" />
+    <field name="Emp_Cntry_Cntry_Nm" type="String" label="Emp Cntry Nm" length="255" />
+    <field name="Emp_Depm_Depm_Nm" type="String" label="Emp Depm Nm" length="255" />
+    <field name="Emp_Educt_TypeEduct_Nm" type="String" label="Emp Educt Type Educt Nm" length="15" />
+    <field name="Emp_Job_StuEmp_Stunm" type="String" label="Emp Job Stu Emp Stunm" length="255" />
+    <field name="Emp_GenderGender" type="String" label="Emp Gender" length="100" />
+    <field name="Emp_Job_Job_Nm" type="String" label="Emp Job Nm" length="255" />
+    <field name="Emp_Loc_Loc_Nm" type="String" label="Emp Loc Nm" length="50" />
+    <field name="Emp_Ownr_Ownr_ID" type="String" label="Emp Ownr#" length="15" />
+    <field name="NUMRUNNAME" type="String" label="NUMRUNNAME" length="15" />
+    <field name="notes" type="String" label="notes" length="15" />
+    <field name="Emp_ReljanReljan_nm" type="String" label="Emp Reljan nm" length="50" />
+    <field name="Emp_Status_TypeStatus_Nm" type="String" label="Emp Status Type Status Nm" length="50" />
+    <field name="Emp_branchDesc1" type="String" label="Emp branch Desc1" length="50" />
+    <field name="Emp_branchsgmsgm_Nm" type="String" label="Emp branchsgmsgm Nm" length="255" />
+    
+    <field name="branch" type="Int64" label="Branch" allowQBE="true" readOnly="true" >
+      <items style="DropDownList" dataController="schBranch" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Desc1" dataValueField="branch"  />
+    </field>
+    <field name="ThebranchDesc1" type="String" label="Thebranch Desc1" length="50" />
+    <field name="Thebranchsgmsgm_Nm" type="String" label="Thebranchsgmsgm Nm" length="255" />
+    <field name="ThebranchsgmOpcoOpcoName" type="String" label="Thebranchsgm Opco Name" length="50" />
+    <field name="ThebranchGenderGender" type="String" label="Thebranch Gender" length="100" />
+    <field name="ThebranchstageShortDesc1" type="String" label="Thebranchstage Short Desc1" length="50" />
+    <field name="ThebranchschtypschtypDesc" type="String" label="Thebranchschtypschtyp Desc" length="150" />
+    <field name="LogTime" type="DateTime" label="Log Time" />
+    <field name="Operator" type="String" label="الشيفت" length="50" >
+    <items style="DropDownList" dataController="NUM_RUN" newDataView="createForm1"  dataView="grid1" dataTextField="NAME" dataValueField="NUM_RUNID"  />
+    </field>
+    <field name="EnrollNumber" type="String" label="Enroll Number" length="50" />
+    <field name="MachineAlias" type="String" label="Machine Alias" length="50" />
+    <field name="AlarmType" type="Int64" label="Alarm Typethis" />
+    <field name="Characters" type="String" label="Characters" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Absent Report">
+     
+      <dataFields>
+        <dataField fieldName="ThebranchDesc1" columns="50"   search="Suggested" />
+         <dataField fieldName="Operator" columns="50"  search="Suggested" />
+        <dataField fieldName="Emp_Status_TypeStatus_Nm" columns="50" search="Suggested" />
+        <dataField fieldName="CHECKTIME"  columns="10" searchOptions="$between,*"  search="Suggested" />
+        <dataField fieldName="EnrollNumber" columns="50"  search="Suggested" />
+        <dataField fieldName="Emp_Emp_Nm" columns="50" searchOptions="$contains,*" search="Suggested"/>
+        <dataField fieldName="Emp_No" columns="15" search="Suggested" />
+        <dataField fieldName="USERID" columns="15" hidden="true"/>
+        <dataField fieldName="NUMRUNNAME" columns="15" />
+        <dataField fieldName="notes" columns="15" />
+       
+        <dataField fieldName="branch" columns="15"  hidden="true"/>
+        <dataField fieldName="Thebranchsgmsgm_Nm" hidden="true"/>
+        <dataField fieldName="ThebranchsgmOpcoOpcoName" columns="50"  hidden="true"/>
+        
+        <dataField fieldName="ThebranchGenderGender"  hidden="true"/>
+        <dataField fieldName="ThebranchstageShortDesc1" columns="50"  hidden="true"/>
+        <dataField fieldName="ThebranchschtypschtypDesc"  hidden="true"/>
+        <dataField fieldName="LogTime"  columns="10"  hidden="true"/>
+        <dataField fieldName="MachineAlias" columns="50"  hidden="true"/>
+        <dataField fieldName="AlarmType" columns="15"   hidden="true"/>
+        <dataField fieldName="Characters" columns="50"   hidden="true"/>
+            <dataField fieldName="Emp_Cntry_Cntry_Nm"  hidden="true"/>
+            <dataField fieldName="Emp_Depm_Depm_Nm"  hidden="true"/>
+            <dataField fieldName="Emp_Educt_TypeEduct_Nm" columns="15"  hidden="true"/>
+            <dataField fieldName="Emp_Job_StuEmp_Stunm"  hidden="true"/>
+         
+            <dataField fieldName="Emp_GenderGender"  hidden="true"/>
+            <dataField fieldName="Emp_Job_Job_Nm"  hidden="true"/>
+            <dataField fieldName="Emp_Loc_Loc_Nm" columns="50"  hidden="true"/>
+            <dataField fieldName="Emp_Ownr_Ownr_ID" columns="15"  hidden="true"/>
+            <dataField fieldName="Emp_ReljanReljan_nm" columns="50"  hidden="true"/>
+            <dataField fieldName="Emp_branchDesc1" columns="50"  hidden="true"/>
+            <dataField fieldName="Emp_branchsgmsgm_Nm"  hidden="true"/>
+            <dataField fieldName="Emp_branchGenderGender"  hidden="true"/>
+            <dataField fieldName="Emp_branchstageShortDesc1" columns="50"  hidden="true"/>
+            <dataField fieldName="Emp_branchschtypschtypDesc"  hidden="true"/>
+            
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Qcheckinout11">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Qcheckinout11" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="USERID" columns="15" />
+            <dataField fieldName="CHECKTIME" dataFormatString="t" columns="10" />
+            <dataField fieldName="Emp_No" columns="15" />
+            <dataField fieldName="Emp_Emp_Nm" columns="50" />
+            <dataField fieldName="Emp_sgmsgm_Nm" />
+            <dataField fieldName="Emp_sgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="Emp_salrycatgrade_desc_a" columns="20" />
+            <dataField fieldName="Emp_salrycatEarning_Earning_Nm" />
+            <dataField fieldName="Emp_Blood_TypeModifiedBy" columns="50" />
+            <dataField fieldName="Emp_Bnk_Bnk_Acc" columns="20" />
+            <dataField fieldName="Emp_Sub_BnkBnk_Acc" columns="20" />
+            <dataField fieldName="Emp_Cntry_Cntry_Nm" />
+            <dataField fieldName="Emp_Depm_Depm_Nm" />
+            <dataField fieldName="Emp_Educt_TypeEduct_Nm" columns="15" />
+            <dataField fieldName="Emp_Job_StuEmp_Stunm" />
+            <dataField fieldName="Emp_Earning_Earning_Nm" />
+            <dataField fieldName="Emp_GenderGender" />
+            <dataField fieldName="Emp_Job_Job_Nm" />
+            <dataField fieldName="Emp_Loc_Loc_Nm" columns="50" />
+            <dataField fieldName="Emp_Ownr_Ownr_ID" columns="15" />
+            <dataField fieldName="notes" columns="15" />
+            <dataField fieldName="Emp_ReljanReljan_nm" columns="50" />
+            <dataField fieldName="Emp_Status_TypeStatus_Nm" columns="50" />
+            <dataField fieldName="Emp_branchDesc1" columns="50" />
+            <dataField fieldName="Emp_branchsgmsgm_Nm" />
+            <dataField fieldName="Emp_branchGenderGender" />
+            <dataField fieldName="Emp_branchstageShortDesc1" columns="50" />
+            <dataField fieldName="Emp_branchschtypschtypDesc" />
+            <dataField fieldName="Emp_Uniq_BADGENUMBER" columns="24" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="ThebranchDesc1" columns="50" />
+            <dataField fieldName="Thebranchsgmsgm_Nm" />
+            <dataField fieldName="ThebranchsgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="ThebranchGenderGender" />
+            <dataField fieldName="ThebranchstageShortDesc1" columns="50" />
+            <dataField fieldName="ThebranchschtypschtypDesc" />
+            <dataField fieldName="LogTime" dataFormatString="t" columns="10" />
+            <dataField fieldName="Operator" columns="50" />
+            <dataField fieldName="EnrollNumber" columns="50" />
+            <dataField fieldName="MachineAlias" columns="50" />
+            <dataField fieldName="AlarmType" columns="15" />
+            <dataField fieldName="Characters" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Qcheckinout11">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Qcheckinout11" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="USERID" columns="15" />
+            <dataField fieldName="CHECKTIME" dataFormatString="t" columns="10" />
+            <dataField fieldName="Emp_No" columns="15" />
+            <dataField fieldName="Emp_Emp_Nm" columns="50" />
+            <dataField fieldName="Emp_sgmsgm_Nm" />
+            <dataField fieldName="Emp_sgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="Emp_salrycatgrade_desc_a" columns="20" />
+            <dataField fieldName="Emp_salrycatEarning_Earning_Nm" />
+            <dataField fieldName="Emp_Blood_TypeModifiedBy" columns="50" />
+            <dataField fieldName="Emp_Bnk_Bnk_Acc" columns="20" />
+            <dataField fieldName="Emp_Sub_BnkBnk_Acc" columns="20" />
+            <dataField fieldName="Emp_Cntry_Cntry_Nm" />
+            <dataField fieldName="Emp_Depm_Depm_Nm" />
+            <dataField fieldName="Emp_Educt_TypeEduct_Nm" columns="15" />
+            <dataField fieldName="Emp_Job_StuEmp_Stunm" />
+            <dataField fieldName="Emp_Earning_Earning_Nm" />
+            <dataField fieldName="Emp_GenderGender" />
+            <dataField fieldName="Emp_Job_Job_Nm" />
+            <dataField fieldName="Emp_Loc_Loc_Nm" columns="50" />
+            <dataField fieldName="Emp_Ownr_Ownr_ID" columns="15" />
+         <dataField fieldName="notes" columns="15" />
+            <dataField fieldName="Emp_ReljanReljan_nm" columns="50" />
+            <dataField fieldName="Emp_Status_TypeStatus_Nm" columns="50" />
+            <dataField fieldName="Emp_branchDesc1" columns="50" />
+            <dataField fieldName="Emp_branchsgmsgm_Nm" />
+            <dataField fieldName="Emp_branchGenderGender" />
+            <dataField fieldName="Emp_branchstageShortDesc1" columns="50" />
+            <dataField fieldName="Emp_branchschtypschtypDesc" />
+            <dataField fieldName="Emp_Uniq_BADGENUMBER" columns="24" />
+            <dataField fieldName="ThebranchDesc1" columns="50" />
+            <dataField fieldName="Thebranchsgmsgm_Nm" />
+            <dataField fieldName="ThebranchsgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="ThebranchGenderGender" />
+            <dataField fieldName="ThebranchstageShortDesc1" columns="50" />
+            <dataField fieldName="ThebranchschtypschtypDesc" />
+            <dataField fieldName="LogTime" dataFormatString="t" columns="10" />
+            <dataField fieldName="Operator" columns="50" />
+            <dataField fieldName="EnrollNumber" columns="50" />
+            <dataField fieldName="MachineAlias" columns="50" />
+            <dataField fieldName="AlarmType" columns="15" />
+            <dataField fieldName="Characters" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+    
+      <action id="a6" />
+    
+    </actionGroup>
+ 
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    
+  </actions>
+</dataController>

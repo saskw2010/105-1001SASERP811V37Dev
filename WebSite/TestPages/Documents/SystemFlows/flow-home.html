@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>System Flow – Home.aspx Lifecycle</title>
+  <style>
+    body{font-family:Arial, sans-serif; margin:20px; background:#f8fafc;}
+    h1{margin-bottom:8px;}
+    .meta{color:#555;margin-bottom:16px}
+    a{color:#2563eb}
+    .container{overflow:auto}
+    svg{max-width:100%; height:auto; background:#fff; border:1px solid #e5e7eb; border-radius:8px}
+    .node{fill:#ffffff; stroke:#0f172a; stroke-width:1.5}
+    .term{fill:#f1f5f9; stroke:#0f172a; stroke-width:1.5}
+    .edge{stroke:#334155; stroke-width:1.5; fill:none; marker-end:url(#arrow)}
+    text{font-size:12px; fill:#0f172a}
+    .small{font-size:11px; fill:#475569}
+    .diamond{fill:#ffffff; stroke:#0f172a; stroke-width:1.5}
+  </style>
+</head>
+<body>
+  <h1>System Flow: Home.aspx Lifecycle</h1>
+  <div class="meta">Request → PageBase → Main.Master → Pages_Home.Page_Load → Dashboard setup → Render.</div>
+  <div class="container">
+    <svg viewBox="0 0 1040 880" role="img" aria-label="Home.aspx lifecycle flow">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155" />
+        </marker>
+      </defs>
+
+      <!-- Nodes -->
+      <rect class="node" x="380" y="40" width="280" height="50" rx="6"/>
+      <text x="520" y="65" text-anchor="middle" dominant-baseline="middle">GET /Pages/Home.aspx</text>
+
+      <rect class="node" x="380" y="120" width="280" height="50" rx="6"/>
+      <text x="520" y="145" text-anchor="middle" dominant-baseline="middle">PageBaseCore.OnInit</text>
+
+      <rect class="node" x="120" y="200" width="280" height="50" rx="6"/>
+      <text x="260" y="225" text-anchor="middle" dominant-baseline="middle">InitializeCulture + RTL</text>
+
+      <rect class="node" x="520" y="200" width="280" height="50" rx="6"/>
+      <text x="660" y="225" text-anchor="middle" dominant-baseline="middle">Apply Theme to Page</text>
+
+      <rect class="node" x="720" y="280" width="280" height="50" rx="6"/>
+      <text x="860" y="305" text-anchor="middle" dominant-baseline="middle">Touch/Mobile cookie switch</text>
+
+      <rect class="node" x="380" y="280" width="280" height="50" rx="6"/>
+      <text x="520" y="305" text-anchor="middle" dominant-baseline="middle">VerifyUrl()</text>
+
+      <rect class="node" x="380" y="360" width="280" height="50" rx="6"/>
+      <text x="520" y="385" text-anchor="middle" dominant-baseline="middle">Main.Master Init/Load</text>
+
+      <rect class="node" x="380" y="440" width="280" height="50" rx="6"/>
+      <text x="520" y="465" text-anchor="middle" dominant-baseline="middle">Pages_Home.Page_Load</text>
+
+      <polygon class="diamond" points="520,520 620,550 520,580 420,550" />
+      <text x="520" y="550" text-anchor="middle" dominant-baseline="middle">IsPostBack?</text>
+
+      <rect class="node" x="380" y="620" width="280" height="50" rx="6"/>
+      <text x="520" y="645" text-anchor="middle" dominant-baseline="middle">InitializeEnterpriseDashboard()</text>
+
+      <rect class="node" x="380" y="700" width="280" height="50" rx="6"/>
+      <text x="520" y="725" text-anchor="middle" dominant-baseline="middle">GetCurrentUserRoles()</text>
+
+      <rect class="node" x="380" y="780" width="280" height="50" rx="6"/>
+      <text x="520" y="805" text-anchor="middle" dominant-baseline="middle">Generate role tabs → placeholders</text>
+
+      <rect class="node" x="720" y="620" width="280" height="50" rx="6"/>
+      <text x="860" y="645" text-anchor="middle" dominant-baseline="middle">DataLogic.GetValue(…)</text>
+
+      <rect class="node" x="720" y="700" width="280" height="50" rx="6"/>
+      <text x="860" y="725" text-anchor="middle" dominant-baseline="middle">Database</text>
+
+      <rect class="node" x="720" y="780" width="280" height="50" rx="6"/>
+      <text x="860" y="805" text-anchor="middle" dominant-baseline="middle">Optional: dashboard data bind</text>
+
+      <rect class="term" x="60" y="780" width="260" height="50" rx="6"/>
+      <text x="190" y="805" text-anchor="middle" dominant-baseline="middle">Render → Localizer.Replace</text>
+
+      <!-- Edges -->
+      <path class="edge" d="M520,90 L520,120" />
+      <path class="edge" d="M520,170 L260,200" />
+      <path class="edge" d="M520,170 L660,200" />
+      <path class="edge" d="M520,170 L520,280" />
+      <path class="edge" d="M520,330 L520,360" />
+      <path class="edge" d="M520,410 L520,440" />
+      <path class="edge" d="M520,490 L520,520" />
+      <path class="edge" d="M520,580 L520,620" />
+      <text class="small" x="530" y="600">No</text>
+      <path class="edge" d="M620,550 L720,620" />
+      <text class="small" x="640" y="565">No</text>
+
+      <path class="edge" d="M520,670 L520,700" />
+      <path class="edge" d="M520,750 L520,780" />
+
+      <path class="edge" d="M860,670 L860,700" />
+      <path class="edge" d="M860,750 L860,780" />
+
+      <path class="edge" d="M380,805 L320,805 L320,805 L320,805" />
+      <path class="edge" d="M320,805 L320,805 L320,805 L320,805" />
+    </svg>
+
+    <div class="flow-links" style="margin-top:12px">
+      <strong>Related docs:</strong>
+      <ul style="margin:6px 0 0 18px">
+        <li><a href="../docs-html/folders/App_Code.html">App_Code folder (PageBase)</a></li>
+        <li><a href="../docs-html/files/Main.master.html">Main.master</a></li>
+        <li><a href="../docs-html/folders/Pages.html">Pages folder</a></li>
+      </ul>
+    </div>
+
+    <h3 style="margin-top:16px">Function Links</h3>
+    <table style="border-collapse:collapse; width:100%">
+      <thead>
+        <tr>
+          <th style="text-align:left;border-bottom:1px solid #e5e7eb;padding:6px 8px">Node</th>
+          <th style="text-align:left;border-bottom:1px solid #e5e7eb;padding:6px 8px">File</th>
+          <th style="text-align:left;border-bottom:1px solid #e5e7eb;padding:6px 8px">Function</th>
+          <th style="text-align:left;border-bottom:1px solid #e5e7eb;padding:6px 8px">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:6px 8px">A</td>
+          <td style="padding:6px 8px">Global.asax</td>
+          <td style="padding:6px 8px">Application_BeginRequest</td>
+          <td style="padding:6px 8px"><a href="../docs-html/files/Global.asax.html#function-Application_BeginRequest">../docs-html/files/Global.asax.html#function-Application_BeginRequest</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px">B</td>
+          <td style="padding:6px 8px">Main.master</td>
+          <td style="padding:6px 8px">Page_Load</td>
+          <td style="padding:6px 8px"><a href="../docs-html/files/Main.master.html#function-Page_Load">../docs-html/files/Main.master.html#function-Page_Load</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px">C</td>
+          <td style="padding:6px 8px">Pages/Home.aspx.vb</td>
+          <td style="padding:6px 8px">Page_Load</td>
+          <td style="padding:6px 8px"><a href="../docs-html/folders/Pages.html">../docs-html/folders/Pages.html</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="SoftwareProjects" conflictDetection="overwriteChanges" label="Software Projects" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.SoftwareProjectsBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"SoftwareProjects"."sprid" "sprid"
+	,"SoftwareProjects"."sprcustmno" "sprcustmno"
+	,"sprcustm"."sprcustomername" "sprcustmsprcustomername"
+	,"sprcustmsprcustomerclass1"."sprcustomerclass1Desc" "sprcustmsprcustomerclass1sprcustomerclass1Desc"
+	,"sprcustmsprcustomerclass2"."sprcustomerclass2Desc" "sprcustmsprcustomerclass2sprcustomerclass2Desc"
+	,"sprcustmsprcustomerclass3"."sprcustomerclass3Desc" "sprcustmsprcustomerclass3sprcustomerclass3Desc"
+	,"sprcustmsprcustomerclass4"."sprcustomerclass4Desc" "sprcustmsprcustomerclass4sprcustomerclass4Desc"
+	,"SoftwareProjects"."sprDesc" "sprDesc"
+	,"SoftwareProjects"."spramount" "spramount"
+	,"SoftwareProjects"."sprreciveamount" "sprreciveamount"
+	,"SoftwareProjects"."sprtype" "sprtype"
+	,"sprtype"."sprtypeDesc" "sprtypesprtypeDesc"
+	,"SoftwareProjects"."sprslmno" "sprslmno"
+	,"sprslm"."sprpersonname" "sprslmsprpersonname"
+	,"sprslmsprjob"."sprjobdesc" "sprslmsprjobsprjobdesc"
+	,"SoftwareProjects"."sprleader" "sprleader"
+	,"sprleader"."sprpersonname" "sprleadersprpersonname"
+	,"sprleadersprjob"."sprjobdesc" "sprleadersprjobsprjobdesc"
+	,"SoftwareProjects"."sprdesigner" "sprdesigner"
+	,"sprdesigner"."sprpersonname" "sprdesignersprpersonname"
+	,"sprdesignersprjob"."sprjobdesc" "sprdesignersprjobsprjobdesc"
+	,"SoftwareProjects"."sprnotes" "sprnotes"
+	,"SoftwareProjects"."ModifiedBy" "ModifiedBy"
+	,"SoftwareProjects"."ModifiedOn" "ModifiedOn"
+	,"SoftwareProjects"."CreatedBy" "CreatedBy"
+	,"SoftwareProjects"."CreatedOn" "CreatedOn"
+from "dbo"."SoftwareProjects" "SoftwareProjects"
+	left join "dbo"."Softwareprojectcustomers" "sprcustm" on "SoftwareProjects"."sprcustmno" = "sprcustm"."sprcustmno"
+	left join "dbo"."softwareprojectcustomerclass1" "sprcustmsprcustomerclass1" on "sprcustm"."sprcustomerclass1id" = "sprcustmsprcustomerclass1"."sprcustomerclass1id"
+	left join "dbo"."softwareprojectcustomerclass2" "sprcustmsprcustomerclass2" on "sprcustm"."sprcustomerclass2id" = "sprcustmsprcustomerclass2"."sprcustomerclass2id"
+	left join "dbo"."softwareprojectcustomerclass3" "sprcustmsprcustomerclass3" on "sprcustm"."sprcustomerclass3id" = "sprcustmsprcustomerclass3"."sprcustomerclass3id"
+	left join "dbo"."softwareprojectcustomerclass4" "sprcustmsprcustomerclass4" on "sprcustm"."sprcustomerclass4id" = "sprcustmsprcustomerclass4"."sprcustomerclass4id"
+	left join "dbo"."softwareprojecttype" "sprtype" on "SoftwareProjects"."sprtype" = "sprtype"."sprtypeid"
+	left join "dbo"."softwareprojectsteam" "sprslm" on "SoftwareProjects"."sprslmno" = "sprslm"."softwareprojecttid"
+	left join "dbo"."sprjobs" "sprslmsprjob" on "sprslm"."sprjob" = "sprslmsprjob"."sprjobid"
+	left join "dbo"."softwareprojectsteam" "sprleader" on "SoftwareProjects"."sprleader" = "sprleader"."softwareprojecttid"
+	left join "dbo"."sprjobs" "sprleadersprjob" on "sprleader"."sprjob" = "sprleadersprjob"."sprjobid"
+	left join "dbo"."softwareprojectsteam" "sprdesigner" on "SoftwareProjects"."sprdesigner" = "sprdesigner"."softwareprojecttid"
+	left join "dbo"."sprjobs" "sprdesignersprjob" on "sprdesigner"."sprjob" = "sprdesignersprjob"."sprjobid"
+]]></text>
+    </command>
+    <command id="spridIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="sprid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="sprid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Sprid" readOnly="true" />
+    <field name="sprcustmno" type="Int64" label="Sprcustmno" showInSummary="true">
+      <items style="DropDownList" dataController="Softwareprojectcustomers" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sprcustmsprcustomername" type="String" readOnly="true" label="Sprcustmsprcustomername" length="150" />
+    <field name="sprcustmsprcustomerclass1sprcustomerclass1Desc" type="String" readOnly="true" label="sprcustmsprcustomerclass1sprcustomerclass1 Desc" length="150" />
+    <field name="sprcustmsprcustomerclass2sprcustomerclass2Desc" type="String" readOnly="true" label="sprcustmsprcustomerclass2sprcustomerclass2 Desc" length="150" />
+    <field name="sprcustmsprcustomerclass3sprcustomerclass3Desc" type="String" readOnly="true" label="sprcustmsprcustomerclass3sprcustomerclass3 Desc" length="150" />
+    <field name="sprcustmsprcustomerclass4sprcustomerclass4Desc" type="String" readOnly="true" label="sprcustmsprcustomerclass4sprcustomerclass4 Desc" length="150" />
+    <field name="sprDesc" type="String" allowQBE="false" allowSorting="false" label="spr Desc" length="-1" showInSummary="true" />
+    <field name="spramount" type="Decimal" label="Spramount" showInSummary="true" />
+    <field name="sprreciveamount" type="Decimal" label="Sprreciveamount" showInSummary="true" />
+    <field name="sprtype" type="Int64" label="Sprtype" showInSummary="true">
+      <items style="DropDownList" dataController="softwareprojecttype" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sprtypesprtypeDesc" type="String" readOnly="true" label="sprtypesprtype Desc" length="150" />
+    <field name="sprslmno" type="Int64" allowNulls="false" label="Sprslmno">
+      <items style="DropDownList" dataController="softwareprojectsteam" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sprslmsprpersonname" type="String" readOnly="true" label="Sprslmsprpersonname" length="150" />
+    <field name="sprslmsprjobsprjobdesc" type="String" readOnly="true" label="Sprslmsprjobsprjobdesc" length="150" />
+    <field name="sprleader" type="Int64" allowNulls="false" label="Sprleader">
+      <items style="DropDownList" dataController="softwareprojectsteam" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sprleadersprpersonname" type="String" readOnly="true" label="Sprleadersprpersonname" length="150" />
+    <field name="sprleadersprjobsprjobdesc" type="String" readOnly="true" label="Sprleadersprjobsprjobdesc" length="150" />
+    <field name="sprdesigner" type="Int64" allowNulls="false" label="Sprdesigner">
+      <items style="DropDownList" dataController="softwareprojectsteam" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sprdesignersprpersonname" type="String" readOnly="true" label="Sprdesignersprpersonname" length="150" />
+    <field name="sprdesignersprjobsprjobdesc" type="String" readOnly="true" label="Sprdesignersprjobsprjobdesc" length="150" />
+    <field name="sprnotes" type="String" allowNulls="false" allowQBE="false" allowSorting="false" label="Sprnotes" length="-1" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="ProjectModules" type="String" label="Project Modules" allowQBE="false" allowSorting="false" computed="true" htmlEncode="false" hidden="false">
+      <items style="CheckBoxList" dataController="SoftwareModuleslist" dataView="grid1" dataTextField="sprModuleDesc" dataValueField="sprModuleid" targetController="SoftwareProjectsModuleslist" letters="false" />
+      <formula>NULL</formula>
+    </field>
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Software Projects">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="sprslmno" aliasFieldName="sprslmsprpersonname" aggregate="Count" chart="Bar-Cylinder" />
+        <dataField fieldName="sprcustmno" aliasFieldName="sprcustmsprcustomername" hyperlinkFormatString="~/Pages/Softwareprojectcustomers.aspx?sprcustmno={sprcustmno}&amp;_controller=Softwareprojectcustomers&amp;_commandName=Select&amp;_commandArgument=editForm1" aggregate="Count" />
+        <dataField fieldName="sprDesc" rows="5" />
+        <dataField fieldName="spramount" dataFormatString="c" columns="15" aggregate="Sum" chart="Column-Cylinder" />
+        <dataField fieldName="sprreciveamount" dataFormatString="c" columns="15" aggregate="Sum" chart="Column-Cylinder" />
+        <dataField fieldName="sprtype" aliasFieldName="sprtypesprtypeDesc" hyperlinkFormatString="~/Pages/softwareprojecttype.aspx?sprtypeid={sprtype}&amp;_controller=softwareprojecttype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="sprleader" aliasFieldName="sprleadersprpersonname" hyperlinkFormatString="~/Pages/softwareprojectsteam.aspx?softwareprojecttid={sprleader}&amp;_controller=softwareprojectsteam&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="sprdesigner" aliasFieldName="sprdesignersprpersonname" hyperlinkFormatString="~/Pages/softwareprojectsteam.aspx?softwareprojecttid={sprdesigner}&amp;_controller=softwareprojectsteam&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="sprnotes" rows="5" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="sprcustmsprcustomerclass1sprcustomerclass1Desc" />
+        <dataField fieldName="sprcustmsprcustomerclass2sprcustomerclass2Desc" />
+        <dataField fieldName="sprcustmsprcustomerclass3sprcustomerclass3Desc" />
+        <dataField fieldName="sprcustmsprcustomerclass4sprcustomerclass4Desc" />
+        <dataField fieldName="sprslmsprjobsprjobdesc" />
+        <dataField fieldName="sprleadersprjobsprjobdesc" />
+        <dataField fieldName="sprdesignersprjobsprjobdesc" />
+        <dataField fieldName="ProjectModules" rows="5" readOnly="true" columns="3" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Software Projects">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Software Projects" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sprcustmno" aliasFieldName="sprcustmsprcustomername" hyperlinkFormatString="~/Pages/Softwareprojectcustomers.aspx?sprcustmno={sprcustmno}&amp;_controller=Softwareprojectcustomers&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="sprDesc" rows="5" />
+            <dataField fieldName="spramount" dataFormatString="c" columns="15" />
+            <dataField fieldName="sprreciveamount" dataFormatString="c" columns="15" />
+            <dataField fieldName="sprnotes" rows="5" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sprcustmsprcustomerclass1sprcustomerclass1Desc" />
+            <dataField fieldName="sprcustmsprcustomerclass2sprcustomerclass2Desc" />
+            <dataField fieldName="sprcustmsprcustomerclass3sprcustomerclass3Desc" />
+            <dataField fieldName="sprcustmsprcustomerclass4sprcustomerclass4Desc" />
+            <dataField fieldName="sprslmsprjobsprjobdesc" />
+            <dataField fieldName="sprleadersprjobsprjobdesc" />
+            <dataField fieldName="sprdesignersprjobsprjobdesc" />
+          </dataFields>
+        </category>
+        <category id="c100" headerText="SPR class" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="sprtype" aliasFieldName="sprtypesprtypeDesc" textMode="Text" hidden="false" />
+            <dataField fieldName="sprslmno" aliasFieldName="sprslmsprpersonname" textMode="Text" hidden="false" />
+            <dataField fieldName="sprleader" aliasFieldName="sprleadersprpersonname" textMode="Text" hidden="false" />
+            <dataField fieldName="sprdesigner" aliasFieldName="sprdesignersprpersonname" textMode="Text" hidden="false" />
+            <dataField fieldName="ProjectModules" columns="3" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Software Projects">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Software Projects" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sprcustmno" aliasFieldName="sprcustmsprcustomername" />
+            <dataField fieldName="sprDesc" rows="5" textMode="RichText" />
+            <dataField fieldName="spramount" dataFormatString="c" columns="15" aggregate="Sum" chart="Column-Cylinder" />
+            <dataField fieldName="sprreciveamount" dataFormatString="c" columns="15" aggregate="Sum" />
+            <dataField fieldName="sprnotes" rows="5" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c100" headerText="SPR  Class" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="sprtype" aliasFieldName="sprtypesprtypeDesc" textMode="Text" hidden="false" />
+            <dataField fieldName="sprslmno" aliasFieldName="sprslmsprpersonname" textMode="Text" hidden="false" />
+            <dataField fieldName="sprleader" aliasFieldName="sprleadersprpersonname" textMode="Text" hidden="false" />
+            <dataField fieldName="sprdesigner" aliasFieldName="sprdesignersprpersonname" textMode="Text" hidden="false" />
+            <dataField fieldName="ProjectModules" columns="3" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer application="StiReport" type="Flex" version="1.02">
+  <Dictionary Ref="1" isKey="true" type="Dictionary">
+    <BusinessObjects count="0" isList="true"/>
+    <Databases count="1" isList="true">
+      <mosConnection1 Ref="2" isKey="true" type="Stimulsoft.Report.Dictionary.StiSqlDatabase">
+        <Alias>mosConnection1</Alias>
+        <ConnectionStringEncrypted>9HBTz0gJQ4F7TJzJYyXjJ9Fg90lIcbqFYhrt+GpsZefgMtnr70GTzUVHpYBhBK17w3hpDUV5q53s
+S02l6SX2RtZUuevGVdPNaXllzHN4bXfZWFPDSF36GeFD6PBocaBexFqBLQ==</ConnectionStringEncrypted>
+        <Name>mosConnection1</Name>
+      </mosConnection1>
+    </Databases>
+    <DataSources count="2" isList="true">
+      <mosDataSource1 Ref="3" isKey="true" type="Stimulsoft.Report.Dictionary.StiSqlSource">
+        <Alias>mosDataSource1</Alias>
+        <Columns count="16" isList="true">
+          <value>branch,System.Int64</value>
+          <value>Desc1,System.String</value>
+          <value>Desc2,System.String</value>
+          <value>schtypid,System.Int64</value>
+          <value>schtypschtypDesc,System.String</value>
+          <value>opcoid,System.Int64</value>
+          <value>opcoOpcoName,System.String</value>
+          <value>sgm,System.Int64</value>
+          <value>Thesgmsgm_Nm,System.String</value>
+          <value>ThesgmOpcoOpcoName,System.String</value>
+          <value>ModifiedBy,System.String</value>
+          <value>ModifiedByUserId,System.Guid</value>
+          <value>ModifiedOn,System.DateTime</value>
+          <value>CreatedBy,System.String</value>
+          <value>CreatedById,System.Guid</value>
+          <value>CreatedOn,System.DateTime</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1"/>
+        <Name>mosDataSource1</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters count="0" isList="true"/>
+        <SqlCommand>select
+	"schBranch"."branch" "branch"
+	,"schBranch"."Desc1" "Desc1"
+	,"schBranch"."Desc2" "Desc2"
+	,"schBranch"."schtypid" "schtypid"
+	,"schtyp"."schtypDesc" "schtypschtypDesc"
+	,"schBranch"."opcoid" "opcoid"
+	,"opco"."OpcoName" "opcoOpcoName"
+	,"schBranch"."sgm" "sgm"
+	,"Thesgm"."sgm_Nm" "Thesgmsgm_Nm"
+	,"ThesgmOpco"."OpcoName" "ThesgmOpcoOpcoName"
+	,"schBranch"."ModifiedBy" "ModifiedBy"
+	,"schBranch"."ModifiedByUserId" "ModifiedByUserId"
+	,"schBranch"."ModifiedOn" "ModifiedOn"
+	,"schBranch"."CreatedBy" "CreatedBy"
+	,"schBranch"."CreatedById" "CreatedById"
+	,"schBranch"."CreatedOn" "CreatedOn"
+from "dbo"."schBranch" "schBranch"
+	left join "dbo"."schtyp" "schtyp" on "schBranch"."schtypid" = "schtyp"."schtypid"
+	left join "dbo"."OpCo" "opco" on "schBranch"."opcoid" = "opco"."OpcoID"
+	left join "dbo"."glmulcmp" "Thesgm" on "schBranch"."sgm" = "Thesgm"."sgm"
+	left join "dbo"."OpCo" "ThesgmOpco" on "Thesgm"."OpcoID" = "ThesgmOpco"."OpcoID"</SqlCommand>
+      </mosDataSource1>
+      <mosDataSource2 Ref="4" isKey="true" type="Stimulsoft.Report.Dictionary.StiSqlSource">
+        <Alias>mosDataSource2</Alias>
+        <Columns count="9" isList="true">
+          <value>OpcoID,System.Int64</value>
+          <value>OpcoName,System.String</value>
+          <value>OpcoNameE,System.String</value>
+          <value>ModifiedBy,System.String</value>
+          <value>ModifiedByUserId,System.Guid</value>
+          <value>ModifiedOn,System.DateTime</value>
+          <value>CreatedBy,System.String</value>
+          <value>CreatedById,System.Guid</value>
+          <value>CreatedOn,System.DateTime</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1"/>
+        <Name>mosDataSource2</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters count="0" isList="true"/>
+        <SqlCommand>select * from opco
+where opcoid=1</SqlCommand>
+      </mosDataSource2>
+    </DataSources>
+    <Relations count="1" isList="true">
+      <Relation1 Ref="5" isKey="true" type="DataRelation">
+        <Alias>Relation1</Alias>
+        <ChildColumns count="1" isList="true">
+          <value>opcoid</value>
+        </ChildColumns>
+        <ChildSource isRef="3"/>
+        <Dictionary isRef="1"/>
+        <Name>Relation1</Name>
+        <NameInSource>Relation1</NameInSource>
+        <ParentColumns count="1" isList="true">
+          <value>OpcoID</value>
+        </ParentColumns>
+        <ParentSource isRef="4"/>
+      </Relation1>
+    </Relations>
+    <Report isRef="0"/>
+    <Variables count="0" isList="true"/>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings count="0" isList="true"/>
+  <MetaTags count="0" isList="true"/>
+  <Pages count="1" isList="true">
+    <Page1 Ref="6" isKey="true" type="Page">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components count="3" isList="true">
+        <DataBand1 Ref="7" isKey="true" type="DataBand">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true"/>
+          <ClientRectangle>0,0.2,10.22,0.7</ClientRectangle>
+          <Components count="4" isList="true">
+            <Text1 Ref="8" isKey="true" type="Text">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.3,0.2,0.6,0.2</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="6"/>
+              <Parent isRef="7"/>
+              <Text>{mosDataSource2.OpcoID}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text1>
+            <Text2 Ref="9" isKey="true" type="Text">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.2,0.2,1.1,0.2</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="6"/>
+              <Parent isRef="7"/>
+              <Text>OpcoID</Text>
+              <TextBrush>Black</TextBrush>
+            </Text2>
+            <Text3 Ref="10" isKey="true" type="Text">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.4,0.2,0.6,0.2</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="6"/>
+              <Parent isRef="7"/>
+              <Text>{mosDataSource2.OpcoName}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text3>
+            <Text4 Ref="11" isKey="true" type="Text">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.3,0.2,1.1,0.2</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="6"/>
+              <Parent isRef="7"/>
+              <Text>OpcoName</Text>
+              <TextBrush>Black</TextBrush>
+            </Text4>
+          </Components>
+          <Conditions count="0" isList="true"/>
+          <DataSourceName>mosDataSource2</DataSourceName>
+          <Filters count="0" isList="true"/>
+          <Name>DataBand1</Name>
+          <Page isRef="6"/>
+          <Parent isRef="6"/>
+          <Sort count="0" isList="true"/>
+        </DataBand1>
+        <HeaderBand Ref="12" isKey="true" type="HeaderBand">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,1.3,10.22,0.5</ClientRectangle>
+          <Components count="8" isList="true">
+            <HeaderText1 Ref="13" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>LightGreen</Brush>
+              <ClientRectangle>0.1,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderText1</Name>
+              <Page isRef="6"/>
+              <Parent isRef="12"/>
+              <Text>branch</Text>
+              <TextBrush>Black</TextBrush>
+            </HeaderText1>
+            <HeaderText2 Ref="14" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>LightGreen</Brush>
+              <ClientRectangle>1.3,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderText2</Name>
+              <Page isRef="6"/>
+              <Parent isRef="12"/>
+              <Text>Desc1</Text>
+              <TextBrush>Black</TextBrush>
+            </HeaderText2>
+            <HeaderText3 Ref="15" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>LightGreen</Brush>
+              <ClientRectangle>2.5,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderText3</Name>
+              <Page isRef="6"/>
+              <Parent isRef="12"/>
+              <Text>Desc2</Text>
+              <TextBrush>Black</TextBrush>
+            </HeaderText3>
+            <HeaderText4 Ref="16" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>LightGreen</Brush>
+              <ClientRectangle>3.7,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderText4</Name>
+              <Page isRef="6"/>
+              <Parent isRef="12"/>
+              <Text>schtypid</Text>
+              <TextBrush>Black</TextBrush>
+            </HeaderText4>
+            <HeaderText5 Ref="17" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>LightGreen</Brush>
+              <ClientRectangle>4.9,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderText5</Name>
+              <Page isRef="6"/>
+              <Parent isRef="12"/>
+              <Text>schtypschtypDesc</Text>
+              <TextBrush>Black</TextBrush>
+            </HeaderText5>
+            <HeaderText6 Ref="18" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>LightGreen</Brush>
+              <ClientRectangle>6.1,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderText6</Name>
+              <Page isRef="6"/>
+              <Parent isRef="12"/>
+              <Text>opcoid</Text>
+              <TextBrush>Black</TextBrush>
+            </HeaderText6>
+            <HeaderText7 Ref="19" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>LightGreen</Brush>
+              <ClientRectangle>7.3,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderText7</Name>
+              <Page isRef="6"/>
+              <Parent isRef="12"/>
+              <Text>opcoOpcoName</Text>
+              <TextBrush>Black</TextBrush>
+            </HeaderText7>
+            <HeaderText8 Ref="20" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>LightGreen</Brush>
+              <ClientRectangle>8.5,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>HeaderText8</Name>
+              <Page isRef="6"/>
+              <Parent isRef="12"/>
+              <Text>sgm</Text>
+              <TextBrush>Black</TextBrush>
+            </HeaderText8>
+          </Components>
+          <Conditions count="0" isList="true"/>
+          <Name>HeaderBand</Name>
+          <Page isRef="6"/>
+          <Parent isRef="6"/>
+        </HeaderBand>
+        <mosDataBand1 Ref="21" isKey="true" type="DataBand">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true"/>
+          <ClientRectangle>0,2.2,10.22,0.5</ClientRectangle>
+          <Components count="8" isList="true">
+            <DataText1 Ref="22" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.1,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>DataText1</Name>
+              <Page isRef="6"/>
+              <Parent isRef="21"/>
+              <Text>{mosDataSource1.branch}</Text>
+              <TextBrush>Black</TextBrush>
+            </DataText1>
+            <DataText2 Ref="23" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.3,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>DataText2</Name>
+              <Page isRef="6"/>
+              <Parent isRef="21"/>
+              <Text>{mosDataSource1.Desc1}</Text>
+              <TextBrush>Black</TextBrush>
+            </DataText2>
+            <DataText3 Ref="24" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.5,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>DataText3</Name>
+              <Page isRef="6"/>
+              <Parent isRef="21"/>
+              <Text>{mosDataSource1.Desc2}</Text>
+              <TextBrush>Black</TextBrush>
+            </DataText3>
+            <DataText4 Ref="25" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.7,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>DataText4</Name>
+              <Page isRef="6"/>
+              <Parent isRef="21"/>
+              <Text>{mosDataSource1.schtypid}</Text>
+              <TextBrush>Black</TextBrush>
+            </DataText4>
+            <DataText5 Ref="26" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.9,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>DataText5</Name>
+              <Page isRef="6"/>
+              <Parent isRef="21"/>
+              <Text>{mosDataSource1.schtypschtypDesc}</Text>
+              <TextBrush>Black</TextBrush>
+            </DataText5>
+            <DataText6 Ref="27" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.1,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>DataText6</Name>
+              <Page isRef="6"/>
+              <Parent isRef="21"/>
+              <Text>{mosDataSource1.opcoid}</Text>
+              <TextBrush>Black</TextBrush>
+            </DataText6>
+            <DataText7 Ref="28" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.3,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>DataText7</Name>
+              <Page isRef="6"/>
+              <Parent isRef="21"/>
+              <Text>{mosDataSource1.opcoOpcoName}</Text>
+              <TextBrush>Black</TextBrush>
+            </DataText7>
+            <DataText8 Ref="29" isKey="true" type="Text">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>8.5,0,1.1,0.5</ClientRectangle>
+              <Conditions count="0" isList="true"/>
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>DataText8</Name>
+              <Page isRef="6"/>
+              <Parent isRef="21"/>
+              <Text>{mosDataSource1.sgm}</Text>
+              <TextBrush>Black</TextBrush>
+            </DataText8>
+          </Components>
+          <Conditions count="0" isList="true"/>
+          <DataRelationName>Relation1</DataRelationName>
+          <DataSourceName>mosDataSource1</DataSourceName>
+          <Filters count="0" isList="true"/>
+          <MasterComponent isRef="7"/>
+          <Name>mosDataBand1</Name>
+          <Page isRef="6"/>
+          <Parent isRef="6"/>
+          <Sort count="0" isList="true"/>
+        </mosDataBand1>
+      </Components>
+      <Conditions count="0" isList="true"/>
+      <Guid>8038ee44c7ab4799b130ae92f225461c</Guid>
+      <Margins>0.39,0.39,0.39,0.39</Margins>
+      <Name>Page1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>8.5</PageHeight>
+      <PageWidth>11</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0"/>
+      <Watermark Ref="30" isKey="true" type="Stimulsoft.Report.Components.StiWatermark">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="31" isKey="true" type="Stimulsoft.Report.Print.StiPrinterSettings"/>
+  <ReferencedAssemblies count="8" isList="true">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>first1</ReportAlias>
+  <ReportChanged>11/09/2013 07:54:47 AM</ReportChanged>
+  <ReportCreated>08/18/2013 08:22:02 AM</ReportCreated>
+  <ReportFile>mrtschBranch100001.mrt</ReportFile>
+  <ReportGuid>5ccf55112d096231c4e73b365a2aeb91</ReportGuid>
+  <ReportName>first1</ReportName>
+  <ReportUnit>Inches</ReportUnit>
+  <ReportVersion>2013.1.1600</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles count="0" isList="true"/>
+</StiSerializer>

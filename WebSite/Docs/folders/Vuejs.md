@@ -1,0 +1,5 @@
+# Folder: Vuejs
+
+Purpose: Vue runtime (vue.global.prod.js) for docs/demo.
+
+Back to hub: ../index.md | TOC: ../TOC.md

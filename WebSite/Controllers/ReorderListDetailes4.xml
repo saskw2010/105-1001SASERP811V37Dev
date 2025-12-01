@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="ReorderListDetailes" conflictDetection="overwriteChanges" label="Reorder List Detailes" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"ReorderListDetailes"."ReorderIDDetailes" "ReorderIDDetailes"
+	,"ReorderListDetailes"."ReorderID" "ReorderID"
+	,"Reorder"."ModifiedBy" "ReorderModifiedBy"
+	,"ReorderListDetailes"."ReorderDate" "ReorderDate"
+	,"ReorderListDetailes"."ID_Comp" "ID_Comp"
+	,"ID_Comp"."ID_USER" "ID_CompID_USER"
+        ,"ID_Comp"."ITEM" "ITEM"
+	,"ID_CompIDGROUP"."GROUPA" "ID_CompIDGROUPID_USER"
+	,"ID_CompSup_"."Item_name" "ID_CompSup_Item_name"
+	,"ID_Compid1"."DESCRP1" "ID_Compid1DESCRP1"
+	,"ID_Compid2"."DESCRP1" "ID_Compid2DESCRP1"
+	,"ID_Compid3"."DESCRP1" "ID_Compid3DESCRP1"
+	,"ID_Compid4"."DESCRP1" "ID_Compid4DESCRP1"
+	,"ID_Compid5"."DESCRP1" "ID_Compid5DESCRP1"
+	,"ID_Compid6"."DESCRP1" "ID_Compid6DESCRP1"
+	,"ID_Compid7"."DESCRP1" "ID_Compid7DESCRP1"
+	,"ReorderListDetailes"."ModifiedBy" "ModifiedBy"
+	,"ReorderListDetailes"."ModifiedOn" "ModifiedOn"
+	,"ReorderListDetailes"."CreatedBy" "CreatedBy"
+	,"ReorderListDetailes"."CreatedOn" "CreatedOn"
+	,"ReorderListDetailes"."Salefor90" "Salefor90"
+	,"ReorderListDetailes"."Salefor901" "Salefor901"
+	,"ReorderListDetailes"."Salefor902" "Salefor902"
+	,"ReorderListDetailes"."Salefor903" "Salefor903"
+	,"ReorderListDetailes"."Salefor904" "Salefor904"
+	,"ReorderListDetailes"."Salefor21" "Salefor21"
+	,"ReorderListDetailes"."Salefor211" "Salefor211"
+	,"ReorderListDetailes"."Salefor212" "Salefor212"
+	,"ReorderListDetailes"."Salefor213" "Salefor213"
+	,"ReorderListDetailes"."Salefor214" "Salefor214"
+	,"ReorderListDetailes"."finalCalc" "finalCalc"
+from "dbo"."ReorderListDetailes" "ReorderListDetailes"
+	left join "dbo"."ReorderList" "Reorder" on "ReorderListDetailes"."ReorderID" = "Reorder"."ReorderID"
+	left join "dbo"."ITEMS" "ID_Comp" on "ReorderListDetailes"."ID_Comp" = "ID_Comp"."ID_comp"
+	left join "dbo"."GROUPStk" "ID_CompIDGROUP" on "ID_Comp"."IDGROUP" = "ID_CompIDGROUP"."IDGROUP"
+	left join "dbo"."ItemList" "ID_CompSup_" on "ID_Comp"."Sup_No" = "ID_CompSup_"."ItemNo"
+	left join "dbo"."PYHldtypsv1" "ID_Compid1" on "ID_Comp"."id1" = "ID_Compid1"."ID1"
+	left join "dbo"."PYHldtypsv2" "ID_Compid2" on "ID_Comp"."id2" = "ID_Compid2"."ID2"
+	left join "dbo"."PYHldtypsv3" "ID_Compid3" on "ID_Comp"."id3" = "ID_Compid3"."id3"
+	left join "dbo"."PYHldtypsv4" "ID_Compid4" on "ID_Comp"."id4" = "ID_Compid4"."id4"
+	left join "dbo"."PYHldtypsv5" "ID_Compid5" on "ID_Comp"."id5" = "ID_Compid5"."id5"
+	left join "dbo"."PYHldtypsv6" "ID_Compid6" on "ID_Comp"."id6" = "ID_Compid6"."id6"
+	left join "dbo"."PYHldtypsv7" "ID_Compid7" on "ID_Comp"."id7" = "ID_Compid7"."id7"
+]]></text>
+    </command>
+    <command id="ReorderIDDetailesIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ReorderIDDetailes" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ReorderIDDetailes" type="Int64" allowNulls="false" isPrimaryKey="true" label="Reorder ID Detailes" readOnly="true" />
+    <field name="ReorderID" type="Int64" allowNulls="false" label="Reorder#" showInSummary="true">
+      <items style="Lookup" dataController="ReorderList" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ReorderModifiedBy" type="String" readOnly="true" label="Reorder Modified By" length="50" />
+    <field name="ReorderDate" type="DateTime" label="Reorder Date" showInSummary="true" />
+    <field name="ID_Comp" type="Int64" label="ID Comp" showInSummary="true">
+      <items style="Lookup" dataController="ITEMS" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ID_CompID_USER" type="String" readOnly="true" label="ID Comp ID USER" length="50" />
+<field name="ITEM" type="String" readOnly="true" label="ITEM" length="50" />
+
+    <field name="ID_CompIDGROUPID_USER" type="String" readOnly="true" label="ID Comp IDGROUPID USER" length="50" />
+    <field name="ID_CompSup_Item_name" type="String" readOnly="true" label="ID Comp Sup Item name" length="150" />
+    <field name="ID_Compid1DESCRP1" type="String" readOnly="true" label="ID Compid1 DESCRP1" length="255" />
+    <field name="ID_Compid2DESCRP1" type="String" readOnly="true" label="ID Compid2 DESCRP1" length="255" />
+    <field name="ID_Compid3DESCRP1" type="String" readOnly="true" label="ID Compid3 DESCRP1" length="255" />
+    <field name="ID_Compid4DESCRP1" type="String" readOnly="true" label="ID Compid4 DESCRP1" length="255" />
+    <field name="ID_Compid5DESCRP1" type="String" readOnly="true" label="ID Compid5 DESCRP1" length="255" />
+    <field name="ID_Compid6DESCRP1" type="String" readOnly="true" label="ID Compid6 DESCRP1" length="255" />
+    <field name="ID_Compid7DESCRP1" type="String" readOnly="true" label="ID Compid7 DESCRP1" length="255" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" showInSummary="true" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" showInSummary="true" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="Salefor90" type="Single" label="Salefor90" />
+    <field name="Salefor901" type="Single" label="Salefor90max" />
+    <field name="Salefor902" type="Single" label="Salefor90min" />
+    <field name="Salefor903" type="Single" label="finalmax" />
+    <field name="Salefor904" type="Single" label="TotalBalance" />
+    <field name="Salefor21" type="Single" label="Salefor14" />
+    <field name="Salefor211" type="Single" label="Salefor14max" />
+    <field name="Salefor212" type="Single" label="Salefor14min" />
+    <field name="Salefor213" type="Single" label="finalmin" />
+    <field name="Salefor214" type="Single" label="Salefor214" />
+    <field name="finalCalc" type="Single" label="final Calc" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Reorder List Detailes">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="ReorderID"  />
+        <dataField fieldName="ReorderDate" columns="10" />
+        <dataField fieldName="ID_Comp"   />
+        <dataField fieldName="ID_CompID_USER" />      
+       <dataField fieldName="ITEM" columns="15" />
+ 	<dataField fieldName="Salefor904" columns="15"  dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="Salefor90" columns="15"  dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="Salefor21" columns="15"  dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="Salefor901" columns="15"  dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="Salefor211" columns="15"  dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="Salefor902" columns="15"  dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="Salefor212" columns="15"  dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="Salefor903" columns="15"  dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="Salefor213" columns="15"  dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />        
+
+
+
+        <dataField fieldName="Salefor214" columns="15"  dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="finalCalc" columns="15"  dataFormatString="n3" FormatOnClient="False" aggregate="Sum" />
+        <dataField fieldName="ID_CompIDGROUPID_USER" columns="50" />
+        <dataField fieldName="ID_Compid1DESCRP1" />
+<dataField fieldName="ID_Compid2DESCRP1" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Reorder List Detailes">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Reorder List Detailes" newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ReorderID" aliasFieldName="ReorderModifiedBy" hyperlinkFormatString="~/Pages/ReorderList.aspx?ReorderID={ReorderID}&amp;_controller=ReorderList&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ReorderDate" columns="10" />
+            <dataField fieldName="ID_Comp" aliasFieldName="ID_CompID_USER" hyperlinkFormatString="~/Pages/ITEMS.aspx?ID_comp={ID_Comp}&amp;_controller=ITEMS&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="Salefor90" columns="15" />
+            <dataField fieldName="Salefor901" columns="15" />
+            <dataField fieldName="Salefor902" columns="15" />
+            <dataField fieldName="Salefor903" columns="15" />
+            <dataField fieldName="Salefor904" columns="15" />
+            <dataField fieldName="Salefor21" columns="15" />
+            <dataField fieldName="Salefor211" columns="15" />
+            <dataField fieldName="Salefor212" columns="15" />
+            <dataField fieldName="Salefor213" columns="15" />
+            <dataField fieldName="Salefor214" columns="15" />
+            <dataField fieldName="finalCalc" columns="15" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ID_CompIDGROUPID_USER" columns="50" />
+            <dataField fieldName="ID_CompSup_Item_name" />
+            <dataField fieldName="ID_Compid1DESCRP1" />
+            <dataField fieldName="ID_Compid2DESCRP1" />
+            <dataField fieldName="ID_Compid3DESCRP1" />
+            <dataField fieldName="ID_Compid4DESCRP1" />
+            <dataField fieldName="ID_Compid5DESCRP1" />
+            <dataField fieldName="ID_Compid6DESCRP1" />
+            <dataField fieldName="ID_Compid7DESCRP1" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Reorder List Detailes">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Reorder List Detailes" newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ReorderID" aliasFieldName="ReorderModifiedBy" />
+            <dataField fieldName="ReorderDate" columns="10" />
+            <dataField fieldName="ID_Comp" aliasFieldName="ID_CompID_USER" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="Salefor90" columns="15" />
+            <dataField fieldName="Salefor901" columns="15" />
+            <dataField fieldName="Salefor902" columns="15" />
+            <dataField fieldName="Salefor903" columns="15" />
+            <dataField fieldName="Salefor904" columns="15" />
+            <dataField fieldName="Salefor21" columns="15" />
+            <dataField fieldName="Salefor211" columns="15" />
+            <dataField fieldName="Salefor212" columns="15" />
+            <dataField fieldName="Salefor213" columns="15" />
+            <dataField fieldName="Salefor214" columns="15" />
+            <dataField fieldName="finalCalc" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

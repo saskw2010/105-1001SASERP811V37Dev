@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="user_details" conflictDetection="overwriteChanges" label="User Details" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.user_detailsBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"user_details"."UserName" "UserName"
+	,"user_details"."UserEmail" "UserEmail"
+	,"user_details"."UserAboutme" "UserAboutme"
+	,"user_details"."FirstName" "FirstName"
+	,"user_details"."LastName" "LastName"
+	,"user_details"."Myphone" "Myphone"
+	,"user_details"."MyphoneTel" "MyphoneTel"
+	,"user_details"."Myadress" "Myadress"
+	,"user_details"."catid1" "catid1"
+	,"Thecatid1"."cat1name" "Thecatid1cat1name"
+	,"user_details"."catid2" "catid2"
+	,"Thecatid2"."cat2name" "Thecatid2cat2name"
+	,"user_details"."catid3" "catid3"
+	,"Thecatid3"."cat3name" "Thecatid3cat3name"
+	,"user_details"."catid4" "catid4"
+	,"Thecatid4"."cat4name" "Thecatid4cat4name"
+	,"user_details"."catid5" "catid5"
+	,"Thecatid5"."cat5name" "Thecatid5cat5name"
+	,"user_details"."catid6" "catid6"
+	,"Thecatid6"."cat6name" "Thecatid6cat6name"
+	,"user_details"."catid7" "catid7"
+	,"Thecatid7"."cat7name" "Thecatid7cat7name"
+	,"user_details"."catid8" "catid8"
+	,"Thecatid8"."cat8name" "Thecatid8cat8name"
+	,"user_details"."catid9" "catid9"
+	,"Thecatid9"."cat9name" "Thecatid9cat9name"
+	,"user_details"."stage" "stage"
+	,"stage"."ShortDesc1" "stageShortDesc1"
+	,"user_details"."Isactive" "Isactive"
+	,"user_details"."isdeleted" "isdeleted"
+	,"user_details"."ModifiedBy" "ModifiedBy"
+	,"user_details"."ModifiedOn" "ModifiedOn"
+	,"user_details"."CreatedBy" "CreatedBy"
+	,"user_details"."CreatedOn" "CreatedOn"
+from "dbo"."user_details" "user_details"
+	left join "dbo"."Qwaizcat1" "Thecatid1" on "user_details"."catid1" = "Thecatid1"."catid1"
+	left join "dbo"."Qwaizcat2" "Thecatid2" on "user_details"."catid2" = "Thecatid2"."catid2"
+	left join "dbo"."Qwaizcat3" "Thecatid3" on "user_details"."catid3" = "Thecatid3"."catid3"
+	left join "dbo"."Qwaizcat4" "Thecatid4" on "user_details"."catid4" = "Thecatid4"."catid4"
+	left join "dbo"."Qwaizcat5" "Thecatid5" on "user_details"."catid5" = "Thecatid5"."catid5"
+	left join "dbo"."Qwaizcat6" "Thecatid6" on "user_details"."catid6" = "Thecatid6"."catid6"
+	left join "dbo"."Qwaizcat7" "Thecatid7" on "user_details"."catid7" = "Thecatid7"."catid7"
+	left join "dbo"."Qwaizcat8" "Thecatid8" on "user_details"."catid8" = "Thecatid8"."catid8"
+	left join "dbo"."Qwaizcat9" "Thecatid9" on "user_details"."catid9" = "Thecatid9"."catid9"
+	left join "dbo"."schStage" "stage" on "user_details"."stage" = "stage"."Code"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="UserName" type="String" allowNulls="false" isPrimaryKey="true" label="User Name" length="50" showInSummary="true">
+      <formula>@BusinessRules_UserName</formula>
+    </field>
+    <field name="UserEmail" type="String" label="User Email" length="250" showInSummary="true" allowNulls="false" calculated="true">
+      <formula>@BusinessRules_UserEmail</formula>
+    </field>
+    <field name="UserAboutme" type="String" allowQBE="false" allowSorting="false" label="User Aboutme" showInSummary="true" />
+    <field name="FirstName" type="String" label="First Name" length="50" showInSummary="true" allowNulls="false" />
+    <field name="LastName" type="String" label="Last Name" length="50" showInSummary="true" />
+    <field name="Myphone" type="String" label="Myphone" length="50" allowNulls="false" />
+    <field name="MyphoneTel" type="String" label="Myphone Tel" length="50" />
+    <field name="Myadress" type="String" allowQBE="false" allowSorting="false" label="Myadress" length="-1" />
+    <field name="catid1" type="Int64" label="Catid1">
+      <items style="Lookup" dataController="Qwaizcat1" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecatid1cat1name" type="String" readOnly="true" label="Thecatid1cat1name" length="255" />
+    <field name="catid2" type="Int64" label="Catid2">
+      <items style="Lookup" dataController="Qwaizcat2" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecatid2cat2name" type="String" readOnly="true" label="Thecatid2cat2name" length="255" />
+    <field name="catid3" type="Int64" label="Catid3">
+      <items style="Lookup" dataController="Qwaizcat3" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecatid3cat3name" type="String" readOnly="true" label="Thecatid3cat3name" length="255" />
+    <field name="catid4" type="Int64" label="Catid4">
+      <items style="Lookup" dataController="Qwaizcat4" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecatid4cat4name" type="String" readOnly="true" label="Thecatid4cat4name" length="255" />
+    <field name="catid5" type="Int64" label="Catid5">
+      <items style="Lookup" dataController="Qwaizcat5" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecatid5cat5name" type="String" readOnly="true" label="Thecatid5cat5name" length="255" />
+    <field name="catid6" type="Int64" label="Catid6">
+      <items style="Lookup" dataController="Qwaizcat6" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecatid6cat6name" type="String" readOnly="true" label="Thecatid6cat6name" length="255" />
+    <field name="catid7" type="Int64" label="Catid7">
+      <items style="Lookup" dataController="Qwaizcat7" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecatid7cat7name" type="String" readOnly="true" label="Thecatid7cat7name" length="255" />
+    <field name="catid8" type="Int64" label="Catid8">
+      <items style="Lookup" dataController="Qwaizcat8" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecatid8cat8name" type="String" readOnly="true" label="Thecatid8cat8name" length="255" />
+    <field name="catid9" type="Int64" label="Catid9">
+      <items style="Lookup" dataController="Qwaizcat9" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecatid9cat9name" type="String" readOnly="true" label="Thecatid9cat9name" length="255" />
+    <field name="stage" type="Int64" label="Stage">
+      <items style="Lookup" dataController="schStage" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="stageShortDesc1" type="String" readOnly="true" label="stage Short Desc1" length="50" />
+    <field name="Isactive" type="Boolean" default="((1))" label="Isactive" />
+    <field name="isdeleted" type="Boolean" default="((0))" label="Isdeleted" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="User Details" filter="UserName=@BusinessRules_UserName">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="UserName" columns="50" textMode="Static" />
+        <dataField fieldName="UserEmail" textMode="Static" />
+        <dataField fieldName="FirstName" columns="50" />
+        <dataField fieldName="LastName" columns="50" />
+        <dataField fieldName="Myphone" columns="50" />
+        <dataField fieldName="MyphoneTel" columns="50" />
+        <dataField fieldName="Myadress" rows="5" />
+        <dataField fieldName="UserAboutme" rows="5" textMode="RichText" />
+        <dataField fieldName="catid1" aliasFieldName="Thecatid1cat1name" hyperlinkFormatString="~/Pages/Qwaizcat1.aspx?catid1={catid1}&amp;_controller=Qwaizcat1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="catid2" aliasFieldName="Thecatid2cat2name" hyperlinkFormatString="~/Pages/Qwaizcat2.aspx?catid2={catid2}&amp;_controller=Qwaizcat2&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="catid3" aliasFieldName="Thecatid3cat3name" hyperlinkFormatString="~/Pages/Qwaizcat3.aspx?catid3={catid3}&amp;_controller=Qwaizcat3&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="catid4" aliasFieldName="Thecatid4cat4name" hyperlinkFormatString="~/Pages/Qwaizcat4.aspx?catid4={catid4}&amp;_controller=Qwaizcat4&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="catid5" aliasFieldName="Thecatid5cat5name" hyperlinkFormatString="~/Pages/Qwaizcat5.aspx?catid5={catid5}&amp;_controller=Qwaizcat5&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="catid6" aliasFieldName="Thecatid6cat6name" hyperlinkFormatString="~/Pages/Qwaizcat6.aspx?catid6={catid6}&amp;_controller=Qwaizcat6&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="catid7" aliasFieldName="Thecatid7cat7name" hyperlinkFormatString="~/Pages/Qwaizcat7.aspx?catid7={catid7}&amp;_controller=Qwaizcat7&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="catid8" aliasFieldName="Thecatid8cat8name" hyperlinkFormatString="~/Pages/Qwaizcat8.aspx?catid8={catid8}&amp;_controller=Qwaizcat8&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="catid9" aliasFieldName="Thecatid9cat9name" hyperlinkFormatString="~/Pages/Qwaizcat9.aspx?catid9={catid9}&amp;_controller=Qwaizcat9&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="stage" aliasFieldName="stageShortDesc1" hyperlinkFormatString="~/Pages/schStage.aspx?Code={stage}&amp;_controller=schStage&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Isactive" />
+        <dataField fieldName="isdeleted" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review User Details">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="User Details" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="UserName" columns="50" textMode="Static" />
+            <dataField fieldName="UserEmail" textMode="Text" />
+            <dataField fieldName="UserAboutme" rows="5" />
+            <dataField fieldName="FirstName" columns="50" />
+            <dataField fieldName="LastName" columns="50" />
+            <dataField fieldName="Myphone" columns="50" />
+            <dataField fieldName="MyphoneTel" columns="50" />
+            <dataField fieldName="Myadress" rows="5" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New User Details">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New User Details" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="UserName" columns="50" textMode="Static" />
+            <dataField fieldName="UserEmail" textMode="Text" />
+            <dataField fieldName="UserAboutme" rows="5" />
+            <dataField fieldName="FirstName" columns="50" />
+            <dataField fieldName="LastName" columns="50" />
+            <dataField fieldName="Myphone" columns="50" />
+            <dataField fieldName="MyphoneTel" columns="50" />
+            <dataField fieldName="Myadress" rows="5" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="grid2" commandId="command1" type="Grid" label="grid2">
+      <dataFields>
+        <dataField fieldName="UserName" columns="50" textMode="Static" />
+        <dataField fieldName="UserEmail" textMode="Static" />
+        <dataField fieldName="FirstName" columns="50" />
+        <dataField fieldName="LastName" columns="50" />
+        <dataField fieldName="Myphone" columns="50" />
+        <dataField fieldName="MyphoneTel" columns="50" />
+        <dataField fieldName="Myadress" rows="5" />
+        <dataField fieldName="UserAboutme" rows="5" textMode="RichText" />
+      </dataFields>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" type="JavaScript" commandName="Insert|Update" phase="Before" name="UserEmail_Validator"><![CDATA[var fieldValue = [UserEmail];
+if (fieldValue == null) {
+    // prevent the default action processing
+    this.preventDefault();
+    // set the focus on the field and display an error
+    this.result.focus('UserEmail', 'Required field.');
+}]]></rule>
+  </businessRules>
+</dataController>

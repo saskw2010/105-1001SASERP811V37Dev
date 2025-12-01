@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="maintncrequest" conflictDetection="overwriteChanges" label="Maintncrequest" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"maintncrequest"."Doc_No" "Doc_No"
+	,"maintncrequest"."reqtype" "reqtype"
+	,"Thereqtype"."reqDesc" "ThereqtypereqDesc"
+	,"maintncrequest"."Costcnter_no" "Costcnter_no"
+	,"Costcnter_"."Costcntr_Nm" "Costcnter_Costcntr_Nm"
+	,"Costcnter_cost_typ"."Costcntr_Nm" "Costcnter_cost_typCostcntr_Nm"
+	,"maintncrequest"."Cstm_No" "Cstm_No"
+	,"Cstm_"."Cstm_Nm" "Cstm_Cstm_Nm"
+	,"Cstm_Area"."Area_name" "Cstm_AreaArea_name"
+	,"Cstm_Evaluation"."Evaluation_name" "Cstm_EvaluationEvaluation_name"
+	,"Cstm_acc_"."Acc_Nm" "Cstm_acc_Acc_Nm"
+	,"Cstm_acc_Clsacc_"."Acc_Nm" "Cstm_acc_Clsacc_Acc_Nm"
+	,"Cstm_acc_Acc_Bnd"."Acc_Nm" "Cstm_acc_Acc_BndAcc_Nm"
+	,"Cstm_Cntry_"."Cntry_Nm" "Cstm_Cntry_Cntry_Nm"
+	,"Cstm_curncy_"."Curncy_Nm" "Cstm_curncy_Curncy_Nm"
+	,"Cstm_TSNEF"."TSNEF_name" "Cstm_TSNEFTSNEF_name"
+	,"Cstm_TSNEFNO1"."TSNEF1_name" "Cstm_TSNEFNO1TSNEF1_name"
+	,"Cstm_Slm_"."Slm_Nm" "Cstm_Slm_Slm_Nm"
+	,"Cstm_Slm_masngerclass"."masngerclass" "Cstm_Slm_masngerclassmasngerclass"
+	,"maintncrequest"."Div_No" "Div_No"
+	,"Div_"."Emp_Nmdriver" "Div_Emp_Nmdriver"
+	,"Div_sgm"."sgm_Nm" "Div_sgmsgm_Nm"
+	,"Div_sgmOpco"."OpcoName" "Div_sgmOpcoOpcoName"
+	,"Div_Emp_no1"."Emp_NOt" "Div_Emp_no1Emp_NOt"
+	,"Div_Emp_no1sgm"."sgm_Nm" "Div_Emp_no1sgmsgm_Nm"
+	,"Div_Emp_no1salrycat"."grade_desc_a" "Div_Emp_no1salrycatgrade_desc_a"
+	,"Div_Emp_no1Blood_Type"."ModifiedBy" "Div_Emp_no1Blood_TypeModifiedBy"
+	,"Div_Emp_no1Bnk_"."Bnk_Acc" "Div_Emp_no1Bnk_Bnk_Acc"
+	,"Div_Emp_no1Sub_Bnk"."Bnk_Acc" "Div_Emp_no1Sub_BnkBnk_Acc"
+	,"Div_Emp_no1Cntry_"."Cntry_Nm" "Div_Emp_no1Cntry_Cntry_Nm"
+	,"Div_Emp_no1Depm_"."Depm_Nm" "Div_Emp_no1Depm_Depm_Nm"
+	,"Div_Emp_no1Educt_Type"."Educt_Nm" "Div_Emp_no1Educt_TypeEduct_Nm"
+	,"Div_Emp_no1Job_Stu"."Emp_Stunm" "Div_Emp_no1Job_StuEmp_Stunm"
+	,"Div_Emp_no1Earning_"."Earning_Nm" "Div_Emp_no1Earning_Earning_Nm"
+	,"Div_Emp_no1Gender"."Gender" "Div_Emp_no1GenderGender"
+	,"Div_Emp_no1Job_"."Job_Nm" "Div_Emp_no1Job_Job_Nm"
+	,"Div_Emp_no1Loc_"."Loc_Nm" "Div_Emp_no1Loc_Loc_Nm"
+	,"Div_Emp_no1Ownr_"."Ownr_ID" "Div_Emp_no1Ownr_Ownr_ID"
+	,"Div_Emp_no1Reljan"."Reljan_nm" "Div_Emp_no1ReljanReljan_nm"
+	,"Div_Emp_no1Status_Type"."Status_Nm" "Div_Emp_no1Status_TypeStatus_Nm"
+	,"Div_Emp_no1branch"."Desc1" "Div_Emp_no1branchDesc1"
+	,"maintncrequest"."Notes" "Notes"
+	,"maintncrequest"."Doc_Dt" "Doc_Dt"
+	,"maintncrequest"."User_Id" "User_Id"
+	,"maintncrequest"."user_id1" "user_id1"
+	,"maintncrequest"."car_no" "car_no"
+	,"maintncrequest"."tril_no" "tril_no"
+	,"maintncrequest"."ModifiedBy" "ModifiedBy"
+	,"maintncrequest"."ModifiedOn" "ModifiedOn"
+	,"maintncrequest"."CreatedBy" "CreatedBy"
+	,"maintncrequest"."CreatedOn" "CreatedOn"
+from "dbo"."maintncrequest" "maintncrequest"
+	left join "dbo"."maintainReqtype" "Thereqtype" on "maintncrequest"."reqtype" = "Thereqtype"."reqtype"
+	left join "dbo"."GLcostcntr" "Costcnter_" on "maintncrequest"."Costcnter_no" = "Costcnter_"."Costcntr_No"
+	left join "dbo"."Glcostcentgruop" "Costcnter_cost_typ" on "Costcnter_"."cost_typ" = "Costcnter_cost_typ"."Costcntr_No"
+	left join "dbo"."Stcustmr" "Cstm_" on "maintncrequest"."Cstm_No" = "Cstm_"."Cstm_No"
+	left join "dbo"."AreaList" "Cstm_Area" on "Cstm_"."AreaNo" = "Cstm_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "Cstm_Evaluation" on "Cstm_"."EvaluationNO" = "Cstm_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "Cstm_acc_" on "Cstm_"."acc_no" = "Cstm_acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "Cstm_acc_Clsacc_" on "Cstm_acc_"."Clsacc_No" = "Cstm_acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Cstm_acc_Acc_Bnd" on "Cstm_acc_"."Acc_Bnd" = "Cstm_acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."PYCntry" "Cstm_Cntry_" on "Cstm_"."Cntry_No" = "Cstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "Cstm_curncy_" on "Cstm_"."curncy_no" = "Cstm_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "Cstm_TSNEF" on "Cstm_"."TSNEFNO" = "Cstm_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "Cstm_TSNEFNO1" on "Cstm_"."TSNEFNO1" = "Cstm_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "Cstm_Slm_" on "Cstm_"."Slm_No" = "Cstm_Slm_"."Slm_No"
+	left join "dbo"."masngerclass" "Cstm_Slm_masngerclass" on "Cstm_Slm_"."masngerclassid" = "Cstm_Slm_masngerclass"."masngerclassid"
+	left join "dbo"."Cadriver" "Div_" on "maintncrequest"."Div_No" = "Div_"."Emp_No"
+	left join "dbo"."glmulcmp" "Div_sgm" on "Div_"."sgm" = "Div_sgm"."sgmid"
+	left join "dbo"."OpCo" "Div_sgmOpco" on "Div_sgm"."OpcoID" = "Div_sgmOpco"."OpcoIDidentity"
+	left join "dbo"."Pyempmfs" "Div_Emp_no1" on "Div_"."Emp_no1" = "Div_Emp_no1"."Emp_No"
+	left join "dbo"."glmulcmp" "Div_Emp_no1sgm" on "Div_Emp_no1"."sgm" = "Div_Emp_no1sgm"."sgmid"
+	left join "dbo"."grade" "Div_Emp_no1salrycat" on "Div_Emp_no1"."salrycat" = "Div_Emp_no1salrycat"."grade_code"
+	left join "dbo"."pyBlood" "Div_Emp_no1Blood_Type" on "Div_Emp_no1"."Blood_Type" = "Div_Emp_no1Blood_Type"."Blood_Type"
+	left join "dbo"."PybnkAcc" "Div_Emp_no1Bnk_" on "Div_Emp_no1"."Bnk_No" = "Div_Emp_no1Bnk_"."Bnk_No"
+	left join "dbo"."PybnkAcc" "Div_Emp_no1Sub_Bnk" on "Div_Emp_no1"."Sub_Bnk" = "Div_Emp_no1Sub_Bnk"."Bnk_No"
+	left join "dbo"."PYCntry" "Div_Emp_no1Cntry_" on "Div_Emp_no1"."Cntry_No" = "Div_Emp_no1Cntry_"."Cntry_No"
+	left join "dbo"."Pydepm" "Div_Emp_no1Depm_" on "Div_Emp_no1"."Depm_No" = "Div_Emp_no1Depm_"."Depm_No"
+	left join "dbo"."PyempEdu" "Div_Emp_no1Educt_Type" on "Div_Emp_no1"."Educt_Type" = "Div_Emp_no1Educt_Type"."Educt_Type"
+	left join "dbo"."Pyempstu" "Div_Emp_no1Job_Stu" on "Div_Emp_no1"."Job_Stu" = "Div_Emp_no1Job_Stu"."Emp_stu"
+	left join "dbo"."Pyerntsalyp1" "Div_Emp_no1Earning_" on "Div_Emp_no1"."Earning_no" = "Div_Emp_no1Earning_"."Earning_No"
+	left join "dbo"."PyGender" "Div_Emp_no1Gender" on "Div_Emp_no1"."Genderid" = "Div_Emp_no1Gender"."Genderid"
+	left join "dbo"."Pyjobs" "Div_Emp_no1Job_" on "Div_Emp_no1"."Job_No" = "Div_Emp_no1Job_"."Job_No"
+	left join "dbo"."PyLocation" "Div_Emp_no1Loc_" on "Div_Emp_no1"."Loc_No" = "Div_Emp_no1Loc_"."loc_No"
+	left join "dbo"."Pyownrmf" "Div_Emp_no1Ownr_" on "Div_Emp_no1"."Ownr_No" = "Div_Emp_no1Ownr_"."Ownr_No"
+	left join "dbo"."PyReljan" "Div_Emp_no1Reljan" on "Div_Emp_no1"."Reljan" = "Div_Emp_no1Reljan"."reljan"
+	left join "dbo"."PyStatus" "Div_Emp_no1Status_Type" on "Div_Emp_no1"."Status_Type" = "Div_Emp_no1Status_Type"."Status_Type"
+	left join "dbo"."schBranch" "Div_Emp_no1branch" on "Div_Emp_no1"."branch" = "Div_Emp_no1branch"."branch"
+]]></text>
+    </command>
+    <command id="Doc_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Doc_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Doc_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Doc No" readOnly="true" />
+    <field name="reqtype" type="Int64" allowNulls="false" label="Reqtype" showInSummary="true">
+      <items style="Lookup" dataController="maintainReqtype" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ThereqtypereqDesc" type="String" readOnly="true" label="Thereqtypereq Desc" length="100" />
+    <field name="Costcnter_no" type="Int64" allowNulls="false" label="Costcnter no" showInSummary="true">
+      <items style="Lookup" dataController="GLcostcntr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Costcnter_Costcntr_Nm" type="String" readOnly="true" label="Costcnter Costcntr Nm" length="255" />
+    <field name="Costcnter_cost_typCostcntr_Nm" type="String" readOnly="true" label="Costcnter cost typ Costcntr Nm" length="255" />
+    <field name="Cstm_No" type="Int64" allowNulls="false" label="Cstm No" showInSummary="true">
+      <items style="Lookup" dataController="Stcustmr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Cstm_Cstm_Nm" type="String" readOnly="true" label="Cstm Nm" length="155" />
+    <field name="Cstm_AreaArea_name" type="String" readOnly="true" label="Cstm Area name" length="150" />
+    <field name="Cstm_EvaluationEvaluation_name" type="String" readOnly="true" label="Cstm Evaluation name" length="150" />
+    <field name="Cstm_acc_Acc_Nm" type="String" readOnly="true" label="Cstm acc Acc Nm" length="255" />
+    <field name="Cstm_acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Cstm acc Clsacc Acc Nm" length="250" />
+    <field name="Cstm_acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Cstm acc Acc Bnd Acc Nm" length="50" />
+    <field name="Cstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="Cstm Cntry Nm" length="255" />
+    <field name="Cstm_curncy_Curncy_Nm" type="String" readOnly="true" label="Cstm curncy Curncy Nm" length="200" />
+    <field name="Cstm_TSNEFTSNEF_name" type="String" readOnly="true" label="Cstm TSNEFTSNEF name" length="150" />
+    <field name="Cstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="Cstm TSNEFNO1TSNEF1 name" length="150" />
+    <field name="Cstm_Slm_Slm_Nm" type="String" readOnly="true" label="Cstm Slm Nm" length="100" />
+    <field name="Cstm_Slm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Cstm Slm masngerclassmasngerclass" length="-1" />
+    <field name="Div_No" type="Int64" allowNulls="false" label="Div No" showInSummary="true">
+      <items style="Lookup" dataController="Cadriver" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Div_Emp_Nmdriver" type="String" readOnly="true" label="Div Emp Nmdriver" length="60" />
+    <field name="Div_sgmsgm_Nm" type="String" readOnly="true" label="Div sgmsgm Nm" length="255" />
+    <field name="Div_sgmOpcoOpcoName" type="String" readOnly="true" label="Div sgm Opco Name" length="50" />
+    <field name="Div_Emp_no1Emp_NOt" type="String" readOnly="true" label="Div Emp no1 Emp N Ot" length="50" />
+    <field name="Div_Emp_no1sgmsgm_Nm" type="String" readOnly="true" label="Div Emp no1sgmsgm Nm" length="255" />
+    <field name="Div_Emp_no1salrycatgrade_desc_a" type="String" readOnly="true" label="Div Emp no1salrycatgrade desc a" length="20" />
+    <field name="Div_Emp_no1Blood_TypeModifiedBy" type="String" readOnly="true" label="Div Emp no1 Blood Type Modified By" length="50" />
+    <field name="Div_Emp_no1Bnk_Bnk_Acc" type="String" readOnly="true" label="Div Emp no1 Bnk Acc" length="20" />
+    <field name="Div_Emp_no1Sub_BnkBnk_Acc" type="String" readOnly="true" label="Div Emp no1 Sub Bnk Acc" length="20" />
+    <field name="Div_Emp_no1Cntry_Cntry_Nm" type="String" readOnly="true" label="Div Emp no1 Cntry Nm" length="255" />
+    <field name="Div_Emp_no1Depm_Depm_Nm" type="String" readOnly="true" label="Div Emp no1 Depm Nm" length="255" />
+    <field name="Div_Emp_no1Educt_TypeEduct_Nm" type="String" readOnly="true" label="Div Emp no1 Educt Type Educt Nm" length="15" />
+    <field name="Div_Emp_no1Job_StuEmp_Stunm" type="String" readOnly="true" label="Div Emp no1 Job Stu Emp Stunm" length="255" />
+    <field name="Div_Emp_no1Earning_Earning_Nm" type="String" readOnly="true" label="Div Emp no1 Earning Nm" length="255" />
+    <field name="Div_Emp_no1GenderGender" type="String" readOnly="true" label="Div Emp no1 Gender" length="100" />
+    <field name="Div_Emp_no1Job_Job_Nm" type="String" readOnly="true" label="Div Emp no1 Job Nm" length="255" />
+    <field name="Div_Emp_no1Loc_Loc_Nm" type="String" readOnly="true" label="Div Emp no1 Loc Nm" length="50" />
+    <field name="Div_Emp_no1Ownr_Ownr_ID" type="String" readOnly="true" label="Div Emp no1 Ownr#" length="15" />
+    <field name="Div_Emp_no1ReljanReljan_nm" type="String" readOnly="true" label="Div Emp no1 Reljan nm" length="50" />
+    <field name="Div_Emp_no1Status_TypeStatus_Nm" type="String" readOnly="true" label="Div Emp no1 Status Type Status Nm" length="255" />
+    <field name="Div_Emp_no1branchDesc1" type="String" readOnly="true" label="Div Emp no1branch Desc1" length="50" />
+    <field name="Notes" type="String" allowQBE="false" allowSorting="false" label="Notes" length="-1" showInSummary="true" />
+    <field name="Doc_Dt" type="DateTime" allowNulls="false" label="Doc Dt" />
+    <field name="User_Id" type="Int64" label="User#" />
+    <field name="user_id1" type="Int64" label="User Id1" />
+    <field name="car_no" type="Int64" label="Car No" />
+    <field name="tril_no" type="Int64" label="Tril No" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Maintncrequest">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="reqtype" aliasFieldName="ThereqtypereqDesc" />
+        <dataField fieldName="Costcnter_no" aliasFieldName="Costcnter_Costcntr_Nm" hyperlinkFormatString="~/Pages/GLcostcntr.aspx?Costcntr_No={Costcnter_no}&amp;_controller=GLcostcntr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Cstm_No" aliasFieldName="Cstm_Cstm_Nm" hyperlinkFormatString="~/Pages/Stcustmr.aspx?Cstm_No={Cstm_No}&amp;_controller=Stcustmr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Div_No" aliasFieldName="Div_Emp_Nmdriver" hyperlinkFormatString="~/Pages/Cadriver.aspx?Emp_No={Div_No}&amp;_controller=Cadriver&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Notes" rows="5" />
+        <dataField fieldName="Doc_Dt" columns="10" />
+        <dataField fieldName="User_Id" columns="15" />
+        <dataField fieldName="user_id1" columns="15" />
+        <dataField fieldName="car_no" columns="15" />
+        <dataField fieldName="tril_no" columns="15" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="Costcnter_cost_typCostcntr_Nm" />
+        <dataField fieldName="Cstm_AreaArea_name" />
+        <dataField fieldName="Cstm_EvaluationEvaluation_name" />
+        <dataField fieldName="Cstm_acc_Acc_Nm" />
+        <dataField fieldName="Cstm_acc_Clsacc_Acc_Nm" />
+        <dataField fieldName="Cstm_acc_Acc_BndAcc_Nm" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Maintncrequest">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Maintncrequest" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="reqtype" aliasFieldName="ThereqtypereqDesc" hyperlinkFormatString="~/Pages/maintainReqtype.aspx?reqtype={reqtype}&amp;_controller=maintainReqtype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Costcnter_no" aliasFieldName="Costcnter_Costcntr_Nm" hyperlinkFormatString="~/Pages/GLcostcntr.aspx?Costcntr_No={Costcnter_no}&amp;_controller=GLcostcntr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Cstm_No" aliasFieldName="Cstm_Cstm_Nm" hyperlinkFormatString="~/Pages/Stcustmr.aspx?Cstm_No={Cstm_No}&amp;_controller=Stcustmr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Div_No" aliasFieldName="Div_Emp_Nmdriver" hyperlinkFormatString="~/Pages/Cadriver.aspx?Emp_No={Div_No}&amp;_controller=Cadriver&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Notes" rows="5" />
+            <dataField fieldName="Doc_Dt" columns="10" />
+            <dataField fieldName="User_Id" columns="15" />
+            <dataField fieldName="user_id1" columns="15" />
+            <dataField fieldName="car_no" columns="15" />
+            <dataField fieldName="tril_no" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Costcnter_cost_typCostcntr_Nm" />
+            <dataField fieldName="Cstm_AreaArea_name" />
+            <dataField fieldName="Cstm_EvaluationEvaluation_name" />
+            <dataField fieldName="Cstm_acc_Acc_Nm" />
+            <dataField fieldName="Cstm_acc_Clsacc_Acc_Nm" />
+            <dataField fieldName="Cstm_acc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="Cstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="Cstm_curncy_Curncy_Nm" />
+            <dataField fieldName="Cstm_TSNEFTSNEF_name" />
+            <dataField fieldName="Cstm_TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="Cstm_Slm_Slm_Nm" />
+            <dataField fieldName="Cstm_Slm_masngerclassmasngerclass" rows="5" />
+            <dataField fieldName="Div_sgmsgm_Nm" />
+            <dataField fieldName="Div_sgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="Div_Emp_no1Emp_NOt" columns="50" />
+            <dataField fieldName="Div_Emp_no1sgmsgm_Nm" />
+            <dataField fieldName="Div_Emp_no1salrycatgrade_desc_a" columns="20" />
+            <dataField fieldName="Div_Emp_no1Blood_TypeModifiedBy" columns="50" />
+            <dataField fieldName="Div_Emp_no1Bnk_Bnk_Acc" columns="20" />
+            <dataField fieldName="Div_Emp_no1Sub_BnkBnk_Acc" columns="20" />
+            <dataField fieldName="Div_Emp_no1Cntry_Cntry_Nm" />
+            <dataField fieldName="Div_Emp_no1Depm_Depm_Nm" />
+            <dataField fieldName="Div_Emp_no1Educt_TypeEduct_Nm" columns="15" />
+            <dataField fieldName="Div_Emp_no1Job_StuEmp_Stunm" />
+            <dataField fieldName="Div_Emp_no1Earning_Earning_Nm" />
+            <dataField fieldName="Div_Emp_no1GenderGender" />
+            <dataField fieldName="Div_Emp_no1Job_Job_Nm" />
+            <dataField fieldName="Div_Emp_no1Loc_Loc_Nm" columns="50" />
+            <dataField fieldName="Div_Emp_no1Ownr_Ownr_ID" columns="15" />
+            <dataField fieldName="Div_Emp_no1ReljanReljan_nm" columns="50" />
+            <dataField fieldName="Div_Emp_no1Status_TypeStatus_Nm" />
+            <dataField fieldName="Div_Emp_no1branchDesc1" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Maintncrequest">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Maintncrequest" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="reqtype" aliasFieldName="ThereqtypereqDesc" />
+            <dataField fieldName="Costcnter_no" aliasFieldName="Costcnter_Costcntr_Nm" />
+            <dataField fieldName="Cstm_No" aliasFieldName="Cstm_Cstm_Nm" />
+            <dataField fieldName="Div_No" aliasFieldName="Div_Emp_Nmdriver" />
+            <dataField fieldName="Notes" rows="5" />
+            <dataField fieldName="Doc_Dt" columns="10" />
+            <dataField fieldName="User_Id" columns="15" />
+            <dataField fieldName="user_id1" columns="15" />
+            <dataField fieldName="car_no" columns="15" />
+            <dataField fieldName="tril_no" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

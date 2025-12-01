@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="takrersheramoadlat" conflictDetection="overwriteChanges" label="Takrersheramoadlat" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"takrersheramoadlat"."Brn_No" "Brn_No"
+	,"takrersheramoadlat"."Doc_Ty" "Doc_Ty"
+	,"takrersheramoadlat"."Doc_No" "Doc_No"
+	,"takrersheramoadlat"."Ln_No" "Ln_No"
+	,"takrersheramoadlat"."Itm_No" "Itm_No"
+	,"takrersheramoadlat"."Unit_No" "Unit_No"
+	,"takrersheramoadlat"."UnitPrice" "UnitPrice"
+	,"takrersheramoadlat"."Quantity" "Quantity"
+	,"takrersheramoadlat"."Discount" "Discount"
+	,"takrersheramoadlat"."Titm_Sal" "Titm_Sal"
+	,"takrersheramoadlat"."Titm_Cost" "Titm_Cost"
+	,"takrersheramoadlat"."Itm_Cost" "Itm_Cost"
+	,"takrersheramoadlat"."Catg_No" "Catg_No"
+	,"takrersheramoadlat"."Sup_No" "Sup_No"
+	,"takrersheramoadlat"."notesdtl" "notesdtl"
+	,"takrersheramoadlat"."User_Id" "User_Id"
+	,"takrersheramoadlat"."Idate" "Idate"
+	,"takrersheramoadlat"."sgm" "sgm"
+	,"takrersheramoadlat"."darb" "darb"
+	,"takrersheramoadlat"."paplcprc" "paplcprc"
+	,"takrersheramoadlat"."nakdy" "nakdy"
+	,"takrersheramoadlat"."shad" "shad"
+	,"takrersheramoadlat"."carno" "carno"
+	,"takrersheramoadlat"."locno" "locno"
+	,"takrersheramoadlat"."Refcode" "Refcode"
+	,"takrersheramoadlat"."whhus" "whhus"
+	,"takrersheramoadlat"."Reftxt1" "Reftxt1"
+	,"takrersheramoadlat"."Reftxt" "Reftxt"
+	,"takrersheramoadlat"."Expr1" "Expr1"
+	,"takrersheramoadlat"."Expr2" "Expr2"
+	,"takrersheramoadlat"."curprice" "curprice"
+	,"takrersheramoadlat"."TOTSALLOC" "TOTSALLOC"
+	,"takrersheramoadlat"."yeardocdt" "yeardocdt"
+	,"takrersheramoadlat"."monthdcdt" "monthdcdt"
+from "dbo"."takrersheramoadlat" "takrersheramoadlat"
+]]></text>
+    </command>
+    <command id="Doc_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Doc_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Brn_No" type="Int64" label="Brn No" showInSummary="true" />
+    <field name="Doc_Ty" type="Int32" label="Doc Ty" readOnly="true" showInSummary="true" />
+    <field name="Doc_No" type="Int64" label="Doc No" readOnly="true" showInSummary="true" />
+    <field name="Ln_No" type="Int64" label="Ln No" showInSummary="true" />
+    <field name="Itm_No" type="Int64" label="Itm No" showInSummary="true" />
+    <field name="Unit_No" type="Int64" label="Unit No" />
+    <field name="UnitPrice" type="Decimal" label="Unit Price" />
+    <field name="Quantity" type="Decimal" label="Quantity" />
+    <field name="Discount" type="Int64" label="Discount" />
+    <field name="Titm_Sal" type="Decimal" label="Titm Sal" />
+    <field name="Titm_Cost" type="Decimal" label="Titm Cost" />
+    <field name="Itm_Cost" type="Decimal" label="Itm Cost" />
+    <field name="Catg_No" type="String" label="Catg No" length="255" />
+    <field name="Sup_No" type="DateTime" label="Sup No" />
+    <field name="notesdtl" type="Int64" label="Notesdtl" />
+    <field name="User_Id" type="Int64" label="User#" />
+    <field name="Idate" type="Int64" label="Idate" />
+    <field name="sgm" type="Int64" label="Sgm" />
+    <field name="darb" type="Double" label="Darb" />
+    <field name="paplcprc" type="Int64" label="Paplcprc" />
+    <field name="nakdy" type="String" label="Nakdy" length="50" />
+    <field name="shad" type="String" label="Shad" length="50" />
+    <field name="carno" type="String" label="Carno" length="50" />
+    <field name="locno" type="String" label="Locno" length="50" />
+    <field name="Refcode" type="String" label="Refcode" length="255" />
+    <field name="whhus" type="Int32" label="Whhus" readOnly="true" />
+    <field name="Reftxt1" type="Int32" label="Reftxt1" readOnly="true" />
+    <field name="Reftxt" type="Decimal" label="Reftxt" />
+    <field name="Expr1" type="Decimal" label="Expr1" readOnly="true" />
+    <field name="Expr2" type="Int32" label="Expr2" readOnly="true" />
+    <field name="curprice" type="Int32" label="Curprice" readOnly="true" />
+    <field name="TOTSALLOC" type="Int32" label="Totsalloc" readOnly="true" />
+    <field name="yeardocdt" type="Int64" label="Yeardocdt" />
+    <field name="monthdcdt" type="DateTime" label="Monthdcdt" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Takrersheramoadlat">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Brn_No" columns="15" />
+        <dataField fieldName="Doc_Ty" columns="15" />
+        <dataField fieldName="Doc_No" columns="15" />
+        <dataField fieldName="Ln_No" columns="15" />
+        <dataField fieldName="Itm_No" columns="15" />
+        <dataField fieldName="Unit_No" columns="15" />
+        <dataField fieldName="UnitPrice" dataFormatString="c" columns="15" />
+        <dataField fieldName="Quantity" dataFormatString="c" columns="15" />
+        <dataField fieldName="Discount" columns="15" />
+        <dataField fieldName="Titm_Sal" dataFormatString="c" columns="15" />
+        <dataField fieldName="Titm_Cost" dataFormatString="c" columns="15" />
+        <dataField fieldName="Itm_Cost" dataFormatString="c" columns="15" />
+        <dataField fieldName="Catg_No" />
+        <dataField fieldName="Sup_No" columns="10" />
+        <dataField fieldName="notesdtl" columns="15" />
+        <dataField fieldName="User_Id" columns="15" />
+        <dataField fieldName="Idate" columns="15" />
+        <dataField fieldName="sgm" columns="15" />
+        <dataField fieldName="darb" columns="15" />
+        <dataField fieldName="paplcprc" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Takrersheramoadlat">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Takrersheramoadlat" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Brn_No" columns="15" />
+            <dataField fieldName="Doc_Ty" columns="15" />
+            <dataField fieldName="Doc_No" columns="15" />
+            <dataField fieldName="Ln_No" columns="15" />
+            <dataField fieldName="Itm_No" columns="15" />
+            <dataField fieldName="Unit_No" columns="15" />
+            <dataField fieldName="UnitPrice" dataFormatString="c" columns="15" />
+            <dataField fieldName="Quantity" dataFormatString="c" columns="15" />
+            <dataField fieldName="Discount" columns="15" />
+            <dataField fieldName="Titm_Sal" dataFormatString="c" columns="15" />
+            <dataField fieldName="Titm_Cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="Itm_Cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="Catg_No" />
+            <dataField fieldName="Sup_No" columns="10" />
+            <dataField fieldName="notesdtl" columns="15" />
+            <dataField fieldName="User_Id" columns="15" />
+            <dataField fieldName="Idate" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="darb" columns="15" />
+            <dataField fieldName="paplcprc" columns="15" />
+            <dataField fieldName="nakdy" columns="50" />
+            <dataField fieldName="shad" columns="50" />
+            <dataField fieldName="carno" columns="50" />
+            <dataField fieldName="locno" columns="50" />
+            <dataField fieldName="Refcode" />
+            <dataField fieldName="whhus" columns="15" />
+            <dataField fieldName="Reftxt1" columns="15" />
+            <dataField fieldName="Reftxt" dataFormatString="c" columns="15" />
+            <dataField fieldName="Expr1" dataFormatString="c" columns="15" />
+            <dataField fieldName="Expr2" columns="15" />
+            <dataField fieldName="curprice" columns="15" />
+            <dataField fieldName="TOTSALLOC" columns="15" />
+            <dataField fieldName="yeardocdt" columns="15" />
+            <dataField fieldName="monthdcdt" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Takrersheramoadlat">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Takrersheramoadlat" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Brn_No" columns="15" />
+            <dataField fieldName="Ln_No" columns="15" />
+            <dataField fieldName="Itm_No" columns="15" />
+            <dataField fieldName="Unit_No" columns="15" />
+            <dataField fieldName="UnitPrice" dataFormatString="c" columns="15" />
+            <dataField fieldName="Quantity" dataFormatString="c" columns="15" />
+            <dataField fieldName="Discount" columns="15" />
+            <dataField fieldName="Titm_Sal" dataFormatString="c" columns="15" />
+            <dataField fieldName="Titm_Cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="Itm_Cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="Catg_No" />
+            <dataField fieldName="Sup_No" columns="10" />
+            <dataField fieldName="notesdtl" columns="15" />
+            <dataField fieldName="User_Id" columns="15" />
+            <dataField fieldName="Idate" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="darb" columns="15" />
+            <dataField fieldName="paplcprc" columns="15" />
+            <dataField fieldName="nakdy" columns="50" />
+            <dataField fieldName="shad" columns="50" />
+            <dataField fieldName="carno" columns="50" />
+            <dataField fieldName="locno" columns="50" />
+            <dataField fieldName="Refcode" />
+            <dataField fieldName="Reftxt" dataFormatString="c" columns="15" />
+            <dataField fieldName="yeardocdt" columns="15" />
+            <dataField fieldName="monthdcdt" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

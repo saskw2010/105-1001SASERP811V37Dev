@@ -1,0 +1,2095 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeFile="LegacyModernMastercSidebar.master.vb" Inherits="Main" %>
+  
+<!DOCTYPE html>
+<html xml:lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>" lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SKYsaas - نظام إدارة الموارد المؤسسية الحديث</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="نظام إدارة الموارد المؤسسية المتطور - SKYsaas ERP" />
+
+    <!-- Modern CSS Framework -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Custom Stylesheets -->
+    <link rel="shortcut icon" href="/favicon.png" />
+    <link href="/css/pagemenubar.css" rel="stylesheet" type="text/css" />
+    <link href="/css/notifications.css" rel="stylesheet" type="text/css" />
+    <link href="/css/sidebar-enhanced.css" rel="stylesheet" type="text/css" />
+
+      <!-- Modern Sidebar CSS -->
+  <link href="/css/modern-sidebar.css" rel="stylesheet" type="text/css" />
+
+    <!-- Ultra Modern Design System -->
+    <style>
+        /* CSS Variables for Dynamic Theming */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --danger-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+
+            --shadow-soft: 0 2px 15px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            --header-height: 70px;
+            --sidebar-width: 280px;
+
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Global Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #334155;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-top: 45px; /* Space for fixed navbar */
+        }
+
+        /* Glassmorphism Background */
+        .app-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: -2;
+        }
+
+        .app-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></svg>');
+            z-index: -1;
+        }
+
+        /* Membership Top Bar */
+        .membership-top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 45px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1001;
+            color: white;
+            font-size: 0.875rem;
+        }
+
+        .membership-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 0 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* System Brand in Top Bar */
+        .system-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .system-brand .brand-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .system-brand .brand-text {
+            background: linear-gradient(135deg, #67e8f9 0%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .welcome-text {
+            color: #94a3b8;
+        }
+
+        .username {
+            color: #67e8f9;
+            font-weight: 600;
+        }
+
+        .membership-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .membership-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            white-space: nowrap;
+        }
+
+        .membership-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .membership-btn i {
+            font-size: 0.8rem;
+        }
+
+        /* Modern Language Selector */
+        .language-selector-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.35rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-width: 60px;
+        }
+
+        .language-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .language-toggle i {
+            font-size: 0.9rem;
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 1010;
+            margin-top: 5px;
+        }
+
+        .language-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+        }
+
+        .language-option:last-child {
+            border-bottom: none;
+        }
+
+        .language-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .language-option.active {
+            background: rgba(103, 126, 234, 0.2);
+            color: #67e8f9;
+        }
+
+        .language-option .flag {
+            width: 20px;
+            height: 15px;
+            border-radius: 3px;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+
+        .flag.ar {
+            background: linear-gradient(to bottom, #007A3D 0%, #007A3D 33%, #FFFFFF 33%, #FFFFFF 66%, #000000 66%);
+        }
+
+        .flag.en {
+            background: linear-gradient(to bottom, #012169 0%, #012169 33%, #FFFFFF 33%, #FFFFFF 66%, #C8102E 66%);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-top: 45px;
+            margin-left: 0;
+            padding: 2rem;
+            min-height: calc(100vh - 45px);
+            transition: var(--transition);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .membership-content {
+                padding: 0 1rem;
+            }
+
+            .main-content {
+                margin-top: 45px;
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            /* Hide text in membership buttons on mobile */
+            .membership-btn .btn-text {
+                display: none;
+            }
+
+            .membership-btn {
+                min-width: 32px;
+                padding: 0.35rem;
+                justify-content: center;
+            }
+
+            /* Make system brand responsive */
+            .system-brand .brand-text {
+                font-size: 0.8rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 200px;
+            }
+
+            /* Language selector adjustments */
+            .language-toggle {
+                min-width: 40px;
+                padding: 0.35rem 0.5rem;
+            }
+
+            .language-toggle span {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .system-brand .brand-text {
+                display: none;
+            }
+
+            .user-info .welcome-text {
+                display: none;
+            }
+
+            .membership-actions {
+                gap: 0.25rem;
+            }
+        }
+
+        /* Loading States */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .loaded {
+            opacity: 1;
+        }
+        
+        /* Legacy Elements Hidden */
+        .legacy-hidden {
+            position: absolute !important;
+            left: -9999px !important;
+            top: -9999px !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            width: 1px !important;
+            height: 1px !important;
+            overflow: hidden !important;
+            clip: rect(1px, 1px, 1px, 1px) !important;
+            clip-path: inset(50%) !important;
+            white-space: nowrap !important;
+        }
+
+        /* Enhanced Sidebar Styles */
+        .legacy-menu-sidebar {
+            position: fixed;
+            top: 45px;
+            left: -300px;
+            width: 300px;
+            height: calc(100vh - 45px);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            z-index: 1000;
+            overflow-y: auto;
+            overflow-x: hidden;
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .legacy-menu-sidebar.open {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-header .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .sidebar-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .sidebar-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar-search {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-search input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .sidebar-loading {
+            padding: 2rem;
+            text-align: center;
+            color: #667eea;
+        }
+
+        .sidebar-content {
+            padding: 1rem;
+        }
+
+        .menu-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            color: #334155;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .menu-link:hover {
+            background: rgba(103, 126, 234, 0.1);
+            color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .submenu {
+            margin-left: 1rem;
+            border-left: 2px solid rgba(103, 126, 234, 0.2);
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .submenu-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            color: #64748b;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            margin-bottom: 0.25rem;
+        }
+
+        .submenu-link:hover {
+            background: rgba(103, 126, 234, 0.05);
+            color: #667eea;
+        }
+
+        .legacy-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .legacy-menu-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body id="Body" runat="server" class="ultra-modern-app">
+    <!-- Background Effects -->
+    <div class="app-background"></div>
+
+    <!-- Membership Top Bar -->
+    <div class="membership-top-bar">
+        <div class="membership-content">
+            <!-- System Brand -->
+            <div class="system-brand">
+                <button class="membership-btn" onclick="toggleLegacyMenu()" title="القائمة" style="margin-right: 0.5rem;">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="brand-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <div class="brand-text">SKYsaas ERP - نظام إدارة الموارد المؤسسية</div>
+            </div>
+
+            <!-- User Info & Actions -->
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <div class="user-info">
+                    <span class="welcome-text">مرحبا،</span>
+                    <span id="currentUserName" class="username">المستخدم</span>
+                </div>
+                
+                <div class="membership-actions">
+                    <button class="membership-btn" onclick="showUserProfile()" title="الملف الشخصي">
+                        <i class="fas fa-user"></i>
+                        <span class="btn-text">الملف الشخصي</span>
+                    </button>
+                    <button class="membership-btn" onclick="showNotifications()" title="الإشعارات">
+                        <i class="fas fa-bell"></i>
+                        <span class="btn-text">الإشعارات</span>
+                    </button>
+                    <button class="membership-btn" onclick="showSettings()" title="الإعدادات">
+                        <i class="fas fa-cog"></i>
+                        <span class="btn-text">الإعدادات</span>
+                    </button>
+                    <button class="membership-btn" onclick="logout()" title="تسجيل الخروج">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="btn-text">خروج</span>
+                    </button>
+                    
+                    <!-- Modern Language Selector -->
+                    <div class="language-selector-container">
+                        <button class="language-toggle" onclick="toggleLanguageDropdown()" title="تغيير اللغة">
+                            <i class="fas fa-globe"></i>
+                            <span id="currentLangCode">عربي</span>
+                            <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="selectLanguage('ar-SA', 'عربي', this)">
+                                <div class="flag ar"></div>
+                                <span>العربية</span>
+                            </div>
+                            <div class="language-option" onclick="selectLanguage('en-US', 'EN', this)">
+                                <div class="flag en"></div>
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Sidebar Navigation -->
+    <aside id="legacy-menu-sidebar" class="legacy-menu-sidebar" aria-hidden="false" style="display: block;">
+        <div class="sidebar-header">
+            <div class="brand">
+                <i class="fas fa-cube"></i>
+                <span>نظام SKYsaas</span>
+            </div>
+            <button class="sidebar-close" onclick="closeLegacyMenu()" aria-label="اغلاق القائمة">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-search">
+            <input type="text" placeholder="البحث في القوائم..." />
+        </div>
+        <nav id="legacy-menu-nav" class="legacy-menu-nav" aria-label="Main Navigation">
+            <div id="sidebar-loading" class="sidebar-loading" style="display: none;">
+                <i class="fas fa-spinner fa-spin"></i>
+                جاري تحميل القوائم...
+            </div>
+            <div id="sidebar-content" class="sidebar-content">
+                <!-- Menu will be populated here -->
+            </div>
+            <asp:ContentPlaceHolder ID="SideBarPlaceHolder" runat="server" />
+        </nav>
+        <div id="legacy-menu-tools" class="legacy-menu-tools"></div>
+    </aside>
+
+    <div id="legacy-menu-overlay" class="legacy-menu-overlay" onclick="closeLegacyMenu()" aria-hidden="true"></div>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <form id="form1" runat="server">
+            <!-- ASP.NET Essential Controls -->
+            <act:ToolkitScriptManager ID="sm" runat="server" ScriptMode="Release" EnableScriptGlobalization="True" OnResolveScriptReference="sm_ResolveScriptReference" />
+            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+            <asp:HiddenField ID="AsmxBaseField" runat="server" />
+            
+            <!-- Legacy PageMenuBar for data extraction (hidden but accessible) -->
+            <div id="PageMenuBar" runat="server" class="PageMenuBar" style="position: absolute; left: -9999px; top: -9999px; visibility: hidden; opacity: 0; width: 1px; height: 1px; overflow: hidden;"></div>
+            <aquarium:MenuExtender ID="Menu1" runat="server"
+                DataSourceID="SiteMapDataSource1"
+                TargetControlID="PageMenuBar"
+                HoverStyle="Auto"
+                PopupPosition="Left"
+                ShowSiteActions="False" />
+            
+            <!-- Hidden Membership Bar (for functionality) -->
+            <div style="position: absolute; left: -9999px; top: -9999px; visibility: hidden; opacity: 0;">
+                <aquarium:MembershipBar ID="mb" runat="server" RememberMeSet="False" DisplayLogin="False" IdleUserTimeout="15000" EnableHistory="False" EnablePermalinks="False" />
+            </div>
+            
+            <!-- Legacy Data Bridge - Hidden but accessible for data extraction -->
+            <div id="LegacyDataBridge" style="position: absolute; left: -9999px; top: -9999px; visibility: hidden; opacity: 0;">
+                <!-- This will be populated by the legacy membership system -->
+            </div>
+            
+            <!-- Content Placeholders -->
+            <asp:ContentPlaceHolder ID="PageContentPlaceHolder" runat="server" />
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"  />
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"  />
+            <asp:ContentPlaceHolder ID="PageTitleContentPlaceHolder" runat="server"  />
+           
+        </form>
+    </main>
+    
+    <!-- Legacy Elements (Hidden but Functional) -->
+    <div class="legacy-hidden" aria-hidden="true" style="position: absolute !important; left: -9999px !important; top: -9999px !important; visibility: hidden !important; opacity: 0 !important;">
+        <asp:ContentPlaceHolder ID="PageHeaderContentPlaceHolder" runat="server">SKYsaas ERP</asp:ContentPlaceHolder>
+        <asp:Label ID="lblDomainName" runat="server" />
+    </div>
+
+    <!-- Enhanced Sidebar JavaScript - Updated for 4-Level Hierarchy -->
+    <script src="/js/test-sidebar.js" onerror="console.error('❌ Failed to load test-sidebar.js'); loadFallbackFunctions();" onload="console.log('✅ test-sidebar.js loaded successfully');"></script>
+
+    <script type="text/javascript">
+        // Fallback function definitions in case external script fails to load
+        function loadFallbackFunctions() {
+            console.log('📋 Loading fallback function definitions...');
+            
+            if (typeof extractFromTableMenu === 'undefined') {
+                window.extractFromTableMenu = function(table) {
+                    console.log('📋 Fallback extractFromTableMenu called');
+                    return [];
+                };
+            }
+            
+            if (typeof saveMenuToLocalStorage === 'undefined') {
+                window.saveMenuToLocalStorage = function(menuData) {
+                    try {
+                        localStorage.setItem('ModernMenuHierarchy_v1', JSON.stringify({
+                            timestamp: Date.now(),
+                            data: menuData
+                        }));
+                        console.log('💾 Fallback saveMenuToLocalStorage saved', menuData.length, 'items');
+                    } catch (error) {
+                        console.error('💾 Failed to save menu:', error);
+                    }
+                };
+            }
+            
+            if (typeof loadMenuFromLocalStorage === 'undefined') {
+                window.loadMenuFromLocalStorage = function() {
+                    try {
+                        const stored = localStorage.getItem('ModernMenuHierarchy_v1');
+                        if (stored) {
+                            const parsed = JSON.parse(stored);
+                            console.log('💾 Fallback loadMenuFromLocalStorage loaded', parsed.data?.length || 0, 'items');
+                            return parsed.data || [];
+                        }
+                    } catch (error) {
+                        console.error('💾 Failed to load menu:', error);
+                    }
+                    return null;
+                };
+            }
+            
+            if (typeof analyzeMenuStructure === 'undefined') {
+                window.analyzeMenuStructure = function(menuData) {
+                    console.log('📊 Fallback analyzeMenuStructure:', menuData.length, 'items');
+                };
+            }
+            
+            if (typeof updateLanguageSelector === 'undefined') {
+                window.updateLanguageSelector = function(cultures) {
+                    try {
+                        console.log('🌐 Fallback updateLanguageSelector called with:', cultures);
+                        const dropdown = document.getElementById('languageDropdown');
+                        const currentLangCode = document.getElementById('currentLangCode');
+                        
+                        if (dropdown && cultures) {
+                            console.log('🌐 Updating language selector with cultures data');
+                            // Basic implementation for language selector
+                            dropdown.innerHTML = '<div class="language-option">Language options updated</div>';
+                        }
+                        
+                        if (currentLangCode) {
+                            currentLangCode.textContent = 'AR';
+                        }
+                    } catch (error) {
+                        console.error('🌐 Error in updateLanguageSelector:', error);
+                    }
+                };
+            }
+        }
+        
+        // Check if functions are available after a short delay
+        setTimeout(function() {
+            const requiredFunctions = ['extractFromTableMenu', 'saveMenuToLocalStorage', 'loadMenuFromLocalStorage', 'analyzeMenuStructure', 'updateLanguageSelector'];
+            const availableFunctions = requiredFunctions.filter(funcName => typeof window[funcName] === 'function');
+            
+            console.log('✅ Available functions:', availableFunctions);
+            if (availableFunctions.length === requiredFunctions.length) {
+                console.log('✅ All required functions are available');
+            } else {
+                const missingFunctions = requiredFunctions.filter(funcName => typeof window[funcName] === 'undefined');
+                console.warn('⚠️ Some functions may need fallback implementation:', missingFunctions);
+            }
+        }, 100);
+    </script>
+    <script src="/js/pagemenubar-mobile.js"></script>
+    
+    <!-- Compatibility and Enhancement Script -->
+    <script>
+        // Ensure 4-level hierarchy system is loaded
+        (function() {
+            if (typeof window.extractMenuFromPageMenuBar === 'undefined') {
+                console.warn('⚠️ 4-level hierarchy script not loaded, loading fallback...');
+                var fallbackScript = document.createElement('script');
+                fallbackScript.src = '/js/modern-sidebar-enhanced.js';
+                fallbackScript.onload = function() {
+                    console.log('📋 Fallback script loaded');
+                };
+                document.head.appendChild(fallbackScript);
+            } else {
+                console.log('✅ 4-level hierarchy system ready');
+                
+                // Enhanced auto-initialization
+                setTimeout(function() {
+                    try {
+                        if (window.EnhancedModernSidebar) {
+                            console.log('🚀 Auto-initializing enhanced sidebar...');
+                            
+                            // Try to extract menu data
+                            var result = window.EnhancedModernSidebar.extract();
+                            if (result && result.length > 0) {
+                                console.log('🎉 Auto-extracted', result.length, 'menu items (4-level hierarchy)');
+                                
+                                // Save to localStorage
+                                window.EnhancedModernSidebar.saveData(result);
+                                
+                                // Analyze structure
+                                var analysis = window.EnhancedModernSidebar.analyze();
+                                if (analysis) {
+                                    console.log('📊 Menu Analysis:', analysis);
+                                    console.log('  • Level 1:', analysis.level1, 'items');
+                                    console.log('  • Level 2:', analysis.level2, 'items');
+                                    console.log('  • Level 3:', analysis.level3, 'items');
+                                    console.log('  • Level 4:', analysis.level4, 'items');
+                                    console.log('  • Total:', analysis.total, 'items');
+                                    console.log('  • Max Depth:', analysis.maxDepth, 'levels');
+                                }
+                            } else {
+                                console.log('ℹ️ No menu data extracted - PageMenuBar may not be ready');
+                            }
+                        }
+                    } catch (e) {
+                        console.warn('⚠️ Auto-extraction failed:', e);
+                    }
+                }, 1500);
+            }
+        })();
+    </script>
+
+    <script type="text/javascript">
+        // IMMEDIATE function definitions to prevent reference errors
+        
+        // Global extraction state to debounce repeated runs
+        window.ModernMenuExtractionState = window.ModernMenuExtractionState || {
+            done: false,
+            inProgress: false,
+            attempts: 0,
+            maxAttempts: 8,
+            lastRun: 0
+        };
+        
+        // Normalize EnhancedModernSidebar API so isLoaded is always callable safely
+        (function normalizeEnhancedSidebar() {
+            try {
+                if (window.EnhancedModernSidebar) {
+                    // If isLoaded is not a function, create a safe function that derives a boolean
+                    if (typeof window.EnhancedModernSidebar.isLoaded !== 'function') {
+                        window.EnhancedModernSidebar.isLoaded = function () {
+                            const s = window.EnhancedModernSidebar;
+                            // Common readiness flags we can infer from
+                            const candidates = [
+                                s._loaded,
+                                s.loaded,
+                                s.isReady,
+                                s.ready,
+                                // treat presence of data/menu tree as ready
+                                (s.data && ((Array.isArray(s.data) && s.data.length > 0) || typeof s.data === 'object'))
+                            ];
+                            for (const c of candidates) {
+                                if (typeof c === 'boolean') return c;
+                                if (c) return true;
+                            }
+                            return false;
+                        };
+                    }
+                }
+            } catch (e) {
+                console.warn('normalizeEnhancedSidebar failed:', e);
+            }
+        })();
+        
+        // Define essential functions immediately to prevent "not defined" errors
+        window.updateLanguageSelector = window.updateLanguageSelector || function(cultures) {
+            try {
+                console.log('🌐 updateLanguageSelector called with:', cultures);
+                if (!cultures || (typeof cultures === 'string' && cultures.trim() === '')) {
+                    console.log('🌐 Skipping language selector update - no cultures provided');
+                    return;
+                }
+                const dropdown = document.getElementById('languageDropdown');
+                const currentLangCode = document.getElementById('currentLangCode');
+                
+                if (dropdown && cultures) {
+                    console.log('🌐 Updating language selector with cultures data');
+                    // Basic implementation for language selector
+                }
+                
+                if (currentLangCode) {
+                    currentLangCode.textContent = 'AR';
+                }
+            } catch (error) {
+                console.error('🌐 Error in updateLanguageSelector:', error);
+            }
+        };
+
+        window.saveMenuToLocalStorage = window.saveMenuToLocalStorage || function(menuData) {
+            try {
+                localStorage.setItem('ModernMenuHierarchy_v1', JSON.stringify({
+                    timestamp: Date.now(),
+                    data: menuData
+                }));
+                console.log('💾 Menu saved to LocalStorage:', menuData.length, 'items');
+            } catch (error) {
+                console.error('💾 Failed to save menu:', error);
+            }
+        };
+
+        window.loadMenuFromLocalStorage = window.loadMenuFromLocalStorage || function() {
+            try {
+                const stored = localStorage.getItem('ModernMenuHierarchy_v1');
+                if (stored) {
+                    const parsed = JSON.parse(stored);
+                    console.log('💾 Menu loaded from LocalStorage:', parsed.data?.length || 0, 'items');
+                    return parsed.data || [];
+                }
+            } catch (error) {
+                console.error('💾 Failed to load menu:', error);
+            }
+            return null;
+        };
+
+        window.analyzeMenuStructure = window.analyzeMenuStructure || function(menuData) {
+            console.log('📊 Menu structure analysis:', menuData.length, 'items');
+        };
+
+        window.extractFromTableMenu = window.extractFromTableMenu || function(table) {
+            console.log('📋 extractFromTableMenu fallback called');
+            // If test-sidebar extractor is available, delegate to it using the PageMenuBar host
+            try {
+                // Apply temporary alias so test extractor can locate the host
+                let aliasApplied = false;
+                let originalId = null;
+                let target = document.getElementById('PageMenuBar');
+                if (!target) {
+                    target = document.getElementById('ctl00_PageMenuBar') || document.querySelector('.PageMenuBar');
+                    if (target) {
+                        originalId = target.id;
+                        target.id = 'PageMenuBar';
+                        aliasApplied = true;
+                    }
+                }
+                if (typeof window.extractMenuFromPageMenuBar === 'function') {
+                    const data = window.extractMenuFromPageMenuBar();
+                    if (Array.isArray(data) && data.length) {
+                        console.log('📋 Fallback delegated to extractMenuFromPageMenuBar, items:', data.length);
+                        // Restore id
+                        if (aliasApplied && target) {
+                            if (originalId) target.id = originalId; else target.removeAttribute('id');
+                        }
+                        return data;
+                    }
+                }
+                // Restore id if nothing returned
+                if (aliasApplied && target) {
+                    if (originalId) target.id = originalId; else target.removeAttribute('id');
+                }
+            } catch (e) {
+                console.warn('📋 Fallback delegation failed:', e);
+            }
+            return [];
+        };
+
+        // JSON-first loader from MenuExtender/SiteMap service
+        async function loadMenuFromService() {
+            const state = window.ModernMenuExtractionState || (window.ModernMenuExtractionState = {});
+            if (state.done) {
+                console.log('🟢 Menu already loaded (state.done), skipping service load');
+                return window.ModernMenuData || null;
+            }
+            try {
+                const url = '/Services/MenuService.ashx?ts=' + Date.now();
+                console.log('🌐 Fetching menu JSON from', url);
+                const resp = await fetch(url, { credentials: 'same-origin' });
+                if (!resp.ok) throw new Error('HTTP ' + resp.status);
+                const json = await resp.json();
+                const items = (json && (json.items || json.data)) || [];
+                if (Array.isArray(items) && items.length > 0) {
+                    console.log('✅ Loaded menu from service:', items.length, 'items');
+                    window.ModernMenuData = items;
+                    try { saveMenuToLocalStorage(items); } catch (_) {}
+                    state.done = true;
+                    state.inProgress = false;
+                    // Update sidebars immediately
+                    try {
+                        // Hide loading spinner
+                        const loadingEl = document.getElementById('sidebar-loading');
+                        if (loadingEl) loadingEl.style.display = 'none';
+                        
+                        // Show sidebar content
+                        const contentEl = document.getElementById('sidebar-content');
+                        if (contentEl) contentEl.style.display = 'block';
+                        
+                        if (window.EnhancedModernSidebar && typeof window.EnhancedModernSidebar.updateMenuData === 'function') {
+                            window.EnhancedModernSidebar.updateMenuData(items);
+                            console.log('📋 Enhanced sidebar updated with service data');
+                        } else if (window.ModernSidebar) {
+                            window.ModernSidebar.data = items;
+                            if (typeof window.ModernSidebar.renderMenu === 'function') window.ModernSidebar.renderMenu();
+                            console.log('📋 Modern sidebar updated with service data');
+                        } else {
+                            // Fallback: Render menu directly to sidebar
+                            renderMenuToSidebar(items);
+                            console.log('📋 Menu rendered directly to sidebar');
+                        }
+                        console.log('📋 Sidebars updated from service data');
+                    } catch (e) {
+                        console.warn('Sidebar update from service failed:', e);
+                        // Hide loading spinner even on error
+                        const loadingEl = document.getElementById('sidebar-loading');
+                        if (loadingEl) loadingEl.style.display = 'none';
+                        // Try fallback render
+                        try {
+                            renderMenuToSidebar(items);
+                        } catch (e2) {
+                            console.error('Fallback render failed:', e2);
+                        }
+                    }
+                    return items;
+                } else {
+                    console.log('ℹ️ Service returned no items, will fall back to DOM');
+                    return null;
+                }
+            } catch (e) {
+                console.warn('🌐 Menu service failed:', e);
+                return null;
+            }
+        }
+
+        // Function declarations - hoisted to avoid reference errors
+        
+        // Real-time data bridge - Connect legacy system to modern UI
+        function initLegacyDataBridge() {
+            try {
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+
+                    if (membership.get_user) {
+                        const realUsername = membership.get_user();
+                        if (realUsername) {
+                            const userElement = document.getElementById('currentUserName');
+                            if (userElement) {
+                                userElement.textContent = realUsername;
+                            }
+                        }
+                    }
+
+                    if (membership.get_isAuthenticated && membership.get_isAuthenticated()) {
+                        console.log('User is authenticated via legacy system');
+                        document.body.classList.add('user-authenticated');
+                    }
+
+                    if (membership.get_cultures && membership.get_cultures()) {
+                        updateLanguageSelector(membership.get_cultures());
+                    }
+                } else {
+                    setTimeout(initLegacyDataBridge, 500);
+                }
+            } catch (e) {
+                console.warn('Legacy data bridge initialization failed:', e);
+            }
+        }
+
+        // Enhanced menu extraction for 4-level hierarchy (no start node)
+        function extractLegacyMenuData() {
+            try {
+                console.log('📋 Starting enhanced legacy menu extraction...');
+                const state = window.ModernMenuExtractionState || (window.ModernMenuExtractionState = {});
+                if (state.done) {
+                    console.log('📋 Extraction already completed, skipping');
+                    return window.ModernMenuData || [];
+                }
+                if (state.inProgress) {
+                    console.log('📋 Extraction already in progress, skipping');
+                    return null;
+                }
+                state.inProgress = true;
+                
+                // Look for PageMenuBar using multiple selectors
+                let pageMenuBar = document.getElementById('PageMenuBar') || 
+                                document.getElementById('ctl00_PageMenuBar');
+                
+                if (!pageMenuBar) {
+                    // Try finding by class name
+                    pageMenuBar = document.querySelector('.PageMenuBar');
+                }
+                
+                if (!pageMenuBar) {
+                    console.log('📋 PageMenuBar not found with any selector, will use default menu');
+                    return null;
+                }
+                
+                console.log('📋 Found PageMenuBar element:', pageMenuBar);
+                
+                // Wait for PageMenuBar to be populated by ASP.NET
+                if (pageMenuBar.children.length === 0) {
+                    console.log('📋 PageMenuBar is empty, waiting for ASP.NET population...');
+                    setTimeout(extractLegacyMenuData, 800);
+                    return null;
+                }
+                
+                let menuItems = [];
+                
+                // Look for different types of menu structures
+                const menuTables = pageMenuBar.querySelectorAll('table');
+                const menuContainers = pageMenuBar.querySelectorAll('div, ul');
+                
+                if (menuTables.length > 0) {
+                    // Extract from table-based menu structure
+                    console.log('📋 Found table-based menu structure');
+                    // Prefer test-sidebar extractor when available
+                    if (typeof window.extractMenuFromPageMenuBar === 'function') {
+                        // Some versions of the extractor look for element with id 'PageMenuBar'.
+                        // If our control is rendered as 'ctl00_PageMenuBar', temporarily alias it.
+                        let aliasApplied = false;
+                        let originalId = null;
+                        let target = document.getElementById('PageMenuBar');
+                        if (!target) {
+                            // Try common alternate ids/classes
+                            target = document.getElementById('ctl00_PageMenuBar') || document.querySelector('.PageMenuBar');
+                            if (target) {
+                                originalId = target.id;
+                                target.id = 'PageMenuBar';
+                                aliasApplied = true;
+                                console.log('🔗 Temporarily aliased', originalId || '(no-id)', '→ PageMenuBar for extractor');
+                            }
+                        }
+
+                        try {
+                            const data = window.extractMenuFromPageMenuBar();
+                            if (Array.isArray(data)) {
+                                menuItems = data;
+                                console.log('✅ Delegated extraction returned', menuItems.length, 'items');
+                            }
+                        } finally {
+                            if (aliasApplied && target) {
+                                // Restore original id
+                                if (originalId) target.id = originalId; else target.removeAttribute('id');
+                                console.log('🔁 Restored element id after extraction');
+                            }
+                        }
+                    } else {
+                        menuTables.forEach(table => {
+                            const menuData = extractFromTableMenu(table);
+                            if (menuData) menuItems.push(...menuData);
+                        });
+                    }
+                    
+                    // Save extracted data to LocalStorage
+                    if (menuItems.length > 0) {
+                        saveMenuToLocalStorage(menuItems);
+                        console.log('💾 Menu data saved to LocalStorage');
+                        analyzeMenuStructure(menuItems);
+                    }
+                } else if (menuContainers.length > 0) {
+                    // Extract from div/ul based menu structure
+                    console.log('📋 Found container-based menu structure');
+                    menuContainers.forEach(container => {
+                        const links = container.querySelectorAll('a');
+                        links.forEach((link, index) => {
+                            const menuData = createMenuItemFromLink(link, index);
+                            if (menuData) menuItems.push(menuData);
+                        });
+                    });
+                }
+                
+                if (menuItems.length > 0) {
+                    console.log('📋 Successfully extracted', menuItems.length, 'menu items from PageMenuBar:', menuItems);
+                    
+                    // Store the extracted menu data globally
+                    window.ModernMenuData = menuItems;
+                    state.done = true;
+                    state.inProgress = false;
+                    
+                    // Save to LocalStorage
+                    saveMenuToLocalStorage(menuItems);
+                    console.log('💾 Menu data saved to LocalStorage');
+                    analyzeMenuStructure(menuItems);
+                    
+                    // Trigger sidebar menu reload if it's already initialized
+                    if (window.ModernSidebar && window.ModernSidebar.isLoaded) {
+                        window.ModernSidebar.data = menuItems;
+                        window.ModernSidebar.renderMenu();
+                        console.log('📋 Updated sidebar with extracted legacy menu data');
+                    }
+                    
+                    return menuItems;
+                } else {
+                    console.log('📋 No valid menu items found in PageMenuBar');
+                    state.inProgress = false;
+                    
+                    // Try loading from LocalStorage as fallback
+                    const cachedMenu = loadMenuFromLocalStorage();
+                    if (cachedMenu && cachedMenu.length > 0) {
+                        console.log('💾 Loaded', cachedMenu.length, 'menu items from LocalStorage as fallback');
+                        window.ModernMenuData = cachedMenu;
+                        state.done = true;
+                        
+                        if (window.ModernSidebar && window.ModernSidebar.isLoaded) {
+                            window.ModernSidebar.data = cachedMenu;
+                            window.ModernSidebar.renderMenu();
+                            console.log('📋 Updated sidebar with cached menu data');
+                        }
+                        
+                        return cachedMenu;
+                    }
+                    
+                    return null;
+                }
+                
+            } catch (e) {
+                console.error('📋 Error extracting legacy menu data:', e);
+                const state = window.ModernMenuExtractionState || (window.ModernMenuExtractionState = {});
+                state.inProgress = false;
+                
+                // Try loading from LocalStorage as fallback
+                const cachedMenu = loadMenuFromLocalStorage();
+                if (cachedMenu && cachedMenu.length > 0) {
+                    console.log('💾 Loaded', cachedMenu.length, 'menu items from LocalStorage after error');
+                    window.ModernMenuData = cachedMenu;
+                    state.done = true;
+                    
+                    if (window.ModernSidebar && window.ModernSidebar.isLoaded) {
+                        window.ModernSidebar.data = cachedMenu;
+                        window.ModernSidebar.renderMenu();
+                        console.log('📋 Updated sidebar with cached menu data after error');
+                    }
+                    
+                    return cachedMenu;
+                }
+                
+                return null;
+            }
+        }
+
+        // Connection state to prevent infinite retries
+        window.ConnectionAttempts = window.ConnectionAttempts || { count: 0, maxAttempts: 5, connected: false };
+        
+        // Try to connect legacy data to modern sidebar
+        function tryConnectLegacyData() {
+            const state = window.ConnectionAttempts;
+            if (state.connected || state.count >= state.maxAttempts) {
+                if (state.count >= state.maxAttempts) {
+                    console.log('🛑 Max connection attempts reached, using navbar-only mode');
+                }
+                return;
+            }
+            
+            state.count++;
+            console.log(`🔗 Connection attempt ${state.count}/${state.maxAttempts}`);
+            
+            try {
+                // If we have menu data from service, we're already successful
+                if (window.ModernMenuData && window.ModernMenuData.length > 0) {
+                    console.log('✅ Menu data available from service, connection successful');
+                    state.connected = true;
+                    return;
+                }
+                
+                // Check for any sidebar and try to connect
+                if (window.EnhancedModernSidebar || window.ModernSidebar) {
+                    console.log('✅ Sidebar detected, considering connection successful');
+                    state.connected = true;
+                    return;
+                }
+                
+                // If not connected and under max attempts, retry
+                if (state.count < state.maxAttempts) {
+                    console.log('⏳ Retrying connection in 2 seconds...');
+                    setTimeout(tryConnectLegacyData, 2000);
+                } else {
+                    console.log('🛑 Max attempts reached, navbar will work without sidebar');
+                }
+                
+            } catch (e) {
+                console.warn('Connection attempt failed:', e);
+                if (state.count < state.maxAttempts) {
+                    setTimeout(tryConnectLegacyData, 3000);
+                }
+            }
+        }
+
+        // Enhanced sidebar integration with membership bar
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('📋 Enhanced Sidebar System loading...');
+            
+            // Initialize legacy data bridge
+            initLegacyDataBridge();
+
+            // Initialize language system
+            setTimeout(() => {
+                initLegacyDataBridge();
+                try {
+                    if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                        const membership = Web.Membership._instance;
+                        if (typeof updateLanguageSelector === 'function' && membership.get_cultures && membership.get_cultures()) {
+                            updateLanguageSelector(membership.get_cultures());
+                        } else {
+                            console.log('🌐 Skipping language selector update - cultures not available yet');
+                        }
+                    }
+                } catch (e) {
+                    console.warn('🌐 Language init error:', e);
+                }
+            }, 1000);
+            
+            // Load menu from service (primary path)
+            (async function() {
+                const items = await loadMenuFromService();
+                if (items && items.length) {
+                    console.log('✅ Menu loaded from service, navbar ready');
+                } else {
+                    console.log('ℹ️ Service load failed, navbar will use fallback');
+                }
+                // Always try connection once
+                tryConnectLegacyData();
+            })();
+        });
+
+        // Connect legacy data extraction to enhanced sidebar (legacy helper)
+        function tryConnectLegacyData_legacy() {
+            // Check if we have legacy menu data from the old system
+            if (window.ModernMenuData && window.ModernMenuData.length > 0) {
+                console.log('📋 Found legacy menu data, updating enhanced sidebar...');
+                if (window.EnhancedModernSidebar && window.EnhancedModernSidebar.updateMenuData) {
+                    window.EnhancedModernSidebar.updateMenuData(window.ModernMenuData);
+                }
+            } else if (window.EnhancedModernSidebar) {
+                // Force reload of menu data from enhanced sidebar when not loaded yet
+                const isLoaded = (typeof window.EnhancedModernSidebar.isLoaded === 'function')
+                    ? window.EnhancedModernSidebar.isLoaded()
+                    : !!window.EnhancedModernSidebar.isLoaded;
+                if (!isLoaded && typeof window.EnhancedModernSidebar.loadMenuData === 'function') {
+                    console.log('📋 Forcing enhanced sidebar menu reload...');
+                    window.EnhancedModernSidebar.loadMenuData();
+                }
+            }
+        }
+
+        // Window load event
+        window.addEventListener('load', function () {
+            console.log('📋 Window fully loaded - navbar ready');
+            document.body.classList.add('loaded');
+        });
+
+        // Fallback menu renderer - renders menu directly to sidebar
+        function renderMenuToSidebar(menuItems) {
+            const contentEl = document.getElementById('sidebar-content');
+            if (!contentEl) return;
+            
+            let html = '<div class="menu-list">';
+            menuItems.forEach(item => {
+                html += `
+                    <div class="menu-item level-${item.level || 1}">
+                        <a href="${item.url || '#'}" class="menu-link">
+                            <i class="${item.icon || 'fas fa-folder'}"></i>
+                            <span>${item.title || 'Menu Item'}</span>
+                        </a>
+                `;
+                if (item.children && item.children.length > 0) {
+                    html += '<div class="submenu">';
+                    item.children.forEach(child => {
+                        html += `
+                            <a href="${child.url || '#'}" class="submenu-link level-${child.level || 2}">
+                                <i class="${child.icon || 'fas fa-angle-right'}"></i>
+                                <span>${child.title || 'Sub Item'}</span>
+                            </a>
+                        `;
+                    });
+                    html += '</div>';
+                }
+                html += '</div>';
+            });
+            html += '</div>';
+            
+            contentEl.innerHTML = html;
+            
+            // Hide loading spinner
+            const loadingEl = document.getElementById('sidebar-loading');
+            if (loadingEl) loadingEl.style.display = 'none';
+            
+            console.log('📋 Direct menu render complete:', menuItems.length, 'items');
+        }
+
+        // Enhanced Menu Toggle Function
+        function toggleLegacyMenu() {
+            console.log('🔄 Toggle menu called from navbar');
+            
+            const sidebar = document.getElementById('legacy-menu-sidebar');
+            const overlay = document.getElementById('legacy-menu-overlay');
+            
+            if (!sidebar) {
+                console.error('❌ Sidebar element not found');
+                return;
+            }
+            
+            const isOpen = sidebar.classList.contains('open') || sidebar.style.display === 'block';
+            
+            if (isOpen) {
+                // Close menu
+                sidebar.classList.remove('open');
+                sidebar.style.display = 'none';
+                if (overlay) overlay.classList.remove('visible');
+                console.log('📋 Menu closed');
+            } else {
+                // Open menu
+                sidebar.classList.add('open');
+                sidebar.style.display = 'block';
+                if (overlay) overlay.classList.add('visible');
+                console.log('📋 Menu opened');
+                
+                // If menu content is empty, try to populate it
+                const contentEl = document.getElementById('sidebar-content');
+                if (contentEl && (!contentEl.innerHTML || contentEl.innerHTML.trim() === '')) {
+                    if (window.ModernMenuData && window.ModernMenuData.length > 0) {
+                        renderMenuToSidebar(window.ModernMenuData);
+                    }
+                }
+            }
+        }
+
+        function closeLegacyMenu() {
+            const sidebar = document.getElementById('legacy-menu-sidebar');
+            const overlay = document.getElementById('legacy-menu-overlay');
+            
+            if (sidebar) {
+                sidebar.classList.remove('open');
+                sidebar.style.display = 'none';
+            }
+            if (overlay) overlay.classList.remove('visible');
+            console.log('📋 Menu closed via close button');
+        }
+
+        // Language Change Function
+        function changeLanguage(culture) {
+            try {
+                if (typeof Web !== 'undefined' && Web.Globalization && Web.Globalization._instance) {
+                    const globalization = Web.Globalization._instance;
+                    if (globalization.changeCulture) {
+                        globalization.changeCulture(culture);
+                        return;
+                    }
+                }
+
+                // Fallback: reload page with new culture
+                const url = new URL(window.location);
+                url.searchParams.set('culture', culture);
+                window.location.href = url.toString();
+            } catch (e) {
+                console.error('Language change failed:', e);
+            }
+        }
+
+        // Modern Language Selector Functions
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.classList.toggle('show');
+            
+            // Close dropdown when clicking outside
+            if (dropdown.classList.contains('show')) {
+                setTimeout(() => {
+                    document.addEventListener('click', closeLanguageDropdownOutside);
+                }, 0);
+            } else {
+                document.removeEventListener('click', closeLanguageDropdownOutside);
+            }
+        }
+
+        function closeLanguageDropdownOutside(event) {
+            const container = document.querySelector('.language-selector-container');
+            if (!container.contains(event.target)) {
+                closeLanguageDropdown();
+            }
+        }
+
+        function closeLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.classList.remove('show');
+            document.removeEventListener('click', closeLanguageDropdownOutside);
+        }
+
+        function selectLanguage(culture, displayText, element) {
+            // Update the current language display
+            document.getElementById('currentLangCode').textContent = displayText;
+            
+            // Update active state
+            document.querySelectorAll('.language-option').forEach(opt => opt.classList.remove('active'));
+            element.classList.add('active');
+            
+            // Close dropdown
+            closeLanguageDropdown();
+            
+            // Change language
+        // Enhanced Error Logging and User Feedback
+        function handleNavbarError(functionName, error, userMessage) {
+            console.error(`Navbar Error in ${functionName}:`, error);
+            
+            // Log to console with details
+            console.log('Error Details:', {
+                function: functionName,
+                message: error.message,
+                stack: error.stack,
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent
+            });
+            
+            // Show user-friendly message
+            if (userMessage) {
+                alert(userMessage);
+            }
+            
+            // Optional: Send error to logging service
+            try {
+                if (window.logError) {
+                    window.logError(functionName, error);
+                }
+            } catch (logError) {
+                console.warn('Failed to log error:', logError);
+            }
+        }
+
+        // Enhanced initialization function
+        function initializeNavbar() {
+            try {
+                // Set current user name if available
+                var userNameElements = document.querySelectorAll('#currentUserName');
+                if (userNameElements.length > 0) {
+                    var userName = 'المستخدم'; // Default
+                    
+                    // Try to get real user name from various sources
+                    if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                        try {
+                            var membership = Web.Membership._instance;
+                            if (membership.get_userName) {
+                                userName = membership.get_userName() || userName;
+                            }
+                        } catch (e) {
+                            console.warn('Could not get username from Web.Membership:', e);
+                        }
+                    }
+                    
+                    // Try to get from page context
+                    if (typeof __currentUserName !== 'undefined') {
+                        userName = __currentUserName;
+                    }
+                    
+                    userNameElements.forEach(function(element) {
+                        element.textContent = userName;
+                    });
+                }
+                
+                // Initialize current language display
+                var currentLang = document.getElementById('currentLangCode');
+                if (currentLang) {
+                    var culture = document.documentElement.lang || 'ar-SA';
+                    var langDisplay = culture.startsWith('ar') ? 'عربي' : 'English';
+                    currentLang.textContent = langDisplay;
+                }
+                
+                console.log('✅ Navbar initialized successfully');
+                return true;
+                
+            } catch (error) {
+                handleNavbarError('initializeNavbar', error, 'حدث خطأ في تهيئة الشريط العلوي');
+                return false;
+            }
+        }
+
+        // Auto-initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeNavbar);
+        } else {
+            initializeNavbar();
+        }
+
+        // Add global error handler for navbar functions
+        window.addEventListener('error', function(event) {
+            if (event.filename && event.filename.includes('LegacyModernMastercSidebar')) {
+                console.error('Global navbar error:', event.error);
+            }
+        });
+
+        // Enhanced User Profile Functions with Better Routing
+        function showUserProfile() {
+            console.log('🧑‍💼 عرض الملف الشخصي');
+            try {
+                // Method 1: Try Web.Membership if available
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.userProfile) {
+                        membership.userProfile();
+                        return;
+                    }
+                }
+                
+                // Method 2: Try common profile URLs
+                var profileUrls = [
+                    '/Pages/Membership.aspx',
+                    '/Membership.aspx',
+                    '/Profile.aspx',
+                    '/Account/Profile.aspx',
+                    '/User/Profile.aspx'
+                ];
+                
+                // Check if any profile URL exists or just open the first one
+                window.open(profileUrls[0], '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
+                
+            } catch (e) {
+                console.error('User profile failed:', e);
+                alert('لا يمكن فتح الملف الشخصي في الوقت الحالي. سيتم توجيهك إلى الصفحة الرئيسية.');
+                window.location.href = '/Default.aspx';
+            }
+        }
+
+        function showNotifications() {
+            console.log('🔔 عرض الإشعارات');
+            try {
+                // Method 1: Try Web.Membership if available
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.notifications) {
+                        membership.notifications();
+                        return;
+                    }
+                }
+                
+                // Method 2: Try common notification URLs
+                var notificationUrls = [
+                    '/Pages/Notifications.aspx',
+                    '/Notifications.aspx',
+                    '/Messages.aspx',
+                    '/Account/Notifications.aspx'
+                ];
+                
+                window.open(notificationUrls[0], '_blank', 'width=600,height=500,scrollbars=yes,resizable=yes');
+                
+            } catch (e) {
+                console.error('Notifications failed:', e);
+                alert('لا يمكن عرض الإشعارات في الوقت الحالي. يمكنك التحقق من الرسائل في الصفحة الرئيسية.');
+                window.location.href = '/Default.aspx';
+            }
+        }
+
+        function showSettings() {
+            console.log('⚙️ عرض الإعدادات');
+            try {
+                // Method 1: Try Web.Membership if available
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.help) {
+                        membership.help();
+                        return;
+                    }
+                }
+                
+                // Method 2: Try common settings URLs
+                var settingsUrls = [
+                    '/Pages/Settings.aspx',
+                    '/Settings.aspx',
+                    '/Configuration.aspx',
+                    '/Account/Settings.aspx',
+                    '/Admin/Settings.aspx'
+                ];
+                
+                // Try to navigate to settings page
+                window.location.href = settingsUrls[0];
+                
+            } catch (e) {
+                console.error('Settings failed:', e);
+                alert('لا يمكن فتح الإعدادات في الوقت الحالي. سيتم توجيهك إلى الصفحة الرئيسية.');
+                window.location.href = '/Default.aspx';
+            }
+        }
+
+        function logout() {
+            console.log('🚪 تسجيل الخروج');
+            try {
+                // Confirm logout
+                if (!confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                    return;
+                }
+                
+                // Method 1: Try Web.Membership if available
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+                    if (membership.logout) {
+                        membership.logout();
+                        return;
+                    }
+                }
+                
+                // Method 2: Try common logout URLs
+                var logoutUrls = [
+                    '/logout.aspx',
+                    '/Logout.aspx',
+                    '/Account/Logout.aspx',
+                    '/Login.aspx?logout=true',
+                    '/Default.aspx?logout=true'
+                ];
+                
+                // Clear any stored data
+                try {
+                    localStorage.clear();
+                    sessionStorage.clear();
+                } catch (clearError) {
+                    console.warn('Could not clear storage:', clearError);
+                }
+                
+                // Navigate to logout
+                window.location.href = logoutUrls[0];
+                
+            } catch (e) {
+                console.error('Logout failed:', e);
+                if (confirm('حدث خطأ أثناء تسجيل الخروج. هل تريد المحاولة مرة أخرى؟')) {
+                    window.location.href = '/Login.aspx';
+                }
+            }
+        }
+
+        // Real-time data bridge - Connect legacy system to modern UI
+        function initLegacyDataBridge() {
+            try {
+                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
+                    const membership = Web.Membership._instance;
+
+                    if (membership.get_user) {
+                        const realUsername = membership.get_user();
+                        if (realUsername) {
+                            document.getElementById('currentUserName').textContent = realUsername;
+                        }
+                    }
+
+                    if (membership.get_isAuthenticated && membership.get_isAuthenticated()) {
+                        console.log('User is authenticated via legacy system');
+                        document.body.classList.add('user-authenticated');
+                    }
+
+                    if (membership.get_cultures && membership.get_cultures()) {
+                        updateLanguageSelector(membership.get_cultures());
+                    }
+
+                    console.log('Legacy data bridge initialized successfully');
+                } else {
+                    setTimeout(initLegacyDataBridge, 500);
+                }
+            } catch (e) {
+                console.log('Legacy data bridge initialization failed:', e);
+            }
+        }
+
+        function updateLanguageSelector(cultures) {
+            try {
+                const dropdown = document.getElementById('languageDropdown');
+                const currentLangCode = document.getElementById('currentLangCode');
+                
+                if (dropdown && cultures) {
+                    // Clear existing options except the static ones
+                    dropdown.innerHTML = '';
+
+                    const cultureArray = cultures.split(';');
+                    cultureArray.forEach(culture => {
+                        if (culture.trim()) {
+                            const parts = culture.split('|');
+                            if (parts.length >= 2) {
+                                const langCode = parts[0];
+                                const langName = parts[1];
+                                const isActive = parts[2] === 'True';
+                                
+                                const option = document.createElement('div');
+                                option.className = `language-option ${isActive ? 'active' : ''}`;
+                                option.onclick = () => selectLanguage(langCode, langCode === 'ar-SA' ? 'عربي' : 'EN', option);
+                                
+                                // Determine flag class
+                                const flagClass = langCode.startsWith('ar') ? 'ar' : 'en';
+                                
+                                option.innerHTML = `
+                                    <div class="flag ${flagClass}"></div>
+                                    <span>${langName}</span>
+                                `;
+                                
+                                dropdown.appendChild(option);
+                                
+                                // Update current language display
+                                if (isActive && currentLangCode) {
+                                    currentLangCode.textContent = langCode === 'ar-SA' ? 'عربي' : 'EN';
+                                }
+                            }
+                        }
+                    });
+                }
+            } catch (e) {
+                console.log('Unable to update language selector:', e);
+            }
+        }
+        
+        
+
+        // Enhanced menu extraction for 4-level hierarchy (no start node)
+        function extractFromTableMenu(table) {
+            console.log('📋 Enhanced extraction for 4-level hierarchy starting...');
+            
+            const menuItems = [];
+            const rows = table.querySelectorAll('tr');
+            const levelStack = []; // Track parent at each level
+            
+            rows.forEach((row, rowIndex) => {
+                const cells = row.querySelectorAll('td');
+                if (cells.length === 0) return;
+                
+                cells.forEach((cell, cellIndex) => {
+                    const links = cell.querySelectorAll('a[href]');
+                    
+                    links.forEach((link, linkIndex) => {
+                        const text = (link.textContent || link.innerText || '').trim();
+                        const url = link.href || '#';
+                        
+                        if (!text || text.length < 2) return;
+                        
+                        // Calculate level based on indentation and structure
+                        const level = calculateLinkLevel(link, cell);
+                        
+                        console.log(`📋 Processing: "${text}" at Level ${level}`);
+                        
+                        const item = {
+                            id: generateItemId(level, rowIndex, cellIndex, linkIndex),
+                            title: text,
+                            url: url,
+                            icon: getIconForTitle(text),
+                            level: level,
+                            children: []
+                        };
+                        
+                        // Adjust level stack
+                        while (levelStack.length > level) {
+                            levelStack.pop();
+                        }
+                        
+                        if (level === 1) {
+                            // Level 1 - Root level (no start node)
+                            menuItems.push(item);
+                            levelStack = [item];
+                        } else if (level === 2 && levelStack.length >= 1) {
+                            // Level 2 - Add to Level 1 parent
+                            const parent = levelStack[0];
+                            if (parent) {
+                                parent.children.push(item);
+                                if (levelStack.length === 1) {
+                                    levelStack.push(item);
+                                } else {
+                                    levelStack[1] = item;
+                                }
+                            }
+                        } else if (level === 3 && levelStack.length >= 2) {
+                            // Level 3 - Add to Level 2 parent
+                            const parent = levelStack[1];
+                            if (parent) {
+                                parent.children.push(item);
+                                if (levelStack.length === 2) {
+                                    levelStack.push(item);
+                                } else {
+                                    levelStack[2] = item;
+                                }
+                            }
+                        } else if (level === 4 && levelStack.length >= 3) {
+                            // Level 4 - Add to Level 3 parent
+                            const parent = levelStack[2];
+                            if (parent) {
+                                parent.children.push(item);
+                                if (levelStack.length === 3) {
+                                    levelStack.push(item);
+                                } else {
+                                    levelStack[3] = item;
+                                }
+                            }
+                        }
+                    });
+                });
+            });
+            
+            console.log('📋 Enhanced extraction completed:', menuItems.length, 'root items');
+            return menuItems.length > 0 ? menuItems : null;
+        }
+        
+        // Calculate link level with enhanced detection
+        function calculateLinkLevel(link, cell) {
+            let level = 1; // Start from level 1 (no level 0)
+            
+            // Method 1: Check padding/margin indentation
+            const style = window.getComputedStyle(link);
+            const paddingLeft = parseInt(style.paddingLeft) || 0;
+            const marginLeft = parseInt(style.marginLeft) || 0;
+            let totalIndent = paddingLeft + marginLeft;
+            
+            // Method 2: Check parent cell indentation
+            if (cell) {
+                const cellStyle = window.getComputedStyle(cell);
+                const cellPadding = parseInt(cellStyle.paddingLeft) || 0;
+                totalIndent += cellPadding;
+            }
+            
+            // Method 3: Check DOM hierarchy
+            let nestedLevel = 1;
+            let current = link.parentElement;
+            while (current && current !== document.body) {
+                if (current.tagName === 'UL' || current.tagName === 'OL' || 
+                    current.tagName === 'TABLE' || current.classList.contains('submenu')) {
+                    if (current.style.paddingLeft || current.style.marginLeft) {
+                        nestedLevel++;
+                    }
+                }
+                current = current.parentElement;
+            }
+            
+            // Calculate level based on indentation (20px per level)
+            const indentLevel = Math.floor(totalIndent / 20);
+            
+            // Use the maximum level calculated, but cap at 4
+            level = Math.max(indentLevel, nestedLevel);
+            level = Math.min(level, 4); // Max 4 levels
+            level = Math.max(level, 1); // Min level 1 (no level 0)
+            
+            return level;
+        }
+        
+        // Generate hierarchical ID
+        function generateItemId(level, rowIndex, cellIndex, linkIndex) {
+            return (rowIndex + 1) * 1000 + (cellIndex + 1) * 100 + (linkIndex + 1) * 10 + level;
+        }
+
+        // Extract menu items from container-based structure
+        function extractFromContainerMenu(container) {
+            const menuItems = [];
+            
+            // Look for nested structure
+            const parentContainers = container.querySelectorAll('div, li');
+            
+            parentContainers.forEach(parentContainer => {
+                const parentLink = parentContainer.querySelector('a[href]');
+                const childLinks = parentContainer.querySelectorAll('div a[href], ul a[href], li a[href]');
+                
+                if (parentLink && childLinks.length > 1) {
+                    // Parent with children
+                    const children = [];
+                    
+                    childLinks.forEach((childLink, index) => {
+                        if (childLink !== parentLink) {
+                            const childItem = createMenuItemFromLink(childLink, index);
+                            if (childItem) children.push(childItem);
+                        }
+                    });
+                    
+                    const parentItem = createMenuItemFromLink(parentLink, 0);
+                    if (parentItem && children.length > 0) {
+                        parentItem.children = children;
+                        parentItem.url = '#';
+                        menuItems.push(parentItem);
+                    }
+                } else if (parentLink) {
+                    // Single menu item
+                    const menuItem = createMenuItemFromLink(parentLink, 0);
+                    if (menuItem) menuItems.push(menuItem);
+                }
+            });
+            
+            return menuItems.length > 0 ? menuItems : null;
+        }
+
+        // Create menu item object from link element
+        function createMenuItemFromLink(linkElement, index) {
+            let title = linkElement.textContent || linkElement.innerText || linkElement.getAttribute('title');
+            let url = linkElement.href || linkElement.getAttribute('href') || '#';
+            let onclick = linkElement.getAttribute('onclick');
+            
+            // Handle onclick events
+            if (onclick && (!url || url === '#')) {
+                url = `javascript:${onclick}`;
+            }
+            
+            // Clean up title
+            title = title ? title.trim() : `Menu Item ${index + 1}`;
+            if (title.length > 50) {
+                title = title.substring(0, 50) + '...';
+            }
+            
+            // Skip empty or invalid menu items
+            if (!title || title.length < 2) return null;
+            
+            // Determine appropriate icon based on title
+            let icon = 'fas fa-folder'; // Default icon
+            
+            const iconMappings = [
+                { keywords: ['الموارد البشرية', 'HR', 'موظف', 'عامل', 'Employee', 'human'], icon: 'fas fa-users' },
+                { keywords: ['المالية', 'محاسب', 'Finance', 'مال', 'حساب', 'financial', 'accounting'], icon: 'fas fa-calculator' },
+                { keywords: ['المبيعات', 'Sales', 'بيع', 'عميل', 'customer'], icon: 'fas fa-chart-line' },
+                { keywords: ['المشتريات', 'Purchase', 'شراء', 'مورد', 'supplier'], icon: 'fas fa-shopping-cart' },
+                { keywords: ['المخزون', 'Inventory', 'مخزن', 'مستودع', 'warehouse', 'stock'], icon: 'fas fa-warehouse' },
+                { keywords: ['التقارير', 'Reports', 'تقرير', 'report'], icon: 'fas fa-chart-bar' },
+                { keywords: ['لوحة', 'Dashboard', 'الرئيسية', 'Home', 'main'], icon: 'fas fa-tachometer-alt' },
+                { keywords: ['الإعدادات', 'Settings', 'إعداد', 'تكوين', 'config'], icon: 'fas fa-cog' },
+                { keywords: ['الأمان', 'Security', 'أمن', 'صلاحية', 'permission'], icon: 'fas fa-shield-alt' },
+                { keywords: ['البيانات', 'Data', 'قاعدة', 'database'], icon: 'fas fa-database' },
+                { keywords: ['المستخدمين', 'Users', 'مستخدم', 'user'], icon: 'fas fa-user-friends' },
+                { keywords: ['الفواتير', 'Invoice', 'فاتورة', 'bill'], icon: 'fas fa-file-invoice' }
+            ];
+            
+            for (const mapping of iconMappings) {
+                if (mapping.keywords.some(keyword => title.toLowerCase().includes(keyword.toLowerCase()))) {
+                    icon = mapping.icon;
+                    break;
+                }
+            }
+            
+            // Make sure URL is properly formatted
+            if (url && url !== '#' && !url.startsWith('http') && !url.startsWith('/') && !url.startsWith('javascript:')) {
+                url = '/' + url;
+            }
+            
+            return {
+                title: title,
+                url: url,
+                icon: icon
+            };
+        }
+        
+        // End of extractFromTableMenu function
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('📋 DOM loaded, initializing systems...');
+            
+            initLegacyDataBridge();
+
+            // Set up DOM observer with disconnect after success
+            const observer = new MutationObserver(function(mutations) {
+                const state = window.ModernMenuExtractionState || (window.ModernMenuExtractionState = {});
+                if (state.done) return; // Skip if already processed
+                
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        const pageMenuBar = document.getElementById('PageMenuBar') || 
+                                          document.getElementById('ctl00_PageMenuBar') || 
+                                          document.querySelector('.PageMenuBar');
+                        
+                        if (pageMenuBar && pageMenuBar.children.length > 0 && !state.done) {
+                            console.log('📋 PageMenuBar populated - observer disconnecting');
+                            try { observer.disconnect(); } catch (_) {}
+                            // No need to extract since service already provided data
+                        }
+                    }
+                });
+            });
+
+            // Start observing but with limited scope
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            // Auto-disconnect observer after 10 seconds
+            setTimeout(() => {
+                try { observer.disconnect(); } catch (_) {}
+                console.log('📋 Observer auto-disconnected after 10 seconds');
+            }, 10000);
+
+            // Wait for ASP.NET postback and menu generation (guarded by state)
+            setTimeout(() => {
+                const state = window.ModernMenuExtractionState || (window.ModernMenuExtractionState = {});
+                if (!state.done) {
+                    console.log('📋 Starting menu data extraction (fallback)...');
+                    extractLegacyMenuData();
+                } else {
+                    console.log('🟢 Skipping DOM extraction: menu already loaded from service');
+                }
+            }, 1500);
+
+            // Simplified retry loop with timeout
+            let menuExtractionAttempts = 0;
+            const maxAttempts = 3; // Reduced from 8
+            const menuExtractionInterval = setInterval(() => {
+                menuExtractionAttempts++;
+                
+                if ((window.ModernMenuData && window.ModernMenuData.length > 0) || 
+                    (window.ModernMenuExtractionState && window.ModernMenuExtractionState.done)) {
+                    console.log('📋 Menu data available - stopping retry loop');
+                    clearInterval(menuExtractionInterval);
+                } else if (menuExtractionAttempts >= maxAttempts) {
+                    console.log('📋 Max retry attempts reached - navbar ready without sidebar');
+                    clearInterval(menuExtractionInterval);
+                } else {
+                    console.log(`📋 Retry attempt ${menuExtractionAttempts}/${maxAttempts}`);
+                    // Only retry if service failed and we need DOM extraction
+                    const state = window.ModernMenuExtractionState || (window.ModernMenuExtractionState = {});
+                    if (!state.done) {
+                        extractLegacyMenuData();
+                    }
+                }
+            }, 3000); // Increased interval
+
+            setTimeout(() => {
+                initLegacyDataBridge();
+            }, 1000);
+        });
+
+        // Also try after window load (when all resources are loaded)
+        window.addEventListener('load', function () {
+            console.log('📋 Window fully loaded, final attempt at menu extraction...');
+            document.body.classList.add('loaded');
+            
+            setTimeout(() => {
+                if (!window.ModernMenuData || window.ModernMenuData.length === 0) {
+                    console.log('📋 Final attempt to extract menu data after window load...');
+                    extractLegacyMenuData();
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

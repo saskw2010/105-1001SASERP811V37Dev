@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Journal_Entry" conflictDetection="overwriteChanges" label="Journal Entry" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Journal_Entry"."Journal Entry ID" "JournalEntryID"
+	,"Journal_Entry"."ID Number" "IDNumber"
+	,"Journal_Entry"."Account Number" "AccountNumber"
+	,"Journal_Entry"."Journal Entry Type ID" "JournalEntryTypeID"
+	,"Journal_Entry"."Date" "Date"
+	,"Journal_Entry"."Amount" "Amount"
+	,"Journal_Entry"."Debit Or Credit" "DebitOrCredit"
+	,"Journal_Entry"."Comments" "Comments"
+	,"Journal_Entry"."sgm" "sgm"
+	,"Journal_Entry"."branch" "branch"
+	,"Journal_Entry"."acdcode" "acdcode"
+	,"Journal_Entry"."Monthtrs" "Monthtrs"
+	,"Journal_Entry"."YEARTRS" "YEARTRS"
+	,"Journal_Entry"."Desc1" "Desc1"
+	,"Journal_Entry"."Desc2" "Desc2"
+	,"Journal_Entry"."sgm_Nm" "sgm_Nm"
+	,"Journal_Entry"."sgm_Nme" "sgm_Nme"
+	,"Journal_Entry"."OpcoName" "OpcoName"
+	,"Journal_Entry"."OpcoNameE" "OpcoNameE"
+	,"Journal_Entry"."schtypid" "schtypid"
+	,"Journal_Entry"."Costcntr_Nm" "Costcntr_Nm"
+	,"Journal_Entry"."Costcntr_Nme" "Costcntr_Nme"
+	,"Journal_Entry"."Costcntr_Nm1" "Costcntr_Nm1"
+	,"Journal_Entry"."Costcntr_Nme1" "Costcntr_Nme1"
+	,"Journal_Entry"."maincostname1" "maincostname1"
+	,"Journal_Entry"."Mcost_No" "Mcost_No"
+	,"Journal_Entry"."maincostname2" "maincostname2"
+	,"Journal_Entry"."Manalysis_No" "Manalysis_No"
+	,"Journal_Entry"."mainanalname1" "mainanalname1"
+	,"Journal_Entry"."mainanalname2" "mainanalname2"
+	,"Journal_Entry"."OpcoID" "OpcoID"
+	,"Journal_Entry"."Tr_Dt" "Tr_Dt"
+from "dbo"."Journal_Entry" "Journal_Entry"
+]]></text>
+    </command>
+    <command id="branchIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="branch" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="JournalEntryID" type="Int64" label="Journal Entry#" showInSummary="true" />
+    <field name="IDNumber" type="String" label="ID Number" length="50" showInSummary="true" />
+    <field name="AccountNumber" type="Int64" label="Account Number" showInSummary="true" />
+    <field name="JournalEntryTypeID" type="Int64" label="Journal Entry Type#" showInSummary="true" />
+    <field name="Date" type="DateTime" label="Date" showInSummary="true" />
+    <field name="Amount" type="Decimal" label="Amount" readOnly="true" />
+    <field name="DebitOrCredit" type="String" allowNulls="false" label="Debit Or Credit" readOnly="true" length="6" />
+    <field name="Comments" type="String" allowQBE="false" allowSorting="false" label="Comments" length="-1" />
+    <field name="sgm" type="Int32" allowNulls="false" label="Sgm" readOnly="true" />
+    <field name="branch" type="Int64" label="Branch" readOnly="true" />
+    <field name="acdcode" type="Int64" label="Acdcode" readOnly="true" />
+    <field name="Monthtrs" type="String" label="Monthtrs" readOnly="true" length="2" />
+    <field name="YEARTRS" type="String" label="Yeartrs" readOnly="true" length="4" />
+    <field name="Desc1" type="String" label="Desc1" length="50" />
+    <field name="Desc2" type="String" label="Desc2" length="50" />
+    <field name="sgm_Nm" type="String" label="sgm Nm" length="255" />
+    <field name="sgm_Nme" type="String" label="sgm Nme" length="255" />
+    <field name="OpcoName" type="String" label="Opco Name" length="50" />
+    <field name="OpcoNameE" type="String" label="Opco Name E" length="50" />
+    <field name="schtypid" type="Int64" label="Schtypid" />
+    <field name="Costcntr_Nm" type="String" label="Costcntr Nm" length="255" />
+    <field name="Costcntr_Nme" type="String" label="Costcntr Nme" length="255" />
+    <field name="Costcntr_Nm1" type="String" label="Costcntr Nm1" length="255" />
+    <field name="Costcntr_Nme1" type="String" label="Costcntr Nme1" length="255" />
+    <field name="maincostname1" type="String" label="Maincostname1" length="255" />
+    <field name="Mcost_No" type="Int64" label="Mcost No" />
+    <field name="maincostname2" type="String" label="Maincostname2" length="255" />
+    <field name="Manalysis_No" type="Int64" label="Manalysis No" />
+    <field name="mainanalname1" type="String" label="Mainanalname1" length="255" />
+    <field name="mainanalname2" type="String" label="Mainanalname2" length="255" />
+    <field name="OpcoID" type="Int64" label="Opco#" />
+    <field name="Tr_Dt" type="DateTime" label="Tr Dt" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Journal Entry">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="DebitOrCredit" columns="6" />
+        <dataField fieldName="JournalEntryID" columns="15" />
+        <dataField fieldName="IDNumber" columns="50" />
+        <dataField fieldName="AccountNumber" columns="15" />
+        <dataField fieldName="JournalEntryTypeID" columns="15" />
+        <dataField fieldName="Date" columns="10" />
+        <dataField fieldName="Amount" dataFormatString="c" columns="15" />
+        <dataField fieldName="Comments" rows="5" />
+        <dataField fieldName="sgm" columns="15" />
+        <dataField fieldName="branch" columns="15" />
+        <dataField fieldName="acdcode" columns="15" />
+        <dataField fieldName="Monthtrs" columns="2" />
+        <dataField fieldName="YEARTRS" columns="4" />
+        <dataField fieldName="Desc1" columns="50" />
+        <dataField fieldName="Desc2" columns="50" />
+        <dataField fieldName="sgm_Nm" />
+        <dataField fieldName="sgm_Nme" />
+        <dataField fieldName="OpcoName" columns="50" />
+        <dataField fieldName="OpcoNameE" columns="50" />
+        <dataField fieldName="schtypid" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Journal Entry">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Journal Entry" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="JournalEntryID" columns="15" />
+            <dataField fieldName="IDNumber" columns="50" />
+            <dataField fieldName="AccountNumber" columns="15" />
+            <dataField fieldName="JournalEntryTypeID" columns="15" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="Amount" dataFormatString="c" columns="15" />
+            <dataField fieldName="DebitOrCredit" columns="6" />
+            <dataField fieldName="Comments" rows="5" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="Monthtrs" columns="2" />
+            <dataField fieldName="YEARTRS" columns="4" />
+            <dataField fieldName="Desc1" columns="50" />
+            <dataField fieldName="Desc2" columns="50" />
+            <dataField fieldName="sgm_Nm" />
+            <dataField fieldName="sgm_Nme" />
+            <dataField fieldName="OpcoName" columns="50" />
+            <dataField fieldName="OpcoNameE" columns="50" />
+            <dataField fieldName="schtypid" columns="15" />
+            <dataField fieldName="Costcntr_Nm" />
+            <dataField fieldName="Costcntr_Nme" />
+            <dataField fieldName="Costcntr_Nm1" />
+            <dataField fieldName="Costcntr_Nme1" />
+            <dataField fieldName="maincostname1" />
+            <dataField fieldName="Mcost_No" columns="15" />
+            <dataField fieldName="maincostname2" />
+            <dataField fieldName="Manalysis_No" columns="15" />
+            <dataField fieldName="mainanalname1" />
+            <dataField fieldName="mainanalname2" />
+            <dataField fieldName="OpcoID" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Journal Entry">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Journal Entry" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="JournalEntryID" columns="15" />
+            <dataField fieldName="IDNumber" columns="50" />
+            <dataField fieldName="AccountNumber" columns="15" />
+            <dataField fieldName="JournalEntryTypeID" columns="15" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="Comments" rows="5" />
+            <dataField fieldName="Desc1" columns="50" />
+            <dataField fieldName="Desc2" columns="50" />
+            <dataField fieldName="sgm_Nm" />
+            <dataField fieldName="sgm_Nme" />
+            <dataField fieldName="OpcoName" columns="50" />
+            <dataField fieldName="OpcoNameE" columns="50" />
+            <dataField fieldName="schtypid" columns="15" />
+            <dataField fieldName="Costcntr_Nm" />
+            <dataField fieldName="Costcntr_Nme" />
+            <dataField fieldName="Costcntr_Nm1" />
+            <dataField fieldName="Costcntr_Nme1" />
+            <dataField fieldName="maincostname1" />
+            <dataField fieldName="Mcost_No" columns="15" />
+            <dataField fieldName="maincostname2" />
+            <dataField fieldName="Manalysis_No" columns="15" />
+            <dataField fieldName="mainanalname1" />
+            <dataField fieldName="mainanalname2" />
+            <dataField fieldName="OpcoID" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

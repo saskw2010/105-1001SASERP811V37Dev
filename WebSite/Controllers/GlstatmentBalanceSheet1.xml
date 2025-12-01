@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="GlstatmentBalanceSheet" conflictDetection="overwriteChanges" label="Glstatment Balance Sheet" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"GlstatmentBalanceSheet"."Acc_Bnd" "Acc_Bnd"
+	,"GlstatmentBalanceSheet"."Acc_Nm" "Acc_Nm"
+	,"GlstatmentBalanceSheet"."Acc_Nme" "Acc_Nme"
+	,"GlstatmentBalanceSheet"."Account Number" "AccountNumber"
+	,"GlstatmentBalanceSheet"."Account Class ID" "AccountClassID"
+	,"GlstatmentBalanceSheet"."Account Heading Number" "AccountHeadingNumber"
+	,"GlstatmentBalanceSheet"."parentid" "parentid"
+	,"GlstatmentBalanceSheet"."Account Name" "AccountName"
+	,"GlstatmentBalanceSheet"."Description" "Description"
+	,"GlstatmentBalanceSheet"."Account Type ID" "AccountTypeID"
+	,"GlstatmentBalanceSheet"."Acc_Bab" "Acc_Bab"
+	,"GlstatmentBalanceSheet"."Account Name Band" "AccountNameBand"
+	,"GlstatmentBalanceSheet"."Account Name Bande" "AccountNameBande"
+	,"GlstatmentBalanceSheet"."Account Heading Name" "AccountHeadingName"
+	,"GlstatmentBalanceSheet"."Account Heading Name1" "AccountHeadingName1"
+	,"GlstatmentBalanceSheet"."OpcoID" "OpcoID"
+	,"GlstatmentBalanceSheet"."OpcoName" "OpcoName"
+	,"GlstatmentBalanceSheet"."OpcoNameE" "OpcoNameE"
+	,"GlstatmentBalanceSheet"."sgm" "sgm"
+	,"GlstatmentBalanceSheet"."sgm_Nm" "sgm_Nm"
+	,"GlstatmentBalanceSheet"."sgm_Nme" "sgm_Nme"
+	,"GlstatmentBalanceSheet"."Desc1" "Desc1"
+	,"GlstatmentBalanceSheet"."Desc2" "Desc2"
+	,"GlstatmentBalanceSheet"."d1" "d1"
+	,"GlstatmentBalanceSheet"."d2" "d2"
+	,"GlstatmentBalanceSheet"."CreatedBy" "CreatedBy"
+	,"GlstatmentBalanceSheet"."CreatedOn" "CreatedOn"
+	,"GlstatmentBalanceSheet"."ModifiedBy" "ModifiedBy"
+	,"GlstatmentBalanceSheet"."ModifiedOn" "ModifiedOn"
+	,"GlstatmentBalanceSheet"."autoid" "autoid"
+	,"GlstatmentBalanceSheet"."SubledgerDescrption" "SubledgerDescrption"
+	,"GlstatmentBalanceSheet"."Cstm_no" "Cstm_no"
+	,"GlstatmentBalanceSheet"."Cstm_nm" "Cstm_nm"
+	,"GlstatmentBalanceSheet"."Cstm_nme" "Cstm_nme"
+	,"GlstatmentBalanceSheet"."glblnrp1id" "glblnrp1id"
+	,"GlstatmentBalanceSheet"."Expr1" "Expr1"
+	,"GlstatmentBalanceSheet"."branch" "branch"
+	,"GlstatmentBalanceSheet"."Acc_No" "Acc_No"
+	,"GlstatmentBalanceSheet"."csmsup_no" "csmsup_no"
+	,"GlstatmentBalanceSheet"."cstyp_no" "cstyp_no"
+	,"GlstatmentBalanceSheet"."OPTRDB" "OPTRDB"
+	,"GlstatmentBalanceSheet"."OPTRCR" "OPTRCR"
+	,"GlstatmentBalanceSheet"."OPTR" "OPTR"
+	,"GlstatmentBalanceSheet"."TRDB" "TRDB"
+	,"GlstatmentBalanceSheet"."TRCR" "TRCR"
+	,"GlstatmentBalanceSheet"."TR" "TR"
+	,"GlstatmentBalanceSheet"."lastdb" "lastdb"
+	,"GlstatmentBalanceSheet"."lastcr" "lastcr"
+	,"GlstatmentBalanceSheet"."firstdbtrs" "firstdbtrs"
+	,"GlstatmentBalanceSheet"."firstcrtrs" "firstcrtrs"
+	,"GlstatmentBalanceSheet"."Transdb" "Transdb"
+	,"GlstatmentBalanceSheet"."Transcr" "Transcr"
+	,"GlstatmentBalanceSheet"."Totlastbalance" "Totlastbalance"
+	,"GlstatmentBalanceSheet"."TotFirstbalance" "TotFirstbalance"
+	,"GlstatmentBalanceSheet"."code_no" "code_no"
+	,"GlstatmentBalanceSheet"."code_nm" "code_nm"
+	,"GlstatmentBalanceSheet"."cross_NO" "cross_NO"
+	,"GlstatmentBalanceSheet"."cross_Nm" "cross_Nm"
+	
+	,"GlstatmentBalanceSheet"."sncode" "sncode"
+	,"GlstatmentBalanceSheet"."Expr5" "Expr5"
+	,"GlstatmentBalanceSheet"."groupinglist" "groupinglist"
+	,"GlstatmentBalanceSheet"."groupinglist1" "groupinglist1"
+	,"GlstatmentBalanceSheet"."groupinglist2" "groupinglist2"
+	,"GlstatmentBalanceSheet"."groupinglist3" "groupinglist3"
+	,"GlstatmentBalanceSheet"."groupinglist4" "groupinglist4"
+	,"GlstatmentBalanceSheet"."groupinglist5" "groupinglist5"
+	,"GlstatmentBalanceSheet"."groupinglist6" "groupinglist6"
+	,"GlstatmentBalanceSheet"."groupinglist7" "groupinglist7"
+	,"GlstatmentBalanceSheet"."groupinglist8" "groupinglist8"
+	,"GlstatmentBalanceSheet"."groupinglist9" "groupinglist9"
+from "dbo"."GlstatmentBalanceSheet5n" "GlstatmentBalanceSheet"
+]]></text>
+    </command>
+    <command id="Acc_BabIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Acc_Bab" />
+      </output>
+    </command>
+    <command id="branchIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="branch" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="cross_NO" type="Int64"   label="cross NO" readOnly="true" />
+    <field name="cross_Nm" type="String" label="cross Nm" length="255" showInSummary="true" />
+    <field name="Acc_Bnd" type="Int64" label="Acc Bnd" showInSummary="true" />
+    <field name="Acc_Nm" type="String" label="Acc Nm" length="255" showInSummary="true" />
+    <field name="Acc_Nme" type="String" label="Acc Nme" length="255" showInSummary="true" />
+    <field name="AccountNumber" type="Int64" label="Account Number" showInSummary="true" />
+    <field name="AccountClassID" type="Int64" label="Account Class#" showInSummary="true" />
+    <field name="AccountHeadingNumber" type="String" label="Account Heading Number" readOnly="true" length="2" />
+    <field name="parentid" type="Int64" label="Parentid" />
+    <field name="AccountName" type="String" label="Account Name" length="255" />
+    <field name="Description" type="String" label="Description" length="255" />
+    <field name="AccountTypeID" type="Int64" label="Account Type#" />
+    <field name="Acc_Bab" type="Int64" label="Acc Bab" readOnly="true" />
+    <field name="AccountNameBand" type="String" label="Account Name Band" length="50" />
+    <field name="AccountNameBande" type="String" label="Account Name Bande" length="255" />
+    <field name="AccountHeadingName" type="String" label="Account Heading Name" length="50" />
+    <field name="AccountHeadingName1" type="String" label="Account Heading Name1" length="255" />
+    <field name="OpcoID" type="Int64" label="Opco#" />
+    <field name="OpcoName" type="String" label="Opco Name" length="50" />
+    <field name="OpcoNameE" type="String" label="Opco Name E" length="50" />
+    <field name="sgm" type="Int64" label="Sgm" />
+    <field name="sgm_Nm" type="String" label="sgm Nm" length="255" />
+    <field name="sgm_Nme" type="String" label="sgm Nme" length="255" />
+    <field name="Desc1" type="String" label="Desc1" length="50" />
+    <field name="Desc2" type="String" label="Desc2" length="50" />
+    <field name="d1" type="DateTime" allowNulls="false" label="D1" />
+    <field name="d2" type="DateTime" allowNulls="false" label="D2" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="ModifiedBy" type="String" allowNulls="false" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="autoid" type="Int64" allowNulls="false" label="Autoid" />
+    <field name="SubledgerDescrption" type="String" label="Subledger Descrption" length="50" />
+    <field name="Cstm_no" type="Int64" label="Cstm no" />
+    <field name="Cstm_nm" type="String" label="Cstm nm" length="255" />
+    <field name="Cstm_nme" type="String" label="Cstm nme" length="255" />
+    <field name="glblnrp1id" type="Int64" allowNulls="false" label="Glblnrp1id" />
+    <field name="Expr1" type="Int64" label="Expr1" />
+    <field name="branch" type="Int64" label="Branch" readOnly="true" />
+    <field name="Acc_No" type="Int64" label="Acc No" />
+    <field name="csmsup_no" type="Int64" label="Csmsup No" />
+    <field name="cstyp_no" type="Int64" label="Cstyp No" />
+    <field name="OPTRDB" type="Decimal" label="Optrdb" />
+    <field name="OPTRCR" type="Decimal" label="Optrcr" />
+    <field name="OPTR" type="Decimal" label="Optr" />
+    <field name="TRDB" type="Decimal" label="Trdb" />
+    <field name="TRCR" type="Decimal" label="Trcr" />
+    <field name="TR" type="Decimal" label="Tr" />
+    <field name="lastdb" type="Decimal" label="Lastdb" readOnly="true" />
+    <field name="lastcr" type="Decimal" label="Lastcr" readOnly="true" />
+    <field name="firstdbtrs" type="Decimal" label="Firstdbtrs" />
+    <field name="firstcrtrs" type="Decimal" label="Firstcrtrs" />
+    <field name="Transdb" type="Decimal" label="Transdb" />
+    <field name="Transcr" type="Decimal" label="Transcr" />
+    <field name="Totlastbalance" type="Decimal" label="Totlastbalance" readOnly="true" />
+    <field name="TotFirstbalance" type="Decimal" label="Tot Firstbalance" />
+	 <field name="code_no" type="Int64" label="code_no" />
+	 <field name="code_nm" type="String" allowNulls="false" label="code_nm" length="50" />
+	 
+	 
+    <field name="sncode" type="Int64" label="Sncode" />
+    <field name="Expr5" type="String" label="Expr5" length="50" />
+    <field name="groupinglist" type="String" label="Groupinglist" length="50" />
+    <field name="groupinglist1" type="String" label="Groupinglist1" length="50" />
+    <field name="groupinglist2" type="String" label="Groupinglist2" length="50" />
+    <field name="groupinglist3" type="String" label="Groupinglist3" length="50" />
+    <field name="groupinglist4" type="String" label="Groupinglist4" length="50" />
+    <field name="groupinglist5" type="String" label="Groupinglist5" length="50" />
+    <field name="groupinglist6" type="String" label="Groupinglist6" length="50" />
+    <field name="groupinglist7" type="String" label="Groupinglist7" length="50" />
+    <field name="groupinglist8" type="String" label="Groupinglist8" length="50" />
+    <field name="groupinglist9" type="String" label="Groupinglist9" length="50" />	 
+	 
+	 
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Glstatment Balance Sheet">
+      <dataFields>
+	  <dataField fieldName="code_nm" />
+	  <dataField fieldName="code_no" />
+	  <dataField fieldName="cross_NO" columns="15"  />
+        <dataField fieldName="cross_Nm"  />
+	    <dataField fieldName="Acc_Nm" />
+		<dataField fieldName="AccountNumber" columns="15" />
+	    <dataField fieldName="Desc1" columns="50"   />
+		 
+      
+		 <dataField fieldName="AccountNameBand" columns="50" />
+		 <dataField fieldName="AccountHeadingName" columns="50" />
+		 <dataField fieldName="sgm_Nm"  />
+	     <dataField fieldName="OpcoName" columns="50"  hidden="true"/>
+		 <dataField fieldName="SubledgerDescrption" columns="50" />
+        <dataField fieldName="Cstm_no" columns="15" />
+        <dataField fieldName="Cstm_nm" rows="5" />
+		
+        <dataField fieldName="csmsup_no" columns="15"    hidden="true"/>
+		 <dataField fieldName="Totlastbalance"  dataFormatString="n3" columns="15"  aggregate="Sum" />
+		 
+		 <dataField fieldName="AccountName"    hidden="true"/>
+		<dataField fieldName="Description"   hidden="true"/>
+		<dataField fieldName="Acc_No" columns="15"  hidden="true"/>
+        <dataField fieldName="Acc_Bnd" columns="15"   hidden="true"/>
+        <dataField fieldName="Acc_Nme"   hidden="true"/>
+        <dataField fieldName="AccountClassID" columns="15"   hidden="true"/>
+        <dataField fieldName="AccountHeadingNumber" columns="2"   hidden="true"/>
+        <dataField fieldName="parentid" columns="15"   hidden="true"/>
+       <dataField fieldName="AccountTypeID" columns="15"   hidden="true"/>
+        <dataField fieldName="Acc_Bab" columns="15"   hidden="true"/>
+       <dataField fieldName="AccountNameBande"   hidden="true"/>
+      
+        <dataField fieldName="AccountHeadingName1"   hidden="true"/>
+        <dataField fieldName="OpcoID" columns="15"   hidden="true"/>
+   
+        <dataField fieldName="OpcoNameE" columns="50"   hidden="true"/>
+        <dataField fieldName="sgm" columns="15"   hidden="true"/>
+      
+        <dataField fieldName="sgm_Nme"  />
+      
+        <dataField fieldName="Desc2" columns="50"   hidden="true"/>
+        <dataField fieldName="d1" columns="10"   hidden="true"/>
+        <dataField fieldName="d2" columns="10"   hidden="true"/>
+        <dataField fieldName="CreatedBy" columns="50"   hidden="true"/>
+        <dataField fieldName="CreatedOn" columns="10"   hidden="true"/>
+        <dataField fieldName="ModifiedBy" columns="50"   hidden="true"/>
+        <dataField fieldName="ModifiedOn" columns="10"   hidden="true"/>
+        <dataField fieldName="autoid" columns="15"   hidden="true"/>
+    
+        <dataField fieldName="Cstm_nme" rows="5"   hidden="true"/>
+        <dataField fieldName="glblnrp1id" columns="15"   hidden="true"/>
+        <dataField fieldName="Expr1" columns="15"   hidden="true"/>
+        <dataField fieldName="branch"  />
+        
+        <dataField fieldName="cstyp_no" columns="15"   hidden="true"/>
+        <dataField fieldName="OPTRDB" dataFormatString="n3" columns="15"  aggregate="Sum"   hidden="true"/>
+        <dataField fieldName="OPTRCR" dataFormatString="n3" columns="15"  aggregate="Sum"   hidden="true"/>
+        <dataField fieldName="OPTR" dataFormatString="n3" columns="15"  aggregate="Sum"   hidden="true"/>
+        <dataField fieldName="TRDB" dataFormatString="n3" columns="15"  aggregate="Sum"    hidden="true"/>
+        <dataField fieldName="TRCR" dataFormatString="n3" columns="15"  aggregate="Sum"    hidden="true"/>
+        <dataField fieldName="TR"   dataFormatString="n3" columns="15"  aggregate="Sum"    hidden="true"/>
+        <dataField fieldName="lastdb" dataFormatString="n3" columns="15"  aggregate="Sum"    hidden="true"/>
+        <dataField fieldName="lastcr" dataFormatString="n3" columns="15"  aggregate="Sum"    hidden="true"/>
+        <dataField fieldName="firstdbtrs" columns="15"  dataFormatString="n3"  aggregate="Sum"    hidden="true"/>
+        <dataField fieldName="firstcrtrs" columns="15"  dataFormatString="n3"  aggregate="Sum"    hidden="true"/>
+        <dataField fieldName="Transdb"  dataFormatString="n3" columns="15"  aggregate="Sum"    hidden="true"/>
+        <dataField fieldName="Transcr"  dataFormatString="n3" columns="15"  aggregate="Sum"    hidden="true"/>
+       
+        <dataField fieldName="TotFirstbalance"  dataFormatString="n3" columns="15"  aggregate="Sum"    hidden="true"/>
+		
+ 	    <dataField fieldName="sncode" columns="15" />
+        <dataField fieldName="Expr5" columns="15" />
+		
+        <dataField fieldName="groupinglist" columns="50" />
+        <dataField fieldName="groupinglist1" columns="50" />
+        <dataField fieldName="groupinglist2" columns="50" />
+        <dataField fieldName="groupinglist3" columns="50" />
+        <dataField fieldName="groupinglist4" columns="50" />
+        <dataField fieldName="groupinglist5" columns="50" />
+        <dataField fieldName="groupinglist6" columns="50" />
+        <dataField fieldName="groupinglist7" columns="50" />
+        <dataField fieldName="groupinglist8" columns="50" />
+        <dataField fieldName="groupinglist9" columns="50" />		
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Glstatment Balance Sheet">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Glstatment Balance Sheet" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Acc_Bnd" columns="15" />
+            <dataField fieldName="Acc_Nm" />
+            <dataField fieldName="Acc_Nme" />
+            <dataField fieldName="AccountNumber" columns="15" />
+            <dataField fieldName="AccountClassID" columns="15" />
+            <dataField fieldName="AccountHeadingNumber" columns="2" />
+            <dataField fieldName="parentid" columns="15" />
+            <dataField fieldName="AccountName" />
+            <dataField fieldName="Description" />
+            <dataField fieldName="AccountTypeID" columns="15" />
+            <dataField fieldName="Acc_Bab" columns="15" />
+            <dataField fieldName="AccountNameBand" columns="50" />
+            <dataField fieldName="AccountNameBande" />
+            <dataField fieldName="AccountHeadingName" columns="50" />
+            <dataField fieldName="AccountHeadingName1" />
+            <dataField fieldName="OpcoID" columns="15" />
+            <dataField fieldName="OpcoName" columns="50" />
+            <dataField fieldName="OpcoNameE" columns="50" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="sgm_Nm" />
+            <dataField fieldName="sgm_Nme" />
+            <dataField fieldName="Desc1" columns="50" />
+            <dataField fieldName="Desc2" columns="50" />
+            <dataField fieldName="d1" columns="10" />
+            <dataField fieldName="d2" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="autoid" columns="15" />
+            <dataField fieldName="SubledgerDescrption" columns="50" />
+            <dataField fieldName="Cstm_no" columns="15" />
+            <dataField fieldName="Cstm_nm" />
+            <dataField fieldName="Cstm_nme" />
+            <dataField fieldName="glblnrp1id" columns="15" />
+            <dataField fieldName="Expr1" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="csmsup_no" columns="15" />
+            <dataField fieldName="cstyp_no" columns="15" />
+            <dataField fieldName="OPTRDB" dataFormatString="c" columns="15" />
+            <dataField fieldName="OPTRCR" dataFormatString="c" columns="15" />
+            <dataField fieldName="OPTR" dataFormatString="c" columns="15" />
+            <dataField fieldName="TRDB" dataFormatString="c" columns="15" />
+            <dataField fieldName="TRCR" dataFormatString="c" columns="15" />
+            <dataField fieldName="TR" dataFormatString="c" columns="15" />
+            <dataField fieldName="lastdb" dataFormatString="c" columns="15" />
+            <dataField fieldName="lastcr" dataFormatString="c" columns="15" />
+            <dataField fieldName="firstdbtrs" dataFormatString="c" columns="15" />
+            <dataField fieldName="firstcrtrs" dataFormatString="c" columns="15" />
+            <dataField fieldName="Transdb" dataFormatString="c" columns="15" />
+            <dataField fieldName="Transcr" dataFormatString="c" columns="15" />
+            <dataField fieldName="Totlastbalance" dataFormatString="c" columns="15" />
+            <dataField fieldName="TotFirstbalance" dataFormatString="c" columns="15" />
+			<dataField fieldName="sncode" columns="15" />
+			<dataField fieldName="Expr5" columns="15" />
+			
+			<dataField fieldName="groupinglist" columns="50" />
+			<dataField fieldName="groupinglist1" columns="50" />
+			<dataField fieldName="groupinglist2" columns="50" />
+			<dataField fieldName="groupinglist3" columns="50" />
+			<dataField fieldName="groupinglist4" columns="50" />
+			<dataField fieldName="groupinglist5" columns="50" />
+			<dataField fieldName="groupinglist6" columns="50" />
+			<dataField fieldName="groupinglist7" columns="50" />
+			<dataField fieldName="groupinglist8" columns="50" />
+			<dataField fieldName="groupinglist9" columns="50" />			
+			
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Glstatment Balance Sheet">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Glstatment Balance Sheet" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Acc_Bnd" columns="15" />
+            <dataField fieldName="Acc_Nm" />
+            <dataField fieldName="Acc_Nme" />
+            <dataField fieldName="AccountNumber" columns="15" />
+            <dataField fieldName="AccountClassID" columns="15" />
+            <dataField fieldName="parentid" columns="15" />
+            <dataField fieldName="AccountName" />
+            <dataField fieldName="Description" />
+            <dataField fieldName="AccountTypeID" columns="15" />
+            <dataField fieldName="AccountNameBand" columns="50" />
+            <dataField fieldName="AccountNameBande" />
+            <dataField fieldName="AccountHeadingName" columns="50" />
+            <dataField fieldName="AccountHeadingName1" />
+            <dataField fieldName="OpcoID" columns="15" />
+            <dataField fieldName="OpcoName" columns="50" />
+            <dataField fieldName="OpcoNameE" columns="50" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="sgm_Nm" />
+            <dataField fieldName="sgm_Nme" />
+            <dataField fieldName="Desc1" columns="50" />
+            <dataField fieldName="Desc2" columns="50" />
+            <dataField fieldName="d1" columns="10" />
+            <dataField fieldName="d2" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="autoid" columns="15" />
+            <dataField fieldName="SubledgerDescrption" columns="50" />
+            <dataField fieldName="Cstm_no" columns="15" />
+            <dataField fieldName="Cstm_nm" />
+            <dataField fieldName="Cstm_nme" />
+            <dataField fieldName="glblnrp1id" columns="15" />
+            <dataField fieldName="Expr1" columns="15" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="csmsup_no" columns="15" />
+            <dataField fieldName="cstyp_no" columns="15" />
+            <dataField fieldName="OPTRDB" dataFormatString="c" columns="15" />
+            <dataField fieldName="OPTRCR" dataFormatString="c" columns="15" />
+            <dataField fieldName="OPTR" dataFormatString="c" columns="15" />
+            <dataField fieldName="TRDB" dataFormatString="c" columns="15" />
+            <dataField fieldName="TRCR" dataFormatString="c" columns="15" />
+            <dataField fieldName="TR" dataFormatString="c" columns="15" />
+            <dataField fieldName="firstdbtrs" dataFormatString="c" columns="15" />
+            <dataField fieldName="firstcrtrs" dataFormatString="c" columns="15" />
+            <dataField fieldName="Transdb" dataFormatString="c" columns="15" />
+            <dataField fieldName="Transcr" dataFormatString="c" columns="15" />
+            <dataField fieldName="TotFirstbalance" dataFormatString="c" columns="15" />
+			
+			<dataField fieldName="sncode" columns="15" />
+			<dataField fieldName="Expr5" columns="15" />
+			<dataField fieldName="groupinglist" columns="50" />
+			<dataField fieldName="groupinglist1" columns="50" />
+			<dataField fieldName="groupinglist2" columns="50" />
+			<dataField fieldName="groupinglist3" columns="50" />
+			<dataField fieldName="groupinglist4" columns="50" />
+			<dataField fieldName="groupinglist5" columns="50" />
+			<dataField fieldName="groupinglist6" columns="50" />
+			<dataField fieldName="groupinglist7" columns="50" />
+			<dataField fieldName="groupinglist8" columns="50" />
+			<dataField fieldName="groupinglist9" columns="50" />
+		
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

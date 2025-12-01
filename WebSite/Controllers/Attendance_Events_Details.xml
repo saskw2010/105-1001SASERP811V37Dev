@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Attendance_Events_Details" conflictDetection="overwriteChanges" label="Attendance Events Details" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Attendance_Events_Details"."SID" "SID"
+	,"Attendance_Events_Details"."Shift_Number" "Shift_Number"
+	,"Attendance_Events_Details"."Sign_In" "Sign_In"
+	,"Attendance_Events_Details"."Sign_Out" "Sign_Out"
+	,"Attendance_Events_Details"."Actual_In" "Actual_In"
+	,"Attendance_Events_Details"."Actual_Out" "Actual_Out"
+	,"Attendance_Events_Details"."Late_In" "Late_In"
+	,"Attendance_Events_Details"."Early_Out" "Early_Out"
+	,"Attendance_Events_Details"."IsAbsent" "IsAbsent"
+	,"Attendance_Events_Details"."IsSignIn" "IsSignIn"
+	,"Attendance_Events_Details"."IsSignOut" "IsSignOut"
+	,"Attendance_Events_Details"."SignTry_Count" "SignTry_Count"
+	,"Attendance_Events_Details"."Emp_Permissions_SID" "Emp_Permissions_SID"
+	,"Attendance_Events_Details"."Attendance_Event_SID" "Attendance_Event_SID"
+	,"Attendance_Event_S"."Emp_SID" "Attendance_Event_SEmp_SID"
+	,"Attendance_Events_Details"."In_Allowance" "In_Allowance"
+	,"Attendance_Events_Details"."Out_Allowance" "Out_Allowance"
+	,"Attendance_Events_Details"."OverTime_Count" "OverTime_Count"
+	,"Attendance_Events_Details"."In_Allowance_Duty" "In_Allowance_Duty"
+	,"Attendance_Events_Details"."Out_Allowance_Duty" "Out_Allowance_Duty"
+from "dbo"."Attendance_Events_Details" "Attendance_Events_Details"
+	left join "dbo"."Attendance_Events" "Attendance_Event_S" on "Attendance_Events_Details"."Attendance_Event_SID" = "Attendance_Event_S"."SID"
+]]></text>
+    </command>
+    <command id="SIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="SID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="SID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Sid" readOnly="true" />
+    <field name="Shift_Number" type="Int32" label="Shift Number" showInSummary="true" />
+    <field name="Sign_In" type="DateTime" label="Sign In" showInSummary="true" />
+    <field name="Sign_Out" type="DateTime" label="Sign Out" showInSummary="true" />
+    <field name="Actual_In" type="DateTime" label="Actual In" showInSummary="true" />
+    <field name="Actual_Out" type="DateTime" label="Actual Out" showInSummary="true" />
+    <field name="Late_In" type="Int32" label="Late In" />
+    <field name="Early_Out" type="Int32" label="Early Out" />
+    <field name="IsAbsent" type="Boolean" label="Is Absent" />
+    <field name="IsSignIn" type="Boolean" label="Is Sign In" />
+    <field name="IsSignOut" type="Boolean" label="Is Sign Out" />
+    <field name="SignTry_Count" type="Int32" label="Sign Try Count" />
+    <field name="Emp_Permissions_SID" type="Int32" label="Emp Permissions SID" />
+    <field name="Attendance_Event_SID" type="Int64" label="Attendance Event SID">
+      <items style="Lookup" dataController="Attendance_Events" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Attendance_Event_SEmp_SID" type="String" readOnly="true" label="Attendance Event S Emp SID" length="255" />
+    <field name="In_Allowance" type="Int32" label="In Allowance" />
+    <field name="Out_Allowance" type="Int32" label="Out Allowance" />
+    <field name="OverTime_Count" type="Int32" label="Over Time Count" />
+    <field name="In_Allowance_Duty" type="Int32" label="In Allowance Duty" />
+    <field name="Out_Allowance_Duty" type="Int32" label="Out Allowance Duty" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Attendance Events Details">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Shift_Number" columns="15" />
+        <dataField fieldName="Sign_In" columns="10" />
+        <dataField fieldName="Sign_Out" columns="10" />
+        <dataField fieldName="Actual_In" columns="10" />
+        <dataField fieldName="Actual_Out" columns="10" />
+        <dataField fieldName="Late_In" columns="15" />
+        <dataField fieldName="Early_Out" columns="15" />
+        <dataField fieldName="IsAbsent" />
+        <dataField fieldName="IsSignIn" />
+        <dataField fieldName="IsSignOut" />
+        <dataField fieldName="SignTry_Count" columns="15" />
+        <dataField fieldName="Emp_Permissions_SID" columns="15" />
+        <dataField fieldName="Attendance_Event_SID" aliasFieldName="Attendance_Event_SEmp_SID" hyperlinkFormatString="~/Pages/Attendance_Events.aspx?SID={Attendance_Event_SID}&amp;_controller=Attendance_Events&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="In_Allowance" columns="15" />
+        <dataField fieldName="Out_Allowance" columns="15" />
+        <dataField fieldName="OverTime_Count" columns="15" />
+        <dataField fieldName="In_Allowance_Duty" columns="15" />
+        <dataField fieldName="Out_Allowance_Duty" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Attendance Events Details">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Attendance Events Details" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Shift_Number" columns="15" />
+            <dataField fieldName="Sign_In" columns="10" />
+            <dataField fieldName="Sign_Out" columns="10" />
+            <dataField fieldName="Actual_In" columns="10" />
+            <dataField fieldName="Actual_Out" columns="10" />
+            <dataField fieldName="Late_In" columns="15" />
+            <dataField fieldName="Early_Out" columns="15" />
+            <dataField fieldName="IsAbsent" />
+            <dataField fieldName="IsSignIn" />
+            <dataField fieldName="IsSignOut" />
+            <dataField fieldName="SignTry_Count" columns="15" />
+            <dataField fieldName="Emp_Permissions_SID" columns="15" />
+            <dataField fieldName="Attendance_Event_SID" aliasFieldName="Attendance_Event_SEmp_SID" hyperlinkFormatString="~/Pages/Attendance_Events.aspx?SID={Attendance_Event_SID}&amp;_controller=Attendance_Events&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="In_Allowance" columns="15" />
+            <dataField fieldName="Out_Allowance" columns="15" />
+            <dataField fieldName="OverTime_Count" columns="15" />
+            <dataField fieldName="In_Allowance_Duty" columns="15" />
+            <dataField fieldName="Out_Allowance_Duty" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Attendance Events Details">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Attendance Events Details" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Shift_Number" columns="15" />
+            <dataField fieldName="Sign_In" columns="10" />
+            <dataField fieldName="Sign_Out" columns="10" />
+            <dataField fieldName="Actual_In" columns="10" />
+            <dataField fieldName="Actual_Out" columns="10" />
+            <dataField fieldName="Late_In" columns="15" />
+            <dataField fieldName="Early_Out" columns="15" />
+            <dataField fieldName="IsAbsent" />
+            <dataField fieldName="IsSignIn" />
+            <dataField fieldName="IsSignOut" />
+            <dataField fieldName="SignTry_Count" columns="15" />
+            <dataField fieldName="Emp_Permissions_SID" columns="15" />
+            <dataField fieldName="Attendance_Event_SID" aliasFieldName="Attendance_Event_SEmp_SID" />
+            <dataField fieldName="In_Allowance" columns="15" />
+            <dataField fieldName="Out_Allowance" columns="15" />
+            <dataField fieldName="OverTime_Count" columns="15" />
+            <dataField fieldName="In_Allowance_Duty" columns="15" />
+            <dataField fieldName="Out_Allowance_Duty" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

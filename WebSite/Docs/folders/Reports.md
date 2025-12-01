@@ -1,0 +1,5 @@
+# Folder: Reports
+
+Purpose: report definitions/templates (RDLC/HTML/etc.).
+
+Back to hub: ../index.md | TOC: ../TOC.md

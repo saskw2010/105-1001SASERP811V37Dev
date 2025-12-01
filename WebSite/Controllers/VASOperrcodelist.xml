@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="VASOperrcodelist" conflictDetection="overwriteChanges" label="VAS Operrcodelist" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"VASOperrcodelist"."VASoperatorcode" "VASoperatorcode"
+	,"VASOperrcodelist"."VASoperatorcodeDescription" "VASoperatorcodeDescription"
+	,"VASOperrcodelist"."Taxs" "Taxs"
+	,"VASOperrcodelist"."withdrawalTax" "withdrawalTax"
+	,"VASOperrcodelist"."appliedflag" "appliedflag"
+	,"VASOperrcodelist"."VasRegioncode" "VasRegioncode"
+	,"VasRegion"."VasRegiondescription" "VasRegionVasRegiondescription"
+	,"VASOperrcodelist"."VasCurrenceyCode" "VasCurrenceyCode"
+	,"VasCurrencey"."VasCurrenceyDescription" "VasCurrenceyVasCurrenceyDescription"
+	,"VASOperrcodelist"."VASopCategory" "VASopCategory"
+	,"TheVASopCategory"."VASopCategoryDescription" "TheVASopCategoryVASopCategoryDescription"
+	,"VASOperrcodelist"."Acc_no" "Acc_no"
+	,"Acc_"."Acc_Nm" "Acc_Acc_Nm"
+	,"Acc_Clsacc_"."Acc_Nm" "Acc_Clsacc_Acc_Nm"
+	,"Acc_Acc_Bnd"."Acc_Nm" "Acc_Acc_BndAcc_Nm"
+	,"Acc_Acc_Bndaccclass"."accountclass" "Acc_Acc_Bndaccclassaccountclass"
+	,"Acc_Acc_BndAcc_Bab"."Acc_Nm" "Acc_Acc_BndAcc_BabAcc_Nm"
+from "dbo"."VASOperrcodelist" "VASOperrcodelist"
+	left join "dbo"."VasRegionlist" "VasRegion" on "VASOperrcodelist"."VasRegioncode" = "VasRegion"."VasRegioncode"
+	left join "dbo"."VasCurrenceylist" "VasCurrencey" on "VASOperrcodelist"."VasCurrenceyCode" = "VasCurrencey"."VasCurrenceyCode"
+	left join "dbo"."VASOperatorCategory" "TheVASopCategory" on "VASOperrcodelist"."VASopCategory" = "TheVASopCategory"."VASopCategory"
+	left join "dbo"."GLmstrfl" "Acc_" on "VASOperrcodelist"."Acc_no" = "Acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "Acc_Clsacc_" on "Acc_"."Clsacc_No" = "Acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Acc_Acc_Bnd" on "Acc_"."Acc_Bnd" = "Acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "Acc_Acc_Bndaccclass" on "Acc_Acc_Bnd"."accclass" = "Acc_Acc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "Acc_Acc_BndAcc_Bab" on "Acc_Acc_Bnd"."Acc_Bab" = "Acc_Acc_BndAcc_Bab"."Acc_Bab"
+]]></text>
+    </command>
+    <command id="VASoperatorcodeIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="VASoperatorcode" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="VASoperatorcode" type="Int64" allowNulls="false" isPrimaryKey="true" label="VA Soperatorcode" readOnly="true" />
+    <field name="VASoperatorcodeDescription" type="String" label="VA Soperatorcode Description" length="150" showInSummary="true" />
+    <field name="Taxs" type="Decimal" default="((0))" label="Taxs" showInSummary="true" />
+    <field name="withdrawalTax" type="Decimal" label="withdrawal Tax" showInSummary="true" />
+    <field name="appliedflag" type="Boolean" label="Appliedflag" showInSummary="true" />
+    <field name="VasRegioncode" type="Int64" label="Vas Regioncode" showInSummary="true">
+      <items style="Lookup" dataController="VasRegionlist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="VasRegionVasRegiondescription" type="String" readOnly="true" label="Vas Region Vas Regiondescription" length="150" />
+    <field name="VasCurrenceyCode" type="Int64" label="Vas Currencey Code">
+      <items style="Lookup" dataController="VasCurrenceylist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="VasCurrenceyVasCurrenceyDescription" type="String" readOnly="true" label="Vas Currencey Description" length="150" />
+    <field name="VASopCategory" type="Int64" label="VA Sop Category">
+      <items style="Lookup" dataController="VASOperatorCategory" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheVASopCategoryVASopCategoryDescription" type="String" readOnly="true" label="VA Sop Category Description" length="150" />
+    <field name="Acc_no" type="Int64" label="Acc no">
+      <items style="Lookup" dataController="GLmstrfl" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Acc_Acc_Nm" type="String" readOnly="true" label="Acc Nm" length="255" />
+    <field name="Acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Acc Clsacc Acc Nm" length="250" />
+    <field name="Acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Nm" length="50" />
+    <field name="Acc_Acc_Bndaccclassaccountclass" type="String" readOnly="true" label="Acc Bndaccclassaccountclass" length="100" />
+    <field name="Acc_Acc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Bab Acc Nm" length="250" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="VAS Operrcodelist">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="VASoperatorcodeDescription" />
+        <dataField fieldName="Taxs" columns="15" />
+        <dataField fieldName="withdrawalTax" columns="15" />
+        <dataField fieldName="appliedflag" />
+        <dataField fieldName="VasRegioncode" aliasFieldName="VasRegionVasRegiondescription" hyperlinkFormatString="~/Pages/VasRegionlist.aspx?VasRegioncode={VasRegioncode}&amp;_controller=VasRegionlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="VasCurrenceyCode" aliasFieldName="VasCurrenceyVasCurrenceyDescription" hyperlinkFormatString="~/Pages/VasCurrenceylist.aspx?VasCurrenceyCode={VasCurrenceyCode}&amp;_controller=VasCurrenceylist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="VASopCategory" aliasFieldName="TheVASopCategoryVASopCategoryDescription" hyperlinkFormatString="~/Pages/VASOperatorCategory.aspx?VASopCategory={VASopCategory}&amp;_controller=VASOperatorCategory&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Acc_no" aliasFieldName="Acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={Acc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Acc_Clsacc_Acc_Nm" />
+        <dataField fieldName="Acc_Acc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="Acc_Acc_Bndaccclassaccountclass" />
+        <dataField fieldName="Acc_Acc_BndAcc_BabAcc_Nm" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review VAS Operrcodelist">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="VAS Operrcodelist" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="VASoperatorcodeDescription" />
+            <dataField fieldName="Taxs" columns="15" />
+            <dataField fieldName="withdrawalTax" columns="15" />
+            <dataField fieldName="appliedflag" />
+            <dataField fieldName="VasRegioncode" aliasFieldName="VasRegionVasRegiondescription" hyperlinkFormatString="~/Pages/VasRegionlist.aspx?VasRegioncode={VasRegioncode}&amp;_controller=VasRegionlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="VasCurrenceyCode" aliasFieldName="VasCurrenceyVasCurrenceyDescription" hyperlinkFormatString="~/Pages/VasCurrenceylist.aspx?VasCurrenceyCode={VasCurrenceyCode}&amp;_controller=VasCurrenceylist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="VASopCategory" aliasFieldName="TheVASopCategoryVASopCategoryDescription" hyperlinkFormatString="~/Pages/VASOperatorCategory.aspx?VASopCategory={VASopCategory}&amp;_controller=VASOperatorCategory&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Acc_no" aliasFieldName="Acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={Acc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Acc_Clsacc_Acc_Nm" />
+            <dataField fieldName="Acc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="Acc_Acc_Bndaccclassaccountclass" />
+            <dataField fieldName="Acc_Acc_BndAcc_BabAcc_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New VAS Operrcodelist">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New VAS Operrcodelist" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="VASoperatorcodeDescription" />
+            <dataField fieldName="Taxs" columns="15" />
+            <dataField fieldName="withdrawalTax" columns="15" />
+            <dataField fieldName="appliedflag" />
+            <dataField fieldName="VasRegioncode" aliasFieldName="VasRegionVasRegiondescription" />
+            <dataField fieldName="VasCurrenceyCode" aliasFieldName="VasCurrenceyVasCurrenceyDescription" />
+            <dataField fieldName="VASopCategory" aliasFieldName="TheVASopCategoryVASopCategoryDescription" />
+            <dataField fieldName="Acc_no" aliasFieldName="Acc_Acc_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

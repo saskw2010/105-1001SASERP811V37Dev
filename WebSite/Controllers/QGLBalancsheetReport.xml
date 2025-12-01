@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="QGLBalancsheetReport" conflictDetection="overwriteChanges" label="QGL Balancsheet Report" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"QGLBalancsheetReport"."Account Number" "AccountNumber"
+	,"QGLBalancsheetReport"."Date" "Date"
+	,"QGLBalancsheetReport"."Amount" "Amount"
+	,"QGLBalancsheetReport"."Debit Or Credit" "DebitOrCredit"
+	,"QGLBalancsheetReport"."Assets" "Assets"
+	,"QGLBalancsheetReport"."liabilities" "liabilities"
+	,"QGLBalancsheetReport"."EQUITY" "EQUITY"
+	,"QGLBalancsheetReport"."Revenue" "Revenue"
+	,"QGLBalancsheetReport"."Expenses" "Expenses"
+	,"QGLBalancsheetReport"."YTD_balance" "YTD_balance"
+	,"QGLBalancsheetReport"."type_total_heading" "type_total_heading"
+	,"QGLBalancsheetReport"."YTD_liability_and_equity_ balance" "YTD_liability_and_equity_balance"
+	,"QGLBalancsheetReport"."YTD_net_income" "YTD_net_income"
+	,"QGLBalancsheetReport"."YTD_total_assets" "YTD_total_assets"
+	,"QGLBalancsheetReport"."Journal Entry ID" "JournalEntryID"
+	,"QGLBalancsheetReport"."ID Number" "IDNumber"
+	,"QGLBalancsheetReport"."Journal Entry Type ID" "JournalEntryTypeID"
+	,"QGLBalancsheetReport"."Comments" "Comments"
+	,"QGLBalancsheetReport"."Account Class ID" "AccountClassID"
+	,"QGLBalancsheetReport"."Account Heading Number" "AccountHeadingNumber"
+	,"QGLBalancsheetReport"."Account Name" "AccountName"
+	,"QGLBalancsheetReport"."Description" "Description"
+	,"QGLBalancsheetReport"."Account Type ID" "AccountTypeID"
+	,"QGLBalancsheetReport"."Acc_Bab" "Acc_Bab"
+	,"QGLBalancsheetReport"."CLsacc_Nm" "CLsacc_Nm"
+	,"QGLBalancsheetReport"."Account Type" "AccountType"
+	,"QGLBalancsheetReport"."Balncetype" "Balncetype"
+	,"QGLBalancsheetReport"."Balncetypename" "Balncetypename"
+	,"QGLBalancsheetReport"."Balncetypename2" "Balncetypename2"
+	,"QGLBalancsheetReport"."incometype" "incometype"
+	,"QGLBalancsheetReport"."incometypename" "incometypename"
+	,"QGLBalancsheetReport"."incometypename2" "incometypename2"
+	,"QGLBalancsheetReport"."TransAmount" "TransAmount"
+	,"QGLBalancsheetReport"."Account Name Band" "AccountNameBand"
+	,"QGLBalancsheetReport"."Account Name Bande" "AccountNameBande"
+	,"QGLBalancsheetReport"."sgm" "sgm"
+	,"QGLBalancsheetReport"."branch" "branch"
+	,"QGLBalancsheetReport"."acdcode" "acdcode"
+	,"QGLBalancsheetReport"."Monthtrs" "Monthtrs"
+	,"QGLBalancsheetReport"."YEARTRS" "YEARTRS"
+	,"QGLBalancsheetReport"."Desc1" "Desc1"
+	,"QGLBalancsheetReport"."Desc2" "Desc2"
+	,"QGLBalancsheetReport"."sgm_Nm" "sgm_Nm"
+	,"QGLBalancsheetReport"."sgm_Nme" "sgm_Nme"
+	,"QGLBalancsheetReport"."OpcoName" "OpcoName"
+	,"QGLBalancsheetReport"."OpcoNameE" "OpcoNameE"
+	,"QGLBalancsheetReport"."schtypid" "schtypid"
+	,"QGLBalancsheetReport"."Costcntr_Nm" "Costcntr_Nm"
+	,"QGLBalancsheetReport"."Costcntr_Nme" "Costcntr_Nme"
+	,"QGLBalancsheetReport"."Costcntr_Nm1" "Costcntr_Nm1"
+	,"QGLBalancsheetReport"."Costcntr_Nme1" "Costcntr_Nme1"
+	,"QGLBalancsheetReport"."maincostname1" "maincostname1"
+	,"QGLBalancsheetReport"."Mcost_No" "Mcost_No"
+	,"QGLBalancsheetReport"."maincostname2" "maincostname2"
+	,"QGLBalancsheetReport"."Manalysis_No" "Manalysis_No"
+	,"QGLBalancsheetReport"."mainanalname1" "mainanalname1"
+	,"QGLBalancsheetReport"."mainanalname2" "mainanalname2"
+	,"QGLBalancsheetReport"."OpcoID" "OpcoID"
+	,"QGLBalancsheetReport"."Tr_Dt" "Tr_Dt"
+	,"QGLBalancsheetReport"."Account Heading Name" "AccountHeadingName"
+	,"QGLBalancsheetReport"."Account Heading Name1" "AccountHeadingName1"
+	,"QGLBalancsheetReport"."Expr1" "Expr1"
+	,"QGLBalancsheetReport"."autoid" "autoid"
+	,"QGLBalancsheetReport"."ModifiedBy" "ModifiedBy"
+	,"QGLBalancsheetReport"."d1" "d1"
+	,"QGLBalancsheetReport"."d2" "d2"
+	,"QGLBalancsheetReport"."Account Pairing" "AccountPairing"
+	,"QGLBalancsheetReport"."Account Name pairing" "AccountNamepairing"
+	,"QGLBalancsheetReport"."Account Name pairing1" "AccountNamepairing1"
+from "dbo"."QGLBalancsheetReport" "QGLBalancsheetReport"
+]]></text>
+    </command>
+    <command id="Acc_BabIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Acc_Bab" />
+      </output>
+    </command>
+    <command id="branchIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="branch" />
+      </output>
+    </command>
+    <command id="autoidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="autoid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="AccountNumber" type="Int64" label="Account Number" showInSummary="true" allowNulls="false" isPrimaryKey="true" />
+    <field name="Date" type="DateTime" label="Date" showInSummary="true" />
+    <field name="Amount" type="Decimal" allowNulls="false" label="Amount" readOnly="true" showInSummary="true" />
+    <field name="DebitOrCredit" type="String" allowNulls="false" label="Debit Or Credit" readOnly="true" length="6" showInSummary="true" />
+    <field name="Assets" type="Decimal" label="Assets" readOnly="true" showInSummary="true" />
+    <field name="liabilities" type="Decimal" label="Liabilities" readOnly="true" />
+    <field name="EQUITY" type="Decimal" label="Equity" readOnly="true" />
+    <field name="Revenue" type="Decimal" label="Revenue" readOnly="true" />
+    <field name="Expenses" type="Decimal" label="Expenses" readOnly="true" />
+    <field name="YTD_balance" type="Decimal" label="YTD balance" readOnly="true" />
+    <field name="type_total_heading" type="String" allowNulls="false" label="Type Total Heading" readOnly="true" length="13" />
+    <field name="YTD_liability_and_equity_balance" type="Decimal" label="YTD liability and equity balance" readOnly="true" />
+    <field name="YTD_net_income" type="Decimal" label="YTD net income" readOnly="true" />
+    <field name="YTD_total_assets" type="Decimal" label="YTD total assets" readOnly="true" />
+    <field name="JournalEntryID" type="Int64" label="Journal Entry#" />
+    <field name="IDNumber" type="String" label="ID Number" length="50" />
+    <field name="JournalEntryTypeID" type="Int64" label="Journal Entry Type#" />
+    <field name="Comments" type="String" allowQBE="false" allowSorting="false" label="Comments" length="-1" />
+    <field name="AccountClassID" type="Int64" label="Account Class#" />
+    <field name="AccountHeadingNumber" type="String" label="Account Heading Number" readOnly="true" length="2" />
+    <field name="AccountName" type="String" label="Account Name" length="255" />
+    <field name="Description" type="String" label="Description" length="255" />
+    <field name="AccountTypeID" type="Int64" label="Account Type#" />
+    <field name="Acc_Bab" type="Int64" label="Acc Bab" readOnly="true" />
+    <field name="CLsacc_Nm" type="String" label="C Lsacc Nm" length="250" />
+    <field name="AccountType" type="String" label="Account Type" length="255" />
+    <field name="Balncetype" type="Int32" label="B" readOnly="true" />
+    <field name="Balncetypename" type="String" label="Balncetypename" readOnly="true" length="9" />
+    <field name="Balncetypename2" type="String" label="Balncetypename2" readOnly="true" length="9" />
+    <field name="incometype" type="Int64" label="I" readOnly="true" />
+    <field name="incometypename" type="String" label="Incometypename" readOnly="true" length="250" />
+    <field name="incometypename2" type="String" label="Incometypename2" readOnly="true" length="255" />
+    <field name="TransAmount" type="Decimal" allowNulls="false" label="Trans Amount" readOnly="true" />
+    <field name="AccountNameBand" type="String" label="Account Name Band" length="50" />
+    <field name="AccountNameBande" type="String" label="Account Name Bande" length="255" />
+    <field name="sgm" type="Int64" label="Sgm" />
+    <field name="branch" type="Int64" label="Branch" readOnly="true" />
+    <field name="acdcode" type="Int64" label="Acdcode" allowNulls="false" >
+      <items dataView="grid1" dataValueField="Code" dataTextField="AcademicYear" copy="d1=startdate&#xD;&#xA;d2=enddate" style="DropDownList" dataController="schAcademicyear" />
+    </field>
+    <field name="Monthtrs" type="Int32" label="Monthtrs" readOnly="true" />
+    <field name="YEARTRS" type="Int32" label="Yeartrs" readOnly="true" />
+    <field name="Desc1" type="String" label="Desc1" length="50" />
+    <field name="Desc2" type="String" label="Desc2" length="50" />
+    <field name="sgm_Nm" type="String" label="sgm Nm" length="255" />
+    <field name="sgm_Nme" type="String" label="sgm Nme" length="255" />
+    <field name="OpcoName" type="String" label="Opco Name" length="50" />
+    <field name="OpcoNameE" type="String" label="Opco Name E" length="50" />
+	<field name="AccountPairing" type="Int64" label="AccountPairing" />
+    <field name="AccountNamepairing" type="String" label="Account Name pairing" length="100" />
+    <field name="AccountNamepairing1" type="String" label="Account Name pairing1" length="100" />
+	<field name="schtypid" type="Int64" label="Schtypid" />
+    <field name="Costcntr_Nm" type="String" label="Costcntr Nm" length="255" />
+    <field name="Costcntr_Nme" type="String" label="Costcntr Nme" length="255" />
+    <field name="Costcntr_Nm1" type="String" label="Costcntr Nm1" length="255" />
+    <field name="Costcntr_Nme1" type="String" label="Costcntr Nme1" length="255" />
+    <field name="maincostname1" type="String" label="Maincostname1" length="255" />
+    <field name="Mcost_No" type="Int64" label="Mcost No" />
+    <field name="maincostname2" type="String" label="Maincostname2" length="255" />
+    <field name="Manalysis_No" type="Int64" label="Manalysis No" />
+    <field name="mainanalname1" type="String" label="Mainanalname1" length="255" />
+    <field name="mainanalname2" type="String" label="Mainanalname2" length="255" />
+    <field name="OpcoID" type="Int64" label="Opco#" />
+    <field name="Tr_Dt" type="DateTime" label="Tr Dt" />
+    <field name="AccountHeadingName" type="String" label="Account Heading Name" length="50" />
+    <field name="AccountHeadingName1" type="String" label="Account Heading Name1" length="255" />
+    <field name="Expr1" type="Int32" allowNulls="false" label="Expr1" readOnly="true" />
+    <field name="autoid" type="Int64" label="Autoid" readOnly="true" />
+    <field name="ModifiedBy" type="String" allowNulls="false" label="Modified By" length="50" />
+    <field name="d1" type="DateTime" allowNulls="false" label="D1" />
+    <field name="d2" type="DateTime" allowNulls="false" label="D2" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="QGL Balancsheet Report" >
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="AccountNumber" columns="15" />
+        <dataField fieldName="Date" columns="10" hidden="true"/>
+        <dataField fieldName="Amount" dataFormatString="n3" columns="15" />
+        <dataField fieldName="DebitOrCredit" columns="6" hidden="true"/>
+        <dataField fieldName="Assets" dataFormatString="c" columns="15" hidden="true"/>
+        <dataField fieldName="liabilities" dataFormatString="c" columns="15" hidden="true"/>
+        <dataField fieldName="EQUITY" dataFormatString="c" columns="15" hidden="true"/>
+        <dataField fieldName="Revenue" dataFormatString="c" columns="15" hidden="true"/>
+        <dataField fieldName="Expenses" dataFormatString="c" columns="15" hidden="true"/>
+        <dataField fieldName="YTD_balance" dataFormatString="c" columns="15" hidden="true"/>
+        <dataField fieldName="type_total_heading" columns="13" hidden="true"/>
+        <dataField fieldName="YTD_liability_and_equity_balance" dataFormatString="c" columns="15" hidden="true"/>
+        <dataField fieldName="YTD_net_income" dataFormatString="c" columns="15" hidden="true"/>
+        <dataField fieldName="YTD_total_assets" dataFormatString="c" columns="15" hidden="true"/>
+        <dataField fieldName="JournalEntryID" columns="15" hidden="true"/>
+        <dataField fieldName="IDNumber" columns="50" hidden="true"/>
+        <dataField fieldName="JournalEntryTypeID" columns="15" hidden="true"/>
+        <dataField fieldName="Comments" rows="5" hidden="true"/>
+        <dataField fieldName="AccountClassID" columns="15" hidden="true"/>
+        <dataField fieldName="AccountHeadingNumber" columns="2" hidden="true"/>
+        <dataField fieldName="AccountName" />
+        <dataField fieldName="Description" hidden="true"/>
+        <dataField fieldName="AccountTypeID" columns="15" hidden="true"/>
+        <dataField fieldName="Acc_Bab" columns="15" hidden="true"/>
+        <dataField fieldName="CLsacc_Nm" hidden="true"/>
+        <dataField fieldName="AccountType" hidden="true"/>
+        <dataField fieldName="Balncetype" columns="15" />
+        <dataField fieldName="Balncetypename" columns="9" hidden="true"/>
+        <dataField fieldName="Balncetypename2" columns="9" hidden="true"/>
+        <dataField fieldName="incometype" columns="15" />
+        <dataField fieldName="incometypename" rows="5" hidden="true"/>
+        <dataField fieldName="incometypename2" rows="5" hidden="true"/>
+        <dataField fieldName="TransAmount" columns="15" hidden="true"/>
+        <dataField fieldName="AccountNameBand" columns="50" hidden="true"/>
+        <dataField fieldName="AccountNameBande" hidden="true"/>
+        <dataField fieldName="sgm" columns="15" hidden="true"/>
+        <dataField fieldName="acdcode" columns="15"  />
+        <dataField fieldName="branch" columns="15" hidden="true" />
+        <dataField fieldName="Desc1" columns="50" />
+        <dataField fieldName="Desc2" columns="50" hidden="true"/>
+        <dataField fieldName="sgm_Nm" />
+        <dataField fieldName="sgm_Nme" hidden="true"/>
+        <dataField fieldName="OpcoName" columns="50" />
+        <dataField fieldName="OpcoNameE" columns="50" hidden="true"/>
+        <dataField fieldName="schtypid" columns="15" hidden="true"/>
+        <dataField fieldName="Costcntr_Nm" hidden="true"/>
+        <dataField fieldName="Costcntr_Nme" hidden="true"/>
+        <dataField fieldName="Costcntr_Nm1" hidden="true"/>
+        <dataField fieldName="Costcntr_Nme1" hidden="true"/>
+        <dataField fieldName="maincostname1" hidden="true"/>
+        <dataField fieldName="Mcost_No" columns="15" hidden="true"/>
+        <dataField fieldName="maincostname2" hidden="true"/>
+        <dataField fieldName="Manalysis_No" columns="15" hidden="true"/>
+        <dataField fieldName="mainanalname1" hidden="true"/>
+        <dataField fieldName="mainanalname2" hidden="true"/>
+        <dataField fieldName="OpcoID" columns="15" hidden="true"/>
+        <dataField fieldName="Tr_Dt" columns="10" hidden="true"/>
+        <dataField fieldName="AccountHeadingName" columns="50" />
+        <dataField fieldName="AccountHeadingName1" hidden="true"/>
+        <dataField fieldName="autoid" columns="15" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="d1" columns="10" />
+        <dataField fieldName="d2" columns="10" />
+        <dataField fieldName="Expr1" columns="15" hidden="true"/>
+	    <dataField fieldName="AccountPairing" columns="15" hidden="true"/>
+        <dataField fieldName="AccountNamepairing" columns="50" />
+        <dataField fieldName="AccountNamepairing1" columns="50" hidden="true"/>  
+		
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review QGL Balancsheet Report">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="QGL Balancsheet Report" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="AccountNumber" columns="15" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="Amount" dataFormatString="c" columns="15" />
+            <dataField fieldName="DebitOrCredit" columns="6" />
+            <dataField fieldName="Assets" dataFormatString="c" columns="15" />
+            <dataField fieldName="liabilities" dataFormatString="c" columns="15" />
+            <dataField fieldName="EQUITY" dataFormatString="c" columns="15" />
+            <dataField fieldName="Revenue" dataFormatString="c" columns="15" />
+            <dataField fieldName="Expenses" dataFormatString="c" columns="15" />
+            <dataField fieldName="YTD_balance" dataFormatString="c" columns="15" />
+            <dataField fieldName="type_total_heading" columns="13" />
+            <dataField fieldName="YTD_liability_and_equity_balance" dataFormatString="c" columns="15" />
+            <dataField fieldName="YTD_net_income" dataFormatString="c" columns="15" />
+            <dataField fieldName="YTD_total_assets" dataFormatString="c" columns="15" />
+            <dataField fieldName="JournalEntryID" columns="15" />
+            <dataField fieldName="IDNumber" columns="50" />
+            <dataField fieldName="JournalEntryTypeID" columns="15" />
+            <dataField fieldName="Comments" rows="5" />
+            <dataField fieldName="AccountClassID" columns="15" />
+            <dataField fieldName="AccountHeadingNumber" columns="2" />
+            <dataField fieldName="AccountName" />
+            <dataField fieldName="Description" />
+            <dataField fieldName="AccountTypeID" columns="15" />
+            <dataField fieldName="Acc_Bab" columns="15" />
+            <dataField fieldName="CLsacc_Nm" />
+            <dataField fieldName="AccountType" />
+            <dataField fieldName="Balncetype" columns="15" />
+            <dataField fieldName="Balncetypename" columns="9" />
+            <dataField fieldName="Balncetypename2" columns="9" />
+            <dataField fieldName="incometype" columns="15" />
+            <dataField fieldName="incometypename" />
+            <dataField fieldName="incometypename2" />
+            <dataField fieldName="TransAmount" dataFormatString="c" columns="15" />
+            <dataField fieldName="AccountNameBand" columns="50" />
+            <dataField fieldName="AccountNameBande" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="Monthtrs" columns="15" />
+            <dataField fieldName="YEARTRS" columns="15" />
+            <dataField fieldName="Desc1" columns="50" />
+            <dataField fieldName="Desc2" columns="50" />
+            <dataField fieldName="sgm_Nm" />
+            <dataField fieldName="sgm_Nme" />
+            <dataField fieldName="OpcoName" columns="50" />
+            <dataField fieldName="OpcoNameE" columns="50" />
+            <dataField fieldName="schtypid" columns="15" />
+            <dataField fieldName="Costcntr_Nm" />
+            <dataField fieldName="Costcntr_Nme" />
+            <dataField fieldName="Costcntr_Nm1" />
+            <dataField fieldName="Costcntr_Nme1" />
+            <dataField fieldName="maincostname1" />
+            <dataField fieldName="Mcost_No" columns="15" />
+            <dataField fieldName="maincostname2" />
+            <dataField fieldName="Manalysis_No" columns="15" />
+            <dataField fieldName="mainanalname1" />
+            <dataField fieldName="mainanalname2" />
+            <dataField fieldName="OpcoID" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="AccountHeadingName" columns="50" />
+            <dataField fieldName="AccountHeadingName1" />
+            <dataField fieldName="autoid" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="d1" columns="10" />
+            <dataField fieldName="d2" columns="10" />
+            <dataField fieldName="Expr1" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New QGL Balancsheet Report">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New QGL Balancsheet Report" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="AccountNumber" columns="15" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="JournalEntryID" columns="15" />
+            <dataField fieldName="IDNumber" columns="50" />
+            <dataField fieldName="JournalEntryTypeID" columns="15" />
+            <dataField fieldName="Comments" rows="5" />
+            <dataField fieldName="AccountClassID" columns="15" />
+            <dataField fieldName="AccountName" />
+            <dataField fieldName="Description" />
+            <dataField fieldName="AccountTypeID" columns="15" />
+            <dataField fieldName="CLsacc_Nm" />
+            <dataField fieldName="AccountType" />
+            <dataField fieldName="AccountNameBand" columns="50" />
+            <dataField fieldName="AccountNameBande" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="Desc1" columns="50" />
+            <dataField fieldName="Desc2" columns="50" />
+            <dataField fieldName="sgm_Nm" />
+            <dataField fieldName="sgm_Nme" />
+            <dataField fieldName="OpcoName" columns="50" />
+            <dataField fieldName="OpcoNameE" columns="50" />
+            <dataField fieldName="schtypid" columns="15" />
+            <dataField fieldName="Costcntr_Nm" />
+            <dataField fieldName="Costcntr_Nme" />
+            <dataField fieldName="Costcntr_Nm1" />
+            <dataField fieldName="Costcntr_Nme1" />
+            <dataField fieldName="maincostname1" />
+            <dataField fieldName="Mcost_No" columns="15" />
+            <dataField fieldName="maincostname2" />
+            <dataField fieldName="Manalysis_No" columns="15" />
+            <dataField fieldName="mainanalname1" />
+            <dataField fieldName="mainanalname2" />
+            <dataField fieldName="OpcoID" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="AccountHeadingName" columns="50" />
+            <dataField fieldName="AccountHeadingName1" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="d1" columns="10" />
+            <dataField fieldName="d2" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

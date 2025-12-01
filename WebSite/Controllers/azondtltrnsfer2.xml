@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="azondtltrnsfer" conflictDetection="overwriteChanges" label="Azondtltrnsfer" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"azondtltrnsfer"."Ln_No" "Ln_No"
+	,"azondtltrnsfer"."countrdus" "countrdus"
+	,"Thecountrdus"."subject" "Thecountrdussubject"
+	,"Thecountrdus"."Brn_No" "Brn_No"
+        ,"ThecountrdusBrn_"."Brn_Nm" "ThecountrdusBrn_Brn_Nm"
+	,"ThecountrdusBrn_Cmp_"."Grp_Nm" "ThecountrdusBrn_Cmp_Grp_Nm"
+	,"ThecountrdusTRFBrn_"."Brn_Nm" "ThecountrdusTRFBrn_Brn_Nm"
+	,"ThecountrdusTRFBrn_Cmp_"."Grp_Nm" "ThecountrdusTRFBrn_Cmp_Grp_Nm"
+	,"azondtltrnsfer"."ID_comp" "ID_comp"
+        ,"Itm_"."ID_USER" "Itm_ID_USER"
+	,"Itm_"."ITEM" "ITEM"
+	,"azondtltrnsfer"."Unit_No" "Unit_No"
+	,"Unit_"."Unit_Nm" "Unit_Unit_Nm"
+	,"azondtltrnsfer"."quantity" "quantity"
+	,"azondtltrnsfer"."cost" "cost"
+        ,"azondtltrnsfer"."BATCHNO" "BATCHNO"
+        ,"azondtltrnsfer"."EXPIREDATE" "EXPIREDATE"
+        ,"azondtltrnsfer"."TITM_COST" "TITM_COST"
+        ,"azondtltrnsfer"."UPRICE" "UPRICE"
+	,"azondtltrnsfer"."ModifiedBy" "ModifiedBy"
+	,"azondtltrnsfer"."ModifiedOn" "ModifiedOn"
+	,"azondtltrnsfer"."CreatedBy" "CreatedBy"
+	,"azondtltrnsfer"."CreatedOn" "CreatedOn"
+	,"azondtltrnsfer"."frombalance" "frombalance"
+	,"azondtltrnsfer"."Tobalance" "Tobalance"
+from "dbo"."azondtltrnsfer" "azondtltrnsfer"
+         left join "dbo"."ITEMS" "Itm_" on "azondtltrnsfer"."ID_comp" = "Itm_"."ID_comp"
+	left join "dbo"."azonhdrtrnsfer" "Thecountrdus" on "azondtltrnsfer"."countrdus" = "Thecountrdus"."countrdus"
+	left join "dbo"."Branchcnst" "ThecountrdusBrn_" on "Thecountrdus"."Brn_No" = "ThecountrdusBrn_"."Brn_No"
+	left join "dbo"."Pycnstnt" "ThecountrdusBrn_Cmp_" on "ThecountrdusBrn_"."Cmp_code" = "ThecountrdusBrn_Cmp_"."Cmp_No"
+	left join "dbo"."Branchcnst" "ThecountrdusTRFBrn_" on "Thecountrdus"."TRFBrn_NO" = "ThecountrdusTRFBrn_"."Brn_No"
+	left join "dbo"."Pycnstnt" "ThecountrdusTRFBrn_Cmp_" on "ThecountrdusTRFBrn_"."Cmp_code" = "ThecountrdusTRFBrn_Cmp_"."Cmp_No"
+	left join "dbo"."Stunit" "Unit_" on "azondtltrnsfer"."Unit_No" = "Unit_"."Unit_No"
+]]></text>
+    </command>
+    <command id="Ln_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Ln_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Ln_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Ln No" readOnly="true" />
+    <field name="countrdus" type="Int64" allowNulls="false" label="Countrdus" showInSummary="true">
+      <items style="Lookup" dataController="azonhdrtrnsfer" newDataView="createForm1" searchOnStart="true" />
+    </field>
+     <field name="Brn_No" type="Int64" label="Brn_No"  />
+    <field name="Thecountrdussubject" type="String" readOnly="true" label="Thecountrdussubject" length="255" />
+    <field name="ThecountrdusBrn_Brn_Nm" type="String" readOnly="true" label="Thecountrdus Brn Nm" length="255" />
+    <field name="ThecountrdusBrn_Cmp_Grp_Nm" type="String" readOnly="true" label="Thecountrdus Brn Cmp Grp Nm" length="255" />
+    <field name="ThecountrdusTRFBrn_Brn_Nm" type="String" readOnly="true" label="Thecountrdus TRF Brn Nm" length="255" />
+    <field name="ThecountrdusTRFBrn_Cmp_Grp_Nm" type="String" readOnly="true" label="Thecountrdus TRF Brn Cmp Grp Nm" length="255" />
+    <field name="ID_comp" type="Int64" label="ID comp" showInSummary="true" contextFields="BranchTo=countrdus">
+     <items style="Lookup" dataController="ITemBalance" dataView="grid1" dataTextField="ITEM" dataValueField="ID_comp" copy="Tobalance=Tobalance&#xD;&#xA;frombalance=frombalance&#xD;&#xA;cost=quntitb4&#xD;&#xA;UPRICE=quntit&#xD;&#xA;Unit_No=Unit_No&#xD;&#xA;BATCHNO=ID_USER"  description="Search About Item" />
+    </field>
+    <field name="Itm_ID_USER" type="String" readOnly="true" label="Itm ID USER" length="50" />
+    <field name="ITEM" type="String" readOnly="true" label="ItmITEM" length="50" />
+
+    <field name="Unit_No" type="Int64" label="Unit No" showInSummary="true" >
+      <items style="Lookup" dataController="Stunit" newDataView="createForm1" searchOnStart="true" />
+    </field>
+ <field name="BATCHNO" type="String"  label="BATCHNO" length="50" />
+
+<field name="EXPIREDATE" type="DateTime" label="EXPIREDATE" showInSummary="true" />
+<field name="TITM_COST" type="Decimal" label="TITM_COST" showInSummary="true" />
+    <field name="UPRICE" type="Decimal" label="UPRICE" showInSummary="true"  />
+
+    <field name="Unit_Unit_Nm" type="String" readOnly="true" label="Unit Nm" length="255" />
+    <field name="quantity" type="Decimal" label="Quantity" showInSummary="true" /> 
+    <field name="frombalance" type="Decimal" label="frombalance" showInSummary="true" />
+    <field name="Tobalance" type="Decimal" label="Tobalance" showInSummary="true" />
+    <field name="cost" type="Decimal" label="Cost" showInSummary="true"  />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Azondtltrnsfer">
+    
+      <dataFields>
+        <dataField fieldName="countrdus"  />
+        <dataField fieldName="" columns="15" />
+ <dataField fieldName="ID_comp" aliasFieldName="ITEM"  />
+
+        <dataField fieldName="quantity" columns="15" />
+        <dataField fieldName="frombalance" columns="15" />
+        <dataField fieldName="Tobalance" columns="15" />
+         <dataField fieldName="ModifiedBy" columns="50" hidden="true"/>
+        <dataField fieldName="ModifiedOn" columns="10" hidden="true"/>
+        <dataField fieldName="CreatedBy" columns="50" hidden="true"/>
+        <dataField fieldName="CreatedOn" columns="10" hidden="true"/>
+        <dataField fieldName="ThecountrdusBrn_Brn_Nm" hidden="true"/>
+        <dataField fieldName="ThecountrdusBrn_Cmp_Grp_Nm" hidden="true" />
+        <dataField fieldName="ThecountrdusTRFBrn_Brn_Nm" hidden="true" />
+        <dataField fieldName="ThecountrdusTRFBrn_Cmp_Grp_Nm" hidden="true" />
+ <dataField fieldName="BATCHNO" columns="15" />
+ <dataField fieldName="EXPIREDATE" columns="15" />
+ <dataField fieldName="TITM_COST" columns="15" />
+ <dataField fieldName="UPRICE" columns="15" />
+<dataField fieldName="Itm_ID_USER" columns="15" />
+<dataField fieldName="Unit_No" />
+<dataField fieldName="Unit_Unit_Nm"/>
+  <dataField fieldName="cost" columns="15" hidden="true"/>
+
+
+      </dataFields>
+    </view>
+<view id="grid2" type="Grid" commandId="command1" label="Azondtltrnsfer2">
+   
+      <dataFields>
+        <dataField fieldName="countrdus"  />
+        <dataField fieldName="" columns="15" />
+       <dataField fieldName="ID_comp" aliasFieldName="ITEM"  />
+        <dataField fieldName="quantity" columns="15" />
+      <dataField fieldName="frombalance" columns="15" />
+        <dataField fieldName="Tobalance" columns="15" />     
+        <dataField fieldName="ModifiedBy" columns="50" hidden="true"/>
+        <dataField fieldName="ModifiedOn" columns="10" hidden="true"/>
+        <dataField fieldName="CreatedBy" columns="50" hidden="true"/>
+        <dataField fieldName="CreatedOn" columns="10" hidden="true"/>
+        <dataField fieldName="ThecountrdusBrn_Brn_Nm" hidden="true"/>
+        <dataField fieldName="ThecountrdusBrn_Cmp_Grp_Nm" hidden="true" />
+        <dataField fieldName="ThecountrdusTRFBrn_Brn_Nm" hidden="true" />
+        <dataField fieldName="ThecountrdusTRFBrn_Cmp_Grp_Nm" hidden="true" />
+<dataField fieldName="BATCHNO" columns="15" />
+ <dataField fieldName="EXPIREDATE" columns="15" />
+ <dataField fieldName="TITM_COST" columns="15" />
+ <dataField fieldName="UPRICE" columns="15" />
+<dataField fieldName="Itm_ID_USER" columns="15" />
+<dataField fieldName="Unit_No" aliasFieldName="Unit_Unit_Nm"  />
+  <dataField fieldName="cost" columns="15" hidden="true"/>
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Azondtltrnsfer">
+    
+      <categories>
+        <category id="c1" headerText="Azondtltrnsfer" flow="NewColumn"  newColumn="true">
+        
+          <dataFields>
+            <dataField fieldName="countrdus"  />
+            <dataField fieldName="ID_comp" columns="15" />
+            <dataField fieldName="Unit_No" aliasFieldName="Unit_Unit_Nm"  />
+            <dataField fieldName="quantity" columns="15" />
+            <dataField fieldName="cost" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+       
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Azondtltrnsfer">
+     
+      <categories>
+        <category id="c1" headerText="New Azondtltrnsfer" flow="NewColumn"  newColumn="true">
+        
+          <dataFields>
+            <dataField fieldName="countrdus"  />
+            <dataField fieldName="ID_comp" columns="15" />
+            <dataField fieldName="Unit_No" aliasFieldName="Unit_Unit_Nm" />
+            <dataField fieldName="quantity" columns="15" />
+            <dataField fieldName="cost" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+
+  <actions>
+<actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+  </actions>
+
+</dataController>

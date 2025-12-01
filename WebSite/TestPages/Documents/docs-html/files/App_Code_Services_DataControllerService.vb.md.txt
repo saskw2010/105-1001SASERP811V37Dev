@@ -1,0 +1,40 @@
+﻿# File: App_Code/Services/DataControllerService.vb
+
+Service layer for data operations used by search and data pages (Code On Time stack).
+
+### Function: GetPage
+- Signature: Public Function GetPage(controller As String, view As String, request As PageRequest) As ViewPage
+- Purpose: Fetch paged data for a controller/view.
+- Calls: ControllerFactory.CreateDataController()
+- Returns: ViewPage JSON to client (when invoked via ASMX ScriptService).
+
+### Function: GetListOfValues
+- Signature: Public Function GetListOfValues(request As DistinctValueRequest) As DistinctValue[]
+- Purpose: Provide distinct values for filter dropdowns.
+- Calls: ControllerFactory.CreateDataController()
+
+### Function: Execute
+- Signature: Public Function Execute(action As ActionArgs) As ActionResult
+- Purpose: Execute create/update/delete or custom actions.
+- Calls: ControllerFactory.CreateDataController()
+
+### Function: GetCompletionList
+- Signature: Public Function GetCompletionList(prefixText As String, count As Integer, contextKey As String) As String()
+- Purpose: Autocomplete endpoint for text inputs.
+- Calls: ControllerFactory.CreateAutoCompleteManager()
+
+### Function: Login
+- Signature: Public Function Login(username As String, password As String, rememberMe As Boolean) As Object
+- Purpose: Authenticate user.
+- Calls: ApplicationServices.Login()
+
+### Function: Logout
+- Signature: Public Sub Logout()
+- Purpose: Sign out current user.
+- Calls: ApplicationServices.Logout()
+
+### Function: Roles
+- Signature: Public Function Roles() As String()
+- Purpose: Return current user roles.
+- Calls: ApplicationServices.Roles()
+

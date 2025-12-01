@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="AXLedgerinsert" conflictDetection="overwriteChanges" label="AX Ledgerinsert" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"AXLedgerinsert"."yearsal" "yearsal"
+	,"AXLedgerinsert"."monthsal" "monthsal"
+	,"AXLedgerinsert"."AccountNum" "AccountNum"
+	,"AXLedgerinsert"."AccountType" "AccountType"
+	,"AXLedgerinsert"."AmountCurCredit" "AmountCurCredit"
+	,"AXLedgerinsert"."AmountCurDebit" "AmountCurDebit"
+	,"AXLedgerinsert"."Company" "Company"
+	,"AXLedgerinsert"."CurrencyCode" "CurrencyCode"
+	,"AXLedgerinsert"."element1" "element1"
+	,"AXLedgerinsert"."element2" "element2"
+	,"AXLedgerinsert"."element3" "element3"
+	,"AXLedgerinsert"."InvoiceNo" "InvoiceNo"
+	,"AXLedgerinsert"."LineNum" "LineNum"
+	,"AXLedgerinsert"."OffsetTxt" "OffsetTxt"
+	,"AXLedgerinsert"."TransDate" "TransDate"
+	,"AXLedgerinsert"."txt" "txt"
+from "dbo"."AXLedgerinsert" "AXLedgerinsert"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="yearsal" type="String" label="Yearsal" length="4" showInSummary="true" />
+    <field name="monthsal" type="String" label="Monthsal" length="2" showInSummary="true" />
+    <field name="AccountNum" type="Int64" label="Account Num" showInSummary="true" />
+    <field name="AccountType" type="String" allowNulls="false" label="Account Type" readOnly="true" length="6" showInSummary="true" />
+    <field name="AmountCurCredit" type="Decimal" label="Amount Cur Credit" showInSummary="true" />
+    <field name="AmountCurDebit" type="Decimal" label="Amount Cur Debit" />
+    <field name="Company" type="String" allowNulls="false" label="Company" readOnly="true" length="4" />
+    <field name="CurrencyCode" type="String" allowNulls="false" label="Currency Code" readOnly="true" length="3" />
+    <field name="element1" type="String" label="Element1" length="255" />
+    <field name="element2" type="String" label="Element2" length="255" />
+    <field name="element3" type="String" label="Element3" length="15" />
+    <field name="InvoiceNo" type="Int64" allowNulls="false" label="Invoice No" />
+    <field name="LineNum" type="Int64" label="Line Num" />
+    <field name="OffsetTxt" type="String" label="Offset Txt" length="255" />
+    <field name="TransDate" type="DateTime" allowNulls="false" label="Trans Date" readOnly="true" />
+    <field name="txt" type="String" allowNulls="false" label="Txt" readOnly="true" length="16" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="AX Ledgerinsert">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="AccountType" columns="6" />
+        <dataField fieldName="yearsal" columns="4" />
+        <dataField fieldName="monthsal" columns="2" />
+        <dataField fieldName="AccountNum" columns="15" />
+        <dataField fieldName="AmountCurCredit" dataFormatString="c" columns="15" />
+        <dataField fieldName="AmountCurDebit" dataFormatString="c" columns="15" />
+        <dataField fieldName="Company" columns="4" />
+        <dataField fieldName="CurrencyCode" columns="3" />
+        <dataField fieldName="element1" />
+        <dataField fieldName="element2" />
+        <dataField fieldName="element3" columns="15" />
+        <dataField fieldName="InvoiceNo" columns="15" />
+        <dataField fieldName="LineNum" columns="15" />
+        <dataField fieldName="OffsetTxt" />
+        <dataField fieldName="TransDate" columns="10" />
+        <dataField fieldName="txt" columns="16" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review AX Ledgerinsert">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="AX Ledgerinsert" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="yearsal" columns="4" />
+            <dataField fieldName="monthsal" columns="2" />
+            <dataField fieldName="AccountNum" columns="15" />
+            <dataField fieldName="AccountType" columns="6" />
+            <dataField fieldName="AmountCurCredit" dataFormatString="c" columns="15" />
+            <dataField fieldName="AmountCurDebit" dataFormatString="c" columns="15" />
+            <dataField fieldName="Company" columns="4" />
+            <dataField fieldName="CurrencyCode" columns="3" />
+            <dataField fieldName="element1" />
+            <dataField fieldName="element2" />
+            <dataField fieldName="element3" columns="15" />
+            <dataField fieldName="InvoiceNo" columns="15" />
+            <dataField fieldName="LineNum" columns="15" />
+            <dataField fieldName="OffsetTxt" />
+            <dataField fieldName="TransDate" columns="10" />
+            <dataField fieldName="txt" columns="16" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New AX Ledgerinsert">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New AX Ledgerinsert" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="yearsal" columns="4" />
+            <dataField fieldName="monthsal" columns="2" />
+            <dataField fieldName="AccountNum" columns="15" />
+            <dataField fieldName="AmountCurCredit" dataFormatString="c" columns="15" />
+            <dataField fieldName="AmountCurDebit" dataFormatString="c" columns="15" />
+            <dataField fieldName="element1" />
+            <dataField fieldName="element2" />
+            <dataField fieldName="element3" columns="15" />
+            <dataField fieldName="InvoiceNo" columns="15" />
+            <dataField fieldName="LineNum" columns="15" />
+            <dataField fieldName="OffsetTxt" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

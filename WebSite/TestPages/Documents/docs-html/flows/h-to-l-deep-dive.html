@@ -1,0 +1,127 @@
+﻿<div class="doc-banner">
+  <span class="crumbs">flows â€؛ h-to-l-deep-dive</span>
+  <a class="source" href="h-to-l-deep-dive.md.txt" target="_blank" rel="noopener">View source (.md)</a>
+</div>
+<div class="doc-body">
+<h1>Deep-dive: Steps H â†’ L (WebForms Generic Flow)</h1>
+<ul>
+<li>H = Call ASMX / WebMethod / Handler</li>
+<li>I = Database</li>
+<li>J = JSON/XML Response</li>
+<li>K = Bind to controls & JS render</li>
+<li>L = Render HTML</li>
+<h2>H. Call ASMX / WebMethod / Handler</h2>
+<h3>AS-IS (WebForms)</h3>
+<li>Key files:</li>
+<li>Services/DataControllerService.asmx â†’ App_Code/Services/DataControllerService.vb</li>
+<li>WebMethods: GetPage, GetListOfValues, Execute, GetCompletionList, Login, Logout, Roles</li>
+<li>App_Code/Services/RepresentationalStateTransfer.vb (REST handler)</li>
+<li>Callers:</li>
+<li>Client JS fetches ASMX or REST: Services/DataControllerService.asmx/GetPage (POST), or REST routes handled by RepresentationalStateTransfer.PerformRequest</li>
+<li>Server code also calls ControllerFactory.CreateDataController() directly (ControllerDataSource etc.)</li>
+<li>Callees:</li>
+<li>ControllerFactory.CreateDataController().GetPage / Execute / GetListOfValues</li>
+<li>AutoCompleteManager.GetCompletionList</li>
+<li>HTTP</li>
+<li>ASMX: SOAP/JSON via ScriptService; POST; content-type text/plain or application/json; JSONP supported in REST handler</li>
+<li>REST: GET/POST/PUT/DELETE; JSON or XML; JSONP via callback and _instance</li>
+<li>Serialization</li>
+<li>System.Web.Script.Serialization.JavaScriptSerializer (built-in), JSON dates via /Date(ticks)/ in some paths; REST converts to strings with ConvertDateToJSON</li>
+<li>Error handling</li>
+<li>REST: errors â†’ XML <error> or JSON structure; 400/404 codes</li>
+<li>Links</li>
+<li>../files/App_Code_Services_DataControllerService.vb.html#function-GetPage</li>
+<li>../files/App_Code_Services_DataControllerService.vb.html#function-Execute</li>
+<h3>PAIN POINTS</h3>
+<li>Legacy ASMX/ScriptService and custom REST handler; mixed protocols; JSONP</li>
+<li>Tight coupling to ControllerFactory/IDataController</li>
+<li>Weak typing of payloads; limited validation</li>
+<li>Session coupling (EnableSession:=true)</li>
+<li>Harder to version/secure contracts; manual date handling</li>
+<h3>TO-BE (Modern Stack)</h3>
+<li>Backend: ASP.NET Core 8 Web API; Controllers per bounded context</li>
+<li>Endpoints (OpenAPI):</li>
+<li>GET /api/{controller}?pageIndex=&pageSize=&sort=&filters=</li>
+<li>POST /api/{controller}/actions/{action}</li>
+<li>DTOs: typed PageRequestDto, ViewPageDto, ActionArgsDto, ActionResultDto</li>
+<li>Validation: FluentValidation</li>
+<li>Auth: JWT or Cookies; role claims</li>
+<li>Caching: Response caching, ETags; Memory/Dist cache</li>
+<h3>CODE SKETCHES</h3>
+<li>C# Controller (sample) and DTOs</li>
+<li>React hook using fetch/axios</li>
+<h3>RISKS & MITIGATIONS</h3>
+<li>Contract drift vs existing ViewPage shape â†’ add mapping layer</li>
+<li>Phased rollout with backend adapter exposing legacy shapes</li>
+<h3>TESTS</h3>
+<li>Unit tests for controller/services; integration tests against EF Core; contract tests using OpenAPI samples</li>
+<h4>Function Links</h4>
+<h2>I. Database</h2>
+<h3>AS-IS (WebForms)</h3>
+<li>Key files:</li>
+<li>App_Code/Data/DataAccess.vb (SqlStatement/SqlText/SqlProcedure), Transactions.vb, Controller*.vb</li>
+<li>Connection strings via Web.config (name: eZee)</li>
+<li>Patterns:</li>
+<li>DbProviderFactories; parameter markers @ or : based on provider</li>
+<li>Stored procedures and text queries; BusinessRules for filtering; Controller pipeline builds PageRequest â†’ ViewPage</li>
+<li>Transactions & caching:</li>
+<li>Transactions.vb (ambient control)</li>
+<li>Some caching via PageRequest.SupportsCaching</li>
+<h3>PAIN POINTS</h3>
+<li>Mixed providers; manual ADO.NET</li>
+<li>Business logic spread across Controller* and BusinessRules</li>
+<li>Hard to unit test</li>
+<h3>TO-BE</h3>
+<li>EF Core DbContext, entities, configurations</li>
+<li>Repositories/UnitOfWork; TransactionScope or DbContext transaction</li>
+<li>Migrations for schema</li>
+<li>Retry policies (Polly)</li>
+<h3>CODE SKETCHES</h3>
+<li>DbContext + entity + repository; example LINQ query and pagination</li>
+<h3>RISKS & MITIGATIONS</h3>
+<li>Mapping legacy filters (string-based) â†’ expression trees; provide compatibility filter parser</li>
+<h3>TESTS</h3>
+<li>EF in-memory tests; integration tests with Testcontainers</li>
+<h4>Function Links</h4>
+<h2>J. JSON/XML Response</h2>
+<h3>AS-IS (WebForms)</h3>
+<li>ASMX returns serialized objects via JavaScriptSerializer</li>
+<li>REST handler streams JSON/XML manually; supports JSONP; date formatting via ConvertDateToJSON</li>
+<li>Content negotiation by AcceptTypes/_dataType</li>
+<h3>PAIN POINTS</h3>
+<li>Manual streaming; JSONP; inconsistent date formats</li>
+<h3>TO-BE</h3>
+<li>System.Text.Json (camelCase), ProblemDetails for errors</li>
+<li>Content negotiation automatic; no JSONP</li>
+<h3>CODE SKETCHES</h3>
+<li>ASP.NET Core produces IActionResult; ProblemDetails</li>
+<h3>TESTS</h3>
+<li>Contract tests (OpenAPI), serialization roundtrips</li>
+<h4>Function Links</h4>
+<h2>K. Bind to controls & JS render</h2>
+<h3>AS-IS (WebForms)</h3>
+<li>Server-side: .aspx + code-behind binds data to server controls</li>
+<li>Client-side: custom JS (e.g., /js/*) updates DOM; global scripts from master</li>
+<h3>PAIN POINTS</h3>
+<li>ViewState-heavy; limited testability; mixed server/client binding</li>
+<h3>TO-BE</h3>
+<li>React (Vite): components, hooks; or Blazor WASM</li>
+<li>Fetch API/axios with SWR/React Query</li>
+<li>Accessible components; SSR/CSR trade-offs</li>
+<h3>CODE SKETCHES</h3>
+<li>React component consuming /api endpoints; simple table render</li>
+<h3>TESTS</h3>
+<li>Component tests (RTL), E2E (Playwright)</li>
+<h4>Function Links</h4>
+<h2>L. Render HTML</h2>
+<h3>AS-IS (WebForms)</h3>
+<li>Main.master handles layout, scripts; final render via ASP.NET pipeline</li>
+<h3>TO-BE</h3>
+<li>React SPA shell or Blazor root; Bootstrap 5; route-based code-splitting</li>
+<h3>RISKS</h3>
+<li>Coexistence with legacy WebForms; use sub-app or reverse proxy</li>
+<h4>Function Links</h4>
+<li>Main.master::Page_Load â†’ ../files/Main.master.html#function-Page_Load</li>
+<li>DataControllerService â†’ ../files/App_Code_Services_DataControllerService.vb.html</li>
+
+</div>

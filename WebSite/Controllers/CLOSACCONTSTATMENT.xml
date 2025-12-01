@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="CLOSACCONTSTATMENT" conflictDetection="overwriteChanges" label="Closaccontstatment" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"CLOSACCONTSTATMENT"."CLOS_NO" "CLOS_NO"
+	,"CLOSACCONTSTATMENT"."CLsacc_Nm" "CLsacc_Nm"
+	,"CLOSACCONTSTATMENT"."Acc_Bab" "Acc_Bab"
+	,"CLOSACCONTSTATMENT"."mainaccount" "mainaccount"
+	,"CLOSACCONTSTATMENT"."Acc_Mag" "Acc_Mag"
+	,"CLOSACCONTSTATMENT"."submainaccount" "submainaccount"
+	,"CLOSACCONTSTATMENT"."Acc_Bnd" "Acc_Bnd"
+	,"CLOSACCONTSTATMENT"."Branchaccount" "Branchaccount"
+	,"CLOSACCONTSTATMENT"."Acc_No" "Acc_No"
+	,"CLOSACCONTSTATMENT"."Accountname" "Accountname"
+	,"CLOSACCONTSTATMENT"."Jr_Ty" "Jr_Ty"
+	,"CLOSACCONTSTATMENT"."Ln_No" "Ln_No"
+	,"CLOSACCONTSTATMENT"."Tr_No" "Tr_No"
+	,"CLOSACCONTSTATMENT"."Tr_Dt" "Tr_Dt"
+	,"CLOSACCONTSTATMENT"."Tr_Ds" "Tr_Ds"
+	,"CLOSACCONTSTATMENT"."Tr_Db" "Tr_Db"
+	,"CLOSACCONTSTATMENT"."Tr_Cr" "Tr_Cr"
+	,"CLOSACCONTSTATMENT"."BALANC" "BALANC"
+from "dbo"."CLOSACCONTSTATMENT" "CLOSACCONTSTATMENT"
+]]></text>
+    </command>
+    <command id="Acc_BabIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Acc_Bab" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="CLOS_NO" type="Int64" label="Clos No" showInSummary="true" />
+    <field name="CLsacc_Nm" type="String" label="C Lsacc Nm" length="50" showInSummary="true" />
+    <field name="Acc_Bab" type="Int64" label="Acc Bab" readOnly="true" showInSummary="true" />
+    <field name="mainaccount" type="String" label="Mainaccount" length="250" showInSummary="true" />
+    <field name="Acc_Mag" type="Int64" label="Acc Mag" showInSummary="true" />
+    <field name="submainaccount" type="String" label="Submainaccount" length="50" />
+    <field name="Acc_Bnd" type="Int64" label="Acc Bnd" />
+    <field name="Branchaccount" type="String" label="Branchaccount" length="50" />
+    <field name="Acc_No" type="Int64" label="Acc No" />
+    <field name="Accountname" type="String" label="Accountname" length="255" />
+    <field name="Jr_Ty" type="Int64" label="Jr Ty" />
+    <field name="Ln_No" type="Int64" label="Ln No" />
+    <field name="Tr_No" type="Int64" label="Tr No" />
+    <field name="Tr_Dt" type="String" label="Tr Dt" length="10" />
+    <field name="Tr_Ds" type="String" label="Tr Ds" length="255" />
+    <field name="Tr_Db" type="Decimal" label="Tr Db" readOnly="true" />
+    <field name="Tr_Cr" type="Decimal" label="Tr Cr" readOnly="true" />
+    <field name="BALANC" type="Decimal" label="Balanc" readOnly="true" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Closaccontstatment">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="CLOS_NO" columns="15" />
+        <dataField fieldName="CLsacc_Nm" columns="50" />
+        <dataField fieldName="Acc_Bab" columns="15" />
+        <dataField fieldName="mainaccount" />
+        <dataField fieldName="Acc_Mag" columns="15" />
+        <dataField fieldName="submainaccount" columns="50" />
+        <dataField fieldName="Acc_Bnd" columns="15" />
+        <dataField fieldName="Branchaccount" columns="50" />
+        <dataField fieldName="Acc_No" columns="15" />
+        <dataField fieldName="Accountname" />
+        <dataField fieldName="Jr_Ty" columns="15" />
+        <dataField fieldName="Ln_No" columns="15" />
+        <dataField fieldName="Tr_No" columns="15" />
+        <dataField fieldName="Tr_Dt" columns="10" />
+        <dataField fieldName="Tr_Ds" />
+        <dataField fieldName="Tr_Db" dataFormatString="c" columns="15" />
+        <dataField fieldName="Tr_Cr" dataFormatString="c" columns="15" />
+        <dataField fieldName="BALANC" dataFormatString="c" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Closaccontstatment">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Closaccontstatment" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CLOS_NO" columns="15" />
+            <dataField fieldName="CLsacc_Nm" columns="50" />
+            <dataField fieldName="Acc_Bab" columns="15" />
+            <dataField fieldName="mainaccount" />
+            <dataField fieldName="Acc_Mag" columns="15" />
+            <dataField fieldName="submainaccount" columns="50" />
+            <dataField fieldName="Acc_Bnd" columns="15" />
+            <dataField fieldName="Branchaccount" columns="50" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="Accountname" />
+            <dataField fieldName="Jr_Ty" columns="15" />
+            <dataField fieldName="Ln_No" columns="15" />
+            <dataField fieldName="Tr_No" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="Tr_Ds" />
+            <dataField fieldName="Tr_Db" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tr_Cr" dataFormatString="c" columns="15" />
+            <dataField fieldName="BALANC" dataFormatString="c" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Closaccontstatment">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Closaccontstatment" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CLOS_NO" columns="15" />
+            <dataField fieldName="CLsacc_Nm" columns="50" />
+            <dataField fieldName="mainaccount" />
+            <dataField fieldName="Acc_Mag" columns="15" />
+            <dataField fieldName="submainaccount" columns="50" />
+            <dataField fieldName="Acc_Bnd" columns="15" />
+            <dataField fieldName="Branchaccount" columns="50" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="Accountname" />
+            <dataField fieldName="Jr_Ty" columns="15" />
+            <dataField fieldName="Ln_No" columns="15" />
+            <dataField fieldName="Tr_No" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="Tr_Ds" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

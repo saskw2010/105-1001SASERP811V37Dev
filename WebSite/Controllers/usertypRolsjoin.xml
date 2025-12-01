@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="usertypRolsjoin" conflictDetection="overwriteChanges" label="usertyp Rolsjoin" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"usertypRolsjoin"."UserID" "UserID"
+	,"User"."UserName" "UserUserName"
+	,"Usersgm"."sgm_Nm" "Usersgmsgm_Nm"
+	,"UsersgmOpco"."OpcoName" "UsersgmOpcoOpcoName"
+	,"UserUserTyp"."UsrTypNm" "UserUserTypUsrTypNm"
+	,"usertypRolsjoin"."UsrTypID" "UsrTypID"
+	,"UsrTyp"."UsrTypNm" "UsrTypUsrTypNm"
+	,"usertypRolsjoin"."ModifiedBy" "ModifiedBy"
+	,"usertypRolsjoin"."ModifiedOn" "ModifiedOn"
+	,"usertypRolsjoin"."CreatedBy" "CreatedBy"
+	,"usertypRolsjoin"."CreatedOn" "CreatedOn"
+from "dbo"."usertypRolsjoin" "usertypRolsjoin"
+	left join "dbo"."Users" "User" on "usertypRolsjoin"."UserID" = "User"."UserID"
+	left join "dbo"."glmulcmp" "Usersgm" on "User"."sgm" = "Usersgm"."sgmid"
+	left join "dbo"."OpCo" "UsersgmOpco" on "Usersgm"."OpcoID" = "UsersgmOpco"."OpcoIDidentity"
+	left join "dbo"."UsersTypes" "UserUserTyp" on "User"."UserTyp" = "UserUserTyp"."UsrTypID"
+	left join "dbo"."UsersTypes" "UsrTyp" on "usertypRolsjoin"."UsrTypID" = "UsrTyp"."UsrTypID"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="UserID" type="Int64" allowNulls="false" isPrimaryKey="true" label="User#" showInSummary="true">
+      <items style="Lookup" dataController="Users" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="UserUserName" type="String" readOnly="true" label="User Name" length="50" />
+    <field name="Usersgmsgm_Nm" type="String" readOnly="true" label="Usersgmsgm Nm" length="255" />
+    <field name="UsersgmOpcoOpcoName" type="String" readOnly="true" label="Usersgm Opco Name" length="50" />
+    <field name="UserUserTypUsrTypNm" type="String" readOnly="true" label="User Typ Usr Typ Nm" length="255" />
+    <field name="UsrTypID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Usr Typ#" showInSummary="true">
+      <items style="Lookup" dataController="UsersTypes" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="UsrTypUsrTypNm" type="String" readOnly="true" label="Usr Typ Nm" length="255" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" showInSummary="true" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" showInSummary="true" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" showInSummary="true" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="usertyp Rolsjoin">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="UserID" aliasFieldName="UserUserName" />
+        <dataField fieldName="UsrTypID" aliasFieldName="UsrTypUsrTypNm" hyperlinkFormatString="~/Pages/UsersTypes.aspx?UsrTypID={UsrTypID}&amp;_controller=UsersTypes&amp;_command=Select&amp;_argument=editForm1" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="Usersgmsgm_Nm" />
+        <dataField fieldName="UsersgmOpcoOpcoName" columns="50" />
+        <dataField fieldName="UserUserTypUsrTypNm" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review usertyp Rolsjoin">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="usertyp Rolsjoin" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="UserID" aliasFieldName="UserUserName" hyperlinkFormatString="~/Pages/Users.aspx?UserID={UserID}&amp;_controller=Users&amp;_command=Select&amp;_argument=editForm1" />
+            <dataField fieldName="UsrTypID" aliasFieldName="UsrTypUsrTypNm" hyperlinkFormatString="~/Pages/UsersTypes.aspx?UsrTypID={UsrTypID}&amp;_controller=UsersTypes&amp;_command=Select&amp;_argument=editForm1" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Usersgmsgm_Nm" />
+            <dataField fieldName="UsersgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="UserUserTypUsrTypNm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New usertyp Rolsjoin">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New usertyp Rolsjoin" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="UserID" aliasFieldName="UserUserName" />
+            <dataField fieldName="UsrTypID" aliasFieldName="UsrTypUsrTypNm" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

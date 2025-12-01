@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Tbl_28" conflictDetection="overwriteChanges" label="Tbl 28" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.Tbl_28BusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Tbl_28"."Autoid" "Autoid"
+	,"Tbl_28"."Rainbow_no" "Rainbow_no"
+	,"Tbl_28"."Item_Code" "Item_Code"
+	,"Item_"."Arab_Desc" "Item_Arab_Desc"
+	,"Tbl_28"."QTY" "QTY"
+	,"Tbl_28"."Sale_Price" "Sale_Price"
+	,"Tbl_28"."Invoice" "Invoice"
+	,"Tbl_28"."Delivery_Dealer" "Delivery_Dealer"
+	,"Tbl_28"."Kind_mashin" "Kind_mashin"
+	,"Tbl_28"."Kind_Serves" "Kind_Serves"
+	,"Tbl_28"."In_date" "In_date"
+	,"Tbl_28"."Exit_date" "Exit_date"
+	,"Tbl_28"."ModifiedBy" "ModifiedBy"
+	,"Tbl_28"."ModifiedOn" "ModifiedOn"
+	,"Tbl_28"."CreatedBy" "CreatedBy"
+	,"Tbl_28"."CreatedOn" "CreatedOn"
+,"Tbl_28"."Notes" "Notes"
+from "dbo"."Tbl_28" "Tbl_28"
+	left join "dbo"."Tbl_29" "Item_" on "Tbl_28"."Item_Code" = "Item_"."Item_Code"
+]]></text>
+    </command>
+    <command id="AutoidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Autoid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Autoid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Autoid" readOnly="true" />
+    <field name="Rainbow_no" type="Int32" allowNulls="false" label="Rainbow no" showInSummary="true" />
+    <field name="Item_Code" type="String" label="Item Code" length="25" showInSummary="true">
+      <items style="AutoComplete" dataController="Tbl_29" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Arab_Desc" dataValueField="Item_Code" copy="Sale_Price=Sale_Price" />
+    </field>
+    <field name="Item_Arab_Desc" type="String" readOnly="true" label="Item Arab Desc" length="50" />
+    <field name="QTY" type="Int32" default="1" label="Qty" showInSummary="true" />
+    <field name="Sale_Price" type="Decimal" default="((0))" label="Sale Price" showInSummary="true" />
+    <field name="Invoice" type="Int32" default="((0))" label="Invoice" showInSummary="true" />
+    <field name="Delivery_Dealer" type="String" label="Delivery Dealer" length="50">
+      <items style="DropDownList" dataController="Tbl_ServiceDealers" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Dealer_name" dataValueField="Dealer_name" />
+    </field>
+    <field name="Kind_mashin" type="String" label="Kind mashin" length="50">
+      <items style="DropDownList" dataController="Kind_mashinlist" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Kind_mashindesc" dataValueField="Kind_mashindesc" />
+    </field>
+    <field name="Kind_Serves" type="String" label="Kind Serves" length="50">
+      <items style="DropDownList">
+        <item value="خارج الكفالة" text="خارج الكفالة" />
+        <item value="داخل الكفالة" text="داخل الكفالة" />
+      </items>
+    </field>
+    <field name="In_date" type="DateTime" default="(getdate())" label="In date" />
+    <field name="Exit_date" type="DateTime" label="Exit date" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" showInSummary="true" />
+<field name="Notes" type="String"  label="ItemNotes" length="255" />
+  </fields>
+  <views>
+    <view id="grid1" type="DataSheet" commandId="command1" label="Tbl 28">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Rainbow_no" columns="15" />
+        <dataField fieldName="CreatedOn" columns="10" textMode="Text" hidden="true" />
+        <dataField fieldName="Item_Code" aliasFieldName="Item_Arab_Desc" hyperlinkFormatString="~/Pages/Tbl_29.aspx?Item_Code={Item_Code}&amp;_controller=Tbl_29&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="QTY" columns="15" />
+        <dataField fieldName="Sale_Price" columns="15" />
+        <dataField fieldName="Invoice" columns="15" />
+        <dataField fieldName="Delivery_Dealer" hyperlinkFormatString="~/Pages/Tbl_ServiceDealers.aspx?Dealer_name={Delivery_Dealer}&amp;_controller=Tbl_ServiceDealers&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Kind_mashin" hyperlinkFormatString="~/Pages/Kind_mashinlist.aspx?Kind_mashindesc={Kind_mashin}&amp;_controller=Kind_mashinlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Kind_Serves" columns="50" />
+        <dataField fieldName="In_date" columns="10" />
+        <dataField fieldName="Exit_date" columns="10" />
+       <dataField fieldName="Notes" columns="255" />
+
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Tbl 28">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Tbl 28" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Rainbow_no" columns="15" />
+            <dataField fieldName="Item_Code" aliasFieldName="Item_Arab_Desc" hyperlinkFormatString="~/Pages/Tbl_29.aspx?Item_Code={Item_Code}&amp;_controller=Tbl_29&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="QTY" columns="15" />
+            <dataField fieldName="Sale_Price" columns="15" />
+            <dataField fieldName="Invoice" columns="15" />
+            <dataField fieldName="Delivery_Dealer" hyperlinkFormatString="~/Pages/Tbl_ServiceDealers.aspx?Dealer_name={Delivery_Dealer}&amp;_controller=Tbl_ServiceDealers&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Kind_mashin" aliasFieldName="Kind_Serves" hyperlinkFormatString="~/Pages/Kind_mashinlist.aspx?Kind_mashindesc={Kind_mashin}&amp;_controller=Kind_mashinlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Kind_Serves" columns="50" />
+            <dataField fieldName="In_date" columns="10" />
+            <dataField fieldName="Exit_date" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+<dataField fieldName="Notes" columns="255" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Tbl 28">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Tbl 28" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Rainbow_no" columns="15" />
+            <dataField fieldName="Item_Code" aliasFieldName="Item_Arab_Desc" />
+            <dataField fieldName="QTY" columns="15" />
+            <dataField fieldName="Sale_Price" columns="15" />
+            <dataField fieldName="Invoice" columns="15" />
+            <dataField fieldName="Delivery_Dealer" />
+            <dataField fieldName="Kind_mashin" aliasFieldName="Kind_Serves" />
+            <dataField fieldName="Kind_Serves" columns="50" />
+            <dataField fieldName="In_date" columns="10" />
+            <dataField fieldName="Exit_date" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+<dataField fieldName="Notes" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="grid2" commandId="command1" type="Grid" label="grid2" />
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" cssClass="NewIcon" />
+      <action id="a100" commandName="New" cssClass="NewIcon" commandArgument="createForm1" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="tbl28InsertUpdater100" commandName="Insert|Update" type="Code" phase="Execute" />
+  </businessRules>
+</dataController>

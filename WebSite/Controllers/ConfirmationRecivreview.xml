@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="ConfirmationRecivreview" label="ConfirmationRecivreview" conflictDetection="overwriteChanges" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.ConfirmationRecivreviewBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <fields>
+    <field name="cstyp_No" type="Int64" allowNulls="false" label="cstyp_No" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false" readOnly="true">
+      <items letters="false" />
+    </field>
+    <field name="subaccountno" type="Int64" allowNulls="false" label="subaccountno" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false" contextFields="typ=7" calculated="true">
+      <items letters="false" style="Lookup" dataController="Qsupcstmr" dataView="grid1" dataTextField="Cstm_nm" dataValueField="Cstm_no" copy="Acc_no=classacc,subaccountnoname=Cstm_nm" />
+    </field>
+    <field name="Acc_no" type="Int64" allowNulls="false" label="Acc_no" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false">
+      <items style="Lookup" dataController="GLmstrfl" dataView="grid1" dataTextField="Acc_Nm" dataValueField="Acc_No" letters="false" />
+    </field>
+	<field name="subaccountnoname" type="String" allowNulls="false" label="subaccountnoname" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false" length="40">
+      <items letters="false" />
+    </field>
+    <field name="deposername" type="String" allowNulls="false" label="deposername" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false" length="40">
+      <items letters="false" />
+    </field>
+    <field name="depositflage" type="Int64" allowNulls="false" label="depositflage" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false" length="40" readOnly="true">
+      <items letters="false" />
+    </field>
+    <field name="depositdate" type="DateTime" allowNulls="false" label="depositdate" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false">
+      <items letters="false" />
+    </field>
+    <field name="depositnotes" type="String" label="depositnotes" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false" length="40">
+      <items letters="false" />
+    </field>
+    <field name="depositRefno" type="String" label="deposit Refno" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="false" length="20">
+      <items letters="false" />
+    </field>
+  </fields>
+</dataController>

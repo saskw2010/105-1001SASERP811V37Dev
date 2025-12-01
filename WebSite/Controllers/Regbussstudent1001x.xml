@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Regbussstudent1001" label="Regbussstudent1001" conflictDetection="overwriteChanges" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.Regbussstudent1001BusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text" tableName="Regbussstudent" custom="true">
+      <text><![CDATA[SELECT        Regbussstudent.Regbussstudentid, Regbussstudent.busid, bus.name_1 AS busname_1, Regbussstudent.schareaid, scharea.Desc1 AS schareaDesc1, 
+                         Regbussstudent.standerdprice, Regbussstudent.notes, Regbussstudent.transdate, Regbussstudent.startdate, Regbussstudent.enddate, 
+                         Regbussstudent.periodpermonth, Regbussstudent.AmountDiscount, Regbussstudent.Amountadded, Regbussstudent.TotalAmount, Regbussstudent.StudentCode, 
+                         Student.SchstCivilidnumber AS StudentSchstCivilidnumber, Student.FirstName1, Studentarea.Desc1 AS StudentareaDesc1, 
+                         Studentbranch.Desc1 AS StudentbranchDesc1, Studentbranchsgm.sgm_Nm AS Studentbranchsgmsgm_Nm, 
+                         StudentbranchGender.Gender AS StudentbranchGenderGender, Studentbranchstage.ShortDesc1 AS StudentbranchstageShortDesc1, 
+                         Studentbranchschtyp.schtypDesc AS StudentbranchschtypschtypDesc, StudentCntry_.Cntry_Nm AS StudentCntry_Cntry_Nm, 
+                         StudentGender.Gender AS StudentGenderGender, StudentReligion.Reljan_nm AS StudentReligionReljan_nm, Studentstate.State_Nm AS StudentstateState_Nm, 
+                         Studentid.name_1 AS Studentidname_1, Studentacd.AcademicYear AS StudentacdAcademicYear, 
+                         StudentacdGlFinperiod.Fin_period_info AS StudentacdGlFinperiodFin_period_info, StudentClass.ClassDesc1 AS StudentClassClassDesc1, 
+                         StudentSchclasskind.Schclasskinddesc AS StudentSchclasskindSchclasskinddesc, StudentFather.fathfirstname1 AS StudentFatherfathfirstname1, 
+                         StudentFatherMaritalStatus.Status_Nm AS StudentFatherMaritalStatusStatus_Nm, StudentFatherarea.Desc1 AS StudentFatherareaDesc1, 
+                         StudentFatherCntry_.Cntry_Nm AS StudentFatherCntry_Cntry_Nm, StudentFatherreligion.Reljan_nm AS StudentFatherreligionReljan_nm, 
+                         StudentFatherState.State_Nm AS StudentFatherStateState_Nm, StudentFatherjob_.job_desc AS StudentFatherjob_job_desc, 
+                         StudentGrade.ShortDesc1 AS StudentGradeShortDesc1, StudentGradeacd.AcademicYear AS StudentGradeacdAcademicYear, 
+                         StudentGradeStage.ShortDesc1 AS StudentGradeStageShortDesc1, StudentMother.firstname1 AS StudentMotherfirstname1, 
+                         StudentMotherarea.Desc1 AS StudentMotherareaDesc1, StudentMotherCntry_.Cntry_Nm AS StudentMotherCntry_Cntry_Nm, 
+                         StudentMotherreligion.Reljan_nm AS StudentMotherreligionReljan_nm, StudentMotherState.State_Nm AS StudentMotherStateState_Nm, 
+                         StudentMotherjob_.job_desc AS StudentMotherjob_job_desc, StudentStage.ShortDesc1 AS StudentStageShortDesc1, 
+                         Studentschstatus_.schstatus_name AS Studentschstatus_schstatus_name, 
+                         Studentschstclasskinddmg.schstclasskinddmgDesc AS StudentschstclasskinddmgschstclasskinddmgDesc, 
+                         Studentschstspl.schstsplDsc AS StudentschstsplschstsplDsc, Studentschsthlthcase.schsthlthcaseDesc AS StudentschsthlthcaseschsthlthcaseDesc, 
+                         Studentstudentsefa.studentsefaar AS Studentstudentsefastudentsefaar, Studentstudentsefadebitaccount.Acc_Nm AS StudentstudentsefadebitaccountAcc_Nm, 
+                         Studentschstudenttyp.schstudenttyp AS Studentschstudenttypschstudenttyp, StudentSchtransfer.SchtransferDesc AS StudentSchtransferSchtransferDesc, 
+                         Regbussstudent.branch, Thebranch.Desc1 AS ThebranchDesc1, Thebranchsgm.sgm_Nm AS Thebranchsgmsgm_Nm, 
+                         ThebranchsgmOpco.OpcoName AS ThebranchsgmOpcoOpcoName, ThebranchGender.Gender AS ThebranchGenderGender, 
+                         Thebranchstage.ShortDesc1 AS ThebranchstageShortDesc1, Thebranchschtyp.schtypDesc AS ThebranchschtypschtypDesc, Regbussstudent.Stage, 
+                         Stage.ShortDesc1 AS StageShortDesc1, Regbussstudent.GradeCode, Grade.ShortDesc1 AS GradeShortDesc1, Gradeacd.AcademicYear AS GradeacdAcademicYear, 
+                         GradeacdGlFinperiod.Fin_period_info AS GradeacdGlFinperiodFin_period_info, GradeStage.ShortDesc1 AS GradeStageShortDesc1, Regbussstudent.Class, 
+                         Class.ClassDesc1 AS ClassClassDesc1, Regbussstudent.acdcode, acd.AcademicYear AS acdAcademicYear, 
+                         acdGlFinperiod.Fin_period_info AS acdGlFinperiodFin_period_info, acdGlFinperiodaccountnumber.Acc_Nm AS acdGlFinperiodaccountnumberAcc_Nm, 
+                         Regbussstudent.ModifiedBy, Regbussstudent.ModifiedByUserId, Regbussstudent.ModifiedOn, Regbussstudent.CreatedBy, Regbussstudent.CreatedById, 
+                         Regbussstudent.CreatedOn, Regbussstudent.AmountDiscountnote, Regbussstudent.Amountaddednote, Regbussstudent.Subscriptionstatus, 
+                         TheSubscriptionstatus.SubscriptionstatusDesc AS TheSubscriptionstatusSubscriptionstatusDesc, Regbussstudent.Subscriptionstopeddate, 
+                         Regbussstudent.Restperiodpermonth, Regbussstudent.RestTotalAmount, Regbussstudent.firstinstallmentamount, Regbussstudent.firstinstallmentdate, 
+                         Regbussstudent.secondinstallmentamount1, Regbussstudent.secondinstallmentdate1, dbo.Qglschtransbalance.trcr1, dbo.Qglschtransbalance.Trdb1, 
+                         dbo.Qglschtransbalance.Balance, bus.name_2, bus.drive_name, bus.drive_phone, bus.bus_no,Regbussstudent.gomorning,Regbussstudent.backafternono,Regbussstudent.clubway
+FROM            dbo.Regbussstudent AS Regbussstudent LEFT OUTER JOIN
+                         dbo.Qglschtransbalance ON Regbussstudent.StudentCode = dbo.Qglschtransbalance.StudentCode AND 
+                         Regbussstudent.branch = dbo.Qglschtransbalance.branch AND Regbussstudent.acdcode = dbo.Qglschtransbalance.acdcode LEFT OUTER JOIN
+                         dbo.reg_bus AS bus ON Regbussstudent.busid = bus.id LEFT OUTER JOIN
+                         dbo.schArea AS scharea ON Regbussstudent.schareaid = scharea.Code LEFT OUTER JOIN
+                         dbo.SchStudent AS Student ON Regbussstudent.StudentCode = Student.StudentCode LEFT OUTER JOIN
+                         dbo.schArea AS Studentarea ON Student.area = Studentarea.Code LEFT OUTER JOIN
+                         dbo.schBranch AS Studentbranch ON Student.branch = Studentbranch.branch LEFT OUTER JOIN
+                         dbo.glmulcmp AS Studentbranchsgm ON Studentbranch.sgm = Studentbranchsgm.sgmid LEFT OUTER JOIN
+                         dbo.PyGender AS StudentbranchGender ON Studentbranch.Genderid = StudentbranchGender.Genderid LEFT OUTER JOIN
+                         dbo.schStage AS Studentbranchstage ON Studentbranch.stagecode = Studentbranchstage.Code LEFT OUTER JOIN
+                         dbo.schtyp AS Studentbranchschtyp ON Studentbranch.schtypid = Studentbranchschtyp.schtypid LEFT OUTER JOIN
+                         dbo.PYCntry AS StudentCntry_ ON Student.Cntry_No = StudentCntry_.Cntry_No LEFT OUTER JOIN
+                         dbo.PyGender AS StudentGender ON Student.Genderid = StudentGender.Genderid LEFT OUTER JOIN
+                         dbo.PyReljan AS StudentReligion ON Student.Religion = StudentReligion.reljan LEFT OUTER JOIN
+                         dbo.PyState AS Studentstate ON Student.state = Studentstate.State LEFT OUTER JOIN
+                         dbo.reg_other_schools AS Studentid ON Student.id = Studentid.id LEFT OUTER JOIN
+                         dbo.schAcademicyear AS Studentacd ON Student.acdcode = Studentacd.Code LEFT OUTER JOIN
+                         dbo.GlFinanceperiod AS StudentacdGlFinperiod ON Studentacd.GlFinperiodID = StudentacdGlFinperiod.GlFinperiodID LEFT OUTER JOIN
+                         dbo.schClassConfig AS StudentClass ON Student.Class = StudentClass.classcode LEFT OUTER JOIN
+                         dbo.Schclasskindlist AS StudentSchclasskind ON Student.Schclasskindid = StudentSchclasskind.Schclasskindid LEFT OUTER JOIN
+                         dbo.schFather AS StudentFather ON Student.FatherCode = StudentFather.FatherCode LEFT OUTER JOIN
+                         dbo.PyStatus AS StudentFatherMaritalStatus ON StudentFather.MaritalStatus = StudentFatherMaritalStatus.Status_Type LEFT OUTER JOIN
+                         dbo.schArea AS StudentFatherarea ON StudentFather.area = StudentFatherarea.Code LEFT OUTER JOIN
+                         dbo.PYCntry AS StudentFatherCntry_ ON StudentFather.Cntry_No = StudentFatherCntry_.Cntry_No LEFT OUTER JOIN
+                         dbo.PyReljan AS StudentFatherreligion ON StudentFather.religion = StudentFatherreligion.reljan LEFT OUTER JOIN
+                         dbo.PyState AS StudentFatherState ON StudentFather.State = StudentFatherState.State LEFT OUTER JOIN
+                         dbo.SchFatherjob AS StudentFatherjob_ ON StudentFather.job_no = StudentFatherjob_.job_no LEFT OUTER JOIN
+                         dbo.schGrade AS StudentGrade ON Student.GradeCode = StudentGrade.GradeCode LEFT OUTER JOIN
+                         dbo.schAcademicyear AS StudentGradeacd ON StudentGrade.acdcode = StudentGradeacd.Code LEFT OUTER JOIN
+                         dbo.schStage AS StudentGradeStage ON StudentGrade.StageCode = StudentGradeStage.Code LEFT OUTER JOIN
+                         dbo.schMother AS StudentMother ON Student.MotherCode = StudentMother.MotherCode LEFT OUTER JOIN
+                         dbo.schArea AS StudentMotherarea ON StudentMother.area = StudentMotherarea.Code LEFT OUTER JOIN
+                         dbo.PYCntry AS StudentMotherCntry_ ON StudentMother.Cntry_No = StudentMotherCntry_.Cntry_No LEFT OUTER JOIN
+                         dbo.PyReljan AS StudentMotherreligion ON StudentMother.religion = StudentMotherreligion.reljan LEFT OUTER JOIN
+                         dbo.PyState AS StudentMotherState ON StudentMother.State = StudentMotherState.State LEFT OUTER JOIN
+                         dbo.SchMotherjob AS StudentMotherjob_ ON StudentMother.job_no = StudentMotherjob_.job_no LEFT OUTER JOIN
+                         dbo.schStage AS StudentStage ON Student.Stage = StudentStage.Code LEFT OUTER JOIN
+                         dbo.schstatus AS Studentschstatus_ ON Student.schstatus_code = Studentschstatus_.schstatus_code LEFT OUTER JOIN
+                         dbo.schstclasskinddmg AS Studentschstclasskinddmg ON Student.schstclasskinddmgid = Studentschstclasskinddmg.schstclasskinddmgid LEFT OUTER JOIN
+                         dbo.schstespetialest AS Studentschstspl ON Student.schstsplid = Studentschstspl.schstsplid LEFT OUTER JOIN
+                         dbo.schsthealthcase AS Studentschsthlthcase ON Student.schsthlthcaseid = Studentschsthlthcase.schsthlthcaseid LEFT OUTER JOIN
+                         dbo.Schstudentsefa AS Studentstudentsefa ON Student.studentsefa = Studentstudentsefa.studentsefaid LEFT OUTER JOIN
+                         dbo.GLmstrfl AS Studentstudentsefadebitaccount ON Studentstudentsefa.debitaccount = Studentstudentsefadebitaccount.Acc_No LEFT OUTER JOIN
+                         dbo.schstudenttyp AS Studentschstudenttyp ON Student.schstudenttypid = Studentschstudenttyp.schstudenttypid LEFT OUTER JOIN
+                         dbo.Schtransferlist AS StudentSchtransfer ON Student.Schtransferid = StudentSchtransfer.Schtransferid LEFT OUTER JOIN
+                         dbo.schBranch AS Thebranch ON Regbussstudent.branch = Thebranch.branch LEFT OUTER JOIN
+                         dbo.glmulcmp AS Thebranchsgm ON Thebranch.sgm = Thebranchsgm.sgmid LEFT OUTER JOIN
+                         dbo.OpCo AS ThebranchsgmOpco ON Thebranchsgm.OpcoID = ThebranchsgmOpco.OpcoIDidentity LEFT OUTER JOIN
+                         dbo.PyGender AS ThebranchGender ON Thebranch.Genderid = ThebranchGender.Genderid LEFT OUTER JOIN
+                         dbo.schStage AS Thebranchstage ON Thebranch.stagecode = Thebranchstage.Code LEFT OUTER JOIN
+                         dbo.schtyp AS Thebranchschtyp ON Thebranch.schtypid = Thebranchschtyp.schtypid LEFT OUTER JOIN
+                         dbo.schStage AS Stage ON Regbussstudent.Stage = Stage.Code LEFT OUTER JOIN
+                         dbo.schGrade AS Grade ON Regbussstudent.GradeCode = Grade.GradeCode LEFT OUTER JOIN
+                         dbo.schAcademicyear AS Gradeacd ON Grade.acdcode = Gradeacd.Code LEFT OUTER JOIN
+                         dbo.GlFinanceperiod AS GradeacdGlFinperiod ON Gradeacd.GlFinperiodID = GradeacdGlFinperiod.GlFinperiodID LEFT OUTER JOIN
+                         dbo.schStage AS GradeStage ON Grade.StageCode = GradeStage.Code LEFT OUTER JOIN
+                         dbo.schClassConfig AS Class ON Regbussstudent.Class = Class.classcode LEFT OUTER JOIN
+                         dbo.schAcademicyear AS acd ON Regbussstudent.acdcode = acd.Code LEFT OUTER JOIN
+                         dbo.GlFinanceperiod AS acdGlFinperiod ON acd.GlFinperiodID = acdGlFinperiod.GlFinperiodID LEFT OUTER JOIN
+                         dbo.GLmstrfl AS acdGlFinperiodaccountnumber ON acdGlFinperiod.accountnumber = acdGlFinperiodaccountnumber.Acc_No LEFT OUTER JOIN
+                         dbo.Subscriptionstatuslist AS TheSubscriptionstatus ON Regbussstudent.Subscriptionstatus = TheSubscriptionstatus.Subscriptionstatus]]></text>
+    </command>
+    <command id="RegbussstudentidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Regbussstudentid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Regbussstudentid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Regbussstudentid" readOnly="true" />
+    <field name="busid" type="Int64" allowNulls="false" label="Busid" showInSummary="true">
+      <items style="Lookup" dataController="reg_bus" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="name_1" dataValueField="id" />
+    </field>
+    <field name="busname_1" type="String" readOnly="true" label="Busname 1" length="50" />
+    <field name="busbranchDesc1" type="String" readOnly="true" label="busbranch Desc1" length="50" />
+    <field name="busbranchsgmsgm_Nm" type="String" readOnly="true" label="busbranchsgmsgm Nm" length="255" />
+    <field name="busbranchGenderGender" type="String" readOnly="true" label="busbranch Gender" length="100" />
+    <field name="busbranchstageShortDesc1" type="String" readOnly="true" label="busbranchstage Short Desc1" length="50" />
+    <field name="busbranchschtypschtypDesc" type="String" readOnly="true" label="busbranchschtypschtyp Desc" length="150" />
+    <field name="schareaid" type="Int64" allowNulls="false" label="Schareaid" showInSummary="true" contextFields="busid=busid">
+      <items style="Lookup" dataController="Regbusschareaprice" searchOnStart="true" dataView="grid1" dataTextField="schareaDesc1" dataValueField="schareaid" copy="standerdprice=standerdprice&#xD;&#xA;firstinstallmentamount=firstinstallmentamount&#xD;&#xA;firstinstallmentdate=firstinstallmentdate&#xD;&#xA;secondinstallmentamount=secondinstallmentamount&#xD;&#xA;secondinstallmentdate1=secondinstallmentdate1&#xD;&#xA;TotalAmount=standerdprice" />
+    </field>
+    <field name="schareaDesc1" type="String" readOnly="true" label="scharea Desc1" length="40" />
+    <field name="standerdprice" type="Decimal" allowNulls="false" label="Standerdprice" showInSummary="true" />
+    <field name="notes" type="String" label="Notes" length="100" showInSummary="true" />
+    <field name="transdate" type="DateTime" default="(getdate())" label="Transdate" showInSummary="true" />
+    <field name="startdate" type="DateTime" label="Startdate" />
+    <field name="enddate" type="DateTime" label="Enddate" />
+    <field name="periodpermonth" type="Decimal" label="Periodpermonth" contextFields="enddate,startdate,schareaid" calculated="true" />
+    <field name="AmountDiscount" type="Decimal" label="Amount Discount" />
+    <field name="Amountadded" type="Decimal" label="Amountadded" />
+    <field name="TotalAmount" type="Decimal" label="Total Amount" contextFields="Amountadded,AmountDiscount" calculated="true" allowNulls="false" />
+    <field name="StudentCode" type="Int64" allowNulls="false" label="Student Code" contextFields="acdcode=acdcode" calculated="true">
+      <items searchOnStart="true" copy="branch=branch&#xD;&#xA;Stage=Stage&#xD;&#xA;GradeCode=GradeCode&#xD;&#xA;schstname1=FirstName1&#xD;&#xA;Class=Class&#xD;&#xA;acdcode=acdcode&#xD;&#xA;startdate=startdate&#xD;&#xA;enddate=enddate" dataView="studentsearch" style="Lookup" dataController="SchStudent" dataTextField="FirstName1" dataValueField="StudentCode" />
+    </field>
+    <field name="StudentSchstCivilidnumber" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Student Schst Civilidnumber" length="-1" />
+    <field name="StudentareaDesc1" type="String" readOnly="true" label="Studentarea Desc1" length="40" />
+    <field name="StudentbranchDesc1" type="String" readOnly="true" label="Studentbranch Desc1" length="50" />
+    <field name="Studentbranchsgmsgm_Nm" type="String" readOnly="true" label="Studentbranchsgmsgm Nm" length="255" />
+    <field name="StudentbranchGenderGender" type="String" readOnly="true" label="Studentbranch Gender" length="100" />
+    <field name="StudentbranchstageShortDesc1" type="String" readOnly="true" label="Studentbranchstage Short Desc1" length="50" />
+    <field name="StudentbranchschtypschtypDesc" type="String" readOnly="true" label="Studentbranchschtypschtyp Desc" length="150" />
+    <field name="StudentCntry_Cntry_Nm" type="String" readOnly="true" label="Student Cntry Nm" length="255" />
+    <field name="StudentCntry_No2Cntry_Nm" type="String" readOnly="true" label="Student Cntry No2 Cntry Nm" length="255" />
+    <field name="StudentCntry_No1Cntry_Nm" type="String" readOnly="true" label="Student Cntry No1 Cntry Nm" length="255" />
+    <field name="StudentGenderGender" type="String" readOnly="true" label="Student Gender" length="100" />
+    <field name="StudentReligionReljan_nm" type="String" readOnly="true" label="Student Religion Reljan nm" length="50" />
+    <field name="StudentstateState_Nm" type="String" readOnly="true" label="Studentstate State Nm" length="60" />
+    <field name="Studentidname_1" type="String" readOnly="true" label="Studentidname 1" length="50" />
+    <field name="StudentacdAcademicYear" type="String" readOnly="true" label="Studentacd Academic Year" length="150" />
+    <field name="StudentacdGlFinperiodFin_period_info" type="String" readOnly="true" label="Studentacd Gl Finperiod Fin period info" length="150" />
+    <field name="StudentClassClassDesc1" type="String" readOnly="true" label="Student Class Desc1" length="15" />
+    <field name="StudentSchclasskindSchclasskinddesc" type="String" readOnly="true" label="Student Schclasskind Schclasskinddesc" length="255" />
+    <field name="Studentfathercasejob_desc" type="String" readOnly="true" label="Studentfathercasejob desc" length="150" />
+    <field name="StudentFatherfathfirstname1" type="String" readOnly="true" label="Student Fatherfathfirstname1" length="255" />
+    <field name="StudentFatherMaritalStatusStatus_Nm" type="String" readOnly="true" label="Student Father Marital Status Nm" length="255" />
+    <field name="StudentFatherareaDesc1" type="String" readOnly="true" label="Student Fatherarea Desc1" length="40" />
+    <field name="StudentFatherCntry_Cntry_Nm" type="String" readOnly="true" label="Student Father Cntry Nm" length="255" />
+    <field name="StudentFatherreligionReljan_nm" type="String" readOnly="true" label="Student Fatherreligion Reljan nm" length="50" />
+    <field name="StudentFatherStateState_Nm" type="String" readOnly="true" label="Student Father State Nm" length="60" />
+    <field name="StudentFatherjob_job_desc" type="String" readOnly="true" label="Student Fatherjob job desc" length="150" />
+    <field name="StudentGradeShortDesc1" type="String" readOnly="true" label="Student Grade Short Desc1" length="50" />
+    <field name="StudentGradeacdAcademicYear" type="String" readOnly="true" label="Student Gradeacd Academic Year" length="150" />
+    <field name="StudentGradeStageShortDesc1" type="String" readOnly="true" label="Student Grade Stage Short Desc1" length="50" />
+    <field name="Studentmothercasejob_desc" type="String" readOnly="true" label="Studentmothercasejob desc" length="150" />
+    <field name="StudentMotherfirstname1" type="String" readOnly="true" label="Student Motherfirstname1" length="50" />
+    <field name="StudentMotherareaDesc1" type="String" readOnly="true" label="Student Motherarea Desc1" length="40" />
+    <field name="StudentMotherCntry_Cntry_Nm" type="String" readOnly="true" label="Student Mother Cntry Nm" length="255" />
+    <field name="StudentMotherreligionReljan_nm" type="String" readOnly="true" label="Student Motherreligion Reljan nm" length="50" />
+    <field name="StudentMotherStateState_Nm" type="String" readOnly="true" label="Student Mother State Nm" length="60" />
+    <field name="StudentMotherjob_job_desc" type="String" readOnly="true" label="Student Motherjob job desc" length="150" />
+    <field name="Studentparentsrelationparentsrelationdesc" type="String" readOnly="true" label="Studentparentsrelationparentsrelationdesc" length="50" />
+    <field name="StudentfathersocialstatusschsocialstatuscaseDesc" type="String" readOnly="true" label="Studentfathersocialstatusschsocialstatuscase Desc" length="150" />
+    <field name="StudentStageShortDesc1" type="String" readOnly="true" label="Student Stage Short Desc1" length="50" />
+    <field name="Studentschstatus_schstatus_name" type="String" readOnly="true" label="Studentschstatus schstatus name" length="50" />
+    <field name="StudentschstclasskinddmgschstclasskinddmgDesc" type="String" readOnly="true" label="Studentschstclasskinddmgschstclasskinddmg Desc" length="150" />
+    <field name="StudentschstsplschstsplDsc" type="String" readOnly="true" label="Studentschstsplschstspl Dsc" length="150" />
+    <field name="StudentschsthlthcaseschsthlthcaseDesc" type="String" readOnly="true" label="Studentschsthlthcaseschsthlthcase Desc" length="150" />
+    <field name="Studentstudentsefastudentsefaar" type="String" readOnly="true" label="Studentstudentsefastudentsefaar" length="150" />
+    <field name="StudentstudentsefadebitaccountAcc_Nm" type="String" readOnly="true" label="Studentstudentsefadebitaccount Acc Nm" length="255" />
+    <field name="Studentschstudenttypschstudenttyp" type="String" readOnly="true" label="Studentschstudenttypschstudenttyp" length="50" />
+    <field name="StudentSchtransferSchtransferDesc" type="String" readOnly="true" label="Student Schtransfer Desc" length="150" />
+    <field name="branch" type="Int64" allowNulls="false" label="Branch">
+      <items style="DropDownList" dataController="schBranch" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Desc1" dataValueField="branch" />
+    </field>
+    <field name="ThebranchDesc1" type="String" readOnly="true" label="Thebranch Desc1" length="50" />
+    <field name="Thebranchsgmsgm_Nm" type="String" readOnly="true" label="Thebranchsgmsgm Nm" length="255" />
+    <field name="ThebranchsgmOpcoOpcoName" type="String" readOnly="true" label="Thebranchsgm Opco Name" length="50" />
+    <field name="ThebranchGenderGender" type="String" readOnly="true" label="Thebranch Gender" length="100" />
+    <field name="ThebranchstageShortDesc1" type="String" readOnly="true" label="Thebranchstage Short Desc1" length="50" />
+    <field name="ThebranchschtypschtypDesc" type="String" readOnly="true" label="Thebranchschtypschtyp Desc" length="150" />
+    <field name="Stage" type="Int64" allowNulls="false" label="Stage">
+      <items style="DropDownList" dataController="schStage" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="StageShortDesc1" type="String" readOnly="true" label="Stage Short Desc1" length="50" />
+    <field name="GradeCode" type="Int64" allowNulls="false" label="Grade Code">
+      <items style="DropDownList" dataController="schGrade" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="GradeShortDesc1" type="String" readOnly="true" label="Grade Short Desc1" length="50" />
+    <field name="GradeacdAcademicYear" type="String" readOnly="true" label="Gradeacd Academic Year" length="150" />
+    <field name="GradeacdGlFinperiodFin_period_info" type="String" readOnly="true" label="Gradeacd Gl Finperiod Fin period info" length="150" />
+    <field name="GradeStageShortDesc1" type="String" readOnly="true" label="Grade Stage Short Desc1" length="50" />
+    <field name="Class" type="Int64" allowNulls="false" label="Class">
+      <items style="DropDownList" dataController="schClassConfig" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ClassClassDesc1" type="String" readOnly="true" label="Class Desc1" length="15" />
+    <field name="acdcode" type="Int64" allowNulls="false" label="Acdcode">
+      <items style="DropDownList" dataController="schAcademicyear" newDataView="createForm1" searchOnStart="true" copy="startdate=startdate&#xD;&#xA;enddate=enddate" />
+    </field>
+    <field name="acdAcademicYear" type="String" readOnly="true" label="acd Academic Year" length="150" />
+    <field name="acdGlFinperiodFin_period_info" type="String" readOnly="true" label="acd Gl Finperiod Fin period info" length="150" />
+    <field name="acdGlFinperiodaccountnumberAcc_Nm" type="String" readOnly="true" label="acd Gl Finperiodaccountnumber Acc Nm" length="255" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="AmountDiscountnote" type="String" allowQBE="false" allowSorting="false" label="Amount Discountnote" length="-1" />
+    <field name="Amountaddednote" type="String" allowQBE="false" allowSorting="false" label="Amountaddednote" length="-1" />
+    <field name="Subscriptionstatus" type="Int64" default="((1))" label="Subscriptionstatus">
+      <items style="Lookup" dataController="Subscriptionstatuslist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheSubscriptionstatusSubscriptionstatusDesc" type="String" readOnly="true" label="Subscriptionstatus Desc" length="50" />
+    <field name="Subscriptionstopeddate" type="DateTime" label="Subscriptionstopeddate" />
+    <field name="Restperiodpermonth" type="Decimal" label="Restperiodpermonth" />
+    <field name="RestTotalAmount" type="Decimal" label="Rest Total Amount" />
+    <field name="firstinstallmentamount" type="Decimal" label="Firstinstallmentamount" />
+    <field name="firstinstallmentdate" type="DateTime" label="Firstinstallmentdate" />
+    <field name="secondinstallmentamount1" type="Decimal" label="Secondinstallmentamount1" />
+    <field name="secondinstallmentdate1" type="DateTime" label="Secondinstallmentdate1" />
+    <field name="gomorning" type="Int64" default="((1))" label="Gomorning" allowNulls="false">
+      <items style="CheckBox" />
+    </field>
+    <field name="backafternono" type="Int64" default="((1))" label="Backafternono" allowNulls="false">
+      <items style="CheckBox" />
+    </field>
+    <field name="clubway" type="Int64" default="((0))" label="Clubway" allowNulls="false">
+      <items style="CheckBox" />
+    </field>
+    <field name="SubscriptionReturnvalue" type="Decimal" label="Subscription Returnvalue" />
+    <field name="AmountReturnnote1" type="String" allowQBE="false" allowSorting="false" label="Amount Returnnote1" length="-1" />
+    <field name="FirstName1" type="String" readOnly="true" label="FirstName1" hidden="false" length="150">
+      <items letters="false" />
+    </field>
+    <field name="Trdb1" type="Decimal" readOnly="true" label="Trdb1" hidden="false">
+      <items letters="false" />
+    </field>
+    <field name="trcr1" type="Decimal" readOnly="true" label="trcr1" hidden="false">
+      <items letters="false" />
+    </field>
+    <field name="Balance" type="Decimal" readOnly="true" label="Balance" hidden="false">
+      <items letters="false" />
+    </field>
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Regbussstudent">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Regbussstudentid" />
+        <dataField fieldName="busid" aliasFieldName="busname_1" />
+        <dataField fieldName="FirstName1" rows="5" />
+        <dataField fieldName="Trdb1" columns="15" />
+        <dataField fieldName="trcr1" columns="15" />
+        <dataField fieldName="Balance" columns="15" />
+        <dataField fieldName="ThebranchDesc1" columns="50" />
+        <dataField fieldName="Stage" aliasFieldName="StageShortDesc1" hyperlinkFormatString="~/Pages/schStage.aspx?Code={Stage}&amp;_controller=schStage&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="GradeCode" aliasFieldName="GradeShortDesc1" hyperlinkFormatString="~/Pages/schGrade.aspx?GradeCode={GradeCode}&amp;_controller=schGrade&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Class" aliasFieldName="ClassClassDesc1" hyperlinkFormatString="~/Pages/schClassConfig.aspx?classcode={Class}&amp;_controller=schClassConfig&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" hyperlinkFormatString="~/Pages/schAcademicyear.aspx?Code={acdcode}&amp;_controller=schAcademicyear&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="schareaid" aliasFieldName="schareaDesc1" hyperlinkFormatString="~/Pages/schArea.aspx?Code={schareaid}&amp;_controller=schArea&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="schareaDesc1" columns="40" />
+        <dataField fieldName="standerdprice" columns="15" />
+        <dataField fieldName="notes" rows="5" />
+        <dataField fieldName="transdate" columns="10" />
+        <dataField fieldName="startdate" columns="10" />
+        <dataField fieldName="enddate" columns="10" />
+        <dataField fieldName="periodpermonth" columns="15" />
+        <dataField fieldName="AmountDiscount" columns="15" />
+        <dataField fieldName="Amountadded" columns="15" />
+        <dataField fieldName="TotalAmount" columns="15" />
+        <dataField fieldName="StudentCode" hyperlinkFormatString="~/Pages/SchStudent.aspx?StudentCode={StudentCode}&amp;_controller=SchStudent&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="StudentSchstCivilidnumber" columns="-1" />
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Thebranchsgmsgm_Nm" rows="5" />
+        <dataField fieldName="ThebranchsgmOpcoOpcoName" columns="50" />
+        <dataField fieldName="ThebranchGenderGender" rows="5" />
+        <dataField fieldName="ThebranchstageShortDesc1" columns="50" />
+        <dataField fieldName="ThebranchschtypschtypDesc" rows="5" />
+        <dataField fieldName="StageShortDesc1" columns="50" />
+        <dataField fieldName="GradeShortDesc1" columns="50" />
+        <dataField fieldName="GradeacdAcademicYear" rows="5" />
+        <dataField fieldName="GradeacdGlFinperiodFin_period_info" rows="5" />
+        <dataField fieldName="GradeStageShortDesc1" columns="50" />
+        <dataField fieldName="ClassClassDesc1" columns="15" />
+        <dataField fieldName="acdAcademicYear" rows="5" />
+        <dataField fieldName="acdGlFinperiodFin_period_info" rows="5" />
+        <dataField fieldName="acdGlFinperiodaccountnumberAcc_Nm" rows="5" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="AmountDiscountnote" columns="-1" />
+        <dataField fieldName="Amountaddednote" columns="-1" />
+        <dataField fieldName="Subscriptionstatus" columns="15" />
+        <dataField fieldName="TheSubscriptionstatusSubscriptionstatusDesc" columns="50" />
+        <dataField fieldName="Subscriptionstopeddate" columns="10" />
+        <dataField fieldName="Restperiodpermonth" columns="15" />
+        <dataField fieldName="RestTotalAmount" columns="15" />
+        <dataField fieldName="firstinstallmentamount" columns="15" />
+        <dataField fieldName="firstinstallmentdate" columns="10" />
+        <dataField fieldName="secondinstallmentamount1" columns="15" />
+        <dataField fieldName="secondinstallmentdate1" columns="10" />
+        <dataField fieldName="busname_1" columns="50" />
+        <dataField fieldName="busbranchDesc1" columns="50" />
+        <dataField fieldName="busbranchsgmsgm_Nm" rows="5" />
+        <dataField fieldName="busbranchGenderGender" rows="5" />
+        <dataField fieldName="busbranchstageShortDesc1" columns="50" />
+        <dataField fieldName="busbranchschtypschtypDesc" rows="5" />
+        <dataField fieldName="StudentareaDesc1" columns="40" />
+        <dataField fieldName="StudentbranchDesc1" columns="50" />
+        <dataField fieldName="Studentbranchsgmsgm_Nm" rows="5" />
+        <dataField fieldName="StudentbranchGenderGender" rows="5" />
+        <dataField fieldName="StudentbranchstageShortDesc1" columns="50" />
+        <dataField fieldName="StudentbranchschtypschtypDesc" rows="5" />
+        <dataField fieldName="StudentCntry_Cntry_Nm" rows="5" />
+        <dataField fieldName="StudentGenderGender" rows="5" />
+        <dataField fieldName="StudentReligionReljan_nm" columns="50" />
+        <dataField fieldName="StudentstateState_Nm" rows="5" />
+        <dataField fieldName="Studentidname_1" columns="50" />
+        <dataField fieldName="StudentacdAcademicYear" rows="5" />
+        <dataField fieldName="StudentacdGlFinperiodFin_period_info" rows="5" />
+        <dataField fieldName="StudentClassClassDesc1" columns="15" />
+        <dataField fieldName="StudentSchclasskindSchclasskinddesc" rows="5" />
+        <dataField fieldName="StudentFatherfathfirstname1" rows="5" />
+        <dataField fieldName="StudentFatherMaritalStatusStatus_Nm" rows="5" />
+        <dataField fieldName="StudentFatherareaDesc1" columns="40" />
+        <dataField fieldName="StudentFatherCntry_Cntry_Nm" rows="5" />
+        <dataField fieldName="StudentFatherreligionReljan_nm" columns="50" />
+        <dataField fieldName="StudentFatherStateState_Nm" rows="5" />
+        <dataField fieldName="StudentFatherjob_job_desc" rows="5" />
+        <dataField fieldName="StudentGradeShortDesc1" columns="50" />
+        <dataField fieldName="StudentGradeacdAcademicYear" rows="5" />
+        <dataField fieldName="StudentGradeStageShortDesc1" columns="50" />
+        <dataField fieldName="StudentMotherfirstname1" columns="50" />
+        <dataField fieldName="StudentMotherareaDesc1" columns="40" />
+        <dataField fieldName="StudentMotherCntry_Cntry_Nm" rows="5" />
+        <dataField fieldName="StudentMotherreligionReljan_nm" columns="50" />
+        <dataField fieldName="StudentMotherStateState_Nm" rows="5" />
+        <dataField fieldName="StudentMotherjob_job_desc" rows="5" />
+        <dataField fieldName="StudentStageShortDesc1" columns="50" />
+        <dataField fieldName="Studentschstatus_schstatus_name" columns="50" />
+        <dataField fieldName="StudentschstclasskinddmgschstclasskinddmgDesc" rows="5" />
+        <dataField fieldName="StudentschstsplschstsplDsc" rows="5" />
+        <dataField fieldName="StudentschsthlthcaseschsthlthcaseDesc" rows="5" />
+        <dataField fieldName="Studentstudentsefastudentsefaar" rows="5" />
+        <dataField fieldName="StudentstudentsefadebitaccountAcc_Nm" rows="5" />
+        <dataField fieldName="Studentschstudenttypschstudenttyp" columns="50" />
+        <dataField fieldName="StudentSchtransferSchtransferDesc" rows="5" />
+        <dataField fieldName="gomorning" columns="15" />
+        <dataField fieldName="backafternono" columns="15" />
+        <dataField fieldName="clubway" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Regbussstudent">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Regbussstudent" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" hyperlinkFormatString="~/Pages/schAcademicyear.aspx?Code={acdcode}&amp;_controller=schAcademicyear&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="StudentCode" aliasFieldName="StudentSchstCivilidnumber" hyperlinkFormatString="~/Pages/SchStudent.aspx?StudentCode={StudentCode}&amp;_controller=SchStudent&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Stage" aliasFieldName="StageShortDesc1" hyperlinkFormatString="~/Pages/schStage.aspx?Code={Stage}&amp;_controller=schStage&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="GradeCode" aliasFieldName="GradeShortDesc1" hyperlinkFormatString="~/Pages/schGrade.aspx?GradeCode={GradeCode}&amp;_controller=schGrade&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Class" aliasFieldName="ClassClassDesc1" hyperlinkFormatString="~/Pages/schClassConfig.aspx?classcode={Class}&amp;_controller=schClassConfig&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="gomorning" columns="15" />
+            <dataField fieldName="backafternono" columns="15" />
+            <dataField fieldName="clubway" columns="15" />
+            <dataField fieldName="SubscriptionReturnvalue" columns="15" />
+            <dataField fieldName="AmountReturnnote1" rows="5" />
+          </dataFields>
+        </category>
+        <category headerText="installment Detailes" id="c8">
+          <dataFields>
+            <dataField fieldName="firstinstallmentamount" columns="15" />
+            <dataField fieldName="firstinstallmentdate" columns="10" />
+            <dataField fieldName="secondinstallmentamount1" columns="15" />
+            <dataField fieldName="secondinstallmentdate1" columns="10" />
+          </dataFields>
+        </category>
+        <category headerText="Notes" id="c4">
+          <dataFields />
+        </category>
+        <category id="c2" headerText="Reference Information" collapsed="true">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="busbranchDesc1" columns="50" />
+            <dataField fieldName="busbranchsgmsgm_Nm" />
+            <dataField fieldName="busbranchGenderGender" />
+            <dataField fieldName="busbranchstageShortDesc1" columns="50" />
+            <dataField fieldName="busbranchschtypschtypDesc" />
+            <dataField fieldName="StudentareaDesc1" columns="40" />
+            <dataField fieldName="StudentbranchDesc1" columns="50" />
+            <dataField fieldName="Studentbranchsgmsgm_Nm" />
+            <dataField fieldName="StudentbranchGenderGender" />
+            <dataField fieldName="StudentbranchstageShortDesc1" columns="50" />
+            <dataField fieldName="StudentbranchschtypschtypDesc" />
+            <dataField fieldName="StudentCntry_Cntry_Nm" />
+            <dataField fieldName="StudentCntry_No2Cntry_Nm" />
+            <dataField fieldName="StudentCntry_No1Cntry_Nm" />
+            <dataField fieldName="StudentGenderGender" />
+            <dataField fieldName="StudentReligionReljan_nm" columns="50" />
+            <dataField fieldName="StudentstateState_Nm" />
+            <dataField fieldName="Studentidname_1" columns="50" />
+            <dataField fieldName="StudentacdAcademicYear" />
+            <dataField fieldName="StudentacdGlFinperiodFin_period_info" />
+            <dataField fieldName="StudentClassClassDesc1" columns="15" />
+            <dataField fieldName="StudentSchclasskindSchclasskinddesc" />
+            <dataField fieldName="Studentfathercasejob_desc" />
+            <dataField fieldName="StudentGradeStageShortDesc1" columns="50" />
+            <dataField fieldName="Studentmothercasejob_desc" />
+            <dataField fieldName="Studentparentsrelationparentsrelationdesc" columns="50" />
+            <dataField fieldName="StudentfathersocialstatusschsocialstatuscaseDesc" />
+            <dataField fieldName="ThebranchGenderGender" />
+            <dataField fieldName="ThebranchstageShortDesc1" columns="50" />
+            <dataField fieldName="GradeacdGlFinperiodFin_period_info" />
+            <dataField fieldName="GradeStageShortDesc1" columns="50" />
+            <dataField fieldName="acdGlFinperiodFin_period_info" />
+            <dataField fieldName="acdGlFinperiodaccountnumberAcc_Nm" />
+          </dataFields>
+        </category>
+        <category headerText="Registeration Detailes" id="c5" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="busid" aliasFieldName="busname_1" hyperlinkFormatString="~/Pages/reg_bus.aspx?id={busid}&amp;_controller=reg_bus&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="schareaid" aliasFieldName="schareaDesc1" hyperlinkFormatString="~/Pages/schArea.aspx?Code={schareaid}&amp;_controller=schArea&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="standerdprice" columns="15" />
+            <dataField fieldName="notes" />
+            <dataField fieldName="transdate" columns="10" />
+            <dataField fieldName="startdate" columns="10" />
+            <dataField fieldName="enddate" columns="10" />
+            <dataField fieldName="periodpermonth" columns="15" />
+            <dataField fieldName="AmountDiscount" columns="15" />
+            <dataField fieldName="AmountDiscountnote" />
+            <dataField fieldName="Amountadded" columns="15" />
+            <dataField fieldName="Amountaddednote" />
+            <dataField fieldName="TotalAmount" columns="15" />
+          </dataFields>
+          <description><![CDATA[$DefaultNewDescription]]></description>
+        </category>
+        <category headerText="auditlog" collapsed="true" id="c3">
+          <dataFields>
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category headerText="Registration Canceled" id="c7">
+          <dataFields>
+            <dataField fieldName="RestTotalAmount" columns="15" />
+            <dataField fieldName="Subscriptionstatus" aliasFieldName="TheSubscriptionstatusSubscriptionstatusDesc" hyperlinkFormatString="~/Pages/Subscriptionstatuslist.aspx?Subscriptionstatus={Subscriptionstatus}&amp;_controller=Subscriptionstatuslist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Subscriptionstopeddate" columns="10" />
+            <dataField fieldName="Restperiodpermonth" columns="15" />
+          </dataFields>
+        </category>
+        <category id="c6" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="StudentFatherfathfirstname1" />
+            <dataField fieldName="StudentFatherMaritalStatusStatus_Nm" />
+            <dataField fieldName="StudentFatherareaDesc1" columns="40" />
+            <dataField fieldName="StudentFatherCntry_Cntry_Nm" />
+            <dataField fieldName="StudentFatherreligionReljan_nm" columns="50" />
+            <dataField fieldName="StudentFatherStateState_Nm" />
+            <dataField fieldName="StudentFatherjob_job_desc" />
+            <dataField fieldName="StudentGradeShortDesc1" columns="50" />
+            <dataField fieldName="StudentGradeacdAcademicYear" />
+            <dataField fieldName="StudentMotherfirstname1" columns="50" />
+            <dataField fieldName="StudentMotherareaDesc1" columns="40" />
+            <dataField fieldName="StudentMotherCntry_Cntry_Nm" />
+            <dataField fieldName="StudentMotherreligionReljan_nm" columns="50" />
+            <dataField fieldName="StudentMotherStateState_Nm" />
+            <dataField fieldName="StudentMotherjob_job_desc" />
+            <dataField fieldName="StudentStageShortDesc1" columns="50" />
+            <dataField fieldName="Studentschstatus_schstatus_name" columns="50" />
+            <dataField fieldName="StudentschstclasskinddmgschstclasskinddmgDesc" />
+            <dataField fieldName="StudentschstsplschstsplDsc" />
+            <dataField fieldName="StudentschsthlthcaseschsthlthcaseDesc" />
+            <dataField fieldName="Studentstudentsefastudentsefaar" />
+            <dataField fieldName="StudentstudentsefadebitaccountAcc_Nm" />
+            <dataField fieldName="Studentschstudenttypschstudenttyp" columns="50" />
+            <dataField fieldName="StudentSchtransferSchtransferDesc" />
+            <dataField fieldName="Thebranchsgmsgm_Nm" />
+            <dataField fieldName="ThebranchsgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="ThebranchschtypschtypDesc" />
+            <dataField fieldName="GradeacdAcademicYear" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Regbussstudent">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Regbussstudent" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="transdate" columns="10" textMode="Static" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />
+            <dataField fieldName="StudentCode" aliasFieldName="StudentSchstCivilidnumber" />
+            <dataField fieldName="Stage" aliasFieldName="StageShortDesc1" />
+            <dataField fieldName="GradeCode" aliasFieldName="GradeShortDesc1" />
+            <dataField fieldName="Class" aliasFieldName="ClassClassDesc1" />
+            <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" />
+            <dataField fieldName="gomorning" columns="15" />
+            <dataField fieldName="backafternono" columns="15" />
+            <dataField fieldName="clubway" columns="15" />
+            <dataField fieldName="SubscriptionReturnvalue" columns="15" />
+            <dataField fieldName="AmountReturnnote1" rows="5" />
+          </dataFields>
+        </category>
+        <category headerText="installment Detailes" id="c5">
+          <dataFields>
+            <dataField fieldName="firstinstallmentamount" columns="15" />
+            <dataField fieldName="firstinstallmentdate" columns="10" />
+            <dataField fieldName="secondinstallmentamount1" columns="15" />
+            <dataField fieldName="secondinstallmentdate1" columns="10" />
+          </dataFields>
+        </category>
+        <category headerText="Notes" id="c4">
+          <dataFields>
+            <dataField fieldName="notes" textMode="RichText" />
+          </dataFields>
+        </category>
+        <category headerText="Registeration Detailes" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="busid" aliasFieldName="busname_1" />
+            <dataField fieldName="schareaid" aliasFieldName="schareaDesc1" />
+            <dataField fieldName="standerdprice" columns="15" />
+            <dataField fieldName="startdate" columns="10" />
+            <dataField fieldName="enddate" columns="10" />
+            <dataField fieldName="periodpermonth" columns="15" />
+            <dataField fieldName="AmountDiscount" columns="15" />
+            <dataField fieldName="AmountDiscountnote" />
+            <dataField fieldName="Amountadded" columns="15" />
+            <dataField fieldName="Amountaddednote" />
+            <dataField fieldName="TotalAmount" columns="15" />
+          </dataFields>
+          <description><![CDATA[$DefaultNewDescription]]></description>
+        </category>
+        <category headerText="auditlog" id="c3">
+          <dataFields>
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category headerText="Registration Canceled" id="c6">
+          <dataFields>
+            <dataField fieldName="Subscriptionstatus" aliasFieldName="TheSubscriptionstatusSubscriptionstatusDesc" />
+            <dataField fieldName="Subscriptionstopeddate" columns="10" />
+            <dataField fieldName="Restperiodpermonth" columns="15" />
+            <dataField fieldName="RestTotalAmount" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules />
+</dataController>

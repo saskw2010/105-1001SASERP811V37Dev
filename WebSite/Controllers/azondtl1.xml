@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="azondtl1" conflictDetection="overwriteChanges" label="Azondtl1" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"azondtl1"."Brn_No" "Brn_No"
+	,"azondtl1"."countrdus" "countrdus"
+	,"azondtl1"."doc_typ" "doc_typ"
+	,"azondtl1"."ID_USER" "ID_USER"
+	,"azondtl1"."Ln_No" "Ln_No"
+	,"azondtl1"."ID_comp" "ID_comp"
+	,"azondtl1"."ITEM" "ITEM"
+	,"azondtl1"."Unit_No" "Unit_No"
+	,"azondtl1"."cost" "cost"
+	,"azondtl1"."quantity" "quantity"
+	,"azondtl1"."egmaly" "egmaly"
+	,"azondtl1"."Itm_Sal1" "Itm_Sal1"
+	,"azondtl1"."IDate" "IDate"
+	,"azondtl1"."price" "price"
+	,"azondtl1"."Discountprc" "Discountprc"
+	,"azondtl1"."Discountamnt" "Discountamnt"
+	,"azondtl1"."unit_nm" "unit_nm"
+	,"azondtl1"."sgm" "sgm"
+	,"azondtl1"."typcmsup" "typcmsup"
+	,"azondtl1"."quantitygard" "quantitygard"
+	,"azondtl1"."quantitycomputer" "quantitycomputer"
+	,"azondtl1"."discription" "discription"
+from "dbo"."azondtl1" "azondtl1"
+]]></text>
+    </command>
+	 <command id="Ln_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Ln_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Brn_No" type="Int64"  label="Brn No"  readOnly="true"/>
+    <field name="countrdus" type="Int64" label="Countrdus"  readOnly="true" showInSummary="true" />
+    <field name="doc_typ" type="Int64" label="Doc Typ"  readOnly="true" showInSummary="true" />
+    <field name="ID_USER" type="String" label="Id User" length="50"  readOnly="true" showInSummary="true" />
+    <field name="Ln_No" type="Int64"  isPrimaryKey="true"  label="Ln No"  readOnly="true" showInSummary="true" />
+    <field name="ID_comp" type="Int64" label="ID comp"  readOnly="true" showInSummary="true" />
+    <field name="ITEM" type="String" label="Item"  readOnly="true" length="255" />
+    <field name="Unit_No" type="Int64" label="Unit No"  readOnly="true" />
+    <field name="cost" type="Decimal" label="Cost"  readOnly="true" />
+    <field name="quantity" type="Double" label="QTY Diff" readOnly="true"/>
+    <field name="egmaly" type="Double" label="Egmaly"  readOnly="true" />
+    <field name="Itm_Sal1" type="Decimal" label="Itm Sal1"  readOnly="true" />
+    <field name="IDate" type="DateTime" label="I Date"  readOnly="true" />
+    <field name="price" type="Decimal" label="Price"  readOnly="true" />
+    <field name="Discountprc" type="Decimal" label="Discountprc"  readOnly="true" />
+    <field name="Discountamnt" type="Decimal" label="Discountamnt"  readOnly="true" />
+    <field name="unit_nm" type="String" label="Unit Nm" length="255"  readOnly="true" />
+    <field name="sgm" type="Int64" label="Sgm"  readOnly="true" />
+    <field name="typcmsup" type="Int64" label="Typcmsup"  readOnly="true" />
+    <field name="quantitygard" type="Double" label="Quantitygard"   />
+    <field name="quantitycomputer" type="Double" label="Quantitycomputer"  readOnly="true" />
+    <field name="discription" type="String" label="Discription" length="100"  readOnly="true" />
+  </fields>
+  <views>
+    <view id="grid1" type="DataSheet" commandId="command1" label="Inventory Items">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+	  <dataField fieldName="Ln_No" columns="15" hidden="true" />
+        <dataField fieldName="countrdus" columns="15" hidden="true" />
+        <dataField fieldName="doc_typ" columns="15" hidden="true" />
+        <dataField fieldName="ID_comp" columns="15"  />		
+        <dataField fieldName="ID_USER" columns="50" />
+     
+        <dataField fieldName="ITEM" />
+        <dataField fieldName="Unit_No" columns="15" />
+       <dataField fieldName="quantitygard" columns="15" />
+        <dataField fieldName="quantitycomputer" columns="15" />
+        <dataField fieldName="quantity" columns="15" />
+        <dataField fieldName="cost"  columns="15"  />
+        <dataField fieldName="egmaly" columns="15"  dataFormatString="n3" aggregate="Sum"  />
+        <dataField fieldName="Itm_Sal1"  columns="15" hidden="true" />
+        <dataField fieldName="IDate" columns="10" hidden="true" />
+        <dataField fieldName="price" dataFormatString="c" columns="15" hidden="true" />
+        <dataField fieldName="Discountprc" dataFormatString="c" columns="15" hidden="true" />
+        <dataField fieldName="Discountamnt" dataFormatString="c" columns="15" hidden="true" />
+        <dataField fieldName="unit_nm" hidden="true" />
+        <dataField fieldName="sgm" columns="15" hidden="true" />
+        <dataField fieldName="typcmsup" columns="15" hidden="true" />
+        
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Inventory Items">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Azondtl1" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="countrdus" columns="15" hidden="true" />
+            <dataField fieldName="doc_typ" columns="15" hidden="true" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="Ln_No" columns="15" hidden="true" />
+            <dataField fieldName="ID_comp" columns="15" hidden="true" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="Unit_No" columns="15"  />
+            <dataField fieldName="cost" dataFormatString="c" columns="15" hidden="true" />
+            <dataField fieldName="quantity" columns="15" />
+            <dataField fieldName="egmaly" columns="15" hidden="true" />
+            <dataField fieldName="Itm_Sal1" dataFormatString="c" columns="15" hidden="true" />
+            <dataField fieldName="IDate" columns="10" hidden="true" />
+            <dataField fieldName="price" dataFormatString="c" columns="15" hidden="true" />
+            <dataField fieldName="Discountprc" dataFormatString="c" columns="15" hidden="true" />
+            <dataField fieldName="Discountamnt" dataFormatString="c" columns="15" hidden="true" />
+            <dataField fieldName="unit_nm" hidden="true" />
+            <dataField fieldName="sgm" columns="15" hidden="true" />
+            <dataField fieldName="typcmsup" columns="15" hidden="true" />
+            <dataField fieldName="quantitygard" columns="15" />
+            <dataField fieldName="quantitycomputer" columns="15" />
+            <dataField fieldName="discription" hidden="true" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Inventory Items">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Azondtl1" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Brn_No" columns="15" hidden="true" />
+            <dataField fieldName="countrdus" columns="15" hidden="true" />
+            <dataField fieldName="doc_typ" columns="15" hidden="true" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="Ln_No" columns="15" hidden="true" />
+            <dataField fieldName="ID_comp" columns="15" hidden="true" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="Unit_No" columns="15" />
+             <dataField fieldName="quantity" columns="15" />
+             <dataField fieldName="cost" dataFormatString="n3" columns="15" hidden="true" />
+            <dataField fieldName="egmaly" columns="15" dataFormatString="n3" hidden="true" />
+            <dataField fieldName="Itm_Sal1" dataFormatString="c" columns="15" hidden="true" />
+            <dataField fieldName="IDate" columns="10" hidden="true" />
+            <dataField fieldName="price" dataFormatString="c" columns="15" hidden="true" />
+            <dataField fieldName="Discountprc" dataFormatString="c" columns="15" hidden="true" />
+            <dataField fieldName="Discountamnt" dataFormatString="c" columns="15" hidden="true" />
+            <dataField fieldName="unit_nm" hidden="true" />
+            <dataField fieldName="sgm" columns="15" hidden="true" />
+            <dataField fieldName="typcmsup" columns="15" hidden="true" />
+            <dataField fieldName="quantitygard" columns="15" />
+            <dataField fieldName="quantitycomputer" columns="15" />
+            <dataField fieldName="discription" hidden="true" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      
+      <action id="a2" commandName="Edit" />
+      
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+     
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+     
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+     
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+     
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit"  />
+      
+    </actionGroup>
+  </actions>
+  <businessRules>
+  <rule id="r102" commandName="Update" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname   @countrdus,@ln_no,0
+]]></rule>
+  </businessRules>
+</dataController>

@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="tamweelinstallment" conflictDetection="overwriteChanges" label="Tamweelinstallment" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"tamweelinstallment"."installmentid" "installmentid"
+	,"tamweelinstallment"."Tamweelreqid" "Tamweelreqid"
+	,"Tamweelreq"."Tamweeldeatails" "TamweelreqTamweeldeatails"
+	,"TamweelreqCurncy_"."Curncy_Nm" "TamweelreqCurncy_Curncy_Nm"
+	,"TamweelreqCstm_"."Cstm_Nm" "TamweelreqCstm_Cstm_Nm"
+	,"TamweelreqCstm_Area"."Area_name" "TamweelreqCstm_AreaArea_name"
+	,"TamweelreqCstm_Evaluation"."Evaluation_name" "TamweelreqCstm_EvaluationEvaluation_name"
+	,"TamweelreqCstm_acc_"."Acc_Nm" "TamweelreqCstm_acc_Acc_Nm"
+	,"TamweelreqCstm_Cntry_"."Cntry_Nm" "TamweelreqCstm_Cntry_Cntry_Nm"
+	,"TamweelreqCstm_curncy_"."Curncy_Nm" "TamweelreqCstm_curncy_Curncy_Nm"
+	,"TamweelreqCstm_TSNEF"."TSNEF_name" "TamweelreqCstm_TSNEFTSNEF_name"
+	,"TamweelreqCstm_TSNEFNO1"."TSNEF1_name" "TamweelreqCstm_TSNEFNO1TSNEF1_name"
+	,"TamweelreqCstm_Slm_"."Slm_Nm" "TamweelreqCstm_Slm_Slm_Nm"
+	,"Tamweelreqtasedway"."tasedwayname" "Tamweelreqtasedwaytasedwayname"
+	,"tamweelinstallment"."installmentdate" "installmentdate"
+	,"tamweelinstallment"."installmentamount" "installmentamount"
+	,"tamweelinstallment"."Banksname" "Banksname"
+	,"tamweelinstallment"."Checkno" "Checkno"
+	,"tamweelinstallment"."Notes" "Notes"
+	,"tamweelinstallment"."ModifiedBy" "ModifiedBy"
+	,"tamweelinstallment"."ModifiedByUserId" "ModifiedByUserId"
+	,"tamweelinstallment"."ModifiedOn" "ModifiedOn"
+	,"tamweelinstallment"."CreatedBy" "CreatedBy"
+	,"tamweelinstallment"."CreatedById" "CreatedById"
+	,"tamweelinstallment"."CreatedOn" "CreatedOn"
+from "dbo"."tamweelinstallment" "tamweelinstallment"
+	left join "dbo"."Tamweelrequest" "Tamweelreq" on "tamweelinstallment"."Tamweelreqid" = "Tamweelreq"."Tamweelreqid"
+	left join "dbo"."Stcurncy" "TamweelreqCurncy_" on "Tamweelreq"."Curncy_No" = "TamweelreqCurncy_"."Curncy_No"
+	left join "dbo"."Stcustmr" "TamweelreqCstm_" on "Tamweelreq"."Cstm_No" = "TamweelreqCstm_"."Cstm_No"
+	left join "dbo"."AreaList" "TamweelreqCstm_Area" on "TamweelreqCstm_"."AreaNo" = "TamweelreqCstm_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "TamweelreqCstm_Evaluation" on "TamweelreqCstm_"."EvaluationNO" = "TamweelreqCstm_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "TamweelreqCstm_acc_" on "TamweelreqCstm_"."acc_no" = "TamweelreqCstm_acc_"."Acc_No"
+	left join "dbo"."PYCntry" "TamweelreqCstm_Cntry_" on "TamweelreqCstm_"."Cntry_No" = "TamweelreqCstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "TamweelreqCstm_curncy_" on "TamweelreqCstm_"."curncy_no" = "TamweelreqCstm_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "TamweelreqCstm_TSNEF" on "TamweelreqCstm_"."TSNEFNO" = "TamweelreqCstm_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "TamweelreqCstm_TSNEFNO1" on "TamweelreqCstm_"."TSNEFNO1" = "TamweelreqCstm_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "TamweelreqCstm_Slm_" on "TamweelreqCstm_"."Slm_No" = "TamweelreqCstm_Slm_"."Slm_No"
+	left join "dbo"."tasedwaylist" "Tamweelreqtasedway" on "Tamweelreq"."tasedwayid" = "Tamweelreqtasedway"."tasedwayid"
+]]></text>
+    </command>
+    <command id="installmentidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="installmentid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="installmentid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Installmentid" readOnly="true" />
+    <field name="Tamweelreqid" type="Int64" allowNulls="false" label="Tamweelreqid" showInSummary="true">
+      <items style="Lookup" dataController="Tamweelrequest" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TamweelreqTamweeldeatails" type="String" readOnly="true" label="Tamweelreq Tamweeldeatails" length="50" />
+    <field name="TamweelreqCurncy_Curncy_Nm" type="String" readOnly="true" label="Tamweelreq Curncy Nm" length="200" />
+    <field name="TamweelreqCstm_Cstm_Nm" type="String" readOnly="true" label="Tamweelreq Cstm Nm" length="155" />
+    <field name="TamweelreqCstm_AreaArea_name" type="String" readOnly="true" label="Tamweelreq Cstm Area name" length="150" />
+    <field name="TamweelreqCstm_EvaluationEvaluation_name" type="String" readOnly="true" label="Tamweelreq Cstm Evaluation name" length="150" />
+    <field name="TamweelreqCstm_acc_Acc_Nm" type="String" readOnly="true" label="Tamweelreq Cstm acc Acc Nm" length="255" />
+    <field name="TamweelreqCstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="Tamweelreq Cstm Cntry Nm" length="255" />
+    <field name="TamweelreqCstm_curncy_Curncy_Nm" type="String" readOnly="true" label="Tamweelreq Cstm curncy Curncy Nm" length="200" />
+    <field name="TamweelreqCstm_TSNEFTSNEF_name" type="String" readOnly="true" label="Tamweelreq Cstm TSNEFTSNEF name" length="150" />
+    <field name="TamweelreqCstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="Tamweelreq Cstm TSNEFNO1TSNEF1 name" length="150" />
+    <field name="TamweelreqCstm_Slm_Slm_Nm" type="String" readOnly="true" label="Tamweelreq Cstm Slm Nm" length="100" />
+    <field name="Tamweelreqtasedwaytasedwayname" type="String" readOnly="true" label="Tamweelreqtasedwaytasedwayname" length="50" />
+    <field name="installmentdate" type="DateTime" label="Installmentdate" showInSummary="true" />
+    <field name="installmentamount" type="Decimal" label="Installmentamount" showInSummary="true" />
+    <field name="Banksname" type="String" label="Banksname" length="50" showInSummary="true" />
+    <field name="Checkno" type="String" label="Checkno" length="50" showInSummary="true" />
+    <field name="Notes" type="String" label="Notes" length="50" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedByUserId" type="Guid" label="Modified By User#" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedById" type="Guid" label="Created By#" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Tamweelinstallment">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Tamweelreqid" aliasFieldName="TamweelreqTamweeldeatails" />
+        <dataField fieldName="installmentdate" columns="10" />
+        <dataField fieldName="installmentamount" columns="15" />
+        <dataField fieldName="Banksname" columns="50" />
+        <dataField fieldName="Checkno" columns="50" />
+        <dataField fieldName="Notes" columns="50" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedByUserId" columns="15" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedById" columns="15" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="TamweelreqCurncy_Curncy_Nm" />
+        <dataField fieldName="TamweelreqCstm_Cstm_Nm" />
+        <dataField fieldName="TamweelreqCstm_AreaArea_name" />
+        <dataField fieldName="TamweelreqCstm_EvaluationEvaluation_name" />
+        <dataField fieldName="TamweelreqCstm_acc_Acc_Nm" />
+        <dataField fieldName="TamweelreqCstm_Cntry_Cntry_Nm" />
+        <dataField fieldName="TamweelreqCstm_curncy_Curncy_Nm" />
+        <dataField fieldName="TamweelreqCstm_TSNEFTSNEF_name" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Tamweelinstallment">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Tamweelinstallment" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Tamweelreqid" aliasFieldName="TamweelreqTamweeldeatails" hyperlinkFormatString="~/Pages/Tamweelrequest.aspx?Tamweelreqid={Tamweelreqid}&amp;_controller=Tamweelrequest&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="installmentdate" columns="10" />
+            <dataField fieldName="installmentamount" columns="15" />
+            <dataField fieldName="Banksname" columns="50" />
+            <dataField fieldName="Checkno" columns="50" />
+            <dataField fieldName="Notes" columns="50" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedByUserId" columns="15" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedById" columns="15" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="TamweelreqCurncy_Curncy_Nm" />
+            <dataField fieldName="TamweelreqCstm_Cstm_Nm" />
+            <dataField fieldName="TamweelreqCstm_AreaArea_name" />
+            <dataField fieldName="TamweelreqCstm_EvaluationEvaluation_name" />
+            <dataField fieldName="TamweelreqCstm_acc_Acc_Nm" />
+            <dataField fieldName="TamweelreqCstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="TamweelreqCstm_curncy_Curncy_Nm" />
+            <dataField fieldName="TamweelreqCstm_TSNEFTSNEF_name" />
+            <dataField fieldName="TamweelreqCstm_TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="TamweelreqCstm_Slm_Slm_Nm" />
+            <dataField fieldName="Tamweelreqtasedwaytasedwayname" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Tamweelinstallment">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Tamweelinstallment" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Tamweelreqid" aliasFieldName="TamweelreqTamweeldeatails" />
+            <dataField fieldName="installmentdate" columns="10" />
+            <dataField fieldName="installmentamount" columns="15" />
+            <dataField fieldName="Banksname" columns="50" />
+            <dataField fieldName="Checkno" columns="50" />
+            <dataField fieldName="Notes" columns="50" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedByUserId" columns="15" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedById" columns="15" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,495 @@
+/* 🏠 Home Table of Contents - Modern CSS (FIXED VERSION) */
+/* Eliminates Telerik RadSiteMap template issues */
+
+/* 🎨 Sky365 Theme Integration */
+:root {
+    --home-primary: var(--sky365-primary, #0066cc);
+    --home-secondary: var(--sky365-secondary, #4d9fff);
+    --home-surface: var(--sky365-surface, #ffffff);
+    --home-background: var(--sky365-background, #f5f7fa);
+    --home-text: var(--sky365-text-primary, #2c3e50);
+    --home-text-secondary: var(--sky365-text-secondary, #7f8c8d);
+    --home-border: var(--sky365-border, #e1e8ed);
+    --home-shadow: var(--sky365-shadow, rgba(44, 62, 80, 0.1));
+    --home-success: var(--sky365-success, #27ae60);
+    --home-warning: var(--sky365-warning, #f39c12);
+    --home-error: var(--sky365-error, #e74c3c);
+    
+    /* Home-specific variables */
+    --home-grid-gap: 1.5rem;
+    --home-card-radius: 12px;
+    --home-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --home-hover-scale: 1.05;
+    --home-hover-shadow: 0 8px 32px rgba(0, 102, 204, 0.2);
+}
+
+/* 🏠 Main Container */
+.home-navigation-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    background: var(--home-background);
+    min-height: 400px;
+}
+
+/* 📋 Navigation Grid */
+.home-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--home-grid-gap);
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+/* 🔗 Navigation Items */
+.home-nav-item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: var(--home-card-radius);
+    overflow: hidden;
+    background: var(--home-surface);
+    border: 1px solid var(--home-border);
+    box-shadow: 0 2px 8px var(--home-shadow);
+    transition: var(--home-transition);
+    position: relative;
+    transform: translateZ(0); /* Hardware acceleration */
+}
+
+.home-nav-item:hover,
+.home-nav-item:focus {
+    transform: translateY(-4px) scale(var(--home-hover-scale));
+    box-shadow: var(--home-hover-shadow);
+    border-color: var(--home-primary);
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+}
+
+.home-nav-item:focus {
+    outline: 2px solid var(--home-primary);
+    outline-offset: 2px;
+}
+
+.home-nav-item:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+/* 🎴 Card Structure */
+.clearfixhomeimage {
+    width: 100%;
+    height: 100%;
+}
+
+.cardhomeimage {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerhomeimage {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--home-background) 0%, var(--home-surface) 100%);
+}
+
+/* 🖼️ Images */
+.imagehomeimage,
+.imageWrappermehome {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: var(--home-transition);
+    background: var(--home-background);
+}
+
+.home-nav-item:hover .imagehomeimage,
+.home-nav-item:hover .imageWrappermehome {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+/* 🎨 Overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 102, 204, 0.7) 0%,
+        rgba(77, 159, 255, 0.8) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--home-transition);
+    backdrop-filter: blur(4px);
+}
+
+.home-nav-item:hover .overlay,
+.home-nav-item:focus .overlay {
+    opacity: 1;
+}
+
+.containerhomeimagetext {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    transform: translateY(10px);
+    transition: var(--home-transition);
+}
+
+.home-nav-item:hover .containerhomeimagetext,
+.home-nav-item:focus .containerhomeimagetext {
+    transform: translateY(0);
+}
+
+/* 🔘 Button Area */
+.buttonhomeimage {
+    background: var(--home-surface);
+    padding: 1rem;
+    border-top: 1px solid var(--home-border);
+    text-align: center;
+}
+
+.buttonhomeimage p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--home-text);
+    line-height: 1.4;
+}
+
+/* 🔄 Loading States */
+.home-nav-item.loading .cardhomeimage::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    border: 2px solid var(--home-border);
+    border-top-color: var(--home-primary);
+    border-radius: 50%;
+    animation: homeLoadingSpin 1s linear infinite;
+    z-index: 10;
+}
+
+@keyframes homeLoadingSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.home-nav-item.loaded .imagehomeimage,
+.home-nav-item.loaded .imageWrappermehome {
+    opacity: 1;
+    animation: homeFadeIn 0.5s ease-out;
+}
+
+@keyframes homeFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ❌ Error States */
+.home-nav-item.error .containerhomeimage::after {
+    content: '🖼️';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    opacity: 0.5;
+    z-index: 5;
+}
+
+/* ⚠️ Simple Navigation Fallback */
+.simple-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    background: linear-gradient(135deg, var(--home-surface) 0%, var(--home-background) 100%);
+    border: 2px dashed var(--home-border);
+    border-radius: var(--home-card-radius);
+    color: var(--home-text);
+}
+
+.simple-nav-item:hover,
+.simple-nav-item:focus {
+    background: linear-gradient(135deg, var(--home-primary) 0%, var(--home-secondary) 100%);
+    color: white;
+    border-color: var(--home-primary);
+    border-style: solid;
+}
+
+/* 🚨 Error and Warning States */
+.home-nav-error,
+.home-error-fallback {
+    grid-column: 1 / -1;
+    padding: 2rem;
+    text-align: center;
+    background: var(--home-surface);
+    border: 1px solid var(--home-warning);
+    border-radius: var(--home-card-radius);
+    color: var(--home-text);
+}
+
+.home-nav-error i,
+.home-error-fallback i {
+    font-size: 2rem;
+    color: var(--home-warning);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.home-nav-error p,
+.home-error-fallback p {
+    margin: 0.5rem 0 0 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.nav-error {
+    padding: 1rem;
+    text-align: center;
+    background: var(--home-error);
+    color: white;
+    border-radius: var(--home-card-radius);
+    font-weight: 500;
+}
+
+/* ✅ Success States */
+.home-nav-success,
+.home-nav-info {
+    display: none; /* Hidden by default */
+    grid-column: 1 / -1;
+    padding: 1rem;
+    text-align: center;
+    background: var(--home-success);
+    color: white;
+    border-radius: var(--home-card-radius);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.home-nav-info {
+    background: var(--home-primary);
+}
+
+/* ♿ Accessibility */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+[aria-live] {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* 📱 Touch Device Support */
+.touch-active {
+    transform: scale(0.98);
+    filter: brightness(0.95);
+}
+
+/* 👁️ Viewport Animations */
+.in-viewport {
+    animation: homeSlideInUp 0.6s ease-out;
+}
+
+@keyframes homeSlideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+    .home-navigation-container {
+        padding: 1rem 0.5rem;
+    }
+    
+    .home-nav-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .cardhomeimage {
+        height: 220px;
+    }
+    
+    .containerhomeimagetext {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+    
+    .buttonhomeimage {
+        padding: 0.75rem;
+    }
+    
+    .buttonhomeimage p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-nav-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .cardhomeimage {
+        height: 200px;
+    }
+    
+    .home-nav-item:hover,
+    .home-nav-item:focus {
+        transform: translateY(-2px) scale(1.02);
+    }
+}
+
+/* 🌙 Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --home-surface: #1e293b;
+        --home-background: #0f172a;
+        --home-text: #f1f5f9;
+        --home-text-secondary: #cbd5e1;
+        --home-border: #334155;
+        --home-shadow: rgba(0, 0, 0, 0.3);
+    }
+    
+    .overlay {
+        background: linear-gradient(
+            135deg,
+            rgba(59, 130, 246, 0.8) 0%,
+            rgba(147, 51, 234, 0.8) 100%
+        );
+    }
+}
+
+/* 🚀 Performance Optimizations */
+.home-nav-item,
+.cardhomeimage,
+.imagehomeimage,
+.imageWrappermehome,
+.overlay {
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* 🎨 Print Styles */
+@media print {
+    .home-navigation-container {
+        background: white !important;
+        box-shadow: none !important;
+    }
+    
+    .home-nav-item {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+    
+    .overlay {
+        display: none !important;
+    }
+}
+
+/* 🔍 High Contrast Mode */
+@media (prefers-contrast: high) {
+    .home-nav-item {
+        border: 2px solid currentColor;
+    }
+    
+    .home-nav-item:hover,
+    .home-nav-item:focus {
+        outline: 3px solid currentColor;
+        outline-offset: 2px;
+    }
+}
+
+/* ⚡ Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .home-nav-item,
+    .imagehomeimage,
+    .imageWrappermehome,
+    .overlay,
+    .containerhomeimagetext {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    .home-nav-item:hover,
+    .home-nav-item:focus {
+        transform: none !important;
+    }
+}
+
+/* 🐛 Debug Styles (remove in production) */
+.debug-home-nav {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    z-index: 9999;
+    font-family: monospace;
+}
+
+/* 📊 Grid Layout Debug */
+.home-nav-grid.debug::before {
+    content: 'Grid: ' attr(data-items) ' items';
+    position: absolute;
+    top: -30px;
+    left: 0;
+    font-size: 0.8rem;
+    color: var(--home-text-secondary);
+    font-family: monospace;
+}

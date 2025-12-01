@@ -1,0 +1,16 @@
+# Database Schema (Initial Inventory)
+
+ConnectionStrings all target SQL Server `173.214.167.37` (ALSADEQezeekw) with multiple names.
+
+This repo does not include .sql schema files. Schema is inferred at runtime by Code On Time controllers and custom pages.
+
+Tables referenced implicitly by roles/pages (from web.config <location>):
+- Financial: GL*, BankandCash*, GLTransaction, GLjrnvchhdr*, glstatment*
+- Sales/AR: STsalhdr*, Stcustmr, InvoicesDetailsReports
+- Purchase/AP: Stpurhdr*, Suppliers, PurchaseDetailsReports
+- HR: HR*, TimeAttendance*, Employees
+- School domain: sch*, School*, Student*, ResultStudent, Transportation
+
+Next steps:
+- Use SQL Server to script schema and ERD
+- Inventory Code On Time data controllers under App_Data/Controllers (if present) or App_Code/eZee.Data

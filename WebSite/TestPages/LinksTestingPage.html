@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Links Testing Page</title>
+    <meta charset="utf-8" />
+    
+    <!-- تحميل ملفات JavaScript الأساسية -->
+    <script src="../js/mainmaster-simple.js"></script>
+    <script src="../js/saserp-links-reference.js"></script>
+    <script src="../js/navigation-vue-components.js"></script>
+    
+    <!-- Vue.js CDN (اختياري) -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; direction: rtl; }
+        .section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        .section h3 { color: #2c3e50; margin-top: 0; }
+        .btn { 
+            padding: 8px 15px; margin: 5px; background: #3498db; color: white; 
+            border: none; border-radius: 4px; cursor: pointer; 
+        }
+        .btn:hover { background: #2980b9; }
+        .btn.success { background: #27ae60; }
+        .btn.warning { background: #f39c12; }
+        .btn.danger { background: #e74c3c; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 4px; }
+        .test-pass { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .test-fail { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .code { background: #f8f9fa; padding: 5px; border-radius: 3px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>🔗 صفحة اختبار الروابط - SASERP V37</h1>
+    
+    <div id="test-status" class="test-result">
+        <strong>حالة النظام:</strong> جاري فحص الملفات...
+    </div>
+
+    <div class="section">
+        <h3>🏠 الصفحات الرئيسية</h3>
+        <button class="btn" onclick="testLink('mainmaster.pages.home()', 'Home')">الرئيسية</button>
+        <button class="btn" onclick="testLink('mainmaster.pages.dashboard()', 'Dashboard')">لوحة التحكم</button>
+        <button class="btn" onclick="testLink('mainmaster.pages.profile()', 'Profile')">الملف الشخصي</button>
+        <button class="btn success" onclick="testLink('mainmaster.pages.test.linksGuide()', 'Links Guide')">دليل الروابط ⭐</button>
+    </div>
+
+    <div class="section">
+        <h3>💰 المحاسبة المالية</h3>
+        <button class="btn" onclick="testLink('mainmaster.pages.financial.main()', 'Financial Main')">المحاسبة الرئيسية</button>
+        <button class="btn" onclick="testLink('mainmaster.pages.financial.accounts()', 'Accounts')">خطة الحسابات</button>
+        <button class="btn" onclick="testLink('mainmaster.pages.financial.gl()', 'GL')">الأستاذ العام</button>
+        <button class="btn" onclick="testLink('mainmaster.pages.financial.transactions()', 'Transactions')">القيود</button>
+        <button class="btn" onclick="testLink('QuickNav.goFinancial()', 'Quick Financial')">وصول سريع - مالية</button>
+    </div>
+
+    <div class="section">
+        <h3>👥 الموارد البشرية</h3>
+        <button class="btn" onclick="testLink('mainmaster.pages.hr.main()', 'HR Main')">الموارد البشرية</button>
+        <button class="btn" onclick="testLink('mainmaster.pages.hr.employees()', 'Employees')">الموظفون</button>
+        <button class="btn" onclick="testLink('mainmaster.pages.hr.payroll()', 'Payroll')">كشوف المرتبات</button>
+        <button class="btn" onclick="testLink('QuickNav.goHR()', 'Quick HR')">وصول سريع - موارد</button>
+    </div>
+
+    <div class="section">
+        <h3>📦 إدارة المخزون</h3>
+        <button class="btn" onclick="testLink('mainmaster.pages.stock.main()', 'Stock Main')">إدارة المخزون</button>
+        <button class="btn" onclick="testLink('mainmaster.pages.stock.items()', 'Items')">الأصناف</button>
+        <button class="btn" onclick="testLink('mainmaster.pages.stock.transactions()', 'Stock Transactions')">حركة المخزون</button>
+        <button class="btn" onclick="testLink('QuickNav.goStock()', 'Quick Stock')">وصول سريع - مخزون</button>
+    </div>
+
+    <div class="section">
+        <h3>🛒 المبيعات</h3>
+        <button class="btn" onclick="testLink('mainmaster.pages.sales.main()', 'Sales Main')">المبيعات</button>
+        <button class="btn" onclick="testLink('mainmaster.pages.sales.invoices()', 'Sales Invoices')">فواتير المبيعات</button>
+        <button class="btn" onclick="testLink('mainmaster.pages.sales.pos()', 'POS')">نقطة البيع</button>
+        <button class="btn" onclick="testLink('QuickNav.goPOS()', 'Quick POS')">وصول سريع - POS</button>
+    </div>
+
+    <div class="section">
+        <h3>⚡ الوصول السريع</h3>
+        <button class="btn warning" onclick="testLink('mainmaster.pages.quick.newInvoice()', 'New Invoice')">فاتورة جديدة</button>
+        <button class="btn warning" onclick="testLink('mainmaster.pages.quick.newCustomer()', 'New Customer')">عميل جديد</button>
+        <button class="btn warning" onclick="testLink('QuickNav.newInvoice()', 'Quick New Invoice')">سريع - فاتورة</button>
+        <button class="btn warning" onclick="testLink('QuickNav.newCustomer()', 'Quick New Customer')">سريع - عميل</button>
+    </div>
+
+    <div class="section">
+        <h3>🧪 صفحات الاختبار</h3>
+        <button class="btn success" onclick="testLink('mainmaster.pages.test.main()', 'Test Main')">صفحات الاختبار</button>
+        <button class="btn success" onclick="testLink('mainmaster.pages.test.navigation()', 'Test Navigation')">مثال التنقل</button>
+        <button class="btn success" onclick="testLink('mainmaster.pages.test.dashboard()', 'Test Dashboard')">مثال لوحة التحكم</button>
+        <button class="btn success" onclick="testLink('QuickNav.testNavigation()', 'Quick Test Nav')">سريع - تجربة تنقل</button>
+    </div>
+
+    <div class="section">
+        <h3>🔧 أدوات التشخيص</h3>
+        <button class="btn danger" onclick="checkSystemStatus()">فحص حالة النظام</button>
+        <button class="btn danger" onclick="reloadSystemFiles()">إعادة تحميل الملفات</button>
+        <button class="btn danger" onclick="testAllLinks()">اختبار جميع الروابط</button>
+        <button class="btn danger" onclick="showSystemInfo()">معلومات النظام</button>
+        <button class="btn danger" onclick="resetSystem()">إعادة تحميل النظام</button>
+    </div>
+
+    <div id="test-results" style="margin-top: 20px;"></div>
+
+    <script>
+        let testResults = [];
+        
+        function testLink(command, description) {
+            try {
+                console.log(`Testing: ${command}`);
+                
+                // تجربة تنفيذ الأمر
+                if (command.includes('mainmaster.pages')) {
+                    if (typeof mainmaster !== 'undefined' && mainmaster.pages) {
+                        eval(command);
+                        addTestResult(`✅ نجح: ${description} - ${command}`, 'pass');
+                    } else {
+                        addTestResult(`⚠️ غير متاح: ${description} - mainmaster غير محمل`, 'fail');
+                    }
+                } else if (command.includes('QuickNav')) {
+                    if (typeof QuickNav !== 'undefined') {
+                        eval(command);
+                        addTestResult(`✅ نجح: ${description} - ${command}`, 'pass');
+                    } else {
+                        addTestResult(`⚠️ غير متاح: ${description} - QuickNav غير محمل`, 'fail');
+                    }
+                } else {
+                    eval(command);
+                    addTestResult(`✅ نجح: ${description} - ${command}`, 'pass');
+                }
+            } catch (error) {
+                addTestResult(`❌ فشل: ${description} - ${error.message}`, 'fail');
+                console.error(`Error testing ${command}:`, error);
+            }
+        }
+        
+        function addTestResult(message, type) {
+            const resultsDiv = document.getElementById('test-results');
+            const resultElement = document.createElement('div');
+            resultElement.className = `test-result test-${type}`;
+            resultElement.innerHTML = message;
+            resultsDiv.appendChild(resultElement);
+            
+            testResults.push({ message, type, timestamp: new Date() });
+            
+            // حفظ في localStorage
+            localStorage.setItem('saserp_test_results', JSON.stringify(testResults));
+        }
+        
+        function reloadSystemFiles() {
+            addTestResult('🔄 إعادة تحميل ملفات النظام...', 'pass');
+            
+            // إزالة الملفات الموجودة
+            const existingScripts = document.querySelectorAll('script[src*="mainmaster"], script[src*="saserp"], script[src*="navigation"]');
+            existingScripts.forEach(script => script.remove());
+            
+            // تحميل الملفات من جديد
+            const scripts = [
+                '../js/mainmaster-vue-framework.js',
+                '../js/saserp-links-reference.js',
+                '../js/navigation-vue-components.js'
+            ];
+            
+            let loadedCount = 0;
+            scripts.forEach((src, index) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = () => {
+                    loadedCount++;
+                    addTestResult(`✅ تم تحميل: ${src}`, 'pass');
+                    
+                    if (loadedCount === scripts.length) {
+                        setTimeout(() => {
+                            addTestResult('🎉 تم تحميل جميع الملفات بنجاح!', 'pass');
+                            checkSystemStatus();
+                        }, 500);
+                    }
+                };
+                script.onerror = () => {
+                    addTestResult(`❌ فشل تحميل: ${src}`, 'fail');
+                };
+                document.head.appendChild(script);
+            });
+        }
+        
+        function checkSystemStatus() {
+            const status = document.getElementById('test-status');
+            let statusMessage = '<strong>حالة النظام:</strong><br>';
+            let allOk = true;
+            
+            // فحص ملفات JavaScript
+            if (typeof mainmaster !== 'undefined') {
+                statusMessage += '✅ mainmaster-vue-framework.js محمل<br>';
+                
+                // فحص النظام الهرمي
+                if (mainmaster.pages) {
+                    statusMessage += '✅ نظام mainmaster.pages متاح<br>';
+                } else {
+                    statusMessage += '⚠️ نظام mainmaster.pages غير مكتمل<br>';
+                }
+            } else {
+                statusMessage += '❌ mainmaster-vue-framework.js غير محمل<br>';
+                allOk = false;
+            }
+            
+            if (typeof QuickNav !== 'undefined') {
+                statusMessage += '✅ saserp-links-reference.js محمل<br>';
+                statusMessage += `✅ ${Object.keys(QuickNav).length} دالة سريعة متاحة<br>`;
+            } else {
+                statusMessage += '❌ saserp-links-reference.js غير محمل<br>';
+                allOk = false;
+            }
+            
+            if (typeof SASERP_LINKS !== 'undefined') {
+                statusMessage += '✅ SASERP_LINKS متاح<br>';
+                statusMessage += `✅ ${Object.keys(SASERP_LINKS).length} فئة روابط متاحة<br>`;
+            } else {
+                statusMessage += '❌ SASERP_LINKS غير متاح<br>';
+                allOk = false;
+            }
+            
+            // فحص Vue.js
+            if (typeof Vue !== 'undefined') {
+                statusMessage += '✅ Vue.js محمل<br>';
+            } else {
+                statusMessage += '⚠️ Vue.js غير محمل (اختياري)<br>';
+            }
+            
+            // فحص Navigation
+            if (typeof mainmaster !== 'undefined' && mainmaster.navigation) {
+                statusMessage += '✅ نظام Navigation متاح<br>';
+            } else {
+                statusMessage += '⚠️ نظام Navigation غير محمل<br>';
+            }
+            
+            // تقييم عام
+            if (allOk) {
+                statusMessage += '<br><strong style="color: green;">🎉 النظام يعمل بشكل مثالي!</strong>';
+                status.className = 'test-result test-pass';
+            } else {
+                statusMessage += '<br><strong style="color: red;">⚠️ يوجد مشاكل تحتاج إصلاح</strong>';
+                status.className = 'test-result test-fail';
+            }
+            
+            status.innerHTML = statusMessage;
+        }
+        
+        function testAllLinks() {
+            const commands = [
+                'mainmaster.pages.home()',
+                'mainmaster.pages.dashboard()',
+                'mainmaster.pages.test.linksGuide()',
+                'mainmaster.pages.financial.accounts()',
+                'mainmaster.pages.hr.employees()',
+                'mainmaster.pages.stock.items()',
+                'QuickNav.goFinancial()',
+                'QuickNav.newInvoice()'
+            ];
+            
+            commands.forEach((cmd, index) => {
+                setTimeout(() => {
+                    testLink(cmd, `Test ${index + 1}`);
+                }, index * 500);
+            });
+        }
+        
+        function showSystemInfo() {
+            const info = {
+                userAgent: navigator.userAgent,
+                location: window.location.href,
+                timestamp: new Date().toISOString(),
+                testResults: testResults.length,
+                localStorage: localStorage.getItem('saserp_test_results') ? 'متاح' : 'غير متاح'
+            };
+            
+            addTestResult(`ℹ️ معلومات النظام: ${JSON.stringify(info, null, 2)}`, 'pass');
+        }
+        
+        function resetSystem() {
+            testResults = [];
+            localStorage.removeItem('saserp_test_results');
+            document.getElementById('test-results').innerHTML = '';
+            addTestResult('🔄 تم إعادة تعيين النظام', 'pass');
+            checkSystemStatus();
+        }
+        
+        // تحميل أولي
+        window.addEventListener('load', function() {
+            checkSystemStatus();
+            
+            // تحميل النتائج المحفوظة
+            const savedResults = localStorage.getItem('saserp_test_results');
+            if (savedResults) {
+                try {
+                    testResults = JSON.parse(savedResults);
+                    addTestResult(`📁 تم تحميل ${testResults.length} نتيجة محفوظة`, 'pass');
+                } catch (e) {
+                    console.error('Error loading saved results:', e);
+                }
+            }
+        });
+        
+        // تحديث كل 30 ثانية
+        setInterval(checkSystemStatus, 30000);
+    </script>
+</body>
+</html>

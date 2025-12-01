@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="PyEmpCert" conflictDetection="overwriteChanges" label="Py Emp Cert" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"PyEmpCert"."Rec_No" "Rec_No"
+	,"PyEmpCert"."Emp_No" "Emp_No"
+	,"Emp_"."Emp_Nm" "Emp_Emp_Nm"
+	,"Emp_Blood_Type"."ModifiedBy" "Emp_Blood_TypeModifiedBy"
+	,"Emp_Cntry_"."Cntry_Nm" "Emp_Cntry_Cntry_Nm"
+	,"Emp_Depm_"."Depm_Nm" "Emp_Depm_Depm_Nm"
+	,"Emp_Educt_Type"."Educt_Nm" "Emp_Educt_TypeEduct_Nm"
+	,"Emp_Job_Stu"."Emp_Stunm" "Emp_Job_StuEmp_Stunm"
+	,"Emp_Job_"."Job_Nm" "Emp_Job_Job_Nm"
+	,"Emp_Loc_"."Loc_Nm" "Emp_Loc_Loc_Nm"
+	,"Emp_Ownr_"."Ownr_ID" "Emp_Ownr_Ownr_ID"
+	,"Emp_Ownr_cmp_"."Grp_Nm" "Emp_Ownr_cmp_Grp_Nm"
+	,"Emp_Reljan"."Reljan_nm" "Emp_ReljanReljan_nm"
+	,"Emp_Residn_Ty"."Residn_Nm" "Emp_Residn_TyResidn_Nm"
+	,"Emp_Status_Type"."Status_Nm" "Emp_Status_TypeStatus_Nm"
+	,"PyEmpCert"."Plc_Nm" "Plc_Nm"
+	,"PyEmpCert"."St_Dt" "St_Dt"
+	,"PyEmpCert"."Ed_Dt" "Ed_Dt"
+	,"PyEmpCert"."Cert_Nm" "Cert_Nm"
+	,"PyEmpCert"."Rec_State" "Rec_State"
+	,"PyEmpCert"."notes" "notes"
+	,"PyEmpCert"."ModifiedBy" "ModifiedBy"
+	,"PyEmpCert"."ModifiedOn" "ModifiedOn"
+	,"PyEmpCert"."CreatedBy" "CreatedBy"
+	,"PyEmpCert"."CreatedOn" "CreatedOn"
+from "dbo"."PyEmpCert" "PyEmpCert"
+	left join "dbo"."PyEmpJobReq" "Emp_" on "PyEmpCert"."Emp_No" = "Emp_"."Emp_No"
+	left join "dbo"."pyBlood" "Emp_Blood_Type" on "Emp_"."Blood_Type" = "Emp_Blood_Type"."Blood_Type"
+	left join "dbo"."PYCntry" "Emp_Cntry_" on "Emp_"."Cntry_No" = "Emp_Cntry_"."Cntry_No"
+	left join "dbo"."Pydepm" "Emp_Depm_" on "Emp_"."Depm_No" = "Emp_Depm_"."Depm_No"
+	left join "dbo"."PyempEdu" "Emp_Educt_Type" on "Emp_"."Educt_Type" = "Emp_Educt_Type"."Educt_Type"
+	left join "dbo"."Pyempstu" "Emp_Job_Stu" on "Emp_"."Job_Stu" = "Emp_Job_Stu"."Emp_stu"
+	left join "dbo"."Pyjobs" "Emp_Job_" on "Emp_"."Job_No" = "Emp_Job_"."Job_No"
+	left join "dbo"."PyLocation" "Emp_Loc_" on "Emp_"."Loc_No" = "Emp_Loc_"."loc_No"
+	left join "dbo"."Pyownrmf" "Emp_Ownr_" on "Emp_"."Ownr_No" = "Emp_Ownr_"."Ownr_No"
+	left join "dbo"."Pycnstnt" "Emp_Ownr_cmp_" on "Emp_Ownr_"."cmp_no" = "Emp_Ownr_cmp_"."Cmp_No"
+	left join "dbo"."PyReljan" "Emp_Reljan" on "Emp_"."Reljan" = "Emp_Reljan"."reljan"
+	left join "dbo"."PyResdnTy" "Emp_Residn_Ty" on "Emp_"."Residn_Ty" = "Emp_Residn_Ty"."Residn_Ty"
+	left join "dbo"."PyStatus" "Emp_Status_Type" on "Emp_"."Status_Type" = "Emp_Status_Type"."Status_Type"
+]]></text>
+    </command>
+    <command id="Rec_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Rec_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Rec_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Rec No" readOnly="true" />
+    <field name="Emp_No" type="Int64" label="Emp No" showInSummary="true">
+      <items style="Lookup" dataController="PyEmpJobReq" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Emp_Emp_Nm" type="String" readOnly="true" label="Emp Nm" length="255" />
+    <field name="Emp_Blood_TypeModifiedBy" type="String" readOnly="true" label="Emp Blood Type Modified By" length="50" />
+    <field name="Emp_Cntry_Cntry_Nm" type="String" readOnly="true" label="Emp Cntry Nm" length="255" />
+    <field name="Emp_Depm_Depm_Nm" type="String" readOnly="true" label="Emp Depm Nm" length="255" />
+    <field name="Emp_Educt_TypeEduct_Nm" type="String" readOnly="true" label="Emp Educt Type Educt Nm" length="15" />
+    <field name="Emp_Job_StuEmp_Stunm" type="String" readOnly="true" label="Emp Job Stu Emp Stunm" length="255" />
+    <field name="Emp_Job_Job_Nm" type="String" readOnly="true" label="Emp Job Nm" length="255" />
+    <field name="Emp_Loc_Loc_Nm" type="String" readOnly="true" label="Emp Loc Nm" length="50" />
+    <field name="Emp_Ownr_Ownr_ID" type="String" readOnly="true" label="Emp Ownr#" length="15" />
+    <field name="Emp_Ownr_cmp_Grp_Nm" type="String" readOnly="true" label="Emp Ownr cmp Grp Nm" length="255" />
+    <field name="Emp_ReljanReljan_nm" type="String" readOnly="true" label="Emp Reljan nm" length="50" />
+    <field name="Emp_Residn_TyResidn_Nm" type="String" readOnly="true" label="Emp Residn Ty Residn Nm" length="50" />
+    <field name="Emp_Status_TypeStatus_Nm" type="String" readOnly="true" label="Emp Status Type Status Nm" length="255" />
+    <field name="Plc_Nm" type="String" label="Plc Nm" length="255" showInSummary="true" />
+    <field name="St_Dt" type="DateTime" label="St Dt" showInSummary="true" />
+    <field name="Ed_Dt" type="DateTime" label="Ed Dt" showInSummary="true" />
+    <field name="Cert_Nm" type="String" label="Cert Nm" length="255" showInSummary="true" />
+    <field name="Rec_State" type="Boolean" label="Rec State" />
+    <field name="notes" type="String" allowQBE="false" allowSorting="false" label="Notes" length="-1" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Py Emp Cert">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Emp_No" aliasFieldName="Emp_Emp_Nm" />
+        <dataField fieldName="Plc_Nm" />
+        <dataField fieldName="St_Dt" columns="10" />
+        <dataField fieldName="Ed_Dt" columns="10" />
+        <dataField fieldName="Cert_Nm" />
+        <dataField fieldName="Rec_State" />
+        <dataField fieldName="notes" rows="5" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="Emp_Blood_TypeModifiedBy" columns="50" />
+        <dataField fieldName="Emp_Cntry_Cntry_Nm" />
+        <dataField fieldName="Emp_Depm_Depm_Nm" />
+        <dataField fieldName="Emp_Educt_TypeEduct_Nm" columns="15" />
+        <dataField fieldName="Emp_Job_StuEmp_Stunm" />
+        <dataField fieldName="Emp_Job_Job_Nm" />
+        <dataField fieldName="Emp_Loc_Loc_Nm" columns="50" />
+        <dataField fieldName="Emp_Ownr_Ownr_ID" columns="15" />
+        <dataField fieldName="Emp_Ownr_cmp_Grp_Nm" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Py Emp Cert">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Py Emp Cert" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_No" aliasFieldName="Emp_Emp_Nm" hyperlinkFormatString="~/Pages/PyEmpJobReq.aspx?Emp_No={Emp_No}&amp;_controller=PyEmpJobReq&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Plc_Nm" />
+            <dataField fieldName="St_Dt" columns="10" />
+            <dataField fieldName="Ed_Dt" columns="10" />
+            <dataField fieldName="Cert_Nm" />
+            <dataField fieldName="Rec_State" />
+            <dataField fieldName="notes" rows="5" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_Blood_TypeModifiedBy" columns="50" />
+            <dataField fieldName="Emp_Cntry_Cntry_Nm" />
+            <dataField fieldName="Emp_Depm_Depm_Nm" />
+            <dataField fieldName="Emp_Educt_TypeEduct_Nm" columns="15" />
+            <dataField fieldName="Emp_Job_StuEmp_Stunm" />
+            <dataField fieldName="Emp_Job_Job_Nm" />
+            <dataField fieldName="Emp_Loc_Loc_Nm" columns="50" />
+            <dataField fieldName="Emp_Ownr_Ownr_ID" columns="15" />
+            <dataField fieldName="Emp_Ownr_cmp_Grp_Nm" />
+            <dataField fieldName="Emp_ReljanReljan_nm" columns="50" />
+            <dataField fieldName="Emp_Residn_TyResidn_Nm" columns="50" />
+            <dataField fieldName="Emp_Status_TypeStatus_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Py Emp Cert">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Py Emp Cert" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_No" aliasFieldName="Emp_Emp_Nm" />
+            <dataField fieldName="Plc_Nm" />
+            <dataField fieldName="St_Dt" columns="10" />
+            <dataField fieldName="Ed_Dt" columns="10" />
+            <dataField fieldName="Cert_Nm" />
+            <dataField fieldName="Rec_State" />
+            <dataField fieldName="notes" rows="5" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

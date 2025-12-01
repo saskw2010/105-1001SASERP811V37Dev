@@ -1,0 +1,643 @@
+/**
+ * 📋 TableOfContents.ascx - Modern Navigation Grid Styles
+ * 🎨 Sky365 Theme Integration
+ * 🚀 Performance Optimized
+ * ♿ Accessibility Ready
+ */
+
+/* ==============================================
+   📊 CSS Variables Integration
+   ============================================== */
+:root {
+    /* TableOfContents Color Palette */
+    --toc-primary: var(--sky365-primary, #3b82f6);
+    --toc-primary-light: var(--sky365-primary-light, #60a5fa);
+    --toc-primary-dark: var(--sky365-primary-dark, #2563eb);
+    --toc-secondary: var(--sky365-secondary, #6366f1);
+    --toc-accent: var(--sky365-accent, #8b5cf6);
+    
+    /* Neutral Colors */
+    --toc-white: var(--sky365-white, #ffffff);
+    --toc-gray-50: var(--sky365-gray-50, #f8fafc);
+    --toc-gray-100: var(--sky365-gray-100, #f1f5f9);
+    --toc-gray-200: var(--sky365-gray-200, #e2e8f0);
+    --toc-gray-300: var(--sky365-gray-300, #cbd5e1);
+    --toc-gray-400: var(--sky365-gray-400, #94a3b8);
+    --toc-gray-500: var(--sky365-gray-500, #64748b);
+    --toc-gray-600: var(--sky365-gray-600, #475569);
+    --toc-gray-700: var(--sky365-gray-700, #334155);
+    --toc-gray-800: var(--sky365-gray-800, #1e293b);
+    --toc-gray-900: var(--sky365-gray-900, #0f172a);
+    
+    /* Gradient Variables */
+    --toc-gradient-primary: linear-gradient(135deg, var(--toc-primary) 0%, var(--toc-primary-light) 100%);
+    --toc-gradient-secondary: linear-gradient(135deg, var(--toc-secondary) 0%, var(--toc-accent) 100%);
+    --toc-gradient-surface: linear-gradient(135deg, var(--toc-white) 0%, var(--toc-gray-50) 100%);
+    --toc-gradient-overlay: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+    
+    /* Spacing Variables */
+    --toc-space-xs: 4px;
+    --toc-space-sm: 8px;
+    --toc-space-md: 16px;
+    --toc-space-lg: 24px;
+    --toc-space-xl: 32px;
+    --toc-space-2xl: 48px;
+    
+    /* Border Radius */
+    --toc-radius-sm: 8px;
+    --toc-radius-md: 12px;
+    --toc-radius-lg: 16px;
+    --toc-radius-xl: 20px;
+    
+    /* Shadows */
+    --toc-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --toc-shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --toc-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --toc-shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.15);
+    
+    /* Transitions */
+    --toc-transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --toc-transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --toc-transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==============================================
+   🏗️ Navigation Grid Layout
+   ============================================== */
+.modern-navigation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--toc-space-lg);
+    padding: var(--toc-space-lg) 0;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity var(--toc-transition-normal);
+}
+
+/* Instance Isolation */
+.modern-navigation-grid[id*="navigationGrid"] {
+    isolation: isolate;
+}
+
+/* Hide duplicate instances in sidebar */
+.sidebar .modern-navigation-grid:not([id*="navigationGrid"]) {
+    display: none !important;
+}
+
+/* Ensure main content instance is visible */
+.current-menu-section .modern-navigation-grid,
+.main-content .modern-navigation-grid {
+    display: grid !important;
+    opacity: 1 !important;
+}
+
+/* ==============================================
+   🎴 Navigation Cards
+   ============================================== */
+.modern-nav-card {
+    position: relative;
+    background: var(--toc-gradient-surface);
+    border-radius: var(--toc-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--toc-shadow-md);
+    transition: all var(--toc-transition-slow);
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    will-change: transform, box-shadow;
+    transform: translateZ(0); /* Enable GPU acceleration */
+}
+
+.modern-nav-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--toc-shadow-xl);
+    text-decoration: none;
+    color: inherit;
+    border-color: var(--toc-primary-light);
+}
+
+.modern-nav-card:focus {
+    outline: 2px solid var(--toc-primary) !important;
+    outline-offset: 2px !important;
+    border: none !important;
+    box-shadow: var(--toc-shadow-lg) !important;
+}
+
+.modern-nav-card:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.modern-nav-card:active {
+    transform: translateY(-4px) scale(1.01);
+    transition: all 0.1s ease;
+}
+
+/* ==============================================
+   🖼️ Card Image Container
+   ============================================== */
+.card-image-container {
+    position: relative;
+    height: 160px;
+    background: var(--toc-gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: background var(--toc-transition-normal);
+}
+
+.modern-nav-card:hover .card-image-container {
+    background: var(--toc-gradient-secondary);
+}
+
+.card-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--toc-radius-md);
+    transition: transform var(--toc-transition-normal);
+    background: rgba(255, 255, 255, 0.95);
+    padding: var(--toc-space-sm);
+    box-shadow: var(--toc-shadow-sm);
+    will-change: transform;
+}
+
+.modern-nav-card:hover .card-image {
+    transform: scale(1.1) rotate(2deg);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--toc-gradient-overlay);
+    opacity: 0;
+    transition: opacity var(--toc-transition-normal);
+    pointer-events: none;
+}
+
+.modern-nav-card:hover .card-overlay {
+    opacity: 1;
+}
+
+/* Default Image Fallback */
+.default-image {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--toc-radius-md);
+    color: var(--toc-primary);
+    font-size: 2rem;
+    box-shadow: var(--toc-shadow-sm);
+}
+
+/* ==============================================
+   📝 Card Content
+   ============================================== */
+.card-content {
+    padding: var(--toc-space-lg);
+    text-align: center;
+    position: relative;
+    background: var(--toc-white);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--toc-gray-800);
+    margin: 0 0 var(--toc-space-sm) 0;
+    line-height: 1.3;
+    transition: color var(--toc-transition-normal);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.modern-nav-card:hover .card-title {
+    color: var(--toc-primary);
+}
+
+.card-description {
+    font-size: 0.9rem;
+    color: var(--toc-gray-500);
+    margin: 0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color var(--toc-transition-normal);
+}
+
+.modern-nav-card:hover .card-description {
+    color: var(--toc-gray-600);
+}
+
+/* ==============================================
+   ⚠️ No Content Message
+   ============================================== */
+.no-content-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--toc-space-2xl) var(--toc-space-lg);
+}
+
+.alert {
+    background: var(--toc-gradient-surface);
+    border: 1px solid var(--toc-primary-light);
+    border-radius: var(--toc-radius-md);
+    padding: var(--toc-space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--toc-space-md);
+    color: var(--toc-primary-dark);
+    box-shadow: var(--toc-shadow-sm);
+}
+
+.alert i {
+    font-size: 1.5rem;
+    color: var(--toc-primary);
+}
+
+.alert p {
+    margin: 0;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+/* ==============================================
+   ⏳ Loading States
+   ============================================== */
+.loading-skeleton {
+    background: linear-gradient(90deg, 
+        var(--toc-gray-100) 25%, 
+        var(--toc-gray-200) 50%, 
+        var(--toc-gray-100) 75%);
+    background-size: 200% 100%;
+    animation: tocLoading 1.5s infinite;
+    border-radius: var(--toc-radius-lg);
+    min-height: 200px;
+}
+
+@keyframes tocLoading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Loading shimmer effect */
+.modern-nav-card.loading {
+    overflow: hidden;
+    position: relative;
+}
+
+.modern-nav-card.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.4) 50%, 
+        transparent 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* ==============================================
+   🎬 Animations
+   ============================================== */
+.fade-in-up {
+    animation: tocFadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes tocFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Stagger animation for multiple cards */
+.modern-nav-card:nth-child(1) { animation-delay: 0ms; }
+.modern-nav-card:nth-child(2) { animation-delay: 100ms; }
+.modern-nav-card:nth-child(3) { animation-delay: 200ms; }
+.modern-nav-card:nth-child(4) { animation-delay: 300ms; }
+.modern-nav-card:nth-child(5) { animation-delay: 400ms; }
+.modern-nav-card:nth-child(6) { animation-delay: 500ms; }
+
+/* Card hover glow effect */
+.modern-nav-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--toc-gradient-primary);
+    border-radius: var(--toc-radius-lg);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity var(--toc-transition-normal);
+}
+
+.modern-nav-card:hover::before {
+    opacity: 0.3;
+}
+
+/* ==============================================
+   📱 Responsive Design
+   ============================================== */
+@media (max-width: 1024px) {
+    .modern-navigation-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--toc-space-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .modern-navigation-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: var(--toc-space-md);
+        padding: var(--toc-space-md) 0;
+    }
+    
+    .card-image-container {
+        height: 120px;
+    }
+    
+    .card-image {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .card-content {
+        padding: var(--toc-space-md);
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+    }
+    
+    .card-description {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modern-navigation-grid {
+        grid-template-columns: 1fr;
+        gap: var(--toc-space-md);
+        padding: var(--toc-space-md) var(--toc-space-sm);
+    }
+    
+    .modern-nav-card {
+        min-height: auto;
+    }
+    
+    .card-image-container {
+        height: 100px;
+    }
+    
+    .card-image {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .card-content {
+        padding: var(--toc-space-md) var(--toc-space-sm);
+    }
+    
+    .card-title {
+        font-size: 1rem;
+        -webkit-line-clamp: 1;
+    }
+    
+    .card-description {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 2;
+    }
+    
+    .no-content-message {
+        padding: var(--toc-space-lg) var(--toc-space-sm);
+    }
+}
+
+/* ==============================================
+   ♿ Accessibility Enhancements
+   ============================================== */
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .modern-nav-card {
+        border: 2px solid var(--toc-gray-800);
+        background: var(--toc-white);
+    }
+    
+    .modern-nav-card:hover {
+        border-color: var(--toc-primary);
+        background: var(--toc-gray-50);
+    }
+    
+    .card-title {
+        color: var(--toc-gray-900);
+        font-weight: 800;
+    }
+    
+    .card-description {
+        color: var(--toc-gray-700);
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .modern-nav-card,
+    .card-image,
+    .card-overlay,
+    .loading-skeleton {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .modern-nav-card:hover {
+        transform: none;
+    }
+    
+    .modern-nav-card:hover .card-image {
+        transform: none;
+    }
+}
+
+/* Focus Management */
+.modern-nav-card:focus-visible {
+    outline: 3px solid var(--toc-primary);
+    outline-offset: 2px;
+    z-index: 10;
+}
+
+/* Keyboard Navigation Enhancement */
+.modern-nav-card[tabindex="0"]:focus {
+    position: relative;
+    z-index: 10;
+}
+
+/* ==============================================
+   🌐 RTL Support
+   ============================================== */
+[dir="rtl"] .modern-navigation-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .card-content {
+    text-align: right;
+}
+
+[dir="rtl"] .alert {
+    direction: rtl;
+    text-align: right;
+}
+
+/* ==============================================
+   🔧 Debug Mode (Hidden by default)
+   ============================================== */
+.debug-mode .nav-card-data {
+    display: block !important;
+    background: #ff000020;
+    border: 2px solid red;
+    margin: 4px;
+    padding: 8px;
+    font-size: 10px;
+    color: red;
+}
+
+.debug-mode .modern-navigation-grid {
+    border: 2px dashed green;
+    background: #00ff0010;
+}
+
+/* ==============================================
+   🚀 Performance Optimizations
+   ============================================== */
+/* GPU Acceleration for smooth animations */
+.modern-nav-card,
+.card-image {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Optimize layout calculations */
+.modern-navigation-grid {
+    contain: layout style paint;
+}
+
+.modern-nav-card {
+    contain: layout style;
+}
+
+/* Preload hover states */
+.modern-nav-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    pointer-events: none;
+    background: transparent;
+    transition: opacity 0s;
+}
+
+/* ==============================================
+   📊 Print Styles
+   ============================================== */
+@media print {
+    .modern-navigation-grid {
+        display: block !important;
+        break-inside: avoid;
+    }
+    
+    .modern-nav-card {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+        box-shadow: none;
+        border: 1px solid #000;
+        transform: none !important;
+    }
+    
+    .card-image-container {
+        display: none;
+    }
+    
+    .card-content {
+        padding: 1rem;
+    }
+    
+    .card-title {
+        color: #000 !important;
+        font-size: 14pt;
+    }
+    
+    .card-description {
+        color: #333 !important;
+        font-size: 12pt;
+    }
+}
+
+/* ==============================================
+   ⚡ Critical CSS Loading State
+   ============================================== */
+.toc-critical-loading {
+    min-height: 200px;
+    background: var(--toc-gray-100);
+    border-radius: var(--toc-radius-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.toc-critical-loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.6) 50%, 
+        transparent 100%);
+    animation: tocCriticalLoading 1.2s infinite;
+}
+
+@keyframes tocCriticalLoading {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}

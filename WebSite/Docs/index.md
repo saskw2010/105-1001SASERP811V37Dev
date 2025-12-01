@@ -1,0 +1,16 @@
+# SASERP V37 - Project Documentation Hub
+
+Welcome to the documentation hub for SASERP V37 (ASP.NET WebForms VB.NET, .NET 4.7.2).
+
+- Start here: TOC.md
+- Flows and Call Graph: flows/call-graph.md
+- API Endpoints: api/endpoints.md
+- Database Schema: db/schema.md
+- Configuration: configuration.md
+- Security: security.md
+- Background Jobs: jobs.md
+- Migration Map: migration-map.md
+
+Per-folder and per-file docs:
+- folders/
+- files/

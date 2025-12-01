@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="invdital" conflictDetection="overwriteChanges" label="Invdital" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"invdital"."Brn_No" "Brn_No"
+	,"invdital"."doc_typ" "doc_typ"
+	,"invdital"."countrdus" "countrdus"
+	,"invdital"."ln_no" "ln_no"
+	,"invdital"."countrds" "countrds"
+	,"invdital"."doc_typs" "doc_typs"
+	,"invdital"."azndates" "azndates"
+	,"invdital"."ID_USER" "ID_USER"
+	,"invdital"."ID_comp" "ID_comp"
+	,"invdital"."ITEM" "ITEM"
+	,"invdital"."Unit_No" "Unit_No"
+	,"invdital"."cost" "cost"
+	,"invdital"."quantity" "quantity"
+	,"invdital"."egmaly" "egmaly"
+	,"invdital"."Itm_Sal1" "Itm_Sal1"
+	,"invdital"."Rantdays" "Rantdays"
+	,"invdital"."ITMSUM" "ITMSUM"
+	,"invdital"."sgm" "sgm"
+	,"invdital"."countrd" "countrd"
+	,"invdital"."ModifiedBy" "ModifiedBy"
+	,"invdital"."ModifiedOn" "ModifiedOn"
+	,"invdital"."CreatedBy" "CreatedBy"
+	,"invdital"."CreatedOn" "CreatedOn"
+from "dbo"."invdital" "invdital"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="Brn_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Brn No" />
+    <field name="doc_typ" type="Int64" allowNulls="false" isPrimaryKey="true" label="Doc Typ" />
+    <field name="countrdus" type="String" allowNulls="false" isPrimaryKey="true" label="Countrdus" length="50" showInSummary="true" />
+    <field name="ln_no" type="Int64" allowNulls="false" isPrimaryKey="true" label="Ln No" />
+    <field name="countrds" type="String" label="Countrds" length="50" showInSummary="true" />
+    <field name="doc_typs" type="String" label="Doc Typs" length="50" showInSummary="true" />
+    <field name="azndates" type="DateTime" label="Azndates" showInSummary="true" />
+    <field name="ID_USER" type="String" label="Id User" length="50" showInSummary="true" />
+    <field name="ID_comp" type="String" label="ID comp" length="255" />
+    <field name="ITEM" type="String" label="Item" length="255" />
+    <field name="Unit_No" type="Int64" label="Unit No" />
+    <field name="cost" type="Decimal" label="Cost" />
+    <field name="quantity" type="Double" label="Quantity" />
+    <field name="egmaly" type="Double" label="Egmaly" />
+    <field name="Itm_Sal1" type="Decimal" label="Itm Sal1" />
+    <field name="Rantdays" type="Double" label="Rantdays" />
+    <field name="ITMSUM" type="Decimal" label="Itmsum" />
+    <field name="sgm" type="Int64" label="Sgm" />
+    <field name="countrd" type="Double" label="Countrd" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Invdital">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="countrdus" columns="50" />
+        <dataField fieldName="countrds" columns="50" />
+        <dataField fieldName="doc_typs" columns="50" />
+        <dataField fieldName="azndates" columns="10" />
+        <dataField fieldName="ID_USER" columns="50" />
+        <dataField fieldName="ID_comp" />
+        <dataField fieldName="ITEM" />
+        <dataField fieldName="Unit_No" columns="15" />
+        <dataField fieldName="cost" dataFormatString="c" columns="15" />
+        <dataField fieldName="quantity" columns="15" />
+        <dataField fieldName="egmaly" columns="15" />
+        <dataField fieldName="Itm_Sal1" dataFormatString="c" columns="15" />
+        <dataField fieldName="Rantdays" columns="15" />
+        <dataField fieldName="ITMSUM" dataFormatString="c" columns="15" />
+        <dataField fieldName="sgm" columns="15" />
+        <dataField fieldName="countrd" columns="15" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Invdital">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Invdital" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="countrdus" columns="50" />
+            <dataField fieldName="countrds" columns="50" />
+            <dataField fieldName="doc_typs" columns="50" />
+            <dataField fieldName="azndates" columns="10" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="ID_comp" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="Unit_No" columns="15" />
+            <dataField fieldName="cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="quantity" columns="15" />
+            <dataField fieldName="egmaly" columns="15" />
+            <dataField fieldName="Itm_Sal1" dataFormatString="c" columns="15" />
+            <dataField fieldName="Rantdays" columns="15" />
+            <dataField fieldName="ITMSUM" dataFormatString="c" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="countrd" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Invdital">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Invdital" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Brn_No" columns="15" />
+            <dataField fieldName="doc_typ" columns="15" />
+            <dataField fieldName="countrdus" columns="50" />
+            <dataField fieldName="ln_no" columns="15" />
+            <dataField fieldName="countrds" columns="50" />
+            <dataField fieldName="doc_typs" columns="50" />
+            <dataField fieldName="azndates" columns="10" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="ID_comp" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="Unit_No" columns="15" />
+            <dataField fieldName="cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="quantity" columns="15" />
+            <dataField fieldName="egmaly" columns="15" />
+            <dataField fieldName="Itm_Sal1" dataFormatString="c" columns="15" />
+            <dataField fieldName="Rantdays" columns="15" />
+            <dataField fieldName="ITMSUM" dataFormatString="c" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="countrd" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

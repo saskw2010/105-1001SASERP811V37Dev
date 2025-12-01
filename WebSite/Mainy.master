@@ -1,0 +1,167 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeFile="Mainy.master.vb" Inherits="Mainy" %>
+<%@ Register assembly="Telerik.Web.UI" namespace="Telerik.Web.UI" tagprefix="telerik" %>
+<!DOCTYPE html >
+<html xml:lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>" lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>">
+<head runat="server">
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>SKYsaas</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, shrink-to-fit=yes">
+	  <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="../Scripts/jquery.min.js"></script>
+	 <script src="../Scripts/bootstrap.min.js"></script>
+	 <script src="../Scripts/main1.js"></script>
+	 <script src="../Scripts/main2.js"></script>
+	 <script src="../Scripts/main3.js"></script>
+	 <script src="../Scripts/main4.js"></script> 
+     <script src="../Scripts/main.js"></script>
+     <script src="../w3.js"></script>
+     <link rel="shortcut icon" href="favicon.png">
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+  </head>
+  <body runat="server" >
+    <form id="form1" runat="server">
+      <div>
+        <act:ToolkitScriptManager ID="sm" runat="server" ScriptMode="Release" EnableScriptGlobalization="True" OnResolveScriptReference="sm_ResolveScriptReference" />
+        <aquarium:MembershipBar ID="mb" runat="server" RememberMeSet="False" DisplayLogin="False" IdleUserTimeout="15000" EnableHistory="False" EnablePermalinks="False" />
+        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+        <div id="PageHeader">	
+		</div>
+        <div      id="menu1" > 
+        <nav class="LoginDialog LoginDialogCollapsed mosso" role="navigation">
+ 	
+    <telerik:RadMenu ID="RadMenu1" Runat="server"    RenderMode="Mobile"  EnableEmbeddedSkins="true" EnableTheming="True" Skin="Black"
+    
+    
+      DataSourceID="SiteMapDataSource1"       >
+
+
+
+        </telerik:RadMenu> 
+     
+
+</nav>
+</div>        
+          <div id="PageMenuBar" runat="server" class="PageMenuBar" >
+
+
+             
+		</div>
+           
+           
+       
+             
+ 
+ 
+
+        
+
+   
+ <div      id="menu2" >
+
+ <div w3-include-html="Nav1.html"></div>        
+         
+           
+         </div>       
+      
+
+        
+              <div id="PageContent"  >
+
+
+                  <asp:ContentPlaceHolder ID="PageContentPlaceHolder" runat="server" />
+
+              </div>
+      
+
+
+
+          <div id="PageHeaderBar">
+            <asp:ContentPlaceHolder ID="PageHeaderContentPlaceHolder" runat="server">SKY  ERP </asp:ContentPlaceHolder>
+          </div>
+         
+             
+        <aquarium:MenuExtender ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" TargetControlID="PageMenuBar" HoverStyle="Auto" PopupPosition="Left" ShowSiteActions="False" />
+     
+
+ 
+       
+      
+          
+<div w3-include-html="Nav2.html"></div>            
+
+                     
+<div class="clearfix">
+</div>
+
+
+
+  
+ <div id="PageFooterBar1"  class="PageFooterBar" > 
+
+ 
+
+ <div style="clear: both; ">         
+    <div class="row menu-item text-center">   
+              <p>Copyright © whitesky Solutions</p> 
+              <asp:Label ID="lblDomainName" runat="server"></asp:Label>
+            </div>
+
+              </div>    
+  
+
+
+
+
+
+   <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"> </asp:ContentPlaceHolder>
+           
+
+        
+   </div>
+  </div>     
+<table id="PageBody"  style="display: none">
+          <tr>
+            <td id="PageHeaderSideBar">
+              <asp:Image ID="Image5" runat="server" SkinID="PageLogo" CssClass="PageLogo" />
+            </td>
+            <td id="PageHeaderLeftSide"> </td>
+            <td id="PageHeaderContent">
+              <div class="Header">
+                <asp:SiteMapPath ID="SiteMapPath1" runat="server" SkinID="SiteMapPath" />
+                <div class="Title">
+                  <asp:ContentPlaceHolder ID="PageTitleContentPlaceHolder" runat="server">Page Title</asp:ContentPlaceHolder>
+                </div>
+              </div>
+            </td>
+            <td id="PageHeaderRightSide"> </td>
+          </tr>
+          <tr>
+            <td id="PageContentSideBar">
+              <div class="SideBarBody">
+                <asp:ContentPlaceHolder ID="SideBarPlaceHolder" runat="server" /> </div>
+            </td>
+            <td id="PageContentLeftSide"> </td>
+              <td >
+                   
+        
+          
+            </td>
+            <td id="PageContentRightSide"> </td>
+          </tr>
+          <tr>
+            <td id="PageFooterSideBar"> </td>
+            <td id="PageFooterLeftSide"> </td>
+            <td id="PageFooterContent"> </td>
+            <td id="PageFooterRightSide"> </td>
+          </tr>
+        </table>
+
+ <div w3-include-html="Nav3.html"></div> 
+ <div w3-include-html="Nav4.html"></div> 
+ <div w3-include-html="Nav5.html"></div>            
+    </form>
+  </body>
+</html>
+<script>
+w3.includeHTML();
+</script>

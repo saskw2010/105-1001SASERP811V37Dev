@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>System Flow – Search Page Lifecycle</title>
+  <style>
+    body{font-family:Arial, sans-serif; margin:20px; background:#f8fafc;}
+    h1{margin-bottom:8px;}
+    .meta{color:#555;margin-bottom:16px}
+    a{color:#2563eb}
+    .container{overflow:auto}
+    svg{max-width:100%; height:auto; background:#fff; border:1px solid #e5e7eb; border-radius:8px}
+    .node{fill:#ffffff; stroke:#0f172a; stroke-width:1.5}
+    .term{fill:#f1f5f9; stroke:#0f172a; stroke-width:1.5}
+    .edge{stroke:#334155; stroke-width:1.5; fill:none; marker-end:url(#arrow)}
+    text{font-size:12px; fill:#0f172a}
+    .small{font-size:11px; fill:#475569}
+    .diamond{fill:#ffffff; stroke:#0f172a; stroke-width:1.5}
+  </style>
+</head>
+<body>
+  <h1>System Flow: Search Page (Generic)</h1>
+  <div class="meta">Contractviewsearch.aspx example. Request → PageBase → Main.Master → Page_Load → ASMX Data API → Render.</div>
+  <div class="container">
+    <svg viewBox="0 0 1100 900" role="img" aria-label="Search page lifecycle flow">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155" />
+        </marker>
+      </defs>
+
+      <!-- Nodes -->
+      <rect class="node" x="400" y="40" width="300" height="50" rx="6"/>
+      <text x="550" y="65" text-anchor="middle" dominant-baseline="middle">GET /Pages/Contractviewsearch.aspx</text>
+
+      <rect class="node" x="400" y="120" width="300" height="50" rx="6"/>
+      <text x="550" y="145" text-anchor="middle" dominant-baseline="middle">PageBaseCore.OnInit</text>
+
+      <rect class="node" x="100" y="200" width="300" height="50" rx="6"/>
+      <text x="250" y="225" text-anchor="middle" dominant-baseline="middle">InitializeCulture + RTL</text>
+
+      <rect class="node" x="550" y="200" width="300" height="50" rx="6"/>
+      <text x="700" y="225" text-anchor="middle" dominant-baseline="middle">Apply Theme to Page</text>
+
+      <rect class="node" x="760" y="280" width="300" height="50" rx="6"/>
+      <text x="910" y="305" text-anchor="middle" dominant-baseline="middle">Touch/Mobile cookie switch</text>
+
+      <rect class="node" x="400" y="280" width="300" height="50" rx="6"/>
+      <text x="550" y="305" text-anchor="middle" dominant-baseline="middle">VerifyUrl()</text>
+
+      <rect class="node" x="400" y="360" width="300" height="50" rx="6"/>
+      <text x="550" y="385" text-anchor="middle" dominant-baseline="middle">Main.Master Init/Load</text>
+
+      <rect class="node" x="400" y="440" width="300" height="50" rx="6"/>
+      <text x="550" y="465" text-anchor="middle" dominant-baseline="middle">Pages_Contractviewsearch.Page_Load</text>
+
+      <rect class="node" x="400" y="520" width="300" height="50" rx="6"/>
+      <text x="550" y="545" text-anchor="middle" dominant-baseline="middle">Build Search UI</text>
+
+      <rect class="node" x="400" y="600" width="300" height="50" rx="6"/>
+      <text x="550" y="625" text-anchor="middle" dominant-baseline="middle">User types / filter changes</text>
+
+      <rect class="node" x="400" y="680" width="300" height="50" rx="6"/>
+      <text x="550" y="705" text-anchor="middle" dominant-baseline="middle">AJAX POST DataControllerService.asmx</text>
+
+      <rect class="node" x="400" y="760" width="300" height="50" rx="6"/>
+      <text x="550" y="785" text-anchor="middle" dominant-baseline="middle">GetPage(controller, view, PageRequest)</text>
+
+      <rect class="node" x="100" y="840" width="300" height="50" rx="6"/>
+      <text x="250" y="865" text-anchor="middle" dominant-baseline="middle">ControllerFactory.CreateDataController</text>
+
+      <rect class="node" x="100" y="920" width="300" height="50" rx="6"/>
+      <text x="250" y="945" text-anchor="middle" dominant-baseline="middle">Database</text>
+
+      <rect class="node" x="760" y="840" width="300" height="50" rx="6"/>
+      <text x="910" y="865" text-anchor="middle" dominant-baseline="middle">ViewPage JSON</text>
+
+      <rect class="node" x="760" y="920" width="300" height="50" rx="6"/>
+      <text x="910" y="945" text-anchor="middle" dominant-baseline="middle">Bind results grid</text>
+
+      <rect class="term" x="60" y="980" width="260" height="50" rx="6"/>
+      <text x="190" y="1005" text-anchor="middle" dominant-baseline="middle">Render → Localizer.Replace</text>
+
+      <!-- Edges -->
+      <path class="edge" d="M550,90 L550,120" />
+      <path class="edge" d="M550,170 L250,200" />
+      <path class="edge" d="M550,170 L700,200" />
+      <path class="edge" d="M550,170 L550,280" />
+      <path class="edge" d="M550,330 L550,360" />
+      <path class="edge" d="M550,410 L550,440" />
+      <path class="edge" d="M550,490 L550,520" />
+      <path class="edge" d="M550,570 L550,600" />
+      <path class="edge" d="M550,650 L550,680" />
+      <path class="edge" d="M550,730 L550,760" />
+      <path class="edge" d="M400,785 L360,785 L360,865 L400,865" />
+      <path class="edge" d="M250,890 L250,920" />
+      <path class="edge" d="M400,865 L760,865" />
+      <path class="edge" d="M910,890 L910,920" />
+      <path class="edge" d="M760,945 L320,945 L320,1005 L320,1005" />
+    </svg>
+
+    <div class="flow-links" style="margin-top:12px">
+      <strong>Related docs:</strong>
+      <ul style="margin:6px 0 0 18px">
+        <li><a href="../docs-html/files/Main.master.html">Main.master</a></li>
+        <li><a href="../docs-html/files/App_Code_Services_DataControllerService.vb.html">DataControllerService</a></li>
+        <li><a href="../docs-html/folders/Services.html">Services folder</a></li>
+      </ul>
+    </div>
+
+    <h3 style="margin-top:16px">Function Links</h3>
+    <table style="border-collapse:collapse; width:100%">
+      <thead>
+        <tr>
+          <th style="text-align:left;border-bottom:1px solid #e5e7eb;padding:6px 8px">Node</th>
+          <th style="text-align:left;border-bottom:1px solid #e5e7eb;padding:6px 8px">File</th>
+          <th style="text-align:left;border-bottom:1px solid #e5e7eb;padding:6px 8px">Function</th>
+          <th style="text-align:left;border-bottom:1px solid #e5e7eb;padding:6px 8px">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:6px 8px">A</td>
+          <td style="padding:6px 8px">Main.master</td>
+          <td style="padding:6px 8px">Page_Load</td>
+          <td style="padding:6px 8px"><a href="../docs-html/files/Main.master.html#function-Page_Load">../docs-html/files/Main.master.html#function-Page_Load</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px">B</td>
+          <td style="padding:6px 8px">App_Code/Services/DataControllerService.vb</td>
+          <td style="padding:6px 8px">GetPage</td>
+          <td style="padding:6px 8px"><a href="../docs-html/files/App_Code_Services_DataControllerService.vb.html#function-GetPage">../docs-html/files/App_Code_Services_DataControllerService.vb.html#function-GetPage</a></td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px">C</td>
+          <td style="padding:6px 8px">App_Code/Services/DataControllerService.vb</td>
+          <td style="padding:6px 8px">GetCompletionList</td>
+          <td style="padding:6px 8px"><a href="../docs-html/files/App_Code_Services_DataControllerService.vb.html#function-GetCompletionList">../docs-html/files/App_Code_Services_DataControllerService.vb.html#function-GetCompletionList</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

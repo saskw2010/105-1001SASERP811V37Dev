@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="accinstallment1001" conflictDetection="overwriteChanges" label="Accinstallment1001" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"accinstallment1001"."autoid" "autoid"
+	,"accinstallment1001"."ModifiedBy" "ModifiedBy"
+	,"accinstallment1001"."Modifiedon" "Modifiedon"
+	,"accinstallment1001"."acdcode" "acdcode"
+	,"acd"."AcademicYear" "acdAcademicYear"
+	,"acdGlFinperiod"."Fin_period_info" "acdGlFinperiodFin_period_info"
+	,"acdGlFinperiodaccountnumber"."Acc_Nm" "acdGlFinperiodaccountnumberAcc_Nm"
+	,"accinstallment1001"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"Thebranchsgm"."sgm_Nm" "Thebranchsgmsgm_Nm"
+	,"ThebranchsgmOpco"."OpcoName" "ThebranchsgmOpcoOpcoName"
+	,"ThebranchGender"."Gender" "ThebranchGenderGender"
+	,"Thebranchstage"."ShortDesc1" "ThebranchstageShortDesc1"
+	,"Thebranchschtyp"."schtypDesc" "ThebranchschtypschtypDesc"
+	,"accinstallment1001"."TRDT" "TRDT"
+	,"accinstallment1001"."FRDT" "FRDT"
+from "dbo"."accinstallment1001" "accinstallment1001"
+	left join "dbo"."schAcademicyear" "acd" on "accinstallment1001"."acdcode" = "acd"."Code"
+	left join "dbo"."GlFinanceperiod" "acdGlFinperiod" on "acd"."GlFinperiodID" = "acdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."GLmstrfl" "acdGlFinperiodaccountnumber" on "acdGlFinperiod"."accountnumber" = "acdGlFinperiodaccountnumber"."Acc_No"
+	left join "dbo"."schBranch" "Thebranch" on "accinstallment1001"."branch" = "Thebranch"."branch"
+	left join "dbo"."glmulcmp" "Thebranchsgm" on "Thebranch"."sgm" = "Thebranchsgm"."sgmid"
+	left join "dbo"."OpCo" "ThebranchsgmOpco" on "Thebranchsgm"."OpcoID" = "ThebranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "ThebranchGender" on "Thebranch"."Genderid" = "ThebranchGender"."Genderid"
+	left join "dbo"."schStage" "Thebranchstage" on "Thebranch"."stagecode" = "Thebranchstage"."Code"
+	left join "dbo"."schtyp" "Thebranchschtyp" on "Thebranch"."schtypid" = "Thebranchschtyp"."schtypid"
+]]></text>
+    </command>
+    <command id="autoidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="autoid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="autoid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Autoid" readOnly="true" />
+    <field name="ModifiedBy" type="String" allowNulls="false" label="Modified By" length="50" showInSummary="true" />
+    <field name="Modifiedon" type="DateTime" default="(getdate())" label="Modifiedon" showInSummary="true" />
+    <field name="acdcode" type="Int64" label="Acdcode" showInSummary="true">
+      <items style="DropDownList" dataController="schAcademicyear" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="acdAcademicYear" type="String" readOnly="true" label="acd Academic Year" length="150" />
+    <field name="acdGlFinperiodFin_period_info" type="String" readOnly="true" label="acd Gl Finperiod Fin period info" length="150" />
+    <field name="acdGlFinperiodaccountnumberAcc_Nm" type="String" readOnly="true" label="acd Gl Finperiodaccountnumber Acc Nm" length="255" />
+    <field name="branch" type="Int64" label="Branch" showInSummary="true">
+      <items style="DropDownList" dataController="schBranch" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ThebranchDesc1" type="String" readOnly="true" label="Thebranch Desc1" length="50" />
+    <field name="Thebranchsgmsgm_Nm" type="String" readOnly="true" label="Thebranchsgmsgm Nm" length="255" />
+    <field name="ThebranchsgmOpcoOpcoName" type="String" readOnly="true" label="Thebranchsgm Opco Name" length="50" />
+    <field name="ThebranchGenderGender" type="String" readOnly="true" label="Thebranch Gender" length="100" />
+    <field name="ThebranchstageShortDesc1" type="String" readOnly="true" label="Thebranchstage Short Desc1" length="50" />
+    <field name="ThebranchschtypschtypDesc" type="String" readOnly="true" label="Thebranchschtypschtyp Desc" length="150" />
+    <field name="TRDT" type="DateTime" label="Trdt" showInSummary="true" />
+    <field name="FRDT" type="DateTime" label="Frdt" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Accinstallment1001">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="Modifiedon" columns="10" />
+        <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear"  />
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1"  />
+        <dataField fieldName="FRDT" columns="10" />
+        <dataField fieldName="TRDT" columns="10" />
+        <dataField fieldName="autoid" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Accinstallment1001">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Accinstallment1001" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="Modifiedon" columns="10" />
+            <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" hyperlinkFormatString="~/Pages/schAcademicyear.aspx?Code={acdcode}&amp;_controller=schAcademicyear&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+              <dataField fieldName="FRDT" columns="10" />
+	<dataField fieldName="TRDT" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="acdGlFinperiodFin_period_info" />
+            <dataField fieldName="acdGlFinperiodaccountnumberAcc_Nm" />
+            <dataField fieldName="Thebranchsgmsgm_Nm" />
+            <dataField fieldName="ThebranchsgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="ThebranchGenderGender" />
+            <dataField fieldName="ThebranchstageShortDesc1" columns="50" />
+            <dataField fieldName="ThebranchschtypschtypDesc" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Accinstallment1001">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Accinstallment1001" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="Modifiedon" columns="10" />
+            <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />
+            
+            <dataField fieldName="FRDT" columns="10" />
+<dataField fieldName="TRDT" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+   
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Insert" type="Sql" phase="Before">
+  <![CDATA[delete from accinstallment1001 where ModifiedBy = @BusinessRules_UserName
+delete from Schstudentsearch1003 where ModifiedBy = @BusinessRules_UserName
+set @Result_RefreshChildren=1
+]]></rule>
+    <rule id="r102" commandName="Insert|Update" type="Sql" phase="After">
+      <![CDATA[exec insertbalancestudent @branch,@acdcode,@BusinessRules_UserName,@TRDT,@FRDT
+    set @Result_RefreshChildren=1
+    ]]></rule>
+    <rule id="r103" commandName="Delete" type="Sql" phase="After">
+  <![CDATA[delete from accinstallment1001 where ModifiedBy = @BusinessRules_UserName
+delete from Schstudentsearch1003 where ModifiedBy = @BusinessRules_UserName
+set @Result_RefreshChildren=1
+]]></rule>
+  </businessRules>
+</dataController>

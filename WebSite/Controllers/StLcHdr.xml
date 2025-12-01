@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="StLcHdr" conflictDetection="overwriteChanges" label="St Lc Hdr" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text" tableName="StLcHdr" custom="true">
+      <text><![CDATA[select
+	"StLcHdr"."Doc_No" "Doc_No"
+	,"StLcHdr"."brn_no" "brn_no"
+    ,"StLcHdr"."Doc_No" "Tr_No"
+	,"brn_"."Brn_Nm" "brn_Brn_Nm"
+	,"brn_Branch"."Desc1" "brn_BranchDesc1"
+	,"brn_Branchsgm"."sgm_Nm" "brn_Branchsgmsgm_Nm"
+	,"brn_BranchGender"."Gender" "brn_BranchGenderGender"
+	,"brn_Branchstage"."ShortDesc1" "brn_BranchstageShortDesc1"
+	,"brn_Branchschtyp"."schtypDesc" "brn_BranchschtypschtypDesc"
+	,"StLcHdr"."Cstm_Add" "Cstm_Add"
+	,"StLcHdr"."Doc_Ty" "Doc_Ty"
+	,"StLcHdr"."Pym_No" "Pym_No"
+	,"Pym_"."PaymentTypeName" "Pym_PaymentTypeName"
+	,"StLcHdr"."Curncy_No" "Curncy_No"
+	,"Curncy_"."Curncy_Nm" "Curncy_Curncy_Nm"
+	,"StLcHdr"."Sup_No" "Sup_No"
+	,"Sup_"."Sup_Nm" "Sup_Sup_Nm"
+	,"Sup_Acc_"."Acc_Nm" "Sup_Acc_Acc_Nm"
+	,"Sup_Acc_Clsacc_"."Acc_Nm" "Sup_Acc_Clsacc_Acc_Nm"
+	,"Sup_Acc_Acc_Bnd"."Acc_Nm" "Sup_Acc_Acc_BndAcc_Nm"
+	,"Sup_sgm"."sgm_Nm" "Sup_sgmsgm_Nm"
+	,"Sup_sgmOpco"."OpcoName" "Sup_sgmOpcoOpcoName"
+	,"Sup_Cntry_"."Cntry_Nm" "Sup_Cntry_Cntry_Nm"
+	,"Sup_Curncy_"."Curncy_Nm" "Sup_Curncy_Curncy_Nm"
+	,"StLcHdr"."Post" "Post"
+	,"StLcHdr"."Pur_Wys" "Pur_Wys"
+	,"StLcHdr"."Doc_Dt" "Doc_Dt"
+	,"StLcHdr"."Tot_Pur" "Tot_Pur"
+	,"StLcHdr"."Tot_Cost" "Tot_Cost"
+	,"StLcHdr"."Tot_Othr" "Tot_Othr"
+	,"StLcHdr"."Tot_Disc" "Tot_Disc"
+	,"StLcHdr"."User_Id" "User_Id"
+	,"StLcHdr"."Tot_Exp" "Tot_Exp"
+	,"StLcHdr"."Notes" "Notes"
+	,"StLcHdr"."Shipent_Exp" "Shipent_Exp"
+	,"StLcHdr"."Customs_Exp" "Customs_Exp"
+	,"StLcHdr"."Bank_Exp" "Bank_Exp"
+	,"StLcHdr"."Damgs_Exp" "Damgs_Exp"
+	,"StLcHdr"."Interest_Exp" "Interest_Exp"
+	,"StLcHdr"."Othr_Exp" "Othr_Exp"
+	,"StLcHdr"."Net" "Net"
+	,"StLcHdr"."Rate_Exch" "Rate_Exch"
+	,"StLcHdr"."Net_Kd" "Net_Kd"
+	,"StLcHdr"."refno" "refno"
+	,"StLcHdr"."sgm" "sgm"
+	,"StLcHdr"."typcmsup" "typcmsup"
+	,"StLcHdr"."ModifiedBy" "ModifiedBy"
+	,"StLcHdr"."ModifiedOn" "ModifiedOn"
+	,"StLcHdr"."User_Id1" "User_Id1"
+	,"StLcHdr"."CreatedBy" "CreatedBy"
+	,"StLcHdr"."CreatedOn" "CreatedOn"
+	,"StLcHdr"."User_Id2" "User_Id2"
+	,"StLcHdr"."tot_for" "tot_for"
+from "dbo"."StLcHdr" "StLcHdr"
+	left join "dbo"."Branchcnst" "brn_" on "StLcHdr"."brn_no" = "brn_"."Brn_No"
+	left join "dbo"."schBranch" "brn_Branch" on "brn_"."Branch" = "brn_Branch"."branch"
+	left join "dbo"."glmulcmp" "brn_Branchsgm" on "brn_Branch"."sgm" = "brn_Branchsgm"."sgmid"
+	left join "dbo"."PyGender" "brn_BranchGender" on "brn_Branch"."Genderid" = "brn_BranchGender"."Genderid"
+	left join "dbo"."schStage" "brn_Branchstage" on "brn_Branch"."stagecode" = "brn_Branchstage"."Code"
+	left join "dbo"."schtyp" "brn_Branchschtyp" on "brn_Branch"."schtypid" = "brn_Branchschtyp"."schtypid"
+	left join "dbo"."PaymentTypes" "Pym_" on "StLcHdr"."Pym_No" = "Pym_"."PaymentTypeID"
+	left join "dbo"."Stcurncy" "Curncy_" on "StLcHdr"."Curncy_No" = "Curncy_"."Curncy_No"
+	left join "dbo"."Stsuplir" "Sup_" on "StLcHdr"."Sup_No" = "Sup_"."Sup_No"
+	left join "dbo"."GLmstrfl" "Sup_Acc_" on "Sup_"."Acc_No" = "Sup_Acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "Sup_Acc_Clsacc_" on "Sup_Acc_"."Clsacc_No" = "Sup_Acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Sup_Acc_Acc_Bnd" on "Sup_Acc_"."Acc_Bnd" = "Sup_Acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."glmulcmp" "Sup_sgm" on "Sup_"."sgm" = "Sup_sgm"."sgmid"
+	left join "dbo"."OpCo" "Sup_sgmOpco" on "Sup_sgm"."OpcoID" = "Sup_sgmOpco"."OpcoIDidentity"
+	left join "dbo"."PYCntry" "Sup_Cntry_" on "Sup_"."Cntry_No" = "Sup_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "Sup_Curncy_" on "Sup_"."Curncy_No" = "Sup_Curncy_"."Curncy_No"
+]]></text>
+    </command>
+    <command id="Doc_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Doc_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Doc_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Doc No" readOnly="true" />
+    <field name="brn_no" type="Int64" allowNulls="false" label="Brn No" showInSummary="true">
+      <items style="Lookup" dataController="Branchcnst" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="brn_Brn_Nm" type="String" readOnly="true" label="Store" length="255" />
+    <field name="brn_BranchDesc1" type="String" readOnly="true" label="brn Branch Desc1" length="50" />
+    <field name="brn_Branchsgmsgm_Nm" type="String" readOnly="true" label="brn Branchsgmsgm Nm" length="255" />
+    <field name="brn_BranchGenderGender" type="String" readOnly="true" label="brn Branch Gender" length="100" />
+    <field name="brn_BranchstageShortDesc1" type="String" readOnly="true" label="brn Branchstage Short Desc1" length="50" />
+    <field name="brn_BranchschtypschtypDesc" type="String" readOnly="true" label="brn Branchschtypschtyp Desc" length="150" />
+    <field name="Cstm_Add" type="Int64" label="Cstm Add" showInSummary="true" />
+    <field name="Doc_Ty" type="Int64" default="((12))" label="Doc Ty" showInSummary="true" />
+    <field name="Pym_No" type="Int64" label="Pym No" showInSummary="true">
+      <items style="Lookup" dataController="PaymentTypes" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Pym_PaymentTypeName" type="String" readOnly="true" label="PaymentType" length="75" />
+    <field name="Curncy_No" type="Int64" label="Curncy No" showInSummary="true" default="1" allowNulls="false">
+	<items style="DropDownList" dataController="Stcurncy" dataView="grid1" dataTextField="Curncy_Nm" dataValueField="Curncy_No" copy="Rate_Exch=Curncy_Rate&#xD;&#xA;" />
+    </field>
+ 
+    <field name="Curncy_Curncy_Nm" type="String" readOnly="true" label="Curncy Nm" length="200" />
+    <field name="Sup_No" type="Int64" label="Sup No" allowNulls="false">
+      <items style="Lookup" dataController="Stsuplir" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Sup_Sup_Nm" type="String" readOnly="true" label="Sup Nm" length="255" />
+    <field name="Sup_Acc_Acc_Nm" type="String" readOnly="true" label="Sup Acc Nm" length="255" />
+    <field name="Sup_Acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Sup Acc Clsacc Acc Nm" length="250" />
+    <field name="Sup_Acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Sup Acc Bnd Acc Nm" length="50" />
+    <field name="Sup_sgmsgm_Nm" type="String" readOnly="true" label="Sup sgmsgm Nm" length="255" />
+    <field name="Sup_sgmOpcoOpcoName" type="String" readOnly="true" label="Sup sgm Opco Name" length="50" />
+    <field name="Sup_Cntry_Cntry_Nm" type="String" readOnly="true" label="Sup Cntry Nm" length="255" />
+    <field name="Sup_Curncy_Curncy_Nm" type="String" readOnly="true" label="Sup Curncy Nm" length="200" />
+    <field name="Post" type="Int64" label="Post" />
+    <field name="Pur_Wys" type="String" label="Pur Wys" length="50" />
+    <field name="Doc_Dt" type="DateTime" label="Doc Dt" allowNulls="false"/>
+    <field name="Tot_Pur" type="Decimal" label="Tot Pur" />
+    <field name="Tot_Cost" type="Decimal" label="Tot Cost" />
+    <field name="Tot_Othr" type="Decimal" label="Tot Othr" />
+    <field name="Tot_Disc" type="Decimal" label="Tot Disc" />
+    <field name="User_Id" type="Int64" label="User#" />
+    <field name="Tot_Exp" type="Decimal" label="Tot Exp" />
+    <field name="Notes" type="String" label="Notes" length="50" />
+    <field name="Shipent_Exp" type="Decimal" label="Shipent Exp" />
+    <field name="Customs_Exp" type="Decimal" label="Customs Exp" />
+    <field name="Bank_Exp" type="Decimal" label="0/0 MPerc_Cost" />
+    <field name="Damgs_Exp" type="Decimal" label="Damgs Exp" />
+    <field name="Interest_Exp" type="Decimal" label="Interest Exp" />
+    <field name="Othr_Exp" type="Decimal" label="Othr Exp" />
+    <field name="Net" type="Decimal" label="Net" />
+    <field name="Rate_Exch" type="Decimal" label="Rate Exch"  default="1" allowNulls="false"/>
+    <field name="Net_Kd" type="Decimal" label="Net Kd" />
+    <field name="refno" type="String" label="Refno" length="50" />
+    <field name="sgm" type="Int64" default="((1))" label="Sgm" />
+    <field name="typcmsup" type="Int64" default="((2))" label="Typcmsup" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="User_Id1" type="Int64" label="User Id1" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="User_Id2" type="Int64" label="User Id2" />
+    <field name="Tr_No" type="Int64" readOnly="true" label="Tr No" htmlEncode="false" >
+      <items letters="false" />
+    </field>
+	<field name="tot_for" type="Decimal" label="Total Foreign Price" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="St Lc Hdr">
+      
+      <dataFields>
+	        <dataField fieldName="Doc_No" />
+            <dataField fieldName="brn_no" aliasFieldName="brn_Brn_Nm" hyperlinkFormatString="~/Pages/Branchcnst.aspx?Brn_No={brn_no}&amp;_controller=Branchcnst&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Cstm_Add" columns="15" hidden="true"/>
+            <dataField fieldName="Doc_Ty" columns="15" hidden="true"/>
+            <dataField fieldName="Pym_No" aliasFieldName="Pym_PaymentTypeName" hyperlinkFormatString="~/Pages/PaymentTypes.aspx?PaymentTypeID={Pym_No}&amp;_controller=PaymentTypes&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Curncy_No" aliasFieldName="Curncy_Curncy_Nm" hyperlinkFormatString="~/Pages/Stcurncy.aspx?Curncy_No={Curncy_No}&amp;_controller=Stcurncy&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Sup_No" aliasFieldName="Sup_Sup_Nm" hyperlinkFormatString="~/Pages/Stsuplir.aspx?Sup_No={Sup_No}&amp;_controller=Stsuplir&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Pur_Wys" columns="50"  hidden="true"/>
+            <dataField fieldName="Doc_Dt" columns="10" />
+			<dataField fieldName="Notes" columns="50"  hidden="true"/>
+			<dataField fieldName="Rate_Exch" dataFormatString="n7" columns="15" aggregate="Average" />
+			<dataField fieldName="tot_for" dataFormatString="n3" columns="15"  aggregate="Sum" />			 
+			<dataField fieldName="Tot_Pur" dataFormatString="n3" columns="15" aggregate="Sum" />
+            
+			
+            <dataField fieldName="Tot_Othr" dataFormatString="n3" columns="15"   hidden="true"/>
+            <dataField fieldName="Tot_Disc" dataFormatString="n3" columns="15"   hidden="true"/>
+            <dataField fieldName="User_Id" columns="15" hidden="true"/>
+            <dataField fieldName="Tot_Exp" dataFormatString="n3" columns="15" aggregate="Sum" />
+			<dataField fieldName="Tot_Cost" dataFormatString="n3" columns="15"  aggregate="Sum" />
+            <dataField fieldName="Shipent_Exp" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="Customs_Exp" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="Bank_Exp" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="Damgs_Exp" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="Interest_Exp" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="Othr_Exp" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="Net" dataFormatString="n3" columns="15"  hidden="true"  />
+             <dataField fieldName="Post" columns="15"   hidden="true"/>
+            <dataField fieldName="Net_Kd" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="refno" columns="50" />
+            <dataField fieldName="sgm" columns="15"  hidden="true"/>
+            <dataField fieldName="typcmsup" columns="15"  hidden="true"/>
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10"  hidden="true"/>
+            <dataField fieldName="User_Id1" columns="15"   hidden="true"/>
+            <dataField fieldName="CreatedBy" columns="50"  hidden="true"/>
+            <dataField fieldName="CreatedOn" columns="10"  hidden="true"/>
+            <dataField fieldName="User_Id2" columns="15"  hidden="true"/> 
+  <dataField fieldName="Tr_No" columns="15"  hidden="true"/> 
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review St Lc Hdr">
+     
+      <categories>
+        <category id="c1" headerText="St Lc Hdr" flow="NewColumn"  newColumn="true">
+          
+          <dataFields>
+		  
+		  <dataField fieldName="Doc_No" />
+            <dataField fieldName="brn_no" aliasFieldName="brn_Brn_Nm" hyperlinkFormatString="~/Pages/Branchcnst.aspx?Brn_No={brn_no}&amp;_controller=Branchcnst&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Cstm_Add" columns="15" hidden="true"/>
+            <dataField fieldName="Doc_Ty" columns="15" hidden="true"/>
+            <dataField fieldName="Pym_No" aliasFieldName="Pym_PaymentTypeName" hyperlinkFormatString="~/Pages/PaymentTypes.aspx?PaymentTypeID={Pym_No}&amp;_controller=PaymentTypes&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Curncy_No" aliasFieldName="Curncy_Curncy_Nm" hyperlinkFormatString="~/Pages/Stcurncy.aspx?Curncy_No={Curncy_No}&amp;_controller=Stcurncy&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Sup_No" aliasFieldName="Sup_Sup_Nm" hyperlinkFormatString="~/Pages/Stsuplir.aspx?Sup_No={Sup_No}&amp;_controller=Stsuplir&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          
+            <dataField fieldName="Pur_Wys" columns="50"  hidden="true"/>
+            <dataField fieldName="Doc_Dt" columns="10" />
+			 <dataField fieldName="Notes" columns="50" />
+			  <dataField fieldName="Rate_Exch" dataFormatString="n7" columns="15" />
+			</dataFields>
+        </category>
+      
+			<category id="c2" headerText="Reference Information" flow="NewColumn"  newColumn="true">
+
+          <dataFields>
+            <dataField fieldName="Tot_Pur" dataFormatString="n3" columns="15" />
+            <dataField fieldName="Tot_Cost" dataFormatString="n3" columns="15"  />
+            <dataField fieldName="Tot_Othr" dataFormatString="n3" columns="15"  />
+            <dataField fieldName="Tot_Disc" dataFormatString="n3" columns="15"  />
+            <dataField fieldName="User_Id" columns="15" hidden="true"/>
+            <dataField fieldName="Tot_Exp" dataFormatString="n3" columns="15" />
+            <dataField fieldName="Shipent_Exp" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="Customs_Exp" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="Bank_Exp" dataFormatString="n3" columns="15" />
+            <dataField fieldName="Damgs_Exp" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="Interest_Exp" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="Othr_Exp" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="Net" dataFormatString="n3" columns="15"  />
+             <dataField fieldName="Post" columns="15"   hidden="true"/>
+            <dataField fieldName="Net_Kd" dataFormatString="n3" columns="15" />
+            <dataField fieldName="refno" columns="50" />
+            <dataField fieldName="sgm" columns="15"  hidden="true"/>
+            <dataField fieldName="typcmsup" columns="15"  hidden="true"/>
+            <dataField fieldName="ModifiedBy" columns="50"  hidden="true"/>
+            <dataField fieldName="ModifiedOn" columns="10" hidden="true"/>
+            <dataField fieldName="User_Id1" columns="15"   hidden="true"/>
+            <dataField fieldName="CreatedBy" columns="50"  hidden="true"/>
+            <dataField fieldName="CreatedOn" columns="10"  hidden="true"/>
+            <dataField fieldName="User_Id2" columns="15"  hidden="true"/>
+          </dataFields>
+        </category>
+	
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New St Lc Hdr">
+     
+      <categories>
+        <category id="c1" headerText="St Lc Hdr" flow="NewColumn"  newColumn="true">
+          
+          <dataFields>
+            <dataField fieldName="brn_no" aliasFieldName="brn_Brn_Nm" hyperlinkFormatString="~/Pages/Branchcnst.aspx?Brn_No={brn_no}&amp;_controller=Branchcnst&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Cstm_Add" columns="15" hidden="true"/>
+            <dataField fieldName="Doc_Ty" columns="15" hidden="true"/>
+            <dataField fieldName="Pym_No" aliasFieldName="Pym_PaymentTypeName" hyperlinkFormatString="~/Pages/PaymentTypes.aspx?PaymentTypeID={Pym_No}&amp;_controller=PaymentTypes&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Curncy_No" aliasFieldName="Curncy_Curncy_Nm" hyperlinkFormatString="~/Pages/Stcurncy.aspx?Curncy_No={Curncy_No}&amp;_controller=Stcurncy&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Sup_No" aliasFieldName="Sup_Sup_Nm" hyperlinkFormatString="~/Pages/Stsuplir.aspx?Sup_No={Sup_No}&amp;_controller=Stsuplir&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Post" columns="15"  />
+            <dataField fieldName="Pur_Wys" columns="50"  hidden="true"/>
+            <dataField fieldName="Doc_Dt" columns="10" />
+			 <dataField fieldName="Notes" columns="50" />
+			  <dataField fieldName="Rate_Exch" dataFormatString="n7" columns="15" />
+			  </dataFields>
+        </category>
+
+			<category id="c2" headerText="Reference Information" flow="NewColumn"  newColumn="true">
+
+          <dataFields>
+            <dataField fieldName="Tot_Pur" dataFormatString="n3" columns="15" hidden="true"/>
+            <dataField fieldName="Tot_Cost" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="Tot_Othr" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="Tot_Disc" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="User_Id" columns="15" hidden="true"/>
+            <dataField fieldName="Tot_Exp" dataFormatString="n3" columns="15"  hidden="true"/>
+            <dataField fieldName="Shipent_Exp" dataFormatString="c" columns="15"  hidden="true"/>
+            <dataField fieldName="Customs_Exp" dataFormatString="c" columns="15"  hidden="true"/>
+            <dataField fieldName="Bank_Exp" dataFormatString="c" columns="15"  hidden="true"/>
+            <dataField fieldName="Damgs_Exp" dataFormatString="c" columns="15"  hidden="true"/>
+            <dataField fieldName="Interest_Exp" dataFormatString="c" columns="15"  hidden="true"/>
+            <dataField fieldName="Othr_Exp" dataFormatString="c" columns="15"  hidden="true"/>
+            <dataField fieldName="Net" dataFormatString="c" columns="15"  hidden="true"/>
+           
+            <dataField fieldName="Net_Kd" dataFormatString="c" columns="15" />
+            <dataField fieldName="refno" columns="50" />
+            <dataField fieldName="sgm" columns="15"  hidden="true"/>
+            <dataField fieldName="typcmsup" columns="15"  hidden="true"/>
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="User_Id1" columns="15"   hidden="true"/>
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="User_Id2" columns="15"  hidden="true"/>
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+	  <action id="axx" whenLastCommandName="Edit" commandName="SQL" headerText="ReCalculate Exp." >
+     <data><![CDATA[
+exec [dbo].[ReCalculateExp] @Doc_No,@BusinessRules_UserName,@brn_no
+set @Result_RefreshChildren=1
+     ]]></data>
+      </action>
+ <action id="axx1001" whenLastCommandName="Edit" commandName="SQL" headerText="Re rate ." >
+     <data><![CDATA[
+exec [dbo].[ReCalculateExprate] @Doc_No,@BusinessRules_UserName,@brn_no,@Rate_Exch
+set @Result_RefreshChildren=1
+     ]]></data>
+      </action>
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Edit" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Insert" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm,1]]></rule>
+    <rule id="r105" commandName="Insert" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+    <rule id="r104" commandName="Update" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+    <rule id="r101" commandName="Update" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm
+exec  [dbo].[utility$updateavglc] @Doc_No
+
+set @Result_NavigateUrl = 'webreportviwer.aspx?reportquery=' + @Arguments_Controller    + '&idfilter=' + cast(@Doc_No as nvarchar) +  '&sosoname=' + cast(@sgm as nvarchar)]]></rule>
+    <rule id="r103" commandName="Delete" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+    <rule id="r102" commandName="Delete" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+    <rule id="r107" commandName="Calculate" type="Sql" phase="Execute"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Execute'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+  </businessRules>
+</dataController>
+
+
+
+
+

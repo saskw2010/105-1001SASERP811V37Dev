@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Catalog_Entry_Definitions" conflictDetection="overwriteChanges" label="Catalog Entry Definitions" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Catalog_Entry_Definitions"."catalog_level_number" "catalog_level_number"
+	,"Thecatalog_level_number"."catalog_level_name" "Thecatalog_level_numbercatalog_level_name"
+	,"Thecatalog_level_numbercatalog_"."catalog_name" "Thecatalog_level_numbercatalog_catalog_name"
+	,"Catalog_Entry_Definitions"."attribute_id" "attribute_id"
+	,"attribute_"."attribute_name" "attribute_attribute_name"
+from "dbo"."Catalog_Entry_Definitions" "Catalog_Entry_Definitions"
+	left join "dbo"."Catalog_Structure" "Thecatalog_level_number" on "Catalog_Entry_Definitions"."catalog_level_number" = "Thecatalog_level_number"."catalog_level_number"
+	left join "dbo"."Catalogs" "Thecatalog_level_numbercatalog_" on "Thecatalog_level_number"."catalog_id" = "Thecatalog_level_numbercatalog_"."catalog_id"
+	left join "dbo"."Attribute_Definitions" "attribute_" on "Catalog_Entry_Definitions"."attribute_id" = "attribute_"."attribute_id"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="catalog_level_number" type="Int32" allowNulls="false" isPrimaryKey="true" label="Catalog Level Number" showInSummary="true">
+      <items style="Lookup" dataController="Catalog_Structure" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Thecatalog_level_numbercatalog_level_name" type="String" readOnly="true" label="Thecatalog level numbercatalog level name" length="50" />
+    <field name="Thecatalog_level_numbercatalog_catalog_name" type="String" readOnly="true" label="Thecatalog level numbercatalog catalog name" length="50" />
+    <field name="attribute_id" type="Int32" allowNulls="false" isPrimaryKey="true" label="Attribute#" showInSummary="true">
+      <items style="Lookup" dataController="Attribute_Definitions" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="attribute_attribute_name" type="String" readOnly="true" label="Attribute Name" length="30" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Catalog Entry Definitions">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="catalog_level_number" aliasFieldName="Thecatalog_level_numbercatalog_level_name" />
+        <dataField fieldName="attribute_id" aliasFieldName="attribute_attribute_name" hyperlinkFormatString="~/Pages/Attribute_Definitions.aspx?attribute_id={attribute_id}&amp;_controller=Attribute_Definitions&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Thecatalog_level_numbercatalog_catalog_name" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Catalog Entry Definitions">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Catalog Entry Definitions" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="catalog_level_number" aliasFieldName="Thecatalog_level_numbercatalog_level_name" hyperlinkFormatString="~/Pages/Catalog_Structure.aspx?catalog_level_number={catalog_level_number}&amp;_controller=Catalog_Structure&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="attribute_id" aliasFieldName="attribute_attribute_name" hyperlinkFormatString="~/Pages/Attribute_Definitions.aspx?attribute_id={attribute_id}&amp;_controller=Attribute_Definitions&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Thecatalog_level_numbercatalog_catalog_name" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Catalog Entry Definitions">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Catalog Entry Definitions" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="catalog_level_number" aliasFieldName="Thecatalog_level_numbercatalog_level_name" />
+            <dataField fieldName="attribute_id" aliasFieldName="attribute_attribute_name" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

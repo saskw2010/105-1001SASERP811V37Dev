@@ -1,0 +1,2399 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <mosConnection1 Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>mosConnection1</Alias>
+        <ConnectionStringEncrypted>9FT7SEQJQ7x7TJzsShTgP9FYZaFFGNNJ4kfopXlxZXvDVFPJyAqpRUVHpYD7hKR/1XiBK1tVkvFAS6ysakmkL/Rw90hGXdPNQ1rNvU5M4y/UfMHD6EwxBWIZ2QhnBLUz3mr3g01MeoFuEw==</ConnectionStringEncrypted>
+        <Name>mosConnection1</Name>
+      </mosConnection1>
+    </Databases>
+    <DataSources isList="true" count="4">
+      <mosDataSource1 Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>mosDataSource1</Alias>
+        <Columns isList="true" count="40">
+          <value>schglpaydlyhdregid,System.Int64</value>
+          <value>sgm,System.Int64</value>
+          <value>sgmsgm_Nm,System.String</value>
+          <value>sgmOpcoOpcoName,System.String</value>
+          <value>branch,System.Int64</value>
+          <value>ThebranchDesc1,System.String</value>
+          <value>Thebranchsgmsgm_Nm,System.String</value>
+          <value>ThebranchsgmOpcoOpcoName,System.String</value>
+          <value>ThebranchGenderGender,System.String</value>
+          <value>ThebranchschtypschtypDesc,System.String</value>
+          <value>Trs_Dt,System.DateTime</value>
+          <value>Balance,System.Decimal</value>
+          <value>ReferanceNo,System.String</value>
+          <value>IDregorg,System.Int64</value>
+          <value>IDregorgNAME_1,System.String</value>
+          <value>Delevername,System.String</value>
+          <value>Delevercivil,System.String</value>
+          <value>DeleverTel,System.String</value>
+          <value>Notes,System.String</value>
+          <value>approved,System.Boolean</value>
+          <value>posted,System.Boolean</value>
+          <value>deleted,System.Boolean</value>
+          <value>havdetails,System.Boolean</value>
+          <value>ModifiedBy,System.String</value>
+          <value>ModifiedOn,System.DateTime</value>
+          <value>CreatedBy,System.String</value>
+          <value>CreatedOn,System.DateTime</value>
+          <value>currencywordsnew,System.String</value>
+          <value>acdcode,System.Int64</value>
+          <value>Cstm_nm,System.String</value>
+          <value>classacc,System.Int64</value>
+          <value>Cstm_no,System.Int64</value>
+          <value>SubledgerDescrption,System.String</value>
+          <value>SubledgeTable,System.String</value>
+          <value>payBalance,System.Decimal</value>
+          <value>payNotes,System.String</value>
+          <value>auditing,System.Boolean</value>
+          <value>auditnotes,System.String</value>
+          <value>printcount,System.Int64</value>
+          <value>AcademicYear,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>mosDataSource1</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>Parameter1,,0,0</value>
+        </Parameters>
+        <SqlCommand>SELECT        schglpaydlyhdreg.schglpaydlyhdregid, schglpaydlyhdreg.sgm, sgm.sgm_Nm AS sgmsgm_Nm, sgmOpco.OpcoName AS sgmOpcoOpcoName, schglpaydlyhdreg.branch, Thebranch.Desc1 AS ThebranchDesc1, 
+                         Thebranchsgm.sgm_Nm AS Thebranchsgmsgm_Nm, ThebranchsgmOpco.OpcoName AS ThebranchsgmOpcoOpcoName, ThebranchGender.Gender AS ThebranchGenderGender, 
+                         Thebranchschtyp.schtypDesc AS ThebranchschtypschtypDesc, schglpaydlyhdreg.Trs_Dt, schglpaydlyhdreg.payBalance, schglpaydlyhdreg.payReferanceNo AS ReferanceNo, 
+                         schglpaydlyhdreg.payIDregorg AS IDregorg, IDregorg.NAME_1 AS IDregorgNAME_1, schglpaydlyhdreg.payDelevername AS Delevername, schglpaydlyhdreg.payDelevercivil AS Delevercivil, 
+                         schglpaydlyhdreg.payDeleverTel AS DeleverTel, schglpaydlyhdreg.payNotes, schglpaydlyhdreg.approved, schglpaydlyhdreg.posted, schglpaydlyhdreg.deleted, schglpaydlyhdreg.havdetails, 
+                         schglpaydlyhdreg.ModifiedBy, schglpaydlyhdreg.ModifiedOn, schglpaydlyhdreg.CreatedBy, schglpaydlyhdreg.CreatedOn, dbo.DI_Tafkeet(schglpaydlyhdreg.payBalance) AS currencywordsnew, 
+                         schglpaydlyhdreg.acdcode, dbo.GLSubledgertyplist.SubledgerDescrption, dbo.GLSubledgertyplist.SubledgeTable, schglpaydlyhdreg.auditing, schglpaydlyhdreg.auditnotes, schglpaydlyhdreg.printcount, AcademicYearto.AcademicYear
+FROM            dbo.REG_ORGANIZATIONS AS IDregorg RIGHT OUTER JOIN
+                         dbo.schglpaydlyhdreg AS schglpaydlyhdreg ON IDregorg.IDIDregorg = schglpaydlyhdreg.payIDregorg LEFT OUTER JOIN
+                         dbo.GLSubledgertyplist ON schglpaydlyhdreg.payDeleverTel = dbo.GLSubledgertyplist.Subledgerid LEFT OUTER JOIN
+                         dbo.schBranch AS Thebranch LEFT OUTER JOIN
+                         dbo.PyGender AS ThebranchGender ON Thebranch.Genderid = ThebranchGender.Genderid LEFT OUTER JOIN
+                         dbo.schtyp AS Thebranchschtyp ON Thebranch.schtypid = Thebranchschtyp.schtypid ON schglpaydlyhdreg.branch = Thebranch.branch LEFT OUTER JOIN
+                         dbo.glmulcmp AS Thebranchsgm ON Thebranch.sgm = Thebranchsgm.sgmid LEFT OUTER JOIN
+                         dbo.OpCo AS ThebranchsgmOpco ON Thebranchsgm.OpcoID = ThebranchsgmOpco.OpcoIDidentity LEFT OUTER JOIN
+                         dbo.OpCo AS sgmOpco RIGHT OUTER JOIN
+                         dbo.glmulcmp AS sgm ON sgmOpco.OpcoIDidentity = sgm.OpcoID ON schglpaydlyhdreg.sgm = sgm.sgmid LEFT OUTER JOIN
+                         dbo.schAcademicyear AS AcademicYearto ON schglpaydlyhdreg.acdcode = AcademicYearto.Code 
+WHERE        (schglpaydlyhdreg.schglpaydlyhdregid =@Parameter1)</SqlCommand>
+      </mosDataSource1>
+      <mosDataSource2 Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>mosDataSource2</Alias>
+        <Columns isList="true" count="45">
+          <value>schglpaydlydetailpaymentid,System.Int64</value>
+          <value>schglpaydlyhdregid,System.Int64</value>
+          <value>schglpaydlyhdregReferanceNo,System.String</value>
+          <value>schglpaydlyhdregsgmsgm_Nm,System.String</value>
+          <value>schglpaydlyhdregsgmOpcoOpcoName,System.String</value>
+          <value>schglpaydlyhdregIDregorgNAME_1,System.String</value>
+          <value>schglpaydlyhdregbranchDesc1,System.String</value>
+          <value>schglpaydlyhdregbranchsgmsgm_Nm,System.String</value>
+          <value>schglpaydlyhdregbranchGenderGender,System.String</value>
+          <value>schglpaydlyhdregbranchschtypschtypDesc,System.String</value>
+          <value>Pymnt_No,System.Int64</value>
+          <value>Pymnt_Pymnt_Nm,System.String</value>
+          <value>Pymnt_pymnt_accAcc_Nm,System.String</value>
+          <value>Pymnt_pymnt_accClsacc_Acc_Nm,System.String</value>
+          <value>Pymnt_pymnt_accAcc_BndAcc_Nm,System.String</value>
+          <value>Pymnt_sgmsgm_Nm,System.String</value>
+          <value>Pymnt_sgmOpcoOpcoName,System.String</value>
+          <value>Acc_no,System.Int64</value>
+          <value>Acc_Acc_Nm,System.String</value>
+          <value>Acc_Clsacc_Acc_Nm,System.String</value>
+          <value>Acc_Acc_BndAcc_Nm,System.String</value>
+          <value>Acc_Acc_Bndaccclassaccountclass,System.String</value>
+          <value>Acc_Acc_BndAcc_BabAcc_Nm,System.String</value>
+          <value>paymentwaynumber,System.String</value>
+          <value>schBnk_No,System.Int64</value>
+          <value>schBnk_schBnk_Nm,System.String</value>
+          <value>checkAccount,System.String</value>
+          <value>checkdate,System.DateTime</value>
+          <value>moneypaidto,System.Decimal</value>
+          <value>paymentnotes,System.String</value>
+          <value>SubledgerDescrption,System.String</value>
+          <value>Cstm_no,System.Int64</value>
+          <value>Cstm_nm,System.String</value>
+          <value>Cstm_nme,System.String</value>
+          <value>classacc,System.Int64</value>
+          <value>typ,System.Int64</value>
+          <value>Acc_Bnd,System.Int64</value>
+          <value>Acc_Mag,System.String</value>
+          <value>Acc_Bab,System.String</value>
+          <value>Acc_Nm,System.String</value>
+          <value>Acc_Nme,System.String</value>
+          <value>Cstm_tel,System.String</value>
+          <value>Cstm_adr,System.String</value>
+          <value>glcostcntr,System.Int64</value>
+          <value>glcostcntr1,System.Int64</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>mosDataSource2</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>Parameter2,,0,0</value>
+        </Parameters>
+        <SqlCommand>SELECT schglpaydlydetailpayment.schglpaydlydetailpaymentid,
+  schglpaydlydetailpayment.schglpaydlyhdregid, schglpaydlyhdreg.payReferanceNo
+  AS schglpaydlyhdregReferanceNo,
+  schglpaydlyhdregsgm.sgm_Nm AS schglpaydlyhdregsgmsgm_Nm,
+  schglpaydlyhdregsgmOpco.OpcoName AS schglpaydlyhdregsgmOpcoOpcoName,
+  schglpaydlyhdregIDregorg.NAME_1 AS schglpaydlyhdregIDregorgNAME_1,
+  schglpaydlyhdregbranch.Desc1 AS schglpaydlyhdregbranchDesc1,
+  schglpaydlyhdregbranchsgm.sgm_Nm AS schglpaydlyhdregbranchsgmsgm_Nm,
+  schglpaydlyhdregbranchGender.Gender AS schglpaydlyhdregbranchGenderGender,
+  schglpaydlyhdregbranchschtyp.schtypDesc AS
+  schglpaydlyhdregbranchschtypschtypDesc, schglpaydlydetailpayment.Pymnt_No,
+  Pymnt_.Pymnt_Nm AS Pymnt_Pymnt_Nm,
+  Pymnt_pymnt_acc.Acc_Nm AS Pymnt_pymnt_accAcc_Nm, Pymnt_pymnt_accClsacc_.Acc_Nm
+  AS Pymnt_pymnt_accClsacc_Acc_Nm, Pymnt_pymnt_accAcc_Bnd.Acc_Nm AS
+  Pymnt_pymnt_accAcc_BndAcc_Nm, Pymnt_sgm.sgm_Nm AS Pymnt_sgmsgm_Nm,
+  Pymnt_sgmOpco.OpcoName AS Pymnt_sgmOpcoOpcoName,
+  schglpaydlydetailpayment.Acc_no, Acc_.Acc_Nm AS Acc_Acc_Nm,
+  Acc_Clsacc_.Acc_Nm AS Acc_Clsacc_Acc_Nm,
+  Acc_Acc_Bnd.Acc_Nm AS Acc_Acc_BndAcc_Nm, Acc_Acc_Bndaccclass.accountclass AS
+  Acc_Acc_Bndaccclassaccountclass,
+  Acc_Acc_BndAcc_Bab.Acc_Nm AS Acc_Acc_BndAcc_BabAcc_Nm,
+  schglpaydlydetailpayment.paymentwaynumber, schglpaydlydetailpayment.schBnk_No,
+  schBnk_.schBnk_Nm AS schBnk_schBnk_Nm, schglpaydlydetailpayment.checkAccount,
+  schglpaydlydetailpayment.checkdate, schglpaydlydetailpayment.moneypaidto,
+  schglpaydlydetailpayment.paymentnotes,
+  dbo.GLSubledgertyplist.SubledgerDescrption, dbo.Qsupcstmr.Cstm_no,
+  dbo.Qsupcstmr.Cstm_nm, dbo.Qsupcstmr.Cstm_nme, dbo.Qsupcstmr.classacc,
+  dbo.Qsupcstmr.typ, dbo.Qsupcstmr.Acc_Bnd, dbo.Qsupcstmr.Acc_Mag,
+  dbo.Qsupcstmr.Acc_Bab, dbo.Qsupcstmr.Acc_Nm, dbo.Qsupcstmr.Acc_Nme,
+  dbo.Qsupcstmr.Cstm_tel, dbo.Qsupcstmr.Cstm_adr,
+  schglpaydlydetailpayment.glcostcntr, schglpaydlydetailpayment.glcostcntr1
+FROM dbo.schglpaydlydetailpayment AS schglpaydlydetailpayment LEFT OUTER JOIN
+  dbo.Qsupcstmr ON schglpaydlydetailpayment.cstyp_no = dbo.Qsupcstmr.typ AND
+    schglpaydlydetailpayment.subaccountno = dbo.Qsupcstmr.Cstm_no
+  LEFT OUTER JOIN
+  dbo.GLSubledgertyplist ON schglpaydlydetailpayment.cstyp_no =
+    dbo.GLSubledgertyplist.Subledgerid LEFT OUTER JOIN
+  dbo.schglpaydlyhdreg AS schglpaydlyhdreg ON
+    schglpaydlydetailpayment.schglpaydlyhdregid =
+    schglpaydlyhdreg.schglpaydlyhdregid LEFT OUTER JOIN
+  dbo.glmulcmp AS schglpaydlyhdregsgm ON schglpaydlyhdreg.sgm =
+    schglpaydlyhdregsgm.sgmid LEFT OUTER JOIN
+  dbo.OpCo AS schglpaydlyhdregsgmOpco ON schglpaydlyhdregsgm.OpcoID =
+    schglpaydlyhdregsgmOpco.OpcoIDidentity LEFT OUTER JOIN
+  dbo.REG_ORGANIZATIONS AS schglpaydlyhdregIDregorg ON schglpaydlyhdreg.payIDregorg
+    = schglpaydlyhdregIDregorg.IDIDregorg LEFT OUTER JOIN
+  dbo.schBranch AS schglpaydlyhdregbranch ON schglpaydlyhdreg.branch =
+    schglpaydlyhdregbranch.branch LEFT OUTER JOIN
+  dbo.glmulcmp AS schglpaydlyhdregbranchsgm ON schglpaydlyhdregbranch.sgm =
+    schglpaydlyhdregbranchsgm.sgmid LEFT OUTER JOIN
+  dbo.PyGender AS schglpaydlyhdregbranchGender ON
+    schglpaydlyhdregbranch.Genderid = schglpaydlyhdregbranchGender.Genderid
+  LEFT OUTER JOIN
+  dbo.schtyp AS schglpaydlyhdregbranchschtyp ON schglpaydlyhdregbranch.schtypid
+    = schglpaydlyhdregbranchschtyp.schtypid LEFT OUTER JOIN
+  dbo.Pymntype AS Pymnt_ ON schglpaydlydetailpayment.Pymnt_No = Pymnt_.Pymnt_No
+  LEFT OUTER JOIN
+  dbo.GLmstrfl AS Pymnt_pymnt_acc ON Pymnt_.pymnt_acc = Pymnt_pymnt_acc.Acc_No
+  LEFT OUTER JOIN
+  dbo.GLmfbab AS Pymnt_pymnt_accClsacc_ ON Pymnt_pymnt_acc.Clsacc_No =
+    Pymnt_pymnt_accClsacc_.Acc_Bab LEFT OUTER JOIN
+  dbo.GLmfband AS Pymnt_pymnt_accAcc_Bnd ON Pymnt_pymnt_acc.Acc_Bnd =
+    Pymnt_pymnt_accAcc_Bnd.Acc_Bnd LEFT OUTER JOIN
+  dbo.glmulcmp AS Pymnt_sgm ON Pymnt_.sgm = Pymnt_sgm.sgmid LEFT OUTER JOIN
+  dbo.OpCo AS Pymnt_sgmOpco ON Pymnt_sgm.OpcoID = Pymnt_sgmOpco.OpcoIDidentity
+  LEFT OUTER JOIN
+  dbo.GLmstrfl AS Acc_ ON schglpaydlydetailpayment.Acc_no = Acc_.Acc_No
+  LEFT OUTER JOIN
+  dbo.GLmfbab AS Acc_Clsacc_ ON Acc_.Clsacc_No = Acc_Clsacc_.Acc_Bab
+  LEFT OUTER JOIN
+  dbo.GLmfband AS Acc_Acc_Bnd ON Acc_.Acc_Bnd = Acc_Acc_Bnd.Acc_Bnd
+  LEFT OUTER JOIN
+  dbo.accountclasslist AS Acc_Acc_Bndaccclass ON Acc_Acc_Bnd.accclass =
+    Acc_Acc_Bndaccclass.accountclassid LEFT OUTER JOIN
+  dbo.GLmfbab AS Acc_Acc_BndAcc_Bab ON Acc_Acc_Bnd.Acc_Bab =
+    Acc_Acc_BndAcc_Bab.Acc_Bab LEFT OUTER JOIN
+  dbo.schGLacnBnk AS schBnk_ ON schglpaydlydetailpayment.schBnk_No =
+    schBnk_.schBnk_No
+WHERE (schglpaydlydetailpayment.schglpaydlyhdregid = @Parameter2)</SqlCommand>
+      </mosDataSource2>
+      <mosDataSource3 Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>mosDataSource3</Alias>
+        <Columns isList="true" count="50">
+          <value>Trs_No,System.Int64</value>
+          <value>schglpaydlyhdregid,System.Int64</value>
+          <value>schglpaydlyhdregReferanceNo,System.String</value>
+          <value>schglpaydlyhdregsgmsgm_Nm,System.String</value>
+          <value>schglpaydlyhdregsgmOpcoOpcoName,System.String</value>
+          <value>schglpaydlyhdregIDregorgNAME_1,System.String</value>
+          <value>schglpaydlyhdregbranchDesc1,System.String</value>
+          <value>schglpaydlyhdregbranchsgmsgm_Nm,System.String</value>
+          <value>schglpaydlyhdregbranchGenderGender,System.String</value>
+          <value>schglpaydlyhdregbranchschtypschtypDesc,System.String</value>
+          <value>branch,System.Int64</value>
+          <value>ThebranchDesc1,System.String</value>
+          <value>Thebranchsgmsgm_Nm,System.String</value>
+          <value>ThebranchsgmOpcoOpcoName,System.String</value>
+          <value>ThebranchGenderGender,System.String</value>
+          <value>ThebranchschtypschtypDesc,System.String</value>
+          <value>acdcode,System.Int64</value>
+          <value>acdFin_period_info,System.String</value>
+          <value>acdaccountnumberAcc_Nm,System.String</value>
+          <value>acdaccountnumberClsacc_Acc_Nm,System.String</value>
+          <value>acdaccountnumberAcc_BndAcc_Nm,System.String</value>
+          <value>Acc_no,System.Int64</value>
+          <value>Acc_Acc_Nm,System.String</value>
+          <value>Acc_Clsacc_Acc_Nm,System.String</value>
+          <value>Acc_Acc_BndAcc_Nm,System.String</value>
+          <value>Acc_Acc_Bndaccclassaccountclass,System.String</value>
+          <value>Acc_Acc_BndAcc_BabAcc_Nm,System.String</value>
+          <value>cstyp_no,System.Int64</value>
+          <value>subaccountno,System.Int64</value>
+          <value>Trs_Dt,System.DateTime</value>
+          <value>schpaymenttypeid,System.Int64</value>
+          <value>schpaymenttypeschpaymenttypenm,System.String</value>
+          <value>schpaymenttypedebitaccountAcc_Nm,System.String</value>
+          <value>schpaymenttypedebitaccountClsacc_Acc_Nm,System.String</value>
+          <value>schpaymenttypedebitaccountAcc_BndAcc_Nm,System.String</value>
+          <value>schpaymenttypecreditaccountAcc_Nm,System.String</value>
+          <value>schpaymenttypecreditaccountClsacc_Acc_Nm,System.String</value>
+          <value>schpaymenttypecreditaccountAcc_BndAcc_Nm,System.String</value>
+          <value>Mony_Paid,System.Decimal</value>
+          <value>Notes,System.String</value>
+          <value>totalbalance,System.Decimal</value>
+          <value>Sumofdebitcal,System.Decimal</value>
+          <value>Sumofdebitcal1,System.Decimal</value>
+          <value>Sumofcerditcal,System.Decimal</value>
+          <value>totalbalance1,System.Decimal</value>
+          <value>FirstName1,System.String</value>
+          <value>schstEmail,System.String</value>
+          <value>glcostcntr,System.Int64</value>
+          <value>glcostcntr1,System.Int64</value>
+          <value>CSMSUP_NM,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>mosDataSource3</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>Parameter3,,0,0</value>
+        </Parameters>
+        <SqlCommand>SELECT schglpaydlydetailreg.Trs_No Trs_No,
+  schglpaydlydetailreg.schglpaydlyhdregid schglpaydlyhdregid,
+  schglpaydlyhdreg.payReferanceNo schglpaydlyhdregReferanceNo,
+  schglpaydlyhdregsgm.sgm_Nm schglpaydlyhdregsgmsgm_Nm,
+  schglpaydlyhdregsgmOpco.OpcoName schglpaydlyhdregsgmOpcoOpcoName,
+  schglpaydlyhdregIDregorg.NAME_1 schglpaydlyhdregIDregorgNAME_1,
+  schglpaydlyhdregbranch.Desc1 schglpaydlyhdregbranchDesc1,
+  schglpaydlyhdregbranchsgm.sgm_Nm schglpaydlyhdregbranchsgmsgm_Nm,
+  schglpaydlyhdregbranchGender.Gender schglpaydlyhdregbranchGenderGender,
+  schglpaydlyhdregbranchschtyp.schtypDesc
+  schglpaydlyhdregbranchschtypschtypDesc, schglpaydlydetailreg.branch branch,
+  Thebranch.Desc1 ThebranchDesc1, Thebranchsgm.sgm_Nm Thebranchsgmsgm_Nm,
+  ThebranchsgmOpco.OpcoName ThebranchsgmOpcoOpcoName,
+  ThebranchGender.Gender ThebranchGenderGender, Thebranchschtyp.schtypDesc
+  ThebranchschtypschtypDesc, schglpaydlydetailreg.acdcode acdcode,
+  acd.Fin_period_info acdFin_period_info,
+  acdaccountnumber.Acc_Nm acdaccountnumberAcc_Nm, acdaccountnumberClsacc_.Acc_Nm
+  acdaccountnumberClsacc_Acc_Nm,
+  acdaccountnumberAcc_Bnd.Acc_Nm acdaccountnumberAcc_BndAcc_Nm,
+  schglpaydlydetailreg.Acc_no Acc_no, Acc_.Acc_Nm Acc_Acc_Nm,
+  Acc_Clsacc_.Acc_Nm Acc_Clsacc_Acc_Nm, Acc_Acc_Bnd.Acc_Nm Acc_Acc_BndAcc_Nm,
+  Acc_Acc_Bndaccclass.accountclass Acc_Acc_Bndaccclassaccountclass,
+  Acc_Acc_BndAcc_Bab.Acc_Nm Acc_Acc_BndAcc_BabAcc_Nm,
+  schglpaydlydetailreg.cstyp_no cstyp_no, schglpaydlydetailreg.subaccountno
+  subaccountno, schglpaydlydetailreg.Trs_Dt Trs_Dt,
+  schglpaydlydetailreg.schpaymenttypeid schpaymenttypeid,
+  schpaymenttype.schpaymenttypenm schpaymenttypeschpaymenttypenm,
+  schpaymenttypedebitaccount.Acc_Nm schpaymenttypedebitaccountAcc_Nm,
+  schpaymenttypedebitaccountClsacc_.Acc_Nm
+  schpaymenttypedebitaccountClsacc_Acc_Nm,
+  schpaymenttypedebitaccountAcc_Bnd.Acc_Nm
+  schpaymenttypedebitaccountAcc_BndAcc_Nm, schpaymenttypecreditaccount.Acc_Nm
+  schpaymenttypecreditaccountAcc_Nm, schpaymenttypecreditaccountClsacc_.Acc_Nm
+  schpaymenttypecreditaccountClsacc_Acc_Nm,
+  schpaymenttypecreditaccountAcc_Bnd.Acc_Nm
+  schpaymenttypecreditaccountAcc_BndAcc_Nm, schglpaydlydetailreg.Mony_Paid
+  Mony_Paid, schglpaydlydetailreg.Notes Notes, schglpaydlydetailreg.glcostcntr,
+  schglpaydlydetailreg.glcostcntr1, schglpaydlydetailreg.CSMSUP_NM
+FROM dbo.schglpaydlydetailreg schglpaydlydetailreg LEFT JOIN
+  dbo.schglpaydlyhdreg schglpaydlyhdreg ON
+    schglpaydlydetailreg.schglpaydlyhdregid =
+    schglpaydlyhdreg.schglpaydlyhdregid LEFT JOIN
+  dbo.glmulcmp schglpaydlyhdregsgm ON schglpaydlyhdreg.sgm =
+    schglpaydlyhdregsgm.sgmid LEFT JOIN
+  dbo.OpCo schglpaydlyhdregsgmOpco ON schglpaydlyhdregsgm.OpcoID =
+    schglpaydlyhdregsgmOpco.OpcoIDidentity LEFT JOIN
+  dbo.REG_ORGANIZATIONS schglpaydlyhdregIDregorg ON schglpaydlyhdreg.payIDregorg
+    = schglpaydlyhdregIDregorg.IDIDregorg LEFT JOIN
+  dbo.schBranch schglpaydlyhdregbranch ON schglpaydlyhdreg.branch =
+    schglpaydlyhdregbranch.branch LEFT JOIN
+  dbo.glmulcmp schglpaydlyhdregbranchsgm ON schglpaydlyhdregbranch.sgm =
+    schglpaydlyhdregbranchsgm.sgmid LEFT JOIN
+  dbo.PyGender schglpaydlyhdregbranchGender ON schglpaydlyhdregbranch.Genderid =
+    schglpaydlyhdregbranchGender.Genderid LEFT JOIN
+  dbo.schtyp schglpaydlyhdregbranchschtyp ON schglpaydlyhdregbranch.schtypid =
+    schglpaydlyhdregbranchschtyp.schtypid LEFT JOIN
+  dbo.schBranch Thebranch ON schglpaydlydetailreg.branch = Thebranch.branch
+  LEFT JOIN
+  dbo.glmulcmp Thebranchsgm ON Thebranch.sgm = Thebranchsgm.sgmid LEFT JOIN
+  dbo.OpCo ThebranchsgmOpco ON Thebranchsgm.OpcoID =
+    ThebranchsgmOpco.OpcoIDidentity LEFT JOIN
+  dbo.PyGender ThebranchGender ON Thebranch.Genderid = ThebranchGender.Genderid
+  LEFT JOIN
+  dbo.schtyp Thebranchschtyp ON Thebranch.schtypid = Thebranchschtyp.schtypid
+  LEFT JOIN
+  dbo.GlFinanceperiod acd ON schglpaydlydetailreg.acdcode = acd.GlFinperiodID
+  LEFT JOIN
+  dbo.GLmstrfl acdaccountnumber ON acd.accountnumber = acdaccountnumber.Acc_No
+  LEFT JOIN
+  dbo.GLmfbab acdaccountnumberClsacc_ ON acdaccountnumber.Clsacc_No =
+    acdaccountnumberClsacc_.Acc_Bab LEFT JOIN
+  dbo.GLmfband acdaccountnumberAcc_Bnd ON acdaccountnumber.Acc_Bnd =
+    acdaccountnumberAcc_Bnd.Acc_Bnd LEFT JOIN
+  dbo.GLmstrfl Acc_ ON schglpaydlydetailreg.Acc_no = Acc_.Acc_No LEFT JOIN
+  dbo.GLmfbab Acc_Clsacc_ ON Acc_.Clsacc_No = Acc_Clsacc_.Acc_Bab LEFT JOIN
+  dbo.GLmfband Acc_Acc_Bnd ON Acc_.Acc_Bnd = Acc_Acc_Bnd.Acc_Bnd LEFT JOIN
+  dbo.accountclasslist Acc_Acc_Bndaccclass ON Acc_Acc_Bnd.accclass =
+    Acc_Acc_Bndaccclass.accountclassid LEFT JOIN
+  dbo.GLmfbab Acc_Acc_BndAcc_Bab ON Acc_Acc_Bnd.Acc_Bab =
+    Acc_Acc_BndAcc_Bab.Acc_Bab LEFT JOIN
+  dbo.schpaymenttype schpaymenttype ON schglpaydlydetailreg.schpaymenttypeid =
+    schpaymenttype.schpaymenttypeid LEFT JOIN
+  dbo.GLmstrfl schpaymenttypedebitaccount ON schpaymenttype.debitaccount =
+    schpaymenttypedebitaccount.Acc_No LEFT JOIN
+  dbo.GLmfbab schpaymenttypedebitaccountClsacc_ ON
+    schpaymenttypedebitaccount.Clsacc_No =
+    schpaymenttypedebitaccountClsacc_.Acc_Bab LEFT JOIN
+  dbo.GLmfband schpaymenttypedebitaccountAcc_Bnd ON
+    schpaymenttypedebitaccount.Acc_Bnd =
+    schpaymenttypedebitaccountAcc_Bnd.Acc_Bnd LEFT JOIN
+  dbo.GLmstrfl schpaymenttypecreditaccount ON schpaymenttype.creditaccount =
+    schpaymenttypecreditaccount.Acc_No LEFT JOIN
+  dbo.GLmfbab schpaymenttypecreditaccountClsacc_ ON
+    schpaymenttypecreditaccount.Clsacc_No =
+    schpaymenttypecreditaccountClsacc_.Acc_Bab LEFT JOIN
+  dbo.GLmfband schpaymenttypecreditaccountAcc_Bnd ON
+    schpaymenttypecreditaccount.Acc_Bnd =
+    schpaymenttypecreditaccountAcc_Bnd.Acc_Bnd
+WHERE schglpaydlydetailreg.schglpaydlyhdregid = @Parameter3</SqlCommand>
+      </mosDataSource3>
+      <schattachglpaylists Ref="6" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>schattachglpaylists</Alias>
+        <Columns isList="true" count="7">
+          <value>schattachglpayid,System.Int64</value>
+          <value>schglpaydlyhdregid,System.Int64</value>
+          <value>schattachglpaytype,System.String</value>
+          <value>schattachglpayrefno,System.String</value>
+          <value>schattachglpayrefdate,System.DateTime</value>
+          <value>schattachglpayrefpagesno,System.String</value>
+          <value>notes,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <IsCloud>False</IsCloud>
+        <Name>schattachglpaylists</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from schattachglpaylists</SqlCommand>
+      </schattachglpaylists>
+    </DataSources>
+    <Relations isList="true" count="3">
+      <Relation1pdp Ref="7" type="DataRelation" isKey="true">
+        <Alias>Relation1pdp</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>schglpaydlyhdregid</value>
+        </ChildColumns>
+        <ChildSource isRef="4" />
+        <Dictionary isRef="1" />
+        <Name>Relation1pdp</Name>
+        <NameInSource>Relation1pdp</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>schglpaydlyhdregid</value>
+        </ParentColumns>
+        <ParentSource isRef="3" />
+      </Relation1pdp>
+      <Relation1sadf Ref="8" type="DataRelation" isKey="true">
+        <Alias>Relation1sadf</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>schglpaydlyhdregid</value>
+        </ChildColumns>
+        <ChildSource isRef="5" />
+        <Dictionary isRef="1" />
+        <Name>Relation1sadf</Name>
+        <NameInSource>Relation1sadf</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>schglpaydlyhdregid</value>
+        </ParentColumns>
+        <ParentSource isRef="3" />
+      </Relation1sadf>
+      <Name Ref="9" type="DataRelation" isKey="true">
+        <Alias>Name</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>schglpaydlyhdregid</value>
+        </ChildColumns>
+        <ChildSource isRef="6" />
+        <Dictionary isRef="1" />
+        <Name>Name</Name>
+        <NameInSource>Relation</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>schglpaydlyhdregid</value>
+        </ParentColumns>
+        <ParentSource isRef="3" />
+      </Name>
+    </Relations>
+    <Report isRef="0" />
+    <Variables isList="true" count="1">
+      <value>,myvar9,myvar9,System.String,,False,False</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="2">
+    <Page1 Ref="10" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="9">
+        <GroupHeaderBand3 Ref="11" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.2,7.72,3.2</ClientRectangle>
+          <Components isList="true" count="35">
+            <Text7 Ref="12" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;True;4;Black</Border>
+              <Brush>[230:230:230]</Brush>
+              <ClientRectangle>2.86,0.3,2.5,0.5</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,18,Bold</Font>
+              <Guid>d3fd143659d60517be6afe86c330ec38</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>سند صرف شيكات</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text7>
+            <Text8 Ref="13" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.8,1.5,1.3,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>ef850956bc9ba01a1d84fe86c330d484</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource1.Trs_Dt}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="14" type="DateFormat" isKey="true">
+                <StringFormat>dd/MM/yyyy</StringFormat>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text8>
+            <Text10 Ref="15" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.2,1.5,1.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,16,Bold</Font>
+              <Guid>87346de9200697623301fe86c330c77b</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>التاريخ</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="16" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text10>
+            <Text9 Ref="17" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.2,2.2,1.5,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,16,Bold</Font>
+              <Guid>1f333d7f9f974e65dbe7fe86c330b545</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>/  ادفعوا  للسادة</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="18" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text9>
+            <Text19 Ref="19" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Gainsboro</Brush>
+              <ClientRectangle>1.5,1.7,1.2,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>80c1a8f42e7fc5456476fe86c330b75a</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>اسم البنك</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text19>
+            <Text3 Ref="20" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>0,1.7,1.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>0db56a9b4a874a692d39fe86c330e5ee</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource2.schBnk_schBnk_Nm}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text3>
+            <Text21 Ref="21" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>0,1.1,1.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>1bcb301f1fc64199ce4efe86c3308822</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource1.schglpaydlyhdregid}</Text>
+              <TextBrush>[255:0:0]</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text21>
+            <Text25 Ref="22" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.8,2.2,3.3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>ce4c34ab387ddce45a88fe86c3307214</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource1.Delevername}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text25>
+            <Text29 Ref="23" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[230:230:230]</Brush>
+              <ClientRectangle>1.6,1.1,1.1,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>24dbf64391f56956c66b09cc9d87c9d5</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text29</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>الرقم الالي</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text29>
+            <Text15 Ref="24" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[230:230:230]</Brush>
+              <ClientRectangle>1.6,2,1.1,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>533ff830589261c6a68cfe86c3307615</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>حساب البنك</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text15>
+            <Text26 Ref="25" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,2,1.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>{mosDataSource2.Cstm_nm}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text26>
+            <Text11 Ref="26" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Gainsboro</Brush>
+              <ClientRectangle>1.5,2.3,1.2,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>b94b907bf2181f728191fe86c330e7cc</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>رقم الشيك</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text11>
+            <Text17 Ref="27" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>0,2.3,1.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>5e4dfc9494bb33213280fe86c3300d42</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource2.checkAccount}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text17>
+            <Text18 Ref="28" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[230:230:230]</Brush>
+              <ClientRectangle>1.5,1.4,1.2,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>0a11fa15d43706736db609eccdd92098</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>م</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text18>
+            <Text27 Ref="29" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>0,1.4,1.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>964dba1b47157e499c4309ece44ae430</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource1.ReferanceNo}</Text>
+              <TextBrush>Chocolate</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text27>
+            <Text1 Ref="30" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.8,1.8,3.3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>{mosDataSource1.ThebranchDesc1}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+            <Text33 Ref="31" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.2,1.8,1.5,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,16,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text33</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>الفرع</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text33>
+            <Text51 Ref="32" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.4,2.7,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>b078ea8626de2fcdc011b71eee776133</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text51</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>الشئون المالية</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="33" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text51>
+            <Image1 Ref="34" type="Image" isKey="true">
+              <AspectRatio>True</AspectRatio>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.6,0,1.9,1.1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DataColumn isNull="true" />
+              <Image>iVBORw0KGgoAAAANSUhEUgAAAOYAAACDCAYAAACZU2dSAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAATKJJREFUeF7tnXl8nFW5x8MkaVlEFBQF8brhclFEL9f9ChdFQDJLUlpAAbk0S8tSmvedSdqCGpCtWdpSQKQsIqAolU1kRy0isu97k7SlpYAguIC43mvv7/uceZN3Ju8sSSZdcP74fWaSOe/Z3vM753me85zn1Kxbt26zKqp4PWHa0qW1O01dsMVWB897W/0BnR+uTfn7xhLpY2oS3lnCj4TeWNKfXtfYseekxrkf2PqwudvtPGvx5K6urlhUfhsCVWJWsclj2rSltW87tHerzacc/666eMeescaOtpqE/x3hJuGJmrj/sj7/KkL+oybu/Z/79P8s/EZ4UL9dY2RNeIfWNXZ+csum43Z41+Fdm29IolaJWcUmBwjDCrfNV+e+ub6p4z9iyfQRItwZIthtItjzIturwv/q73VlI+7/Xc/+Ufk8re831CT9U2uTHdMmTe344LaHdL1x97Yl9VF1mShUiVnFJgHICDm2bpy7XV2q87MSTdMi0JUi0lMiFoTSShhBuGH805E1WDX1d3Q6B9LGvZf0/SF9XhhLdbTUN3m7bXvIrDfu2dVVF1XHSqJKzCo2erBi1Temd5deOFvEukpYIeL8WZ/FyOWIGPd/Lwwo7c9EsLNrkl63Pi/Q378WWB21upYgNb/HvVeU9jHholhj+vBJyY4P7jTV2yKqvpVAlZhVbJTYZVrXpC2SHTvWpvxGI1TCf0RE+lNREjnx9Q8CxL1ys0T6BK10B9Un/Y9vdWh6+x3auraETG+d1vWGLaYe9466lP/ZWCrzP0rfI9wirLUyihHelfE71ePXwikYkFjFK72KVolZxUYDxFXIM6mx899jqfRRGvjXigjPiQjS/yJIYjDRVCKnd19Nov3cWLJjel1T+hNbNaW3dwacdUUNOFhwKXOLps6d6qak98iuylhuH1f+EpGNiBHlIgp7f9HvK/T9Ium5B28+Jf0uJpSockaLKjGr2CgAOeqb0h/J6o53arC/6gZ/BCmGRctH9LmEVXHy1Lk7v/WorjdgoY3Kv1yw8plRKdW5q1bTGSrjMhFwUJ8SnQvqpYjNLwnXqv6HG0G7xkfQKjGr2KBgVZuUnLeLVsi0CHCX8JoN9CgCYDmNe2tq4u1XxlJ+C3uU6J+selF5jxe7ty2pf+PUrm3ZQoklMp0q/+eq329tYoisn/3/ZaW5foigY1xBq8SsYoNgz65ldQxcE1nZ5sAIU3hFYg9yuT7PqW304zgOQJqofCcKbM9Mnpp+j+p7WE3SX6r6SsSWGB1VXyOoEfjq2qaOaVtOy7x9tJNHlZhVrFegR243vXvr2lQ6ocF9hcDm/8jBDWyF9NkOWVyb7NiL1Wu8oup4wYSwxcEdO9bGMweIeJeqbmtVxwJ6qK2gz+n383F8GI0Vt0rMKtYbEOtwgdNgPVGDtr/giuM8c9jiWFiXTO+xTarrTaWMOOsb6KKs3GY1bvB/oHqzghawGFs7H5J4O2dyas67y7HgVolZxXoBLnO1SW8vDdBrRLrf63Ok2OpWHlthapOZvd841dvgK2QpQDJc+KTzHiQCXuXaFrXdwv8Qb/3L6lIdny+1elaJWcWEAysnltOaeDvWVumL+YPWBu5rEg1vx6izxcFdO1Z6X3CiYdJAsuOD0kHniHwPqy1/i24nPrrtd9IfiOaF/HGrxKxiQvGGr3S9JZbsmCni9WuwRulibiVJ+BfVJTv+c+dZsyZH5bOpAOeF2lTHF9We69XeV0LtDEGibdIfkGh7DE4UUflUiVnFhICV4M3T5mwTS2TaNUAHNRgLbDH4q/T7t7DQjmeVfNuh6a3eMHXeWyf6+FbgkAABsSxHpWFyYStH7TtH7fvNiDZbu9UfcW8N20R4IeXnUSVmFRUHxGDg2lZI0ntYpIzQJ21gDjIwIdRYjTucu6xLpj+lMk4WrlLeJ9Y1+v81EW5ygHbVJefsIcLNlx7ctFVT1/ZRejBlbz5tzr+pTguV9tkR7Q/6IOGvjSV9H0+l8PNVYlZRcezkLdgi1pg+UIPyDg3KkeKrG5DPxJJpjz2+qDxKwXS6KR3vZ1ArL8oJnNrRYVfUJNLn1Sb95Fj2EIsBow1bN2oD+6prJZKeycQQ5elDuVhhlW6x6sdJldx+CPoi7j+iCaqZSSZ4tkrMKioKBmj9AZmPatBdK6JEGXogz8si7rzNDzr+nVF5FAMr6zaHd72pNtE5RQMaX1osvPllaMDbhLC2Jt5+PkRC/IzKb7RwxPRETLZzKMf7m77fGWv0j9yyqX2H/EmA1XTS1PQuSrdE6aMNX9Q17v2kNpX+72CVrxKziooBEZYVSoOsWwNu7YgBaIPQfFwvwS92tLog5DKxNe6fqbxW24COKiMH7ImmH9DqfKyzgo5vP3QEMV0Z+Mo+p7adTbvyvZJoZ21j+sv6/WarT079soh7nIo5B/EXcleJWUXFgBN51qPnMQ20kcYe5+v6QG3C/9JoV7AtDzluh1gy06qBfYfyKuxPGwkjzl1sUezQ1jaulTOamFk4cl2JUwTifPg5Vnlzik94z0T2jXteE0jma/RNlZhVVAzE3JHO9W0NsAL6lP9sLOF/gw35qOeLgYBZOB1o5fum8v+p8LTyRDQsTlDT4XB8906flEzvkr+ajRZFiWkQOePepax8+c9yYkWi9blKw8QS8az5C/+A/qkSs4qKgFMi6EgadE8aGUYMOkQ47566xsxnSBuVRykgEmL0wYJZl2r/vERUROaHRBKOZOWVZ/ujf9LnTbFkxyE8UwkvopLEjHOYO/0TjD75z3ISRqvmV5XmWdUtetVM+HfXNqW/UCVmFRUBuqUGHXuWL0QMNlbL39Q0+IuJJBD1/GgBSbFiEnJEefepjGeGBrszpmhF9U6ubxip840HpYnJqpe+KoqYoL5pzm5Kc3V20hj5fMJbLXG2q0rMKioCs8RyHMqJY1ED7olY0mtl1Yh6fjxgNZT+2CIyPqCyXhRuqk2mp77hK/5bRmtgKoXxEtPE/Xj6FKWLFvddYLHLqsSsoiIgfo7Id58G1UgfUafnLWO1GOvB4WKAfJOnzH2vCwvS/m0ONldqeyQf4yXmdtM7ts7GMUJHHqkfxwlX0n5DlZhVjBu7t7XV23aARZ2L0J1M7/IvwRsn6vnxwNzfUrM/prJPVhmP6XO5Pi8TSacTExYiRT03VoyXmEwi9Qn2eb171C8jYxkZMf0qMasYP9xWQLpZg+13IwaageNO7WfiOxv1/FiAIYcAWi4uj/dLDeZhA5CbHP6gcn+Jd9GkKfM+VKmVerzEBHYmNe7dqPqNtM5WiVlFpWA6HmKk28fLHWgOnPI/tRL6JQ4C5MNeqMq7VHhBA7zQlgn/R2e7MZbIHMrxs651E+FgEEIZxJzcmHmf0l2m9H8c+XyVmFVUCM744s8qTExvMJbw5uEAHvV8OUAENAdy6Y8auPNVlkTWgmce84GDwUAsmTme/dDxeP9Ugpjm3N5gJ09GGoCqxKyiUuB0iIh3TEFixr2nOP5FFIOo58sBPric11R+P1B+K/VZ4MB1AZioK8JMnbtzoeNa5aASxEQEV7o+tWPk1lKVmFVUCkbMpH90QWImvCdjyY7Z4yEmKyaWVsRAZ2hqP1EDmEuECNdRxGfW3PG41esiAjpDrKj8y0VFiDn1uHcobU+VmFVMKLC2xhrTMwsT039KxPTGQ8wwICkHorPhLw9TuT9RGVxbkKtrxv2/6X93xZLpmZz8GK8DO6iumFVsMtgu2b01xhWtToWsssuJsD4eHbMQsM4aQZ3xiUPZRNjjMiFOeyypm5L53FhdAKNQMWI2cIC6SswqJhAWrSDpH1KYmH5/LJXJTAQxAcekMKhko6X/RvW4h0joOINX8pA0qAQxN0/57xQBT1d6vJTynq8Ss4oKYUMS07ZOCH4V98/VoH5UZV1e1zjnvzZWzx+w+UEiJlENqsQsD+guWOxwm8LPEqMGm+eVdIJ+PaIsYibTHZUkJu+JcJE1Se9bKpcwHwzoX9Y1zf0E+mfUM5VARYjpYgGdJRAdMO/5KjFzwMvEETuW6jhOHXS5cIs66efCGVwLVyVnYZQkpgZxLJWeUyliGjlSvlZJj1MaGJycI0HCv5h9yqhnKoXKEbPAudUqMXPBJrk65jvqFHSUYete3Pv1RM/CmzrWJzERUY2UCX+ZyvvLcBnE3vFujgrtUUlUjJhcxlslZmlYrJpkmktict2kIKYFIq4SsxDKImbSnzteYkK4+mkZHNZ/pnwj/EzxpPEurmvq/PRGrWNOSb9LaTes5w97R1jGAhTbS0LHC6d16aPP0/H/kXkXP3uXn3+4LkZMvEqcaBTuqCFiRtWvKKaVrlM5iGprQVSozNGgJDET/opYIj0ulzxgTutJv0vljNxmGAbO7HdIpz14Ik6zVIyYhBiJuulsoomJC9XkxNyduYtCFT1NhS1Shy4kzANWqfDgYTBZTJemjqTreJ89ntNjqUxnfXLOx/NXKwIdQZZYwmtXA/ss76R/KqEtohylCQkI8Wob01P0wr6uepxGnfT9CG5sYkCXIiaDiujaWR30OwVwjn02SLFv8HsQ39SGr3JWEfGFWbxc0lBnnK7Rb2tTnfvGGtNtmyXSJyjvBSrj29myhkGZtIkyRRL27xgARCiPyr+SWF/ERExVXlcKGvyR5WTBXiZH0PxTeWY8Lnj5KElMi0zgRYYWCcBvev58pV//xLQQ8XHvDFXyBRX0d+ss4ozGvQvrmzr+IzxALZR+Ms39Fg+qcn+1tHbPhfeAXuiB4RfKylHbxMkC/2qleSWbL+lfwh8TD48gbQDb0DXztB1OpeHcu8hZuGvqE50fRkQqh5iQRERr1/97CiKZ7lbeZ1r9Ev7j+kRceUbgctb5TB52yqEAQSHk5Cnt71U5/6NJ5xI994jwop59Tp9EiLtYdVxo5eSUS0hHbpvCQmluatyaRZmnEsSKPi4mrYwH5RHTP26sxOT94MZmfZLw7xfK8ZPFFe9V9ccVtU2Z/Sol2laOmN4FSr/+iUnQJVWQoL/DCroj0IX1B/gfDw9MLp6pSXoa0AQpClUy4T9EiIjwC2V10yrMC+L+/eFDuXH/96ygECxICygHQinN3UL+wdTryiVmIMpCnFLA02SrQ7u2r01xual/nfLInoKw9ttJC24nDtcTUEY2bio3Fg9fVUeI/QZvYX0q8zHuiuRsYX6ZDBguqFF/Nagczvq5mDJWtvekcDKSCmnzyx0vShIz7q1EUhktMZlIEEeJqK48OOJFECt0y9fUJ2XElAVM3P5DKr+DCXq87a8gMS+M7K8JJ6YUcCoolEFM/y36TeLliCDB0cRMel/jN+VVkphg0kF2WeptQt5M613Pyl4uMfPzLQVO11sYCUL2D9105ZyqY03pY3PahWsZHiEN7ZyeGK5DnBXeuxbn7XIGFSuDBuHBKueeoTyM4N7TuMWxNxv13HgwEcS00yRuDLHfh1iKBLVaQAXp0Cd7lyPLigYTHJv5Zhgaj4teRYipSVnPXySMjCIfEJO9O7z1a1NzEgTrRc/jUhYGKiSIyrgcFCRmQ/t3mfnXJzE56qM0twq5xFQHEOtzoogJuKSUPIThs4POl3PR5IPmvDvoB9sGcId/H1aa4e2ahPe8PheyUubnHQUb0Hp/eg7LZbgdv1eZ3ys2YMaKShKT94u9QemPsH5D9bB8TAK4HJHWJKy4ORZEx80pDK223q9xfHfnMqPViWKIJGZcdXDvlMmjPGI2eBcrfWFi6g9uIxrQPzA1SzexvZVrIetYByMovGL659c3ebutV2ImRMy4j7NAqC72zA1MTBNKTEgS93JXa/cSz2TCCPrBgjQlM00q/4mhdK78ZxHzyw3LYcRkMsgnJqSRtDI5NXtDEPNp/d5FG6OeD4DoijhuRq6EJymDgT6Uz+80mC+027U0BtxRs7SnvLFLjIydUwjW9zZReIi2oyVnDjH399fVxv2/1ye95ZpUH9T/XlTe2D3KWTEvEYoSE6NIvmvQrbWpjv1fN8S0UA7pm5UmNzBw3LuR1bsUMesb5+5eeWJ6Z0xOeMPETBI9rYPoaY8PpXPlS69q7ymXmFhhrX9cKMcgH1YVDDBHToRnTKWIyTtA3Fb6NXoudyV07/r+2nj6y5RHv5mU4TyALlSf/iabJrfsKLh0z6k/OiFnVF0KwYi5j7dX7d7pge0P9P7+sXnH3vCxb846acuUf2XNl0ztKL1iTml/7wiVZbhuG4iYCf9cgvQy0NjaANl9nfn6LZeYcf9BiLlV4ti3BWkt8FOCwE/MUGUSc8rc91pjRwQ/EjGnlSKmf7vbspk1mXQMiqAu5SArnkatmIsmNfofCNLRxtrGTEr/f2wonQM3VvVtMdV7RzjffGDpRTSONXZ8Rc/cqnzcJMQnd2Ik0vOCraH8/hkvKkHMXbqWTqqbwr2T6QdU5+gV0A3au/SeD7XI6moLcBZbMwjepDr8USgt3jJ2rF6Zr4WvvyuFwy/s2vzzJ83e479PO7r/67e3/WHxYEvbDgdnmjb7Uvq6mv0tzz/VJP2rixNT4zHR/sMRY83VK0vMeJotjfVFTO4CfErfL9f38/T9/JpE+jz9LUXYu0//48UygANwpu5GfX7X0hra9YyJac9l83Zp494LRsyIezFcR9i1cOgp4XbexNaNI2bX25U/AYtfdvkOYVl9vOM/WNFIa2LWUF1KgLa5Q7yrBSaFoK7MrEwslyp/tR/QxvYb9Bw3EIf7QH3i3a+03xuRv0H94frkYqXlWjrUkhcEjCPXacB+Awt5sMrk900lUJKYtL/BO6EYMbOi6UylHXniIgwnbejdEz8285lgGwQR3u7LTPkZpblXyJWOouAmgItwuSzVN/y+aNXsNy1e07bfglXNl/WsaPn9t38zffV5LzVP0Sq6beyLHYfU7Eu0PnN+uAkpLSofYBJcwvuR0hUOxqUOW6BE+Z1xa22jHx8XMW27xL9GeecSk20Lu0bNQ48YAgOeWTUXma6svhGRNpOTTp9zKTPq5bsV0/upni1ITHdTlXcA4o3yOl6fx9lnU+ZrkB1LHmEHY4nMkXruxPw6FUNuXR2sXRqs4XTRfZBNG0qXi3bVxT9Rg/qbhO/Qyng4Rjx0560S8942mtVgrKgEMd/cNn+bbB4Yu6LyyAeTFtsgX8eJAGJCHkRN3qlExW8rr8I3awGnw97EPmcxYnYt66pbtHLmB3sGW78hQg70rmj5R+9gy7ruweY/9a1sWbj46Rm7fDTdu1X9Fzt3je3X0Rbor4WkE6da2SJQmJixxvTh+seK3B/9x7T6HDNWrxFzAmhs30d5iYRDQW3/qe+v4DnD7BiIIUOYVgRlpo3qXP5ff0A79+HfJYREJBOrL0feD7YheJ665+aZuylvv+fXpxRC+Y3AWNJFQWmom2vDxKyMhVAJYtIGI1TC/4XGX+nVzkEiK5Nt+lcqfzZGFSZZ8nIrsF3bd0+WgBHP2xi4Bj21UJ9duKpr897B1i+LkFf0DLa80j3Q8k99rgPdA83/7Blo/l33wPQf9K1oifcOzty+bcmSesYTKJSnI6b3Y5VdmJjOodZbqH8OXwTqOuY63LrozPzBWQzMWFgxledZygPXKQiJ7P0SIfvo/PU1cKg3q51Wv1lq07DzArFgJBVI7DmokmEn/lVRho7JNXjfKkZM4GIH+dP1fhDHyzPkgGB8SSrSanUw+ifEYCxaveL+napbhN6JNOedDAfy69K1rit2/m87thYpD+9e0XKHiPiPgJAjMND8j+7+5tU9/S0/6u5vnX76MzPe3/u8LWpjJ+bQ7NLof0X/xLtiUAle1Y8opg8Ji2Op9FGafb6m1e4w+8xHKh38v1XPnSrcpnz0vGYzCEGHxdNHTU6k31POJnm5wAMGxZ+LQrm6LAcpf1/qpPqfo3pg5ZPow+zKNXHps0lTJWVlUBYxG9pPKkVMJlIMVMprrsaNyFlopSsErP42CZyNJR0xHsMYYr7+94rShMhpaR+oTbUn4EB+Xc567Kg39A62HdEz0HJv92DL/0YSMg9aTf9XaV/WSnpPz+D0vt4VbYnFz7TstPSx3CjwWONVh8uzdQrVXwiIGSRmFWPboi7V+VkRjXD33AVxiRJeqweu0XcOpV5VGGk+lU7pua0o7vepQ2ay5wN5JuIyGbuL3zxrrNxfqp44Edxq393fhDf8lT6vF86R/nUMAYPL3ayvojxUipgAcr4RY4pzMLhd46hcsXYYcU3Ccf+XtY2dU7BWs3Aor8eF7Cpsn88xHtgXza/D4v7Fk3tXHPmJnsHmW1kNo0hYCkbSgebn9PxPteoee/ozR370mnXOUGXEjHtXCKWJGQCCMoMgq7OisK3xhrgLs1ESIjZkwVIWyPoTKbZyaoB9OS5pQUTG1c/A91TmY9xZsXnq+Hdy9z6GrImuz78qytAxMcKcst307pLEDMBE7lQiHzUr39mgDJj++BDGMNVttp4fMEI6cj4jaWouYyOq7L6n2t7SM9B6vEi1Oop0o0Pz/83vb/7zglXNv/72881HLO6fNXnyPnN3rtnbv1J6d/nErKKK0aIMYq6tSY6OmIBJlBUPtaSmge0kT2rRKAhKWudowU4AqpXI6i1XXX1sD4Um6QVrvG0lwvoi1oqRRBsDBpr/b8GqlvvO/k1zy+J/bmTERLckeBKeMHXxjj3rmrxP4yrH6lpdxUYPpBk2sdkvrkvO2aMukfkcEgIGD/oT/YptIs6C2u+Nmc9gdBjPFlghTBQxAzB22PqpTXYkNZh/pMHLUcLyCOoMQ1olcS7xfhVrzByKqFzMoLlsXVfd4v7W983vn36eRNLnIVYk4crBQMtfuvubfy6x9iCMSRiVzHc7LmKORpQFvPQtDu7Ykf0hNm3peG5JojHmYaKMJyXTu+CNUq7uiH7BprAKXqmCJdr4q4TbzSOlKb3965mckIEZetLU9C7shY7nbKTTwbqkg3FJq/Rn149cc/6kXuw5kA9/U/pV/8cayckM+vsRfT+Z9xqV73hQho7Jca3TMMREPV8uUF3Mba8xfaDyvU5tGj4aVxh2mkd1uKCuKf0J9juj8s7H0nVLaxesmfEOEau1e7DlBpHzpdERtPn/ugebf6tnz16wfMYnu0IGoCwxrxZGHvguREyOHqmTj9aPv1Cix9Wh9whnYTSpa+zYUw/jwneffsd17LpYwj/SEav4QOOlOA+VHBMxnfbIaDpsU4Nt11gUB+9612ceB33P5cD0WNrMM6yO5iWUOyjNSd0iHnB+MenfnvM7g7OhvYfJNCrf8aA0MbHM+/PHS8wA9IEb3OlvKf9+lRtFTv6Ht9UvMGZigIyyvpbCkvuW1Pc+fcx7+la0HCLCXSyyrRT+KsIO7WdG4G8i5OM9/S3t81e0/dvSvHJHTUwqHkt1HKQE3HYb7CNBnpfM5Mwp+bjPTUvZjEzBvp/DvaUGmRHTuZ7l7t2I/IhbEyFibQywySzu3SWErowzn90T2RoYraRAP0Nq5XfLcH4GSPFdF4oEZ3hWy9DvbtXofj0QE9Bvtu9pTu+4eYbIGRwOj6dPwZ2y3LHF+Eda3L1tSX3+e1lyX1t931P+W3A2EOkuF/lWSMx9SfjbECEh60DzH/R5bc9A234i5TaIruF8AFJoTSKNq2Z5xKQy6CWaYdJq2B0C5904hnSR7RU2ZvbRQ0vsf4ikNhtlzHG81AArSkzpP69XYuKa5RwcvGXWZ3HvKeFSDBpjaXOImDfn9OO/GDEBY84OH9jZTI0rF44Gl76LahPpL4ymPAjJ4QqkRQ7P83dUusXPzNqpe6DtOK2aV3f3t86eP9DcI3I+JGK+Ij1ypT77zlh1zIfy9y7DcMTEXXUUoiyN5VYmMxxgWEh1fpaMEMnoBHRLBgYkrTug4z/ZJkHPRJQtRs71SUxmPMpjRTI0dW1fEPZ7entmX1wQi7lSjRUED5s05evvx/ULxwaMNOiZYxGtNlFichihu9LEBLwrPLhUzh0q4+c4ygQnT6LSRyF7SD2u529UXe9GbSs0HrHY4g0kAj7Elkr34Iz3Lxhs3bV3VevBPQMzUgse87bNF13zYcSM9t0eSUwayGCpT3m7cmDXRASnT+IFz2mQH+shweLRXKbvXFV9efbvM2PJjF+b9JqYbXgB+YN7fRGTci06X6PtXS0drncUhn6/Qp84SHy/Jpk+JZbsmI54DWmp13iISrudOOv3qb1XqgycHaSbp9uY1Eabd5WYI7F5fM6/cTgcY2WhlS4K9D3B2zRWOJhwt+pve5/FDsYv7p/11p7B1iO1Sj7dMzD9iZ5VM5q6VnVtjrEIZ/eoZ/KRJWbUaadhYlI5OszEVLOathOVjehdEIhYNd9Xp88lfGIs6bXidocxw/42y58dXepXZljIeI6T3GfWJjq/xImNYOCtT2Ju3Xjqdgxeq2tR0B6QPlZ1JgzmLwWOXeGOiLXzBiYotnlK6dCFgMShvHIds138nx4MElVirn8g3bEIIcGofhep3hJ/TUflkMMyiFNoxWWF7BlsPl/E/L10zT/3rGidf+rAUTtHpS2EsojJqqCB+XX9U3rj0OkLfXq/Yt8Ir59ClUTsw9untqmzQRmGT28QHvIx6apzEBED8ivPjVLHpH6Uz8Fl1ZHr0cIHtqnvNXUHpD81mtk4gL38pE8cn+GTLRAz6UjyL0FMG/jtPRuamIxjI6SFBmk/U/3BmVWOjwV1ZVvpVMZ01PMSY7foXt68v0i5Irt18jd9Xrqgf+ano9IXgo0zoicWI2ZtyttfCdgDC1u17DRAuR3JvhoNEoifGhTCqZIHWImR4TdmYgYwNzBWODomXEcXp/XMqFMIpYBOqTxy49JATEiS7NixSsyJhzlbNGbe53YcvAvUDxzUgJChMW8OC7dB2p2mRl8Hjy7ZM9Dyve6B5j85K2zzP/T3zX0rZnwpKn0hlEVMdahfE09z+iKc4EH2foLT4aWA8wDp9RxicKgQf6VERp9V04hpJ+7zvB0gZsL79MZATM40QhbVi4gKwXYR+Cv7gugwUc8VQ2Fi+vOLuYUVAsTEc0p5jCRmsI/5L05M+hTpBiMQwa5V/smqByeeVD/TI/PrKIJ6j3IGedtDZkXW8XSJsN39008VKX+vFdP2MLsHm//uiNk8SmLOhZgRoW6EIWKy+Y33SM6P/uPSvY4tl5j2Yoi54kIvhgryVqOHEm4QfVP5zheIKB5O068VIMHvUXmvT6B7EKhZgwi/TGZQV0c7v+ndg7N81HOFwABxursFXB4eEOTd4C3g2oTREpMJTMTbX3lwema4H414/nxWBou2N4KYnn5vn79BPH+cDtc7kcRETLXdhNScd9cmMvvZvjveQW7LLyyu5kG6ZdxfgTqHCJv/PjDo9PbP2EUEXGh6Za5jwd96VjRfumhl66fCz5RCWcTkFIa+3CKEjBMYcrwLeInlmJ0dMQnpb7pUqCALdjQXYjoRjJt/MUmHB71W0Lj3E1YWfClHO1ArCSOmdO5KEJN2bH7Q8e+MxTPH63mMSWFVgdV4GQTava38K+NY0fEZ1bOcuAhNcLxM75dsb22Tmv0m7mjR3+j82d+tzNcVMelfbBxIY/VTO3etbeqYpn5epPKIuI+xKeTQUQCIr9L/NUaPDmwh4TLQKResat2rZ0XLj0TCP4YIacD4c/rq5p7vvjjj/ahBxIViy62UF1xZxESeZmtA/7hACZ/ONohBtFZ/f6c22bEXIRuwICIGRcHkdxcLJ1eUDRGTCiHrE35QZWDJfV4VQLyjLA4xPyos4FqB+qY5u7GaWJkaSFFlTgyOe0e20ziHmktM9OVE+gtF62O/HfcON2u3fyFrYCBoGI7Uys9EKQ6Pk/ff9b/bsA4jIg+1Nypf8mQlRCx2d/cT3AsdnneFXv8D9M4d4l1b8j5fr8SEiBhvCAdD3GNJacElw08o/+zpkajy82GrpBYE/1qktXznenPDe6rlPb2DLR0i4APCsHfPMP7RM9j85MKnW6YuW9e1+eTPH/+e2i90TtUYmVJK0rSbsBNpgswVJiYJWRWxvtrxmnj6FFWcvbbHhbVKxAHTW8yFiIhv0fipgNsZ4Tsw7mThPakXNkRMYI7I0q0IgKT03xK4HOgBAT1X5Zl3DFHOmFGUt10elF/eGGH+icXzc5HmiOQ33A4X/3OtxM+fFX9ev7kAZEonsd7dOIVP8TUiRZ+kiq9KZCIS3HeU5lf6HSME8ZbwR75+OJ88BHmamxkBppyfsv4+mYkOx49AsrHJz4my+Dr/IYRB1eFUiB68i0qhJDERs5N+32iJCRFZgfCeqmuc81+xVPoo5Yc0o7GmPJ2kELYFlAGRV6Krvp+IswySXFAebndnrj56x57B1q/2DDT/VOQr4rje/LuFT08/efHqVouGV7d356dr9vXPVf4XE3GxmOTniEmozRLEDIMXax4+jZ3/zhEtd31C5gAbVKOBXhQDpH6qt2vUNgMVR19ikx0vo/qk/3E6nzisROgjnmxkvmOF6qMX60KgJDKHRqapBJLpg2k3V+chWrICY4TA+8d5R62zrSPEXAJfs9LhdSLJZFpkfqDR/8pQnhzvis/7ECI37yq/XxnMDGRWV6L+DaGxI17f4O1Wrt1gNChNTEI6egtLEZMxAVE4loWKxbvSs0gI3B69RgP2VX0OqwSjgSMw0SAvpy8Q+QPycMxLYus7egdaDmT7Q8R7VrpkkXAiza+JvDeiW0Jm8uH9qQxUuUfwRCrWViMmxruo6AyFiBkGBRrWjSEynOCOipWvMw6VN8Yyg6NpYZgectjc7Uz0SWQ6LURkY/pwmy2lFwxHlxN4foxtDRDkEbQjqp1hlNPe8eSZgzKeHQvKWDFXbZbwTiBd1PNM3IjYeO8QPlTpkTzwx8b+AKHGRkYHO4Shz2s4i4lasDtO6uu6YkTAw2Ggb6C1pRff14GW30hvLBrfp3ug+e/6vH/Rypn7nvXCUeZAQyQElUHAcoJrv0KYnUlT/A8x9qLaO2kqK6ZJX4WJSRDbnlUtH+sZaPvMglUzP70po2d5y8dOe+TIN4c7AX9YDRqOsXEJDMGW0csQTy/EmBN03tJ1XZP6VrR8YMGKGZ98PfRFGNYetQuTP4Mx3D+VQAFiikweK9yNWOzDcVYZzEhLdlVhopNI9ahPiP+sigzuUYqnEXCGHVbIK2MNma+h90NIOwT93Ky39g7O/IJWvlNEtLuwtopspQNuDbT8TenvJMhW95NEj+yKIQlJqmnPji8mECaCZ2MJb94WDdFqA6RVml+ozaGYy0G9s8RkMPasbO3sHmzu1TLeUxGsaO7py0NkugpCnduNsj5/+ZH/Hu4E5H0utFWjcS/EuoqOwcv/PkeCAmIu7p/1xt6B1sM0Y55M/aPKCEB7Fq4SVmeh732A59ZDW4H1a1BuUHZEOoN+613R8q2+FTMOOfOJo9fD3SX0scdRrBOwmAaH6SEmB+0xNio9kfBwSyuxnTEaIOayaW8neC6obeicih8t1xrYArTiyI/O75/RPH+g+fsiWDnnKsMgpuy18wda9l1yn1MHWOktqoK5XIYnE4xQ3nLUENob7ivAIQa1XeJ5cJNZCAExtaTX9T6U3opluZJYmoeoNJXGkme7tmRGDHcCgwE91gwidnGRd5b0wGOx/AYDxsGJNoQtjMo7jPOfnL71/BVzttlv8ayddjuq/cOf6uh4v3ejt+35mkWj0k8EqAOhKgKU7GO1K7taVlyczSOmpJL2u9FrsaDyO+oCBsBad6ku10ZgXBs5KMcMI8XLNQ3+L2Px9NdxQv83EaL79o6t+1Yc/YHeQU5+NC8RGZ/UxPtHfS8/EoGlbV4rUi7WKvuRYHyZkW1KZm+1BUePkROLbbH5d6NC5dtYHDFtH7owMcMPVAJGBL0ECkePQ9ElKkKUAWh9gnohykBGVsmx6ls8t0UDl9ikmzUQLq/5sndXzf7+LRocJ0xqnP3vYSvfRIE6YNnGY6q2qfNLnJWdNHXeLujShfSaiYQRU6uDBtRzwp3Uic1+fmN/kC0J9c/3NfDY2hn2gBof/mnBrBq8x/UOLozt4x+ydUPH+5sv87aFjAtXthwoMp2tFfFefb4skpUVG3YIWklF5Nd6+ptvI4hzz2NHvV3tsTGDpdh2FSxcaoQ4GtQv7v0BB558QxCGVT1HWNUIQk8QMe0lJdLHqGBM+4Pu0/+5VimPvbqoZzYl7LzfrMmms7LvOiS+mKXwRbVzEfuNUc9VEkwwsWQHEcaZdbVKmS8vouMFTA6BLre+kI1BNF11ubW2MZNiIGL9tRAowY3QlSAk/Y0a0iCC75u+KrZ3+pg3HtDxn/ud27nTKU/M/MjiNS2HaEU8W8S6W6R6KesyV66o6kD6gZa/6PsTIvS3EH8JOUk76Vd2LMzLLeETIqawCM4efdx7UJLa3kgM4f5iwVKf5F5mPPTcBBHT/GaT/vEqODyT6KV4j2LCj3pmU8LubW31agenadhjZH+Tl/NqTTz9ALMjYnPUc5WEIyZ3YPr3quxhi2Xce4atponYEikG9HhuItfke4TFIJbEFIt7x6pOhI0cfcDmHJgzwN9Fxudq9kvfGNsnc/xWifQXPj3X27nvyZbdF69pnb5gVct50qHvZ2UURrcyZqHnIPBfRMr+3sHmBX0DrZ9FNQlCgyAJmZcc14m4veRhB5QoOIvy2ayO+f1Vn7C7dDjYvZ6J6Twywi+E2ePh2ikde0U9s6kBiyJn6mzvMZnu4GwqQabXFyGMmEQXN8eEPGIm/WQgRq4v4HHEXi0rp92WjC7vHEaGB9xowcBv8F+o2c9fVvPF9Clb7ptu+GR61i4LB9v+8/S1LTMXrGq+uG9l8yMiU85FP6OFPTvQ8or0yHu02p7at6Ltv856gW0dR0hWSSQ9ieoz1C4c4Vlwhvu8EFycLA+VI9xXqCF4eikNThLlEZOHEEPMDaypc6ccJDt2ZCbkpRfTY8ohJks7Ii+VNje2MFQWOmkA/mYzHesWhGC/Mb/MQqCe1CeyPSqL1Y16jFYvQ1/mWY6BYYZHvHF1i9ZbqTOktfbm12Pqce9gUNPvEK5wHi5WLPU2F8ikViQXzDhMzGdxRmDSoG7DOP5dDC70PTyvovIfLxjAXJyrwcu1js/n1KtcODK+LDLeXbOPv3DSf2cO+FTm2I+y5XPGmtZjRMbvL1jZ/KhI9Gqp/cZSMDHXORJc0dPfeiSGHWccc/1PP/Fus6emCJX5ktpV7jaOkxBTIyMhsp/MFYn6nUl1pHgfRUxuTcYrpibefqUS4QbGxbMEDbpGSvZVeggf17Nijd48PHPqU527YnkL6zScErHIBrnuRjnExOuCAaS8blQlON0Pfq40WLgwoVO2K9fc8iz8x4U1SX8+blk0mAFdyqDkDA+ZA5Q3t/fmtsdtYv9Q+Z6N6V6z28F44uB1Uoyo/Mb5UT13uvL6tfLgfpSryIM7KSBX/jM7xJc4fYtjb/n1cG6Hl+nzPDbh0V+IOghZw3nRVi7KqXEX/d6k8h/WM4jSoRfLSyW0KF4ldljAwdy/VMeUN4dJJFy3SiGre81SWfhYj4KUWb1xf7+/Zu/0hfVf7Dz8w56323H3zvjkotUt/yN8V4R8TER6dVTW1GiIzM2/0wp5t4jd2zfQsu/Cp1t3CAJn2eRn8Zn8D8Ua8f02J4CXhOJi6wh4vxNfvhNlb4Ar7uAIFzWXSUyb9QjC1dixp7mKCfY92bEXzrkixRxHUAu7QYVxQfo2bnRc1EPDWFEtXe4h0BxiooeYh0dYD3UO7XdjWGHgGzSYaxsz+5hhgQt2bYWw69YIIHwTqwaNjyIDYBVjpcCjZKg9cdrj7UV8Ig2kjPL5kfC04AwoIg/HqqL2nwAzKa5xWSfkYADq03ue/PJFl+AZHB1oU0493PeEGcvcIYLl+qR99O9lsab0wQx4JAzeDXUy10UOczfYZbb5B9xfQHyqa/T2xGI71I9AZJ90kP+BibCOM1nxblV+7rnTovD+oXf6vFbH66U3ZrZWmw45e/YHz1rTtt+Zzx3Rw5UCItHotjaiIFG1e6D57yLiGuHy3sGWmX2r2j605L42qR1udUSiQWJBHcE7THXjAABOKGN1dFjLO2Vyze8rI2a84z+UN2N5pNN9MR0TglFZMmHQ8zIRxRD7nJ9fetFQpiiwce+JWLLzCMS7cojJSoZupjQhYlo+NzIR5NeFgUnHZeX8R7PPQAYOB1/GDAQJw8+FEeTBAKI9pKU9iLlO3m8n6JjbHHezY7/qdyzHePLzMmLireJuEAutDFyXnz6hmOU5v1+DetCvTIgEAlP52Xs8bVBwiKCPPMOWPZ7VAPofpcEyGK7DGgxTY71weKzgekW9Bw4kjAz5nw9nyBmQqHp+7d6dUz4+19v59DUzP7J4dUvbglXTr+5d2QyB/iZCRROtXIjQIuTvRO5fi4wn9z3V9sWzB2duH97n5l2YVGWH2b1e1Y2A3BqTY/THBc5y/BiTbiFfZrssCYknfIJpCFb+TUZMBozpQJqdzSsjwR6dd4IeRFw7SwOXqw3OdrDT/bB9eDZBFImnlxLOEkNAdjUcCzFvpkHhhgSgfiZmOzN1kK/gDaq+bRgewul3muptgbjLHSkq6witrt9U2tPVLsz3Z+nzO3r+HNX9Ev1NnsN1YbDH05dycxgkCudbjJj44eKcHk6PjsEZShwa2OtT30j/5qLgbD3oU1eP7+mTSG254Sbi/r2snPRrkKcR011Tl6tjJvxn2K6A6OE6TDTYElC9f626Flot2dP7kwh5f82+7Sduvm/H5xO9x7znrDXT9zj9meaT+la03CsyvTJ+UZXnm1+T2LtSxP5e78rWwxYMHLVzvmMF5GCsIwWqXheq7oP6HGmIGQvcSZ5LC4WhMWI2pT+hvnpEiBKRGYc31bDCIepsljLRCH9FjipJlPJuka55JiITJMKtTSLlbBtYSS21iVCmEDPhX1nXNPcTE0rMVAf3HDIYg3wBp89nBsQ0XQyRxAxQdlRqtUhGDCPpr3Yvf2577KQ7x9zw6xzKExP9UomEn6Qjw/Uol5iQx3QV07vQKQnlb8faiMR3rupyEnppLJ72rB5WX6JzB25tWai9bI3Q/qAO5K16bxTEZFLPnv/kTpr8gaa6GSHviu2fmbvl/pmPTb/06B2//UzrXgvXTF/Ut7LlUZHoz9EkGwVc7J3faIW8pWewtZOtDq7Sy/cCM0ISrpLYP06vH4vDA20qLOKamtV+EgbLcNnDdVimFTP9KaV7PKK/gCOmBgQiEecBA5Lg6H3h5KnHvwcvGTo+yJTvrEIaQLi2hUJliJhJ/4oNSUzyZECaFS1u93Y44xPRGOLtPwzE3XB7ABZL1YNLejmBEOTpiKmZbSzEpN9qXZAzCMm5VDdAE/51tI+25NfDohWmMt9QmnBAM0fMVPqwkcTkSvQNT0yrSyMGQzvaFe4PfJIf3UwTe/2XO3ede8vR253x7IzP9a2evlir2lMi0V8jSVYunKvcq/r+RE9/y3m9/S1Te1ce9a58MgLUADNO2WVE3o8FDulHkaIYeIc4c8AVtk1GRlEHce8pvZtDUL3y6wGQoDhOSTohiuBcuntLjb5IYQ+TzCxKJ0fpbAwm9B2l7819ZsMTE+MKwab1N1bd4QHCDNbgF5zBMImr7kT4qwwx2Z6wPuIwdGg2NhHHP5cIaeH8Ahgxk36X0pZHTLePmetgADGbOpLrk5hmyW9MH656sp1Av2nAayX6cvqMui9nPvfFU+dud8YzM3ZbtLr1BBHpkW6upRvHviOroxlyBpqv1Oo447TlM3ZbsmLONgRczq8b49XCqzrLPLecExdptIRkfHNK5o5YPJNBXYulvBlq78h9Wpf3bfWJzg/zjvLrA+AVY1zPc0g+/O4C/FVl/axGJMQqGTa7M8P3hgdCgKEV086ebVzEZI/VnYuz8IQhI4QLa4EIE5WvI1H7SUrz21CeYyem8sN6aiSzU/bZNE73uBDjWTi/AFjwYkniA5l4FdSD50YQkzplw2wuVZph3Sjur2UQjvUeyrGAumig4ierQW++qzfH9nPW5FMeaX7bglVtR/SsaFnW3S/db6yExJAz2PxH4UH9vXDBQNt+Z6066u1L1kUPfsYp/WUhcxI+6gtW9+HxWh703hjD3j0aX19H4mIrhX1kvQ+Mm+zV5j/zsvrggkJxaQGqlunkWN5HPu94ADGdVRJDRJpIblQEEeR2RCU2QtkEp6AALixCxIpZUsf0HymDmLcUJaY70T6SmAn/SHTM3TVLZd2mJGrbZUjK33tNz9wrPe2I+mmZj21+kP9OrMdBe7gSwtLbjD+U57hEWQaGXc5kbUzfp9+I88NRs8fVr7O5GwMPGciI47n1q1ZSnleakcTM0zHBuw6/cPPaxvZ9NCF+T2m44AnXQEKhXC715CCkByZR+pqJgiv42WPON2ZVAllirqzZz7+svmHObtPOOuoNi+yMb/Ppwuqxr5BaHQean9P3a6VDzup9esYu3ZykKdIGxFZzCbRVzb/T+j3cn6XBu+eZh4QTGQNhTyrzbMIoGrdbB/KfXV3T0H4SfR2uUxiQuzbh7acxgf9w/vMBD35ew4vCSaD+gDkf10DiqgDuJCHSGLhJfxNbBgcDNsPZmL+BwaLvyOmIBsyULOs/pBFYQ10+dujV/W5Ry/x7c4jpHN1Xh/Jgm+CaosREl8Gj390onM3bu4+AVoHxB1LQHiaJbHsuEfSCbG+Kq+uu0/efUtZQe5yll62JbF3I1/8uZu2xEDNIi0jJxMckpzKXKA0nCvAf/YU97y6W+YnrW/MuuVf/G+4309v8ZXr+kHxiAtpKX9KvjtQ+d7CgA1EOMWVoKw4MxCm6TBPYcVH7rOPBtGnTahHdYl/2D5q855x3t90yZ5szVh3xZZHqRpHKBUYeNcwrZ0DPn6/Ppu4nj94xSlTNBxOzO1LVzj0xODqMdh8S+4p0v/Y+rPn5KgH9jXVd/ZkbVTJA3H8Ko2Ih/RLYyRQ7/mYB1XKftzxYMTU+wg/RMAY1ehIrT90Ut8HPhvsQiAHE/7Qch0H6wAsI1yyLOdPkf8l+n5LZG7GCQUQ5GEcsklw4DXk0zt09f9sjAPkiRtgmffCMPnEeQITNPVvpOpH20EmUhVePtaep80u57ekc2R7lS3raQz7hfIsRU58nIsqG0/M85GbWRfqAqMQCUtlftLLD9Uj5+1rMo1A9aC/ukMVWOvbj0PWsrY2Z9zHJmlNF8O6a0g3EWsU5IYrg40WwR3zeGm/bhStbD5cOWCiyXFFIVP2r8KRW2O7elW17cKi7HEIC3rV5RjlrK6pZ6N2Ugkl/HKQ/G+cT+pE+zS/jXV0SQ82oB6nChq4h3I3xDakx/9kAkJ00Kival9htOS2LdDCoojCMmBYfFyPT0Mvnc22sMdrb418BXD9HdDnpkk8igkYRrxCyhHxchD6tZ3DG5xY9ePibSl1lFwYkYousJp5mTzLaWhoJVlSP8CM/lKSWQASNImQAs+wm057SjxRjnYX1GoKvMUaingc4tWT3T3NVlmFAzFurxCwBVipM3ADFHVEwKyLjfsbLwLw9oI7uZrXKF33/FXDZGm+L3sHWBq10D0n8RAyNJOBIsP/Y/JRI2cveI5EWAje50YB+F8GwE2D0K2elJI1EUe9X0sdbkMTyJaMoYJHVM6gGUWIsZZ9TTIwFRsy4d0BRYrLXHfVwFQ4o6lnrZ58662wp9t9Vx6G3Paz/ER4DnfVE9GIn9pZ/8uX1hL6BIz+r1e4akbLcvUmcyZ8RKZf0DrZ8gdAoymdMfedsGhxcL1OndFZPDJ0ncAijXN/h3SUqmwiKGBu15YIrZUP7SaVUBcaJ20/N2xYbghlfNx5i0nBzW2v0v6IVaaZwBDoXehmHk6OemWg4LyLVSeILUc9iSc/OXnIYmf8j2mAdLWe2LQXTuzXzq6yDrf2aySln8tS5O0ftKW8sWNx/xFt7BlozWvX+WMr6yu8iL47p1/eunHFgz6qj3l6uDhkFpJnsZj2XEJfan2SVfBFnE3TvUmJrPrIhJ/GnLWDlTd+Hs04pom/z1dPeHEvYvm/WJzofRszbNhpimvO73TzmsxqhJ+Ddz0nxH7KlkW/cWV/g5aEzMHEgplaChFFg75GjdGrzA9Z+E8vMoHQN8WXKndnXJ+iLBQOte2n1+4nIVlSvFCn/V3iaG7OIZEi40Kg8RwPeCVtl6qfHhcIirDmWe8s14X0TQ+FY1I1au0GNdxPleG5lXM1OAHWKej4AftOqB7sWWP5H5mPE9G7f2Ig5WxXjKFO4ov1smpeS3Td1DBkF3P7rcPulv7IvzO9Rz21IEHZDK+BBIhxW2IIHl7PGnTu7B1oPW/BY87Zj0SPzwaTA/qwGMQctRl41EMCtpHeIDEdEWdnLgYmf7EnHbZ84ohw8nrwLOJBfzHoOsl5hJ+qZsENLOC8sxBvdihlFzOXMVuvTm2VDgCNm2VlZs39u+2OpdHpjJCYE6xloaRX5Vomg0WLsQPNr8/ubfyJS7sXtWQxcdHfed6nVpRiQYtj+EVmuyO2vMGz1uQU3xbGqA9TXrPDsNUeLy1qpvRc0eX6jHKnGrnnHG8lu1BuRFxMJRqnrc4hJ5ZkdsFKRAd4j7LvxiYyNvsdeZDmd6vbu0luRnk13nrf8pHAPQXkHOlRBYsa9lZwmxyJmdck+R5Aj9kvx8mBvqFzxBNGUDuRgNxbWoXZKXLZ26u8tDzluB/qh3JfJLIyoDXnw4mHflPpZfanrlHkfYm/Y9V06MjTLaIlpA3zqgi1YNfDwwSPLlTfvI2z40w5mcHQp0pWayccCWzEH29pEvtUSZ0ce2Rpo+QvBlRcsn/FJbtCiDna6Az29Kd0wnsBlWMnRFUWYn+X2VxZuo/5W7inZpWvpmMRm3itjS/Wdp/zQCUeKy+785S9qU35jOX3MGNNzP9Qzhc6u/s68uciMAVM3Jb2HW66J/2ln6x7Td/QdPGNcqJG4R/ToK/EVrE/O+Xj+AGOjmQHN5rxmEEL8LdTz3LB1p/LkSBnhPLg2zSHpL61p8HsgvHVANDHRN++wfBI+JwNQ9Pl+qxRuvJOuExbzstm4py35HUQHQ8bJibk7W+QC5yz+A+XDKQE8gvC8uVJ/01bORHI06xIp88dhgOIECiTNF4MoByIS11V9x/7WOXr2RuVJyBE8b9RO8+oh/AgeOUR/6MP3lRfEZBTkWS4xGZC4+zl91JzveTf36PMRPXu70hOK5Qr9fYMh4V2sus3ESb6cgTMaQMye/tavioQPiZw5xER81f8uZV9y6bppVi4ThR0v1LhCbGflzM+zXBgxE35ceTEmQ/0lOFLaZn++985owOKjenKIGmeSaIuvraLt32ZiLGVM4l3bkS8XkqZA6EtvMJbM+MHFtVzBHvhb4ivINW8nsekKyThXyEzMDCUCHI73z5b7D1/9Bhi4eKmILKcrL67uY0bgmMz1tuLpN1YRfEKZzQGrJaSkk4uIsoOUyUoZPEc+dY2zPxNzl+X+0JXjv6bvA0p/Vt2UOXuQH/Vi8iBMfizlcU3CrUpD6A5EHMKinEibbIWxFWcOt28l1NE91gfObxH3v1uwkm6VOPZtQeej8+JNo/IuVj5c68Z+Jk7M31PagxCzrK3J9C5G3ISdy+R8KF4p6CoPEbGAMhHLyiGmeY1wq1TC46pA2sFgod13MjFIqvh8EGSb90p++v8RbOfgJzsaK2Q5gJh9AzP3FQlvFBmHjD+mUw40X4thKDiGZf1lpzwYZ95va1PeAeMxaCGhEPJG7WcCHO4vIwqDO31wMZ/VUmBsI+UovyVCtNgJJHrGEul5ha6ID8N0VTsVZK6W0cYqvUuzNOvLmfoH3g+hH717Y43+kdw7gYscnQDbAQM9f+Y1Uh7A4U9bvYZngrj/sAbH/gyo/NUmH0WI2c9B3CjjD3WxycBZct0RKxcS8BZECwa8RW6Le93Kh1Mm2VnPiHkGgbfy68Wqn3VUJmKDS++semvoE1Yetm9ijd6hIvBwQCVH4ruIU5TfP5TBSo5Pr9JyYDroH6yvl06amt4FkbQYMWk/Z2T1P0kK2TKH87i5Ntk5lRAfEDwon0/6qNKEDKNv4Mh3dq9o5kjXa46YZp19vGdVS1Pv8y7ECe3HTVB1Xar2/En1/QO+0uPxkqJdk5Jf/6DyZGIOBjlGmGc3S3knMOFHPVcOqC/jPha36+KZdEPvIwQstJJU1JYDS41vMPmgzPuUHimnwFlO/u99HxWrRjPLN1XA00JoqcYyZMeUNEjS30f006p1YH1jenf27vJ1L2bzWNLToBuKxxPgIXxTy/HPLErMIlZZ6qR6InIHg5WXs1KrafvuEkXMQGCDOXSSxQ3sxewp5Xcog9jInAwREyABaDVEj0M/1XeRPUQQt2Lejsk8nF8AntELbKY9oWeE9H3M7pwnLUXM7LE2jB2suOHByKb58/pERDoHR2ocpVmxeTf0Q1SdKgFc5ziG1U3kOef1w2WvJy1aNePdQRqnp9kBBBYA6k1f3UB8p/FMGowZtftkIYj6QL/8GKkqf3IsF46U3rZISKojUlOIF3lwk/GlLEpReYVBO/HDVV1R6Vg8ovJ8ECkQvtRgOEDUVGJcjbhKTI2zFSWoEC8e8QCxVLOHRFPpoohKeF3QECNmIt1mDckt6CFExfVOTI6CNfqzGZBZYuZfeWbEZFaMJCYrZjFiYqZPipi5MW5KEzOulz2CmN795RCTPkbkR4rRytuldOhWawU2vJlIh4lqdUEEV78k/Iv0fDODdaxGkFLATxYjUPdgy/M9Ay339i53F7oGv7sg0P6J6p/QSmHHAnuYPMpZbaLA+9W4O1x53ae8sZg+hO46Vr2SenAML6si6T2wQAX1jYBZUNtPwtgXlV8Y5spJ+JiCboMmSVyI1MOkYlZZGshKyCDHqKCB8nUlxjhyrx5YrQcY1NnMGAB2vvBepfMQ0ZCvq8Q0Ef4OzlqG8wtQCWKSD/VFYuFcqemuDCIiMJhxzgI8cVxseEamDaYjedezigb5VBrzB1o+3D3YukCr5fxFTw6vlgCjnOqCwS/8DnhPL9Yk20+dnJr97rGQk2ewN6iNTg/U6sUG/ljyQoVhj9EML85WUZyUbvF6lGv4Sjm/UB+zR1jcqch8tfilb0btY8zyzIh9TNjKi0dRpaJ297071Izlb9gdyQ3au80SyixTiJgbQpQNE5MYnlhZR0PMgqKsf5ER8/DZbxIZ5ofKBKWJGSnKjo6Y+UDXsu0fTRasipBPzxANndAVw/nYwV7vvELR28aLrse6Jp259ujtTl9x7NuCAMoBskYyrN/h/gJM8i9o1fkuBg/GyWhJRfvVfzPVvl/GEl56u+To97vZwqqLe3uq7y9QPuVFXLfx0N7HaZKoPAPQHtMZbfI0KYHxGc4HiXSQsc9efdB+2y6BiIhJUXI5/2M1tRXCRRVThrZqItf/AP9O9snqEpoV4x5HoULGH+9hXko5osVEEdNi+riTB7nGnwbpmCJL/kAw48+U9vcqzXf0TJCez7XUj04244+7D3I4zL3T8+7i3GlUP5oxwU1eqAuubUx00hmJFLFNQ3HjD8SkrgxE3hdtixrEu0xbOokr+fQcgcCy5Vj9CcHSsdWh6/9YGmdM1dbbVId8YmbBpEkIjw6PPd/REnTyVG9nzsiOxnWT/CnHYry6UK2I/cNjtyhstXy8nAuc2BLSez9Gzz2h5yJI6b8YS2S+gf0g3OYaZnhcvvTwPAjAPotttGPmj6c/IWLhUU8c1OX6RI8i6tydWvKPRz9ggJARxHYW0vYzVaDSmszM7HMVOg4zIquN3Ztp2yYOEIeBZsRMsKUxFmL6DwrDxAwZfxjINFpE8vUb2yWqv/SRuHeftVmDBn2ZuiD2ssLrRbnQJC7PF1WHn6kNR0HKgHQQhW0j/S6R37aaGFwv6vvZtUl/Gv1qjgsCh5azszoi9R/1+apAcOGFhMiknrYV0tjOAdoIYvoZ2m+W23jmAOX1Tb3MI6kr5xCt7qnOXelj/XaE8uawMMYg2sl2z3W23XNo1/ZRk8ZEg7qpLZroQhLXSDBobc9a72ouBhW2O6hvOSQlDZNq1G8BSANxWWjMEMN7dsf3Crv0RUHqAmOHfdmocgLsvJ8F3kroGSzpeXlosox7z8bi3jdRnfKfFTEzn5Huk1FhhOD4uV4oVqOfCkSbWyYgwhIOUjpMe58G/FfZJ4NM+R025GCggS6SNSsPxEHuIyGaG5vs1wtsuOOs4MJ7xNOnc3mQWe4s0rqRhysCHPQ3G8lsA4TLCuD2YT3VmxPoQ8+xrzczOLBKPc3BYOrcnbEu63eJoe1X6rnbhbusjq4+hFIhTgx1/RF3ieA5gvjH8yPaq0GD5xHWxVjKm6M8cM5YJrHlzmw72G/kmBiitEQ5tT/uL9Kk9jX2hYNVkLws5ETK31fPEbZiuP16VgP1aNKywrP/lxWLuEuG98NVDeiXhHzhPd2vz9vUvh/quS5EW/qXiTNc9/UJt3+HQQWxNW/VGAkmVu5gecp2BFL+LJxfUKvIh3bkv4diID3SCmOWvlB+37D34AxnrJCl6pMHSYriCqt0sUmOiBLmTOBC84TVKMCZy+WaXGdhfI1qj4mypqOkZr+JPTq8SsztTSuR2ySf+wFWCkzILNusQPmZRIF0kM2i16lTbfXQ7G758pkFzguUTz1cxPL0R4bS2CfGltPeXKgTWGnZBxzKk2dUf9oS1WDyoR2sPrQLvQxyu+e93RDNmVEhgSNjaXM+5QR6OXtz6KhD7aAPJSUEgbEKueRRL+pk/ZTTR+mPUJ+g/TxL/Rls5oqn9zNUf4nEvD/aTl3Krf9Eg/6hHRqk52tQFnAEj4BzFkAvW6vV7Q59XqQB3a1J91gmWNSk2tSc/yZkDAuMIZneA4MjUosmQC4YRo25TEBURc9GshklGbNwRrQfmchcZKKj3021Y/LMaa+JrjgrXKc6pnjfhSaZjcaJvYrXN2wFafKwQ2iFN7LlDvpy4YwlkIuVCwv0s8IzwhqDOzBNaMmX9Ts6fGlDTjlw4UcvZfIrpsea5IOY7CywQTshJHV5GCkMyW33rApYCFViVrHeYCtJU/oTElGJZRw4BWzsYCLA/fFspLtiEqPbnbDrJTEKIr5m9eb2R6SynYKhCeIWWiXDqBKzivUKVgrUBw1ePHYw9BWw1G4EwPiHy13Kz9hea4HwJ9gyMMCpPYQQHdQnxiR02OsQu1llyyVkgCoxq1jvQO/FpmEWy3g7R6CID1xiQ399grqYVftCQqwWMjyyenJ0DacctYF4zDh4XI3VnKgTwQGNqGdLoUrMKjYYWEEwwJn4h4GGfXK3RTU248z4QJlsB2INvwTXPgx5hYyOrJIQDx9ggm2zC4CzDVtSSAVRz4wGVWJWscHB4LeVx3kIcf0GZ1fZf51oMRcyogs+J7DXeCJbM1hLi+mSgFUf8ZTdCnYfSD8aUbUUqsSsYqMB++AMcjsI3tgRhyiIhgLOGFzFjwPCWFdULKPsH+JayRUUOBZcHkul5xDxHkcXvHQqSa7xoErMKjZKQBBcPVlJ2dutndKxv52Ccivqj0WqW0Qyjrk9pL/7RTScUbgPBO8r3CNFZFw1LRrFLfr7R9Jn53PZEI4cbFlgRWX/Oar8DY0qMavYJABRAfobzhM4XeCRZdEaDsh8lCgN+BSLhHhzEfrzSY7HcXAdl0xcGgNxc2NZFYuhSswqNmmY/7A7UsVtalo57cgbe484FuAUsIywLnYetUwH940BVWJWsckBw8ub2+Zsg+tdTYPHzd0BISN0S/MUEkH9XyAK43K5sYqvYVSJWcUmAwiJSMqhAZFusQi3vDAh82ArqEXh+BknbQipilgcVc7GgCoxq9jowXYKTvtc0KuVb5HAhU5lnp3MgztuZY7ksWT6CIxAuApGlbshUSVmFRs9uAiWQ8kiE4etiUlVAcd0DjtzoN6bF3UeckOjSswqNnqYC9/hs9/kbvbiGnfvSa16gZN4BOmKwBmFiP97LediOaK3Ic+qFkKVmFVsMmCbAwcEi5SRsMuEihh98sEZTDvRclOs0Z9OdP2NkZABqsSsYpMDKyiO5XWN3p7ZyP+EvSnsvucOON+I0QevoqpVtooqJhC2bTJtzjY4F9QkfWJNDYqEbh/TRSn4Y03SuxkHc0KBcFg7Kp+NEVViVrHJAxHXHA2Smb1FTmLMPiJiLuO+Gg43bworZC7Wbfb/ATryE/xdGskAAAAASUVORK5CYII=</Image>
+              <Name>Image1</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShiftMode>IncreasingSize, DecreasingSize</ShiftMode>
+              <Stretch>True</Stretch>
+            </Image1>
+            <Text52 Ref="35" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[230:230:230]</Brush>
+              <ClientRectangle>1.6,0.8,1.1,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>5e846ef5b7b2aefaf9ac9fe39689dfa7</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text52</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>تاريخ الطباعة</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text52>
+            <Text53 Ref="36" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.7,0.8,0.9,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>c8f2b4ab2f6b7db369fd9fe4251c7598</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text53</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{Today}</Text>
+              <TextBrush>[255:0:0]</TextBrush>
+              <TextFormat Ref="37" type="DateFormat" isKey="true">
+                <StringFormat>dd/MM/yyyy</StringFormat>
+              </TextFormat>
+              <Type>SystemVariables</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text53>
+            <Text55 Ref="38" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,2.7,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>ca648f8a043ed65e5b799fe797d330c3</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text55</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>إدارة مدارس النجاة</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="39" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text55>
+            <Text60 Ref="40" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.2,2.6,1.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>fbebd44ce4f1470a90ef50446e93148f</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text60</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>الشرح العام</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="41" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text60>
+            <Text64 Ref="42" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.8,2.6,3.3,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>6306478fd08a40be890d0f50fafde158</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text64</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource1.payNotes}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text64>
+            <Text65 Ref="43" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,2.9,6.1,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>d491ee8101a94d7bbd8d1cae5a60ee81</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text65</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource1.auditnotes}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text65>
+            <Text66 Ref="44" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.1,2.9,1.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>0bb270262cdf47f49fea8c0be4a30b42</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text66</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>ملاحظات المخاطر والتدقيق</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="45" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text66>
+            <Text59 Ref="46" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.4,0,1.3,0.2</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>_x007B_mosDataSource1.Trs_Dt_x003C_Today_x007D_,Red,Transparent,Arial_x002C_10,True,False,,,None</value>
+              </Conditions>
+              <Font>Arial,11,Bold</Font>
+              <Guid>cfa7afa4d3d3cf1148a5c3301022879c</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text59</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>نسخة طبق الاصل</Text>
+              <TextBrush>[255:255:255]</TextBrush>
+              <TextFormat Ref="47" type="DateFormat" isKey="true">
+                <StringFormat>dd/MM/yyyy</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+            </Text59>
+            <Text36 Ref="48" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.2,0.9,0.8,0.2</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>mosDataSource1.printcount,GreaterThan,_x0031_,,Numeric,Red,Transparent,Arial_x002C_10,True,False,,,None</value>
+              </Conditions>
+              <Font>Arial,10</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text36</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>{mosDataSource1.printcount}</Text>
+              <TextBrush>[255:255:255]</TextBrush>
+            </Text36>
+            <Text73 Ref="49" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4,0.9,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>mosDataSource1.printcount,GreaterThan,_x0031_,,Numeric,Red,Transparent,Arial_x002C_10,True,True,,,None</value>
+              </Conditions>
+              <Font>Arial,10</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text73</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>نسخه رقم</Text>
+              <TextBrush>[255:255:255]</TextBrush>
+              <Type>Expression</Type>
+            </Text73>
+            <Text84 Ref="50" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.9,0,2.4,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text84</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>{PageNofMThrough}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text84>
+            <Text85 Ref="51" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,2.6,1.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text85</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>{mosDataSource3.acdFin_period_info}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text85>
+            <Text87 Ref="52" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Gainsboro</Brush>
+              <ClientRectangle>1.6,2.6,1.1,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>92a98f86f5e44b2da196edbff20a5888</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text87</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>عام الاستحقاق</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text87>
+            <Text88 Ref="53" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.2,1.2,1.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,16,Bold</Font>
+              <Guid>af27f88be9b5428626e5edc0df03ec8f</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text88</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <Text>الفترة المالية</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="54" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text88>
+            <Text89 Ref="55" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.8,1.2,1.3,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>f9191af33a6366b8f7d6edc23576b770</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text89</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource1.AcademicYear}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="56" type="DateFormat" isKey="true">
+                <StringFormat>dd/MM/yyyy</StringFormat>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text89>
+            <Text96 Ref="57" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.8,0.7,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>74ac46bb0e1c4de07162edc9610efe69</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text96</Name>
+              <Page isRef="10" />
+              <Parent isRef="11" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{Time}</Text>
+              <TextBrush>[255:0:0]</TextBrush>
+              <TextFormat Ref="58" type="TimeFormat" isKey="true">
+                <StringFormat>HH:mm:ss</StringFormat>
+              </TextFormat>
+              <Type>SystemVariables</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text96>
+          </Components>
+          <Condition>{mosDataSource1.schglpaydlyhdregid}</Condition>
+          <Conditions isList="true" count="0" />
+          <Name>GroupHeaderBand3</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+          <PrintOn>OnlyFirstPage</PrintOn>
+        </GroupHeaderBand3>
+        <DataBand3 Ref="59" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,3.8,7.72,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <DataSourceName>mosDataSource1</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand3</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+          <Sort isList="true" count="0" />
+        </DataBand3>
+        <GroupHeaderBand1 Ref="60" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.2,7.72,0.4</ClientRectangle>
+          <Components isList="true" count="5">
+            <Text12 Ref="61" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>6,0.2,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>9633bc1a427edce48c71898bcaae2aa4</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="10" />
+              <Parent isRef="60" />
+              <Text>مبلغ</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="62" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text12>
+            <Text16 Ref="63" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>4.4,0.2,1.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>b83c78650a390c9da9f0fe86c330a250</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="10" />
+              <Parent isRef="60" />
+              <Text>رقم الحساب</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text16>
+            <Text31 Ref="64" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>0,0.2,3,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>8faec1f32d10692b849709f8b3ac9fd5</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text31</Name>
+              <Page isRef="10" />
+              <Parent isRef="60" />
+              <Text>البيان</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text31>
+            <Text46 Ref="65" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>3,0.2,1.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>1be90bab349d4c96a989cb9c0f77967a</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text46</Name>
+              <Page isRef="10" />
+              <Parent isRef="60" />
+              <Text>الحساب</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text46>
+            <Text39 Ref="66" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>WhiteSmoke</Brush>
+              <ClientRectangle>0,0,7.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>cb2db23b91022974e7b5b6cb5eb16b20</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text39</Name>
+              <Page isRef="10" />
+              <Parent isRef="60" />
+              <Text>الاطراف الدائنة</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text39>
+          </Components>
+          <Condition>{mosDataSource2.schglpaydlyhdregid}</Condition>
+          <Conditions isList="true" count="0" />
+          <Name>GroupHeaderBand1</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+        </GroupHeaderBand1>
+        <DataBand1 Ref="67" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,5,7.72,0.3</ClientRectangle>
+          <Components isList="true" count="4">
+            <Text20 Ref="68" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,3,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>fb6b87a02e6f4555d8dcfe78928f3261</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="10" />
+              <Parent isRef="67" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource2.paymentnotes}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text20>
+            <Text2 Ref="69" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,0,1.7,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>47dcca3c9848ff95a8ccfe78928f3381</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="10" />
+              <Parent isRef="67" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource2.moneypaidto}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="70" type="NumberFormat" isKey="true">
+                <DecimalDigits>3</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>0</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text2>
+            <Text14 Ref="71" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>4.6,0,1.4,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>31cfd3d4850b6c37d279fe86c330286c</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="10" />
+              <Parent isRef="67" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource2.Acc_no}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text14>
+            <Text50 Ref="72" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>3,0,1.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>deb95200a9ca0d16a9acb6c8add2c821</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text50</Name>
+              <Page isRef="10" />
+              <Parent isRef="67" />
+              <Text>{mosDataSource2.Acc_Acc_Nm}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text50>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName>Relation1pdp</DataRelationName>
+          <DataSourceName>mosDataSource2</DataSourceName>
+          <Filters isList="true" count="0" />
+          <MasterComponent isRef="59" />
+          <Name>DataBand1</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+          <Sort isList="true" count="2">
+            <value>ASC</value>
+            <value>schglpaydlydetailpaymentid</value>
+          </Sort>
+        </DataBand1>
+        <GroupHeaderBand2 Ref="73" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,5.7,7.72,0.2</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text37 Ref="74" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>WhiteSmoke</Brush>
+              <ClientRectangle>0,0,7.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>1cda2f8855635b2f41b5b6ccabb00851</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text37</Name>
+              <Page isRef="10" />
+              <Parent isRef="73" />
+              <Text>البيان/ الاطراف المدينة</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text37>
+          </Components>
+          <Condition>{mosDataSource3.schglpaydlyhdregid}</Condition>
+          <Conditions isList="true" count="0" />
+          <Name>GroupHeaderBand2</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+        </GroupHeaderBand2>
+        <DataBand2 Ref="75" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,6.3,7.72,0.8</ClientRectangle>
+          <Components isList="true" count="8">
+            <Text4 Ref="76" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.3,0,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>e8cd221912cf44837f61fe78928f2a6e</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="10" />
+              <Parent isRef="75" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource3.schpaymenttypeschpaymenttypenm}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text4>
+            <Text5 Ref="77" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.2,0,1.3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>df28570ef254029d3d34fe78928fffb9</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="10" />
+              <Parent isRef="75" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource3.Acc_Acc_Nm}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text5>
+            <Text22 Ref="78" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.5,0,1.5,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>bbf1833bc00525d8d8f0fe78928f4505</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="10" />
+              <Parent isRef="75" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource3.Acc_no}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text22>
+            <Text13 Ref="79" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,0,1.7,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>9b9a303f0168fe696cdc898c4339d5ea</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="10" />
+              <Parent isRef="75" />
+              <Text>{mosDataSource3.Mony_Paid}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="80" type="NumberFormat" isKey="true">
+                <DecimalDigits>3</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>0</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <VertAlignment>Center</VertAlignment>
+            </Text13>
+            <Text6 Ref="81" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.3,0,0.9,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>5c2b5f6c2ba234abdb6ffe78928fe3c4</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="10" />
+              <Parent isRef="75" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource3.subaccountno}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text6>
+            <Text32 Ref="82" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,1.3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>dc67212ac6af087f08540a0486bb38c6</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text32</Name>
+              <Page isRef="10" />
+              <Parent isRef="75" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource3.ThebranchDesc1}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text32>
+            <Text49 Ref="83" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.3,0.2,1.9,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>5c8c4890a585fb3af36a312c504cdc77</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text49</Name>
+              <Page isRef="10" />
+              <Parent isRef="75" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource3.CSMSUP_NM}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text49>
+            <Text34 Ref="84" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0,0.4,7.7,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>c8bd51dba4d76c51a70eb6da028a9b1a</Guid>
+              <HideZeros>True</HideZeros>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text34</Name>
+              <Page isRef="10" />
+              <Parent isRef="75" />
+              <ShiftMode>IncreasingSize, DecreasingSize</ShiftMode>
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{mosDataSource3.Notes}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text34>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName>Relation1sadf</DataRelationName>
+          <DataSourceName>mosDataSource3</DataSourceName>
+          <Filters isList="true" count="0" />
+          <MasterComponent isRef="59" />
+          <Name>DataBand2</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+          <Sort isList="true" count="2">
+            <value>ASC</value>
+            <value>Trs_No</value>
+          </Sort>
+        </DataBand2>
+        <GroupFooterBand2 Ref="85" type="GroupFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,7.5,7.72,0.7</ClientRectangle>
+          <Components isList="true" count="4">
+            <Text24 Ref="86" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,0,1.7,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>db2b571a4dd77b2b4f03fe82e7790b94</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="10" />
+              <Parent isRef="85" />
+              <Text>{Sum(DataBand2,mosDataSource3.Mony_Paid)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="87" type="NumberFormat" isKey="true">
+                <DecimalDigits>3</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>0</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>Totals</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text24>
+            <Text48 Ref="88" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>0,0,6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>e549e7eb50f3acb7bd00b6cd4a263877</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text48</Name>
+              <Page isRef="10" />
+              <Parent isRef="85" />
+              <Text>{mosDataSource1.currencywordsnew}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+            </Text48>
+            <Text23 Ref="89" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,0.3,1.7,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>f9be290adcdb104679e113f4546f9155</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="10" />
+              <Parent isRef="85" />
+              <Text>الشرح العام</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="90" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text23>
+            <Text28 Ref="91" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.3,6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>1fdb7cd92c57f8a20aa313f454709f6f</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text28</Name>
+              <Page isRef="10" />
+              <Parent isRef="85" />
+              <Text>{mosDataSource1.Notes}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>DataColumn</Type>
+            </Text28>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>GroupFooterBand2</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+        </GroupFooterBand2>
+        <GroupFooterBand1 Ref="92" type="GroupFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.6,7.72,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <Name>GroupFooterBand1</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+        </GroupFooterBand1>
+        <ReportSummaryBand1 Ref="93" type="ReportSummaryBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,9,7.72,3.2</ClientRectangle>
+          <Components isList="true" count="28">
+            <Text61 Ref="94" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.9,0.7,1.8,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>b675e2c23af669b8a245a778f6718946</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text61</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>مدير المخاطر والرقابة الداخلية</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text61>
+            <Text62 Ref="95" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1,1.7,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,16,Bold</Font>
+              <Guid>b7f252358e55a8c9ffc5a778f671c2b0</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text62</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>مدير عام الجمعية</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text62>
+            <Text44 Ref="96" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.4,2.1,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>72b265e3e2ddb11bc424a778f67108e1</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text44</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>اسم المستلم</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text44>
+            <Text30 Ref="97" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.1,2.1,0.9,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>10318ae578a7d631c255a778f671a59a</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text30</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>الرقم المدني</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text30>
+            <Text40 Ref="98" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.1,0.2,0.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>0488ce31d13398869589a778f6717573</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text40</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>المحاسب</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="99" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text40>
+            <Text41 Ref="100" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.7,0.2,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>70626b9e868d8cca1925a778f6716e57</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text41</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>رئيس  حسابات</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="101" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text41>
+            <Text42 Ref="102" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.2,1.8,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>6b1ff34d71895860b617a778f671035b</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text42</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>مدير عام المدارس</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text42>
+            <Text43 Ref="103" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.7,2.5,6.7,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>5ca167fcfb862a9de9d3a778f67180a7</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text43</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>تم  استلام اصل الشيك الموضح اعلاه وحرر عن ذلك سند قبض رقم...........................بتاريخ //..............................ـــ</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text43>
+            <Text38 Ref="104" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.6,2.1,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>4812f7a68fda3fdb84a3a778f67161a8</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text38</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>توقيع المستلم</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text38>
+            <Text35 Ref="105" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.3,0.5,1.4,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11</Font>
+              <Guid>5a416e75d5b698918dfba778f671e02f</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text35</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>................................</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="106" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text35>
+            <Text63 Ref="107" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[230:230:230]</Brush>
+              <ClientRectangle>0,0,7.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>77f4e6ecfc943f01b4f9a77afaa1f9cd</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text63</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>التوقيع والتدقيق</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text63>
+            <Text68 Ref="108" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.6,1.3,1.1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Guid>28dcd60bda31b8d9ef766c2a913e7be9</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text68</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>مدير التدقيق الداخلي</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="109" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text68>
+            <Text69 Ref="110" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.8,1.5,3.9,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>40a3c6cda05b26912fb36c2f0bdbe488</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text69</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>.................................................................................................................................</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="111" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text69>
+            <Text71 Ref="112" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.9,0.2,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>dcaa9a52bb91727887816c367d5f1578</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text71</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>المدير المالي</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="113" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text71>
+            <Text70 Ref="114" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5,0.9,1.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>f1746218a21c7ca9f9206c3b6747c3f6</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text70</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>................................................................................................</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="115" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text70>
+            <Text47 Ref="116" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.8,0.5,1.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11</Font>
+              <Guid>85da23a04534b03670796c44e1f36466</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text47</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>................................</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="117" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text47>
+            <Text54 Ref="118" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,0.5,1.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11</Font>
+              <Guid>929651f548a39da530396c44fd14d636</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text54</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>................................</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="119" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text54>
+            <Text67 Ref="120" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.5,1.8,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11</Font>
+              <Guid>050c368ef6bad2a25bfc6c45137a161e</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text67</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>................................</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="121" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text67>
+            <Text72 Ref="122" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.3,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11</Font>
+              <Guid>2a1960ea555550fae0b26c454afea124</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text72</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>................................</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="123" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text72>
+            <Text56 Ref="124" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.1,2.1,1.3,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11</Font>
+              <Guid>3828fe5462d2eede0a766c46065e0485</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text56</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>................................</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="125" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text56>
+            <Text57 Ref="126" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.7,2.1,1.4,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11</Font>
+              <Guid>1b4726b5b5292ceb46426c4645eff5fa</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text57</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>................................</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="127" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text57>
+            <Text58 Ref="128" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.1,2.1,1.4,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11</Font>
+              <Guid>acb61e37ced9418a37326c46c6ee15f9</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text58</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>................................</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="129" type="DateFormat" isKey="true">
+                <StringFormat>yy.MMM.dd</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text58>
+            <Text90 Ref="130" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.6,3,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>c474241a0b86d5230a80edc4bdae86fb</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text90</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>printed By</Text>
+              <TextBrush>[255:0:0]</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text90>
+            <Text91 Ref="131" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.6,3,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>b8671dbcfd1f78a14535edc6c05d1c95</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text91</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>{myvar9}</Text>
+              <TextBrush>[255:0:0]</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text91>
+            <Text92 Ref="132" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,3,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>25d37605fed5f71bbd35edc7438b4efb</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text92</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>Created By</Text>
+              <TextBrush>[255:0:0]</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text92>
+            <Text93 Ref="133" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.6,3,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>067da254dd1c12b3e5d7edc7c7a1c845</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text93</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>Edit By</Text>
+              <TextBrush>[255:0:0]</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text93>
+            <Text86 Ref="134" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1,3,1.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text86</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>{mosDataSource1.CreatedBy}</Text>
+              <TextBrush>[255:0:0]</TextBrush>
+            </Text86>
+            <Text94 Ref="135" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.6,3,1.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text94</Name>
+              <Page isRef="10" />
+              <Parent isRef="93" />
+              <Text>{mosDataSource1.ModifiedBy}</Text>
+              <TextBrush>[255:0:0]</TextBrush>
+            </Text94>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ReportSummaryBand1</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+        </ReportSummaryBand1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>8038ee44c7ab4799b130ae92f225461c</Guid>
+      <Margins>0.39,0.39,0.39,0.39</Margins>
+      <Name>Page1</Name>
+      <PageHeight>13</PageHeight>
+      <PageWidth>8.5</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="136" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+    <Page2 Ref="137" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="2">
+        <HeaderBand1 Ref="138" type="HeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.2,7.72,0.4</ClientRectangle>
+          <Components isList="true" count="6">
+            <Text74 Ref="139" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.7,0.2,1.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>28c8c7b912010e1906a1cebe0464a617</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text74</Name>
+              <Page isRef="137" />
+              <Parent isRef="138" />
+              <Text>عدد الصفحات</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text74>
+            <Text75 Ref="140" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.2,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>272d5bcef0d297e5890dcebe046464d0</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text75</Name>
+              <Page isRef="137" />
+              <Parent isRef="138" />
+              <Text>ملاحظات</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text75>
+            <Text76 Ref="141" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,0.2,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>243ce22d2b1f3303c6accebe04646245</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text76</Name>
+              <Page isRef="137" />
+              <Parent isRef="138" />
+              <Text>نوع المستند</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text76>
+            <Text77 Ref="142" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.7,0.2,1.3,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>e57b37cc028fadee94aecebe046449e8</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text77</Name>
+              <Page isRef="137" />
+              <Parent isRef="138" />
+              <Text>رقم المستند</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text77>
+            <Text78 Ref="143" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.2,0.2,1.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>3787a9f4696e0822b747cebe0464ff76</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text78</Name>
+              <Page isRef="137" />
+              <Parent isRef="138" />
+              <Text>تاريخ المستند</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text78>
+            <Text79 Ref="144" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[230:230:230]</Brush>
+              <ClientRectangle>0,0,7.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold| Italic</Font>
+              <Guid>bec9fdc10d29f2148f1dcebe0464f54e</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text79</Name>
+              <Page isRef="137" />
+              <Parent isRef="138" />
+              <Text>المرفقات</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text79>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>674c364f1e69ac2a94aacebe0464386d</Guid>
+          <Name>HeaderBand1</Name>
+          <Page isRef="137" />
+          <Parent isRef="137" />
+        </HeaderBand1>
+        <DataBand4 Ref="145" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,1,7.72,0.2</ClientRectangle>
+          <Components isList="true" count="5">
+            <Text45 Ref="146" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>1.7,0,1.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>108158defbf41d415cc0cebe0464b818</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text45</Name>
+              <Page isRef="137" />
+              <Parent isRef="145" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{schattachglpaylists.schattachglpayrefpagesno}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Text45>
+            <Text80 Ref="147" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3.2,0,1.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>f72d83ccae3d83a62ed5cebe0464c284</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text80</Name>
+              <Page isRef="137" />
+              <Parent isRef="145" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{schattachglpaylists.schattachglpayrefdate}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="148" type="DateFormat" isKey="true">
+                <StringFormat>dd/MM/yyyy</StringFormat>
+              </TextFormat>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Text80>
+            <Text81 Ref="149" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>4.7,0,1.3,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>2f6b7ce718d30a9c1275cebe0464fd9d</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text81</Name>
+              <Page isRef="137" />
+              <Parent isRef="145" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{schattachglpaylists.schattachglpayrefno}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Text81>
+            <Text82 Ref="150" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>6,0,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>74c8564695d89f57346bcebe04648fb8</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text82</Name>
+              <Page isRef="137" />
+              <Parent isRef="145" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{schattachglpaylists.schattachglpaytype}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Text82>
+            <Text83 Ref="151" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>08ca4afaab800894dda3cebe0464e86c</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text83</Name>
+              <Page isRef="137" />
+              <Parent isRef="145" />
+              <ShrinkFontToFit>True</ShrinkFontToFit>
+              <Text>{schattachglpaylists.notes}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Text83>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName>Relation</DataRelationName>
+          <DataSourceName>schattachglpaylists</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Guid>76e967042dc1fbbfa135cebe0464b478</Guid>
+          <MasterComponent isRef="59" />
+          <Name>DataBand4</Name>
+          <Page isRef="137" />
+          <Parent isRef="137" />
+          <Sort isList="true" count="2">
+            <value>ASC</value>
+            <value>schattachglpayid</value>
+          </Sort>
+        </DataBand4>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>53e805b04dd32dc7ca6acebd6822e75a</Guid>
+      <Margins>0.39,0.39,0.39,0.39</Margins>
+      <Name>Page2</Name>
+      <PageHeight>11.69</PageHeight>
+      <PageWidth>8.5</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="152" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page2>
+  </Pages>
+  <PrinterSettings Ref="153" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>schglpaydlyhdreg</ReportAlias>
+  <ReportChanged>5/9/2017 6:35:36 PM</ReportChanged>
+  <ReportCreated>8/18/2013 8:22:02 AM</ReportCreated>
+  <ReportFile />
+  <ReportGuid>deab918641cecb3b530cedd98fbba433</ReportGuid>
+  <ReportName>schglpaydlyhdreg</ReportName>
+  <ReportUnit>Inches</ReportUnit>
+  <ReportVersion>2016.3.1</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

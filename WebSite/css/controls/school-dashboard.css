@@ -1,0 +1,520 @@
+/* ====================================================================
+   🎓 School Dashboard Control - Modern Material Design
+   ====================================================================
+   File: css/controls/school-dashboard.css
+   Purpose: External CSS for schoolDashBoard.ascx control
+   Created: August 7, 2025
+   Integration: Sky365 Theme System Compatible
+   ==================================================================== */
+
+/* ====================================================================
+   📦 CSS VARIABLES INTEGRATION - Sky365 Theme System
+   ==================================================================== */
+:root {
+    /* Primary gradients */
+    --school-primary-gradient: linear-gradient(135deg, var(--primary-color, #667eea) 0%, var(--secondary-color, #764ba2) 100%);
+    --school-secondary-gradient: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+    
+    /* Background colors */
+    --school-glass-bg: rgba(255, 255, 255, 0.95);
+    --school-card-bg: rgba(255, 255, 255, 0.95);
+    --school-overlay-bg: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+    
+    /* Text colors */
+    --school-text-primary: var(--text-primary, #1e293b);
+    --school-text-secondary: var(--text-secondary, #64748b);
+    --school-text-white: #ffffff;
+    
+    /* Spacing */
+    --school-spacing-xs: 5px;
+    --school-spacing-sm: 10px;
+    --school-spacing-md: 15px;
+    --school-spacing-lg: 20px;
+    --school-spacing-xl: 25px;
+    --school-spacing-xxl: 30px;
+    
+    /* Shadows */
+    --school-shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --school-shadow-md: 0 15px 35px rgba(0, 0, 0, 0.1);
+    --school-shadow-lg: 0 25px 50px rgba(102, 126, 234, 0.3);
+    
+    /* Border radius */
+    --school-radius-sm: 12px;
+    --school-radius-md: 15px;
+    --school-radius-lg: 20px;
+    --school-radius-xl: 25px;
+    
+    /* Transitions */
+    --school-transition-fast: 0.3s ease;
+    --school-transition-normal: 0.4s ease;
+    --school-transition-slow: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* ====================================================================
+   🏗️ MAIN CONTAINER SECTION
+   ==================================================================== */
+
+.school-dashboard-container {
+    background: var(--school-primary-gradient);
+    border-radius: var(--school-radius-xl);
+    padding: var(--school-spacing-xxl);
+    box-shadow: var(--school-shadow-lg);
+    margin: var(--school-spacing-xl) 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+}
+
+.school-dashboard-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15) 0%, transparent 50%),
+        linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.05) 75%);
+    background-size: 100% 100%, 100% 100%, 60px 60px;
+    animation: dashboardFloat 20s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* ====================================================================
+   📄 HEADER SECTION
+   ==================================================================== */
+
+.dashboard-header {
+    background: var(--school-glass-bg);
+    border-radius: var(--school-radius-lg);
+    padding: var(--school-spacing-xxl);
+    margin-bottom: 35px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    transform: translateY(0);
+    transition: transform var(--school-transition-fast);
+}
+
+.dashboard-header:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    background: var(--school-primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--school-spacing-md);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.title-icon {
+    font-size: 3rem;
+    background: var(--school-primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+/* ====================================================================
+   🎯 NAVIGATION GRID SECTION
+   ==================================================================== */
+
+.navigation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--school-spacing-xl);
+    margin-bottom: var(--school-spacing-xxl);
+    position: relative;
+    z-index: 2;
+}
+
+.nav-card {
+    background: var(--school-card-bg);
+    border-radius: var(--school-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--school-shadow-md);
+    transition: all var(--school-transition-slow);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.nav-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.card-image-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--school-transition-normal);
+    border-radius: var(--school-radius-lg) var(--school-radius-lg) 0 0;
+}
+
+.nav-card:hover .card-image {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--school-overlay-bg);
+    opacity: 0;
+    transition: opacity var(--school-transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--school-radius-lg) var(--school-radius-lg) 0 0;
+}
+
+.nav-card:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-text {
+    color: var(--school-text-white);
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    transform: translateY(10px);
+    transition: transform var(--school-transition-normal);
+    padding: 0 var(--school-spacing-lg);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.nav-card:hover .overlay-text {
+    transform: translateY(0);
+}
+
+/* ====================================================================
+   📝 CARD CONTENT SECTION
+   ==================================================================== */
+
+.card-content {
+    padding: var(--school-spacing-xl);
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--school-text-primary);
+    margin: 0;
+    line-height: 1.4;
+    transition: color var(--school-transition-fast);
+}
+
+.nav-card:hover .card-title {
+    background: var(--school-primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card-description {
+    color: var(--school-text-secondary);
+    font-size: 0.95rem;
+    margin-top: var(--school-spacing-sm);
+    line-height: 1.5;
+}
+
+.nav-link {
+    text-decoration: none !important;
+    color: inherit;
+    display: block;
+}
+
+.nav-link:hover {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+/* ====================================================================
+   📊 STATISTICS SECTION
+   ==================================================================== */
+
+.stats-bar {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--school-radius-md);
+    padding: var(--school-spacing-lg);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--school-spacing-lg);
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--school-shadow-sm);
+}
+
+.stat-item {
+    text-align: center;
+    padding: var(--school-spacing-md);
+    border-radius: var(--school-radius-sm);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    transition: transform var(--school-transition-fast);
+}
+
+.stat-item:hover {
+    transform: scale(1.05);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--school-primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--school-spacing-xs);
+}
+
+.stat-label {
+    color: var(--school-text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ====================================================================
+   🔧 UTILITY CLASSES
+   ==================================================================== */
+
+.default-image {
+    background: var(--school-primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--school-text-white);
+    font-size: 4rem;
+    width: 100%;
+    height: 100%;
+}
+
+.loading-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    height: 200px;
+    border-radius: var(--school-radius-lg) var(--school-radius-lg) 0 0;
+}
+
+/* ====================================================================
+   🌍 RTL LANGUAGE SUPPORT
+   ==================================================================== */
+
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.rtl .dashboard-header {
+    text-align: center;
+}
+
+.rtl .card-content {
+    text-align: center;
+}
+
+/* ====================================================================
+   🎭 ANIMATIONS
+   ==================================================================== */
+
+@keyframes dashboardFloat {
+    0%, 100% { 
+        transform: translate(-50%, -50%) rotate(0deg) scale(1); 
+    }
+    33% { 
+        transform: translate(-45%, -55%) rotate(1deg) scale(1.02); 
+    }
+    66% { 
+        transform: translate(-55%, -45%) rotate(-1deg) scale(0.98); 
+    }
+}
+
+@keyframes iconPulse {
+    0%, 100% { 
+        transform: scale(1); 
+        opacity: 1; 
+    }
+    50% { 
+        transform: scale(1.1); 
+        opacity: 0.8; 
+    }
+}
+
+@keyframes loading {
+    0% { 
+        background-position: 200% 0; 
+    }
+    100% { 
+        background-position: -200% 0; 
+    }
+}
+
+/* ====================================================================
+   📱 RESPONSIVE DESIGN
+   ==================================================================== */
+
+/* Tablet Portrait */
+@media (max-width: 768px) {
+    .school-dashboard-container {
+        padding: var(--school-spacing-lg);
+        margin: var(--school-spacing-md) 0;
+    }
+    
+    .dashboard-title {
+        font-size: 2.2rem;
+        flex-direction: column;
+        gap: var(--school-spacing-sm);
+    }
+    
+    .navigation-grid {
+        grid-template-columns: 1fr;
+        gap: var(--school-spacing-lg);
+    }
+    
+    .stats-bar {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: var(--school-spacing-md);
+        padding: var(--school-spacing-md);
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .school-dashboard-container {
+        padding: var(--school-spacing-md);
+        margin: var(--school-spacing-sm) 0;
+    }
+    
+    .dashboard-header {
+        padding: var(--school-spacing-lg);
+    }
+    
+    .dashboard-title {
+        font-size: 1.8rem;
+    }
+    
+    .title-icon {
+        font-size: 2rem;
+    }
+    
+    .nav-card {
+        margin-bottom: var(--school-spacing-md);
+    }
+    
+    .card-content {
+        padding: var(--school-spacing-lg);
+    }
+    
+    .card-title {
+        font-size: 1.2rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .stats-bar {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ====================================================================
+   🔌 PERFORMANCE OPTIMIZATIONS
+   ==================================================================== */
+
+/* GPU Acceleration */
+.nav-card,
+.dashboard-header,
+.school-dashboard-container::before {
+    will-change: transform;
+}
+
+/* Reduce animations on slower devices */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .school-dashboard-container::before {
+        animation: none;
+    }
+    
+    .title-icon {
+        animation: none;
+    }
+}
+
+/* ====================================================================
+   ♿ ACCESSIBILITY IMPROVEMENTS
+   ==================================================================== */
+
+/* Focus states for keyboard navigation */
+.nav-card:focus-within {
+    outline: 3px solid var(--primary-color, #667eea);
+    outline-offset: 2px;
+}
+
+.nav-link:focus {
+    outline: 2px solid var(--primary-color, #667eea);
+    outline-offset: 2px;
+    border-radius: var(--school-radius-sm);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .school-dashboard-container {
+        border: 2px solid var(--text-primary, #000);
+    }
+    
+    .nav-card {
+        border: 2px solid var(--text-primary, #000);
+    }
+    
+    .card-title {
+        color: var(--text-primary, #000) !important;
+    }
+}
+
+/* ====================================================================
+   🌙 DARK MODE SUPPORT
+   ==================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --school-glass-bg: rgba(0, 0, 0, 0.8);
+        --school-card-bg: rgba(0, 0, 0, 0.8);
+        --school-text-primary: #ffffff;
+        --school-text-secondary: #a0a0a0;
+    }
+}
+
+/* ====================================================================
+   END OF FILE
+   ==================================================================== */

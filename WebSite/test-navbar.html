@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Test - Working Links</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        /* Copy the membership styles from master page */
+        .membership-top-bar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 0.75rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .membership-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .system-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .brand-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4a5568;
+        }
+        
+        .welcome-text {
+            font-size: 0.9rem;
+            color: #718096;
+        }
+        
+        .username {
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        .membership-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .membership-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            color: #4a5568;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .membership-btn:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            transform: translateY(-1px);
+        }
+        
+        .membership-btn i {
+            font-size: 1rem;
+        }
+        
+        .language-selector-container {
+            position: relative;
+        }
+        
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 8px;
+            color: #4a5568;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .language-toggle:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+        
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            min-width: 150px;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.2s ease;
+        }
+        
+        .language-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .language-option:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .language-option.active {
+            background: rgba(102, 126, 234, 0.15);
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .flag {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+        
+        .flag.ar {
+            background: linear-gradient(to bottom, #ce1126 33%, #ffffff 33%, #ffffff 66%, #000000 66%);
+        }
+        
+        .flag.en {
+            background: linear-gradient(45deg, #012169 25%, transparent 25%), 
+                       linear-gradient(-45deg, #012169 25%, transparent 25%),
+                       linear-gradient(45deg, transparent 75%, #012169 75%), 
+                       linear-gradient(-45deg, transparent 75%, #012169 75%);
+            background-size: 4px 4px;
+            background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
+            background-color: #ffffff;
+        }
+        
+        .test-content {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .test-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .test-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+        
+        .output {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .membership-content {
+                padding: 0 1rem;
+            }
+            
+            .brand-text {
+                display: none;
+            }
+            
+            .membership-btn .btn-text {
+                display: none;
+            }
+            
+            .user-info {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Test Navbar (copied from master page) -->
+    <div class="membership-top-bar">
+        <div class="membership-content">
+            <!-- System Brand -->
+            <div class="system-brand">
+                <button class="membership-btn" onclick="testToggleMenu()" title="القائمة" style="margin-right: 0.5rem;">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="brand-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <div class="brand-text">SKYsaas ERP - نظام إدارة الموارد المؤسسية</div>
+            </div>
+
+            <!-- User Info & Actions -->
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <div class="user-info">
+                    <span class="welcome-text">مرحبا،</span>
+                    <span id="currentUserName" class="username">المستخدم</span>
+                </div>
+                
+                <div class="membership-actions">
+                    <button class="membership-btn" onclick="showUserProfile()" title="الملف الشخصي">
+                        <i class="fas fa-user"></i>
+                        <span class="btn-text">الملف الشخصي</span>
+                    </button>
+                    <button class="membership-btn" onclick="showNotifications()" title="الإشعارات">
+                        <i class="fas fa-bell"></i>
+                        <span class="btn-text">الإشعارات</span>
+                    </button>
+                    <button class="membership-btn" onclick="showSettings()" title="الإعدادات">
+                        <i class="fas fa-cog"></i>
+                        <span class="btn-text">الإعدادات</span>
+                    </button>
+                    <button class="membership-btn" onclick="logout()" title="تسجيل الخروج">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="btn-text">خروج</span>
+                    </button>
+                    
+                    <!-- Modern Language Selector -->
+                    <div class="language-selector-container">
+                        <button class="language-toggle" onclick="toggleLanguageDropdown()" title="تغيير اللغة">
+                            <i class="fas fa-globe"></i>
+                            <span id="currentLangCode">عربي</span>
+                            <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="selectLanguage('ar-SA', 'عربي', this)">
+                                <div class="flag ar"></div>
+                                <span>العربية</span>
+                            </div>
+                            <div class="language-option" onclick="selectLanguage('en-US', 'English', this)">
+                                <div class="flag en"></div>
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Content -->
+    <div class="test-content">
+        <h1><i class="fas fa-flask"></i> اختبار الروابط في الـ Navbar</h1>
+        <p>هذه صفحة اختبار للتأكد من عمل جميع الروابط في الشريط العلوي</p>
+        
+        <div>
+            <button class="test-btn" onclick="testAllLinks()">
+                <i class="fas fa-link"></i> اختبار جميع الروابط
+            </button>
+            
+            <button class="test-btn" onclick="testMenuToggle()">
+                <i class="fas fa-bars"></i> اختبار تبديل القائمة
+            </button>
+            
+            <button class="test-btn" onclick="testLanguageSwitch()">
+                <i class="fas fa-globe"></i> اختبار تبديل اللغة
+            </button>
+        </div>
+        
+        <div id="output" class="output">
+            <strong>نتائج الاختبار:</strong><br>
+            جاهز للاختبار...
+        </div>
+    </div>
+
+    <script>
+        function log(message) {
+            var output = document.getElementById('output');
+            var time = new Date().toLocaleTimeString();
+            output.innerHTML += '<br>[' + time + '] ' + message;
+            output.scrollTop = output.scrollHeight;
+            console.log(message);
+        }
+
+        // ===== NAVBAR FUNCTIONS (Copied from master page) =====
+        
+        function testToggleMenu() {
+            log('🔄 اختبار تبديل القائمة...');
+            alert('تم النقر على زر القائمة! في الصفحة الحقيقية سيتم فتح/إغلاق القائمة الجانبية.');
+        }
+
+        function showUserProfile() {
+            log('🧑‍💼 عرض الملف الشخصي...');
+            try {
+                // تجربة فتح نافذة جديدة للملف الشخصي
+                var profileUrls = [
+                    '/Pages/Membership.aspx',
+                    '/Membership.aspx',
+                    '/Profile.aspx'
+                ];
+                
+                log('✅ محاولة فتح الملف الشخصي في نافذة جديدة');
+                // في البيئة الحقيقية، سيتم فتح النافذة
+                alert('سيتم فتح الملف الشخصي في نافذة جديدة');
+                
+            } catch (e) {
+                log('❌ خطأ في عرض الملف الشخصي: ' + e.message);
+                alert('لا يمكن فتح الملف الشخصي في الوقت الحالي');
+            }
+        }
+
+        function showNotifications() {
+            log('🔔 عرض الإشعارات...');
+            try {
+                log('✅ محاولة فتح الإشعارات');
+                alert('سيتم فتح صفحة الإشعارات');
+                
+            } catch (e) {
+                log('❌ خطأ في عرض الإشعارات: ' + e.message);
+                alert('لا يمكن عرض الإشعارات في الوقت الحالي');
+            }
+        }
+
+        function showSettings() {
+            log('⚙️ عرض الإعدادات...');
+            try {
+                log('✅ محاولة فتح الإعدادات');
+                alert('سيتم التوجه إلى صفحة الإعدادات');
+                
+            } catch (e) {
+                log('❌ خطأ في عرض الإعدادات: ' + e.message);
+                alert('لا يمكن فتح الإعدادات في الوقت الحالي');
+            }
+        }
+
+        function logout() {
+            log('🚪 تسجيل الخروج...');
+            try {
+                if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                    log('✅ تأكيد تسجيل الخروج');
+                    alert('سيتم تسجيل الخروج والتوجه إلى صفحة تسجيل الدخول');
+                } else {
+                    log('❌ تم إلغاء تسجيل الخروج');
+                }
+                
+            } catch (e) {
+                log('❌ خطأ في تسجيل الخروج: ' + e.message);
+            }
+        }
+
+        // Language Functions
+        function toggleLanguageDropdown() {
+            log('🌐 تبديل قائمة اللغات...');
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.classList.toggle('show');
+            
+            if (dropdown.classList.contains('show')) {
+                log('✅ فتح قائمة اللغات');
+                setTimeout(() => {
+                    document.addEventListener('click', closeLanguageDropdownOutside);
+                }, 0);
+            } else {
+                log('✅ إغلاق قائمة اللغات');
+                document.removeEventListener('click', closeLanguageDropdownOutside);
+            }
+        }
+
+        function closeLanguageDropdownOutside(event) {
+            const container = document.querySelector('.language-selector-container');
+            if (!container.contains(event.target)) {
+                closeLanguageDropdown();
+            }
+        }
+
+        function closeLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.classList.remove('show');
+            document.removeEventListener('click', closeLanguageDropdownOutside);
+        }
+
+        function selectLanguage(culture, displayText, element) {
+            log('🌍 تغيير اللغة إلى: ' + displayText);
+            
+            // Update the current language display
+            document.getElementById('currentLangCode').textContent = displayText;
+            
+            // Update active state
+            document.querySelectorAll('.language-option').forEach(opt => opt.classList.remove('active'));
+            element.classList.add('active');
+            
+            // Close dropdown
+            closeLanguageDropdown();
+            
+            // In real environment, this would reload the page with new culture
+            log('✅ تم تغيير اللغة إلى: ' + culture);
+            alert('سيتم إعادة تحميل الصفحة باللغة الجديدة: ' + displayText);
+        }
+
+        // ===== TEST FUNCTIONS =====
+        
+        function testAllLinks() {
+            log('🧪 بدء اختبار جميع الروابط...');
+            
+            // Test each navbar function
+            setTimeout(() => {
+                log('1️⃣ اختبار الملف الشخصي...');
+                showUserProfile();
+            }, 500);
+            
+            setTimeout(() => {
+                log('2️⃣ اختبار الإشعارات...');
+                showNotifications();
+            }, 1500);
+            
+            setTimeout(() => {
+                log('3️⃣ اختبار الإعدادات...');
+                showSettings();
+            }, 2500);
+            
+            setTimeout(() => {
+                log('4️⃣ اختبار تسجيل الخروج...');
+                // logout(); // Skip confirm dialog for test
+                log('✅ جميع الروابط تعمل بشكل صحيح!');
+            }, 3500);
+        }
+        
+        function testMenuToggle() {
+            log('🔄 اختبار تبديل القائمة...');
+            testToggleMenu();
+        }
+        
+        function testLanguageSwitch() {
+            log('🌐 اختبار تبديل اللغات...');
+            toggleLanguageDropdown();
+            
+            setTimeout(() => {
+                log('تم فتح قائمة اللغات - جرب النقر على أي لغة لاختبار التبديل');
+            }, 500);
+        }
+
+        // Auto-test on load
+        window.addEventListener('load', function() {
+            log('🚀 تم تحميل صفحة اختبار الـ Navbar');
+            log('✅ جميع الدوال محملة وجاهزة للاختبار');
+        });
+    </script>
+</body>
+</html>

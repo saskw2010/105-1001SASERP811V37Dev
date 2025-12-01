@@ -1,0 +1,7 @@
+# Folder: Controls
+
+Purpose: reusable ASCX user controls and their .vb code-behind.
+
+Patterns: Bind in .ascx.vb; keep client IDs stable for JS.
+
+Back to hub: ../index.md | TOC: ../TOC.md

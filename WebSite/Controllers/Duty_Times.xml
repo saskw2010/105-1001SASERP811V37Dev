@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Duty_Times" conflictDetection="overwriteChanges" label="Duty Times" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Duty_Times"."SID" "SID"
+	,"Duty_Times"."Duty_SID" "Duty_SID"
+	,"Duty_S"."Duty_Code" "Duty_SDuty_Code"
+	,"Duty_SDuty_Type_S"."Duty_Code" "Duty_SDuty_Type_SDuty_Code"
+	,"Duty_Times"."Start_Date" "Start_Date"
+	,"Duty_Times"."End_Date" "End_Date"
+	,"Duty_Times"."Last_Modified" "Last_Modified"
+	,"Duty_Times"."Remark" "Remark"
+	,"Duty_Times"."HalfDay" "HalfDay"
+	,"Duty_Times"."HalfDay_StartTime" "HalfDay_StartTime"
+	,"Duty_Times"."HalfDay_EndTime" "HalfDay_EndTime"
+	,"Duty_Times"."RestDay" "RestDay"
+	,"Duty_Times"."WeekEnd" "WeekEnd"
+	,"Duty_Times"."IsBasic" "IsBasic"
+from "dbo"."Duty_Times" "Duty_Times"
+	left join "dbo"."Duties" "Duty_S" on "Duty_Times"."Duty_SID" = "Duty_S"."SID"
+	left join "dbo"."Duty_Types" "Duty_SDuty_Type_S" on "Duty_S"."Duty_Type_SID" = "Duty_SDuty_Type_S"."SID"
+]]></text>
+    </command>
+    <command id="SIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="SID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="SID" type="Int32" allowNulls="false" isPrimaryKey="true" label="Sid" readOnly="true" />
+    <field name="Duty_SID" type="Int32" label="Duty SID" showInSummary="true">
+      <items style="Lookup" dataController="Duties" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Duty_SDuty_Code" type="String" readOnly="true" label="Duty S Duty Code" length="50" />
+    <field name="Duty_SDuty_Type_SDuty_Code" type="String" readOnly="true" label="Duty S Duty Type S Duty Code" length="50" />
+    <field name="Start_Date" type="DateTime" label="Start Date" showInSummary="true" />
+    <field name="End_Date" type="DateTime" label="End Date" showInSummary="true" />
+    <field name="Last_Modified" type="DateTime" label="Last Modified" showInSummary="true" />
+    <field name="Remark" type="String" label="Remark" length="50" showInSummary="true" />
+    <field name="HalfDay" type="Int32" label="Half Day" />
+    <field name="HalfDay_StartTime" type="DateTime" label="Half Day Start Time" />
+    <field name="HalfDay_EndTime" type="DateTime" label="Half Day End Time" />
+    <field name="RestDay" type="Int32" label="Rest Day" />
+    <field name="WeekEnd" type="Int32" label="Week End" />
+    <field name="IsBasic" type="Boolean" label="Is Basic" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Duty Times">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Duty_SID" aliasFieldName="Duty_SDuty_Code" />
+        <dataField fieldName="Start_Date" columns="10" />
+        <dataField fieldName="End_Date" columns="10" />
+        <dataField fieldName="Last_Modified" columns="10" />
+        <dataField fieldName="Remark" columns="50" />
+        <dataField fieldName="HalfDay" columns="15" />
+        <dataField fieldName="HalfDay_StartTime" dataFormatString="t" columns="10" />
+        <dataField fieldName="HalfDay_EndTime" dataFormatString="t" columns="10" />
+        <dataField fieldName="RestDay" columns="15" />
+        <dataField fieldName="WeekEnd" columns="15" />
+        <dataField fieldName="IsBasic" />
+        <dataField fieldName="Duty_SDuty_Type_SDuty_Code" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Duty Times">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Duty Times" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Duty_SID" aliasFieldName="Duty_SDuty_Code" hyperlinkFormatString="~/Pages/Duties.aspx?SID={Duty_SID}&amp;_controller=Duties&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Start_Date" columns="10" />
+            <dataField fieldName="End_Date" columns="10" />
+            <dataField fieldName="Last_Modified" columns="10" />
+            <dataField fieldName="Remark" columns="50" />
+            <dataField fieldName="HalfDay" columns="15" />
+            <dataField fieldName="HalfDay_StartTime" dataFormatString="t" columns="10" />
+            <dataField fieldName="HalfDay_EndTime" dataFormatString="t" columns="10" />
+            <dataField fieldName="RestDay" columns="15" />
+            <dataField fieldName="WeekEnd" columns="15" />
+            <dataField fieldName="IsBasic" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Duty_SDuty_Type_SDuty_Code" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Duty Times">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Duty Times" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Duty_SID" aliasFieldName="Duty_SDuty_Code" />
+            <dataField fieldName="Start_Date" columns="10" />
+            <dataField fieldName="End_Date" columns="10" />
+            <dataField fieldName="Last_Modified" columns="10" />
+            <dataField fieldName="Remark" columns="50" />
+            <dataField fieldName="HalfDay" columns="15" />
+            <dataField fieldName="HalfDay_StartTime" dataFormatString="t" columns="10" />
+            <dataField fieldName="HalfDay_EndTime" dataFormatString="t" columns="10" />
+            <dataField fieldName="RestDay" columns="15" />
+            <dataField fieldName="WeekEnd" columns="15" />
+            <dataField fieldName="IsBasic" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

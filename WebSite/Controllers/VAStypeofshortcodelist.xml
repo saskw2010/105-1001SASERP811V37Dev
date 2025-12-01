@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="VAStypeofshortcodelist" conflictDetection="overwriteChanges" label="VA Stypeofshortcodelist" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"VAStypeofshortcodelist"."typeofshortcode" "typeofshortcode"
+	,"VAStypeofshortcodelist"."typeofshortDescription" "typeofshortDescription"
+	,"VAStypeofshortcodelist"."typeofshortcodemain" "typeofshortcodemain"
+	,"typeofshortcodemain"."typeofshortDescription" "typeofshortcodemaintypeofshortDescription"
+	,"typeofshortcodemainIncomeAcc_"."Acc_Nm" "typeofshortcodemainIncomeAcc_Acc_Nm"
+	,"typeofshortcodemainIncomeAcc_Clsacc_"."Acc_Nm" "typeofshortcodemainIncomeAcc_Clsacc_Acc_Nm"
+	,"typeofshortcodemainIncomeAcc_Acc_Bnd"."Acc_Nm" "typeofshortcodemainIncomeAcc_Acc_BndAcc_Nm"
+	,"typeofshortcodemainCostAcc_"."Acc_Nm" "typeofshortcodemainCostAcc_Acc_Nm"
+	,"typeofshortcodemainCostAcc_Clsacc_"."Acc_Nm" "typeofshortcodemainCostAcc_Clsacc_Acc_Nm"
+	,"typeofshortcodemainCostAcc_Acc_Bnd"."Acc_Nm" "typeofshortcodemainCostAcc_Acc_BndAcc_Nm"
+	,"VAStypeofshortcodelist"."IncomeAcc_no" "IncomeAcc_no"
+	,"IncomeAcc_"."Acc_Nm" "IncomeAcc_Acc_Nm"
+	,"IncomeAcc_Clsacc_"."Acc_Nm" "IncomeAcc_Clsacc_Acc_Nm"
+	,"IncomeAcc_Acc_Bnd"."Acc_Nm" "IncomeAcc_Acc_BndAcc_Nm"
+	,"IncomeAcc_Acc_Bndaccclass"."accountclass" "IncomeAcc_Acc_Bndaccclassaccountclass"
+	,"IncomeAcc_Acc_BndAcc_Bab"."Acc_Nm" "IncomeAcc_Acc_BndAcc_BabAcc_Nm"
+	,"VAStypeofshortcodelist"."CostAcc_no" "CostAcc_no"
+	,"CostAcc_"."Acc_Nm" "CostAcc_Acc_Nm"
+	,"CostAcc_Clsacc_"."Acc_Nm" "CostAcc_Clsacc_Acc_Nm"
+	,"CostAcc_Acc_Bnd"."Acc_Nm" "CostAcc_Acc_BndAcc_Nm"
+	,"CostAcc_Acc_Bndaccclass"."accountclass" "CostAcc_Acc_Bndaccclassaccountclass"
+	,"CostAcc_Acc_BndAcc_Bab"."Acc_Nm" "CostAcc_Acc_BndAcc_BabAcc_Nm"
+from "dbo"."VAStypeofshortcodelist" "VAStypeofshortcodelist"
+	left join "dbo"."VAStypeofshortcodelist" "typeofshortcodemain" on "VAStypeofshortcodelist"."typeofshortcodemain" = "typeofshortcodemain"."typeofshortcode"
+	left join "dbo"."GLmstrfl" "typeofshortcodemainIncomeAcc_" on "typeofshortcodemain"."IncomeAcc_no" = "typeofshortcodemainIncomeAcc_"."Acc_No"
+	left join "dbo"."GLmfbab" "typeofshortcodemainIncomeAcc_Clsacc_" on "typeofshortcodemainIncomeAcc_"."Clsacc_No" = "typeofshortcodemainIncomeAcc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "typeofshortcodemainIncomeAcc_Acc_Bnd" on "typeofshortcodemainIncomeAcc_"."Acc_Bnd" = "typeofshortcodemainIncomeAcc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."GLmstrfl" "typeofshortcodemainCostAcc_" on "typeofshortcodemain"."CostAcc_no" = "typeofshortcodemainCostAcc_"."Acc_No"
+	left join "dbo"."GLmfbab" "typeofshortcodemainCostAcc_Clsacc_" on "typeofshortcodemainCostAcc_"."Clsacc_No" = "typeofshortcodemainCostAcc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "typeofshortcodemainCostAcc_Acc_Bnd" on "typeofshortcodemainCostAcc_"."Acc_Bnd" = "typeofshortcodemainCostAcc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."GLmstrfl" "IncomeAcc_" on "VAStypeofshortcodelist"."IncomeAcc_no" = "IncomeAcc_"."Acc_No"
+	left join "dbo"."GLmfbab" "IncomeAcc_Clsacc_" on "IncomeAcc_"."Clsacc_No" = "IncomeAcc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "IncomeAcc_Acc_Bnd" on "IncomeAcc_"."Acc_Bnd" = "IncomeAcc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "IncomeAcc_Acc_Bndaccclass" on "IncomeAcc_Acc_Bnd"."accclass" = "IncomeAcc_Acc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "IncomeAcc_Acc_BndAcc_Bab" on "IncomeAcc_Acc_Bnd"."Acc_Bab" = "IncomeAcc_Acc_BndAcc_Bab"."Acc_Bab"
+	left join "dbo"."GLmstrfl" "CostAcc_" on "VAStypeofshortcodelist"."CostAcc_no" = "CostAcc_"."Acc_No"
+	left join "dbo"."GLmfbab" "CostAcc_Clsacc_" on "CostAcc_"."Clsacc_No" = "CostAcc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "CostAcc_Acc_Bnd" on "CostAcc_"."Acc_Bnd" = "CostAcc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "CostAcc_Acc_Bndaccclass" on "CostAcc_Acc_Bnd"."accclass" = "CostAcc_Acc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "CostAcc_Acc_BndAcc_Bab" on "CostAcc_Acc_Bnd"."Acc_Bab" = "CostAcc_Acc_BndAcc_Bab"."Acc_Bab"
+]]></text>
+    </command>
+    <command id="typeofshortcodeIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="typeofshortcode" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="typeofshortcode" type="Int64" allowNulls="false" isPrimaryKey="true" label="Typeofshortcode" readOnly="true" />
+    <field name="typeofshortDescription" type="String" label="typeofshort Description" length="50" showInSummary="true" />
+    <field name="typeofshortcodemain" type="Int64" label="Typeofshortcodemain" showInSummary="true">
+      <items style="Lookup" dataController="VAStypeofshortcodelist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="typeofshortcodemaintypeofshortDescription" type="String" readOnly="true" label="typeofshortcodemaintypeofshort Description" length="50" />
+    <field name="typeofshortcodemainIncomeAcc_Acc_Nm" type="String" readOnly="true" label="typeofshortcodemain Income Acc Nm" length="255" />
+    <field name="typeofshortcodemainIncomeAcc_Clsacc_Acc_Nm" type="String" readOnly="true" label="typeofshortcodemain Income Acc Clsacc Acc Nm" length="250" />
+    <field name="typeofshortcodemainIncomeAcc_Acc_BndAcc_Nm" type="String" readOnly="true" label="typeofshortcodemain Income Acc Bnd Acc Nm" length="50" />
+    <field name="typeofshortcodemainCostAcc_Acc_Nm" type="String" readOnly="true" label="typeofshortcodemain Cost Acc Nm" length="255" />
+    <field name="typeofshortcodemainCostAcc_Clsacc_Acc_Nm" type="String" readOnly="true" label="typeofshortcodemain Cost Acc Clsacc Acc Nm" length="250" />
+    <field name="typeofshortcodemainCostAcc_Acc_BndAcc_Nm" type="String" readOnly="true" label="typeofshortcodemain Cost Acc Bnd Acc Nm" length="50" />
+    <field name="IncomeAcc_no" type="Int64" label="Income Acc no" showInSummary="true">
+      <items style="Lookup" dataController="GLmstrfl" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="IncomeAcc_Acc_Nm" type="String" readOnly="true" label="Income Acc Nm" length="255" />
+    <field name="IncomeAcc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Income Acc Clsacc Acc Nm" length="250" />
+    <field name="IncomeAcc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Income Acc Bnd Acc Nm" length="50" />
+    <field name="IncomeAcc_Acc_Bndaccclassaccountclass" type="String" readOnly="true" label="Income Acc Bndaccclassaccountclass" length="100" />
+    <field name="IncomeAcc_Acc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="Income Acc Bnd Acc Bab Acc Nm" length="250" />
+    <field name="CostAcc_no" type="Int64" label="Cost Acc no" showInSummary="true">
+      <items style="Lookup" dataController="GLmstrfl" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="CostAcc_Acc_Nm" type="String" readOnly="true" label="Cost Acc Nm" length="255" />
+    <field name="CostAcc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Cost Acc Clsacc Acc Nm" length="250" />
+    <field name="CostAcc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Cost Acc Bnd Acc Nm" length="50" />
+    <field name="CostAcc_Acc_Bndaccclassaccountclass" type="String" readOnly="true" label="Cost Acc Bndaccclassaccountclass" length="100" />
+    <field name="CostAcc_Acc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="Cost Acc Bnd Acc Bab Acc Nm" length="250" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="VA Stypeofshortcodelist">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="typeofshortDescription" columns="50" />
+        <dataField fieldName="typeofshortcodemain" aliasFieldName="typeofshortcodemaintypeofshortDescription" hyperlinkFormatString="~/Pages/VAStypeofshortcodelist.aspx?typeofshortcode={typeofshortcodemain}&amp;_controller=VAStypeofshortcodelist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="IncomeAcc_no" aliasFieldName="IncomeAcc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={IncomeAcc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="CostAcc_no" aliasFieldName="CostAcc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={CostAcc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="typeofshortcodemainIncomeAcc_Acc_Nm" />
+        <dataField fieldName="typeofshortcodemainIncomeAcc_Clsacc_Acc_Nm" />
+        <dataField fieldName="typeofshortcodemainIncomeAcc_Acc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="typeofshortcodemainCostAcc_Acc_Nm" />
+        <dataField fieldName="typeofshortcodemainCostAcc_Clsacc_Acc_Nm" />
+        <dataField fieldName="typeofshortcodemainCostAcc_Acc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="IncomeAcc_Clsacc_Acc_Nm" />
+        <dataField fieldName="IncomeAcc_Acc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="IncomeAcc_Acc_Bndaccclassaccountclass" />
+        <dataField fieldName="IncomeAcc_Acc_BndAcc_BabAcc_Nm" />
+        <dataField fieldName="CostAcc_Clsacc_Acc_Nm" />
+        <dataField fieldName="CostAcc_Acc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="CostAcc_Acc_Bndaccclassaccountclass" />
+        <dataField fieldName="CostAcc_Acc_BndAcc_BabAcc_Nm" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review VA Stypeofshortcodelist">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="VA Stypeofshortcodelist" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="typeofshortDescription" columns="50" />
+            <dataField fieldName="typeofshortcodemain" aliasFieldName="typeofshortcodemaintypeofshortDescription" hyperlinkFormatString="~/Pages/VAStypeofshortcodelist.aspx?typeofshortcode={typeofshortcodemain}&amp;_controller=VAStypeofshortcodelist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="IncomeAcc_no" aliasFieldName="IncomeAcc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={IncomeAcc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="CostAcc_no" aliasFieldName="CostAcc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={CostAcc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="typeofshortcodemainIncomeAcc_Acc_Nm" />
+            <dataField fieldName="typeofshortcodemainIncomeAcc_Clsacc_Acc_Nm" />
+            <dataField fieldName="typeofshortcodemainIncomeAcc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="typeofshortcodemainCostAcc_Acc_Nm" />
+            <dataField fieldName="typeofshortcodemainCostAcc_Clsacc_Acc_Nm" />
+            <dataField fieldName="typeofshortcodemainCostAcc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="IncomeAcc_Clsacc_Acc_Nm" />
+            <dataField fieldName="IncomeAcc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="IncomeAcc_Acc_Bndaccclassaccountclass" />
+            <dataField fieldName="IncomeAcc_Acc_BndAcc_BabAcc_Nm" />
+            <dataField fieldName="CostAcc_Clsacc_Acc_Nm" />
+            <dataField fieldName="CostAcc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="CostAcc_Acc_Bndaccclassaccountclass" />
+            <dataField fieldName="CostAcc_Acc_BndAcc_BabAcc_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New VA Stypeofshortcodelist">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New VA Stypeofshortcodelist" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="typeofshortDescription" columns="50" />
+            <dataField fieldName="typeofshortcodemain" aliasFieldName="typeofshortcodemaintypeofshortDescription" />
+            <dataField fieldName="IncomeAcc_no" aliasFieldName="IncomeAcc_Acc_Nm" />
+            <dataField fieldName="CostAcc_no" aliasFieldName="CostAcc_Acc_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,196 @@
+ï»¿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="customer" conflictDetection="overwriteChanges" label="Customer" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"customer"."customer_id" "customer_id"
+	,"customer"."country_id" "country_id"
+	,"customer"."zone_id" "zone_id"
+	,"customer"."customer_firstname" "customer_firstname"
+	,"customer"."customer_lastname" "customer_lastname"
+	,"customer"."customer_email" "customer_email"
+	,"customer"."customer_phone" "customer_phone"
+	,"customer"."customer_fax" "customer_fax"
+	,"customer"."customer_company" "customer_company"
+	,"customer"."customer_website" "customer_website"
+	,"customer"."customer_address_1" "customer_address_1"
+	,"customer"."customer_address_2" "customer_address_2"
+	,"customer"."customer_city" "customer_city"
+	,"customer"."customer_postcode" "customer_postcode"
+	,"customer"."customer_maillist" "customer_maillist"
+	,"customer"."customer_username" "customer_username"
+	,"customer"."customer_password" "customer_password"
+from "dbo"."customer" "customer"
+]]></text>
+    </command>
+    <command id="customer_idIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="customer_id" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="customer_id" type="Int32" allowNulls="false" isPrimaryKey="true" label="Customer#" readOnly="true" />
+    <field name="country_id" type="Int32" label="Country#" showInSummary="true" />
+    <field name="zone_id" type="Int32" label="Zone#" showInSummary="true" />
+    <field name="customer_firstname" type="String" label="Customer Firstname" length="50" showInSummary="true" />
+    <field name="customer_lastname" type="String" label="Customer Lastname" length="50" showInSummary="true" />
+    <field name="customer_email" type="String" label="Customer Email" length="50" showInSummary="true" />
+    <field name="customer_phone" type="String" label="Customer Phone" length="50" />
+    <field name="customer_fax" type="String" label="Customer Fax" length="50" />
+    <field name="customer_company" type="String" label="Customer Company" length="50" />
+    <field name="customer_website" type="String" label="Customer Website" length="50" />
+    <field name="customer_address_1" type="String" label="Customer Address 1" length="250" />
+    <field name="customer_address_2" type="String" label="Customer Address 2" length="250" />
+    <field name="customer_city" type="String" label="Customer City" length="50" />
+    <field name="customer_postcode" type="String" label="Customer Postcode" length="50" />
+    <field name="customer_maillist" type="String" label="Customer Maillist" length="50" />
+    <field name="customer_username" type="String" label="Customer Username" length="50" />
+    <field name="customer_password" type="String" label="Customer Password" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Customer">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="country_id" columns="15" />
+        <dataField fieldName="zone_id" columns="15" />
+        <dataField fieldName="customer_firstname" columns="50" />
+        <dataField fieldName="customer_lastname" columns="50" />
+        <dataField fieldName="customer_email" columns="50" />
+        <dataField fieldName="customer_phone" columns="50" />
+        <dataField fieldName="customer_fax" columns="50" />
+        <dataField fieldName="customer_company" columns="50" />
+        <dataField fieldName="customer_website" columns="50" />
+        <dataField fieldName="customer_address_1" />
+        <dataField fieldName="customer_address_2" />
+        <dataField fieldName="customer_city" columns="50" />
+        <dataField fieldName="customer_postcode" columns="50" />
+        <dataField fieldName="customer_maillist" columns="50" />
+        <dataField fieldName="customer_username" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Customer">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Customer" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="country_id" columns="15" />
+            <dataField fieldName="zone_id" columns="15" />
+            <dataField fieldName="customer_firstname" columns="50" />
+            <dataField fieldName="customer_lastname" columns="50" />
+            <dataField fieldName="customer_email" columns="50" />
+            <dataField fieldName="customer_phone" columns="50" />
+            <dataField fieldName="customer_fax" columns="50" />
+            <dataField fieldName="customer_company" columns="50" />
+            <dataField fieldName="customer_website" columns="50" />
+            <dataField fieldName="customer_address_1" />
+            <dataField fieldName="customer_address_2" />
+            <dataField fieldName="customer_city" columns="50" />
+            <dataField fieldName="customer_postcode" columns="50" />
+            <dataField fieldName="customer_maillist" columns="50" />
+            <dataField fieldName="customer_username" columns="50" />
+            <dataField fieldName="customer_password" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Customer">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Customer" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="country_id" columns="15" />
+            <dataField fieldName="zone_id" columns="15" />
+            <dataField fieldName="customer_firstname" columns="50" />
+            <dataField fieldName="customer_lastname" columns="50" />
+            <dataField fieldName="customer_email" columns="50" />
+            <dataField fieldName="customer_phone" columns="50" />
+            <dataField fieldName="customer_fax" columns="50" />
+            <dataField fieldName="customer_company" columns="50" />
+            <dataField fieldName="customer_website" columns="50" />
+            <dataField fieldName="customer_address_1" />
+            <dataField fieldName="customer_address_2" />
+            <dataField fieldName="customer_city" columns="50" />
+            <dataField fieldName="customer_postcode" columns="50" />
+            <dataField fieldName="customer_maillist" columns="50" />
+            <dataField fieldName="customer_username" columns="50" />
+            <dataField fieldName="customer_password" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

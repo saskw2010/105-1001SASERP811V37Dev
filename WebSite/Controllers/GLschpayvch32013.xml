@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="GLschpayvch32013" conflictDetection="overwriteChanges" label="G Lschpayvch32013" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"GLschpayvch32013"."jr_ty" "jr_ty"
+	,"GLschpayvch32013"."Tr_no" "Tr_no"
+	,"GLschpayvch32013"."Ln_No" "Ln_No"
+	,"GLschpayvch32013"."Acc_No" "Acc_No"
+	,"GLschpayvch32013"."Tr_db" "Tr_db"
+	,"GLschpayvch32013"."tr_cr" "tr_cr"
+	,"GLschpayvch32013"."Dc_No" "Dc_No"
+	,"GLschpayvch32013"."Tr_Ds" "Tr_Ds"
+	,"GLschpayvch32013"."Tr_Dsc1" "Tr_Dsc1"
+	,"GLschpayvch32013"."Costcntr_No" "Costcntr_No"
+	,"GLschpayvch32013"."cstyp_NO" "cstyp_NO"
+	,"GLschpayvch32013"."cstyp_NO1" "cstyp_NO1"
+	,"GLschpayvch32013"."CSMSUP_NO" "CSMSUP_NO"
+	,"GLschpayvch32013"."CSMSUP_Nm" "CSMSUP_Nm"
+	,"GLschpayvch32013"."curno" "curno"
+	,"GLschpayvch32013"."curprice" "curprice"
+	,"GLschpayvch32013"."curvalue" "curvalue"
+	,"GLschpayvch32013"."Tr_Dt" "Tr_Dt"
+	,"GLschpayvch32013"."schpaymenttypeid" "schpaymenttypeid"
+	,"GLschpayvch32013"."StudentCode" "StudentCode"
+	,"GLschpayvch32013"."schpaymenttypaccount" "schpaymenttypaccount"
+	,"GLschpayvch32013"."branch" "branch"
+	,"GLschpayvch32013"."acdcode" "acdcode"
+	,"GLschpayvch32013"."FatherCode" "FatherCode"
+	,"GLschpayvch32013"."debitaccount" "debitaccount"
+	,"GLschpayvch32013"."sgm" "sgm"
+from "dbo"."GLschpayvch32013" "GLschpayvch32013"
+]]></text>
+    </command>
+    <command id="schpaymenttypeidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="schpaymenttypeid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="jr_ty" type="Int32" allowNulls="false" label="Jr Ty" readOnly="true" showInSummary="true" />
+    <field name="Tr_no" type="Int64" allowNulls="false" label="Tr no" showInSummary="true" />
+    <field name="Ln_No" type="Int64" allowNulls="false" label="Ln No" showInSummary="true" />
+    <field name="Acc_No" type="Int64" label="Acc No" showInSummary="true" />
+    <field name="Tr_db" type="Decimal" label="Tr db" readOnly="true" showInSummary="true" />
+    <field name="tr_cr" type="Int32" allowNulls="false" label="Tr Cr" readOnly="true" />
+    <field name="Dc_No" type="Int64" allowNulls="false" label="Dc No" />
+    <field name="Tr_Ds" type="String" label="Tr Ds" length="50" />
+    <field name="Tr_Dsc1" type="String" label="Tr Dsc1" length="60" />
+    <field name="Costcntr_No" type="Int32" allowNulls="false" label="Costcntr No" readOnly="true" />
+    <field name="cstyp_NO" type="Int32" allowNulls="false" label="cstyp NO" readOnly="true" />
+    <field name="cstyp_NO1" type="Int32" allowNulls="false" label="cstyp NO1" readOnly="true" />
+    <field name="CSMSUP_NO" type="Int64" label="Csmsup No" />
+    <field name="CSMSUP_Nm" type="String" allowNulls="false" label="CSMSUP Nm" readOnly="true" length="2" />
+    <field name="curno" type="Int32" allowNulls="false" label="Curno" readOnly="true" />
+    <field name="curprice" type="Int32" allowNulls="false" label="Curprice" readOnly="true" />
+    <field name="curvalue" type="Decimal" label="Curvalue" />
+    <field name="Tr_Dt" type="String" label="Tr Dt" readOnly="true" length="10" />
+    <field name="schpaymenttypeid" type="Int64" label="Schpaymenttypeid" readOnly="true" />
+    <field name="StudentCode" type="Int64" label="Student Code" />
+    <field name="schpaymenttypaccount" type="Int64" label="Schpaymenttypaccount" />
+    <field name="branch" type="Int64" label="Branch" />
+    <field name="acdcode" type="Int64" label="Acdcode" />
+    <field name="FatherCode" type="Int64" label="Father Code" />
+    <field name="debitaccount" type="Int64" label="Debitaccount" />
+    <field name="sgm" type="Int64" label="Sgm" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="G Lschpayvch32013">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="jr_ty" columns="15" />
+        <dataField fieldName="Tr_no" columns="15" />
+        <dataField fieldName="Ln_No" columns="15" />
+        <dataField fieldName="Acc_No" columns="15" />
+        <dataField fieldName="Tr_db" dataFormatString="c" columns="15" aggregate="Sum" />
+        <dataField fieldName="tr_cr" columns="15" aggregate="Sum" />
+        <dataField fieldName="Dc_No" columns="15" />
+        <dataField fieldName="Tr_Ds" columns="50" />
+        <dataField fieldName="Tr_Dsc1" />
+        <dataField fieldName="Costcntr_No" columns="15" />
+        <dataField fieldName="cstyp_NO" columns="15" />
+        <dataField fieldName="cstyp_NO1" columns="15" />
+        <dataField fieldName="CSMSUP_NO" columns="15" />
+        <dataField fieldName="CSMSUP_Nm" columns="2" />
+        <dataField fieldName="curno" columns="15" />
+        <dataField fieldName="curprice" columns="15" />
+        <dataField fieldName="curvalue" dataFormatString="c" columns="15" />
+        <dataField fieldName="Tr_Dt" columns="10" />
+        <dataField fieldName="schpaymenttypeid" columns="15" />
+        <dataField fieldName="StudentCode" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review G Lschpayvch32013">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="G Lschpayvch32013" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="jr_ty" columns="15" />
+            <dataField fieldName="Tr_no" columns="15" />
+            <dataField fieldName="Ln_No" columns="15" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="Tr_db" dataFormatString="c" columns="15" />
+            <dataField fieldName="tr_cr" columns="15" />
+            <dataField fieldName="Dc_No" columns="15" />
+            <dataField fieldName="Tr_Ds" columns="50" />
+            <dataField fieldName="Tr_Dsc1" />
+            <dataField fieldName="Costcntr_No" columns="15" />
+            <dataField fieldName="cstyp_NO" columns="15" />
+            <dataField fieldName="cstyp_NO1" columns="15" />
+            <dataField fieldName="CSMSUP_NO" columns="15" />
+            <dataField fieldName="CSMSUP_Nm" columns="2" />
+            <dataField fieldName="curno" columns="15" />
+            <dataField fieldName="curprice" columns="15" />
+            <dataField fieldName="curvalue" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="schpaymenttypeid" columns="15" />
+            <dataField fieldName="StudentCode" columns="15" />
+            <dataField fieldName="schpaymenttypaccount" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="FatherCode" columns="15" />
+            <dataField fieldName="debitaccount" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New G Lschpayvch32013">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New G Lschpayvch32013" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Tr_no" columns="15" />
+            <dataField fieldName="Ln_No" columns="15" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="Dc_No" columns="15" />
+            <dataField fieldName="Tr_Ds" columns="50" />
+            <dataField fieldName="Tr_Dsc1" />
+            <dataField fieldName="CSMSUP_NO" columns="15" />
+            <dataField fieldName="curvalue" dataFormatString="c" columns="15" />
+            <dataField fieldName="StudentCode" columns="15" />
+            <dataField fieldName="schpaymenttypaccount" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="FatherCode" columns="15" />
+            <dataField fieldName="debitaccount" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a6" />
+      <action id="a9" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a3" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true" />
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record" />
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row" />
+    <actionGroup id="ag9" scope="ActionColumn" />
+  </actions>
+</dataController>

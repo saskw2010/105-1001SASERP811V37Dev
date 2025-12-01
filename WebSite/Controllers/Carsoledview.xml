@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Carsoledview" conflictDetection="overwriteChanges" label="Carsoledview" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Carsoledview"."PLAT_No" "PLAT_No"
+	,"Carsoledview"."Car_Colr" "Car_Colr"
+	,"Carsoledview"."Car_Lik" "Car_Lik"
+	,"Carsoledview"."Car_Type" "Car_Type"
+	,"Carsoledview"."Like_name" "Like_name"
+	,"Carsoledview"."Color_name" "Color_name"
+	,"Carsoledview"."carclassname" "carclassname"
+	,"Carsoledview"."Styl_Nm" "Styl_Nm"
+	,"Carsoledview"."State_Nm" "State_Nm"
+	,"Carsoledview"."CarsoledID" "CarsoledID"
+	,"Carsoledview"."sgm" "sgm"
+	,"Carsoledview"."car_no" "car_no"
+	,"Carsoledview"."cstm_no" "cstm_no"
+	,"Carsoledview"."soledDate" "soledDate"
+	,"Carsoledview"."soledTime" "soledTime"
+	,"Carsoledview"."Salvalue" "Salvalue"
+	,"Carsoledview"."Notes" "Notes"
+from "dbo"."Carsoledview" "Carsoledview"
+]]></text>
+    </command>
+    <command id="sgmIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="sgm" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="PLAT_No" type="String" label="PLAT No" length="20" showInSummary="true" />
+    <field name="Car_Colr" type="Int64" label="Car Colr" showInSummary="true" />
+    <field name="Car_Lik" type="Int64" label="Car Lik" showInSummary="true" />
+    <field name="Car_Type" type="Int64" label="Car Type" showInSummary="true" />
+    <field name="Like_name" type="String" label="Like name" length="50" showInSummary="true" />
+    <field name="Color_name" type="String" label="Color name" length="50" />
+    <field name="carclassname" type="String" label="Carclassname" length="60" />
+    <field name="Styl_Nm" type="String" label="Styl Nm" length="60" />
+    <field name="State_Nm" type="String" label="State Nm" length="60" />
+    <field name="CarsoledID" type="Int64" allowNulls="false" label="Carsoled#" />
+    <field name="sgm" type="Int64" allowNulls="false" label="Sgm" readOnly="true" />
+    <field name="car_no" type="Int64" allowNulls="false" label="Car No" />
+    <field name="cstm_no" type="Int64" allowNulls="false" label="Cstm No" />
+    <field name="soledDate" type="DateTime" allowNulls="false" label="soled Date" />
+    <field name="soledTime" type="String" label="soled Time" length="50" />
+    <field name="Salvalue" type="Decimal" label="Salvalue" />
+    <field name="Notes" type="String" label="Notes" length="100" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Carsoledview">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="CarsoledID" columns="15" />
+        <dataField fieldName="PLAT_No" columns="20" />
+        <dataField fieldName="Car_Colr" columns="15" />
+        <dataField fieldName="Car_Lik" columns="15" />
+        <dataField fieldName="Car_Type" columns="15" />
+        <dataField fieldName="Like_name" columns="50" />
+        <dataField fieldName="Color_name" columns="50" />
+        <dataField fieldName="carclassname" />
+        <dataField fieldName="Styl_Nm" />
+        <dataField fieldName="State_Nm" />
+        <dataField fieldName="sgm" columns="15" />
+        <dataField fieldName="car_no" columns="15" />
+        <dataField fieldName="cstm_no" columns="15" />
+        <dataField fieldName="soledDate" columns="10" />
+        <dataField fieldName="soledTime" columns="50" />
+        <dataField fieldName="Salvalue" dataFormatString="c" columns="15" />
+        <dataField fieldName="Notes" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Carsoledview">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Carsoledview" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="PLAT_No" columns="20" />
+            <dataField fieldName="Car_Colr" columns="15" />
+            <dataField fieldName="Car_Lik" columns="15" />
+            <dataField fieldName="Car_Type" columns="15" />
+            <dataField fieldName="Like_name" columns="50" />
+            <dataField fieldName="Color_name" columns="50" />
+            <dataField fieldName="carclassname" />
+            <dataField fieldName="Styl_Nm" />
+            <dataField fieldName="State_Nm" />
+            <dataField fieldName="CarsoledID" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="car_no" columns="15" />
+            <dataField fieldName="cstm_no" columns="15" />
+            <dataField fieldName="soledDate" columns="10" />
+            <dataField fieldName="soledTime" columns="50" />
+            <dataField fieldName="Salvalue" dataFormatString="c" columns="15" />
+            <dataField fieldName="Notes" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Carsoledview">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Carsoledview" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="PLAT_No" columns="20" />
+            <dataField fieldName="Car_Colr" columns="15" />
+            <dataField fieldName="Car_Lik" columns="15" />
+            <dataField fieldName="Car_Type" columns="15" />
+            <dataField fieldName="Like_name" columns="50" />
+            <dataField fieldName="Color_name" columns="50" />
+            <dataField fieldName="carclassname" />
+            <dataField fieldName="Styl_Nm" />
+            <dataField fieldName="State_Nm" />
+            <dataField fieldName="CarsoledID" columns="15" />
+            <dataField fieldName="car_no" columns="15" />
+            <dataField fieldName="cstm_no" columns="15" />
+            <dataField fieldName="soledDate" columns="10" />
+            <dataField fieldName="soledTime" columns="50" />
+            <dataField fieldName="Salvalue" dataFormatString="c" columns="15" />
+            <dataField fieldName="Notes" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a8" commandName="New" commandArgument="grid1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

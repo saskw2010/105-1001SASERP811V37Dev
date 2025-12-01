@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="USERINFO" conflictDetection="overwriteChanges" label="Userinfo" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"USERINFO"."USERID" "USERID"
+	,"USERINFO"."BADGENUMBER" "BADGENUMBER"
+	,"USERINFO"."SSN" "SSN"
+	,"USERINFO"."NAME" "NAME"
+	,"USERINFO"."GENDER" "GENDER"
+	,"USERINFO"."TITLE" "TITLE"
+	,"USERINFO"."PAGER" "PAGER"
+	,"USERINFO"."BIRTHDAY" "BIRTHDAY"
+	,"USERINFO"."HIREDDAY" "HIREDDAY"
+	,"USERINFO"."STREET" "STREET"
+	,"USERINFO"."CITY" "CITY"
+	,"USERINFO"."STATE" "STATE"
+	,"USERINFO"."ZIP" "ZIP"
+	,"USERINFO"."OPHONE" "OPHONE"
+	,"USERINFO"."FPHONE" "FPHONE"
+	,"USERINFO"."VERIFICATIONMETHOD" "VERIFICATIONMETHOD"
+	,"USERINFO"."DEFAULTDEPTID" "DEFAULTDEPTID"
+	,"USERINFO"."SECURITYFLAGS" "SECURITYFLAGS"
+	,"USERINFO"."ATT" "ATT"
+	,"USERINFO"."INLATE" "INLATE"
+	,"USERINFO"."OUTEARLY" "OUTEARLY"
+	,"USERINFO"."OVERTIME" "OVERTIME"
+	,"USERINFO"."SEP" "SEP"
+	,"USERINFO"."HOLIDAY" "HOLIDAY"
+	,"USERINFO"."MINZU" "MINZU"
+	,"USERINFO"."PASSWORD" "PASSWORD"
+	,"USERINFO"."LUNCHDURATION" "LUNCHDURATION"
+	,"USERINFO"."MVerifyPass" "MVerifyPass"
+	,"USERINFO"."PHOTO" "PHOTO"
+	,"USERINFO"."Notes" "Notes"
+	,"USERINFO"."privilege" "privilege"
+	,"USERINFO"."InheritDeptSch" "InheritDeptSch"
+	,"USERINFO"."InheritDeptSchClass" "InheritDeptSchClass"
+	,"USERINFO"."AutoSchPlan" "AutoSchPlan"
+	,"USERINFO"."MinAutoSchInterval" "MinAutoSchInterval"
+	,"USERINFO"."RegisterOT" "RegisterOT"
+	,"USERINFO"."InheritDeptRule" "InheritDeptRule"
+	,"USERINFO"."EMPRIVILEGE" "EMPRIVILEGE"
+	,"USERINFO"."CardNo" "CardNo"
+from "dbo"."USERINFO" "USERINFO"
+]]></text>
+    </command>
+    <command id="USERIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="USERID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="USERID" type="Int32" allowNulls="false" isPrimaryKey="true" label="Userid" readOnly="true" />
+    <field name="BADGENUMBER" type="String" allowNulls="false" label="Badgenumber" length="24" showInSummary="true" />
+    <field name="SSN" type="String" label="Ssn" length="20" showInSummary="true" />
+    <field name="NAME" type="String" label="Name" length="24" showInSummary="true" />
+    <field name="GENDER" type="String" label="Gender" length="8" showInSummary="true" />
+    <field name="TITLE" type="String" label="Title" length="20" showInSummary="true" />
+    <field name="PAGER" type="String" label="Pager" length="20" />
+    <field name="BIRTHDAY" type="DateTime" label="Birthday" />
+    <field name="HIREDDAY" type="DateTime" label="Hiredday" />
+    <field name="STREET" type="String" label="Street" length="80" />
+    <field name="CITY" type="String" label="City" length="2" />
+    <field name="STATE" type="String" label="State" length="2" />
+    <field name="ZIP" type="String" label="Zip" length="12" />
+    <field name="OPHONE" type="String" label="Ophone" length="20" />
+    <field name="FPHONE" type="String" label="Fphone" length="20" />
+    <field name="VERIFICATIONMETHOD" type="Int16" label="Verificationmethod" />
+    <field name="DEFAULTDEPTID" type="Int16" default="((1))" label="Defaultdeptid" />
+    <field name="SECURITYFLAGS" type="Int16" label="Securityflags" />
+    <field name="ATT" type="Int16" allowNulls="false" default="((1))" label="Att" />
+    <field name="INLATE" type="Int16" allowNulls="false" default="((1))" label="Inlate" />
+    <field name="OUTEARLY" type="Int16" allowNulls="false" default="((1))" label="Outearly" />
+    <field name="OVERTIME" type="Int16" allowNulls="false" default="((1))" label="Overtime" />
+    <field name="SEP" type="Int16" allowNulls="false" default="((1))" label="Sep" />
+    <field name="HOLIDAY" type="Int16" allowNulls="false" default="((1))" label="Holiday" />
+    <field name="MINZU" type="String" label="Minzu" length="8" />
+    <field name="PASSWORD" type="String" label="Password" length="20" />
+    <field name="LUNCHDURATION" type="Int16" allowNulls="false" default="((1))" label="Lunchduration" />
+    <field name="MVerifyPass" type="String" label="M Verify Pass" length="10" />
+    <field name="PHOTO" type="Byte[]" onDemand="true" sourceFields="USERID" onDemandHandler="USERINFOPHOTO" onDemandStyle="Thumbnail" allowQBE="false" allowSorting="false" label="Photo" />
+    <field name="Notes" type="Byte[]" onDemand="true" sourceFields="USERID" onDemandHandler="USERINFONotes" onDemandStyle="Thumbnail" allowQBE="false" allowSorting="false" label="Notes" />
+    <field name="privilege" type="Int32" default="((0))" label="Privilege" />
+    <field name="InheritDeptSch" type="Int16" default="((1))" label="Inherit Dept Sch" />
+    <field name="InheritDeptSchClass" type="Int16" default="((1))" label="Inherit Dept Sch Class" />
+    <field name="AutoSchPlan" type="Int16" default="((1))" label="Auto Sch Plan" />
+    <field name="MinAutoSchInterval" type="Int32" default="((24))" label="Min Auto Sch Interval" />
+    <field name="RegisterOT" type="Int16" default="((1))" label="Register OT" />
+    <field name="InheritDeptRule" type="Int16" default="((1))" label="Inherit Dept Rule" />
+    <field name="EMPRIVILEGE" type="Int16" default="((0))" label="Emprivilege" />
+    <field name="CardNo" type="String" label="Card No" length="20" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Userinfo">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="BADGENUMBER" columns="24" />
+        <dataField fieldName="SSN" columns="20" />
+        <dataField fieldName="NAME" columns="24" />
+        <dataField fieldName="GENDER" columns="8" />
+        <dataField fieldName="TITLE" columns="20" />
+        <dataField fieldName="PAGER" columns="20" />
+        <dataField fieldName="BIRTHDAY" columns="10" />
+        <dataField fieldName="HIREDDAY" columns="10" />
+        <dataField fieldName="STREET" />
+        <dataField fieldName="CITY" columns="2" />
+        <dataField fieldName="STATE" columns="2" />
+        <dataField fieldName="ZIP" columns="12" />
+        <dataField fieldName="OPHONE" columns="20" />
+        <dataField fieldName="FPHONE" columns="20" />
+        <dataField fieldName="VERIFICATIONMETHOD" columns="15" />
+        <dataField fieldName="DEFAULTDEPTID" columns="15" />
+        <dataField fieldName="SECURITYFLAGS" columns="15" />
+        <dataField fieldName="ATT" columns="15" />
+        <dataField fieldName="INLATE" columns="15" />
+        <dataField fieldName="OUTEARLY" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Userinfo">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Userinfo" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="BADGENUMBER" columns="24" />
+            <dataField fieldName="SSN" columns="20" />
+            <dataField fieldName="NAME" columns="24" />
+            <dataField fieldName="GENDER" columns="8" />
+            <dataField fieldName="TITLE" columns="20" />
+            <dataField fieldName="PAGER" columns="20" />
+            <dataField fieldName="BIRTHDAY" columns="10" />
+            <dataField fieldName="HIREDDAY" columns="10" />
+            <dataField fieldName="STREET" />
+            <dataField fieldName="CITY" columns="2" />
+            <dataField fieldName="STATE" columns="2" />
+            <dataField fieldName="ZIP" columns="12" />
+            <dataField fieldName="OPHONE" columns="20" />
+            <dataField fieldName="FPHONE" columns="20" />
+            <dataField fieldName="VERIFICATIONMETHOD" columns="15" />
+            <dataField fieldName="DEFAULTDEPTID" columns="15" />
+            <dataField fieldName="SECURITYFLAGS" columns="15" />
+            <dataField fieldName="ATT" columns="15" />
+            <dataField fieldName="INLATE" columns="15" />
+            <dataField fieldName="OUTEARLY" columns="15" />
+            <dataField fieldName="OVERTIME" columns="15" />
+            <dataField fieldName="SEP" columns="15" />
+            <dataField fieldName="HOLIDAY" columns="15" />
+            <dataField fieldName="MINZU" columns="8" />
+            <dataField fieldName="PASSWORD" columns="20" />
+            <dataField fieldName="LUNCHDURATION" columns="15" />
+            <dataField fieldName="MVerifyPass" columns="10" />
+            <dataField fieldName="PHOTO" columns="15" />
+            <dataField fieldName="Notes" columns="15" />
+            <dataField fieldName="privilege" columns="15" />
+            <dataField fieldName="InheritDeptSch" columns="15" />
+            <dataField fieldName="InheritDeptSchClass" columns="15" />
+            <dataField fieldName="AutoSchPlan" columns="15" />
+            <dataField fieldName="MinAutoSchInterval" columns="15" />
+            <dataField fieldName="RegisterOT" columns="15" />
+            <dataField fieldName="InheritDeptRule" columns="15" />
+            <dataField fieldName="EMPRIVILEGE" columns="15" />
+            <dataField fieldName="CardNo" columns="20" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Userinfo">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Userinfo" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="BADGENUMBER" columns="24" />
+            <dataField fieldName="SSN" columns="20" />
+            <dataField fieldName="NAME" columns="24" />
+            <dataField fieldName="GENDER" columns="8" />
+            <dataField fieldName="TITLE" columns="20" />
+            <dataField fieldName="PAGER" columns="20" />
+            <dataField fieldName="BIRTHDAY" columns="10" />
+            <dataField fieldName="HIREDDAY" columns="10" />
+            <dataField fieldName="STREET" />
+            <dataField fieldName="CITY" columns="2" />
+            <dataField fieldName="STATE" columns="2" />
+            <dataField fieldName="ZIP" columns="12" />
+            <dataField fieldName="OPHONE" columns="20" />
+            <dataField fieldName="FPHONE" columns="20" />
+            <dataField fieldName="VERIFICATIONMETHOD" columns="15" />
+            <dataField fieldName="DEFAULTDEPTID" columns="15" />
+            <dataField fieldName="SECURITYFLAGS" columns="15" />
+            <dataField fieldName="ATT" columns="15" />
+            <dataField fieldName="INLATE" columns="15" />
+            <dataField fieldName="OUTEARLY" columns="15" />
+            <dataField fieldName="OVERTIME" columns="15" />
+            <dataField fieldName="SEP" columns="15" />
+            <dataField fieldName="HOLIDAY" columns="15" />
+            <dataField fieldName="MINZU" columns="8" />
+            <dataField fieldName="PASSWORD" columns="20" />
+            <dataField fieldName="LUNCHDURATION" columns="15" />
+            <dataField fieldName="MVerifyPass" columns="10" />
+            <dataField fieldName="privilege" columns="15" />
+            <dataField fieldName="InheritDeptSch" columns="15" />
+            <dataField fieldName="InheritDeptSchClass" columns="15" />
+            <dataField fieldName="AutoSchPlan" columns="15" />
+            <dataField fieldName="MinAutoSchInterval" columns="15" />
+            <dataField fieldName="RegisterOT" columns="15" />
+            <dataField fieldName="InheritDeptRule" columns="15" />
+            <dataField fieldName="EMPRIVILEGE" columns="15" />
+            <dataField fieldName="CardNo" columns="20" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

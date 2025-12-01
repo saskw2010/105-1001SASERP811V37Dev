@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="questions" conflictDetection="overwriteChanges" label="Questions" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"questions"."id" "id"
+	,"questions"."question_text" "question_text"
+	,"questions"."question_type_id" "question_type_id"
+	,"questions"."priority" "priority"
+	,"questions"."quiz_id" "quiz_id"
+	,"quiz_"."quiz_name" "quiz_quiz_name"
+	,"questions"."point" "point"
+	,"questions"."added_date" "added_date"
+	,"questions"."parent_id" "parent_id"
+	,"questions"."question_total" "question_total"
+	,"questions"."check_total" "check_total"
+	,"questions"."show_footer" "show_footer"
+	,"questions"."header_text" "header_text"
+	,"questions"."footer_text" "footer_text"
+	,"questions"."question_text_eng" "question_text_eng"
+	,"questions"."check_operator" "check_operator"
+	,"questions"."help_image" "help_image"
+from "dbo"."questions" "questions"
+	left join "dbo"."quizzes" "quiz_" on "questions"."quiz_id" = "quiz_"."id"
+]]></text>
+    </command>
+    <command id="idIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="id" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="id" type="Int32" allowNulls="false" isPrimaryKey="true" label="Id" readOnly="true" />
+    <field name="question_text" type="String" allowNulls="false" label="Question Text" length="1800" showInSummary="true" />
+    <field name="question_type_id" type="Int32" allowNulls="false" label="Question Type#" showInSummary="true" />
+    <field name="priority" type="Int32" allowNulls="false" label="Priority" showInSummary="true" />
+    <field name="quiz_id" type="Int32" allowNulls="false" label="Quiz#" showInSummary="true">
+      <items style="Lookup" dataController="quizzes" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="quiz_quiz_name" type="String" readOnly="true" label="Quiz Name" length="500" />
+    <field name="point" type="Decimal" allowNulls="false" default="((0))" label="Point" showInSummary="true" />
+    <field name="added_date" type="DateTime" default="(getdate())" label="Added Date" />
+    <field name="parent_id" type="Int32" allowNulls="false" default="((0))" label="Parent#" />
+    <field name="question_total" type="Decimal" label="Question Total" />
+    <field name="check_total" type="Int32" label="Check Total" />
+    <field name="show_footer" type="Int32" label="Show Footer" />
+    <field name="header_text" type="String" label="Header Text" length="1500" />
+    <field name="footer_text" type="String" label="Footer Text" length="1500" />
+    <field name="question_text_eng" type="String" label="Question Text Eng" length="1800" />
+    <field name="check_operator" type="Int32" allowNulls="false" default="((0))" label="Check Operator" />
+    <field name="help_image" type="String" label="Help Image" length="550" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Questions">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="question_text" />
+        <dataField fieldName="question_type_id" columns="15" />
+        <dataField fieldName="priority" columns="15" />
+        <dataField fieldName="quiz_id" aliasFieldName="quiz_quiz_name" hyperlinkFormatString="~/Pages/quizzes.aspx?id={quiz_id}&amp;_controller=quizzes&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="point" columns="15" />
+        <dataField fieldName="added_date" columns="10" />
+        <dataField fieldName="parent_id" columns="15" />
+        <dataField fieldName="question_total" columns="15" />
+        <dataField fieldName="check_total" columns="15" />
+        <dataField fieldName="show_footer" columns="15" />
+        <dataField fieldName="header_text" />
+        <dataField fieldName="footer_text" />
+        <dataField fieldName="question_text_eng" />
+        <dataField fieldName="check_operator" columns="15" />
+        <dataField fieldName="help_image" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Questions">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Questions" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="question_text" />
+            <dataField fieldName="question_type_id" columns="15" />
+            <dataField fieldName="priority" columns="15" />
+            <dataField fieldName="quiz_id" aliasFieldName="quiz_quiz_name" hyperlinkFormatString="~/Pages/quizzes.aspx?id={quiz_id}&amp;_controller=quizzes&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="point" columns="15" />
+            <dataField fieldName="added_date" columns="10" />
+            <dataField fieldName="parent_id" columns="15" />
+            <dataField fieldName="question_total" columns="15" />
+            <dataField fieldName="check_total" columns="15" />
+            <dataField fieldName="show_footer" columns="15" />
+            <dataField fieldName="header_text" />
+            <dataField fieldName="footer_text" />
+            <dataField fieldName="question_text_eng" />
+            <dataField fieldName="check_operator" columns="15" />
+            <dataField fieldName="help_image" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Questions">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Questions" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="question_text" />
+            <dataField fieldName="question_type_id" columns="15" />
+            <dataField fieldName="priority" columns="15" />
+            <dataField fieldName="quiz_id" aliasFieldName="quiz_quiz_name" />
+            <dataField fieldName="point" columns="15" />
+            <dataField fieldName="added_date" columns="10" />
+            <dataField fieldName="parent_id" columns="15" />
+            <dataField fieldName="question_total" columns="15" />
+            <dataField fieldName="check_total" columns="15" />
+            <dataField fieldName="show_footer" columns="15" />
+            <dataField fieldName="header_text" />
+            <dataField fieldName="footer_text" />
+            <dataField fieldName="question_text_eng" />
+            <dataField fieldName="check_operator" columns="15" />
+            <dataField fieldName="help_image" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="CargoBillOFLading" conflictDetection="overwriteChanges" label="Cargo Bill OF Lading" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"CargoBillOFLading"."BillofladingAutoID" "BillofladingAutoID"
+	,"CargoBillOFLading"."CargoInfoID" "CargoInfoID"
+	,"CargoInfo"."CargoInfoDesc" "CargoInfoCargoInfoDesc"
+	,"CargoBillOFLading"."BillOFLading" "BillOFLading"
+	,"CargoBillOFLading"."Cstm_no" "Cstm_no"
+	,"Cstm_"."Cstm_Nm" "Cstm_Cstm_Nm"
+	,"Cstm_Area"."Area_name" "Cstm_AreaArea_name"
+	,"Cstm_Evaluation"."Evaluation_name" "Cstm_EvaluationEvaluation_name"
+	,"Cstm_acc_"."Acc_Nm" "Cstm_acc_Acc_Nm"
+	,"Cstm_acc_Clsacc_"."Acc_Nm" "Cstm_acc_Clsacc_Acc_Nm"
+	,"Cstm_acc_Acc_Bnd"."Acc_Nm" "Cstm_acc_Acc_BndAcc_Nm"
+	,"Cstm_Cntry_"."Cntry_Nm" "Cstm_Cntry_Cntry_Nm"
+	,"Cstm_curncy_"."Curncy_Nm" "Cstm_curncy_Curncy_Nm"
+	,"Cstm_TSNEF"."TSNEF_name" "Cstm_TSNEFTSNEF_name"
+	,"Cstm_TSNEFNO1"."TSNEF1_name" "Cstm_TSNEFNO1TSNEF1_name"
+	,"Cstm_Slm_"."Slm_Nm" "Cstm_Slm_Slm_Nm"
+	,"Cstm_Slm_masngerclass"."masngerclass" "Cstm_Slm_masngerclassmasngerclass"
+	,"CargoBillOFLading"."Ship_no" "Ship_no"
+	,"Ship_"."Ship_nm" "Ship_Ship_nm"
+	,"CargoBillOFLading"."Consignee_no" "Consignee_no"
+	,"Consignee_"."Consignee" "Consignee_Consignee"
+	,"CargoBillOFLading"."Lineagent_no" "Lineagent_no"
+	,"Lineagent_"."Sup_Nm" "Lineagent_Sup_Nm"
+	,"Lineagent_Acc_"."Acc_Nm" "Lineagent_Acc_Acc_Nm"
+	,"Lineagent_Acc_Clsacc_"."Acc_Nm" "Lineagent_Acc_Clsacc_Acc_Nm"
+	,"Lineagent_Acc_Acc_Bnd"."Acc_Nm" "Lineagent_Acc_Acc_BndAcc_Nm"
+	,"Lineagent_Cntry_"."Cntry_Nm" "Lineagent_Cntry_Cntry_Nm"
+	,"Lineagent_Curncy_"."Curncy_Nm" "Lineagent_Curncy_Curncy_Nm"
+	,"CargoBillOFLading"."ProductName" "ProductName"
+	,"CargoBillOFLading"."QTYNO" "QTYNO"
+	,"CargoBillOFLading"."Size" "Size"
+	,"CargoBillOFLading"."Sizetype" "Sizetype"
+	,"Sizetype"."SizetypeDesc" "SizetypeSizetypeDesc"
+	,"CargoBillOFLading"."EstmationArival" "EstmationArival"
+	,"CargoBillOFLading"."ArivalNotic" "ArivalNotic"
+	,"CargoBillOFLading"."ATADate" "ATADate"
+	,"CargoBillOFLading"."DateDoRcv" "DateDoRcv"
+	,"CargoBillOFLading"."Telexrldate" "Telexrldate"
+	,"CargoBillOFLading"."Trneed" "Trneed"
+	,"Trneed"."Docdesc" "TrneedDocdesc"
+	,"CargoBillOFLading"."Tmessage" "Tmessage"
+	,"Tmessage"."Docdesc" "TmessageDocdesc"
+	,"CargoBillOFLading"."RcvDate" "RcvDate"
+	,"CargoBillOFLading"."TerminalofRelease" "TerminalofRelease"
+	,"TerminalofRelease"."Docdesc" "TerminalofReleaseDocdesc"
+	,"CargoBillOFLading"."PlaceofDchage" "PlaceofDchage"
+	,"PlaceofDchage"."Docdesc" "PlaceofDchageDocdesc"
+	,"CargoBillOFLading"."cntnrsrexpirdate" "cntnrsrexpirdate"
+	,"CargoBillOFLading"."requiredFollowup" "requiredFollowup"
+	,"requiredFollowup"."Docdesc" "requiredFollowupDocdesc"
+	,"CargoBillOFLading"."courier" "courier"
+	,"courier"."Docdesc" "courierDocdesc"
+	,"CargoBillOFLading"."courierservices" "courierservices"
+	,"CargoBillOFLading"."CourierDateofR" "CourierDateofR"
+	,"CargoBillOFLading"."Timeofrecved" "Timeofrecved"
+	,"CargoBillOFLading"."ModifiedBy" "ModifiedBy"
+	,"CargoBillOFLading"."ModifiedOn" "ModifiedOn"
+	,"CargoBillOFLading"."CreatedBy" "CreatedBy"
+	,"CargoBillOFLading"."CreatedOn" "CreatedOn"
+from "dbo"."CargoBillOFLading" "CargoBillOFLading"
+	left join "dbo"."CargoInfo" "CargoInfo" on "CargoBillOFLading"."CargoInfoID" = "CargoInfo"."CargoInfoID"
+	left join "dbo"."Stcustmr" "Cstm_" on "CargoBillOFLading"."Cstm_no" = "Cstm_"."Cstm_No"
+	left join "dbo"."AreaList" "Cstm_Area" on "Cstm_"."AreaNo" = "Cstm_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "Cstm_Evaluation" on "Cstm_"."EvaluationNO" = "Cstm_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "Cstm_acc_" on "Cstm_"."acc_no" = "Cstm_acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "Cstm_acc_Clsacc_" on "Cstm_acc_"."Clsacc_No" = "Cstm_acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Cstm_acc_Acc_Bnd" on "Cstm_acc_"."Acc_Bnd" = "Cstm_acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."PYCntry" "Cstm_Cntry_" on "Cstm_"."Cntry_No" = "Cstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "Cstm_curncy_" on "Cstm_"."curncy_no" = "Cstm_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "Cstm_TSNEF" on "Cstm_"."TSNEFNO" = "Cstm_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "Cstm_TSNEFNO1" on "Cstm_"."TSNEFNO1" = "Cstm_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "Cstm_Slm_" on "Cstm_"."Slm_No" = "Cstm_Slm_"."Slm_No"
+	left join "dbo"."masngerclass" "Cstm_Slm_masngerclass" on "Cstm_Slm_"."masngerclassid" = "Cstm_Slm_masngerclass"."masngerclassid"
+	left join "dbo"."CargoDocList" "Ship_" on "CargoBillOFLading"."Ship_no" = "Ship_"."Ship_no"
+	left join "dbo"."CargoDocList1" "Consignee_" on "CargoBillOFLading"."Consignee_no" = "Consignee_"."Consigneeid"
+	left join "dbo"."Stsuplir" "Lineagent_" on "CargoBillOFLading"."Lineagent_no" = "Lineagent_"."Sup_No"
+	left join "dbo"."GLmstrfl" "Lineagent_Acc_" on "Lineagent_"."Acc_No" = "Lineagent_Acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "Lineagent_Acc_Clsacc_" on "Lineagent_Acc_"."Clsacc_No" = "Lineagent_Acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Lineagent_Acc_Acc_Bnd" on "Lineagent_Acc_"."Acc_Bnd" = "Lineagent_Acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."PYCntry" "Lineagent_Cntry_" on "Lineagent_"."Cntry_No" = "Lineagent_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "Lineagent_Curncy_" on "Lineagent_"."Curncy_No" = "Lineagent_Curncy_"."Curncy_No"
+	left join "dbo"."CargoDocList2" "Sizetype" on "CargoBillOFLading"."Sizetype" = "Sizetype"."SizetypeID"
+	left join "dbo"."CargoDocList3" "Trneed" on "CargoBillOFLading"."Trneed" = "Trneed"."DocID"
+	left join "dbo"."CargoDocList4" "Tmessage" on "CargoBillOFLading"."Tmessage" = "Tmessage"."DocID"
+	left join "dbo"."CargoDocList5" "TerminalofRelease" on "CargoBillOFLading"."TerminalofRelease" = "TerminalofRelease"."DocID"
+	left join "dbo"."CargoDocList6" "PlaceofDchage" on "CargoBillOFLading"."PlaceofDchage" = "PlaceofDchage"."DocID"
+	left join "dbo"."CargoDocList7" "requiredFollowup" on "CargoBillOFLading"."requiredFollowup" = "requiredFollowup"."DocID"
+	left join "dbo"."CargoDocList8" "courier" on "CargoBillOFLading"."courier" = "courier"."DocID"
+]]></text>
+    </command>
+    <command id="BillofladingAutoIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="BillofladingAutoID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="BillofladingAutoID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Billoflading Auto#" readOnly="true" />
+    <field name="CargoInfoID" type="Int64" allowNulls="false" label="Cargo Info#" showInSummary="true">
+      <items searchOnStart="true" />
+    </field>
+    <field name="CargoInfoCargoInfoDesc" type="String" readOnly="true" label="Cargo Info Desc" length="50" />
+    <field name="BillOFLading" type="String" label="Bill OF Lading" length="50" showInSummary="true" />
+    <field name="Cstm_no" type="Int64" label="Cstm no" showInSummary="true">
+      <items style="Lookup" dataController="Stcustmr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Cstm_Cstm_Nm" type="String" readOnly="true" label="Cstm Nm" length="155" />
+    <field name="Cstm_AreaArea_name" type="String" readOnly="true" label="Cstm Area name" length="150" />
+    <field name="Cstm_EvaluationEvaluation_name" type="String" readOnly="true" label="Cstm Evaluation name" length="150" />
+    <field name="Cstm_acc_Acc_Nm" type="String" readOnly="true" label="Cstm acc Acc Nm" length="255" />
+    <field name="Cstm_acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Cstm acc Clsacc Acc Nm" length="250" />
+    <field name="Cstm_acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Cstm acc Acc Bnd Acc Nm" length="50" />
+    <field name="Cstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="Cstm Cntry Nm" length="255" />
+    <field name="Cstm_curncy_Curncy_Nm" type="String" readOnly="true" label="Cstm curncy Curncy Nm" length="200" />
+    <field name="Cstm_TSNEFTSNEF_name" type="String" readOnly="true" label="Cstm TSNEFTSNEF name" length="150" />
+    <field name="Cstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="Cstm TSNEFNO1TSNEF1 name" length="150" />
+    <field name="Cstm_Slm_Slm_Nm" type="String" readOnly="true" label="Cstm Slm Nm" length="100" />
+    <field name="Cstm_Slm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Cstm Slm masngerclassmasngerclass" length="-1" />
+    <field name="Ship_no" type="Int64" label="Ship no" showInSummary="true">
+      <items style="Lookup" dataController="CargoDocList" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Ship_Ship_nm" type="String" readOnly="true" label="Ship nm" length="50" />
+    <field name="Consignee_no" type="Int64" label="Consignee no" showInSummary="true">
+      <items style="Lookup" dataController="CargoDocList1" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Consignee_Consignee" type="String" readOnly="true" label="Consignee" length="50" />
+    <field name="Lineagent_no" type="Int64" label="Lineagent no">
+      <items style="Lookup" dataController="Stsuplir" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Lineagent_Sup_Nm" type="String" readOnly="true" label="Lineagent Sup Nm" length="255" />
+    <field name="Lineagent_Acc_Acc_Nm" type="String" readOnly="true" label="Lineagent Acc Nm" length="255" />
+    <field name="Lineagent_Acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Lineagent Acc Clsacc Acc Nm" length="250" />
+    <field name="Lineagent_Acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Lineagent Acc Bnd Acc Nm" length="50" />
+    <field name="Lineagent_Cntry_Cntry_Nm" type="String" readOnly="true" label="Lineagent Cntry Nm" length="255" />
+    <field name="Lineagent_Curncy_Curncy_Nm" type="String" readOnly="true" label="Lineagent Curncy Nm" length="200" />
+    <field name="ProductName" type="String" allowQBE="false" allowSorting="false" label="Product Name" length="-1" />
+    <field name="QTYNO" type="Decimal" label="Qtyno" />
+    <field name="Size" type="Decimal" label="Size" />
+    <field name="Sizetype" type="Int64" label="Sizetype">
+      <items style="Lookup" dataController="CargoDocList2" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="SizetypeSizetypeDesc" type="String" readOnly="true" label="Sizetype Desc" length="50" />
+    <field name="EstmationArival" type="DateTime" label="Estmation Arival" />
+    <field name="ArivalNotic" type="DateTime" label="Arival Notic" />
+    <field name="ATADate" type="DateTime" label="ATA Date" />
+    <field name="DateDoRcv" type="DateTime" label="Date Do Rcv" />
+    <field name="Telexrldate" type="DateTime" label="Telexrldate" />
+    <field name="Trneed" type="Int64" label="Trneed">
+      <items style="Lookup" dataController="CargoDocList3" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TrneedDocdesc" type="String" readOnly="true" label="Trneed Docdesc" length="50" />
+    <field name="Tmessage" type="Int64" label="Tmessage">
+      <items style="Lookup" dataController="CargoDocList4" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TmessageDocdesc" type="String" readOnly="true" label="Tmessage Docdesc" length="50" />
+    <field name="RcvDate" type="DateTime" label="Rcv Date" />
+    <field name="TerminalofRelease" type="Int64" label="Terminalof Release">
+      <items style="Lookup" dataController="CargoDocList5" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TerminalofReleaseDocdesc" type="String" readOnly="true" label="Terminalof Release Docdesc" length="50" />
+    <field name="PlaceofDchage" type="Int64" label="Placeof Dchage">
+      <items style="Lookup" dataController="CargoDocList6" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="PlaceofDchageDocdesc" type="String" readOnly="true" label="Placeof Dchage Docdesc" length="50" />
+    <field name="cntnrsrexpirdate" type="DateTime" label="Cntnrsrexpirdate" />
+    <field name="requiredFollowup" type="Int64" label="required Followup">
+      <items style="Lookup" dataController="CargoDocList7" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="requiredFollowupDocdesc" type="String" readOnly="true" label="required Followup Docdesc" length="50" />
+    <field name="courier" type="Int64" label="Courier">
+      <items style="Lookup" dataController="CargoDocList8" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="courierDocdesc" type="String" readOnly="true" label="courier Docdesc" length="50" />
+    <field name="courierservices" type="String" label="Courierservices" length="50" />
+    <field name="CourierDateofR" type="DateTime" label="Courier Dateof R" />
+    <field name="Timeofrecved" type="String" label="Timeofrecved" length="10" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Cargo Bill OF Lading">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="CargoInfoID" aliasFieldName="CargoInfoCargoInfoDesc" />
+        <dataField fieldName="BillOFLading" columns="50" />
+        <dataField fieldName="Cstm_no" aliasFieldName="Cstm_Cstm_Nm" hyperlinkFormatString="~/Pages/Stcustmr.aspx?Cstm_No={Cstm_no}&amp;_controller=Stcustmr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Ship_no" aliasFieldName="Ship_Ship_nm" hyperlinkFormatString="~/Pages/CargoDocList.aspx?Ship_no={Ship_no}&amp;_controller=CargoDocList&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Consignee_no" aliasFieldName="Consignee_Consignee" hyperlinkFormatString="~/Pages/CargoDocList1.aspx?Consigneeid={Consignee_no}&amp;_controller=CargoDocList1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Lineagent_no" aliasFieldName="Lineagent_Sup_Nm" hyperlinkFormatString="~/Pages/Stsuplir.aspx?Sup_No={Lineagent_no}&amp;_controller=Stsuplir&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ProductName" rows="5" />
+        <dataField fieldName="QTYNO" columns="15" />
+        <dataField fieldName="Size" columns="15" />
+        <dataField fieldName="Sizetype" aliasFieldName="SizetypeSizetypeDesc" hyperlinkFormatString="~/Pages/CargoDocList2.aspx?SizetypeID={Sizetype}&amp;_controller=CargoDocList2&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="EstmationArival" columns="10" />
+        <dataField fieldName="ArivalNotic" columns="10" />
+        <dataField fieldName="ATADate" columns="10" />
+        <dataField fieldName="DateDoRcv" columns="10" />
+        <dataField fieldName="Telexrldate" columns="10" />
+        <dataField fieldName="Trneed" aliasFieldName="TrneedDocdesc" hyperlinkFormatString="~/Pages/CargoDocList3.aspx?DocID={Trneed}&amp;_controller=CargoDocList3&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Tmessage" aliasFieldName="TmessageDocdesc" hyperlinkFormatString="~/Pages/CargoDocList4.aspx?DocID={Tmessage}&amp;_controller=CargoDocList4&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="RcvDate" columns="10" />
+        <dataField fieldName="TerminalofRelease" aliasFieldName="TerminalofReleaseDocdesc" hyperlinkFormatString="~/Pages/CargoDocList5.aspx?DocID={TerminalofRelease}&amp;_controller=CargoDocList5&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="PlaceofDchage" aliasFieldName="PlaceofDchageDocdesc" hyperlinkFormatString="~/Pages/CargoDocList6.aspx?DocID={PlaceofDchage}&amp;_controller=CargoDocList6&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Cargo Bill OF Lading">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Cargo Bill OF Lading" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CargoInfoID" aliasFieldName="CargoInfoCargoInfoDesc" hyperlinkFormatString="~/Pages/CargoInfo.aspx?CargoInfoID={CargoInfoID}&amp;_controller=CargoInfo&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="BillOFLading" columns="50" />
+            <dataField fieldName="Cstm_no" aliasFieldName="Cstm_Cstm_Nm" hyperlinkFormatString="~/Pages/Stcustmr.aspx?Cstm_No={Cstm_no}&amp;_controller=Stcustmr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Ship_no" aliasFieldName="Ship_Ship_nm" hyperlinkFormatString="~/Pages/CargoDocList.aspx?Ship_no={Ship_no}&amp;_controller=CargoDocList&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Consignee_no" aliasFieldName="Consignee_Consignee" hyperlinkFormatString="~/Pages/CargoDocList1.aspx?Consigneeid={Consignee_no}&amp;_controller=CargoDocList1&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Lineagent_no" aliasFieldName="Lineagent_Sup_Nm" hyperlinkFormatString="~/Pages/Stsuplir.aspx?Sup_No={Lineagent_no}&amp;_controller=Stsuplir&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ProductName" rows="5" />
+            <dataField fieldName="QTYNO" columns="15" />
+            <dataField fieldName="Size" columns="15" />
+            <dataField fieldName="Sizetype" aliasFieldName="SizetypeSizetypeDesc" hyperlinkFormatString="~/Pages/CargoDocList2.aspx?SizetypeID={Sizetype}&amp;_controller=CargoDocList2&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="EstmationArival" columns="10" />
+            <dataField fieldName="ArivalNotic" columns="10" />
+            <dataField fieldName="ATADate" columns="10" />
+            <dataField fieldName="DateDoRcv" columns="10" />
+            <dataField fieldName="Telexrldate" columns="10" />
+            <dataField fieldName="Trneed" aliasFieldName="TrneedDocdesc" hyperlinkFormatString="~/Pages/CargoDocList3.aspx?DocID={Trneed}&amp;_controller=CargoDocList3&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Tmessage" aliasFieldName="TmessageDocdesc" hyperlinkFormatString="~/Pages/CargoDocList4.aspx?DocID={Tmessage}&amp;_controller=CargoDocList4&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="RcvDate" columns="10" />
+            <dataField fieldName="TerminalofRelease" aliasFieldName="TerminalofReleaseDocdesc" hyperlinkFormatString="~/Pages/CargoDocList5.aspx?DocID={TerminalofRelease}&amp;_controller=CargoDocList5&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="PlaceofDchage" aliasFieldName="PlaceofDchageDocdesc" hyperlinkFormatString="~/Pages/CargoDocList6.aspx?DocID={PlaceofDchage}&amp;_controller=CargoDocList6&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="cntnrsrexpirdate" columns="10" />
+            <dataField fieldName="requiredFollowup" aliasFieldName="requiredFollowupDocdesc" hyperlinkFormatString="~/Pages/CargoDocList7.aspx?DocID={requiredFollowup}&amp;_controller=CargoDocList7&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="courier" aliasFieldName="courierDocdesc" hyperlinkFormatString="~/Pages/CargoDocList8.aspx?DocID={courier}&amp;_controller=CargoDocList8&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="courierservices" columns="50" />
+            <dataField fieldName="CourierDateofR" columns="10" />
+            <dataField fieldName="Timeofrecved" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Cstm_AreaArea_name" />
+            <dataField fieldName="Cstm_EvaluationEvaluation_name" />
+            <dataField fieldName="Cstm_acc_Acc_Nm" />
+            <dataField fieldName="Cstm_acc_Clsacc_Acc_Nm" />
+            <dataField fieldName="Cstm_acc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="Cstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="Cstm_curncy_Curncy_Nm" />
+            <dataField fieldName="Cstm_TSNEFTSNEF_name" />
+            <dataField fieldName="Cstm_TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="Cstm_Slm_Slm_Nm" />
+            <dataField fieldName="Cstm_Slm_masngerclassmasngerclass" rows="5" />
+            <dataField fieldName="Lineagent_Acc_Acc_Nm" />
+            <dataField fieldName="Lineagent_Acc_Clsacc_Acc_Nm" />
+            <dataField fieldName="Lineagent_Acc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="Lineagent_Cntry_Cntry_Nm" />
+            <dataField fieldName="Lineagent_Curncy_Curncy_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Cargo Bill OF Lading">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Cargo Bill OF Lading" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CargoInfoID" aliasFieldName="CargoInfoCargoInfoDesc" />
+            <dataField fieldName="BillOFLading" columns="50" />
+            <dataField fieldName="Cstm_no" aliasFieldName="Cstm_Cstm_Nm" />
+            <dataField fieldName="Ship_no" aliasFieldName="Ship_Ship_nm" />
+            <dataField fieldName="Consignee_no" aliasFieldName="Consignee_Consignee" />
+            <dataField fieldName="Lineagent_no" aliasFieldName="Lineagent_Sup_Nm" />
+            <dataField fieldName="ProductName" rows="5" />
+            <dataField fieldName="QTYNO" columns="15" />
+            <dataField fieldName="Size" columns="15" />
+            <dataField fieldName="Sizetype" aliasFieldName="SizetypeSizetypeDesc" />
+            <dataField fieldName="EstmationArival" columns="10" />
+            <dataField fieldName="ArivalNotic" columns="10" />
+            <dataField fieldName="ATADate" columns="10" />
+            <dataField fieldName="DateDoRcv" columns="10" />
+            <dataField fieldName="Telexrldate" columns="10" />
+            <dataField fieldName="Trneed" aliasFieldName="TrneedDocdesc" />
+            <dataField fieldName="Tmessage" aliasFieldName="TmessageDocdesc" />
+            <dataField fieldName="RcvDate" columns="10" />
+            <dataField fieldName="TerminalofRelease" aliasFieldName="TerminalofReleaseDocdesc" />
+            <dataField fieldName="PlaceofDchage" aliasFieldName="PlaceofDchageDocdesc" />
+            <dataField fieldName="cntnrsrexpirdate" columns="10" />
+            <dataField fieldName="requiredFollowup" aliasFieldName="requiredFollowupDocdesc" />
+            <dataField fieldName="courier" aliasFieldName="courierDocdesc" />
+            <dataField fieldName="courierservices" columns="50" />
+            <dataField fieldName="CourierDateofR" columns="10" />
+            <dataField fieldName="Timeofrecved" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

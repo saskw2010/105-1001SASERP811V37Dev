@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SASERP V37 – Workspace Documentation</title>
+  <!-- Use CSS from VueCss -->
+  <link rel="stylesheet" href="/VueCss/ModernTheme.css" />
+  <link rel="stylesheet" href="/VueCss/vue-components.css" />
+  <link rel="stylesheet" href="/css/notifications.css" />
+</head>
+<body>
+  <div id="app" class="container" style="padding:16px 20px;">
+    <h1 style="margin:0 0 10px;">SASERP V37 – Workspace Documentation</h1>
+    <p style="margin:0 0 20px; color:#666;">Folder-by-folder overview. Curated list of important files with short descriptions. Update or extend the data section as needed.</p>
+
+    <div class="panel">
+        <div class="panel-header"><strong>Documentation Topics</strong></div>
+        <div class="panel-body">
+            <ul class="list">
+                <li><a href="./architecture.html">Architecture</a> - Technical overview of the application layers and patterns.</li>
+                <li><a href="./structure.html">Project Structure</a> - Guide to the project's folder and file organization.</li>
+                <li><a href="./functionality.html">Functionality</a> - High-level overview of the ERP's features and modules.</li>
+                <li><a href="./roadmap.html">Development Roadmap</a> - The development plan for the project.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-md-3">
+        <div class="panel">
+          <div class="panel-header"><strong>Folders</strong></div>
+          <div class="panel-body">
+            <input type="search" class="form-control" placeholder="Filter folders" v-model="folderQuery" />
+            <ul class="list" style="margin-top:10px;">
+              <li v-for="f in filteredFolders" :key="f.path">
+                <a href="#" @click.prevent="selectFolder(f.path)" :class="{ active: f.path === selectedPath }">{{ f.folder }}</a>
+                <small style="color:#888; display:block;">{{ f.path }}</small>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="panel" v-if="current">
+          <div class="panel-header">
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <strong style="font-size:18px;">{{ current.folder }}</strong>
+              <code style="background:#f6f8fa; padding:2px 6px; border-radius:4px;">{{ current.path }}</code>
+              <span class="badge">{{ current.items.length }} files</span>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="row" style="margin-bottom:10px; gap:10px;">
+              <div class="col-md-6" style="flex:1;">
+                <input type="search" class="form-control" placeholder="Filter files in folder" v-model="fileQuery" />
+              </div>
+              <div class="col-md-5" style="flex:1; text-align:right;">
+                <button class="btn btn-default" @click="copyPermalink">Copy permalink</button>
+              </div>
+            </div>
+            <div v-if="filteredItems.length === 0" style="color:#888;">No files matched.</div>
+            <div v-else class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th style="width:35%">File</th>
+                    <th style="width:15%">Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="it in filteredItems" :key="it.name">
+                    <td>
+                      <a :href="toSource(it)" target="_blank">{{ it.name }}</a>
+                    </td>
+                    <td><code>{{ it.type }}</code></td>
+                    <td>{{ it.description }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div v-else class="panel">
+          <div class="panel-body">
+            Select a folder to view its files and descriptions.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+    <p style="color:#999; font-size:12px;">Generated docs use Vue 3 (from /Vuejs) and styles from /VueCss. Extend docsData in this page as the codebase evolves.</p>
+  </div>
+
+  <!-- Vue runtime from Vuejs -->
+  <script src="/Vuejs/vue.global.prod.js"></script>
+  <!-- Optional shared Vue components (not required, available if needed) -->
+  <script src="/Vuejs/vue-components.js"></script>
+  <!-- Optional external data extension for docs -->
+  <script src="./_data.js"></script>
+
+  <script>
+  // Curated documentation data. Expand this as needed.
+  const docsData = [
+    {
+      folder: 'Root',
+      path: '/',
+      items: [
+        { name: 'Main.master', type: 'Master Page', description: 'Primary master layout hosting the modern navigation drawer and global assets.' },
+        { name: 'UniversalNavMaster.master', type: 'Master Page', description: 'Universal navigation master with hamburger menu and global JS config.' },
+        { name: 'ModernMaster.master', type: 'Master Page', description: 'Experimental modern master layout.' },
+        { name: 'web.config', type: 'Config', description: 'ASP.NET application configuration (handlers, compilation, auth, etc.).' },
+        { name: 'Global.asax', type: 'ASP.NET', description: 'Global application events (App_Start, Session_Start, etc.).' },
+        { name: 'Web.Sitemap', type: 'Navigation', description: 'Site navigation structure used by legacy and modern menus. Localized variants exist.' },
+        { name: 'Login.aspx', type: 'Page', description: 'User login page and code-behind.' },
+        { name: 'Default.aspx', type: 'Page', description: 'Landing page. Uses master for layout.' },
+        { name: 'TestPages/PagesIndex.aspx', type: 'Test Page', description: 'Entry to test pages and system guides.' },
+        { name: 'RunSASERP.ps1', type: 'Script', description: 'Helper PowerShell script to start IIS Express with this site.' }
+      ]
+    },
+    {
+      folder: 'App_Code',
+      path: '/App_Code',
+      items: [
+        { name: 'AdvancedMenuBuilder.vb', type: 'VB Class', description: 'Server-side menu builder and icon mapper for navigation items.' },
+        { name: 'DashboardModels.vb', type: 'VB Models', description: 'Data models for dashboards (Financial, HR, Operations, Reports). Include LoadSampleData().' },
+        { name: 'DynamicControlConverter.vb', type: 'VB Utility', description: 'Helpers for converting/generating dynamic WebForms controls.' },
+        { name: 'MyUtils.vb', type: 'VB Utility', description: 'General utility functions used across the site.' },
+        { name: 'Services/', type: 'Folder', description: 'Service-layer code (WebMethods, APIs) under App_Code.' },
+        { name: 'Security/', type: 'Folder', description: 'Security helpers, permissions, and membership related code.' },
+        { name: 'Rules/', type: 'Folder', description: 'Business rules and validations.' },
+        { name: 'Data/', type: 'Folder', description: 'Data helpers, handlers, datasets supporting dashboards and pages.' },
+        { name: 'Web/', type: 'Folder', description: 'Web-related helpers for WebForms components.' }
+      ]
+    },
+    {
+      folder: 'Controls',
+      path: '/Controls',
+      items: [
+        { name: 'UniversalHamburgerMenu.ascx', type: 'User Control', description: 'Builds site-wide navigation UI (legacy). Hidden when using modern drawer.' },
+        { name: 'HomeTableOfContents.ascx', type: 'User Control', description: 'Home page table of contents with quick links.' },
+        { name: 'ModernHomeTableOfContents.ascx', type: 'User Control', description: 'Modernized TOC variant.' },
+        { name: 'FinancialDashboard.ascx', type: 'User Control', description: 'Financial dashboard UI. Binds data from DashboardModels.' },
+        { name: 'HRDashboard.ascx', type: 'User Control', description: 'HR dashboard UI. Binds data from DashboardModels.' },
+        { name: 'OperationsDashboard.ascx', type: 'User Control', description: 'Operations dashboard UI. Binds data from DashboardModels.' },
+        { name: 'ReportsDashboard.ascx', type: 'User Control', description: 'Reports dashboard UI. Binds data from DashboardModels.' }
+      ]
+    },
+    {
+      folder: 'css',
+      path: '/css',
+      items: [
+        { name: 'modern-menu.css', type: 'CSS', description: 'Styles for the modern navigation drawer and tree UI.' },
+        { name: 'pagemenubar.css', type: 'CSS', description: 'Styles for the legacy PageMenuBar menu.' },
+        { name: 'notifications.css', type: 'CSS', description: 'Styles for toast/notification UI.' },
+        { name: 'StyleSheet.css', type: 'CSS', description: 'Base stylesheet used by legacy pages.' }
+      ]
+    },
+    {
+      folder: 'js',
+      path: '/js',
+      items: [
+        { name: 'modern-menu-once.js', type: 'JS', description: 'One-time mounted modern menu drawer. Lazy-loads menu JSON and renders accessible tree.' },
+        { name: 'modern-menu.js', type: 'JS (legacy)', description: 'Older modern menu script. Keep disabled to avoid conflicts.' },
+        { name: 'pagemenubar-mobile.js', type: 'JS (legacy)', description: 'Legacy mobile behavior for the classic PageMenuBar.' },
+        { name: 'notifications.js', type: 'JS', description: 'Simple notifications/toast helper.' }
+      ]
+    },
+    {
+      folder: 'Vuejs',
+      path: '/Vuejs',
+      items: [
+        { name: 'vue.global.prod.js', type: 'Vue Runtime', description: 'Vue 3 production build used by demo/docs pages.' },
+        { name: 'vue-components.js', type: 'Vue Components', description: 'Shared Vue components for navigation and UI widgets.' },
+        { name: 'mainmaster-simple.js', type: 'JS', description: 'Lightweight master-page JS helpers.' },
+        { name: 'mainmaster-vue-framework.js', type: 'JS', description: 'Vue-based master-page framework and navigation hooks.' },
+        { name: 'navigation-vue-components.js', type: 'JS', description: 'Vue components for menus and navigation.' },
+        { name: 'theme-manager.js', type: 'JS', description: 'Theme management (load/switch themes programmatically).' }
+      ]
+    },
+    {
+      folder: 'VueCss',
+      path: '/VueCss',
+      items: [
+        { name: 'vue-components.css', type: 'CSS', description: 'Styles for Vue-based UI components used across demos/docs.' },
+        { name: 'ModernTheme.css', type: 'CSS', description: 'Modern theme styling for panels, lists, tables, etc.' },
+        { name: 'universal-hamburger-menu.css', type: 'CSS', description: 'Styles focusing on the universal menu layout (legacy + modern support).' },
+        { name: 'responsive-pagemenubar.css', type: 'CSS', description: 'Responsive adjustments for the legacy PageMenuBar.' }
+      ]
+    },
+    {
+      folder: 'TestPages',
+      path: '/TestPages',
+      items: [
+        { name: 'PagesIndex.aspx', type: 'Test Hub', description: 'Hub page listing test and guide pages. Start here for manual testing.' },
+        { name: 'TestDashboardData.aspx', type: 'Test API', description: 'WebMethods for testing dashboard data retrieval from models.' },
+        { name: 'theme-system-guide.html', type: 'Guide', description: 'Guide to the theme system and switching mechanisms.' },
+        { name: 'theme-management-console.html', type: 'Demo', description: 'Interactive theme management demo page.' },
+        { name: 'theme-switch-widget.html', type: 'Demo', description: 'Small UI to switch themes.' }
+      ]
+    },
+    {
+        folder: 'Docs',
+        path: '/Docs',
+        items: [
+            { name: 'README.md', type: 'Documentation', description: 'Project overview and getting started guide.' },
+            { name: 'ARCHITECTURE.md', type: 'Documentation', description: 'Detailed technical architecture.' },
+            { name: 'STRUCTURE.md', type: 'Documentation', 'description': 'Folder and file structure guide.' },
+            { name: 'FUNCTIONALITY.md', type: 'Documentation', 'description': 'ERP features and modules overview.' },
+            { name: 'ROADMAP.md', type: 'Documentation', 'description': 'Development roadmap and future plans.' }
+        ]
+    }
+  ];
+
+  // Merge optional external extensions if present
+  try {
+    const ext = window['__DOCS_EXTENSIONS__'];
+    if (ext && ext.Controls) {
+      const f = docsData.find(x => x.folder === 'Controls');
+      if (f) f.items = f.items.concat(ext.Controls);
+    }
+  } catch (e) { /* no-op */ }
+
+  const { createApp, computed, onMounted } = Vue;
+  createApp({
+    data() {
+      return {
+        docs: docsData,
+        selectedPath: new URL(window.location.href).searchParams.get('path') || '/',
+        folderQuery: '',
+        fileQuery: ''
+      };
+    },
+    computed: {
+      folders() { return this.docs; },
+      filteredFolders() {
+        const q = this.folderQuery.toLowerCase().trim();
+        if (!q) return this.folders;
+        return this.folders.filter(f => (f.folder + ' ' + f.path).toLowerCase().includes(q));
+      },
+      current() {
+        return this.docs.find(f => f.path === this.selectedPath);
+      },
+      filteredItems() {
+        if (!this.current) return [];
+        const q = this.fileQuery.toLowerCase().trim();
+        if (!q) return this.current.items;
+        return this.current.items.filter(it => (
+          (it.name || '').toLowerCase().includes(q) ||
+          (it.type || '').toLowerCase().includes(q) ||
+          (it.description || '').toLowerCase().includes(q)
+        ));
+      }
+    },
+    methods: {
+      selectFolder(path) {
+        this.selectedPath = path;
+        this.fileQuery = '';
+        const url = new URL(window.location.href);
+        url.searchParams.set('path', path);
+        history.replaceState(null, '', url.toString());
+      },
+      toSource(it) {
+        // Attempt to link to the source file if it likely exists
+        if (this.selectedPath === '/') return '/' + it.name;
+        return this.selectedPath + '/' + it.name;
+      },
+      copyPermalink() {
+        const url = new URL(window.location.href);
+        url.searchParams.set('path', this.selectedPath);
+        navigator.clipboard.writeText(url.toString()).then(() => {
+          // simple visual feedback
+          alert('Permalink copied');
+        });
+      }
+    },
+    mounted() {
+      // Ensure the selectedPath exists; fallback to the first folder
+      if (!this.current && this.docs.length) {
+        this.selectedPath = this.docs[0].path;
+      }
+    }
+  }).mount('#app');
+  </script>
+</body>
+</html>

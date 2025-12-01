@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="callregisterdtl" conflictDetection="overwriteChanges" label="Callregisterdtl" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"callregisterdtl"."callregisterdtlid" "callregisterdtlid"
+	,"callregisterdtl"."callid" "callid"
+	,"call"."customertel1" "callcustomertel1"
+	,"callMarketplan"."MarketplanDesc" "callMarketplanMarketplanDesc"
+	,"callproducts"."productsname" "callproductsproductsname"
+	,"callSlm_"."Slm_Nm" "callSlm_Slm_Nm"
+	,"callSlm_masngerclass"."masngerclass" "callSlm_masngerclassmasngerclass"
+	,"callVisitstatus"."Visitstatusname" "callVisitstatusVisitstatusname"
+	,"callvisittype"."visittypeNm" "callvisittypevisittypeNm"
+	,"callregisterdtl"."Slm_No" "Slm_No"
+	,"Slm_"."Slm_Nm" "Slm_Slm_Nm"
+	,"Slm_masngerclass"."masngerclass" "Slm_masngerclassmasngerclass"
+	,"callregisterdtl"."visittype" "visittype"
+	,"visittype"."visittypeNm" "visittypevisittypeNm"
+	,"callregisterdtl"."Visitstatus" "Visitstatus"
+	,"Visitstatus"."Visitstatusname" "VisitstatusVisitstatusname"
+	,"callregisterdtl"."Personalname1" "Personalname1"
+	,"callregisterdtl"."telphone" "telphone"
+	,"callregisterdtl"."Personaljob" "Personaljob"
+	,"callregisterdtl"."cutomercomments" "cutomercomments"
+	,"callregisterdtl"."callercomments" "callercomments"
+	,"callregisterdtl"."mangmentcomments" "mangmentcomments"
+	,"callregisterdtl"."startdatetime" "startdatetime"
+	,"callregisterdtl"."savedatetime" "savedatetime"
+	,"callregisterdtl"."ModifiedBy" "ModifiedBy"
+	,"callregisterdtl"."ModifiedOn" "ModifiedOn"
+	,"callregisterdtl"."CreatedBy" "CreatedBy"
+	,"callregisterdtl"."CreatedOn" "CreatedOn"
+from "dbo"."callregisterdtl" "callregisterdtl"
+	left join "dbo"."callregister" "call" on "callregisterdtl"."callid" = "call"."callid"
+	left join "dbo"."Marketplan" "callMarketplan" on "call"."MarketplanID" = "callMarketplan"."MarketplanID"
+	left join "dbo"."ProductsList" "callproducts" on "call"."productsID" = "callproducts"."productsid"
+	left join "dbo"."Stslsman" "callSlm_" on "call"."Slm_No" = "callSlm_"."Slm_No"
+	left join "dbo"."masngerclass" "callSlm_masngerclass" on "callSlm_"."masngerclassid" = "callSlm_masngerclass"."masngerclassid"
+	left join "dbo"."Visitstatuslist" "callVisitstatus" on "call"."Visitstatus" = "callVisitstatus"."VisitstatusID"
+	left join "dbo"."visittypelist" "callvisittype" on "call"."visittype" = "callvisittype"."visittypeNo"
+	left join "dbo"."Stslsman" "Slm_" on "callregisterdtl"."Slm_No" = "Slm_"."Slm_No"
+	left join "dbo"."masngerclass" "Slm_masngerclass" on "Slm_"."masngerclassid" = "Slm_masngerclass"."masngerclassid"
+	left join "dbo"."visittypelist" "visittype" on "callregisterdtl"."visittype" = "visittype"."visittypeNo"
+	left join "dbo"."Visitstatuslist" "Visitstatus" on "callregisterdtl"."Visitstatus" = "Visitstatus"."VisitstatusID"
+]]></text>
+    </command>
+    <command id="callregisterdtlidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="callregisterdtlid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="callregisterdtlid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Callregisterdtlid" readOnly="true" />
+    <field name="callid" type="Int64" allowNulls="false" label="Callid" showInSummary="true">
+      <items style="Lookup" dataController="callregister" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="callcustomertel1" type="String" readOnly="true" label="Callcustomertel1" length="10" />
+    <field name="callMarketplanMarketplanDesc" type="String" readOnly="true" label="call Marketplan Desc" length="50" />
+    <field name="callproductsproductsname" type="String" readOnly="true" label="Callproductsproductsname" length="150" />
+    <field name="callSlm_Slm_Nm" type="String" readOnly="true" label="call Slm Nm" length="100" />
+    <field name="callSlm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="call Slm masngerclassmasngerclass" length="-1" />
+    <field name="callVisitstatusVisitstatusname" type="String" readOnly="true" label="call Visitstatus Visitstatusname" length="50" />
+    <field name="callvisittypevisittypeNm" type="String" readOnly="true" label="callvisittypevisittype Nm" length="20" />
+    <field name="Slm_No" type="Int64" label="Slm No" showInSummary="true">
+      <items style="Lookup" dataController="Stslsman" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Slm_Slm_Nm" type="String" readOnly="true" label="Slm Nm" length="100" />
+    <field name="Slm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Slm masngerclassmasngerclass" length="-1" />
+    <field name="visittype" type="Int64" label="Visittype" showInSummary="true">
+      <items style="Lookup" dataController="visittypelist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="visittypevisittypeNm" type="String" readOnly="true" label="visittypevisittype Nm" length="20" />
+    <field name="Visitstatus" type="Int64" allowNulls="false" label="Visitstatus" showInSummary="true">
+      <items style="Lookup" dataController="Visitstatuslist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="VisitstatusVisitstatusname" type="String" readOnly="true" label="Visitstatus Visitstatusname" length="50" />
+    <field name="Personalname1" type="String" label="Personalname1" length="50" showInSummary="true" />
+    <field name="telphone" type="String" label="Telphone" length="10" />
+    <field name="Personaljob" type="String" label="Personaljob" length="50" />
+    <field name="cutomercomments" type="String" allowQBE="false" allowSorting="false" label="Cutomercomments" length="-1" />
+    <field name="callercomments" type="String" allowQBE="false" allowSorting="false" label="Callercomments" length="-1" />
+    <field name="mangmentcomments" type="String" allowQBE="false" allowSorting="false" label="Mangmentcomments" length="-1" />
+    <field name="startdatetime" type="DateTime" label="Startdatetime" />
+    <field name="savedatetime" type="DateTime" default="(getdate())" label="Savedatetime" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Callregisterdtl">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="callid" aliasFieldName="callcustomertel1" />
+        <dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm" hyperlinkFormatString="~/Pages/Stslsman.aspx?Slm_No={Slm_No}&amp;_controller=Stslsman&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="visittype" aliasFieldName="visittypevisittypeNm" hyperlinkFormatString="~/Pages/visittypelist.aspx?visittypeNo={visittype}&amp;_controller=visittypelist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Visitstatus" aliasFieldName="VisitstatusVisitstatusname" hyperlinkFormatString="~/Pages/Visitstatuslist.aspx?VisitstatusID={Visitstatus}&amp;_controller=Visitstatuslist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Personalname1" columns="50" />
+        <dataField fieldName="telphone" columns="10" />
+        <dataField fieldName="Personaljob" columns="50" />
+        <dataField fieldName="cutomercomments" rows="5" />
+        <dataField fieldName="callercomments" rows="5" />
+        <dataField fieldName="mangmentcomments" rows="5" />
+        <dataField fieldName="startdatetime" dataFormatString="t" columns="10" />
+        <dataField fieldName="savedatetime" dataFormatString="t" columns="10" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="callMarketplanMarketplanDesc" columns="50" />
+        <dataField fieldName="callproductsproductsname" />
+        <dataField fieldName="callSlm_Slm_Nm" />
+        <dataField fieldName="callSlm_masngerclassmasngerclass" rows="5" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Callregisterdtl">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Callregisterdtl" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="callid" aliasFieldName="callcustomertel1" hyperlinkFormatString="~/Pages/callregister.aspx?callid={callid}&amp;_controller=callregister&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm" hyperlinkFormatString="~/Pages/Stslsman.aspx?Slm_No={Slm_No}&amp;_controller=Stslsman&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="visittype" aliasFieldName="visittypevisittypeNm" hyperlinkFormatString="~/Pages/visittypelist.aspx?visittypeNo={visittype}&amp;_controller=visittypelist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Visitstatus" aliasFieldName="VisitstatusVisitstatusname" hyperlinkFormatString="~/Pages/Visitstatuslist.aspx?VisitstatusID={Visitstatus}&amp;_controller=Visitstatuslist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Personalname1" columns="50" />
+            <dataField fieldName="telphone" columns="10" />
+            <dataField fieldName="Personaljob" columns="50" />
+            <dataField fieldName="cutomercomments" rows="5" />
+            <dataField fieldName="callercomments" rows="5" />
+            <dataField fieldName="mangmentcomments" rows="5" />
+            <dataField fieldName="startdatetime" dataFormatString="t" columns="10" />
+            <dataField fieldName="savedatetime" dataFormatString="t" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="callMarketplanMarketplanDesc" columns="50" />
+            <dataField fieldName="callproductsproductsname" />
+            <dataField fieldName="callSlm_Slm_Nm" />
+            <dataField fieldName="callSlm_masngerclassmasngerclass" rows="5" />
+            <dataField fieldName="callVisitstatusVisitstatusname" columns="50" />
+            <dataField fieldName="callvisittypevisittypeNm" columns="20" />
+            <dataField fieldName="Slm_masngerclassmasngerclass" rows="5" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Callregisterdtl">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Callregisterdtl" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="callid" aliasFieldName="callcustomertel1" />
+            <dataField fieldName="Slm_No" aliasFieldName="Slm_Slm_Nm" />
+            <dataField fieldName="visittype" aliasFieldName="visittypevisittypeNm" />
+            <dataField fieldName="Visitstatus" aliasFieldName="VisitstatusVisitstatusname" />
+            <dataField fieldName="Personalname1" columns="50" />
+            <dataField fieldName="telphone" columns="10" />
+            <dataField fieldName="Personaljob" columns="50" />
+            <dataField fieldName="cutomercomments" rows="5" />
+            <dataField fieldName="callercomments" rows="5" />
+            <dataField fieldName="mangmentcomments" rows="5" />
+            <dataField fieldName="startdatetime" dataFormatString="t" columns="10" />
+            <dataField fieldName="savedatetime" dataFormatString="t" columns="10" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

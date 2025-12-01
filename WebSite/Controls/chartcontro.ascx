@@ -1,0 +1,2 @@
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="chartcontro.ascx.vb" Inherits="Controls_chartcontro"  %>
+<asp:UpdatePanel ID="UpdatePanel1" runat="server"><ContentTemplate><div style="margin:2px;border: solid 1px silver;padding:8px;">uc:chartcontro</div></ContentTemplate></asp:UpdatePanel>

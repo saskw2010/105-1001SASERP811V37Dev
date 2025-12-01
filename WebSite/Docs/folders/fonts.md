@@ -1,0 +1,5 @@
+# Folder: fonts
+
+Purpose: font files (e.g., webfonts for icons/typography).
+
+Back to hub: ../index.md | TOC: ../TOC.md

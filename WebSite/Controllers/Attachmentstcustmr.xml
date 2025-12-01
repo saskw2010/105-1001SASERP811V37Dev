@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Attachmentstcustmr" conflictDetection="overwriteChanges" label="Attachmentstcustmr" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Attachmentstcustmr"."AttachmentNo" "AttachmentNo"
+	,"Attachmentstcustmr"."cstm_no" "cstm_no"
+	,"cstm_"."Cstm_Nm" "cstm_Cstm_Nm"
+	,"cstm_Area"."Area_name" "cstm_AreaArea_name"
+	,"cstm_Evaluation"."Evaluation_name" "cstm_EvaluationEvaluation_name"
+	,"cstm_acc_"."Acc_Nm" "cstm_acc_Acc_Nm"
+	,"cstm_acc_Clsacc_"."Acc_Nm" "cstm_acc_Clsacc_Acc_Nm"
+	,"cstm_acc_Acc_Bnd"."Acc_Nm" "cstm_acc_Acc_BndAcc_Nm"
+	,"cstm_Cntry_"."Cntry_Nm" "cstm_Cntry_Cntry_Nm"
+	,"cstm_curncy_"."Curncy_Nm" "cstm_curncy_Curncy_Nm"
+	,"cstm_TSNEF"."TSNEF_name" "cstm_TSNEFTSNEF_name"
+	,"cstm_TSNEFNO1"."TSNEF1_name" "cstm_TSNEFNO1TSNEF1_name"
+	,"cstm_Slm_"."Slm_Nm" "cstm_Slm_Slm_Nm"
+	,"cstm_Slm_masngerclass"."masngerclass" "cstm_Slm_masngerclassmasngerclass"
+	,"Attachmentstcustmr"."Attachmentpath" "Attachmentpath"
+	,"Attachmentstcustmr"."AttachmentDescription" "AttachmentDescription"
+	,"Attachmentstcustmr"."attachmentNotes" "attachmentNotes"
+	,"Attachmentstcustmr"."ModifiedBy" "ModifiedBy"
+	,"Attachmentstcustmr"."ModifiedOn" "ModifiedOn"
+	,"Attachmentstcustmr"."CreatedBy" "CreatedBy"
+	,"Attachmentstcustmr"."CreatedOn" "CreatedOn"
+from "dbo"."Attachmentstcustmr" "Attachmentstcustmr"
+	left join "dbo"."Stcustmr" "cstm_" on "Attachmentstcustmr"."cstm_no" = "cstm_"."Cstm_No"
+	left join "dbo"."AreaList" "cstm_Area" on "cstm_"."AreaNo" = "cstm_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "cstm_Evaluation" on "cstm_"."EvaluationNO" = "cstm_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "cstm_acc_" on "cstm_"."acc_no" = "cstm_acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "cstm_acc_Clsacc_" on "cstm_acc_"."Clsacc_No" = "cstm_acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "cstm_acc_Acc_Bnd" on "cstm_acc_"."Acc_Bnd" = "cstm_acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."PYCntry" "cstm_Cntry_" on "cstm_"."Cntry_No" = "cstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "cstm_curncy_" on "cstm_"."curncy_no" = "cstm_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "cstm_TSNEF" on "cstm_"."TSNEFNO" = "cstm_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "cstm_TSNEFNO1" on "cstm_"."TSNEFNO1" = "cstm_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "cstm_Slm_" on "cstm_"."Slm_No" = "cstm_Slm_"."Slm_No"
+	left join "dbo"."masngerclass" "cstm_Slm_masngerclass" on "cstm_Slm_"."masngerclassid" = "cstm_Slm_masngerclass"."masngerclassid"
+]]></text>
+    </command>
+    <command id="AttachmentNoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="AttachmentNo" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="AttachmentNo" type="Int64" allowNulls="false" isPrimaryKey="true" label="Attachment No" readOnly="true" />
+    <field name="cstm_no" type="Int64" label="Cstm No" showInSummary="true">
+      <items style="Lookup" dataController="Stcustmr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="cstm_Cstm_Nm" type="String" readOnly="true" label="cstm Cstm Nm" length="155" />
+    <field name="cstm_AreaArea_name" type="String" readOnly="true" label="cstm Area name" length="150" />
+    <field name="cstm_EvaluationEvaluation_name" type="String" readOnly="true" label="cstm Evaluation name" length="150" />
+    <field name="cstm_acc_Acc_Nm" type="String" readOnly="true" label="cstm acc Acc Nm" length="255" />
+    <field name="cstm_acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="cstm acc Clsacc Acc Nm" length="250" />
+    <field name="cstm_acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="cstm acc Acc Bnd Acc Nm" length="50" />
+    <field name="cstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="cstm Cntry Nm" length="255" />
+    <field name="cstm_curncy_Curncy_Nm" type="String" readOnly="true" label="cstm curncy Curncy Nm" length="200" />
+    <field name="cstm_TSNEFTSNEF_name" type="String" readOnly="true" label="cstm TSNEFTSNEF name" length="150" />
+    <field name="cstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="cstm TSNEFNO1TSNEF1 name" length="150" />
+    <field name="cstm_Slm_Slm_Nm" type="String" readOnly="true" label="cstm Slm Nm" length="100" />
+    <field name="cstm_Slm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="cstm Slm masngerclassmasngerclass" />
+    <field name="Attachmentpath" type="String" label="Attachmentpath" length="150" showInSummary="true" />
+    <field name="AttachmentDescription" type="String" label="Attachment Description" length="150" showInSummary="true" />
+    <field name="attachmentNotes" type="String" label="attachment Notes" length="150" showInSummary="true" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" showInSummary="true" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Attachmentstcustmr">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="cstm_no" aliasFieldName="cstm_Cstm_Nm" />
+        <dataField fieldName="Attachmentpath" />
+        <dataField fieldName="AttachmentDescription" />
+        <dataField fieldName="attachmentNotes" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="cstm_AreaArea_name" />
+        <dataField fieldName="cstm_EvaluationEvaluation_name" />
+        <dataField fieldName="cstm_acc_Acc_Nm" />
+        <dataField fieldName="cstm_acc_Clsacc_Acc_Nm" />
+        <dataField fieldName="cstm_acc_Acc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="cstm_Cntry_Cntry_Nm" />
+        <dataField fieldName="cstm_curncy_Curncy_Nm" />
+        <dataField fieldName="cstm_TSNEFTSNEF_name" />
+        <dataField fieldName="cstm_TSNEFNO1TSNEF1_name" />
+        <dataField fieldName="cstm_Slm_Slm_Nm" />
+        <dataField fieldName="cstm_Slm_masngerclassmasngerclass" rows="5" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Attachmentstcustmr">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Attachmentstcustmr" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="cstm_no" aliasFieldName="cstm_Cstm_Nm" hyperlinkFormatString="~/Pages/Stcustmr.aspx?Cstm_No={cstm_no}&amp;_controller=Stcustmr&amp;_command=Select&amp;_argument=editForm1" />
+            <dataField fieldName="Attachmentpath" />
+            <dataField fieldName="AttachmentDescription" />
+            <dataField fieldName="attachmentNotes" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="cstm_AreaArea_name" />
+            <dataField fieldName="cstm_EvaluationEvaluation_name" />
+            <dataField fieldName="cstm_acc_Acc_Nm" />
+            <dataField fieldName="cstm_acc_Clsacc_Acc_Nm" />
+            <dataField fieldName="cstm_acc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="cstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="cstm_curncy_Curncy_Nm" />
+            <dataField fieldName="cstm_TSNEFTSNEF_name" />
+            <dataField fieldName="cstm_TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="cstm_Slm_Slm_Nm" />
+            <dataField fieldName="cstm_Slm_masngerclassmasngerclass" rows="5" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Attachmentstcustmr">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Attachmentstcustmr" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="cstm_no" aliasFieldName="cstm_Cstm_Nm" />
+            <dataField fieldName="Attachmentpath" />
+            <dataField fieldName="AttachmentDescription" />
+            <dataField fieldName="attachmentNotes" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

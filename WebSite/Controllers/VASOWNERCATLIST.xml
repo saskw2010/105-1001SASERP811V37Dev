@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="VASOWNERCATLIST" conflictDetection="overwriteChanges" label="Vasownercatlist" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"VASOWNERCATLIST"."SHORTCADEOWNER" "SHORTCADEOWNER"
+	,"VASOWNERCATLIST"."CADEOWNERDescription" "CADEOWNERDescription"
+	,"VASOWNERCATLIST"."SHORTCADEOWNERMain" "SHORTCADEOWNERMain"
+	,"SHORTCADEOWNERMain"."SHORTCADEOWNERMain" "SHORTCADEOWNERMainSHORTCADEOWNERMain"
+	,"SHORTCADEOWNERMainAcc_"."Acc_Nm" "SHORTCADEOWNERMainAcc_Acc_Nm"
+	,"SHORTCADEOWNERMainAcc_Clsacc_"."Acc_Nm" "SHORTCADEOWNERMainAcc_Clsacc_Acc_Nm"
+	,"SHORTCADEOWNERMainAcc_Acc_Bnd"."Acc_Nm" "SHORTCADEOWNERMainAcc_Acc_BndAcc_Nm"
+	,"VASOWNERCATLIST"."Acc_no" "Acc_no"
+	,"Acc_"."Acc_Nm" "Acc_Acc_Nm"
+	,"Acc_Clsacc_"."Acc_Nm" "Acc_Clsacc_Acc_Nm"
+	,"Acc_Acc_Bnd"."Acc_Nm" "Acc_Acc_BndAcc_Nm"
+	,"Acc_Acc_Bndaccclass"."accountclass" "Acc_Acc_Bndaccclassaccountclass"
+	,"Acc_Acc_BndAcc_Bab"."Acc_Nm" "Acc_Acc_BndAcc_BabAcc_Nm"
+from "dbo"."VASOWNERCATLIST" "VASOWNERCATLIST"
+	left join "dbo"."VASOWNERCATLIST" "SHORTCADEOWNERMain" on "VASOWNERCATLIST"."SHORTCADEOWNERMain" = "SHORTCADEOWNERMain"."SHORTCADEOWNER"
+	left join "dbo"."GLmstrfl" "SHORTCADEOWNERMainAcc_" on "SHORTCADEOWNERMain"."Acc_no" = "SHORTCADEOWNERMainAcc_"."Acc_No"
+	left join "dbo"."GLmfbab" "SHORTCADEOWNERMainAcc_Clsacc_" on "SHORTCADEOWNERMainAcc_"."Clsacc_No" = "SHORTCADEOWNERMainAcc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "SHORTCADEOWNERMainAcc_Acc_Bnd" on "SHORTCADEOWNERMainAcc_"."Acc_Bnd" = "SHORTCADEOWNERMainAcc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."GLmstrfl" "Acc_" on "VASOWNERCATLIST"."Acc_no" = "Acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "Acc_Clsacc_" on "Acc_"."Clsacc_No" = "Acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Acc_Acc_Bnd" on "Acc_"."Acc_Bnd" = "Acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "Acc_Acc_Bndaccclass" on "Acc_Acc_Bnd"."accclass" = "Acc_Acc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "Acc_Acc_BndAcc_Bab" on "Acc_Acc_Bnd"."Acc_Bab" = "Acc_Acc_BndAcc_Bab"."Acc_Bab"
+]]></text>
+    </command>
+    <command id="SHORTCADEOWNERIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="SHORTCADEOWNER" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="SHORTCADEOWNER" type="Int64" allowNulls="false" isPrimaryKey="true" label="Shortcadeowner" readOnly="true" />
+    <field name="CADEOWNERDescription" type="Int64" allowNulls="false" label="CADEOWNER Description" showInSummary="true" />
+    <field name="SHORTCADEOWNERMain" type="Int64" label="SHORTCADEOWNER Main" showInSummary="true">
+      <items style="Lookup" dataController="VASOWNERCATLIST" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="SHORTCADEOWNERMainSHORTCADEOWNERMain" type="Int64" readOnly="true" label="SHORTCADEOWNER Main">
+      <items style="Lookup" dataController="VASOWNERCATLIST" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="SHORTCADEOWNERMainAcc_Acc_Nm" type="String" readOnly="true" label="SHORTCADEOWNER Main Acc Nm" length="255" />
+    <field name="SHORTCADEOWNERMainAcc_Clsacc_Acc_Nm" type="String" readOnly="true" label="SHORTCADEOWNER Main Acc Clsacc Acc Nm" length="250" />
+    <field name="SHORTCADEOWNERMainAcc_Acc_BndAcc_Nm" type="String" readOnly="true" label="SHORTCADEOWNER Main Acc Bnd Acc Nm" length="50" />
+    <field name="Acc_no" type="Int64" label="Acc no" showInSummary="true">
+      <items style="Lookup" dataController="GLmstrfl" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Acc_Acc_Nm" type="String" readOnly="true" label="Acc Nm" length="255" />
+    <field name="Acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Acc Clsacc Acc Nm" length="250" />
+    <field name="Acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Nm" length="50" />
+    <field name="Acc_Acc_Bndaccclassaccountclass" type="String" readOnly="true" label="Acc Bndaccclassaccountclass" length="100" />
+    <field name="Acc_Acc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Bab Acc Nm" length="250" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Vasownercatlist">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="CADEOWNERDescription" columns="15" />
+        <dataField fieldName="SHORTCADEOWNERMain" aliasFieldName="SHORTCADEOWNERMainSHORTCADEOWNERMain" hyperlinkFormatString="~/Pages/VASOWNERCATLIST.aspx?SHORTCADEOWNER={SHORTCADEOWNERMain}&amp;_controller=VASOWNERCATLIST&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Acc_no" aliasFieldName="Acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={Acc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="SHORTCADEOWNERMainAcc_Acc_Nm" />
+        <dataField fieldName="SHORTCADEOWNERMainAcc_Clsacc_Acc_Nm" />
+        <dataField fieldName="SHORTCADEOWNERMainAcc_Acc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="Acc_Clsacc_Acc_Nm" />
+        <dataField fieldName="Acc_Acc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="Acc_Acc_Bndaccclassaccountclass" />
+        <dataField fieldName="Acc_Acc_BndAcc_BabAcc_Nm" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Vasownercatlist">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Vasownercatlist" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CADEOWNERDescription" columns="15" />
+            <dataField fieldName="SHORTCADEOWNERMain" aliasFieldName="SHORTCADEOWNERMainSHORTCADEOWNERMain" hyperlinkFormatString="~/Pages/VASOWNERCATLIST.aspx?SHORTCADEOWNER={SHORTCADEOWNERMain}&amp;_controller=VASOWNERCATLIST&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Acc_no" aliasFieldName="Acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={Acc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="SHORTCADEOWNERMainAcc_Acc_Nm" />
+            <dataField fieldName="SHORTCADEOWNERMainAcc_Clsacc_Acc_Nm" />
+            <dataField fieldName="SHORTCADEOWNERMainAcc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="Acc_Clsacc_Acc_Nm" />
+            <dataField fieldName="Acc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="Acc_Acc_Bndaccclassaccountclass" />
+            <dataField fieldName="Acc_Acc_BndAcc_BabAcc_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Vasownercatlist">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Vasownercatlist" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CADEOWNERDescription" columns="15" />
+            <dataField fieldName="SHORTCADEOWNERMain" aliasFieldName="SHORTCADEOWNERMainSHORTCADEOWNERMain" />
+            <dataField fieldName="Acc_no" aliasFieldName="Acc_Acc_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

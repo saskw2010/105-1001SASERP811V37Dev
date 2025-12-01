@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="EVOLMemo" conflictDetection="overwriteChanges" label="EVOL Memo" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"EVOLMemo"."ID" "ID"
+	,"TheID"."title" "TheIDtitle"
+	,"TheIDCategory"."Categoryname" "TheIDCategoryCategoryname"
+	,"EVOLMemo"."UserName" "UserName"
+	,"TheUserName"."UserEmail" "TheUserNameUserEmail"
+	,"TheUserNamecatid1"."cat1name" "TheUserNamecatid1cat1name"
+	,"TheUserNamecatid2"."cat2name" "TheUserNamecatid2cat2name"
+	,"TheUserNamecatid3"."cat3name" "TheUserNamecatid3cat3name"
+	,"TheUserNamecatid4"."cat4name" "TheUserNamecatid4cat4name"
+	,"TheUserNamecatid5"."cat5name" "TheUserNamecatid5cat5name"
+	,"TheUserNamecatid6"."cat6name" "TheUserNamecatid6cat6name"
+	,"TheUserNamecatid7"."cat7name" "TheUserNamecatid7cat7name"
+	,"TheUserNamecatid8"."cat8name" "TheUserNamecatid8cat8name"
+	,"TheUserNamecatid9"."cat9name" "TheUserNamecatid9cat9name"
+	,"TheUserNamestage"."ShortDesc1" "TheUserNamestageShortDesc1"
+from "dbo"."EVOLMemo" "EVOLMemo"
+	left join "dbo"."EVOL_Memo" "TheID" on "EVOLMemo"."ID" = "TheID"."ID"
+	left join "dbo"."EVOL_MemoCategory" "TheIDCategory" on "TheID"."CategoryID" = "TheIDCategory"."CategoryID"
+	left join "dbo"."user_details" "TheUserName" on "EVOLMemo"."UserName" = "TheUserName"."UserName"
+	left join "dbo"."Qwaizcat1" "TheUserNamecatid1" on "TheUserName"."catid1" = "TheUserNamecatid1"."catid1"
+	left join "dbo"."Qwaizcat2" "TheUserNamecatid2" on "TheUserName"."catid2" = "TheUserNamecatid2"."catid2"
+	left join "dbo"."Qwaizcat3" "TheUserNamecatid3" on "TheUserName"."catid3" = "TheUserNamecatid3"."catid3"
+	left join "dbo"."Qwaizcat4" "TheUserNamecatid4" on "TheUserName"."catid4" = "TheUserNamecatid4"."catid4"
+	left join "dbo"."Qwaizcat5" "TheUserNamecatid5" on "TheUserName"."catid5" = "TheUserNamecatid5"."catid5"
+	left join "dbo"."Qwaizcat6" "TheUserNamecatid6" on "TheUserName"."catid6" = "TheUserNamecatid6"."catid6"
+	left join "dbo"."Qwaizcat7" "TheUserNamecatid7" on "TheUserName"."catid7" = "TheUserNamecatid7"."catid7"
+	left join "dbo"."Qwaizcat8" "TheUserNamecatid8" on "TheUserName"."catid8" = "TheUserNamecatid8"."catid8"
+	left join "dbo"."Qwaizcat9" "TheUserNamecatid9" on "TheUserName"."catid9" = "TheUserNamecatid9"."catid9"
+	left join "dbo"."schStage" "TheUserNamestage" on "TheUserName"."stage" = "TheUserNamestage"."Code"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="ID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Id" showInSummary="true">
+      <items style="Lookup" dataController="EVOL_Memo" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheIDtitle" type="String" readOnly="true" label="I Dtitle" length="400" />
+    <field name="TheIDCategoryCategoryname" type="String" readOnly="true" label="ID Category Categoryname" length="100" />
+    <field name="UserName" type="String" allowNulls="false" isPrimaryKey="true" label="User Name" length="50" showInSummary="true">
+      <items style="Lookup" dataController="user_details" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheUserNameUserEmail" type="String" readOnly="true" label="User Name User Email" length="250" />
+    <field name="TheUserNamecatid1cat1name" type="String" readOnly="true" label="User Namecatid1cat1name" length="255" />
+    <field name="TheUserNamecatid2cat2name" type="String" readOnly="true" label="User Namecatid2cat2name" length="255" />
+    <field name="TheUserNamecatid3cat3name" type="String" readOnly="true" label="User Namecatid3cat3name" length="255" />
+    <field name="TheUserNamecatid4cat4name" type="String" readOnly="true" label="User Namecatid4cat4name" length="255" />
+    <field name="TheUserNamecatid5cat5name" type="String" readOnly="true" label="User Namecatid5cat5name" length="255" />
+    <field name="TheUserNamecatid6cat6name" type="String" readOnly="true" label="User Namecatid6cat6name" length="255" />
+    <field name="TheUserNamecatid7cat7name" type="String" readOnly="true" label="User Namecatid7cat7name" length="255" />
+    <field name="TheUserNamecatid8cat8name" type="String" readOnly="true" label="User Namecatid8cat8name" length="255" />
+    <field name="TheUserNamecatid9cat9name" type="String" readOnly="true" label="User Namecatid9cat9name" length="255" />
+    <field name="TheUserNamestageShortDesc1" type="String" readOnly="true" label="User Namestage Short Desc1" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="EVOL Memo">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="ID" aliasFieldName="TheIDtitle" />
+        <dataField fieldName="UserName" aliasFieldName="UserName" hyperlinkFormatString="~/Pages/user_details.aspx?UserName={UserName}&amp;_controller=user_details&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review EVOL Memo">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="EVOL Memo" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ID" aliasFieldName="TheIDtitle" hyperlinkFormatString="~/Pages/EVOL_Memo.aspx?ID={ID}&amp;_controller=EVOL_Memo&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="UserName" aliasFieldName="TheUserNameUserEmail" hyperlinkFormatString="~/Pages/user_details.aspx?UserName={UserName}&amp;_controller=user_details&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="TheIDCategoryCategoryname" />
+            <dataField fieldName="TheUserNamecatid1cat1name" />
+            <dataField fieldName="TheUserNamecatid2cat2name" />
+            <dataField fieldName="TheUserNamecatid3cat3name" />
+            <dataField fieldName="TheUserNamecatid4cat4name" />
+            <dataField fieldName="TheUserNamecatid5cat5name" />
+            <dataField fieldName="TheUserNamecatid6cat6name" />
+            <dataField fieldName="TheUserNamecatid7cat7name" />
+            <dataField fieldName="TheUserNamecatid8cat8name" />
+            <dataField fieldName="TheUserNamecatid9cat9name" />
+            <dataField fieldName="TheUserNamestageShortDesc1" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New EVOL Memo">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New EVOL Memo" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ID" aliasFieldName="TheIDtitle" />
+            <dataField fieldName="UserName" aliasFieldName="TheUserNameUserEmail" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

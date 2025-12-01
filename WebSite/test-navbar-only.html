@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Navbar Only</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #334155;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-top: 45px; /* Space for fixed navbar */
+        }
+
+        .membership-top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 45px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1001;
+            color: white;
+            font-size: 0.875rem;
+        }
+
+        .membership-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 0 2rem;
+            max-width: 100%;
+        }
+
+        .system-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .system-brand .brand-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .system-brand .brand-text {
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #e2e8f0;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .welcome-text {
+            opacity: 0.8;
+        }
+
+        .username {
+            font-weight: 600;
+        }
+
+        .membership-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .membership-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .membership-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .membership-btn i {
+            font-size: 1rem;
+        }
+
+        .language-selector-container {
+            position: relative;
+        }
+
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .language-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .language-toggle i {
+            font-size: 1.1rem;
+        }
+
+        .content-area {
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .test-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Membership Top Bar -->
+    <div class="membership-top-bar">
+        <div class="membership-content">
+            <!-- System Brand -->
+            <div class="system-brand">
+                <button class="membership-btn" onclick="alert('Menu clicked!')" title="القائمة" style="margin-right: 0.5rem;">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="brand-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <div class="brand-text">SKYsaas ERP - نظام إدارة الموارد المؤسسية</div>
+            </div>
+
+            <!-- User Info & Actions -->
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <div class="user-info">
+                    <span class="welcome-text">مرحبا،</span>
+                    <span id="currentUserName" class="username">المستخدم</span>
+                </div>
+                
+                <div class="membership-actions">
+                    <button class="membership-btn" onclick="alert('Profile clicked!')" title="الملف الشخصي">
+                        <i class="fas fa-user"></i>
+                        <span class="btn-text">الملف الشخصي</span>
+                    </button>
+                    <button class="membership-btn" onclick="alert('Settings clicked!')" title="الإعدادات">
+                        <i class="fas fa-cog"></i>
+                        <span class="btn-text">الإعدادات</span>
+                    </button>
+                    <button class="membership-btn" onclick="alert('Logout clicked!')" title="تسجيل الخروج">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="btn-text">خروج</span>
+                    </button>
+                </div>
+
+                <!-- Language Selector -->
+                <div class="language-selector-container">
+                    <button class="language-toggle" onclick="alert('Language clicked!')" title="تغيير اللغة">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-area">
+        <div class="test-card">
+            <h1>🔍 Navbar Test Page</h1>
+            <p>This page tests the navbar visibility independently.</p>
+            <ul>
+                <li>✅ Navbar should be visible at the top</li>
+                <li>✅ Content should start below the navbar (45px from top)</li>
+                <li>✅ All buttons should be clickable</li>
+                <li>✅ Hover effects should work</li>
+            </ul>
+            
+            <div style="margin-top: 2rem; padding: 1rem; background: #f0f9ff; border-radius: 8px; border-left: 4px solid #0ea5e9;">
+                <strong>Expected Result:</strong> You should see a dark blue navbar at the very top of the page with the SKYsaas branding, user info, and action buttons.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

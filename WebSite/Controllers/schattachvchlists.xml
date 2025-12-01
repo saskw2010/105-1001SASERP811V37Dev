@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="schattachvchlists" conflictDetection="overwriteChanges" label="Schattachvchlists" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.schattachvchlistsBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"schattachvchlists"."schattachvchid" "schattachvchid"
+	,"schattachvchlists"."schvchdlyhdregid" "schvchdlyhdregid"
+	,"schvchdlyhdreg"."Delevername" "schvchdlyhdregDelevername"
+	,"schvchdlyhdregsgm"."sgm_Nm" "schvchdlyhdregsgmsgm_Nm"
+	,"schvchdlyhdregsgmOpco"."OpcoName" "schvchdlyhdregsgmOpcoOpcoName"
+	,"schvchdlyhdregIDregorg"."NAME_1" "schvchdlyhdregIDregorgNAME_1"
+	,"schvchdlyhdregacd"."AcademicYear" "schvchdlyhdregacdAcademicYear"
+	,"schvchdlyhdregacdGlFinperiod"."Fin_period_info" "schvchdlyhdregacdGlFinperiodFin_period_info"
+	,"schvchdlyhdregbranch"."Desc1" "schvchdlyhdregbranchDesc1"
+	,"schvchdlyhdregbranchsgm"."sgm_Nm" "schvchdlyhdregbranchsgmsgm_Nm"
+	,"schvchdlyhdregbranchGender"."Gender" "schvchdlyhdregbranchGenderGender"
+	,"schvchdlyhdregbranchstage"."ShortDesc1" "schvchdlyhdregbranchstageShortDesc1"
+	,"schvchdlyhdregbranchschtyp"."schtypDesc" "schvchdlyhdregbranchschtypschtypDesc"
+	,"schattachvchlists"."schattachvchtype" "schattachvchtype"
+	,"schattachvchlists"."schattachvchrefno" "schattachvchrefno"
+	,"schattachvchlists"."schattachvchrefdate" "schattachvchrefdate"
+	,"schattachvchlists"."schattachvchrefpagesno" "schattachvchrefpagesno"
+	,"schattachvchlists"."notes" "notes"
+	,"schattachvchlists"."ExternalDocFileName" "ExternalDocFileName"
+	,"schattachvchlists"."ExternalDocContentType" "ExternalDocContentType"
+	,"schattachvchlists"."ExternalDocLength" "ExternalDocLength"
+from "dbo"."schattachvchlists" "schattachvchlists"
+	left join "dbo"."schvchdlyhdreg" "schvchdlyhdreg" on "schattachvchlists"."schvchdlyhdregid" = "schvchdlyhdreg"."schvchdlyhdregid"
+	left join "dbo"."glmulcmp" "schvchdlyhdregsgm" on "schvchdlyhdreg"."sgm" = "schvchdlyhdregsgm"."sgmid"
+	left join "dbo"."OpCo" "schvchdlyhdregsgmOpco" on "schvchdlyhdregsgm"."OpcoID" = "schvchdlyhdregsgmOpco"."OpcoIDidentity"
+	left join "dbo"."REG_ORGANIZATIONS" "schvchdlyhdregIDregorg" on "schvchdlyhdreg"."IDregorg" = "schvchdlyhdregIDregorg"."IDIDregorg"
+	left join "dbo"."schAcademicyear" "schvchdlyhdregacd" on "schvchdlyhdreg"."acdcode" = "schvchdlyhdregacd"."Code"
+	left join "dbo"."GlFinanceperiod" "schvchdlyhdregacdGlFinperiod" on "schvchdlyhdregacd"."GlFinperiodID" = "schvchdlyhdregacdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."schBranch" "schvchdlyhdregbranch" on "schvchdlyhdreg"."branch" = "schvchdlyhdregbranch"."branch"
+	left join "dbo"."glmulcmp" "schvchdlyhdregbranchsgm" on "schvchdlyhdregbranch"."sgm" = "schvchdlyhdregbranchsgm"."sgmid"
+	left join "dbo"."PyGender" "schvchdlyhdregbranchGender" on "schvchdlyhdregbranch"."Genderid" = "schvchdlyhdregbranchGender"."Genderid"
+	left join "dbo"."schStage" "schvchdlyhdregbranchstage" on "schvchdlyhdregbranch"."stagecode" = "schvchdlyhdregbranchstage"."Code"
+	left join "dbo"."schtyp" "schvchdlyhdregbranchschtyp" on "schvchdlyhdregbranch"."schtypid" = "schvchdlyhdregbranchschtyp"."schtypid"
+]]></text>
+    </command>
+    <command id="schattachvchidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="schattachvchid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="schattachvchid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Schattachvchid" readOnly="true" />
+    <field name="schvchdlyhdregid" type="Int64" allowNulls="false" label="Schvchdlyhdregid" showInSummary="true">
+      <items style="Lookup" dataController="schvchdlyhdreg" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="schvchdlyhdregDelevername" type="String" readOnly="true" label="schvchdlyhdreg Delevername" length="100" />
+    <field name="schvchdlyhdregsgmsgm_Nm" type="String" readOnly="true" label="schvchdlyhdregsgmsgm Nm" length="255" />
+    <field name="schvchdlyhdregsgmOpcoOpcoName" type="String" readOnly="true" label="schvchdlyhdregsgm Opco Name" length="50" />
+    <field name="schvchdlyhdregIDregorgNAME_1" type="String" readOnly="true" label="schvchdlyhdreg I Dregorg NAME 1" length="50" />
+    <field name="schvchdlyhdregacdAcademicYear" type="String" readOnly="true" label="schvchdlyhdregacd Academic Year" length="150" />
+    <field name="schvchdlyhdregacdGlFinperiodFin_period_info" type="String" readOnly="true" label="schvchdlyhdregacd Gl Finperiod Fin period info" length="150" />
+    <field name="schvchdlyhdregbranchDesc1" type="String" readOnly="true" label="schvchdlyhdregbranch Desc1" length="50" />
+    <field name="schvchdlyhdregbranchsgmsgm_Nm" type="String" readOnly="true" label="schvchdlyhdregbranchsgmsgm Nm" length="255" />
+    <field name="schvchdlyhdregbranchGenderGender" type="String" readOnly="true" label="schvchdlyhdregbranch Gender" length="100" />
+    <field name="schvchdlyhdregbranchstageShortDesc1" type="String" readOnly="true" label="schvchdlyhdregbranchstage Short Desc1" length="50" />
+    <field name="schvchdlyhdregbranchschtypschtypDesc" type="String" readOnly="true" label="schvchdlyhdregbranchschtypschtyp Desc" length="150" />
+    <field name="schattachvchtype" type="String" label="Schattachvchtype" length="50" showInSummary="true" />
+    <field name="schattachvchrefno" type="String" label="Schattachvchrefno" length="50" showInSummary="true" />
+    <field name="schattachvchrefdate" type="DateTime" label="Schattachvchrefdate" showInSummary="true" />
+    <field name="schattachvchrefpagesno" type="String" label="Schattachvchrefpagesno" length="50" showInSummary="true" />
+    <field name="notes" type="String" label="Notes" length="50" />
+    <field name="ExternalDocFileName" type="String" label="External Doc File Name" length="150" />
+    <field name="ExternalDocContentType" type="String" label="External Doc Content Type" length="50" />
+    <field name="ExternalDocLength" type="Int64" label="External Doc Length" />
+    <field name="ExternalDoc" type="Byte[]" label="External Doc" allowQBE="false" allowSorting="false" sourceFields="schattachvchid" onDemand="true" onDemandHandler="schattachvchlistsExternalDoc" onDemandStyle="Thumbnail" computed="true" htmlEncode="false" hidden="false">
+      <items letters="false" />
+    </field>
+  </fields>
+  <views>
+    <view id="grid1" type="DataSheet" commandId="command1" label="Schattachvchlists">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="schvchdlyhdregid" aliasFieldName="schvchdlyhdregDelevername" />
+        <dataField fieldName="schattachvchtype" columns="50" />
+        <dataField fieldName="schattachvchrefno" columns="50" />
+        <dataField fieldName="schattachvchrefdate" columns="10" />
+        <dataField fieldName="schattachvchrefpagesno" columns="50" />
+        <dataField fieldName="ExternalDoc" columns="15" />
+        <dataField fieldName="ExternalDocFileName" textMode="Static" />
+        <dataField fieldName="ExternalDocContentType" columns="50" textMode="Static" />
+        <dataField fieldName="ExternalDocLength" columns="15" textMode="Static" />
+        <dataField fieldName="notes" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Schattachvchlists">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Schattachvchlists" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="schvchdlyhdregid" aliasFieldName="schvchdlyhdregDelevername" hyperlinkFormatString="~/Pages/schvchdlyhdreg.aspx?schvchdlyhdregid={schvchdlyhdregid}&amp;_controller=schvchdlyhdreg&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="schattachvchtype" columns="50" />
+            <dataField fieldName="schattachvchrefno" columns="50" />
+            <dataField fieldName="schattachvchrefdate" columns="10" />
+            <dataField fieldName="schattachvchrefpagesno" columns="50" />
+            <dataField fieldName="ExternalDocFileName" textMode="Static" />
+            <dataField fieldName="ExternalDocContentType" columns="50" textMode="Static" />
+            <dataField fieldName="ExternalDocLength" columns="15" textMode="Static" />
+            <dataField fieldName="notes" columns="50" />
+            <dataField fieldName="ExternalDoc" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Schattachvchlists">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Schattachvchlists" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="schvchdlyhdregid" aliasFieldName="schvchdlyhdregDelevername" />
+            <dataField fieldName="schattachvchtype" columns="50" />
+            <dataField fieldName="schattachvchrefno" columns="50" />
+            <dataField fieldName="schattachvchrefdate" columns="10" />
+            <dataField fieldName="schattachvchrefpagesno" columns="50" />
+            <dataField fieldName="notes" columns="50" />
+            <dataField fieldName="ExternalDocFileName" />
+            <dataField fieldName="ExternalDocContentType" columns="50" />
+            <dataField fieldName="ExternalDocLength" columns="15" />
+            <dataField fieldName="ExternalDoc" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="UploadFile" commandArgument="ExternalDoc" type="Code" phase="Execute" />
+    <rule id="r101" commandName="DownloadFile" commandArgument="ExternalDoc" type="Code" phase="Execute" />
+    <rule id="r102" commandName="Select" type="Code" phase="Execute" />
+  </businessRules>
+</dataController>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme System Test</title>
+    
+    <!-- Theme System CSS -->
+    <link href="/ThemeCenter/CSS/theme-integration.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    
+    <style>
+        body {
+            padding: 2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .theme-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .theme-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .theme-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .light-btn { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+        .dark-btn { background: linear-gradient(135deg, #374151, #1f2937); }
+        .ai-btn { background: linear-gradient(135deg, #3b82f6, #1e40af); }
+        .citrus-btn { background: linear-gradient(135deg, #f97316, #ea580c); }
+        .emerald-btn { background: linear-gradient(135deg, #10b981, #047857); }
+        .rose-btn { background: linear-gradient(135deg, #f43f5e, #e11d48); }
+        
+        .status {
+            margin: 2rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+            background: var(--bg-secondary, #f8fafc);
+            border: 1px solid var(--border-primary, #e2e8f0);
+        }
+        
+        .error {
+            background: #fee2e2;
+            border-color: #fecaca;
+            color: #dc2626;
+        }
+        
+        .success {
+            background: #dcfce7;
+            border-color: #bbf7d0;
+            color: #16a34a;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1><i class="fas fa-palette"></i> اختبار نظام الثيمات</h1>
+        <p>اضغط على أي زر لتجربة تغيير الثيم</p>
+        
+        <div class="theme-buttons">
+            <button class="theme-btn light-btn" onclick="testTheme('light')">
+                <i class="fas fa-sun"></i> فاتح
+            </button>
+            <button class="theme-btn dark-btn" onclick="testTheme('dark')">
+                <i class="fas fa-moon"></i> داكن
+            </button>
+            <button class="theme-btn ai-btn" onclick="testTheme('ai')">
+                <i class="fas fa-robot"></i> ذكي
+            </button>
+            <button class="theme-btn citrus-btn" onclick="testTheme('citrus')">
+                <i class="fas fa-sun"></i> حمضي
+            </button>
+            <button class="theme-btn emerald-btn" onclick="testTheme('emerald')">
+                <i class="fas fa-leaf"></i> زمردي
+            </button>
+            <button class="theme-btn rose-btn" onclick="testTheme('rose')">
+                <i class="fas fa-heart"></i> وردي
+            </button>
+        </div>
+        
+        <div class="status" id="status">
+            <i class="fas fa-info-circle"></i> جاري تحميل نظام الثيمات...
+        </div>
+        
+        <div style="margin-top: 2rem;">
+            <h3>عينة من العناصر</h3>
+            <p style="color: var(--text-primary, #0f172a);">هذا نص عادي باللون الأساسي</p>
+            <p style="color: var(--text-secondary, #64748b);">هذا نص ثانوي باللون الثانوي</p>
+            <div style="background: var(--bg-primary, white); padding: 1rem; border: 1px solid var(--border-primary, #e2e8f0); border-radius: 8px; margin: 1rem 0;">
+                عنصر بخلفية أساسية
+            </div>
+            <div style="background: var(--bg-secondary, #f8fafc); padding: 1rem; border: 1px solid var(--border-primary, #e2e8f0); border-radius: 8px;">
+                عنصر بخلفية ثانوية
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme System Scripts -->
+    <script src="/js/theme-switcher.js"></script>
+    <script src="/js/theme-manager.js"></script>
+    
+    <script>
+        function testTheme(themeName) {
+            const status = document.getElementById('status');
+            
+            if (window.advancedThemeSystem) {
+                try {
+                    // Use setTheme instead of switchTheme if available
+                    if (typeof window.advancedThemeSystem.setTheme === 'function') {
+                        window.advancedThemeSystem.setTheme(themeName);
+                    } else if (typeof window.advancedThemeSystem.switchTheme === 'function') {
+                        window.advancedThemeSystem.switchTheme(themeName);
+                    } else {
+                        throw new Error('No theme switching method found');
+                    }
+                    
+                    status.className = 'status success';
+                    status.innerHTML = `<i class="fas fa-check-circle"></i> تم تطبيق ثيم ${getThemeNameAr(themeName)} بنجاح!`;
+                } catch (error) {
+                    status.className = 'status error';
+                    status.innerHTML = `<i class="fas fa-exclamation-triangle"></i> خطأ في تطبيق الثيم: ${error.message}`;
+                }
+            } else {
+                status.className = 'status error';
+                status.innerHTML = '<i class="fas fa-times-circle"></i> نظام الثيمات غير متاح';
+            }
+        }
+        
+        function getThemeNameAr(themeKey) {
+            const names = {
+                light: 'فاتح',
+                dark: 'داكن',
+                ai: 'ذكي',
+                citrus: 'حمضي',
+                emerald: 'زمردي',
+                rose: 'وردي'
+            };
+            return names[themeKey] || themeKey;
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const status = document.getElementById('status');
+            
+            // Check if theme system loaded
+            if (window.advancedThemeSystem) {
+                if (typeof window.advancedThemeSystem.init === 'function') {
+                    window.advancedThemeSystem.init();
+                    status.className = 'status success';
+                    status.innerHTML = '<i class="fas fa-check-circle"></i> نظام الثيمات جاهز! اختر ثيماً من الأزرار أعلاه.';
+                } else {
+                    status.className = 'status error';
+                    status.innerHTML = '<i class="fas fa-exclamation-triangle"></i> نظام الثيمات محمل ولكن دالة init غير موجودة';
+                }
+            } else {
+                // Wait a bit more for scripts to load
+                setTimeout(() => {
+                    if (window.advancedThemeSystem) {
+                        window.advancedThemeSystem.init();
+                        status.className = 'status success';
+                        status.innerHTML = '<i class="fas fa-check-circle"></i> نظام الثيمات جاهز! اختر ثيماً من الأزرار أعلاه.';
+                    } else {
+                        status.className = 'status error';
+                        status.innerHTML = '<i class="fas fa-times-circle"></i> فشل في تحميل نظام الثيمات. تحقق من وجود الملفات المطلوبة.';
+                    }
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

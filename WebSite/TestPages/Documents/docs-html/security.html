@@ -1,0 +1,18 @@
+﻿<div class="doc-banner">
+  <span class="crumbs">security</span>
+  <a class="source" href="security.md.txt" target="_blank" rel="noopener">View source (.md)</a>
+</div>
+<div class="doc-body">
+<h1>Security Overview</h1>
+<ul>
+<li>Authentication: Forms auth (Login.aspx)</li>
+<li>Authorization: Extensive <location> based role restrictions in web.config</li>
+<li>Membership/Roles/Profile: SQL providers (encrypted password)</li>
+<li>Custom Module: eZee.Security.ExportAuthenticationModule</li>
+<li>Session: InProc; note Session_End hooks OnlineActiveUsers module in Global.asax</li>
+<li>Sensitive appSettings in web.config (SMS credentials, license keys) â€” consider secrets move and rotation</li>
+<li>SiteMap security trimming enabled (XmlSiteMapProvider)</li>
+<li>Menu JSON endpoint `Pages/MenuApi.aspx/GetMenuTree` respects SiteMap `IsAccessibleToUser`</li>
+<li>Data services via ASMX `Services/DataControllerService.asmx` with multiple [WebMethod]s</li>
+
+</div>

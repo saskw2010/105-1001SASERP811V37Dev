@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Transferanalysis" conflictDetection="overwriteChanges" label="Transferanalysis" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Transferanalysis"."Brn_No" "Brn_No"
+	,"Transferanalysis"."countrd" "countrd"
+	,"Transferanalysis"."countrdus" "countrdus"
+	,"Transferanalysis"."subject" "subject"
+	,"Transferanalysis"."azndate" "azndate"
+	,"Transferanalysis"."aznegmaly" "aznegmaly"
+	,"Transferanalysis"."ID_USER" "ID_USER"
+	,"Transferanalysis"."ID_comp" "ID_comp"
+	,"Transferanalysis"."ITEM" "ITEM"
+	,"Transferanalysis"."Unit_No" "Unit_No"
+	,"Transferanalysis"."cost" "cost"
+	,"Transferanalysis"."quantity" "quantity"
+	,"Transferanalysis"."egmaly" "egmaly"
+	,"Transferanalysis"."Itm_Sal1" "Itm_Sal1"
+	,"Transferanalysis"."ID_USERM" "ID_USERM"
+	,"Transferanalysis"."mastmixe" "mastmixe"
+	,"Transferanalysis"."mastmix" "mastmix"
+	,"Transferanalysis"."Ln_No" "Ln_No"
+	,"Transferanalysis"."netQuantity" "netQuantity"
+	,"Transferanalysis"."netcost" "netcost"
+	,"Transferanalysis"."doc_typ" "doc_typ"
+	,"Transferanalysis"."doc_name" "doc_name"
+	,"Transferanalysis"."doc_kind" "doc_kind"
+from "dbo"."Transferanalysis" "Transferanalysis"
+]]></text>
+    </command>
+    <command id="ID_compIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID_comp" />
+      </output>
+    </command>
+    <command id="Unit_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Unit_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Brn_No" type="Int64" label="Brn No" showInSummary="true" />
+    <field name="countrd" type="Int64" label="Countrd" showInSummary="true" />
+    <field name="countrdus" type="String" label="Countrdus" length="50" showInSummary="true" />
+    <field name="subject" type="String" label="Subject" length="255" showInSummary="true" />
+    <field name="azndate" type="DateTime" label="Azndate" showInSummary="true" />
+    <field name="aznegmaly" type="Double" label="Aznegmaly" />
+    <field name="ID_USER" type="String" label="Id User" length="255" />
+    <field name="ID_comp" type="Int64" label="ID comp" readOnly="true" />
+    <field name="ITEM" type="String" label="Item" length="255" />
+    <field name="Unit_No" type="Int64" label="Unit No" readOnly="true" />
+    <field name="cost" type="Decimal" label="Cost" />
+    <field name="quantity" type="Double" label="Quantity" />
+    <field name="egmaly" type="Double" label="Egmaly" />
+    <field name="Itm_Sal1" type="Decimal" label="Itm Sal1" />
+    <field name="ID_USERM" type="String" label="Id Userm" length="255" />
+    <field name="mastmixe" type="String" label="Mastmixe" length="255" />
+    <field name="mastmix" type="String" label="Mastmix" length="255" />
+    <field name="Ln_No" type="Int64" label="Ln No" />
+    <field name="netQuantity" type="Double" label="net Quantity" readOnly="true" />
+    <field name="netcost" type="Double" label="Netcost" readOnly="true" />
+    <field name="doc_typ" type="Int32" label="Doc Typ" />
+    <field name="doc_name" type="String" label="Doc Name" length="255" />
+    <field name="doc_kind" type="Int64" label="Doc Kind" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Transferanalysis">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Brn_No" columns="15" />
+        <dataField fieldName="countrd" columns="15" />
+        <dataField fieldName="countrdus" columns="50" />
+        <dataField fieldName="subject" />
+        <dataField fieldName="azndate" columns="10" />
+        <dataField fieldName="aznegmaly" columns="15" />
+        <dataField fieldName="ID_USER" />
+        <dataField fieldName="ID_comp" columns="15" />
+        <dataField fieldName="ITEM" />
+        <dataField fieldName="Unit_No" columns="15" />
+        <dataField fieldName="cost" dataFormatString="c" columns="15" />
+        <dataField fieldName="quantity" columns="15" />
+        <dataField fieldName="egmaly" columns="15" />
+        <dataField fieldName="Itm_Sal1" dataFormatString="c" columns="15" />
+        <dataField fieldName="ID_USERM" />
+        <dataField fieldName="mastmixe" />
+        <dataField fieldName="mastmix" />
+        <dataField fieldName="Ln_No" columns="15" />
+        <dataField fieldName="netQuantity" columns="15" />
+        <dataField fieldName="netcost" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Transferanalysis">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Transferanalysis" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Brn_No" columns="15" />
+            <dataField fieldName="countrd" columns="15" />
+            <dataField fieldName="countrdus" columns="50" />
+            <dataField fieldName="subject" />
+            <dataField fieldName="azndate" columns="10" />
+            <dataField fieldName="aznegmaly" columns="15" />
+            <dataField fieldName="ID_USER" />
+            <dataField fieldName="ID_comp" columns="15" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="Unit_No" columns="15" />
+            <dataField fieldName="cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="quantity" columns="15" />
+            <dataField fieldName="egmaly" columns="15" />
+            <dataField fieldName="Itm_Sal1" dataFormatString="c" columns="15" />
+            <dataField fieldName="ID_USERM" />
+            <dataField fieldName="mastmixe" />
+            <dataField fieldName="mastmix" />
+            <dataField fieldName="Ln_No" columns="15" />
+            <dataField fieldName="netQuantity" columns="15" />
+            <dataField fieldName="netcost" columns="15" />
+            <dataField fieldName="doc_typ" columns="15" />
+            <dataField fieldName="doc_name" />
+            <dataField fieldName="doc_kind" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Transferanalysis">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Transferanalysis" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Brn_No" columns="15" />
+            <dataField fieldName="countrd" columns="15" />
+            <dataField fieldName="countrdus" columns="50" />
+            <dataField fieldName="subject" />
+            <dataField fieldName="azndate" columns="10" />
+            <dataField fieldName="aznegmaly" columns="15" />
+            <dataField fieldName="ID_USER" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="quantity" columns="15" />
+            <dataField fieldName="egmaly" columns="15" />
+            <dataField fieldName="Itm_Sal1" dataFormatString="c" columns="15" />
+            <dataField fieldName="ID_USERM" />
+            <dataField fieldName="mastmixe" />
+            <dataField fieldName="mastmix" />
+            <dataField fieldName="Ln_No" columns="15" />
+            <dataField fieldName="doc_typ" columns="15" />
+            <dataField fieldName="doc_name" />
+            <dataField fieldName="doc_kind" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

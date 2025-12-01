@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="schregacdmicrul" conflictDetection="overwriteChanges" label="Schregacdmicrul" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"schregacdmicrul"."regacdmicrul" "regacdmicrul"
+	,"schregacdmicrul"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"Thebranchsgm"."sgm_Nm" "Thebranchsgmsgm_Nm"
+	,"ThebranchsgmOpco"."OpcoName" "ThebranchsgmOpcoOpcoName"
+	,"ThebranchGender"."Gender" "ThebranchGenderGender"
+	,"Thebranchstage"."ShortDesc1" "ThebranchstageShortDesc1"
+	,"Thebranchschtyp"."schtypDesc" "ThebranchschtypschtypDesc"
+	,"schregacdmicrul"."acdcode" "acdcode"
+	,"acd"."AcademicYear" "acdAcademicYear"
+	,"acdGlFinperiod"."Fin_period_info" "acdGlFinperiodFin_period_info"
+	,"acdGlFinperiodaccountnumber"."Acc_Nm" "acdGlFinperiodaccountnumberAcc_Nm"
+	,"schregacdmicrul"."GradeCode" "GradeCode"
+	,"Grade"."ShortDesc1" "GradeShortDesc1"
+	,"Gradeacd"."AcademicYear" "GradeacdAcademicYear"
+	,"GradeacdGlFinperiod"."Fin_period_info" "GradeacdGlFinperiodFin_period_info"
+	,"GradeStage"."ShortDesc1" "GradeStageShortDesc1"
+	,"schregacdmicrul"."Amount" "Amount"
+	,"schregacdmicrul"."amounttype" "amounttype"
+	,"amounttype"."schpaymenttypenm" "amounttypeschpaymenttypenm"
+	,"amounttypedebitaccount"."Acc_Nm" "amounttypedebitaccountAcc_Nm"
+	,"amounttypedebitaccountClsacc_"."Acc_Nm" "amounttypedebitaccountClsacc_Acc_Nm"
+	,"amounttypedebitaccountAcc_Bnd"."Acc_Nm" "amounttypedebitaccountAcc_BndAcc_Nm"
+	,"amounttypecreditaccount"."Acc_Nm" "amounttypecreditaccountAcc_Nm"
+	,"amounttypecreditaccountClsacc_"."Acc_Nm" "amounttypecreditaccountClsacc_Acc_Nm"
+	,"amounttypecreditaccountAcc_Bnd"."Acc_Nm" "amounttypecreditaccountAcc_BndAcc_Nm"
+	,"schregacdmicrul"."instalmmentdutydate" "instalmmentdutydate"
+from "dbo"."schregacdmicrul" "schregacdmicrul"
+	left join "dbo"."schBranch" "Thebranch" on "schregacdmicrul"."branch" = "Thebranch"."branch"
+	left join "dbo"."glmulcmp" "Thebranchsgm" on "Thebranch"."sgm" = "Thebranchsgm"."sgmid"
+	left join "dbo"."OpCo" "ThebranchsgmOpco" on "Thebranchsgm"."OpcoID" = "ThebranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "ThebranchGender" on "Thebranch"."Genderid" = "ThebranchGender"."Genderid"
+	left join "dbo"."schStage" "Thebranchstage" on "Thebranch"."stagecode" = "Thebranchstage"."Code"
+	left join "dbo"."schtyp" "Thebranchschtyp" on "Thebranch"."schtypid" = "Thebranchschtyp"."schtypid"
+	left join "dbo"."schAcademicyear" "acd" on "schregacdmicrul"."acdcode" = "acd"."Code"
+	left join "dbo"."GlFinanceperiod" "acdGlFinperiod" on "acd"."GlFinperiodID" = "acdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."GLmstrfl" "acdGlFinperiodaccountnumber" on "acdGlFinperiod"."accountnumber" = "acdGlFinperiodaccountnumber"."Acc_No"
+	left join "dbo"."schGrade" "Grade" on "schregacdmicrul"."GradeCode" = "Grade"."GradeCode"
+	left join "dbo"."schAcademicyear" "Gradeacd" on "Grade"."acdcode" = "Gradeacd"."Code"
+	left join "dbo"."GlFinanceperiod" "GradeacdGlFinperiod" on "Gradeacd"."GlFinperiodID" = "GradeacdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."schStage" "GradeStage" on "Grade"."StageCode" = "GradeStage"."Code"
+	left join "dbo"."schpaymenttype" "amounttype" on "schregacdmicrul"."amounttype" = "amounttype"."schpaymenttypeid"
+	left join "dbo"."GLmstrfl" "amounttypedebitaccount" on "amounttype"."debitaccount" = "amounttypedebitaccount"."Acc_No"
+	left join "dbo"."GLmfbab" "amounttypedebitaccountClsacc_" on "amounttypedebitaccount"."Clsacc_No" = "amounttypedebitaccountClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "amounttypedebitaccountAcc_Bnd" on "amounttypedebitaccount"."Acc_Bnd" = "amounttypedebitaccountAcc_Bnd"."Acc_Bnd"
+	left join "dbo"."GLmstrfl" "amounttypecreditaccount" on "amounttype"."creditaccount" = "amounttypecreditaccount"."Acc_No"
+	left join "dbo"."GLmfbab" "amounttypecreditaccountClsacc_" on "amounttypecreditaccount"."Clsacc_No" = "amounttypecreditaccountClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "amounttypecreditaccountAcc_Bnd" on "amounttypecreditaccount"."Acc_Bnd" = "amounttypecreditaccountAcc_Bnd"."Acc_Bnd"
+]]></text>
+    </command>
+    <command id="regacdmicrulIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="regacdmicrul" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="regacdmicrul" type="Int64" allowNulls="false" isPrimaryKey="true" label="Regacdmicrul" readOnly="true" />
+    <field name="branch" type="Int64" label="Branch" showInSummary="true">
+      <items style="Lookup" dataController="schBranch" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ThebranchDesc1" type="String" readOnly="true" label="Thebranch Desc1" length="50" />
+    <field name="Thebranchsgmsgm_Nm" type="String" readOnly="true" label="Thebranchsgmsgm Nm" length="255" />
+    <field name="ThebranchsgmOpcoOpcoName" type="String" readOnly="true" label="Thebranchsgm Opco Name" length="50" />
+    <field name="ThebranchGenderGender" type="String" readOnly="true" label="Thebranch Gender" length="100" />
+    <field name="ThebranchstageShortDesc1" type="String" readOnly="true" label="Thebranchstage Short Desc1" length="50" />
+    <field name="ThebranchschtypschtypDesc" type="String" readOnly="true" label="Thebranchschtypschtyp Desc" length="150" />
+    <field name="acdcode" type="Int64" label="Acdcode" showInSummary="true">
+      <items style="Lookup" dataController="schAcademicyear" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="acdAcademicYear" type="String" readOnly="true" label="acd Academic Year" length="150" />
+    <field name="acdGlFinperiodFin_period_info" type="String" readOnly="true" label="acd Gl Finperiod Fin period info" length="150" />
+    <field name="acdGlFinperiodaccountnumberAcc_Nm" type="String" readOnly="true" label="acd Gl Finperiodaccountnumber Acc Nm" length="255" />
+    <field name="GradeCode" type="Int64" label="Grade Code" showInSummary="true">
+      <items style="Lookup" dataController="schGrade" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="GradeShortDesc1" type="String" readOnly="true" label="Grade Short Desc1" length="50" />
+    <field name="GradeacdAcademicYear" type="String" readOnly="true" label="Gradeacd Academic Year" length="150" />
+    <field name="GradeacdGlFinperiodFin_period_info" type="String" readOnly="true" label="Gradeacd Gl Finperiod Fin period info" length="150" />
+    <field name="GradeStageShortDesc1" type="String" readOnly="true" label="Grade Stage Short Desc1" length="50" />
+    <field name="Amount" type="Decimal" label="Amount" showInSummary="true" />
+    <field name="amounttype" type="Int64" label="Amounttype" showInSummary="true">
+      <items style="Lookup" dataController="schpaymenttype" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="amounttypeschpaymenttypenm" type="String" readOnly="true" label="Amounttypeschpaymenttypenm" length="50" />
+    <field name="amounttypedebitaccountAcc_Nm" type="String" readOnly="true" label="amounttypedebitaccount Acc Nm" length="255" />
+    <field name="amounttypedebitaccountClsacc_Acc_Nm" type="String" readOnly="true" label="amounttypedebitaccount Clsacc Acc Nm" length="250" />
+    <field name="amounttypedebitaccountAcc_BndAcc_Nm" type="String" readOnly="true" label="amounttypedebitaccount Acc Bnd Acc Nm" length="50" />
+    <field name="amounttypecreditaccountAcc_Nm" type="String" readOnly="true" label="amounttypecreditaccount Acc Nm" length="255" />
+    <field name="amounttypecreditaccountClsacc_Acc_Nm" type="String" readOnly="true" label="amounttypecreditaccount Clsacc Acc Nm" length="250" />
+    <field name="amounttypecreditaccountAcc_BndAcc_Nm" type="String" readOnly="true" label="amounttypecreditaccount Acc Bnd Acc Nm" length="50" />
+    <field name="instalmmentdutydate" type="DateTime" label="Instalmmentdutydate" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Schregacdmicrul">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+	  <dataField fieldName="Thebranchsgmsgm_Nm" />
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" search="Suggested" />
+        <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" hyperlinkFormatString="~/Pages/schAcademicyear.aspx?Code={acdcode}&amp;_controller=schAcademicyear&amp;_commandName=Select&amp;_commandArgument=editForm1" search="Suggested" />
+        <dataField fieldName="GradeCode" aliasFieldName="GradeShortDesc1" hyperlinkFormatString="~/Pages/schGrade.aspx?GradeCode={GradeCode}&amp;_controller=schGrade&amp;_commandName=Select&amp;_commandArgument=editForm1" search="Suggested" />
+        <dataField fieldName="GradeStageShortDesc1" columns="50" search="Suggested" />
+        <dataField fieldName="amounttype" aliasFieldName="amounttypeschpaymenttypenm" hyperlinkFormatString="~/Pages/schpaymenttype.aspx?schpaymenttypeid={amounttype}&amp;_controller=schpaymenttype&amp;_commandName=Select&amp;_commandArgument=editForm1" search="Suggested" />
+        <dataField fieldName="Amount" columns="15" />
+        <dataField fieldName="instalmmentdutydate" columns="10" />
+        
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Schregacdmicrul">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Schregacdmicrul" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" hyperlinkFormatString="~/Pages/schAcademicyear.aspx?Code={acdcode}&amp;_controller=schAcademicyear&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="GradeCode" aliasFieldName="GradeShortDesc1" hyperlinkFormatString="~/Pages/schGrade.aspx?GradeCode={GradeCode}&amp;_controller=schGrade&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Amount" dataFormatString="c" columns="15" />
+            <dataField fieldName="amounttype" aliasFieldName="amounttypeschpaymenttypenm" hyperlinkFormatString="~/Pages/schpaymenttype.aspx?schpaymenttypeid={amounttype}&amp;_controller=schpaymenttype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="instalmmentdutydate" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Thebranchsgmsgm_Nm" />
+            <dataField fieldName="ThebranchsgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="ThebranchGenderGender" />
+            <dataField fieldName="ThebranchstageShortDesc1" columns="50" />
+            <dataField fieldName="ThebranchschtypschtypDesc" />
+            <dataField fieldName="acdGlFinperiodFin_period_info" />
+            <dataField fieldName="acdGlFinperiodaccountnumberAcc_Nm" />
+            <dataField fieldName="GradeacdAcademicYear" />
+            <dataField fieldName="GradeacdGlFinperiodFin_period_info" />
+            <dataField fieldName="GradeStageShortDesc1" columns="50" />
+            <dataField fieldName="amounttypedebitaccountAcc_Nm" />
+            <dataField fieldName="amounttypedebitaccountClsacc_Acc_Nm" />
+            <dataField fieldName="amounttypedebitaccountAcc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="amounttypecreditaccountAcc_Nm" />
+            <dataField fieldName="amounttypecreditaccountClsacc_Acc_Nm" />
+            <dataField fieldName="amounttypecreditaccountAcc_BndAcc_Nm" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Schregacdmicrul">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Schregacdmicrul" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />
+            <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" />
+            <dataField fieldName="GradeCode" aliasFieldName="GradeShortDesc1" />
+            <dataField fieldName="Amount" dataFormatString="c" columns="15" />
+            <dataField fieldName="amounttype" aliasFieldName="amounttypeschpaymenttypenm" />
+            <dataField fieldName="instalmmentdutydate" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+      <action commandName="New" commandArgument="grid1" id="a100" headerText="Newline" />
+      <action commandName="SQL" headerText="أعتماد الرسوم" id="a101" roles="Administrators,Administrator">
+        <data><![CDATA[delete from [dbo].[schregacdmicnew]
+where  acdcode=32 and [amounttype]=2
+
+ insert into [dbo].[schregacdmicnew]
+ (regacdmic, transdate,branch, acdcode,GradeCode, StudentCode, Amount, amounttype, instalmmentdutydate, approved, regacdmicrul)
+
+SELECT  [regacdmic]
+      ,[instalmmentdutydate]
+      ,[branch]
+      ,[acdcode]
+      ,[GradeCode]
+      ,[StudentCode]
+     ,[Amount]
+      ,[amounttype]
+      ,[instalmmentdutydate]
+      ,1 as approved
+      ,[regacdmicrul]
+  FROM [dbo].[Balancerulamount] where  acdcode=32 and [amounttype]=2
+
+delete from [dbo].[schregacdmicnew]
+where  acdcode=32 and [amounttype]=3
+
+ insert into [dbo].[schregacdmicnew]
+ (regacdmic, transdate,branch, acdcode,GradeCode, StudentCode, Amount, amounttype, instalmmentdutydate, approved, regacdmicrul)
+
+SELECT  [regacdmic]
+      ,[instalmmentdutydate]
+      ,[branch]
+      ,[acdcode]
+      ,[GradeCode]
+      ,[StudentCode]
+     ,[Amount]
+      ,[amounttype]
+      ,[instalmmentdutydate]
+      ,1 as approved
+      ,[regacdmicrul]
+  FROM [dbo].[Balancerulamount] where  acdcode=32 and [amounttype]=3]]></data>
+      </action>
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

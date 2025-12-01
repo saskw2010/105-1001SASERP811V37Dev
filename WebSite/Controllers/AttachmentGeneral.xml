@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="AttachmentGeneral" conflictDetection="overwriteChanges" label="Attachment General" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.AttachmentGeneralBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text" tableName="AttachmentGeneral" custom="true">
+      <text><![CDATA[select
+	"AttachmentGeneral"."AttachmentNo" "AttachmentNo"
+	,"AttachmentGeneral"."Attachmentpath" "Attachmentpath"
+	,"AttachmentGeneral"."AttachmentDescription" "AttachmentDescription"
+	,"AttachmentGeneral"."attachmentNotes" "attachmentNotes"
+	,"AttachmentGeneral"."Tasneefcode1" "Tasneefcode1"
+    ,"AttachmentGeneral"."Tasneefcode1" "Tasneefcode11"
+	,"TheTasneefcode1"."TasneefDesc1" "TheTasneefcode1TasneefDesc1"
+	,"AttachmentGeneral"."Tasneefcode2" "Tasneefcode2"
+	,"TheTasneefcode2"."TasneefDesc1" "TheTasneefcode2TasneefDesc1"
+	,"AttachmentGeneral"."Tasneefcode3" "Tasneefcode3"
+	,"TheTasneefcode3"."TasneefDesc1" "TheTasneefcode3TasneefDesc1"
+	,"AttachmentGeneral"."Tasneefcode4" "Tasneefcode4"
+	,"TheTasneefcode4"."TasneefDesc1" "TheTasneefcode4TasneefDesc1"
+	,"AttachmentGeneral"."ModifiedBy" "ModifiedBy"
+	,"AttachmentGeneral"."ModifiedOn" "ModifiedOn"
+	,"AttachmentGeneral"."CreatedBy" "CreatedBy"
+	,"AttachmentGeneral"."CreatedOn" "CreatedOn"
+	,"AttachmentGeneral"."Fielde1001" "Fielde1001"
+	,"AttachmentGeneral"."Fielde1002" "Fielde1002"
+	,"AttachmentGeneral"."Fielde1003" "Fielde1003"
+	,"AttachmentGeneral"."Fielde1004" "Fielde1004"
+	,"AttachmentGeneral"."Fielde1005" "Fielde1005"
+	,"AttachmentGeneral"."Fielde1006" "Fielde1006"
+	,"AttachmentGeneral"."Fielde1007" "Fielde1007"
+	,"AttachmentGeneral"."Fielde1008" "Fielde1008"
+	,"AttachmentGeneral"."Fielde1009" "Fielde1009"
+	,"AttachmentGeneral"."Fielde1010" "Fielde1010"
+	,"AttachmentGeneral"."Fielde1011" "Fielde1011"
+	,"AttachmentGeneral"."Fielde1012" "Fielde1012"
+   ,"AttachmentGeneral"."departmentid" "departmentid"
+    
+
+
+from "dbo"."AttachmentGeneral" "AttachmentGeneral"
+	left join "dbo"."AttchTasneefgen1" "TheTasneefcode1" on "AttachmentGeneral"."Tasneefcode1" = "TheTasneefcode1"."Tasneefcode1"
+	left join "dbo"."AttchTasneefgen2" "TheTasneefcode2" on "AttachmentGeneral"."Tasneefcode2" = "TheTasneefcode2"."Tasneefcode2"
+	left join "dbo"."AttchTasneefgen3" "TheTasneefcode3" on "AttachmentGeneral"."Tasneefcode3" = "TheTasneefcode3"."Tasneefcode3"
+	left join "dbo"."AttchTasneefgen4" "TheTasneefcode4" on "AttachmentGeneral"."Tasneefcode4" = "TheTasneefcode4"."Tasneefcode4"
+
+      
+
+
+]]></text>
+    </command>
+    <command id="AttachmentNoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="AttachmentNo" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="departmentid" type="Int64" allowNulls="false" label="departmentid">
+      <items style="DropDownList" dataController="Departmentlist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="AttachmentNo" type="Int64" allowNulls="false" isPrimaryKey="true" label="Attachment No" readOnly="true" />
+    <field name="Attachmentpath" type="String" label="Attachmentpath" length="110" showInSummary="true" />
+    <field name="AttachmentDescription" type="String" label="Attachment Description" length="110" showInSummary="true" />
+    <field name="attachmentNotes" type="String" label="attachment Notes" length="110" showInSummary="true" />
+    <field name="Tasneefcode1" type="Int64" label="Tasneefcode1" showInSummary="true">
+      <items style="DropDownList" dataController="AttchTasneefgen1" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="TasneefDesc1" dataValueField="Tasneefcode1" />
+    </field>
+    <field name="Tasneefcode11" type="Int64" label="Tasneefcode1" showInSummary="true" readOnly="true">
+      <items style="DropDownList" dataController="AttchTasneefgen1" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="TasneefDesc1" dataValueField="Tasneefcode1" />
+    </field>
+    <field name="TheTasneefcode1TasneefDesc1" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Tasneefcode1 Tasneef Desc1" />
+    <field name="Tasneefcode2" type="Int64" label="Tasneefcode2" showInSummary="true">
+      <items style="DropDownList" dataController="AttchTasneefgen2" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheTasneefcode2TasneefDesc1" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Tasneefcode2 Tasneef Desc1" />
+    <field name="Tasneefcode3" type="Int64" label="Tasneefcode3">
+      <items style="DropDownList" dataController="AttchTasneefgen3" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheTasneefcode3TasneefDesc1" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Tasneefcode3 Tasneef Desc1" />
+    <field name="Tasneefcode4" type="Int64" label="Tasneefcode4">
+      <items style="DropDownList" dataController="AttchTasneefgen4" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TheTasneefcode4TasneefDesc1" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Tasneefcode4 Tasneef Desc1" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="10" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="10" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="Fielde1001" type="String" label="Fielde1001" contextFields="Tasneefcode1" length="110">
+      <configuration>HeaderText=SomeFieldHeaderText</configuration>
+    </field>
+    <field name="Fielde1002" type="String" label="Fielde1002" contextFields="Tasneefcode1" length="110">
+      <configuration>HeaderText=SomeFieldHeaderText_1</configuration>
+    </field>
+    <field name="Fielde1003" type="String" label="Fielde1003" length="110" contextFields="Tasneefcode1">
+      <configuration>HeaderText=SomeFieldHeaderText_2</configuration>
+    </field>
+    <field name="Fielde1004" type="String" label="Fielde1004" length="110" contextFields="Tasneefcode1">
+      <configuration>HeaderText=SomeFieldHeaderText_3</configuration>
+    </field>
+    <field name="Fielde1005" type="String" label="Fielde1005" length="110" contextFields="Tasneefcode1">
+      <configuration>HeaderText=SomeFieldHeaderText_4</configuration>
+    </field>
+    <field name="Fielde1006" type="String" label="Fielde1006" length="110" contextFields="Tasneefcode1">
+      <configuration>HeaderText=SomeFieldHeaderText_5</configuration>
+    </field>
+    <field name="Fielde1007" type="String" label="Fielde1007" length="110" contextFields="Tasneefcode1">
+      <configuration>HeaderText=SomeFieldHeaderText_7</configuration>
+    </field>
+    <field name="Fielde1008" type="String" label="Fielde1008" length="110" contextFields="Tasneefcode1">
+      <configuration>HeaderText=SomeFieldHeaderText_7</configuration>
+    </field>
+    <field name="Fielde1009" type="String" label="Fielde1009" length="110" contextFields="Tasneefcode1">
+      <configuration>HeaderText=SomeFieldHeaderText_8</configuration>
+    </field>
+    <field name="Fielde1010" type="String" label="Fielde1010" length="110" contextFields="Tasneefcode1">
+      <configuration>HeaderText=SomeFieldHeaderText_10</configuration>
+    </field>
+    <field name="Fielde1011" type="String" label="Fielde1011" length="110" contextFields="Tasneefcode1">
+      <configuration>HeaderText=SomeFieldHeaderText_11</configuration>
+    </field>
+    <field name="Fielde1012" type="String" label="Fielde1012" length="110" contextFields="Tasneefcode1">
+      <configuration>HeaderText=SomeFieldHeaderText_11</configuration>
+    </field>
+    <field name="SomeFieldHeaderText" type="String" label="Some Field Header Text" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="true" length="10" readOnly="true" computed="true">
+      <items letters="false" />
+      <formula>
+        CASE
+        WHEN "Tasneefcode1" is null THEN 'Fielde101org'
+        ELSE dbo.udf_max_copies_sold_for_title('mosso',1,"Tasneefcode1")
+        END</formula>
+    </field>
+    <field name="SomeFieldHeaderText_1" type="String" label="Some Field Header Text" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="true" length="10" readOnly="true" computed="true">
+      <items letters="false" />
+      <formula>
+        CASE
+        WHEN "Tasneefcode1" is null THEN 'Fielde102org'
+        ELSE dbo.udf_max_copies_sold_for_title('mosso',2,"Tasneefcode1")
+        END</formula>
+    </field>
+    <field name="SomeFieldHeaderText_2" type="String" label="Some Field Header Text" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="true" length="10" readOnly="true" computed="true">
+      <items letters="false" />
+      <formula>
+        CASE
+        WHEN "Tasneefcode1" is null THEN 'Fielde103org'
+        ELSE dbo.udf_max_copies_sold_for_title('mosso',3,"Tasneefcode1")
+        END</formula>
+    </field>
+    <field name="SomeFieldHeaderText_3" type="String" label="Some Field Header Text" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="true" length="10" readOnly="true" computed="true">
+      <items letters="false" />
+      <formula>
+        CASE
+        WHEN "Tasneefcode1" is null THEN 'Fielde104org'
+        ELSE dbo.udf_max_copies_sold_for_title('mosso',4,"Tasneefcode1")
+        END</formula>
+    </field>
+    <field name="SomeFieldHeaderText_4" type="String" label="Some Field Header Text" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="true" length="10" readOnly="true" computed="true">
+      <items letters="false" />
+      <formula>
+        CASE
+        WHEN "Tasneefcode1" is null THEN 'Fielde105org'
+        ELSE dbo.udf_max_copies_sold_for_title('mosso',5,"Tasneefcode1")
+        END</formula>
+    </field>
+    <field name="SomeFieldHeaderText_5" type="String" label="Some Field Header Text" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="true" length="10" readOnly="true" computed="true">
+      <items letters="false" />
+      <formula>
+        CASE
+        WHEN "Tasneefcode1" is null THEN 'Fielde106org'
+        ELSE dbo.udf_max_copies_sold_for_title('mosso',6,"Tasneefcode1")
+        END</formula>
+    </field>
+    <field name="SomeFieldHeaderText_6" type="String" label="Some Field Header Text" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="true" length="10" readOnly="true" computed="true">
+      <items letters="false" />
+      <formula>
+        CASE
+        WHEN "Tasneefcode1" is null THEN 'Fielde107org'
+        ELSE dbo.udf_max_copies_sold_for_title('mosso',7,"Tasneefcode1")
+        END</formula>
+    </field>
+    <field name="SomeFieldHeaderText_7" type="String" label="Some Field Header Text" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="true" length="10" readOnly="true" computed="true">
+      <items letters="false" />
+      <formula>
+        CASE
+        WHEN "Tasneefcode1" is null THEN 'Fielde108org'
+        ELSE dbo.udf_max_copies_sold_for_title('mosso',8,"Tasneefcode1")
+        END</formula>
+    </field>
+    <field name="SomeFieldHeaderText_8" type="String" label="Some Field Header Text" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="true" length="10" readOnly="true" computed="true">
+      <items letters="false" />
+      <formula>
+        CASE
+        WHEN "Tasneefcode1" is null THEN 'Fielde109org'
+        ELSE dbo.udf_max_copies_sold_for_title('mosso',9,"Tasneefcode1")
+        END</formula>
+    </field>
+    <field name="SomeFieldHeaderText_9" type="String" label="Some Field Header Text" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="true" length="10" readOnly="true" computed="true">
+      <items letters="false" />
+      <formula>
+        CASE
+        WHEN "Tasneefcode1" is null THEN 'Fielde110org'
+        ELSE dbo.udf_max_copies_sold_for_title('mosso',10,"Tasneefcode1")
+        END</formula>
+    </field>
+    <field name="SomeFieldHeaderText_10" type="String" label="Some Field Header Text" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="true" length="10" readOnly="true" computed="true">
+      <items letters="false" />
+      <formula>
+        CASE
+        WHEN "Tasneefcode1" is null THEN 'Fielde111org'
+        ELSE dbo.udf_max_copies_sold_for_title('mosso',11,"Tasneefcode1")
+        END</formula>
+    </field>
+    <field name="SomeFieldHeaderText_11" type="String" label="Some Field Header Text" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="true" length="10" readOnly="true" computed="true">
+      <items letters="false" />
+      <formula>
+        CASE
+        WHEN "Tasneefcode1" is null THEN 'Fielde112org'
+        ELSE dbo.udf_max_copies_sold_for_title('mosso',12,"Tasneefcode1")
+        END</formula>
+    </field>
+    <field name="SomeFieldHeaderText_12" type="String" label="Some Field Header Text" allowQBE="false" allowSorting="false" htmlEncode="false" hidden="true" length="10" readOnly="true" computed="true">
+      <items letters="false" />
+      <formula>
+        CASE
+        WHEN "Tasneefcode1" is null THEN 'Fielde113org'
+        ELSE dbo.udf_max_copies_sold_for_title('mosso',13,"Tasneefcode1")
+        END</formula>
+    </field>
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Attachment General" filter="CreatedBy=@BusinessRules_UserName">
+      <dataFields>
+        <dataField fieldName="AttachmentDescription" />
+        <dataField fieldName="attachmentNotes" />
+        <dataField fieldName="Tasneefcode1" aliasFieldName="TheTasneefcode1TasneefDesc1" />
+        <dataField fieldName="Tasneefcode11" aliasFieldName="TheTasneefcode1TasneefDesc1" />
+        <dataField fieldName="TheTasneefcode1TasneefDesc1" hidden="true" />
+        <dataField fieldName="Attachmentpath" aliasFieldName="AttachmentNo" hyperlinkFormatString="http://dash.alnajattschool.com/LEADTOOLSRESTServicesHost19/Store/{AttachmentNo}.pdf" textMode="Static" />
+        <dataField fieldName="departmentid" rows="1" />
+        <dataField fieldName="Fielde1001" rows="1" />
+        <dataField fieldName="Fielde1002" rows="1" />
+        <dataField fieldName="Fielde1003" rows="1" />
+        <dataField fieldName="Fielde1004" rows="1" />
+        <dataField fieldName="Fielde1005" rows="1" />
+        <dataField fieldName="Fielde1006" rows="1" />
+        <dataField fieldName="Fielde1007" rows="1" />
+        <dataField fieldName="Fielde1008" rows="1" />
+        <dataField fieldName="Fielde1009" rows="1" />
+        <dataField fieldName="Fielde1010" rows="1" />
+        <dataField fieldName="Fielde1011" rows="1" />
+        <dataField fieldName="Fielde1012" rows="1" />
+        <dataField fieldName="ModifiedBy" />
+        <dataField fieldName="ModifiedOn" />
+        <dataField fieldName="CreatedBy" />
+        <dataField fieldName="CreatedOn" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Attachment General">
+      <categories>
+        <category id="c1" headerText="Attachment General" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="Fielde1001" rows="1" />
+            <dataField fieldName="Fielde1002" rows="1" />
+            <dataField fieldName="Fielde1003" rows="1" />
+            <dataField fieldName="Fielde1004" rows="1" />
+            <dataField fieldName="Fielde1005" rows="1" />
+            <dataField fieldName="Fielde1006" rows="1" />
+            <dataField fieldName="Fielde1007" rows="1" />
+            <dataField fieldName="Fielde1008" rows="1" />
+            <dataField fieldName="Fielde1009" rows="1" />
+            <dataField fieldName="Fielde1010" rows="1" />
+            <dataField fieldName="Fielde1011" rows="1" />
+            <dataField fieldName="Fielde1012" rows="1" />
+            <dataField fieldName="SomeFieldHeaderText" columns="10" hidden="true" />
+            <dataField fieldName="SomeFieldHeaderText_1" columns="10" hidden="true" />
+            <dataField fieldName="SomeFieldHeaderText_2" columns="10" hidden="true" />
+            <dataField fieldName="SomeFieldHeaderText_3" columns="10" hidden="true" />
+            <dataField fieldName="SomeFieldHeaderText_4" columns="10" hidden="true" />
+            <dataField fieldName="SomeFieldHeaderText_5" columns="10" hidden="true" />
+            <dataField fieldName="SomeFieldHeaderText_6" columns="10" hidden="true" />
+            <dataField fieldName="SomeFieldHeaderText_7" columns="10" hidden="true" />
+            <dataField fieldName="SomeFieldHeaderText_8" columns="10" hidden="true" />
+            <dataField fieldName="SomeFieldHeaderText_9" columns="10" hidden="true" />
+            <dataField fieldName="SomeFieldHeaderText_10" columns="10" hidden="true" />
+            <dataField fieldName="SomeFieldHeaderText_11" columns="10" hidden="true" />
+            <dataField fieldName="SomeFieldHeaderText_12" columns="10" hidden="true" />
+            <dataField fieldName="departmentid" rows="1" />
+
+          </dataFields>
+        </category>
+        <category headerText="moredetails" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="AttachmentDescription" />
+            <dataField fieldName="attachmentNotes" />
+            <dataField fieldName="Tasneefcode1" aliasFieldName="TheTasneefcode1TasneefDesc1" />
+            <dataField fieldName="AttachmentNo" readOnly="true" />
+            <dataField fieldName="TheTasneefcode1TasneefDesc1" />
+            <dataField fieldName="Attachmentpath" aliasFieldName="AttachmentNo" hyperlinkFormatString="http://dash.alnajattschool.com/LEADTOOLSRESTServicesHost19/Store/{AttachmentNo}.pdf" textMode="Static" />
+<dataField fieldName="CreatedBy" />          
+</dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Attachment General">
+      <headerText />
+      <categories>
+        <category id="c1" headerText="New Attachment General" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="AttachmentDescription" />
+            <dataField fieldName="attachmentNotes" />
+            <dataField fieldName="Tasneefcode1" aliasFieldName="TheTasneefcode1TasneefDesc1" />
+<dataField fieldName="CreatedBy" /> 
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a101" commandName="Custom" commandArgument="Scanfile" headerText="Scanfile" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a1" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a100" whenLastCommandName="Edit" commandName="Custom" commandArgument="Scanfile" headerText="Scanfile" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag1" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a1" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a1" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r102" commandName="Delete" type="Sql" phase="Before"><![CDATA[delete from attchmetagen1all where attachmentno=@AttachmentNo]]></rule>
+    <rule id="r100" commandName="Insert" type="Sql" phase="After"><![CDATA[
+exec spdetailsattachment  @AttachmentNo,@Tasneefcode1;
+   exec createpdetailsec  @BusinessRules_UserName,@AttachmentNo; 
+    ]]></rule>
+    <rule id="r10update" commandName="Update" type="Sql" phase="After"><![CDATA[
+exec spdetailsattachment  @AttachmentNo,@Tasneefcode1;
+     exec updatepdetailsec  @BusinessRules_UserName,@AttachmentNo; 
+    ]]></rule>
+    <rule id="r101" commandName="Custom" commandArgument="Scanfile" type="Code" phase="Execute" />
+    <rule id="r103calchedertext" commandName="Calculate" type="Code" phase="Execute" />
+  </businessRules>
+</dataController>

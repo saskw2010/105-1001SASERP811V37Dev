@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Attchmetagen1all" conflictDetection="overwriteChanges" label="Attchmetagen1all" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Attchmetagen1all"."idautometagen" "idautometagen"
+	,"Attchmetagen1all"."AttachmentNo" "AttachmentNo"
+	,"Attachment"."Attachmentpath" "AttachmentAttachmentpath"
+	,"AttachmentTasneefcode1"."TasneefDesc1" "AttachmentTasneefcode1TasneefDesc1"
+	,"AttachmentTasneefcode2"."TasneefDesc1" "AttachmentTasneefcode2TasneefDesc1"
+	,"AttachmentTasneefcode3"."TasneefDesc1" "AttachmentTasneefcode3TasneefDesc1"
+	,"AttachmentTasneefcode4"."TasneefDesc1" "AttachmentTasneefcode4TasneefDesc1"
+	,"Attchmetagen1all"."metacode1" "metacode1"
+	,"Attchmetagen1all"."metavalue" "metavalue"
+from "dbo"."Attchmetagen1all" "Attchmetagen1all"
+	left join "dbo"."AttachmentGeneral" "Attachment" on "Attchmetagen1all"."AttachmentNo" = "Attachment"."AttachmentNo"
+	left join "dbo"."AttchTasneefgen1" "AttachmentTasneefcode1" on "Attachment"."Tasneefcode1" = "AttachmentTasneefcode1"."Tasneefcode1"
+	left join "dbo"."AttchTasneefgen2" "AttachmentTasneefcode2" on "Attachment"."Tasneefcode2" = "AttachmentTasneefcode2"."Tasneefcode2"
+	left join "dbo"."AttchTasneefgen3" "AttachmentTasneefcode3" on "Attachment"."Tasneefcode3" = "AttachmentTasneefcode3"."Tasneefcode3"
+	left join "dbo"."AttchTasneefgen4" "AttachmentTasneefcode4" on "Attachment"."Tasneefcode4" = "AttachmentTasneefcode4"."Tasneefcode4"
+]]></text>
+    </command>
+    <command id="idautometagenIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="idautometagen" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="idautometagen" type="Int64" allowNulls="false" isPrimaryKey="true" label="Idautometagen" readOnly="true" />
+    <field name="AttachmentNo" type="Int64" allowNulls="false" label="Attachment No" showInSummary="true">
+      <items style="Lookup" dataController="AttachmentGeneral" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="AttachmentAttachmentpath" type="String" readOnly="true" label="Attachment Attachmentpath" length="150" />
+    <field name="AttachmentTasneefcode1TasneefDesc1" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Attachment Tasneefcode1 Tasneef Desc1" />
+    <field name="AttachmentTasneefcode2TasneefDesc1" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Attachment Tasneefcode2 Tasneef Desc1" />
+    <field name="AttachmentTasneefcode3TasneefDesc1" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Attachment Tasneefcode3 Tasneef Desc1" />
+    <field name="AttachmentTasneefcode4TasneefDesc1" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Attachment Tasneefcode4 Tasneef Desc1" />
+    <field name="metacode1" type="Int64" allowNulls="false" label="Metacode1" showInSummary="true">
+      <items style="DropDownList" dataView="grid1" dataTextField="metacode1Desc1" dataValueField="metacode1" />
+    </field>
+    <field name="metavalue" type="String" label="Metavalue" length="50" showInSummary="true" />
+  </fields>
+  <views>
+    <view id="grid1" type="DataSheet" commandId="command1" label="Attchmetagen1all">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="AttachmentNo" aliasFieldName="AttachmentAttachmentpath" />
+        <dataField fieldName="metacode1" columns="15" />
+        <dataField fieldName="metavalue" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Attchmetagen1all">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Attchmetagen1all" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="AttachmentNo" aliasFieldName="AttachmentAttachmentpath" hyperlinkFormatString="~/Pages/AttachmentGeneral.aspx?AttachmentNo={AttachmentNo}&amp;_controller=AttachmentGeneral&amp;_command=Select&amp;_argument=editForm1" />
+            <dataField fieldName="metacode1" columns="15" />
+            <dataField fieldName="metavalue" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Attchmetagen1all">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Attchmetagen1all" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="AttachmentNo" aliasFieldName="AttachmentAttachmentpath" />
+            <dataField fieldName="metacode1" columns="15" />
+            <dataField fieldName="metavalue" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

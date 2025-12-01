@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="RegActivites" conflictDetection="overwriteChanges" label="Reg Activites" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"RegActivites"."Activitesid" "Activitesid"
+	,"RegActivites"."Activitesparentid" "Activitesparentid"
+	,"Activitesparent"."ActivitesDescrption" "ActivitesparentActivitesDescrption"
+	,"Activitesparentschpaymenttype"."schpaymenttypenm" "Activitesparentschpaymenttypeschpaymenttypenm"
+	,"Activitesparentschpaymenttypedebitaccount"."Acc_Nm" "ActivitesparentschpaymenttypedebitaccountAcc_Nm"
+	,"Activitesparentschpaymenttypecreditaccount"."Acc_Nm" "ActivitesparentschpaymenttypecreditaccountAcc_Nm"
+	,"RegActivites"."ActivitesDescrption" "ActivitesDescrption"
+	,"RegActivites"."schpaymenttypeid" "schpaymenttypeid"
+	,"schpaymenttype"."schpaymenttypenm" "schpaymenttypeschpaymenttypenm"
+	,"schpaymenttypedebitaccount"."Acc_Nm" "schpaymenttypedebitaccountAcc_Nm"
+	,"schpaymenttypedebitaccountClsacc_"."Acc_Nm" "schpaymenttypedebitaccountClsacc_Acc_Nm"
+	,"schpaymenttypedebitaccountAcc_Bnd"."Acc_Nm" "schpaymenttypedebitaccountAcc_BndAcc_Nm"
+	,"schpaymenttypecreditaccount"."Acc_Nm" "schpaymenttypecreditaccountAcc_Nm"
+	,"schpaymenttypecreditaccountClsacc_"."Acc_Nm" "schpaymenttypecreditaccountClsacc_Acc_Nm"
+	,"schpaymenttypecreditaccountAcc_Bnd"."Acc_Nm" "schpaymenttypecreditaccountAcc_BndAcc_Nm"
+from "dbo"."RegActivites" "RegActivites"
+	left join "dbo"."RegActivites" "Activitesparent" on "RegActivites"."Activitesparentid" = "Activitesparent"."Activitesid"
+	left join "dbo"."schpaymenttype" "Activitesparentschpaymenttype" on "Activitesparent"."schpaymenttypeid" = "Activitesparentschpaymenttype"."schpaymenttypeid"
+	left join "dbo"."GLmstrfl" "Activitesparentschpaymenttypedebitaccount" on "Activitesparentschpaymenttype"."debitaccount" = "Activitesparentschpaymenttypedebitaccount"."Acc_No"
+	left join "dbo"."GLmstrfl" "Activitesparentschpaymenttypecreditaccount" on "Activitesparentschpaymenttype"."creditaccount" = "Activitesparentschpaymenttypecreditaccount"."Acc_No"
+	left join "dbo"."schpaymenttype" "schpaymenttype" on "RegActivites"."schpaymenttypeid" = "schpaymenttype"."schpaymenttypeid"
+	left join "dbo"."GLmstrfl" "schpaymenttypedebitaccount" on "schpaymenttype"."debitaccount" = "schpaymenttypedebitaccount"."Acc_No"
+	left join "dbo"."GLmfbab" "schpaymenttypedebitaccountClsacc_" on "schpaymenttypedebitaccount"."Clsacc_No" = "schpaymenttypedebitaccountClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "schpaymenttypedebitaccountAcc_Bnd" on "schpaymenttypedebitaccount"."Acc_Bnd" = "schpaymenttypedebitaccountAcc_Bnd"."Acc_Bnd"
+	left join "dbo"."GLmstrfl" "schpaymenttypecreditaccount" on "schpaymenttype"."creditaccount" = "schpaymenttypecreditaccount"."Acc_No"
+	left join "dbo"."GLmfbab" "schpaymenttypecreditaccountClsacc_" on "schpaymenttypecreditaccount"."Clsacc_No" = "schpaymenttypecreditaccountClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "schpaymenttypecreditaccountAcc_Bnd" on "schpaymenttypecreditaccount"."Acc_Bnd" = "schpaymenttypecreditaccountAcc_Bnd"."Acc_Bnd"
+]]></text>
+    </command>
+    <command id="ActivitesidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Activitesid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Activitesid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Activitesid" readOnly="true" />
+    <field name="Activitesparentid" type="Int64" label="Activitesparentid" showInSummary="true">
+      <items style="Lookup" dataController="RegActivites" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ActivitesparentActivitesDescrption" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Activitesparent Activites Descrption" length="-1" />
+    <field name="Activitesparentschpaymenttypeschpaymenttypenm" type="String" readOnly="true" label="Activitesparentschpaymenttypeschpaymenttypenm" length="50" />
+    <field name="ActivitesparentschpaymenttypedebitaccountAcc_Nm" type="String" readOnly="true" label="Activitesparentschpaymenttypedebitaccount Acc Nm" length="255" />
+    <field name="ActivitesparentschpaymenttypecreditaccountAcc_Nm" type="String" readOnly="true" label="Activitesparentschpaymenttypecreditaccount Acc Nm" length="255" />
+    <field name="ActivitesDescrption" type="String" allowQBE="false" allowSorting="false" label="Activites Descrption" length="-1" showInSummary="true" />
+    <field name="schpaymenttypeid" type="Int64" allowNulls="false" label="Schpaymenttypeid" showInSummary="true">
+      <items style="Lookup" dataController="schpaymenttype" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="schpaymenttypeschpaymenttypenm" type="String" readOnly="true" label="Schpaymenttypeschpaymenttypenm" length="50" />
+    <field name="schpaymenttypedebitaccountAcc_Nm" type="String" readOnly="true" label="schpaymenttypedebitaccount Acc Nm" length="255" />
+    <field name="schpaymenttypedebitaccountClsacc_Acc_Nm" type="String" readOnly="true" label="schpaymenttypedebitaccount Clsacc Acc Nm" length="250" />
+    <field name="schpaymenttypedebitaccountAcc_BndAcc_Nm" type="String" readOnly="true" label="schpaymenttypedebitaccount Acc Bnd Acc Nm" length="50" />
+    <field name="schpaymenttypecreditaccountAcc_Nm" type="String" readOnly="true" label="schpaymenttypecreditaccount Acc Nm" length="255" />
+    <field name="schpaymenttypecreditaccountClsacc_Acc_Nm" type="String" readOnly="true" label="schpaymenttypecreditaccount Clsacc Acc Nm" length="250" />
+    <field name="schpaymenttypecreditaccountAcc_BndAcc_Nm" type="String" readOnly="true" label="schpaymenttypecreditaccount Acc Bnd Acc Nm" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Reg Activites">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="schpaymenttypeid" aliasFieldName="schpaymenttypeschpaymenttypenm" />
+        <dataField fieldName="Activitesparentid" aliasFieldName="ActivitesparentActivitesDescrption" hyperlinkFormatString="~/Pages/RegActivites.aspx?Activitesid={Activitesparentid}&amp;_controller=RegActivites&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ActivitesDescrption" rows="5" />
+        <dataField fieldName="Activitesparentschpaymenttypeschpaymenttypenm" columns="50" />
+        <dataField fieldName="ActivitesparentschpaymenttypedebitaccountAcc_Nm" />
+        <dataField fieldName="ActivitesparentschpaymenttypecreditaccountAcc_Nm" />
+        <dataField fieldName="schpaymenttypedebitaccountAcc_Nm" />
+        <dataField fieldName="schpaymenttypedebitaccountClsacc_Acc_Nm" />
+        <dataField fieldName="schpaymenttypedebitaccountAcc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="schpaymenttypecreditaccountAcc_Nm" />
+        <dataField fieldName="schpaymenttypecreditaccountClsacc_Acc_Nm" />
+        <dataField fieldName="schpaymenttypecreditaccountAcc_BndAcc_Nm" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Reg Activites">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Reg Activites" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Activitesparentid" aliasFieldName="ActivitesparentActivitesDescrption" hyperlinkFormatString="~/Pages/RegActivites.aspx?Activitesid={Activitesparentid}&amp;_controller=RegActivites&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ActivitesDescrption" rows="5" />
+            <dataField fieldName="schpaymenttypeid" aliasFieldName="schpaymenttypeschpaymenttypenm" hyperlinkFormatString="~/Pages/schpaymenttype.aspx?schpaymenttypeid={schpaymenttypeid}&amp;_controller=schpaymenttype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Activitesparentschpaymenttypeschpaymenttypenm" columns="50" />
+            <dataField fieldName="ActivitesparentschpaymenttypedebitaccountAcc_Nm" />
+            <dataField fieldName="ActivitesparentschpaymenttypecreditaccountAcc_Nm" />
+            <dataField fieldName="schpaymenttypedebitaccountAcc_Nm" />
+            <dataField fieldName="schpaymenttypedebitaccountClsacc_Acc_Nm" />
+            <dataField fieldName="schpaymenttypedebitaccountAcc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="schpaymenttypecreditaccountAcc_Nm" />
+            <dataField fieldName="schpaymenttypecreditaccountClsacc_Acc_Nm" />
+            <dataField fieldName="schpaymenttypecreditaccountAcc_BndAcc_Nm" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Reg Activites">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Reg Activites" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Activitesparentid" aliasFieldName="ActivitesparentActivitesDescrption" />
+            <dataField fieldName="ActivitesDescrption" rows="5" />
+            <dataField fieldName="schpaymenttypeid" aliasFieldName="schpaymenttypeschpaymenttypenm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

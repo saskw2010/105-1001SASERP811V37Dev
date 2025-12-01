@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="MonthlyLeaveBalanceReport" conflictDetection="overwriteChanges" label="Monthly Leave Balance Report" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"MonthlyLeaveBalanceReport"."Emp_Nm" "Emp_Nm"
+	,"MonthlyLeaveBalanceReport"."Start_Date" "Start_Date"
+	,"MonthlyLeaveBalanceReport"."Depm_Nm" "Depm_Nm"
+	,"MonthlyLeaveBalanceReport"."Emp_No" "Emp_No"
+	,"MonthlyLeaveBalanceReport"."Depm_No" "Depm_No"
+	,"MonthlyLeaveBalanceReport"."Workdays" "Workdays"
+	,"MonthlyLeaveBalanceReport"."UnPaid_Hld" "UnPaid_Hld"
+	,"MonthlyLeaveBalanceReport"."Late_Dys" "Late_Dys"
+	,"MonthlyLeaveBalanceReport"."netwrkdys" "netwrkdys"
+	,"MonthlyLeaveBalanceReport"."totpaid" "totpaid"
+	,"MonthlyLeaveBalanceReport"."netbalnc" "netbalnc"
+	,"MonthlyLeaveBalanceReport"."loh365rl" "loh365rl"
+	,"MonthlyLeaveBalanceReport"."Hld_Ern_Prod" "Hld_Ern_Prod"
+	,"MonthlyLeaveBalanceReport"."Start_UnPaid" "Start_UnPaid"
+	,"MonthlyLeaveBalanceReport"."Tkt_No" "Tkt_No"
+	,"MonthlyLeaveBalanceReport"."Bsc_Salary" "Bsc_Salary"
+	,"MonthlyLeaveBalanceReport"."Hous_Alw" "Hous_Alw"
+	,"MonthlyLeaveBalanceReport"."Trnsp_Alw" "Trnsp_Alw"
+	,"MonthlyLeaveBalanceReport"."Other_Alw" "Other_Alw"
+	,"MonthlyLeaveBalanceReport"."Food_Alw" "Food_Alw"
+	,"MonthlyLeaveBalanceReport"."allow1" "allow1"
+	,"MonthlyLeaveBalanceReport"."allow2" "allow2"
+	,"MonthlyLeaveBalanceReport"."allow3" "allow3"
+	,"MonthlyLeaveBalanceReport"."allow4" "allow4"
+	,"MonthlyLeaveBalanceReport"."allow5" "allow5"
+	,"MonthlyLeaveBalanceReport"."allow6" "allow6"
+	,"MonthlyLeaveBalanceReport"."Indmentydays" "Indmentydays"
+	,"MonthlyLeaveBalanceReport"."Job_Stu" "Job_Stu"
+	,"MonthlyLeaveBalanceReport"."Expr1" "Expr1"
+	,"MonthlyLeaveBalanceReport"."Expr2" "Expr2"
+	,"MonthlyLeaveBalanceReport"."totsalary" "totsalary"
+	,"MonthlyLeaveBalanceReport"."unpaidtot" "unpaidtot"
+	,"MonthlyLeaveBalanceReport"."indeminetyall" "indeminetyall"
+from "dbo"."MonthlyLeaveBalanceReport" "MonthlyLeaveBalanceReport"
+]]></text>
+    </command>
+    <command id="Depm_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Depm_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Emp_Nm" type="String" label="Emp Nm" length="255" showInSummary="true" />
+    <field name="Start_Date" type="DateTime" label="Start Date" showInSummary="true" />
+    <field name="Depm_Nm" type="String" label="Depm Nm" length="255" showInSummary="true" />
+    <field name="Emp_No" type="Int64" allowNulls="false" label="Emp No" showInSummary="true" />
+    <field name="Depm_No" type="Int64" label="Depm No" readOnly="true" showInSummary="true" />
+    <field name="Workdays" type="Int32" label="Workdays" />
+    <field name="UnPaid_Hld" type="Decimal" label="Un Paid Hld" />
+    <field name="Late_Dys" type="Decimal" label="Late Dys" />
+    <field name="netwrkdys" type="Double" label="Netwrkdys" />
+    <field name="totpaid" type="Double" label="Totpaid" />
+    <field name="netbalnc" type="Double" label="Netbalnc" />
+    <field name="loh365rl" type="Double" label="Loh365rl" />
+    <field name="Hld_Ern_Prod" type="Double" label="Hld Ern Prod" />
+    <field name="Start_UnPaid" type="Double" label="Start Un Paid" />
+    <field name="Tkt_No" type="Single" label="Tkt No" />
+    <field name="Bsc_Salary" type="Decimal" label="Bsc Salary" />
+    <field name="Hous_Alw" type="Decimal" label="Hous Alw" />
+    <field name="Trnsp_Alw" type="Decimal" label="Trnsp Alw" />
+    <field name="Other_Alw" type="Decimal" label="Other Alw" />
+    <field name="Food_Alw" type="Decimal" label="Food Alw" />
+    <field name="allow1" type="Int64" label="Allow1" />
+    <field name="allow2" type="Int64" label="Allow2" />
+    <field name="allow3" type="Int64" label="Allow3" />
+    <field name="allow4" type="Int64" label="Allow4" />
+    <field name="allow5" type="Int64" label="Allow5" />
+    <field name="allow6" type="Int64" label="Allow6" />
+    <field name="Indmentydays" type="Double" label="Indmentydays" />
+    <field name="Job_Stu" type="Int64" label="Job Stu" />
+    <field name="Expr1" type="Int64" label="Expr1" />
+    <field name="Expr2" type="Int64" label="Expr2" />
+    <field name="totsalary" type="Single" label="Totsalary" readOnly="true" />
+    <field name="unpaidtot" type="Double" label="Unpaidtot" readOnly="true" />
+    <field name="indeminetyall" type="Double" label="Indeminetyall" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Monthly Leave Balance Report">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Emp_No" columns="15" />
+        <dataField fieldName="Emp_Nm" />
+        <dataField fieldName="Start_Date" columns="10" />
+        <dataField fieldName="Depm_Nm" />
+        <dataField fieldName="Depm_No" columns="15" />
+        <dataField fieldName="Workdays" columns="15" />
+        <dataField fieldName="UnPaid_Hld" dataFormatString="c" columns="15" />
+        <dataField fieldName="Late_Dys" dataFormatString="c" columns="15" />
+        <dataField fieldName="netwrkdys" columns="15" />
+        <dataField fieldName="totpaid" columns="15" />
+        <dataField fieldName="netbalnc" columns="15" />
+        <dataField fieldName="loh365rl" columns="15" />
+        <dataField fieldName="Hld_Ern_Prod" columns="15" />
+        <dataField fieldName="Start_UnPaid" columns="15" />
+        <dataField fieldName="Tkt_No" columns="15" />
+        <dataField fieldName="Bsc_Salary" dataFormatString="c" columns="15" />
+        <dataField fieldName="Hous_Alw" dataFormatString="c" columns="15" />
+        <dataField fieldName="Trnsp_Alw" dataFormatString="c" columns="15" />
+        <dataField fieldName="Other_Alw" dataFormatString="c" columns="15" />
+        <dataField fieldName="Food_Alw" dataFormatString="c" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Monthly Leave Balance Report">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Monthly Leave Balance Report" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_Nm" />
+            <dataField fieldName="Start_Date" columns="10" />
+            <dataField fieldName="Depm_Nm" />
+            <dataField fieldName="Emp_No" columns="15" />
+            <dataField fieldName="Depm_No" columns="15" />
+            <dataField fieldName="Workdays" columns="15" />
+            <dataField fieldName="UnPaid_Hld" dataFormatString="c" columns="15" />
+            <dataField fieldName="Late_Dys" dataFormatString="c" columns="15" />
+            <dataField fieldName="netwrkdys" columns="15" />
+            <dataField fieldName="totpaid" columns="15" />
+            <dataField fieldName="netbalnc" columns="15" />
+            <dataField fieldName="loh365rl" columns="15" />
+            <dataField fieldName="Hld_Ern_Prod" columns="15" />
+            <dataField fieldName="Start_UnPaid" columns="15" />
+            <dataField fieldName="Tkt_No" columns="15" />
+            <dataField fieldName="Bsc_Salary" dataFormatString="c" columns="15" />
+            <dataField fieldName="Hous_Alw" dataFormatString="c" columns="15" />
+            <dataField fieldName="Trnsp_Alw" dataFormatString="c" columns="15" />
+            <dataField fieldName="Other_Alw" dataFormatString="c" columns="15" />
+            <dataField fieldName="Food_Alw" dataFormatString="c" columns="15" />
+            <dataField fieldName="allow1" columns="15" />
+            <dataField fieldName="allow2" columns="15" />
+            <dataField fieldName="allow3" columns="15" />
+            <dataField fieldName="allow4" columns="15" />
+            <dataField fieldName="allow5" columns="15" />
+            <dataField fieldName="allow6" columns="15" />
+            <dataField fieldName="Indmentydays" columns="15" />
+            <dataField fieldName="Job_Stu" columns="15" />
+            <dataField fieldName="Expr1" columns="15" />
+            <dataField fieldName="Expr2" columns="15" />
+            <dataField fieldName="totsalary" columns="15" />
+            <dataField fieldName="unpaidtot" columns="15" />
+            <dataField fieldName="indeminetyall" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Monthly Leave Balance Report">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Monthly Leave Balance Report" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_Nm" />
+            <dataField fieldName="Start_Date" columns="10" />
+            <dataField fieldName="Depm_Nm" />
+            <dataField fieldName="Emp_No" columns="15" />
+            <dataField fieldName="Workdays" columns="15" />
+            <dataField fieldName="UnPaid_Hld" dataFormatString="c" columns="15" />
+            <dataField fieldName="Late_Dys" dataFormatString="c" columns="15" />
+            <dataField fieldName="netwrkdys" columns="15" />
+            <dataField fieldName="totpaid" columns="15" />
+            <dataField fieldName="netbalnc" columns="15" />
+            <dataField fieldName="loh365rl" columns="15" />
+            <dataField fieldName="Hld_Ern_Prod" columns="15" />
+            <dataField fieldName="Start_UnPaid" columns="15" />
+            <dataField fieldName="Tkt_No" columns="15" />
+            <dataField fieldName="Bsc_Salary" dataFormatString="c" columns="15" />
+            <dataField fieldName="Hous_Alw" dataFormatString="c" columns="15" />
+            <dataField fieldName="Trnsp_Alw" dataFormatString="c" columns="15" />
+            <dataField fieldName="Other_Alw" dataFormatString="c" columns="15" />
+            <dataField fieldName="Food_Alw" dataFormatString="c" columns="15" />
+            <dataField fieldName="allow1" columns="15" />
+            <dataField fieldName="allow2" columns="15" />
+            <dataField fieldName="allow3" columns="15" />
+            <dataField fieldName="allow4" columns="15" />
+            <dataField fieldName="allow5" columns="15" />
+            <dataField fieldName="allow6" columns="15" />
+            <dataField fieldName="Indmentydays" columns="15" />
+            <dataField fieldName="Job_Stu" columns="15" />
+            <dataField fieldName="Expr1" columns="15" />
+            <dataField fieldName="Expr2" columns="15" />
+            <dataField fieldName="indeminetyall" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

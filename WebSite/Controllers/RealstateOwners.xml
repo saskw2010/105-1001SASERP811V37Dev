@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="RealstateOwners" conflictDetection="overwriteChanges" label="Realstate Owners" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"RealstateOwners"."Ownerid" "Ownerid"
+    ,"RealstateOwners"."Ownerid" "unitowner"
+	,"RealstateOwners"."RealstateOwners" "RealstateOwners"
+	,"RealstateOwners"."RealstateOwnerse" "RealstateOwnerse"
+	,"RealstateOwners"."ownertelphone" "ownertelphone"
+	,"RealstateOwners"."ownermobile" "ownermobile"
+	,"RealstateOwners"."owneradress" "owneradress"
+	,"RealstateOwners"."ownercivilid" "ownercivilid"
+	,"RealstateOwners"."ownerpassport" "ownerpassport"
+	,"RealstateOwners"."note" "note"
+	,"RealstateOwners"."cntry_no" "cntry_no"
+	,"cntry_"."Cntry_Nm" "cntry_Cntry_Nm"
+	,"RealstateOwners"."ownertypeid" "ownertypeid"
+	,"RealstateOwners"."Job_No" "Job_No"
+	,"Job_"."Job_Nm" "Job_Job_Nm"
+	,"RealstateOwners"."bankacc" "bankacc"
+	,"RealstateOwners"."ownerphone2" "ownerphone2"
+	,"RealstateOwners"."bank_no" "bank_no"
+	,"bank_"."AccountName" "AccountName"
+	
+
+from "dbo"."RealstateOwners" "RealstateOwners"
+
+	left join "dbo"."PYCntry" "cntry_" on "RealstateOwners"."cntry_no" = "cntry_"."Cntry_No"
+	left join "dbo"."Pyjobs" "Job_" on "RealstateOwners"."Job_No" = "Job_"."Job_No"
+	left join "dbo"."BankData" "bank_" on "RealstateOwners"."bank_no" = "bank_"."bank_no"
+	
+]]></text>
+    </command>
+    <command id="OwneridIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Ownerid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Ownerid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Ownerid" readOnly="true" />
+	<field name="Ownerid" type="Int64" readOnly="true" />
+	
+    <field name="RealstateOwners" type="String" label="Realstate Owners" length="150" showInSummary="true" />
+    <field name="RealstateOwnerse" type="String" label="Realstate Ownerse" length="150" showInSummary="true" />
+    <field name="ownertelphone" type="String" label="Ownertelphone" length="10" showInSummary="true" />
+    <field name="ownermobile" type="String" label="Ownermobile" length="10" showInSummary="true" />
+    <field name="owneradress" type="String" label="Owneradress" length="150" showInSummary="true" />
+    <field name="ownercivilid" type="String" label="Ownercivilid" length="50" />
+    <field name="ownerpassport" type="String" label="Ownerpassport" length="50" />
+    <field name="note" type="String" label="Note" length="10" />
+    <field name="cntry_no" type="Int64" label="Cntry No">
+      <items style="Lookup" dataController="PYCntry" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="cntry_Cntry_Nm" type="String" readOnly="true" label="cntry Cntry Nm" length="255" />
+    <field name="ownertypeid" type="Int64" label="Ownertypeid" />
+    <field name="Job_No" type="Int64" label="Job No">
+      <items style="Lookup" dataController="Pyjobs" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Job_Job_Nm" type="String" readOnly="true" label="Job Nm" length="255" />
+
+    <field name="ownerphone2" type="String" label="ownerphone2" length="10" showInSummary="true" />
+    <field name="bankacc" type="String" label="bankacc" length="50" />
+    <field name="bank_no" type="Int64" label="bank_no" >
+    <items style="Lookup" dataController="BankData" newDataView="createForm1" searchOnStart="true" />
+    <field name="AccountName" type="String" readOnly="true" label="AccountName" length="255" />
+
+</field>
+  </fields>
+
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Realstate Owners">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="RealstateOwners" />
+		<dataField fieldName="Ownerid" />
+        <dataField fieldName="RealstateOwnerse" />
+        <dataField fieldName="ownertelphone" columns="10" />
+        <dataField fieldName="ownermobile" columns="10" />
+        <dataField fieldName="owneradress" />
+        <dataField fieldName="ownercivilid" columns="50" />
+        <dataField fieldName="ownerpassport" columns="50" />
+        <dataField fieldName="note" columns="10" />
+        <dataField fieldName="cntry_no" aliasFieldName="cntry_Cntry_Nm" hyperlinkFormatString="~/Pages/PYCntry.aspx?Cntry_No={cntry_no}&amp;_controller=PYCntry&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ownertypeid" columns="15" />
+        <dataField fieldName="Job_No" aliasFieldName="Job_Job_Nm" hyperlinkFormatString="~/Pages/Pyjobs.aspx?Job_No={Job_No}&amp;_controller=Pyjobs&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="bankacc" columns="50" />
+        <dataField fieldName="ownerphone2" columns="10" />
+        <dataField fieldName="bank_no" aliasFieldName="AccountName"  />
+
+
+</dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Realstate Owners">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Realstate Owners" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="RealstateOwners" />
+            <dataField fieldName="RealstateOwnerse" />
+            <dataField fieldName="ownertelphone" columns="10" />
+            <dataField fieldName="ownermobile" columns="10" />
+            <dataField fieldName="owneradress" />
+            <dataField fieldName="ownercivilid" columns="50" />
+            <dataField fieldName="ownerpassport" columns="50" />
+            <dataField fieldName="note" columns="10" />
+            <dataField fieldName="cntry_no" aliasFieldName="cntry_Cntry_Nm" hyperlinkFormatString="~/Pages/PYCntry.aspx?Cntry_No={cntry_no}&amp;_controller=PYCntry&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ownertypeid" columns="15" />
+            <dataField fieldName="Job_No" aliasFieldName="Job_Job_Nm" hyperlinkFormatString="~/Pages/Pyjobs.aspx?Job_No={Job_No}&amp;_controller=Pyjobs&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="bankacc" columns="50" />
+            <dataField fieldName="ownerphone2" columns="10" />
+     <dataField fieldName="bank_no" aliasFieldName="AccountName" />
+
+ </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Realstate Owners">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Realstate Owners" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="RealstateOwners" />
+            <dataField fieldName="RealstateOwnerse" />
+            <dataField fieldName="ownertelphone" columns="10" />
+            <dataField fieldName="ownermobile" columns="10" />
+            <dataField fieldName="owneradress" />
+            <dataField fieldName="ownercivilid" columns="50" />
+            <dataField fieldName="ownerpassport" columns="50" />
+            <dataField fieldName="note" columns="10" />
+            <dataField fieldName="cntry_no" aliasFieldName="cntry_Cntry_Nm" />
+            <dataField fieldName="ownertypeid" columns="15" />
+            <dataField fieldName="Job_No" aliasFieldName="Job_Job_Nm" />
+        <dataField fieldName="bankacc" columns="50" />
+        <dataField fieldName="ownerphone2" columns="10" />
+  <dataField fieldName="bank_no" aliasFieldName="AccountName" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

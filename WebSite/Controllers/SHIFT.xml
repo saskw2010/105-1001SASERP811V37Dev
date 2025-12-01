@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="SHIFT" conflictDetection="overwriteChanges" label="Shift" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"SHIFT"."SHIFTID" "SHIFTID"
+	,"SHIFT"."NAME" "NAME"
+	,"SHIFT"."USHIFTID" "USHIFTID"
+	,"SHIFT"."STARTDATE" "STARTDATE"
+	,"SHIFT"."ENDDATE" "ENDDATE"
+	,"SHIFT"."RUNNUM" "RUNNUM"
+	,"SHIFT"."SCH1" "SCH1"
+	,"SHIFT"."SCH2" "SCH2"
+	,"SHIFT"."SCH3" "SCH3"
+	,"SHIFT"."SCH4" "SCH4"
+	,"SHIFT"."SCH5" "SCH5"
+	,"SHIFT"."SCH6" "SCH6"
+	,"SHIFT"."SCH7" "SCH7"
+	,"SHIFT"."SCH8" "SCH8"
+	,"SHIFT"."SCH9" "SCH9"
+	,"SHIFT"."SCH10" "SCH10"
+	,"SHIFT"."SCH11" "SCH11"
+	,"SHIFT"."SCH12" "SCH12"
+	,"SHIFT"."CYCLE" "CYCLE"
+	,"SHIFT"."UNITS" "UNITS"
+from "dbo"."SHIFT" "SHIFT"
+]]></text>
+    </command>
+    <command id="SHIFTIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="SHIFTID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="SHIFTID" type="Int32" allowNulls="false" isPrimaryKey="true" label="Shiftid" readOnly="true" />
+    <field name="NAME" type="String" label="Name" length="20" showInSummary="true" />
+    <field name="USHIFTID" type="Int32" default="((-1))" label="Ushiftid" showInSummary="true" />
+    <field name="STARTDATE" type="DateTime" allowNulls="false" default="('1900-1-1')" label="Startdate" showInSummary="true" />
+    <field name="ENDDATE" type="DateTime" default="('1900-12-31')" label="Enddate" showInSummary="true" />
+    <field name="RUNNUM" type="Int16" default="((0))" label="Runnum" showInSummary="true" />
+    <field name="SCH1" type="Int32" default="((0))" label="Sch1" />
+    <field name="SCH2" type="Int32" default="((0))" label="Sch2" />
+    <field name="SCH3" type="Int32" default="((0))" label="Sch3" />
+    <field name="SCH4" type="Int32" default="((0))" label="Sch4" />
+    <field name="SCH5" type="Int32" default="((0))" label="Sch5" />
+    <field name="SCH6" type="Int32" default="((0))" label="Sch6" />
+    <field name="SCH7" type="Int32" default="((0))" label="Sch7" />
+    <field name="SCH8" type="Int32" default="((0))" label="Sch8" />
+    <field name="SCH9" type="Int32" default="((0))" label="Sch9" />
+    <field name="SCH10" type="Int32" default="((0))" label="Sch10" />
+    <field name="SCH11" type="Int32" default="((0))" label="Sch11" />
+    <field name="SCH12" type="Int32" default="((0))" label="Sch12" />
+    <field name="CYCLE" type="Int16" default="((0))" label="Cycle" />
+    <field name="UNITS" type="Int16" default="((0))" label="Units" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Shift">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="STARTDATE" columns="10" />
+        <dataField fieldName="NAME" columns="20" />
+        <dataField fieldName="USHIFTID" columns="15" />
+        <dataField fieldName="ENDDATE" columns="10" />
+        <dataField fieldName="RUNNUM" columns="15" />
+        <dataField fieldName="SCH1" columns="15" />
+        <dataField fieldName="SCH2" columns="15" />
+        <dataField fieldName="SCH3" columns="15" />
+        <dataField fieldName="SCH4" columns="15" />
+        <dataField fieldName="SCH5" columns="15" />
+        <dataField fieldName="SCH6" columns="15" />
+        <dataField fieldName="SCH7" columns="15" />
+        <dataField fieldName="SCH8" columns="15" />
+        <dataField fieldName="SCH9" columns="15" />
+        <dataField fieldName="SCH10" columns="15" />
+        <dataField fieldName="SCH11" columns="15" />
+        <dataField fieldName="SCH12" columns="15" />
+        <dataField fieldName="CYCLE" columns="15" />
+        <dataField fieldName="UNITS" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Shift">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Shift" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="NAME" columns="20" />
+            <dataField fieldName="USHIFTID" columns="15" />
+            <dataField fieldName="STARTDATE" columns="10" />
+            <dataField fieldName="ENDDATE" columns="10" />
+            <dataField fieldName="RUNNUM" columns="15" />
+            <dataField fieldName="SCH1" columns="15" />
+            <dataField fieldName="SCH2" columns="15" />
+            <dataField fieldName="SCH3" columns="15" />
+            <dataField fieldName="SCH4" columns="15" />
+            <dataField fieldName="SCH5" columns="15" />
+            <dataField fieldName="SCH6" columns="15" />
+            <dataField fieldName="SCH7" columns="15" />
+            <dataField fieldName="SCH8" columns="15" />
+            <dataField fieldName="SCH9" columns="15" />
+            <dataField fieldName="SCH10" columns="15" />
+            <dataField fieldName="SCH11" columns="15" />
+            <dataField fieldName="SCH12" columns="15" />
+            <dataField fieldName="CYCLE" columns="15" />
+            <dataField fieldName="UNITS" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Shift">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Shift" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="NAME" columns="20" />
+            <dataField fieldName="USHIFTID" columns="15" />
+            <dataField fieldName="STARTDATE" columns="10" />
+            <dataField fieldName="ENDDATE" columns="10" />
+            <dataField fieldName="RUNNUM" columns="15" />
+            <dataField fieldName="SCH1" columns="15" />
+            <dataField fieldName="SCH2" columns="15" />
+            <dataField fieldName="SCH3" columns="15" />
+            <dataField fieldName="SCH4" columns="15" />
+            <dataField fieldName="SCH5" columns="15" />
+            <dataField fieldName="SCH6" columns="15" />
+            <dataField fieldName="SCH7" columns="15" />
+            <dataField fieldName="SCH8" columns="15" />
+            <dataField fieldName="SCH9" columns="15" />
+            <dataField fieldName="SCH10" columns="15" />
+            <dataField fieldName="SCH11" columns="15" />
+            <dataField fieldName="SCH12" columns="15" />
+            <dataField fieldName="CYCLE" columns="15" />
+            <dataField fieldName="UNITS" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

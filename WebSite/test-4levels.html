@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-Level Hierarchy Test with LocalStorage</title>
+    <link rel="stylesheet" href="css/sidebar-enhanced.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+        
+        .btn.success {
+            background: #22c55e;
+        }
+        
+        .btn.danger {
+            background: #ef4444;
+        }
+        
+        .btn.warning {
+            background: #f97316;
+        }
+        
+        .debug-output {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .enhanced-sidebar {
+            position: fixed;
+            top: 0;
+            right: -500px;
+            width: 450px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: -2px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .enhanced-sidebar.open {
+            right: 0;
+        }
+        
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .sidebar-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .level-indicator {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        
+        .level-1 { background: #667eea; color: white; }
+        .level-2 { background: #22c55e; color: white; }
+        .level-3 { background: #f97316; color: white; }
+        .level-4 { background: #ec4899; color: white; }
+    </style>
+</head>
+<body>
+    <!-- Enhanced PageMenuBar with 4-level hierarchy -->
+    <div id="PageMenuBar" style="display: none;">
+        <table>
+            <!-- Level 1: الموارد البشرية -->
+            <tr>
+                <td>
+                    <a href="/hr">الموارد البشرية</a>
+                    <table>
+                        <!-- Level 2: إدارة الموظفين -->
+                        <tr>
+                            <td style="padding-left: 20px;">
+                                <a href="/hr/employees">إدارة الموظفين</a>
+                                <ul>
+                                    <!-- Level 3: بيانات الموظفين -->
+                                    <li style="padding-left: 40px;">
+                                        <a href="/hr/employees/management">إدارة بيانات الموظفين</a>
+                                        <ul>
+                                            <!-- Level 4: العمليات التفصيلية -->
+                                            <li style="padding-left: 60px;"><a href="/hr/employees/management/add">إضافة موظف جديد</a></li>
+                                            <li style="padding-left: 60px;"><a href="/hr/employees/management/edit">تعديل بيانات الموظف</a></li>
+                                            <li style="padding-left: 60px;"><a href="/hr/employees/management/delete">حذف موظف</a></li>
+                                            <li style="padding-left: 60px;"><a href="/hr/employees/management/transfer">نقل موظف</a></li>
+                                        </ul>
+                                    </li>
+                                    <li style="padding-left: 40px;">
+                                        <a href="/hr/employees/reports">تقارير الموظفين</a>
+                                        <ul>
+                                            <li style="padding-left: 60px;"><a href="/hr/employees/reports/attendance">تقرير الحضور والغياب</a></li>
+                                            <li style="padding-left: 60px;"><a href="/hr/employees/reports/performance">تقرير تقييم الأداء</a></li>
+                                            <li style="padding-left: 60px;"><a href="/hr/employees/reports/leaves">تقرير الإجازات</a></li>
+                                        </ul>
+                                    </li>
+                                    <li style="padding-left: 40px;"><a href="/hr/employees/list">قائمة الموظفين</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- Level 2: إدارة الرواتب -->
+                        <tr>
+                            <td style="padding-left: 20px;">
+                                <a href="/hr/payroll">إدارة الرواتب</a>
+                                <ul>
+                                    <li style="padding-left: 40px;">
+                                        <a href="/hr/payroll/calculation">حساب الرواتب</a>
+                                        <ul>
+                                            <li style="padding-left: 60px;"><a href="/hr/payroll/calculation/monthly">الراتب الشهري</a></li>
+                                            <li style="padding-left: 60px;"><a href="/hr/payroll/calculation/overtime">بدل الساعات الإضافية</a></li>
+                                            <li style="padding-left: 60px;"><a href="/hr/payroll/calculation/deductions">الخصومات والاستقطاعات</a></li>
+                                            <li style="padding-left: 60px;"><a href="/hr/payroll/calculation/bonuses">المكافآت والحوافز</a></li>
+                                        </ul>
+                                    </li>
+                                    <li style="padding-left: 40px;"><a href="/hr/payroll/history">تاريخ الرواتب</a></li>
+                                    <li style="padding-left: 40px;"><a href="/hr/payroll/slips">قسائم الراتب</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <!-- Level 1: الإدارة المالية -->
+            <tr>
+                <td>
+                    <a href="/finance">الإدارة المالية</a>
+                    <table>
+                        <tr>
+                            <td style="padding-left: 20px;">
+                                <a href="/finance/accounts">إدارة الحسابات</a>
+                                <ul>
+                                    <li style="padding-left: 40px;">
+                                        <a href="/finance/accounts/receivable">الذمم المدينة</a>
+                                        <ul>
+                                            <li style="padding-left: 60px;"><a href="/finance/accounts/receivable/customers">حسابات العملاء</a></li>
+                                            <li style="padding-left: 60px;"><a href="/finance/accounts/receivable/invoices">الفواتير المستحقة</a></li>
+                                            <li style="padding-left: 60px;"><a href="/finance/accounts/receivable/collections">تحصيل الديون</a></li>
+                                        </ul>
+                                    </li>
+                                    <li style="padding-left: 40px;">
+                                        <a href="/finance/accounts/payable">الذمم الدائنة</a>
+                                        <ul>
+                                            <li style="padding-left: 60px;"><a href="/finance/accounts/payable/suppliers">حسابات الموردين</a></li>
+                                            <li style="padding-left: 60px;"><a href="/finance/accounts/payable/bills">الفواتير المستحقة الدفع</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;"><a href="/finance/reports">التقارير المالية</a></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <!-- Level 1: إدارة المخزون -->
+            <tr>
+                <td>
+                    <a href="/inventory">إدارة المخزون</a>
+                    <table>
+                        <tr>
+                            <td style="padding-left: 20px;">
+                                <a href="/inventory/items">إدارة الأصناف</a>
+                                <ul>
+                                    <li style="padding-left: 40px;">
+                                        <a href="/inventory/items/categories">تصنيف الأصناف</a>
+                                        <ul>
+                                            <li style="padding-left: 60px;"><a href="/inventory/items/categories/electronics">الإلكترونيات</a></li>
+                                            <li style="padding-left: 60px;"><a href="/inventory/items/categories/furniture">الأثاث والمعدات</a></li>
+                                            <li style="padding-left: 60px;"><a href="/inventory/items/categories/supplies">المستلزمات المكتبية</a></li>
+                                        </ul>
+                                    </li>
+                                    <li style="padding-left: 40px;"><a href="/inventory/items/management">إدارة المخزون</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <!-- Level 1: إدارة المبيعات -->
+            <tr>
+                <td><a href="/sales">إدارة المبيعات</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Enhanced Sidebar -->
+    <div class="enhanced-sidebar" id="enhanced-sidebar">
+        <div style="padding: 20px; border-bottom: 1px solid #e5e7eb;">
+            <h3 style="margin: 0; color: #374151; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fas fa-sitemap" style="color: #667eea;"></i>
+                القائمة الهرمية 4 مستويات
+            </h3>
+        </div>
+        <div id="sidebar-menu-list">
+            <p style="padding: 1rem; color: #6b7280; text-align: center;">جاري التحميل...</p>
+        </div>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <div class="test-container">
+        <h1 style="color: #1f2937; margin-bottom: 0.5rem;">
+            <i class="fas fa-layer-group"></i> اختبار التسلسل الهرمي 4 مستويات
+        </h1>
+        <p style="color: #6b7280; margin-bottom: 2rem;">
+            اختبار استخراج وحفظ بيانات القائمة في LocalStorage بدون start node
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+            <button class="btn" onclick="testExtraction()">
+                <i class="fas fa-download"></i> استخراج البيانات
+            </button>
+            
+            <button class="btn success" onclick="saveToStorage()">
+                <i class="fas fa-save"></i> حفظ في LocalStorage
+            </button>
+            
+            <button class="btn warning" onclick="loadFromStorage()">
+                <i class="fas fa-upload"></i> تحميل من LocalStorage
+            </button>
+            
+            <button class="btn danger" onclick="clearStorage()">
+                <i class="fas fa-trash"></i> مسح LocalStorage
+            </button>
+            
+            <button class="btn" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i> عرض القائمة
+            </button>
+            
+            <button class="btn" onclick="analyzeStructure()">
+                <i class="fas fa-chart-bar"></i> تحليل الهيكل
+            </button>
+        </div>
+        
+        <div id="output" class="debug-output">
+            <strong>نتائج الاختبار:</strong><br>
+            جاهز لاختبار التسلسل الهرمي 4 مستويات مع LocalStorage...
+        </div>
+    </div>
+
+    <!-- Load the enhanced sidebar script -->
+    <script src="js/test-sidebar.js"></script>
+    
+    <script>
+        function log(message) {
+            var output = document.getElementById('output');
+            var time = new Date().toLocaleTimeString();
+            output.innerHTML += '<br>[' + time + '] ' + message;
+            output.scrollTop = output.scrollHeight;
+            console.log(message);
+        }
+        
+        function testExtraction() {
+            log("🔍 بدء استخراج البيانات من PageMenuBar...");
+            
+            if (window.extractMenuFromPageMenuBar) {
+                try {
+                    var result = window.extractMenuFromPageMenuBar();
+                    if (result && result.length > 0) {
+                        log("✅ تم استخراج " + result.length + " عنصر رئيسي");
+                        
+                        // Display hierarchy
+                        displayHierarchy(result);
+                        
+                    } else {
+                        log("❌ لم يتم استخراج أي بيانات");
+                    }
+                } catch (error) {
+                    log("❌ خطأ في الاستخراج: " + error.message);
+                }
+            } else {
+                log("❌ دالة الاستخراج غير متاحة");
+            }
+        }
+        
+        function displayHierarchy(data) {
+            log("📊 عرض الهيكل الهرمي:");
+            
+            function logRecursive(items, level, prefix) {
+                if (!items) return;
+                
+                items.forEach(function(item, index) {
+                    var levelClass = "level-" + level;
+                    var levelText = "L" + level;
+                    var message = prefix + levelText + " " + item.title;
+                    
+                    if (item.children && item.children.length > 0) {
+                        message += " (" + item.children.length + " فروع)";
+                    }
+                    
+                    log(message);
+                    
+                    if (item.children && item.children.length > 0) {
+                        logRecursive(item.children, level + 1, prefix + "  ");
+                    }
+                });
+            }
+            
+            logRecursive(data, 1, "");
+        }
+        
+        function saveToStorage() {
+            log("💾 حفظ البيانات في LocalStorage...");
+            
+            if (window.saveMenuToLocalStorage) {
+                try {
+                    var data = window.EnhancedModernSidebar ? window.EnhancedModernSidebar.getData() : null;
+                    if (data && data.length > 0) {
+                        window.saveMenuToLocalStorage(data);
+                        log("✅ تم حفظ " + data.length + " عنصر في LocalStorage");
+                        showStorageInfo();
+                    } else {
+                        log("❌ لا توجد بيانات للحفظ - قم بالاستخراج أولاً");
+                    }
+                } catch (error) {
+                    log("❌ خطأ في الحفظ: " + error.message);
+                }
+            } else {
+                log("❌ دالة الحفظ غير متاحة");
+            }
+        }
+        
+        function loadFromStorage() {
+            log("📥 تحميل البيانات من LocalStorage...");
+            
+            if (window.loadMenuFromLocalStorage) {
+                try {
+                    var data = window.loadMenuFromLocalStorage();
+                    if (data && data.length > 0) {
+                        log("✅ تم تحميل " + data.length + " عنصر من LocalStorage");
+                        displayHierarchy(data);
+                        showStorageInfo();
+                    } else {
+                        log("❌ لا توجد بيانات محفوظة في LocalStorage");
+                    }
+                } catch (error) {
+                    log("❌ خطأ في التحميل: " + error.message);
+                }
+            } else {
+                log("❌ دالة التحميل غير متاحة");
+            }
+        }
+        
+        function clearStorage() {
+            log("🗑️ مسح البيانات من LocalStorage...");
+            
+            if (window.clearMenuFromLocalStorage) {
+                try {
+                    window.clearMenuFromLocalStorage();
+                    log("✅ تم مسح جميع البيانات من LocalStorage");
+                } catch (error) {
+                    log("❌ خطأ في المسح: " + error.message);
+                }
+            } else {
+                log("❌ دالة المسح غير متاحة");
+            }
+        }
+        
+        function toggleSidebar() {
+            var sidebar = document.getElementById('enhanced-sidebar');
+            var overlay = document.getElementById('sidebar-overlay');
+            
+            if (sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('visible');
+                log("📱 تم إغلاق القائمة الجانبية");
+            } else {
+                sidebar.classList.add('open');
+                overlay.classList.add('visible');
+                log("📱 تم فتح القائمة الجانبية");
+            }
+        }
+        
+        function analyzeStructure() {
+            log("📊 تحليل بنية البيانات...");
+            
+            if (window.analyzeMenuStructure && window.EnhancedModernSidebar) {
+                try {
+                    var data = window.EnhancedModernSidebar.getData();
+                    if (data && data.length > 0) {
+                        var analysis = window.analyzeMenuStructure(data);
+                        log("📈 نتائج التحليل:");
+                        log("  • المستوى 1: " + analysis.level1 + " عنصر");
+                        log("  • المستوى 2: " + analysis.level2 + " عنصر");
+                        log("  • المستوى 3: " + analysis.level3 + " عنصر");
+                        log("  • المستوى 4: " + analysis.level4 + " عنصر");
+                        log("  • المجموع الكلي: " + analysis.total + " عنصر");
+                        log("  • أقصى عمق: " + analysis.maxDepth + " مستوى");
+                    } else {
+                        log("❌ لا توجد بيانات للتحليل");
+                    }
+                } catch (error) {
+                    log("❌ خطأ في التحليل: " + error.message);
+                }
+            } else {
+                log("❌ دالة التحليل غير متاحة");
+            }
+        }
+        
+        function showStorageInfo() {
+            try {
+                var savedData = localStorage.getItem('extractedMenuData');
+                if (savedData) {
+                    var parsed = JSON.parse(savedData);
+                    log("ℹ️ معلومات LocalStorage:");
+                    log("  • وقت الحفظ: " + new Date(parsed.timestamp).toLocaleString());
+                    log("  • الإصدار: " + parsed.version);
+                    log("  • عدد العناصر: " + parsed.totalItems);
+                }
+            } catch (error) {
+                log("❌ خطأ في قراءة معلومات LocalStorage: " + error.message);
+            }
+        }
+        
+        // Auto-test on load
+        window.addEventListener('load', function() {
+            log("🚀 تم تحميل صفحة اختبار التسلسل الهرمي 4 مستويات");
+            
+            // Check functions availability
+            setTimeout(function() {
+                log("🔍 فحص توفر الدوال:");
+                log("  • استخراج البيانات: " + (typeof window.extractMenuFromPageMenuBar !== 'undefined' ? "✅" : "❌"));
+                log("  • حفظ LocalStorage: " + (typeof window.saveMenuToLocalStorage !== 'undefined' ? "✅" : "❌"));
+                log("  • تحميل LocalStorage: " + (typeof window.loadMenuFromLocalStorage !== 'undefined' ? "✅" : "❌"));
+                log("  • مسح LocalStorage: " + (typeof window.clearMenuFromLocalStorage !== 'undefined' ? "✅" : "❌"));
+                log("  • تحليل البيانات: " + (typeof window.analyzeMenuStructure !== 'undefined' ? "✅" : "❌"));
+                
+                // Check if there's saved data
+                var savedData = localStorage.getItem('extractedMenuData');
+                if (savedData) {
+                    log("💾 تم العثور على بيانات محفوظة في LocalStorage");
+                    showStorageInfo();
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

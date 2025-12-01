@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="HealthBudget" conflictDetection="overwriteChanges" label="Health Budget" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"HealthBudget"."Budget_id" "Budget_id"
+	,"HealthBudget"."sgm" "sgm"
+	,"sgm"."sgm_Nm" "sgmsgm_Nm"
+	,"sgmOpco"."OpcoName" "sgmOpcoOpcoName"
+	,"HealthBudget"."Branch" "Branch"
+	,"Branch"."Desc1" "BranchDesc1"
+	,"Branchsgm"."sgm_Nm" "Branchsgmsgm_Nm"
+	,"BranchsgmOpco"."OpcoName" "BranchsgmOpcoOpcoName"
+	,"BranchGender"."Gender" "BranchGenderGender"
+	,"Branchstage"."ShortDesc1" "BranchstageShortDesc1"
+	,"Branchschtyp"."schtypDesc" "BranchschtypschtypDesc"
+	,"HealthBudget"."Demp_No" "Demp_No"
+	,"Demp_"."Depm_Nm" "Demp_Depm_Nm"
+	,"HealthBudget"."loc_No" "loc_No"
+	,"loc_"."Loc_Nm" "loc_Loc_Nm"
+	,"HealthBudget"."ReqNurse" "ReqNurse"
+	,"HealthBudget"."Reqm.a.g" "Reqmag"
+	,"HealthBudget"."ReqAssistant. Nurse" "ReqAssistantNurse"
+	,"HealthBudget"."ReqAssistant. A nurse" "ReqAssistantAnurse"
+	,"HealthBudget"."ReqA.nurse" "ReqAnurse"
+	,"HealthBudget"."ReqResponsible-F" "ReqResponsibleF"
+	,"HealthBudget"."ReqResponsible-M" "ReqResponsibleM"
+	,"HealthBudget"."ReqGuided technical" "ReqGuidedtechnical"
+	,"HealthBudget"."ReqTechnician prompt" "ReqTechnicianprompt"
+	,"HealthBudget"."ReqFemale education" "ReqFemaleeducation"
+	,"HealthBudget"."ReqEducation Male" "ReqEducationMale"
+	,"HealthBudget"."ReqAssist President" "ReqAssistPresident"
+	,"HealthBudget"."ReqAssistant President" "ReqAssistantPresident"
+	,"HealthBudget"."ReqHead Nurse" "ReqHeadNurse"
+	,"HealthBudget"."Reqother1" "Reqother1"
+	,"HealthBudget"."Reqother2" "Reqother2"
+	,"HealthBudget"."Reqother11" "Reqother11"
+	,"HealthBudget"."Reqother21" "Reqother21"
+	,"HealthBudget"."beds" "beds"
+	,"HealthBudget"."percent" "percent"
+	,"HealthBudget"."require" "require"
+from "dbo"."HealthBudget" "HealthBudget"
+	left join "dbo"."glmulcmp" "sgm" on "HealthBudget"."sgm" = "sgm"."sgmid"
+	left join "dbo"."OpCo" "sgmOpco" on "sgm"."OpcoID" = "sgmOpco"."OpcoIDidentity"
+	left join "dbo"."schBranch" "Branch" on "HealthBudget"."Branch" = "Branch"."branch"
+	left join "dbo"."glmulcmp" "Branchsgm" on "Branch"."sgm" = "Branchsgm"."sgmid"
+	left join "dbo"."OpCo" "BranchsgmOpco" on "Branchsgm"."OpcoID" = "BranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "BranchGender" on "Branch"."Genderid" = "BranchGender"."Genderid"
+	left join "dbo"."schStage" "Branchstage" on "Branch"."stagecode" = "Branchstage"."Code"
+	left join "dbo"."schtyp" "Branchschtyp" on "Branch"."schtypid" = "Branchschtyp"."schtypid"
+	left join "dbo"."Pydepm" "Demp_" on "HealthBudget"."Demp_No" = "Demp_"."Depm_No"
+	left join "dbo"."PyLocation" "loc_" on "HealthBudget"."loc_No" = "loc_"."loc_No"
+]]></text>
+    </command>
+    <command id="Budget_idIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Budget_id" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Budget_id" type="Int64" allowNulls="false" isPrimaryKey="true" label="Budget#" readOnly="true" />
+    <field name="sgm" type="Int64" label="Sgm" showInSummary="true">
+      <items style="DropDownList" dataController="glmulcmp" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sgmsgm_Nm" type="String" readOnly="true" label="sgmsgm Nm" length="255" />
+    <field name="sgmOpcoOpcoName" type="String" readOnly="true" label="sgm Opco Name" length="50" />
+    <field name="Branch" type="Int64" label="Branch" showInSummary="true">
+      <items style="Lookup" dataController="schBranch" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="BranchDesc1" type="String" readOnly="true" label="Branch Desc1" length="50" />
+    <field name="Branchsgmsgm_Nm" type="String" readOnly="true" label="Branchsgmsgm Nm" length="255" />
+    <field name="BranchsgmOpcoOpcoName" type="String" readOnly="true" label="Branchsgm Opco Name" length="50" />
+    <field name="BranchGenderGender" type="String" readOnly="true" label="Branch Gender" length="100" />
+    <field name="BranchstageShortDesc1" type="String" readOnly="true" label="Branchstage Short Desc1" length="50" />
+    <field name="BranchschtypschtypDesc" type="String" readOnly="true" label="Branchschtypschtyp Desc" length="150" />
+    <field name="Demp_No" type="Int64" label="Demp No" showInSummary="true">
+      <items style="Lookup" dataController="Pydepm" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Demp_Depm_Nm" type="String" readOnly="true" label="Demp Depm Nm" length="255" />
+    <field name="loc_No" type="Int64" label="loc No" showInSummary="true">
+      <items style="Lookup" dataController="PyLocation" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="loc_Loc_Nm" type="String" readOnly="true" label="loc Loc Nm" length="50" />
+    <field name="ReqNurse" type="Int32" label="Req Nurse" showInSummary="true" />
+    <field name="Reqmag" type="Int32" label="Reqm a g" />
+    <field name="ReqAssistantNurse" type="Int32" label="Req Assistant Nurse" />
+    <field name="ReqAssistantAnurse" type="Int32" label="Req Assistant Anurse" />
+    <field name="ReqAnurse" type="Int32" label="Req A nurse" />
+    <field name="ReqResponsibleF" type="Int32" label="Req Responsible F" />
+    <field name="ReqResponsibleM" type="Int32" label="Req Responsible M" />
+    <field name="ReqGuidedtechnical" type="Int32" label="Req Guidedtechnical" />
+    <field name="ReqTechnicianprompt" type="Int32" label="Req Technicianprompt" />
+    <field name="ReqFemaleeducation" type="Int32" label="Req Femaleeducation" />
+    <field name="ReqEducationMale" type="Int32" label="Req Education Male" />
+    <field name="ReqAssistPresident" type="Int32" label="Req Assist President" />
+    <field name="ReqAssistantPresident" type="Int32" label="Req Assistant President" />
+    <field name="ReqHeadNurse" type="Int32" label="Req Head Nurse" />
+    <field name="Reqother1" type="Int32" label="Reqother1" />
+    <field name="Reqother2" type="Int32" label="Reqother2" />
+    <field name="Reqother11" type="Int32" label="Reqother11" />
+    <field name="Reqother21" type="Int32" label="Reqother21" />
+    <field name="beds" type="Int32" label="Beds" />
+    <field name="percent" type="String" label="Percent" length="50" />
+    <field name="require" type="Decimal" label="Require" />
+  </fields>
+  <views>
+    <view id="grid1" type="DataSheet" commandId="command1" label="Health Budget">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" />
+        <dataField fieldName="Branch" aliasFieldName="BranchDesc1" />
+        <dataField fieldName="Demp_No" aliasFieldName="Demp_Depm_Nm" />
+        <dataField fieldName="loc_No" aliasFieldName="loc_Loc_Nm" />
+        <dataField fieldName="Reqother1" columns="15" />
+        <dataField fieldName="ReqNurse" columns="15" />
+        <dataField fieldName="ReqAnurse" columns="15" />
+        <dataField fieldName="Reqmag" columns="15" />
+        <dataField fieldName="ReqAssistantNurse" columns="15" />
+        <dataField fieldName="ReqAssistantAnurse" columns="15" />
+        <dataField fieldName="ReqResponsibleF" columns="15" />
+        <dataField fieldName="ReqResponsibleM" columns="15" />
+        <dataField fieldName="ReqGuidedtechnical" columns="15" />
+        <dataField fieldName="ReqTechnicianprompt" columns="15" />
+        <dataField fieldName="ReqFemaleeducation" columns="15" />
+        <dataField fieldName="ReqEducationMale" columns="15" />
+        <dataField fieldName="ReqAssistPresident" columns="15" />
+        <dataField fieldName="ReqAssistantPresident" columns="15" />
+        <dataField fieldName="ReqHeadNurse" columns="15" />
+        <dataField fieldName="Reqother2" columns="15" />
+        <dataField fieldName="Reqother21" columns="15" />
+        <dataField fieldName="beds" columns="15" />
+        <dataField fieldName="percent" columns="50" />
+        <dataField fieldName="require" columns="15" />
+        <dataField fieldName="sgmOpcoOpcoName" columns="50" hidden="true" />
+        <dataField fieldName="sgmsgm_Nm" rows="5" hidden="true" />
+        <dataField fieldName="BranchDesc1" columns="50" hidden="true" />
+        <dataField fieldName="Demp_Depm_Nm" rows="5" hidden="true" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Health Budget">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Health Budget" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" hyperlinkFormatString="~/Pages/glmulcmp.aspx?sgmid={sgm}&amp;_controller=glmulcmp&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Branch" aliasFieldName="BranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={Branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Demp_No" aliasFieldName="Demp_Depm_Nm" hyperlinkFormatString="~/Pages/Pydepm.aspx?Depm_No={Demp_No}&amp;_controller=Pydepm&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="loc_No" aliasFieldName="loc_Loc_Nm" hyperlinkFormatString="~/Pages/PyLocation.aspx?loc_No={loc_No}&amp;_controller=PyLocation&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ReqNurse" columns="15" />
+            <dataField fieldName="Reqmag" columns="15" />
+            <dataField fieldName="ReqAssistantNurse" columns="15" />
+            <dataField fieldName="ReqAssistantAnurse" columns="15" />
+            <dataField fieldName="ReqAnurse" columns="15" />
+            <dataField fieldName="ReqResponsibleF" columns="15" />
+            <dataField fieldName="ReqResponsibleM" columns="15" />
+            <dataField fieldName="ReqGuidedtechnical" columns="15" />
+            <dataField fieldName="ReqTechnicianprompt" columns="15" />
+            <dataField fieldName="ReqFemaleeducation" columns="15" />
+            <dataField fieldName="ReqEducationMale" columns="15" />
+            <dataField fieldName="ReqAssistPresident" columns="15" />
+            <dataField fieldName="ReqAssistantPresident" columns="15" />
+            <dataField fieldName="ReqHeadNurse" columns="15" />
+            <dataField fieldName="Reqother1" columns="15" />
+            <dataField fieldName="Reqother2" columns="15" />
+            <dataField fieldName="Reqother11" columns="15" />
+            <dataField fieldName="Reqother21" columns="15" />
+            <dataField fieldName="beds" columns="15" />
+            <dataField fieldName="percent" columns="50" />
+            <dataField fieldName="require" columns="15" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="Branchsgmsgm_Nm" />
+            <dataField fieldName="BranchsgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="BranchGenderGender" />
+            <dataField fieldName="BranchstageShortDesc1" columns="50" />
+            <dataField fieldName="BranchschtypschtypDesc" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Health Budget">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Health Budget" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" />
+            <dataField fieldName="Branch" aliasFieldName="BranchDesc1" />
+            <dataField fieldName="Demp_No" aliasFieldName="Demp_Depm_Nm" />
+            <dataField fieldName="loc_No" aliasFieldName="loc_Loc_Nm" />
+            <dataField fieldName="ReqNurse" columns="15" />
+            <dataField fieldName="Reqmag" columns="15" />
+            <dataField fieldName="ReqAssistantNurse" columns="15" />
+            <dataField fieldName="ReqAssistantAnurse" columns="15" />
+            <dataField fieldName="ReqAnurse" columns="15" />
+            <dataField fieldName="ReqResponsibleF" columns="15" />
+            <dataField fieldName="ReqResponsibleM" columns="15" />
+            <dataField fieldName="ReqGuidedtechnical" columns="15" />
+            <dataField fieldName="ReqTechnicianprompt" columns="15" />
+            <dataField fieldName="ReqFemaleeducation" columns="15" />
+            <dataField fieldName="ReqEducationMale" columns="15" />
+            <dataField fieldName="ReqAssistPresident" columns="15" />
+            <dataField fieldName="ReqAssistantPresident" columns="15" />
+            <dataField fieldName="ReqHeadNurse" columns="15" />
+            <dataField fieldName="Reqother1" columns="15" />
+            <dataField fieldName="Reqother2" columns="15" />
+            <dataField fieldName="Reqother11" columns="15" />
+            <dataField fieldName="Reqother21" columns="15" />
+            <dataField fieldName="beds" columns="15" />
+            <dataField fieldName="percent" columns="50" />
+            <dataField fieldName="require" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

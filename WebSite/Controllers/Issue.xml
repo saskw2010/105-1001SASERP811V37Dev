@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Issue" conflictDetection="overwriteChanges" label="Issue" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Issue"."iss_id" "iss_id"
+	,"Issue"."cat_id" "cat_id"
+	,"cat_"."cat_name" "cat_cat_name"
+	,"Issue"."priority_code" "priority_code"
+	,"priority_"."ModifiedBy" "priority_ModifiedBy"
+	,"Issue"."assign_id" "assign_id"
+	,"Issue"."iss_creatorname" "iss_creatorname"
+	,"Issue"."iss_label" "iss_label"
+	,"Issue"."iss_desc" "iss_desc"
+	,"Issue"."iss_datecreated" "iss_datecreated"
+	,"Issue"."iss_dateresolved" "iss_dateresolved"
+	,"Issue"."status_code" "status_code"
+	,"status_"."status_name" "status_status_name"
+	,"Issue"."iss_days" "iss_days"
+	,"Issue"."iss_hours" "iss_hours"
+	,"Issue"."req_id" "req_id"
+	,"req_"."req_details" "req_req_details"
+	,"req_Deduc_"."Deduc_Nm" "req_Deduc_Deduc_Nm"
+	,"req_emp_"."Emp_NOt" "req_emp_Emp_NOt"
+	,"req_emp_sgm"."sgm_Nm" "req_emp_sgmsgm_Nm"
+	,"req_emp_salrycat"."grade_desc_a" "req_emp_salrycatgrade_desc_a"
+	,"req_emp_Blood_Type"."ModifiedBy" "req_emp_Blood_TypeModifiedBy"
+	,"req_emp_Bnk_"."Bnk_Acc" "req_emp_Bnk_Bnk_Acc"
+	,"req_emp_Sub_Bnk"."Bnk_Acc" "req_emp_Sub_BnkBnk_Acc"
+	,"req_emp_Cntry_"."Cntry_Nm" "req_emp_Cntry_Cntry_Nm"
+	,"req_emp_Depm_"."Depm_Nm" "req_emp_Depm_Depm_Nm"
+	,"req_emp_Educt_Type"."Educt_Nm" "req_emp_Educt_TypeEduct_Nm"
+	,"req_emp_Job_Stu"."Emp_Stunm" "req_emp_Job_StuEmp_Stunm"
+	,"req_emp_Earning_"."Earning_Nm" "req_emp_Earning_Earning_Nm"
+	,"req_emp_Job_"."Job_Nm" "req_emp_Job_Job_Nm"
+	,"req_emp_Ownr_"."Ownr_ID" "req_emp_Ownr_Ownr_ID"
+	,"req_emp_Reljan"."Reljan_nm" "req_emp_ReljanReljan_nm"
+	,"req_emp_Status_Type"."Status_Nm" "req_emp_Status_TypeStatus_Nm"
+	,"req_emp_branch"."Desc1" "req_emp_branchDesc1"
+	,"req_reqcat_"."reqcat_name" "req_reqcat_reqcat_name"
+	,"req_reqcat_Req_type"."req_Type" "req_reqcat_Req_typereq_Type"
+	,"Issue"."ModifiedBy" "ModifiedBy"
+	,"Issue"."ModifiedOn" "ModifiedOn"
+	,"Issue"."CreatedBy" "CreatedBy"
+	,"Issue"."CreatedOn" "CreatedOn"
+from "dbo"."Issue" "Issue"
+	left join "dbo"."category" "cat_" on "Issue"."cat_id" = "cat_"."cat_id"
+	left join "dbo"."priority" "priority_" on "Issue"."priority_code" = "priority_"."priority_code"
+	left join "dbo"."status" "status_" on "Issue"."status_code" = "status_"."status_code"
+	left join "dbo"."Request" "req_" on "Issue"."req_id" = "req_"."reqID"
+	left join "dbo"."Pydedctyp" "req_Deduc_" on "req_"."Deduc_No" = "req_Deduc_"."Deduc_No"
+	left join "dbo"."Pyempmfs" "req_emp_" on "req_"."emp_no" = "req_emp_"."Emp_No"
+	left join "dbo"."glmulcmp" "req_emp_sgm" on "req_emp_"."sgm" = "req_emp_sgm"."sgmid"
+	left join "dbo"."grade" "req_emp_salrycat" on "req_emp_"."salrycat" = "req_emp_salrycat"."grade_code"
+	left join "dbo"."pyBlood" "req_emp_Blood_Type" on "req_emp_"."Blood_Type" = "req_emp_Blood_Type"."Blood_Type"
+	left join "dbo"."PybnkAcc" "req_emp_Bnk_" on "req_emp_"."Bnk_No" = "req_emp_Bnk_"."Bnk_No"
+	left join "dbo"."PybnkAcc" "req_emp_Sub_Bnk" on "req_emp_"."Sub_Bnk" = "req_emp_Sub_Bnk"."Bnk_No"
+	left join "dbo"."PYCntry" "req_emp_Cntry_" on "req_emp_"."Cntry_No" = "req_emp_Cntry_"."Cntry_No"
+	left join "dbo"."Pydepm" "req_emp_Depm_" on "req_emp_"."Depm_No" = "req_emp_Depm_"."Depm_No"
+	left join "dbo"."PyempEdu" "req_emp_Educt_Type" on "req_emp_"."Educt_Type" = "req_emp_Educt_Type"."Educt_Type"
+	left join "dbo"."Pyempstu" "req_emp_Job_Stu" on "req_emp_"."Job_Stu" = "req_emp_Job_Stu"."Emp_stu"
+	left join "dbo"."Pyerntsalyp1" "req_emp_Earning_" on "req_emp_"."Earning_no" = "req_emp_Earning_"."Earning_No"
+	left join "dbo"."Pyjobs" "req_emp_Job_" on "req_emp_"."Job_No" = "req_emp_Job_"."Job_No"
+	left join "dbo"."Pyownrmf" "req_emp_Ownr_" on "req_emp_"."Ownr_No" = "req_emp_Ownr_"."Ownr_No"
+	left join "dbo"."PyReljan" "req_emp_Reljan" on "req_emp_"."Reljan" = "req_emp_Reljan"."reljan"
+	left join "dbo"."PyStatus" "req_emp_Status_Type" on "req_emp_"."Status_Type" = "req_emp_Status_Type"."Status_Type"
+	left join "dbo"."schBranch" "req_emp_branch" on "req_emp_"."branch" = "req_emp_branch"."branch"
+	left join "dbo"."RequestCategories" "req_reqcat_" on "req_"."reqcat_id" = "req_reqcat_"."reqcat_id"
+	left join "dbo"."RequestTypes" "req_reqcat_Req_type" on "req_reqcat_"."Req_typeid" = "req_reqcat_Req_type"."req_Typeid"
+]]></text>
+    </command>
+    <command id="iss_idIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="iss_id" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="iss_id" type="Int64" allowNulls="false" isPrimaryKey="true" label="Iss#" readOnly="true" />
+    <field name="cat_id" type="Int64" allowNulls="false" label="Cat#" showInSummary="true">
+      <items style="Lookup" dataController="category" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="cat_cat_name" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Cat Name" length="-1" />
+    <field name="priority_code" type="String" allowNulls="false" label="Priority Code" length="20" showInSummary="true">
+      <items style="Lookup" dataController="priority" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="priority_ModifiedBy" type="String" readOnly="true" label="priority Modified By" length="50" />
+    <field name="assign_id" type="String" allowNulls="false" label="Assign#" length="20" showInSummary="true" />
+    <field name="iss_creatorname" type="String" allowNulls="false" label="Iss Creatorname" length="50" showInSummary="true" />
+    <field name="iss_label" type="String" allowNulls="false" label="Iss Label" length="128" showInSummary="true" />
+    <field name="iss_desc" type="String" allowQBE="false" allowSorting="false" label="Iss Desc" length="-1" />
+    <field name="iss_datecreated" type="DateTime" allowNulls="false" label="Iss Datecreated" />
+    <field name="iss_dateresolved" type="DateTime" label="Iss Dateresolved" />
+    <field name="status_code" type="Int64" allowNulls="false" default="((1))" label="Status Code">
+      <items style="Lookup" dataController="status" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="status_status_name" type="String" readOnly="true" label="Status Name" length="100" />
+    <field name="iss_days" type="Int32" label="Iss Days" />
+    <field name="iss_hours" type="Int32" label="Iss Hours" />
+    <field name="req_id" type="Int64" label="Req#">
+      <items style="Lookup" dataController="Request" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="req_req_details" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Req Details" length="-1" />
+    <field name="req_Deduc_Deduc_Nm" type="String" readOnly="true" label="req Deduc Nm" length="100" />
+    <field name="req_emp_Emp_NOt" type="String" readOnly="true" label="req emp Emp N Ot" length="50" />
+    <field name="req_emp_sgmsgm_Nm" type="String" readOnly="true" label="req emp sgmsgm Nm" length="255" />
+    <field name="req_emp_salrycatgrade_desc_a" type="String" readOnly="true" label="Req Emp Salrycatgrade Desc A" length="20" />
+    <field name="req_emp_Blood_TypeModifiedBy" type="String" readOnly="true" label="req emp Blood Type Modified By" length="50" />
+    <field name="req_emp_Bnk_Bnk_Acc" type="String" readOnly="true" label="req emp Bnk Acc" length="20" />
+    <field name="req_emp_Sub_BnkBnk_Acc" type="String" readOnly="true" label="req emp Sub Bnk Acc" length="20" />
+    <field name="req_emp_Cntry_Cntry_Nm" type="String" readOnly="true" label="req emp Cntry Nm" length="255" />
+    <field name="req_emp_Depm_Depm_Nm" type="String" readOnly="true" label="req emp Depm Nm" length="255" />
+    <field name="req_emp_Educt_TypeEduct_Nm" type="String" readOnly="true" label="req emp Educt Type Educt Nm" length="15" />
+    <field name="req_emp_Job_StuEmp_Stunm" type="String" readOnly="true" label="req emp Job Stu Emp Stunm" length="255" />
+    <field name="req_emp_Earning_Earning_Nm" type="String" readOnly="true" label="req emp Earning Nm" length="255" />
+    <field name="req_emp_Job_Job_Nm" type="String" readOnly="true" label="req emp Job Nm" length="255" />
+    <field name="req_emp_Ownr_Ownr_ID" type="String" readOnly="true" label="req emp Ownr#" length="15" />
+    <field name="req_emp_ReljanReljan_nm" type="String" readOnly="true" label="req emp Reljan nm" length="50" />
+    <field name="req_emp_Status_TypeStatus_Nm" type="String" readOnly="true" label="req emp Status Type Status Nm" length="255" />
+    <field name="req_emp_branchDesc1" type="String" readOnly="true" label="req emp branch Desc1" length="50" />
+    <field name="req_reqcat_reqcat_name" type="String" readOnly="true" label="Req Reqcat Name" length="100" />
+    <field name="req_reqcat_Req_typereq_Type" type="String" readOnly="true" label="req reqcat Req typereq Type" length="100" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Issue">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="cat_id" aliasFieldName="cat_cat_name" />
+        <dataField fieldName="priority_code" aliasFieldName="priority_ModifiedBy" hyperlinkFormatString="~/Pages/priority.aspx?priority_code={priority_code}&amp;_controller=priority&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="assign_id" columns="20" />
+        <dataField fieldName="iss_creatorname" columns="50" />
+        <dataField fieldName="iss_label" />
+        <dataField fieldName="iss_desc" rows="5" />
+        <dataField fieldName="iss_datecreated" columns="10" />
+        <dataField fieldName="iss_dateresolved" columns="10" />
+        <dataField fieldName="status_code" aliasFieldName="status_status_name" hyperlinkFormatString="~/Pages/status.aspx?status_code={status_code}&amp;_controller=status&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="iss_days" columns="15" />
+        <dataField fieldName="iss_hours" columns="15" />
+        <dataField fieldName="req_id" aliasFieldName="req_req_details" hyperlinkFormatString="~/Pages/Request.aspx?reqID={req_id}&amp;_controller=Request&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="req_Deduc_Deduc_Nm" />
+        <dataField fieldName="req_emp_Emp_NOt" columns="50" />
+        <dataField fieldName="req_emp_sgmsgm_Nm" />
+        <dataField fieldName="req_emp_salrycatgrade_desc_a" columns="20" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Issue">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Issue" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="cat_id" aliasFieldName="cat_cat_name" hyperlinkFormatString="~/Pages/category.aspx?cat_id={cat_id}&amp;_controller=category&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="priority_code" aliasFieldName="priority_ModifiedBy" hyperlinkFormatString="~/Pages/priority.aspx?priority_code={priority_code}&amp;_controller=priority&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="assign_id" columns="20" />
+            <dataField fieldName="iss_creatorname" columns="50" />
+            <dataField fieldName="iss_label" />
+            <dataField fieldName="iss_desc" rows="5" />
+            <dataField fieldName="iss_datecreated" columns="10" />
+            <dataField fieldName="iss_dateresolved" columns="10" />
+            <dataField fieldName="status_code" aliasFieldName="status_status_name" hyperlinkFormatString="~/Pages/status.aspx?status_code={status_code}&amp;_controller=status&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="iss_days" columns="15" />
+            <dataField fieldName="iss_hours" columns="15" />
+            <dataField fieldName="req_id" aliasFieldName="req_req_details" hyperlinkFormatString="~/Pages/Request.aspx?reqID={req_id}&amp;_controller=Request&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="req_Deduc_Deduc_Nm" />
+            <dataField fieldName="req_emp_Emp_NOt" columns="50" />
+            <dataField fieldName="req_emp_sgmsgm_Nm" />
+            <dataField fieldName="req_emp_salrycatgrade_desc_a" columns="20" />
+            <dataField fieldName="req_emp_Blood_TypeModifiedBy" columns="50" />
+            <dataField fieldName="req_emp_Bnk_Bnk_Acc" columns="20" />
+            <dataField fieldName="req_emp_Sub_BnkBnk_Acc" columns="20" />
+            <dataField fieldName="req_emp_Cntry_Cntry_Nm" />
+            <dataField fieldName="req_emp_Depm_Depm_Nm" />
+            <dataField fieldName="req_emp_Educt_TypeEduct_Nm" columns="15" />
+            <dataField fieldName="req_emp_Job_StuEmp_Stunm" />
+            <dataField fieldName="req_emp_Earning_Earning_Nm" />
+            <dataField fieldName="req_emp_Job_Job_Nm" />
+            <dataField fieldName="req_emp_Ownr_Ownr_ID" columns="15" />
+            <dataField fieldName="req_emp_ReljanReljan_nm" columns="50" />
+            <dataField fieldName="req_emp_Status_TypeStatus_Nm" />
+            <dataField fieldName="req_emp_branchDesc1" columns="50" />
+            <dataField fieldName="req_reqcat_reqcat_name" />
+            <dataField fieldName="req_reqcat_Req_typereq_Type" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Issue">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Issue" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="cat_id" aliasFieldName="cat_cat_name" />
+            <dataField fieldName="priority_code" aliasFieldName="priority_ModifiedBy" />
+            <dataField fieldName="assign_id" columns="20" />
+            <dataField fieldName="iss_creatorname" columns="50" />
+            <dataField fieldName="iss_label" />
+            <dataField fieldName="iss_desc" rows="5" />
+            <dataField fieldName="iss_datecreated" columns="10" />
+            <dataField fieldName="iss_dateresolved" columns="10" />
+            <dataField fieldName="status_code" aliasFieldName="status_status_name" />
+            <dataField fieldName="iss_days" columns="15" />
+            <dataField fieldName="iss_hours" columns="15" />
+            <dataField fieldName="req_id" aliasFieldName="req_req_details" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

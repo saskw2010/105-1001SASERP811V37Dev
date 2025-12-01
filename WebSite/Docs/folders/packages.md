@@ -1,0 +1,5 @@
+# Folder: packages
+
+Purpose: NuGet packages management (packages.config) and related cache.
+
+Back to hub: ../index.md | TOC: ../TOC.md

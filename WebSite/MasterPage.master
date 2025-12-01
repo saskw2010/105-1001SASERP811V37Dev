@@ -1,0 +1,63 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+<!DOCTYPE html >
+<html>
+    <head runat="server" >
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Main</title>
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=Edge">
+	 <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0" />
+   
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+    
+    <!-- THEME SYSTEM -->
+    <link href="/ThemeCenter/CSS/theme-integration.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <style>
+            .div
+             {
+
+                direction:ltr;
+            }
+
+
+        </style>
+  </head>
+<body runat="server">
+<form id="form1" runat="server"  >
+
+
+<div>
+
+     <div style="display:none">
+        <act:ToolkitScriptManager ID="sm" runat="server"  ScriptMode="Release" EnableScriptGlobalization="False" OnResolveScriptReference="sm_ResolveScriptReference" />
+        <aquarium:MembershipBar ID="mb" runat="server" RememberMeSet="False" DisplayLogin="False" IdleUserTimeout="1500" EnableHistory="False" EnablePermalinks="False" />
+       </div>
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </div>
+    <script src="/js/theme-switcher.js"></script>
+    <script src="/js/theme-manager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize theme system
+            if (window.advancedThemeSystem) {
+                window.advancedThemeSystem.init();
+            } else {
+                // Fallback if theme system not loaded yet
+                setTimeout(() => {
+                    if (window.advancedThemeSystem) {
+                        window.advancedThemeSystem.init();
+                    }
+                }, 500);
+            }
+        });
+    </script>
+</form>
+</body>
+</html>

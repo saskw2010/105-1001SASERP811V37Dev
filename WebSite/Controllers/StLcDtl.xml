@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="StLcDtl" conflictDetection="overwriteChanges" label="St Lc Dtl" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"StLcDtl"."Ln_No" "Ln_No"
+	,"StLcDtl"."Doc_No" "Doc_No"
+	,"Doc_"."Pur_Wys" "Doc_Pur_Wys"
+	,"Doc_brn_"."Brn_Nm" "Doc_brn_Brn_Nm"
+	,"Doc_brn_Branch"."Desc1" "Doc_brn_BranchDesc1"
+	,"Doc_Pym_"."PaymentTypeName" "Doc_Pym_PaymentTypeName"
+	,"Doc_Curncy_"."Curncy_Nm" "Doc_Curncy_Curncy_Nm"
+	,"Doc_Sup_"."Sup_Nm" "Doc_Sup_Sup_Nm"
+	,"Doc_Sup_Acc_"."Acc_Nm" "Doc_Sup_Acc_Acc_Nm"
+	,"Doc_Sup_sgm"."sgm_Nm" "Doc_Sup_sgmsgm_Nm"
+	,"Doc_Sup_Cntry_"."Cntry_Nm" "Doc_Sup_Cntry_Cntry_Nm"
+	,"Doc_Sup_Curncy_"."Curncy_Nm" "Doc_Sup_Curncy_Curncy_Nm"
+	,"StLcDtl"."orderid" "orderid"
+	,"StLcDtl"."Unit_No" "Unit_No"
+	,"StLcDtl"."Itm_No" "Itm_No"
+	,"Itm_"."ID_USER" "Itm_ID_USER"
+	,"Itm_"."ITEM" "ITEM"
+	
+	,"StLcDtl"."Unitprice" "Unitprice"
+	,"StLcDtl"."Itm_CurnPrice" "Itm_CurnPrice"
+	,"StLcDtl"."Titm_Purpric" "Titm_Purpric"
+	,"StLcDtl"."Discount" "Discount"
+	,"StLcDtl"."Quantity" "Quantity"
+	,"StLcDtl"."Curncy_No" "Curncy_No"
+	,"Curncy_"."Curncy_Nm" "Curncy_Curncy_Nm"
+	,"StLcDtl"."Curncy_Rate" "Curncy_Rate"
+	,"StLcDtl"."Titm_CurnPric" "Titm_CurnPric"
+	,"StLcDtl"."Titm_Cost" "Titm_Cost"
+	,"StLcDtl"."Itm_Cost" "Itm_Cost"
+	,"StLcDtl"."Rec_Qty" "Rec_Qty"
+	,"StLcDtl"."Titm_Cost1" "Titm_Cost1"
+	,"StLcDtl"."Itm_Cost1" "Itm_Cost1"
+	,"StLcDtl"."ModifiedBy" "ModifiedBy"
+	,"StLcDtl"."ModifiedOn" "ModifiedOn"
+	,"StLcDtl"."CreatedBy" "CreatedBy"
+	,"StLcDtl"."CreatedOn" "CreatedOn"
+from "dbo"."StLcDtl" "StLcDtl"
+	left join "dbo"."StLcHdr" "Doc_" on "StLcDtl"."Doc_No" = "Doc_"."Doc_No"
+	left join "dbo"."Branchcnst" "Doc_brn_" on "Doc_"."brn_no" = "Doc_brn_"."Brn_No"
+	left join "dbo"."schBranch" "Doc_brn_Branch" on "Doc_brn_"."Branch" = "Doc_brn_Branch"."branch"
+	left join "dbo"."PaymentTypes" "Doc_Pym_" on "Doc_"."Pym_No" = "Doc_Pym_"."PaymentTypeID"
+	left join "dbo"."Stcurncy" "Doc_Curncy_" on "Doc_"."Curncy_No" = "Doc_Curncy_"."Curncy_No"
+	left join "dbo"."Stsuplir" "Doc_Sup_" on "Doc_"."Sup_No" = "Doc_Sup_"."Sup_No"
+	left join "dbo"."GLmstrfl" "Doc_Sup_Acc_" on "Doc_Sup_"."Acc_No" = "Doc_Sup_Acc_"."Acc_No"
+	left join "dbo"."glmulcmp" "Doc_Sup_sgm" on "Doc_Sup_"."sgm" = "Doc_Sup_sgm"."sgmid"
+	left join "dbo"."PYCntry" "Doc_Sup_Cntry_" on "Doc_Sup_"."Cntry_No" = "Doc_Sup_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "Doc_Sup_Curncy_" on "Doc_Sup_"."Curncy_No" = "Doc_Sup_Curncy_"."Curncy_No"
+	left join "dbo"."Stcurncy" "Curncy_" on "StLcDtl"."Curncy_No" = "Curncy_"."Curncy_No"
+	left join "dbo"."ITEMS" "Itm_" on "StLcDtl"."Itm_No" = "Itm_"."ID_comp"
+]]></text>
+    </command>
+    <command id="Ln_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Ln_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Ln_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Ln No" readOnly="true" />
+    <field name="Doc_No" type="Int64" label="Doc No" showInSummary="true">
+      <items style="Lookup" dataController="StLcHdr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Doc_Pur_Wys" type="String" readOnly="true" label="Doc Pur Wys" length="50" />
+    <field name="Doc_brn_Brn_Nm" type="String" readOnly="true" label="Doc brn Brn Nm" length="255" />
+    <field name="Doc_brn_BranchDesc1" type="String" readOnly="true" label="Doc brn Branch Desc1" length="50" />
+    <field name="Doc_Pym_PaymentTypeName" type="String" readOnly="true" label="Doc Pym Payment Type Name" length="75" />
+    <field name="Doc_Curncy_Curncy_Nm" type="String" readOnly="true" label="Doc Curncy Nm" length="200" />
+    <field name="Doc_Sup_Sup_Nm" type="String" readOnly="true" label="Doc Sup Nm" length="255" />
+    <field name="Doc_Sup_Acc_Acc_Nm" type="String" readOnly="true" label="Doc Sup Acc Nm" length="255" />
+    <field name="Doc_Sup_sgmsgm_Nm" type="String" readOnly="true" label="Doc Sup sgmsgm Nm" length="255" />
+    <field name="Doc_Sup_Cntry_Cntry_Nm" type="String" readOnly="true" label="Doc Sup Cntry Nm" length="255" />
+    <field name="Doc_Sup_Curncy_Curncy_Nm" type="String" readOnly="true" label="Doc Sup Curncy Nm" length="200" />
+    <field name="orderid" type="Int64" label="Orderid" showInSummary="true" />
+    <field name="Unit_No" type="Int64" allowNulls="false" label="Unit No">
+      <items style="DropDownList" dataController="Stunit" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Unit_Nm" dataValueField="Unit_No" />
+    </field>
+   <field name="Itm_No" type="Int64" label="Itm No" allowNulls="false" showInSummary="true">
+      <items style="Lookup" dataController="ITEMS"   copy="Unit_No=Unit_No"  />
+    </field>
+    <field name="Itm_ID_USER" type="String" readOnly="true" label="Itm ID USER" length="50" />
+    <field name="ITEM" type="String" readOnly="true" label="ITEM" length="50" />
+	<field name="Unitprice" type="Decimal" label="Price Kd" showInSummary="true" />
+    <field name="Itm_CurnPrice" type="Decimal" label="Price" />
+    <field name="Titm_Purpric" type="Decimal" label="Total Kd" />
+    <field name="Discount" type="Int64" label="Discount" />
+    <field name="Quantity" type="Decimal" label="Quantity" />
+    <field name="Curncy_No" type="Int64" label="Curncy No">
+      <items style="Lookup" dataController="Stcurncy" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Curncy_Curncy_Nm" type="String" readOnly="true" label="Curncy Nm" length="200" />
+    <field name="Curncy_Rate" type="Decimal" label="Curncy Rate" />
+    <field name="Titm_CurnPric" type="Decimal" label="Total Pric" />
+    <field name="Titm_Cost" type="Decimal" label="Total Cost" />
+    <field name="Itm_Cost" type="Decimal" label="Itm Cost" />
+    <field name="Rec_Qty" type="Decimal" allowNulls="false" label="Rec Qty" />
+    <field name="Titm_Cost1" type="Decimal" label="Titm Cost1" />
+    <field name="Itm_Cost1" type="Decimal" label="Itm Cost1" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="DataSheet" commandId="command1" label="St Lc Dtl">
+      
+      <dataFields>
+
+        <dataField fieldName="Doc_No"   />
+        <dataField fieldName="Ln_No" columns="15" hidden="true"/>
+ 		<dataField fieldName="Itm_No"   />
+		<dataField fieldName="Itm_ID_USER"   />
+		
+	     <dataField fieldName="ITEM"  columns="50" />
+        <dataField fieldName="Unit_No" aliasFieldName="Unit_Unit_Nm"  />
+		 
+        <dataField fieldName="Itm_CurnPrice" dataFormatString="n3" FormatOnClient="False" aggregate="Sum" columns="15" />
+        <dataField fieldName="Rec_Qty"  columns="15" />
+        <dataField fieldName="Unitprice" dataFormatString="n3" columns="15" />
+        <dataField fieldName="Titm_Purpric" dataFormatString="n3" FormatOnClient="False" aggregate="Sum" columns="15" />
+        <dataField fieldName="Discount" columns="15" hidden="true"/>
+        <dataField fieldName="Quantity"  columns="15"  hidden="true"/>
+        <dataField fieldName="Curncy_No" aliasFieldName="Curncy_Curncy_Nm" hidden="true"/>
+        <dataField fieldName="Curncy_Rate" dataFormatString="n3" columns="15" hidden="true"/>
+        <dataField fieldName="Titm_CurnPric" dataFormatString="n3" FormatOnClient="False" aggregate="Sum" columns="15" />
+        <dataField fieldName="Titm_Cost" dataFormatString="n3" columns="15"  hidden="true"/>
+        <dataField fieldName="Itm_Cost" dataFormatString="n3" columns="15" hidden="true"/>
+        <dataField fieldName="Titm_Cost1" dataFormatString="n3" FormatOnClient="False" aggregate="Sum" columns="15" />
+        <dataField fieldName="Itm_Cost1" dataFormatString="n3" columns="15" />
+        
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review St Lc Dtl">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="St Lc Dtl" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Doc_No" aliasFieldName="Doc_Pur_Wys" hyperlinkFormatString="~/Pages/StLcHdr.aspx?Doc_No={Doc_No}&amp;_controller=StLcHdr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="orderid" columns="15" hidden="true"/>
+            <dataField fieldName="Unit_No" columns="15" hidden="true"/>
+            <dataField fieldName="Itm_No" columns="15" />
+            <dataField fieldName="Itm_CurnPrice" dataFormatString="c" columns="15" />			
+			<dataField fieldName="Rec_Qty" dataFormatString="c" columns="15" />
+            <dataField fieldName="Unitprice" dataFormatString="c" columns="15" />
+            <dataField fieldName="Titm_Purpric" dataFormatString="c" columns="15" />
+            <dataField fieldName="Discount" columns="15" />
+            <dataField fieldName="Quantity" dataFormatString="c" columns="15"  hidden="true"/>
+            <dataField fieldName="Curncy_No" aliasFieldName="Curncy_Curncy_Nm" hyperlinkFormatString="~/Pages/Stcurncy.aspx?Curncy_No={Curncy_No}&amp;_controller=Stcurncy&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Curncy_Rate" dataFormatString="c" columns="15" />
+            <dataField fieldName="Titm_CurnPric" dataFormatString="c" columns="15" />
+            <dataField fieldName="Titm_Cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="Itm_Cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="Titm_Cost1" dataFormatString="c" columns="15" />
+            <dataField fieldName="Itm_Cost1" dataFormatString="c" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Doc_brn_Brn_Nm" />
+            <dataField fieldName="Doc_brn_BranchDesc1" columns="50" />
+            <dataField fieldName="Doc_Pym_PaymentTypeName" />
+            <dataField fieldName="Doc_Curncy_Curncy_Nm" />
+            <dataField fieldName="Doc_Sup_Sup_Nm" />
+            <dataField fieldName="Doc_Sup_Acc_Acc_Nm" />
+            <dataField fieldName="Doc_Sup_sgmsgm_Nm" />
+            <dataField fieldName="Doc_Sup_Cntry_Cntry_Nm" />
+            <dataField fieldName="Doc_Sup_Curncy_Curncy_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New St Lc Dtl">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New St Lc Dtl" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Doc_No" aliasFieldName="Doc_Pur_Wys" />
+            <dataField fieldName="orderid" columns="15" />
+            <dataField fieldName="Unit_No" columns="15" />
+            <dataField fieldName="Itm_No" columns="15" />
+            <dataField fieldName="Itm_CurnPrice" dataFormatString="c" columns="15" />			
+		    <dataField fieldName="Rec_Qty" dataFormatString="c" columns="15" />
+            <dataField fieldName="Unitprice" dataFormatString="c" columns="15" />
+            <dataField fieldName="Titm_Purpric" dataFormatString="c" columns="15" />
+            <dataField fieldName="Discount" columns="15" />
+            <dataField fieldName="Quantity" dataFormatString="c" columns="15"  hidden="true"/>
+            <dataField fieldName="Curncy_No" aliasFieldName="Curncy_Curncy_Nm" />
+            <dataField fieldName="Curncy_Rate" dataFormatString="c" columns="15" />
+            <dataField fieldName="Titm_CurnPric" dataFormatString="c" columns="15" />
+            <dataField fieldName="Titm_Cost" dataFormatString="c" columns="15"  hidden="true"/>
+            <dataField fieldName="Itm_Cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="Titm_Cost1" dataFormatString="c" columns="15" />
+            <dataField fieldName="Itm_Cost1" dataFormatString="c" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate"  />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New"  cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+     <rule id="r100" commandName="Insert" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@ln_no,@Itm_No]]></rule>
+    <rule id="r105" commandName="Insert" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname   @Doc_No,@ln_no,@Itm_No]]></rule>
+ <rule id="r102" commandName="Update" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname   @Doc_No,@ln_no,@Itm_No
+]]></rule>
+    <rule id="r103" commandName="Delete" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname   @Doc_No,@ln_no,@Itm_No]]></rule>
+    <rule id="r106" commandName="Delete" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname   @Doc_No,@ln_no,@Itm_No]]></rule>
+    <rule id="r107" commandName="Calculate" type="Sql" phase="Execute"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Execute'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@ln_no,@Itm_No]]></rule>
+  </businessRules>
+</dataController>

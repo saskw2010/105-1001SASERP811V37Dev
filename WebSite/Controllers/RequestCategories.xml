@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="RequestCategories" conflictDetection="overwriteChanges" label="Request Categories" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"RequestCategories"."reqcat_id" "reqcat_id"
+	,"RequestCategories"."reqcat_name" "reqcat_name"
+	,"RequestCategories"."reqcat_namee" "reqcat_namee"
+	,"RequestCategories"."Req_typeid" "Req_typeid"
+	,"Req_type"."req_Type" "Req_typereq_Type"
+	,"Req_typeuserarea_"."userarea_Desc" "Req_typeuserarea_userarea_Desc"
+	,"RequestCategories"."onrequest" "onrequest"
+	,"RequestCategories"."formrequired" "formrequired"
+	,"RequestCategories"."softcopy_availble" "softcopy_availble"
+	,"RequestCategories"."reqcat_parentid" "reqcat_parentid"
+	,"reqcat_parent"."reqcat_name" "reqcat_parentreqcat_name"
+	,"reqcat_parentReq_type"."req_Type" "reqcat_parentReq_typereq_Type"
+	,"reqcat_parentReq_typeuserarea_"."userarea_Desc" "reqcat_parentReq_typeuserarea_userarea_Desc"
+	,"RequestCategories"."reqcat_active" "reqcat_active"
+	,"RequestCategories"."reqcat_createDate" "reqcat_createDate"
+	,"RequestCategories"."reqcat_modifyDate" "reqcat_modifyDate"
+	,"RequestCategories"."reqcat_creatoruser" "reqcat_creatoruser"
+	,"RequestCategories"."reqcat_modifyuser" "reqcat_modifyuser"
+	,"RequestCategories"."req_url" "req_url"
+	,"RequestCategories"."ModifiedBy" "ModifiedBy"
+	,"RequestCategories"."ModifiedOn" "ModifiedOn"
+	,"RequestCategories"."CreatedBy" "CreatedBy"
+	,"RequestCategories"."CreatedOn" "CreatedOn"
+from "dbo"."RequestCategories" "RequestCategories"
+	left join "dbo"."RequestTypes" "Req_type" on "RequestCategories"."Req_typeid" = "Req_type"."req_Typeid"
+	left join "dbo"."Userarea" "Req_typeuserarea_" on "Req_type"."userarea_id" = "Req_typeuserarea_"."userarea_id"
+	left join "dbo"."RequestCategories" "reqcat_parent" on "RequestCategories"."reqcat_parentid" = "reqcat_parent"."reqcat_id"
+	left join "dbo"."RequestTypes" "reqcat_parentReq_type" on "reqcat_parent"."Req_typeid" = "reqcat_parentReq_type"."req_Typeid"
+	left join "dbo"."Userarea" "reqcat_parentReq_typeuserarea_" on "reqcat_parentReq_type"."userarea_id" = "reqcat_parentReq_typeuserarea_"."userarea_id"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="reqcat_id" type="Int64" allowNulls="false" isPrimaryKey="true" label="Reqcat#" />
+    <field name="reqcat_name" type="String" label="Reqcat Name" length="100" showInSummary="true" />
+    <field name="reqcat_namee" type="String" label="Reqcat Namee" length="100" showInSummary="true" />
+    <field name="Req_typeid" type="Int64" label="Req typeid" showInSummary="true">
+      <items style="Lookup" dataController="RequestTypes" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Req_typereq_Type" type="String" readOnly="true" label="Req typereq Type" length="100" />
+    <field name="Req_typeuserarea_userarea_Desc" type="String" readOnly="true" label="Req typeuserarea userarea Desc" length="100" />
+    <field name="onrequest" type="Boolean" label="Onrequest" showInSummary="true" />
+    <field name="formrequired" type="Boolean" label="Formrequired" showInSummary="true" />
+    <field name="softcopy_availble" type="Boolean" label="Softcopy Availble" />
+    <field name="reqcat_parentid" type="Int64" label="Reqcat Parentid">
+      <items style="Lookup" dataController="RequestCategories" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="reqcat_parentreqcat_name" type="String" readOnly="true" label="Reqcat Parentreqcat Name" length="100" />
+    <field name="reqcat_parentReq_typereq_Type" type="String" readOnly="true" label="reqcat parent Req typereq Type" length="100" />
+    <field name="reqcat_parentReq_typeuserarea_userarea_Desc" type="String" readOnly="true" label="reqcat parent Req typeuserarea userarea Desc" length="100" />
+    <field name="reqcat_active" type="Boolean" label="Reqcat Active" />
+    <field name="reqcat_createDate" type="DateTime" default="(getdate())" label="reqcat create Date" />
+    <field name="reqcat_modifyDate" type="DateTime" default="(getdate())" label="reqcat modify Date" />
+    <field name="reqcat_creatoruser" type="String" label="Reqcat Creatoruser" length="100" />
+    <field name="reqcat_modifyuser" type="String" label="Reqcat Modifyuser" length="100" />
+    <field name="req_url" type="String" allowQBE="false" allowSorting="false" label="Req Url" length="-1" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Request Categories">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="reqcat_name" />
+        <dataField fieldName="reqcat_namee" />
+        <dataField fieldName="Req_typeid" aliasFieldName="Req_typereq_Type" hyperlinkFormatString="~/Pages/RequestTypes.aspx?req_Typeid={Req_typeid}&amp;_controller=RequestTypes&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="onrequest" />
+        <dataField fieldName="formrequired" />
+        <dataField fieldName="softcopy_availble" />
+        <dataField fieldName="reqcat_parentid" aliasFieldName="reqcat_parentreqcat_name" hyperlinkFormatString="~/Pages/RequestCategories.aspx?reqcat_id={reqcat_parentid}&amp;_controller=RequestCategories&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="reqcat_active" />
+        <dataField fieldName="reqcat_createDate" columns="10" />
+        <dataField fieldName="reqcat_modifyDate" columns="10" />
+        <dataField fieldName="reqcat_creatoruser" />
+        <dataField fieldName="reqcat_modifyuser" />
+        <dataField fieldName="req_url" rows="5" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="Req_typeuserarea_userarea_Desc" />
+        <dataField fieldName="reqcat_parentReq_typereq_Type" />
+        <dataField fieldName="reqcat_parentReq_typeuserarea_userarea_Desc" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Request Categories">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Request Categories" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="reqcat_name" />
+            <dataField fieldName="reqcat_namee" />
+            <dataField fieldName="Req_typeid" aliasFieldName="Req_typereq_Type" hyperlinkFormatString="~/Pages/RequestTypes.aspx?req_Typeid={Req_typeid}&amp;_controller=RequestTypes&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="onrequest" />
+            <dataField fieldName="formrequired" />
+            <dataField fieldName="softcopy_availble" />
+            <dataField fieldName="reqcat_parentid" aliasFieldName="reqcat_parentreqcat_name" hyperlinkFormatString="~/Pages/RequestCategories.aspx?reqcat_id={reqcat_parentid}&amp;_controller=RequestCategories&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="reqcat_active" />
+            <dataField fieldName="reqcat_createDate" columns="10" />
+            <dataField fieldName="reqcat_modifyDate" columns="10" />
+            <dataField fieldName="reqcat_creatoruser" />
+            <dataField fieldName="reqcat_modifyuser" />
+            <dataField fieldName="req_url" rows="5" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Req_typeuserarea_userarea_Desc" />
+            <dataField fieldName="reqcat_parentReq_typereq_Type" />
+            <dataField fieldName="reqcat_parentReq_typeuserarea_userarea_Desc" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Request Categories">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Request Categories" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="reqcat_id" columns="15" />
+            <dataField fieldName="reqcat_name" />
+            <dataField fieldName="reqcat_namee" />
+            <dataField fieldName="Req_typeid" aliasFieldName="Req_typereq_Type" />
+            <dataField fieldName="onrequest" />
+            <dataField fieldName="formrequired" />
+            <dataField fieldName="softcopy_availble" />
+            <dataField fieldName="reqcat_parentid" aliasFieldName="reqcat_parentreqcat_name" />
+            <dataField fieldName="reqcat_active" />
+            <dataField fieldName="reqcat_createDate" columns="10" />
+            <dataField fieldName="reqcat_modifyDate" columns="10" />
+            <dataField fieldName="reqcat_creatoruser" />
+            <dataField fieldName="reqcat_modifyuser" />
+            <dataField fieldName="req_url" rows="5" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

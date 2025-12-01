@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="pursalInvoicingDetailes" conflictDetection="overwriteChanges" label="pursal Invoicing Detailes" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"pursalInvoicingDetailes"."pursalInvoicingDid" "pursalInvoicingDid"
+	,"pursalInvoicingDetailes"."pursalInvoicingid" "pursalInvoicingid"
+	,"pursalInvoicingDetailes"."ID_comp" "ID_comp"
+	,"pursalInvoicingDetailes"."Quantity" "Quantity"
+	,"pursalInvoicingDetailes"."RevievedAmount" "RevievedAmount"
+	,"pursalInvoicingDetailes"."SalAmount" "SalAmount"
+	,"pursalInvoicingDetailes"."TotalRevievedAmount" "TotalRevievedAmount"
+	,"pursalInvoicingDetailes"."TotalSalAmount" "TotalSalAmount"
+	,"pursalInvoicingDetailes"."pursalInvoicingDetailes" "pursalInvoicingDetailes"
+	,"pursalInvoicingDetailes"."pursalInvoicingacc_no" "pursalInvoicingacc_no"
+	,"pursalInvoicingacc_"."Acc_Nm" "pursalInvoicingacc_Acc_Nm"
+	,"pursalInvoicingacc_Clsacc_"."Acc_Nm" "pursalInvoicingacc_Clsacc_Acc_Nm"
+	,"pursalInvoicingacc_Acc_Bnd"."Acc_Nm" "pursalInvoicingacc_Acc_BndAcc_Nm"
+	,"pursalInvoicingacc_Acc_Bndaccclass"."accountclass" "pursalInvoicingacc_Acc_Bndaccclassaccountclass"
+	,"pursalInvoicingacc_Acc_BndAcc_Bab"."Acc_Nm" "pursalInvoicingacc_Acc_BndAcc_BabAcc_Nm"
+	,"pursalInvoicingDetailes"."pursalInvoicingTypNO" "pursalInvoicingTypNO"
+	,"pursalInvoicingDetailes"."pursalInvoicingCSUPNO" "pursalInvoicingCSUPNO"
+	,"pursalInvoicingDetailes"."pursalInvoicingNotes" "pursalInvoicingNotes"
+from "dbo"."pursalInvoicingDetailes" "pursalInvoicingDetailes"
+	left join "dbo"."GLmstrfl" "pursalInvoicingacc_" on "pursalInvoicingDetailes"."pursalInvoicingacc_no" = "pursalInvoicingacc_"."Acc_No"
+	left join "dbo"."GLmfbab" "pursalInvoicingacc_Clsacc_" on "pursalInvoicingacc_"."Clsacc_No" = "pursalInvoicingacc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "pursalInvoicingacc_Acc_Bnd" on "pursalInvoicingacc_"."Acc_Bnd" = "pursalInvoicingacc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "pursalInvoicingacc_Acc_Bndaccclass" on "pursalInvoicingacc_Acc_Bnd"."accclass" = "pursalInvoicingacc_Acc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "pursalInvoicingacc_Acc_BndAcc_Bab" on "pursalInvoicingacc_Acc_Bnd"."Acc_Bab" = "pursalInvoicingacc_Acc_BndAcc_Bab"."Acc_Bab"
+]]></text>
+    </command>
+    <command id="pursalInvoicingDidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="pursalInvoicingDid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="pursalInvoicingDid" type="Int64" allowNulls="false" isPrimaryKey="true" label="pursal Invoicing Did" readOnly="true" />
+    <field name="pursalInvoicingid" type="Int64" allowNulls="false" label="pursal Invoicingid" showInSummary="true" />
+    <field name="ID_comp" type="Int64" allowNulls="false" label="ID comp" showInSummary="true" />
+    <field name="Quantity" type="Decimal" label="Quantity" showInSummary="true" />
+    <field name="RevievedAmount" type="Decimal" label="Revieved Amount" showInSummary="true" />
+    <field name="SalAmount" type="Decimal" label="Sal Amount" showInSummary="true" />
+    <field name="TotalRevievedAmount" type="Decimal" label="Total Revieved Amount" />
+    <field name="TotalSalAmount" type="Decimal" label="Total Sal Amount" />
+    <field name="pursalInvoicingDetailes" type="String" allowQBE="false" allowSorting="false" label="pursal Invoicing Detailes" length="-1" />
+    <field name="pursalInvoicingacc_no" type="Int64" label="pursal Invoicingacc no">
+      <items style="Lookup" dataController="GLmstrfl" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="pursalInvoicingacc_Acc_Nm" type="String" readOnly="true" label="pursal Invoicingacc Acc Nm" length="255" />
+    <field name="pursalInvoicingacc_Clsacc_Acc_Nm" type="String" readOnly="true" label="pursal Invoicingacc Clsacc Acc Nm" length="250" />
+    <field name="pursalInvoicingacc_Acc_BndAcc_Nm" type="String" readOnly="true" label="pursal Invoicingacc Acc Bnd Acc Nm" length="50" />
+    <field name="pursalInvoicingacc_Acc_Bndaccclassaccountclass" type="String" readOnly="true" label="pursal Invoicingacc Acc Bndaccclassaccountclass" length="100" />
+    <field name="pursalInvoicingacc_Acc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="pursal Invoicingacc Acc Bnd Acc Bab Acc Nm" length="250" />
+    <field name="pursalInvoicingTypNO" type="Int64" label="pursal Invoicing Typ NO" />
+    <field name="pursalInvoicingCSUPNO" type="Int64" label="pursal Invoicing CSUPNO" />
+    <field name="pursalInvoicingNotes" type="String" label="pursal Invoicing Notes" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="pursal Invoicing Detailes">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="pursalInvoicingid" columns="15" />
+        <dataField fieldName="ID_comp" columns="15" />
+        <dataField fieldName="Quantity" columns="15" />
+        <dataField fieldName="RevievedAmount" columns="15" />
+        <dataField fieldName="SalAmount" columns="15" />
+        <dataField fieldName="TotalRevievedAmount" columns="15" />
+        <dataField fieldName="TotalSalAmount" columns="15" />
+        <dataField fieldName="pursalInvoicingDetailes" rows="5" />
+        <dataField fieldName="pursalInvoicingacc_no" aliasFieldName="pursalInvoicingacc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={pursalInvoicingacc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="pursalInvoicingTypNO" columns="15" />
+        <dataField fieldName="pursalInvoicingCSUPNO" columns="15" />
+        <dataField fieldName="pursalInvoicingNotes" columns="50" />
+        <dataField fieldName="pursalInvoicingacc_Clsacc_Acc_Nm" />
+        <dataField fieldName="pursalInvoicingacc_Acc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="pursalInvoicingacc_Acc_Bndaccclassaccountclass" />
+        <dataField fieldName="pursalInvoicingacc_Acc_BndAcc_BabAcc_Nm" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review pursal Invoicing Detailes">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="pursal Invoicing Detailes" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="pursalInvoicingid" columns="15" />
+            <dataField fieldName="ID_comp" columns="15" />
+            <dataField fieldName="Quantity" columns="15" />
+            <dataField fieldName="RevievedAmount" columns="15" />
+            <dataField fieldName="SalAmount" columns="15" />
+            <dataField fieldName="TotalRevievedAmount" columns="15" />
+            <dataField fieldName="TotalSalAmount" columns="15" />
+            <dataField fieldName="pursalInvoicingDetailes" rows="5" />
+            <dataField fieldName="pursalInvoicingacc_no" aliasFieldName="pursalInvoicingacc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={pursalInvoicingacc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="pursalInvoicingTypNO" columns="15" />
+            <dataField fieldName="pursalInvoicingCSUPNO" columns="15" />
+            <dataField fieldName="pursalInvoicingNotes" columns="50" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="pursalInvoicingacc_Clsacc_Acc_Nm" />
+            <dataField fieldName="pursalInvoicingacc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="pursalInvoicingacc_Acc_Bndaccclassaccountclass" />
+            <dataField fieldName="pursalInvoicingacc_Acc_BndAcc_BabAcc_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New pursal Invoicing Detailes">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New pursal Invoicing Detailes" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="pursalInvoicingid" columns="15" />
+            <dataField fieldName="ID_comp" columns="15" />
+            <dataField fieldName="Quantity" columns="15" />
+            <dataField fieldName="RevievedAmount" columns="15" />
+            <dataField fieldName="SalAmount" columns="15" />
+            <dataField fieldName="TotalRevievedAmount" columns="15" />
+            <dataField fieldName="TotalSalAmount" columns="15" />
+            <dataField fieldName="pursalInvoicingDetailes" rows="5" />
+            <dataField fieldName="pursalInvoicingacc_no" aliasFieldName="pursalInvoicingacc_Acc_Nm" />
+            <dataField fieldName="pursalInvoicingTypNO" columns="15" />
+            <dataField fieldName="pursalInvoicingCSUPNO" columns="15" />
+            <dataField fieldName="pursalInvoicingNotes" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

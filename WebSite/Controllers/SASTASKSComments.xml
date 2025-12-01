@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="SASTASKSComments" conflictDetection="overwriteChanges" label="SASTASKS Comments" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"SASTASKSComments"."SASTASKSCommentsID" "SASTASKSCommentsID"
+	,"SASTASKSComments"."Taskid" "Taskid"
+	,"Task"."TaskDesc" "TaskTaskDesc"
+	,"TaskGroup"."GroupAr" "TaskGroupGroupAr"
+	,"TaskGroupMOD"."MODAr" "TaskGroupMODMODAr"
+	,"TaskMenu"."MenuAr" "TaskMenuMenuAr"
+	,"TaskMenuIDGroup"."GroupAr" "TaskMenuIDGroupGroupAr"
+	,"TaskMod"."MODAr" "TaskModMODAr"
+	,"TaskTaskpriorty"."Taskpriortydsc" "TaskTaskpriortyTaskpriortydsc"
+	,"TaskStatus"."StatusDesc" "TaskStatusStatusDesc"
+	,"TaskTaskType"."TasktypeDesc" "TaskTaskTypeTasktypeDesc"
+	,"TasksprModulecat"."sprModulecatDesc" "TasksprModulecatsprModulecatDesc"
+	,"TasksprModule"."sprModuleDesc" "TasksprModulesprModuleDesc"
+	,"TasksprModulesprModulecat"."sprModulecatDesc" "TasksprModulesprModulecatsprModulecatDesc"
+	,"Taskspr"."sprnotes" "Tasksprsprnotes"
+	,"Tasksprsprcustm"."sprcustomername" "Tasksprsprcustmsprcustomername"
+	,"Tasksprsprslm"."sprpersonname" "Tasksprsprslmsprpersonname"
+	,"Tasksprsprleader"."sprpersonname" "Tasksprsprleadersprpersonname"
+	,"Tasksprsprdesigner"."sprpersonname" "Tasksprsprdesignersprpersonname"
+	,"Tasksprsprtype"."sprtypeDesc" "TasksprsprtypesprtypeDesc"
+	,"Tasksoftwareprojectt"."sprpersonname" "Tasksoftwareprojecttsprpersonname"
+	,"Tasksoftwareprojecttsprjob"."sprjobdesc" "Tasksoftwareprojecttsprjobsprjobdesc"
+	,"TaskTakleef"."sprpersonname" "TaskTakleefsprpersonname"
+	,"TaskTakleefsprjob"."sprjobdesc" "TaskTakleefsprjobsprjobdesc"
+	,"SASTASKSComments"."TaskCommentsEnterDate" "TaskCommentsEnterDate"
+	,"SASTASKSComments"."TaskCommentsDelvery" "TaskCommentsDelvery"
+	,"SASTASKSComments"."CommentsNotes" "CommentsNotes"
+	,"SASTASKSComments"."CommentsDetailes" "CommentsDetailes"
+	,"SASTASKSComments"."ModifiedBy" "ModifiedBy"
+	,"SASTASKSComments"."ModifiedOn" "ModifiedOn"
+	,"SASTASKSComments"."CreatedBy" "CreatedBy"
+	,"SASTASKSComments"."CreatedOn" "CreatedOn"
+from "dbo"."SASTASKSComments" "SASTASKSComments"
+	left join "dbo"."SASTASKS" "Task" on "SASTASKSComments"."Taskid" = "Task"."Taskid"
+	left join "dbo"."GroupMaster" "TaskGroup" on "Task"."GroupID" = "TaskGroup"."GroupID"
+	left join "dbo"."MODMaster" "TaskGroupMOD" on "TaskGroup"."MODID" = "TaskGroupMOD"."MODID"
+	left join "dbo"."MenuMaster" "TaskMenu" on "Task"."MenuID" = "TaskMenu"."MenuID"
+	left join "dbo"."GroupMaster" "TaskMenuIDGroup" on "TaskMenu"."IDGroup" = "TaskMenuIDGroup"."GroupID"
+	left join "dbo"."MODMaster" "TaskMod" on "Task"."Modid" = "TaskMod"."MODID"
+	left join "dbo"."SASTASKPRIORTY" "TaskTaskpriorty" on "Task"."Taskpriortyid" = "TaskTaskpriorty"."Taskpriortyid"
+	left join "dbo"."SASTASKSsatatus" "TaskStatus" on "Task"."Statusid" = "TaskStatus"."Statusid"
+	left join "dbo"."SASTasktype" "TaskTaskType" on "Task"."TaskType" = "TaskTaskType"."Tasktypeid"
+	left join "dbo"."SoftwareModulescatlist" "TasksprModulecat" on "Task"."sprModulecatid" = "TasksprModulecat"."sprModulecatid"
+	left join "dbo"."SoftwareModuleslist" "TasksprModule" on "Task"."sprModuleid" = "TasksprModule"."sprModuleid"
+	left join "dbo"."SoftwareModulescatlist" "TasksprModulesprModulecat" on "TasksprModule"."sprModulecatid" = "TasksprModulesprModulecat"."sprModulecatid"
+	left join "dbo"."SoftwareProjects" "Taskspr" on "Task"."sprid" = "Taskspr"."sprid"
+	left join "dbo"."Softwareprojectcustomers" "Tasksprsprcustm" on "Taskspr"."sprcustmno" = "Tasksprsprcustm"."sprcustmno"
+	left join "dbo"."softwareprojectsteam" "Tasksprsprslm" on "Taskspr"."sprslmno" = "Tasksprsprslm"."softwareprojecttid"
+	left join "dbo"."softwareprojectsteam" "Tasksprsprleader" on "Taskspr"."sprleader" = "Tasksprsprleader"."softwareprojecttid"
+	left join "dbo"."softwareprojectsteam" "Tasksprsprdesigner" on "Taskspr"."sprdesigner" = "Tasksprsprdesigner"."softwareprojecttid"
+	left join "dbo"."softwareprojecttype" "Tasksprsprtype" on "Taskspr"."sprtype" = "Tasksprsprtype"."sprtypeid"
+	left join "dbo"."softwareprojectsteam" "Tasksoftwareprojectt" on "Task"."softwareprojecttid" = "Tasksoftwareprojectt"."softwareprojecttid"
+	left join "dbo"."sprjobs" "Tasksoftwareprojecttsprjob" on "Tasksoftwareprojectt"."sprjob" = "Tasksoftwareprojecttsprjob"."sprjobid"
+	left join "dbo"."softwareprojectsteam" "TaskTakleef" on "Task"."TakleefID" = "TaskTakleef"."softwareprojecttid"
+	left join "dbo"."sprjobs" "TaskTakleefsprjob" on "TaskTakleef"."sprjob" = "TaskTakleefsprjob"."sprjobid"
+]]></text>
+    </command>
+    <command id="SASTASKSCommentsIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="SASTASKSCommentsID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="SASTASKSCommentsID" type="Int64" allowNulls="false" isPrimaryKey="true" label="SASTASKS Comments#" readOnly="true" />
+    <field name="Taskid" type="Int64" allowNulls="false" label="Taskid" showInSummary="true">
+      <items style="Lookup" dataController="SASTASKS" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="TaskTaskDesc" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Task Desc" length="-1" />
+    <field name="TaskGroupGroupAr" type="String" readOnly="true" label="Task Group Ar" length="50" />
+    <field name="TaskGroupMODMODAr" type="String" readOnly="true" label="Task Group MODMOD Ar" length="50" />
+    <field name="TaskMenuMenuAr" type="String" readOnly="true" label="Task Menu Ar" length="50" />
+    <field name="TaskMenuIDGroupGroupAr" type="String" readOnly="true" label="Task Menu ID Group Ar" length="50" />
+    <field name="TaskModMODAr" type="String" readOnly="true" label="Task Mod MOD Ar" length="50" />
+    <field name="TaskTaskpriortyTaskpriortydsc" type="String" readOnly="true" label="Task Taskpriorty Taskpriortydsc" length="50" />
+    <field name="TaskStatusStatusDesc" type="String" readOnly="true" label="Task Status Desc" length="50" />
+    <field name="TaskTaskTypeTasktypeDesc" type="String" readOnly="true" label="Task Type Tasktype Desc" length="50" />
+    <field name="TasksprModulecatsprModulecatDesc" type="String" readOnly="true" label="Taskspr Modulecatspr Modulecat Desc" length="50" />
+    <field name="TasksprModulesprModuleDesc" type="String" readOnly="true" label="Taskspr Modulespr Module Desc" length="50" />
+    <field name="TasksprModulesprModulecatsprModulecatDesc" type="String" readOnly="true" label="Taskspr Modulespr Modulecatspr Modulecat Desc" length="50" />
+    <field name="Tasksprsprnotes" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Tasksprsprnotes" length="-1" />
+    <field name="Tasksprsprcustmsprcustomername" type="String" readOnly="true" label="Tasksprsprcustmsprcustomername" length="150" />
+    <field name="Tasksprsprslmsprpersonname" type="String" readOnly="true" label="Tasksprsprslmsprpersonname" length="150" />
+    <field name="Tasksprsprleadersprpersonname" type="String" readOnly="true" label="Tasksprsprleadersprpersonname" length="150" />
+    <field name="Tasksprsprdesignersprpersonname" type="String" readOnly="true" label="Tasksprsprdesignersprpersonname" length="150" />
+    <field name="TasksprsprtypesprtypeDesc" type="String" readOnly="true" label="Tasksprsprtypesprtype Desc" length="150" />
+    <field name="Tasksoftwareprojecttsprpersonname" type="String" readOnly="true" label="Tasksoftwareprojecttsprpersonname" length="150" />
+    <field name="Tasksoftwareprojecttsprjobsprjobdesc" type="String" readOnly="true" label="Tasksoftwareprojecttsprjobsprjobdesc" length="150" />
+    <field name="TaskTakleefsprpersonname" type="String" readOnly="true" label="Task Takleefsprpersonname" length="150" />
+    <field name="TaskTakleefsprjobsprjobdesc" type="String" readOnly="true" label="Task Takleefsprjobsprjobdesc" length="150" />
+    <field name="TaskCommentsEnterDate" type="DateTime" default="(getdate())" label="Task Comments Enter Date" showInSummary="true" />
+    <field name="TaskCommentsDelvery" type="DateTime" label="Task Comments Delvery" showInSummary="true" />
+    <field name="CommentsNotes" type="String" label="Comments Notes" length="255" showInSummary="true" />
+    <field name="CommentsDetailes" type="String" allowQBE="false" allowSorting="false" label="Comments Detailes" length="-1" showInSummary="true" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="SASTASKS Comments">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Taskid" aliasFieldName="TaskTaskDesc" />
+        <dataField fieldName="TaskCommentsEnterDate" columns="10" />
+        <dataField fieldName="TaskCommentsDelvery" columns="10" />
+        <dataField fieldName="CommentsNotes" />
+        <dataField fieldName="CommentsDetailes" rows="5" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="TaskGroupGroupAr" columns="50" />
+        <dataField fieldName="TaskGroupMODMODAr" columns="50" />
+        <dataField fieldName="TaskMenuMenuAr" columns="50" />
+        <dataField fieldName="TaskMenuIDGroupGroupAr" columns="50" />
+        <dataField fieldName="TaskModMODAr" columns="50" />
+        <dataField fieldName="TaskTaskpriortyTaskpriortydsc" columns="50" />
+        <dataField fieldName="TaskStatusStatusDesc" columns="50" />
+        <dataField fieldName="TaskTaskTypeTasktypeDesc" columns="50" />
+        <dataField fieldName="TasksprModulecatsprModulecatDesc" columns="50" />
+        <dataField fieldName="TasksprModulesprModuleDesc" columns="50" />
+        <dataField fieldName="TasksprModulesprModulecatsprModulecatDesc" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review SASTASKS Comments">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="SASTASKS Comments" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Taskid" aliasFieldName="TaskTaskDesc" hyperlinkFormatString="~/Pages/SASTASKS.aspx?Taskid={Taskid}&amp;_controller=SASTASKS&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="TaskCommentsEnterDate" columns="10" />
+            <dataField fieldName="TaskCommentsDelvery" columns="10" />
+            <dataField fieldName="CommentsNotes" />
+            <dataField fieldName="CommentsDetailes" rows="5" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="TaskGroupGroupAr" columns="50" />
+            <dataField fieldName="TaskGroupMODMODAr" columns="50" />
+            <dataField fieldName="TaskMenuMenuAr" columns="50" />
+            <dataField fieldName="TaskMenuIDGroupGroupAr" columns="50" />
+            <dataField fieldName="TaskModMODAr" columns="50" />
+            <dataField fieldName="TaskTaskpriortyTaskpriortydsc" columns="50" />
+            <dataField fieldName="TaskStatusStatusDesc" columns="50" />
+            <dataField fieldName="TaskTaskTypeTasktypeDesc" columns="50" />
+            <dataField fieldName="TasksprModulecatsprModulecatDesc" columns="50" />
+            <dataField fieldName="TasksprModulesprModuleDesc" columns="50" />
+            <dataField fieldName="TasksprModulesprModulecatsprModulecatDesc" columns="50" />
+            <dataField fieldName="Tasksprsprnotes" rows="5" />
+            <dataField fieldName="Tasksprsprcustmsprcustomername" />
+            <dataField fieldName="Tasksprsprslmsprpersonname" />
+            <dataField fieldName="Tasksprsprleadersprpersonname" />
+            <dataField fieldName="Tasksprsprdesignersprpersonname" />
+            <dataField fieldName="TasksprsprtypesprtypeDesc" />
+            <dataField fieldName="Tasksoftwareprojecttsprpersonname" />
+            <dataField fieldName="Tasksoftwareprojecttsprjobsprjobdesc" />
+            <dataField fieldName="TaskTakleefsprpersonname" />
+            <dataField fieldName="TaskTakleefsprjobsprjobdesc" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New SASTASKS Comments">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New SASTASKS Comments" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Taskid" aliasFieldName="TaskTaskDesc" />
+            <dataField fieldName="TaskCommentsEnterDate" columns="10" />
+            <dataField fieldName="TaskCommentsDelvery" columns="10" />
+            <dataField fieldName="CommentsNotes" />
+            <dataField fieldName="CommentsDetailes" rows="5" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="RuningContracting" conflictDetection="overwriteChanges" label="Runing Contracting" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"RuningContracting"."CntrctSr" "CntrctSr"
+	,"RuningContracting"."sgm" "sgm"
+	,"RuningContracting"."CntctDate" "CntctDate"
+	,"RuningContracting"."Cstm_No" "Cstm_No"
+	,"RuningContracting"."Car_No" "Car_No"
+	,"RuningContracting"."kmReading" "kmReading"
+	,"RuningContracting"."NOfDays" "NOfDays"
+	,"RuningContracting"."PricePerDay" "PricePerDay"
+	,"RuningContracting"."Fuel" "Fuel"
+	,"RuningContracting"."freekm" "freekm"
+	,"RuningContracting"."StartDate" "StartDate"
+	,"RuningContracting"."StartTime" "StartTime"
+	,"RuningContracting"."EndDate" "EndDate"
+	,"RuningContracting"."Endtime" "Endtime"
+	,"RuningContracting"."Notes" "Notes"
+	,"RuningContracting"."cntstcode" "cntstcode"
+	,"RuningContracting"."RLEndDate" "RLEndDate"
+	,"RuningContracting"."RLEndtime" "RLEndtime"
+	,"RuningContracting"."Slm_No" "Slm_No"
+	,"RuningContracting"."userentry" "userentry"
+	,"RuningContracting"."useredit" "useredit"
+	,"RuningContracting"."Styl_Nm" "Styl_Nm"
+	,"RuningContracting"."Styl_Nme" "Styl_Nme"
+	,"RuningContracting"."Mony_Paid" "Mony_Paid"
+	,"RuningContracting"."realdays" "realdays"
+	,"RuningContracting"."Daysnow" "Daysnow"
+	,"RuningContracting"."Totalnow" "Totalnow"
+	,"RuningContracting"."TotalRest" "TotalRest"
+from "dbo"."RuningContracting" "RuningContracting"
+]]></text>
+    </command>
+    <command id="Car_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Car_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="CntrctSr" type="Int64" allowNulls="false" label="Cntrct Sr" showInSummary="true" />
+    <field name="sgm" type="Int64" allowNulls="false" label="Sgm" showInSummary="true" />
+    <field name="CntctDate" type="DateTime" allowNulls="false" label="Cntct Date" showInSummary="true" />
+    <field name="Cstm_No" type="Int64" allowNulls="false" label="Cstm No" showInSummary="true" />
+    <field name="Car_No" type="Int64" allowNulls="false" label="Car No" readOnly="true" showInSummary="true" />
+    <field name="kmReading" type="Decimal" allowNulls="false" label="km Reading" />
+    <field name="NOfDays" type="Decimal" allowNulls="false" label="N Of Days" />
+    <field name="PricePerDay" type="Decimal" allowNulls="false" label="Price Per Day" />
+    <field name="Fuel" type="Int64" allowNulls="false" label="Fuel" />
+    <field name="freekm" type="Decimal" allowNulls="false" label="Freekm" />
+    <field name="StartDate" type="DateTime" allowNulls="false" label="Start Date" />
+    <field name="StartTime" type="String" allowNulls="false" label="Start Time" length="50" />
+    <field name="EndDate" type="DateTime" label="End Date" />
+    <field name="Endtime" type="String" label="Endtime" length="50" />
+    <field name="Notes" type="String" label="Notes" length="100" />
+    <field name="cntstcode" type="Int64" label="Cntstcode" />
+    <field name="RLEndDate" type="DateTime" label="RL End Date" />
+    <field name="RLEndtime" type="String" label="RL Endtime" length="50" />
+    <field name="Slm_No" type="Int64" label="Slm No" />
+    <field name="userentry" type="Int64" label="Userentry" />
+    <field name="useredit" type="Int64" label="Useredit" />
+    <field name="Styl_Nm" type="String" label="Styl Nm" length="60" />
+    <field name="Styl_Nme" type="String" label="Styl Nme" length="60" />
+    <field name="Mony_Paid" type="Decimal" allowNulls="false" label="Mony Paid" readOnly="true" />
+    <field name="realdays" type="Int32" label="Realdays" readOnly="true" />
+    <field name="Daysnow" type="Int32" label="Daysnow" readOnly="true" />
+    <field name="Totalnow" type="Decimal" label="Totalnow" readOnly="true" />
+    <field name="TotalRest" type="Decimal" label="Total Rest" readOnly="true" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Runing Contracting">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="CntrctSr" columns="15" />
+        <dataField fieldName="sgm" columns="15" />
+        <dataField fieldName="CntctDate" columns="10" />
+        <dataField fieldName="Cstm_No" columns="15" />
+        <dataField fieldName="Car_No" columns="15" />
+        <dataField fieldName="kmReading" columns="15" />
+        <dataField fieldName="NOfDays" columns="15" />
+        <dataField fieldName="PricePerDay" dataFormatString="c" columns="15" />
+        <dataField fieldName="Fuel" columns="15" />
+        <dataField fieldName="freekm" columns="15" />
+        <dataField fieldName="StartDate" columns="10" />
+        <dataField fieldName="StartTime" columns="50" />
+        <dataField fieldName="EndDate" columns="10" />
+        <dataField fieldName="Endtime" columns="50" />
+        <dataField fieldName="Notes" />
+        <dataField fieldName="cntstcode" columns="15" />
+        <dataField fieldName="RLEndDate" columns="10" />
+        <dataField fieldName="RLEndtime" columns="50" />
+        <dataField fieldName="Slm_No" columns="15" />
+        <dataField fieldName="userentry" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Runing Contracting">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Runing Contracting" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CntrctSr" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="CntctDate" columns="10" />
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="Car_No" columns="15" />
+            <dataField fieldName="kmReading" columns="15" />
+            <dataField fieldName="NOfDays" columns="15" />
+            <dataField fieldName="PricePerDay" dataFormatString="c" columns="15" />
+            <dataField fieldName="Fuel" columns="15" />
+            <dataField fieldName="freekm" columns="15" />
+            <dataField fieldName="StartDate" columns="10" />
+            <dataField fieldName="StartTime" columns="50" />
+            <dataField fieldName="EndDate" columns="10" />
+            <dataField fieldName="Endtime" columns="50" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="cntstcode" columns="15" />
+            <dataField fieldName="RLEndDate" columns="10" />
+            <dataField fieldName="RLEndtime" columns="50" />
+            <dataField fieldName="Slm_No" columns="15" />
+            <dataField fieldName="userentry" columns="15" />
+            <dataField fieldName="useredit" columns="15" />
+            <dataField fieldName="Styl_Nm" />
+            <dataField fieldName="Styl_Nme" />
+            <dataField fieldName="Mony_Paid" dataFormatString="c" columns="15" />
+            <dataField fieldName="realdays" columns="15" />
+            <dataField fieldName="Daysnow" columns="15" />
+            <dataField fieldName="Totalnow" dataFormatString="c" columns="15" />
+            <dataField fieldName="TotalRest" dataFormatString="c" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Runing Contracting">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Runing Contracting" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CntrctSr" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="CntctDate" columns="10" />
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="kmReading" columns="15" />
+            <dataField fieldName="NOfDays" columns="15" />
+            <dataField fieldName="PricePerDay" dataFormatString="c" columns="15" />
+            <dataField fieldName="Fuel" columns="15" />
+            <dataField fieldName="freekm" columns="15" />
+            <dataField fieldName="StartDate" columns="10" />
+            <dataField fieldName="StartTime" columns="50" />
+            <dataField fieldName="EndDate" columns="10" />
+            <dataField fieldName="Endtime" columns="50" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="cntstcode" columns="15" />
+            <dataField fieldName="RLEndDate" columns="10" />
+            <dataField fieldName="RLEndtime" columns="50" />
+            <dataField fieldName="Slm_No" columns="15" />
+            <dataField fieldName="userentry" columns="15" />
+            <dataField fieldName="useredit" columns="15" />
+            <dataField fieldName="Styl_Nm" />
+            <dataField fieldName="Styl_Nme" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="TblGiftsTransactions" conflictDetection="overwriteChanges" label="Tbl Gifts Transactions" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.TblGiftsTransactionsBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"TblGiftsTransactions"."Autoid" "Autoid"
+	,"TblGiftsTransactions"."Voucher_no" "Voucher_no"
+	,"TblGiftsTransactions"."Rainbow_no" "Rainbow_no"
+	,"Rainbow_"."Arabic_Name" "Rainbow_Arabic_Name"
+	,"Rainbow_Ref_Kind"."Ref_Kind" "Rainbow_Ref_KindRef_Kind"
+	,"Rainbow_collector"."Collector_name" "Rainbow_collectorCollector_name"
+	,"Rainbow_collectorcollectmd"."collectmdname" "Rainbow_collectorcollectmdcollectmdname"
+	,"Rainbow_Dealer"."Dealer_name" "Rainbow_DealerDealer_name"
+	,"Rainbow_DealerMD"."MD_Name" "Rainbow_DealerMDMD_Name"
+	,"Rainbow_MD"."MD_Name" "Rainbow_MDMD_Name"
+	,"Rainbow_Nationality"."Nationality" "Rainbow_NationalityNationality"
+	,"Rainbow_Region"."Region" "Rainbow_RegionRegion"
+	,"Rainbow_IDATUTO"."Time" "Rainbow_IDATUTOTime"
+	,"Rainbow_IDATUTOCallDep"."CallDepDesc" "Rainbow_IDATUTOCallDepCallDepDesc"
+	,"Rainbow_IDATUTORef_Kind"."Ref_Kind" "Rainbow_IDATUTORef_KindRef_Kind"
+	,"Rainbow_IDATUTObranch"."Desc1" "Rainbow_IDATUTObranchDesc1"
+	,"Rainbow_IDATUTODay"."اليوم" "Rainbow_IDATUTODayاليوم"
+	,"Rainbow_IDATUTODealer"."Dealer_name" "Rainbow_IDATUTODealerDealer_name"
+	,"Rainbow_IDATUTOMD"."MD_Name" "Rainbow_IDATUTOMDMD_Name"
+	,"Rainbow_IDATUTORegion"."Region" "Rainbow_IDATUTORegionRegion"
+	,"Rainbow_IDATUTOResult"."ResultDesc" "Rainbow_IDATUTOResultResultDesc"
+	,"Rainbow_IDATUTOTele_Mark_Sec"."Tele_Mark_Sec" "Rainbow_IDATUTOTele_Mark_SecTele_Mark_Sec"
+	,"Rainbow_IDATUTOTime"."timedesc" "Rainbow_IDATUTOTimetimedesc"
+	,"Rainbow_model"."modeldesc" "Rainbow_modelmodeldesc"
+	,"Rainbow_modelCatidlist"."Catidlistdesc" "Rainbow_modelCatidlistCatidlistdesc"
+	,"Rainbow_Replace"."ReplaceDesc" "Rainbow_ReplaceReplaceDesc"
+	,"TblGiftsTransactions"."Item_code" "Item_code"
+	,"Item_"."arab_Desc" "Item_arab_Desc"
+	,"TblGiftsTransactions"."Qty" "Qty"
+	,"TblGiftsTransactions"."Date" "Date"
+	,"TblGiftsTransactions"."DealerID" "DealerID"
+	,"Dealer"."Dealer_name" "DealerDealer_name"
+	,"DealerMD"."MD_Name" "DealerMDMD_Name"
+	,"TblGiftsTransactions"."Delivery_Dealer_Gifts" "Delivery_Dealer_Gifts"
+	,"TblGiftsTransactions"."Gifts_Out" "Gifts_Out"
+	,"TblGiftsTransactions"."Gifts_In" "Gifts_In"
+	,"TblGiftsTransactions"."cause the exi" "causetheexi"
+	,"TblGiftsTransactions"."ModifiedBy" "ModifiedBy"
+	,"TblGiftsTransactions"."ModifiedOn" "ModifiedOn"
+	,"TblGiftsTransactions"."CreatedBy" "CreatedBy"
+	,"TblGiftsTransactions"."CreatedOn" "CreatedOn"
+from "dbo"."TblGiftsTransactions" "TblGiftsTransactions"
+	left join "dbo"."TblCustomers" "Rainbow_" on "TblGiftsTransactions"."Rainbow_no" = "Rainbow_"."Rainbow_no"
+	left join "dbo"."Ref_Kindlist" "Rainbow_Ref_Kind" on "Rainbow_"."Ref_KindID" = "Rainbow_Ref_Kind"."Ref_KindID"
+	left join "dbo"."Tbl_Collectors" "Rainbow_collector" on "Rainbow_"."collectorid" = "Rainbow_collector"."collectorid"
+	left join "dbo"."collectmdlist" "Rainbow_collectorcollectmd" on "Rainbow_collector"."collectmdid" = "Rainbow_collectorcollectmd"."collectmdid"
+	left join "dbo"."Tbl_Dealers" "Rainbow_Dealer" on "Rainbow_"."DealerID" = "Rainbow_Dealer"."DealerID"
+	left join "dbo"."Tbl_MD" "Rainbow_DealerMD" on "Rainbow_Dealer"."MDID" = "Rainbow_DealerMD"."MDID"
+	left join "dbo"."Tbl_MD" "Rainbow_MD" on "Rainbow_"."MDID" = "Rainbow_MD"."MDID"
+	left join "dbo"."Tbl_Nationality" "Rainbow_Nationality" on "Rainbow_"."NationalityID" = "Rainbow_Nationality"."NationalityID"
+	left join "dbo"."Tbl_Regions" "Rainbow_Region" on "Rainbow_"."RegionID" = "Rainbow_Region"."RegionID"
+	left join "dbo"."TblAppointments" "Rainbow_IDATUTO" on "Rainbow_"."IDATUTO" = "Rainbow_IDATUTO"."IDATUTO"
+	left join "dbo"."CallDeplist" "Rainbow_IDATUTOCallDep" on "Rainbow_IDATUTO"."CallDepid" = "Rainbow_IDATUTOCallDep"."CallDepid"
+	left join "dbo"."Ref_Kindlist" "Rainbow_IDATUTORef_Kind" on "Rainbow_IDATUTO"."Ref_KindID" = "Rainbow_IDATUTORef_Kind"."Ref_KindID"
+	left join "dbo"."schBranch" "Rainbow_IDATUTObranch" on "Rainbow_IDATUTO"."branch" = "Rainbow_IDATUTObranch"."branch"
+	left join "dbo"."Tbl_Day" "Rainbow_IDATUTODay" on "Rainbow_IDATUTO"."DayID" = "Rainbow_IDATUTODay"."DayID"
+	left join "dbo"."Tbl_Dealers" "Rainbow_IDATUTODealer" on "Rainbow_IDATUTO"."DealerID" = "Rainbow_IDATUTODealer"."DealerID"
+	left join "dbo"."Tbl_MD" "Rainbow_IDATUTOMD" on "Rainbow_IDATUTO"."MDID" = "Rainbow_IDATUTOMD"."MDID"
+	left join "dbo"."Tbl_Regions" "Rainbow_IDATUTORegion" on "Rainbow_IDATUTO"."RegionID" = "Rainbow_IDATUTORegion"."RegionID"
+	left join "dbo"."Tbl_Results" "Rainbow_IDATUTOResult" on "Rainbow_IDATUTO"."ResultID" = "Rainbow_IDATUTOResult"."ResultID"
+	left join "dbo"."Tbl_Tele_Mark_Sec" "Rainbow_IDATUTOTele_Mark_Sec" on "Rainbow_IDATUTO"."Tele_Mark_SecID" = "Rainbow_IDATUTOTele_Mark_Sec"."Tele_Mark_SecID"
+	left join "dbo"."Tbl_Time" "Rainbow_IDATUTOTime" on "Rainbow_IDATUTO"."Time" = "Rainbow_IDATUTOTime"."الوقت"
+	left join "dbo"."tblmodellist" "Rainbow_model" on "Rainbow_"."modelno" = "Rainbow_model"."modelno"
+	left join "dbo"."tblCatidlist" "Rainbow_modelCatidlist" on "Rainbow_model"."Catidlistid" = "Rainbow_modelCatidlist"."Catidlistid"
+	left join "dbo"."tblReplacelist" "Rainbow_Replace" on "Rainbow_"."Replaceid" = "Rainbow_Replace"."Replaceid"
+	left join "dbo"."Tbl_Items and Codes" "Item_" on "TblGiftsTransactions"."Item_code" = "Item_"."Item_Code"
+	left join "dbo"."Tbl_Dealers" "Dealer" on "TblGiftsTransactions"."DealerID" = "Dealer"."DealerID"
+	left join "dbo"."Tbl_MD" "DealerMD" on "Dealer"."MDID" = "DealerMD"."MDID"
+]]></text>
+    </command>
+    <command id="AutoidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Autoid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Autoid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Autoid" readOnly="true" />
+    <field name="Voucher_no" type="Int64" label="Voucher no" showInSummary="true" />
+    <field name="Rainbow_no" type="Decimal" allowNulls="false" label="Rainbow no" showInSummary="true">
+      <items style="Lookup" dataController="TblCustomers" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Rainbow_Arabic_Name" type="String" readOnly="true" label="Rainbow Arabic Name" length="100" />
+    <field name="Rainbow_Ref_KindRef_Kind" type="String" readOnly="true" label="Rainbow Ref Kind" length="10" />
+    <field name="Rainbow_collectorCollector_name" type="String" readOnly="true" label="Rainbow collector Collector name" length="50" />
+    <field name="Rainbow_collectorcollectmdcollectmdname" type="String" readOnly="true" label="Rainbow collectorcollectmdcollectmdname" length="100" />
+    <field name="Rainbow_DealerDealer_name" type="String" readOnly="true" label="Rainbow Dealer name" length="50" />
+    <field name="Rainbow_DealerMDMD_Name" type="String" readOnly="true" label="Rainbow Dealer MDMD Name" length="50" />
+    <field name="Rainbow_MDMD_Name" type="String" readOnly="true" label="Rainbow MDMD Name" length="50" />
+    <field name="Rainbow_NationalityNationality" type="String" readOnly="true" label="Rainbow Nationality" length="25" />
+    <field name="Rainbow_RegionRegion" type="String" readOnly="true" label="Rainbow Region" length="50" />
+    <field name="Rainbow_IDATUTOTime" type="String" readOnly="true" label="Rainbow IDATUTO Time" length="50">
+      <items style="Lookup" dataController="Tbl_Time" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Rainbow_IDATUTOCallDepCallDepDesc" type="String" readOnly="true" label="Rainbow IDATUTO Call Dep Desc" length="50" />
+    <field name="Rainbow_IDATUTORef_KindRef_Kind" type="String" readOnly="true" label="Rainbow IDATUTO Ref Kind" length="10" />
+    <field name="Rainbow_IDATUTObranchDesc1" type="String" readOnly="true" label="Rainbow IDATUT Obranch Desc1" length="50" />
+    <field name="Rainbow_IDATUTODayاليوم" type="String" readOnly="true" label="Rainbow IDATUTO Day" length="50" />
+    <field name="Rainbow_IDATUTODealerDealer_name" type="String" readOnly="true" label="Rainbow IDATUTO Dealer name" length="50" />
+    <field name="Rainbow_IDATUTOMDMD_Name" type="String" readOnly="true" label="Rainbow IDATUTOMDMD Name" length="50" />
+    <field name="Rainbow_IDATUTORegionRegion" type="String" readOnly="true" label="Rainbow IDATUTO Region" length="50" />
+    <field name="Rainbow_IDATUTOResultResultDesc" type="String" readOnly="true" label="Rainbow IDATUTO Result Desc" length="50" />
+    <field name="Rainbow_IDATUTOTele_Mark_SecTele_Mark_Sec" type="String" readOnly="true" label="Rainbow IDATUTO Tele Mark Sec" length="50" />
+    <field name="Rainbow_IDATUTOTimetimedesc" type="String" readOnly="true" label="Rainbow IDATUTO Timetimedesc" length="50" />
+    <field name="Rainbow_modelmodeldesc" type="String" readOnly="true" label="Rainbow modelmodeldesc" length="150" />
+    <field name="Rainbow_modelCatidlistCatidlistdesc" type="String" readOnly="true" label="Rainbow model Catidlist Catidlistdesc" length="50" />
+    <field name="Rainbow_ReplaceReplaceDesc" type="String" readOnly="true" label="Rainbow Replace Desc" length="150" />
+    <field name="Item_code" type="String" label="Item code" length="25" showInSummary="true">
+      <items style="AutoComplete" dataController="Tbl_ItemsandCodes" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="arab_Desc" dataValueField="Item_Code" />
+    </field>
+    <field name="Item_arab_Desc" type="String" readOnly="true" label="Item arab Desc" length="50" />
+    <field name="Qty" type="Int32" label="Qty" showInSummary="true" />
+    <field name="Date" type="DateTime" label="Date" showInSummary="true" />
+    <field name="DealerID" type="Int64" label="DealerDelivery">
+      <items style="AutoComplete" dataController="Tbl_Dealers" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Dealer_name" dataValueField="DealerID" />
+    </field>
+    <field name="DealerDealer_name" type="String" readOnly="true" label="DealernameDelevery" length="50" />
+    <field name="DealerMDMD_Name" type="String" readOnly="true" label="Dealer MDMD Name" length="50" />
+    <field name="Delivery_Dealer_Gifts" type="String" label="Delivery Dealer Gifts" length="50" />
+    <field name="Gifts_Out" type="Boolean" default="((1))" label="Gifts Out" allowNulls="false">
+      <items style="CheckBox" />
+    </field>
+    <field name="Gifts_In" type="Boolean" default="((0))" label="Gifts In" allowNulls="false">
+      <items style="CheckBox" />
+    </field>
+    <field name="causetheexi" type="String" label="Causetheexi" length="50" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid2" commandId="command1" type="DataSheet" label="grid2">
+      <dataFields>
+        <dataField fieldName="Rainbow_no" aliasFieldName="Rainbow_Arabic_Name" />
+        <dataField fieldName="Item_code" aliasFieldName="Item_arab_Desc" hyperlinkFormatString="~/Pages/Tbl_ItemsandCodes.aspx?Item_Code={Item_code}&amp;_controller=Tbl_ItemsandCodes&amp;_commandName=Select&amp;_commandArgument=editForm1" columns="10" />
+        <dataField fieldName="Qty" columns="15" />
+        <dataField fieldName="Voucher_no" columns="8" />
+        <dataField fieldName="Date" columns="10" search="Suggested" searchOptions="$between,*" />
+        <dataField fieldName="DealerID" aliasFieldName="DealerDealer_name" hyperlinkFormatString="~/Pages/Tbl_Dealers.aspx?DealerID={DealerID}&amp;_controller=Tbl_Dealers&amp;_commandName=Select&amp;_commandArgument=editForm1" columns="10" search="Suggested" searchOptions="=,*" />
+        <dataField fieldName="Delivery_Dealer_Gifts" columns="50" />
+        <dataField fieldName="causetheexi" columns="10" />
+        <dataField fieldName="Gifts_Out" columns="5" />
+        <dataField fieldName="Gifts_In" columns="5" />
+        <dataField fieldName="ModifiedOn" />
+        <dataField fieldName="CreatedBy" />
+        <dataField fieldName="CreatedOn" />
+      </dataFields>
+    </view>
+    <view id="grid1" type="Grid" commandId="command1" label="Tbl Gifts Transactions">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Rainbow_no" aliasFieldName="Rainbow_Arabic_Name" />
+        <dataField fieldName="Voucher_no" columns="15" />
+        <dataField fieldName="Item_code" aliasFieldName="Item_arab_Desc" hyperlinkFormatString="~/Pages/Tbl_ItemsandCodes.aspx?Item_Code={Item_code}&amp;_controller=Tbl_ItemsandCodes&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Qty" columns="15" />
+        <dataField fieldName="Date" columns="10" />
+        <dataField fieldName="DealerID" aliasFieldName="DealerDealer_name" hyperlinkFormatString="~/Pages/Tbl_Dealers.aspx?DealerID={DealerID}&amp;_controller=Tbl_Dealers&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Delivery_Dealer_Gifts" columns="50" />
+        <dataField fieldName="Gifts_Out" />
+        <dataField fieldName="Gifts_In" />
+        <dataField fieldName="causetheexi" columns="50" />
+        <dataField fieldName="ModifiedOn" />
+        <dataField fieldName="CreatedBy" />
+        <dataField fieldName="CreatedOn" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Tbl Gifts Transactions">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Tbl Gifts Transactions" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Voucher_no" columns="15" />
+            <dataField fieldName="Rainbow_no" aliasFieldName="Rainbow_Arabic_Name" hyperlinkFormatString="~/Pages/TblCustomers.aspx?Rainbow_no={Rainbow_no}&amp;_controller=TblCustomers&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Item_code" aliasFieldName="Item_arab_Desc" hyperlinkFormatString="~/Pages/Tbl_ItemsandCodes.aspx?Item_Code={Item_code}&amp;_controller=Tbl_ItemsandCodes&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Qty" columns="15" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="DealerID" aliasFieldName="DealerDealer_name" hyperlinkFormatString="~/Pages/Tbl_Dealers.aspx?DealerID={DealerID}&amp;_controller=Tbl_Dealers&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Delivery_Dealer_Gifts" columns="50" />
+            <dataField fieldName="Gifts_Out" />
+            <dataField fieldName="Gifts_In" />
+            <dataField fieldName="causetheexi" columns="50" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Rainbow_Ref_KindRef_Kind" columns="10" />
+            <dataField fieldName="Rainbow_collectorCollector_name" columns="50" />
+            <dataField fieldName="Rainbow_collectorcollectmdcollectmdname" />
+            <dataField fieldName="Rainbow_DealerDealer_name" columns="50" />
+            <dataField fieldName="Rainbow_DealerMDMD_Name" columns="50" />
+            <dataField fieldName="Rainbow_MDMD_Name" columns="50" />
+            <dataField fieldName="Rainbow_NationalityNationality" columns="25" />
+            <dataField fieldName="Rainbow_RegionRegion" columns="50" />
+            <dataField fieldName="Rainbow_IDATUTOTime" aliasFieldName="Rainbow_IDATUTOCallDepCallDepDesc" hyperlinkFormatString="~/Pages/Tbl_Time.aspx?الوقت={Rainbow_IDATUTOTime}&amp;_controller=Tbl_Time&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Rainbow_IDATUTOCallDepCallDepDesc" columns="50" />
+            <dataField fieldName="Rainbow_IDATUTORef_KindRef_Kind" columns="10" />
+            <dataField fieldName="Rainbow_IDATUTObranchDesc1" columns="50" />
+            <dataField fieldName="Rainbow_IDATUTODayاليوم" columns="50" />
+            <dataField fieldName="Rainbow_IDATUTODealerDealer_name" columns="50" />
+            <dataField fieldName="Rainbow_IDATUTOMDMD_Name" columns="50" />
+            <dataField fieldName="Rainbow_IDATUTORegionRegion" columns="50" />
+            <dataField fieldName="Rainbow_IDATUTOResultResultDesc" columns="50" />
+            <dataField fieldName="Rainbow_IDATUTOTele_Mark_SecTele_Mark_Sec" columns="50" />
+            <dataField fieldName="Rainbow_IDATUTOTimetimedesc" columns="50" />
+            <dataField fieldName="Rainbow_modelmodeldesc" />
+            <dataField fieldName="Rainbow_modelCatidlistCatidlistdesc" columns="50" />
+            <dataField fieldName="Rainbow_ReplaceReplaceDesc" />
+            <dataField fieldName="DealerMDMD_Name" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Tbl Gifts Transactions">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Tbl Gifts Transactions" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Voucher_no" columns="15" />
+            <dataField fieldName="Rainbow_no" aliasFieldName="Rainbow_Arabic_Name" />
+            <dataField fieldName="Item_code" aliasFieldName="Item_arab_Desc" />
+            <dataField fieldName="Qty" columns="15" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="DealerID" aliasFieldName="DealerDealer_name" />
+            <dataField fieldName="Delivery_Dealer_Gifts" columns="50" />
+            <dataField fieldName="Gifts_Out" />
+            <dataField fieldName="Gifts_In" />
+            <dataField fieldName="causetheexi" columns="50" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action commandName="New" commandArgument="grid2" id="a100" />
+      <action id="a1" commandName="New" cssClass="NewIcon" />
+      <action id="a2" commandName="Delete" whenKeySelected="true" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="grid1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

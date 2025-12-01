@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js Framework Demo - النظام الهرمي</title>
+    
+    <!-- CSS Framework -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Vue Components CSS -->
+    <link href="css/vue-components.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .demo-header h1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-section {
+            margin-bottom: 3rem;
+        }
+        
+        .demo-section h2 {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .demo-code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-family: 'Fira Code', monospace;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .demo-output {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 1rem 0;
+        }
+        
+        .hierarchy-tree {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            font-family: monospace;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .tree-node {
+            margin: 5px 0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .tree-function {
+            color: #e83e8c;
+            font-weight: bold;
+        }
+        
+        .tree-module {
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-left: 8px;
+        }
+        
+        .status-success { background: #28a745; }
+        .status-warning { background: #ffc107; }
+        .status-info { background: #17a2b8; }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Header -->
+        <div class="demo-header">
+            <h1>🚀 Vue.js Framework مع النظام الهرمي</h1>
+            <p class="lead">تحويل JavaScript إلى Vue.js مع mainmaster.*.*()</p>
+            <div class="d-flex justify-content-center gap-3">
+                <span class="badge bg-success">Vue.js 3 <span class="status-indicator status-success"></span></span>
+                <span class="badge bg-primary">نظام هرمي <span class="status-indicator status-info"></span></span>
+                <span class="badge bg-warning">home- classes <span class="status-indicator status-warning"></span></span>
+            </div>
+        </div>
+
+        <!-- Vue Components Demo -->
+        <div class="demo-section">
+            <h2>
+                <i class="fab fa-vuejs" style="color: #4fc08d;"></i>
+                Vue.js Components Demo
+            </h2>
+            
+            <!-- Mobile Menu Component -->
+            <div id="mobile-menu-vue"></div>
+            
+            <!-- Theme Manager Component -->
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>مدير المظاهر</h4>
+                    <div id="theme-manager-vue"></div>
+                </div>
+                <div class="col-md-6">
+                    <h4>معاينة النظام الهرمي</h4>
+                    <div class="demo-code">
+// النظام الهرمي الجديد
+mainmaster.menubar.mobilefunction();
+mainmaster.financial.createInvoice();
+mainmaster.hr.addEmployee();
+mainmaster.operations.createOrder();
+mainmaster.reports.generateReport('financial');
+mainmaster.home.refreshWidgets();
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Home Dashboard Component -->
+        <div class="demo-section">
+            <h2>
+                <i class="fas fa-home"></i>
+                Home Dashboard - فئات home-*
+            </h2>
+            <div id="home-dashboard-vue"></div>
+        </div>
+
+        <!-- Hierarchical System Structure -->
+        <div class="demo-section">
+            <h2>
+                <i class="fas fa-sitemap"></i>
+                هيكل النظام الهرمي
+            </h2>
+            <div class="hierarchy-tree">
+                <div class="tree-node">
+                    <span class="tree-module">mainmaster</span>
+                    <div style="margin-right: 20px;">
+                        <div class="tree-node">
+                            <span class="tree-module">├── menubar</span>
+                            <div style="margin-right: 20px;">
+                                <div class="tree-function">├── mobilefunction()</div>
+                                <div class="tree-function">├── closeMobile()</div>
+                                <div class="tree-function">├── openMobile()</div>
+                                <div class="tree-function">├── navigate(url)</div>
+                                <div class="tree-function">├── activateTab(tabId)</div>
+                                <div class="tree-function">├── switchTheme(theme)</div>
+                                <div class="tree-function">└── toggleDarkMode()</div>
+                            </div>
+                        </div>
+                        <div class="tree-node">
+                            <span class="tree-module">├── financial</span>
+                            <div style="margin-right: 20px;">
+                                <div class="tree-function">├── viewAllAccounts()</div>
+                                <div class="tree-function">├── viewAllTransactions()</div>
+                                <div class="tree-function">├── createInvoice()</div>
+                                <div class="tree-function">├── viewReports()</div>
+                                <div class="tree-function">├── manageAccounts()</div>
+                                <div class="tree-function">├── exportData()</div>
+                                <div class="tree-function">└── refreshDashboard()</div>
+                            </div>
+                        </div>
+                        <div class="tree-node">
+                            <span class="tree-module">├── hr</span>
+                            <div style="margin-right: 20px;">
+                                <div class="tree-function">├── viewAllDepartments()</div>
+                                <div class="tree-function">├── viewDepartment(name)</div>
+                                <div class="tree-function">├── manageDepartment(name)</div>
+                                <div class="tree-function">├── viewAllActivities()</div>
+                                <div class="tree-function">├── addEmployee()</div>
+                                <div class="tree-function">├── manageLeaves()</div>
+                                <div class="tree-function">├── generatePayroll()</div>
+                                <div class="tree-function">├── viewReports()</div>
+                                <div class="tree-function">├── training()</div>
+                                <div class="tree-function">└── performance()</div>
+                            </div>
+                        </div>
+                        <div class="tree-node">
+                            <span class="tree-module">├── operations</span>
+                            <div style="margin-right: 20px;">
+                                <div class="tree-function">├── viewAllSuppliers()</div>
+                                <div class="tree-function">├── createOrder()</div>
+                                <div class="tree-function">├── manageInventory()</div>
+                                <div class="tree-function">├── manageSuppliers()</div>
+                                <div class="tree-function">└── viewReports()</div>
+                            </div>
+                        </div>
+                        <div class="tree-node">
+                            <span class="tree-module">├── reports</span>
+                            <div style="margin-right: 20px;">
+                                <div class="tree-function">├── generateReport(name)</div>
+                                <div class="tree-function">├── viewReport(name)</div>
+                                <div class="tree-function">├── createCustomReport()</div>
+                                <div class="tree-function">├── scheduleReport()</div>
+                                <div class="tree-function">├── exportData()</div>
+                                <div class="tree-function">└── reportSettings()</div>
+                            </div>
+                        </div>
+                        <div class="tree-node">
+                            <span class="tree-module">├── home</span> <em>(linked to home- classes)</em>
+                            <div style="margin-right: 20px;">
+                                <div class="tree-function">├── loadContent()</div>
+                                <div class="tree-function">├── refreshWidgets()</div>
+                                <div class="tree-function">├── toggleSidebar()</div>
+                                <div class="tree-function">└── switchLayout(layout)</div>
+                            </div>
+                        </div>
+                        <div class="tree-node">
+                            <span class="tree-module">└── utils</span>
+                            <div style="margin-right: 20px;">
+                                <div class="tree-function">├── showNotification(message, type)</div>
+                                <div class="tree-function">├── showModal(title, content)</div>
+                                <div class="tree-function">├── hideModal()</div>
+                                <div class="tree-function">├── loading(show)</div>
+                                <div class="tree-function">└── scrollToTop()</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integration Examples -->
+        <div class="demo-section">
+            <h2>
+                <i class="fas fa-code"></i>
+                أمثلة التكامل
+            </h2>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>وظائف القائمة المحمولة</h4>
+                    <div class="demo-code">
+// فتح/إغلاق القائمة المحمولة
+mainmaster.menubar.mobilefunction();
+
+// إغلاق القائمة
+mainmaster.menubar.closeMobile();
+
+// فتح القائمة
+mainmaster.menubar.openMobile();
+                    </div>
+                    <button class="btn btn-primary" onclick="if(window.mainmaster) mainmaster.menubar.mobilefunction()">
+                        <i class="fas fa-bars"></i>
+                        تجربة القائمة المحمولة
+                    </button>
+                </div>
+                
+                <div class="col-lg-6">
+                    <h4>وظائف لوحة التحكم المالية</h4>
+                    <div class="demo-code">
+// إنشاء فاتورة جديدة
+mainmaster.financial.createInvoice();
+
+// عرض جميع الحسابات
+mainmaster.financial.viewAllAccounts();
+
+// تصدير البيانات
+mainmaster.financial.exportData();
+                    </div>
+                    <button class="btn btn-success" onclick="if(window.mainmaster) mainmaster.financial.createInvoice()">
+                        <i class="fas fa-plus"></i>
+                        إنشاء فاتورة
+                    </button>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-lg-6">
+                    <h4>وظائف الموارد البشرية</h4>
+                    <div class="demo-code">
+// إضافة موظف جديد
+mainmaster.hr.addEmployee();
+
+// عرض الأقسام
+mainmaster.hr.viewAllDepartments();
+
+// إدارة الإجازات
+mainmaster.hr.manageLeaves();
+                    </div>
+                    <button class="btn btn-info" onclick="if(window.mainmaster) mainmaster.hr.addEmployee()">
+                        <i class="fas fa-user-plus"></i>
+                        إضافة موظف
+                    </button>
+                </div>
+                
+                <div class="col-lg-6">
+                    <h4>وظائف الصفحة الرئيسية (home- classes)</h4>
+                    <div class="demo-code">
+// تحميل محتوى الصفحة الرئيسية
+mainmaster.home.loadContent();
+
+// تحديث العناصر
+mainmaster.home.refreshWidgets();
+
+// تبديل الشريط الجانبي
+mainmaster.home.toggleSidebar();
+                    </div>
+                    <button class="btn btn-warning" onclick="if(window.mainmaster) mainmaster.home.refreshWidgets()">
+                        <i class="fas fa-sync"></i>
+                        تحديث العناصر
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status and Info -->
+        <div class="demo-section">
+            <h2>
+                <i class="fas fa-info-circle"></i>
+                حالة النظام
+            </h2>
+            
+            <div class="demo-output">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <i class="fas fa-check-circle text-success" style="font-size: 2rem;"></i>
+                            <h5 class="mt-2">Vue.js Framework</h5>
+                            <small class="text-muted">تم تحميل النظام بنجاح</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <i class="fas fa-sitemap text-primary" style="font-size: 2rem;"></i>
+                            <h5 class="mt-2">النظام الهرمي</h5>
+                            <small class="text-muted">mainmaster.*.*()</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <i class="fas fa-mobile-alt text-warning" style="font-size: 2rem;"></i>
+                            <h5 class="mt-2">تصميم متجاوب</h5>
+                            <small class="text-muted">Mobile-first design</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <i class="fas fa-home text-info" style="font-size: 2rem;"></i>
+                            <h5 class="mt-2">فئات home-*</h5>
+                            <small class="text-muted">تكامل الصفحة الرئيسية</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Vue Framework Scripts -->
+    <script src="js/mainmaster-vue-framework.js"></script>
+    <script src="js/vue-components.js"></script>
+    
+    <script>
+        // Demo initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Vue.js Framework Demo Started');
+            
+            // Wait for Vue to initialize
+            setTimeout(() => {
+                // Test hierarchical system
+                if (window.mainmaster) {
+                    console.log('✅ Main Master System Loaded');
+                    console.log('📱 Available functions:', Object.keys(window.mainmaster));
+                    
+                    // Test notifications
+                    if (window.mainmaster.utils) {
+                        window.mainmaster.utils.showNotification('🎉 النظام جاهز للاستخدام!', 'success');
+                    }
+                } else {
+                    console.log('⚠️ Main Master System not ready yet');
+                }
+                
+                // Test Vue components
+                if (window.VueComponents) {
+                    console.log('✅ Vue Components Loaded');
+                    console.log('🔧 Available components:', Object.keys(window.VueComponents));
+                }
+                
+                // Display system info
+                displaySystemInfo();
+            }, 1000);
+        });
+        
+        function displaySystemInfo() {
+            const systemInfo = document.createElement('div');
+            systemInfo.innerHTML = `
+                <div class="alert alert-info mt-3">
+                    <h5><i class="fas fa-info-circle"></i> معلومات النظام</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Vue.js:</strong> ${window.Vue ? 'متاح ✅' : 'غير متاح ❌'}<br>
+                            <strong>Main Master:</strong> ${window.mainmaster ? 'متاح ✅' : 'غير متاح ❌'}<br>
+                            <strong>Components:</strong> ${window.VueComponents ? Object.keys(window.VueComponents).length : 0}
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Mobile Menu:</strong> ${document.getElementById('mobile-menu-vue') ? 'متاح ✅' : 'غير متاح ❌'}<br>
+                            <strong>Theme Manager:</strong> ${document.getElementById('theme-manager-vue') ? 'متاح ✅' : 'غير متاح ❌'}<br>
+                            <strong>Home Dashboard:</strong> ${document.getElementById('home-dashboard-vue') ? 'متاح ✅' : 'غير متاح ❌'}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.querySelector('.demo-container').appendChild(systemInfo);
+        }
+        
+        // Test functions for buttons
+        function testFunction(message) {
+            if (window.mainmaster && window.mainmaster.utils) {
+                window.mainmaster.utils.showNotification(message, 'info');
+            } else {
+                alert(message);
+            }
+        }
+    </script>
+</body>
+</html>

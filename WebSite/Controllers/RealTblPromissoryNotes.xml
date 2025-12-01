@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="RealTblPromissoryNotes" conflictDetection="overwriteChanges" label="Real Tbl Promissory Notes" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"RealTblPromissoryNotes"."PromissoryNotes_No" "PromissoryNotes_No"
+	,"RealTblPromissoryNotes"."Rainbow_no" "Rainbow_no"
+	,"Rainbow_"."Arabic_Name" "Rainbow_Arabic_Name"
+	,"Rainbow_Ref_Kind"."Ref_Kind" "Rainbow_Ref_KindRef_Kind"
+	,"Rainbow_Customer_"."Cstm_Nm" "Rainbow_Customer_Cstm_Nm"
+	,"Rainbow_Customer_Area"."Area_name" "Rainbow_Customer_AreaArea_name"
+	,"Rainbow_Customer_Evaluation"."Evaluation_name" "Rainbow_Customer_EvaluationEvaluation_name"
+	,"Rainbow_Customer_acc_"."Acc_Nm" "Rainbow_Customer_acc_Acc_Nm"
+	,"Rainbow_Customer_Cntry_"."Cntry_Nm" "Rainbow_Customer_Cntry_Cntry_Nm"
+	,"Rainbow_Customer_curncy_"."Curncy_Nm" "Rainbow_Customer_curncy_Curncy_Nm"
+	,"Rainbow_Customer_TSNEF"."TSNEF_name" "Rainbow_Customer_TSNEFTSNEF_name"
+	,"Rainbow_Customer_TSNEFNO1"."TSNEF1_name" "Rainbow_Customer_TSNEFNO1TSNEF1_name"
+	,"Rainbow_Customer_Slm_"."Slm_Nm" "Rainbow_Customer_Slm_Slm_Nm"
+	,"Rainbow_collector"."Collector_name" "Rainbow_collectorCollector_name"
+	,"Rainbow_collectorcollectmd"."collectmdname" "Rainbow_collectorcollectmdcollectmdname"
+	,"Rainbow_Dealer"."Dealer_name" "Rainbow_DealerDealer_name"
+	,"Rainbow_DealerMD"."MD_Name" "Rainbow_DealerMDMD_Name"
+	,"Rainbow_MD"."MD_Name" "Rainbow_MDMD_Name"
+	,"Rainbow_Nationality"."Nationality" "Rainbow_NationalityNationality"
+	,"Rainbow_Region"."Region" "Rainbow_RegionRegion"
+	,"Rainbow_model"."modeldesc" "Rainbow_modelmodeldesc"
+	,"Rainbow_modelCatidlist"."Catidlistdesc" "Rainbow_modelCatidlistCatidlistdesc"
+	,"Rainbow_Replace"."ReplaceDesc" "Rainbow_ReplaceReplaceDesc"
+	,"RealTblPromissoryNotes"."Voucher_no" "Voucher_no"
+	,"RealTblPromissoryNotes"."Date" "Date"
+	,"RealTblPromissoryNotes"."Installment" "Installment"
+	,"RealTblPromissoryNotes"."Flag" "Flag"
+	,"RealTblPromissoryNotes"."Collectors" "Collectors"
+	,"RealTblPromissoryNotes"."Flag_Delete" "Flag_Delete"
+	,"RealTblPromissoryNotes"."ModifiedBy" "ModifiedBy"
+	,"RealTblPromissoryNotes"."ModifiedOn" "ModifiedOn"
+	,"RealTblPromissoryNotes"."CreatedBy" "CreatedBy"
+	,"RealTblPromissoryNotes"."CreatedOn" "CreatedOn"
+	,"RealTblPromissoryNotes"."CollectDate" "CollectDate"
+	,"RealTblPromissoryNotes"."CollectInstallment" "CollectInstallment"
+	,"RealTblPromissoryNotes"."collectorid" "collectorid"
+	,"collector"."Collector_name" "collectorCollector_name"
+	,"collectorcollectmd"."collectmdname" "collectorcollectmdcollectmdname"
+	,"RealTblPromissoryNotes"."collectmdid" "collectmdid"
+	,"RealTblPromissoryNotes"."address" "address"
+	,"RealTblPromissoryNotes"."Notes" "Notes"
+	,"RealTblPromissoryNotes"."instalmentorder" "instalmentorder"
+	,"RealTblPromissoryNotes"."imported" "imported"
+	,"RealTblPromissoryNotes"."morenotes" "morenotes"
+from "dbo"."RealTblPromissoryNotes" "RealTblPromissoryNotes"
+	left join "dbo"."RealTblCustomers" "Rainbow_" on "RealTblPromissoryNotes"."Rainbow_no" = "Rainbow_"."Rainbow_no"
+	left join "dbo"."Ref_Kindlist" "Rainbow_Ref_Kind" on "Rainbow_"."Ref_KindID" = "Rainbow_Ref_Kind"."Ref_KindID"
+	left join "dbo"."Stcustmr" "Rainbow_Customer_" on "Rainbow_"."Customer_no" = "Rainbow_Customer_"."Cstm_No"
+	left join "dbo"."AreaList" "Rainbow_Customer_Area" on "Rainbow_Customer_"."AreaNo" = "Rainbow_Customer_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "Rainbow_Customer_Evaluation" on "Rainbow_Customer_"."EvaluationNO" = "Rainbow_Customer_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "Rainbow_Customer_acc_" on "Rainbow_Customer_"."acc_no" = "Rainbow_Customer_acc_"."Acc_No"
+	left join "dbo"."PYCntry" "Rainbow_Customer_Cntry_" on "Rainbow_Customer_"."Cntry_No" = "Rainbow_Customer_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "Rainbow_Customer_curncy_" on "Rainbow_Customer_"."curncy_no" = "Rainbow_Customer_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "Rainbow_Customer_TSNEF" on "Rainbow_Customer_"."TSNEFNO" = "Rainbow_Customer_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "Rainbow_Customer_TSNEFNO1" on "Rainbow_Customer_"."TSNEFNO1" = "Rainbow_Customer_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "Rainbow_Customer_Slm_" on "Rainbow_Customer_"."Slm_No" = "Rainbow_Customer_Slm_"."Slm_No"
+	left join "dbo"."Tbl_Collectors" "Rainbow_collector" on "Rainbow_"."collectorid" = "Rainbow_collector"."collectorid"
+	left join "dbo"."collectmdlist" "Rainbow_collectorcollectmd" on "Rainbow_collector"."collectmdid" = "Rainbow_collectorcollectmd"."collectmdid"
+	left join "dbo"."Tbl_Dealers" "Rainbow_Dealer" on "Rainbow_"."DealerID" = "Rainbow_Dealer"."DealerID"
+	left join "dbo"."Tbl_MD" "Rainbow_DealerMD" on "Rainbow_Dealer"."MDID" = "Rainbow_DealerMD"."MDID"
+	left join "dbo"."Tbl_MD" "Rainbow_MD" on "Rainbow_"."MDID" = "Rainbow_MD"."MDID"
+	left join "dbo"."Tbl_Nationality" "Rainbow_Nationality" on "Rainbow_"."NationalityID" = "Rainbow_Nationality"."NationalityID"
+	left join "dbo"."Tbl_Regions" "Rainbow_Region" on "Rainbow_"."RegionID" = "Rainbow_Region"."RegionID"
+	left join "dbo"."tblmodellist" "Rainbow_model" on "Rainbow_"."modelno" = "Rainbow_model"."modelno"
+	left join "dbo"."tblCatidlist" "Rainbow_modelCatidlist" on "Rainbow_model"."Catidlistid" = "Rainbow_modelCatidlist"."Catidlistid"
+	left join "dbo"."tblReplacelist" "Rainbow_Replace" on "Rainbow_"."Replaceid" = "Rainbow_Replace"."Replaceid"
+	left join "dbo"."Tbl_Collectors" "collector" on "RealTblPromissoryNotes"."collectorid" = "collector"."collectorid"
+	left join "dbo"."collectmdlist" "collectorcollectmd" on "collector"."collectmdid" = "collectorcollectmd"."collectmdid"
+]]></text>
+    </command>
+    <command id="PromissoryNotes_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="PromissoryNotes_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="PromissoryNotes_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Promissory Notes No" readOnly="true" />
+    <field name="Rainbow_no" type="Decimal" allowNulls="false" label="Rainbow no" showInSummary="true">
+      <items style="Lookup" dataController="RealTblCustomers" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Rainbow_Arabic_Name" type="String" readOnly="true" label="Rainbow Arabic Name" length="100" />
+    <field name="Rainbow_Ref_KindRef_Kind" type="String" readOnly="true" label="Rainbow Ref Kind" length="10" />
+    <field name="Rainbow_Customer_Cstm_Nm" type="String" readOnly="true" label="Rainbow Customer Cstm Nm" length="155" />
+    <field name="Rainbow_Customer_AreaArea_name" type="String" readOnly="true" label="Rainbow Customer Area name" length="150" />
+    <field name="Rainbow_Customer_EvaluationEvaluation_name" type="String" readOnly="true" label="Rainbow Customer Evaluation name" length="150" />
+    <field name="Rainbow_Customer_acc_Acc_Nm" type="String" readOnly="true" label="Rainbow Customer acc Acc Nm" length="255" />
+    <field name="Rainbow_Customer_Cntry_Cntry_Nm" type="String" readOnly="true" label="Rainbow Customer Cntry Nm" length="255" />
+    <field name="Rainbow_Customer_curncy_Curncy_Nm" type="String" readOnly="true" label="Rainbow Customer curncy Curncy Nm" length="200" />
+    <field name="Rainbow_Customer_TSNEFTSNEF_name" type="String" readOnly="true" label="Rainbow Customer TSNEFTSNEF name" length="150" />
+    <field name="Rainbow_Customer_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="Rainbow Customer TSNEFNO1TSNEF1 name" length="150" />
+    <field name="Rainbow_Customer_Slm_Slm_Nm" type="String" readOnly="true" label="Rainbow Customer Slm Nm" length="100" />
+    <field name="Rainbow_collectorCollector_name" type="String" readOnly="true" label="Rainbow collector Collector name" length="50" />
+    <field name="Rainbow_collectorcollectmdcollectmdname" type="String" readOnly="true" label="Rainbow collectorcollectmdcollectmdname" length="100" />
+    <field name="Rainbow_DealerDealer_name" type="String" readOnly="true" label="Rainbow Dealer name" length="50" />
+    <field name="Rainbow_DealerMDMD_Name" type="String" readOnly="true" label="Rainbow Dealer MDMD Name" length="50" />
+    <field name="Rainbow_MDMD_Name" type="String" readOnly="true" label="Rainbow MDMD Name" length="50" />
+    <field name="Rainbow_NationalityNationality" type="String" readOnly="true" label="Rainbow Nationality" length="25" />
+    <field name="Rainbow_RegionRegion" type="String" readOnly="true" label="Rainbow Region" length="50" />
+    <field name="Rainbow_modelmodeldesc" type="String" readOnly="true" label="Rainbow modelmodeldesc" length="150" />
+    <field name="Rainbow_modelCatidlistCatidlistdesc" type="String" readOnly="true" label="Rainbow model Catidlist Catidlistdesc" length="50" />
+    <field name="Rainbow_ReplaceReplaceDesc" type="String" readOnly="true" label="Rainbow Replace Desc" length="150" />
+    <field name="Voucher_no" type="Double" label="Voucher no" showInSummary="true" />
+    <field name="Date" type="DateTime" label="Date" showInSummary="true" />
+    <field name="Installment" type="Decimal" label="Installment" showInSummary="true" />
+    <field name="Flag" type="Boolean" default="((0))" label="Flag" showInSummary="true" />
+    <field name="Collectors" type="String" label="Collectors" length="50" />
+    <field name="Flag_Delete" type="Boolean" label="Flag Delete" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="CollectDate" type="DateTime" label="Collect Date" />
+    <field name="CollectInstallment" type="Decimal" label="Collect Installment" />
+    <field name="collectorid" type="Int64" label="Collectorid">
+      <items style="Lookup" dataController="Tbl_Collectors" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="collectorCollector_name" type="String" readOnly="true" label="collector Collector name" length="50" />
+    <field name="collectorcollectmdcollectmdname" type="String" readOnly="true" label="Collectorcollectmdcollectmdname" length="100" />
+    <field name="collectmdid" type="Int64" label="Collectmdid" />
+    <field name="address" type="String" label="Address" length="150" />
+    <field name="Notes" type="String" label="Notes" length="150" />
+    <field name="instalmentorder" type="String" label="Instalmentorder" length="50" />
+    <field name="imported" type="String" default="((1009))" label="Imported" length="50" />
+    <field name="morenotes" type="String" label="Morenotes" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Real Tbl Promissory Notes">
+      <dataFields>
+        <dataField fieldName="Rainbow_no" aliasFieldName="Rainbow_Arabic_Name" />
+        <dataField fieldName="Voucher_no" columns="15" />
+        <dataField fieldName="Date" columns="10" />
+        <dataField fieldName="Installment" columns="15" />
+        <dataField fieldName="Flag" hidden="true" />
+        <dataField fieldName="Collectors" columns="50" hidden="true"/>
+        <dataField fieldName="Flag_Delete" hidden="true" />
+        <dataField fieldName="ModifiedBy" columns="50" hidden="true"/>
+        <dataField fieldName="ModifiedOn" columns="10"  hidden="true"/>
+        <dataField fieldName="CreatedBy" columns="50"  hidden="true"/>
+        <dataField fieldName="CreatedOn" columns="10"  hidden="true"/>
+        <dataField fieldName="CollectDate" columns="10" />
+        <dataField fieldName="CollectInstallment" columns="15" />
+        <dataField fieldName="collectorid" aliasFieldName="collectorCollector_name" hidden="true" />
+        <dataField fieldName="collectmdid" columns="15"  hidden="true"/>
+        <dataField fieldName="address" />
+        <dataField fieldName="Notes" />
+        <dataField fieldName="instalmentorder" columns="50" hidden="true" />
+        <dataField fieldName="imported" columns="50"  hidden="true"/>
+        <dataField fieldName="morenotes" columns="50"  hidden="true"/>
+      </dataFields>
+    </view>
+	 <view id="grid2" type="Grid" commandId="command1" label="Real Notes1">
+      <dataFields>
+        <dataField fieldName="Rainbow_no" aliasFieldName="Rainbow_Arabic_Name" />
+        <dataField fieldName="Voucher_no" columns="15" />
+        <dataField fieldName="Date" columns="10" />
+        <dataField fieldName="Installment" columns="15" />
+        <dataField fieldName="Flag" />
+        <dataField fieldName="Collectors" columns="50" hidden="true"/>
+        <dataField fieldName="Flag_Delete" hidden="true" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50"  />
+        <dataField fieldName="CreatedOn" columns="10"  />
+        <dataField fieldName="CollectDate" columns="10" />
+        <dataField fieldName="CollectInstallment" columns="15" />
+        <dataField fieldName="collectorid" aliasFieldName="collectorCollector_name"  hidden="true" />
+        <dataField fieldName="collectmdid" columns="15"  hidden="true"/>
+        <dataField fieldName="address" />
+        <dataField fieldName="Notes" />
+        <dataField fieldName="instalmentorder" columns="50" hidden="true" />
+        <dataField fieldName="imported" columns="50"  hidden="true" />
+        <dataField fieldName="morenotes" columns="50"  hidden="true" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Real Tbl Promissory Notes">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Real Tbl Promissory Notes" flow="NewColumn"  newColumn="true">
+
+          <dataFields>
+            <dataField fieldName="Rainbow_no" aliasFieldName="Rainbow_Arabic_Name" hyperlinkFormatString="~/Pages/RealTblCustomers.aspx?Rainbow_no={Rainbow_no}&amp;_controller=RealTblCustomers&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Voucher_no" columns="15" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="Installment" columns="15" />
+            <dataField fieldName="Flag"  hidden="true" />
+            <dataField fieldName="Collectors" columns="50"  hidden="true" />
+            <dataField fieldName="Flag_Delete" hidden="true" />
+
+            <dataField fieldName="CollectDate" columns="10" />
+            <dataField fieldName="CollectInstallment" columns="15" />
+            <dataField fieldName="collectorid" aliasFieldName="collectorCollector_name" hyperlinkFormatString="~/Pages/Tbl_Collectors.aspx?collectorid={collectorid}&amp;_controller=Tbl_Collectors&amp;_commandName=Select&amp;_commandArgument=editForm1" hidden="true" />
+            <dataField fieldName="collectmdid" columns="15" hidden="true" />
+            <dataField fieldName="address" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="instalmentorder" columns="50" hidden="true" />
+            <dataField fieldName="imported" columns="50"  hidden="true" />
+            <dataField fieldName="morenotes" columns="50"  hidden="true" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+
+          <dataFields>
+            <dataField fieldName="Rainbow_Ref_KindRef_Kind" columns="10" hidden="true" />
+            <dataField fieldName="Rainbow_Customer_Cstm_Nm" hidden="true" />
+            <dataField fieldName="Rainbow_Customer_AreaArea_name" hidden="true" />
+            <dataField fieldName="Rainbow_Customer_EvaluationEvaluation_name" hidden="true" />
+            <dataField fieldName="Rainbow_Customer_acc_Acc_Nm" hidden="true" />
+            <dataField fieldName="Rainbow_Customer_Cntry_Cntry_Nm" hidden="true" />
+            <dataField fieldName="Rainbow_Customer_curncy_Curncy_Nm" hidden="true" />
+            <dataField fieldName="Rainbow_Customer_TSNEFTSNEF_name" hidden="true" />
+            <dataField fieldName="Rainbow_Customer_TSNEFNO1TSNEF1_name" hidden="true" />
+            <dataField fieldName="Rainbow_Customer_Slm_Slm_Nm" hidden="true" />
+            <dataField fieldName="Rainbow_collectorCollector_name" columns="50" hidden="true" />
+            <dataField fieldName="Rainbow_collectorcollectmdcollectmdname" hidden="true" />
+            <dataField fieldName="Rainbow_DealerDealer_name" columns="50"  hidden="true" />
+            <dataField fieldName="Rainbow_DealerMDMD_Name" columns="50" hidden="true" />
+            <dataField fieldName="Rainbow_MDMD_Name" columns="50" hidden="true" />
+            <dataField fieldName="Rainbow_NationalityNationality" columns="25" hidden="true"/>
+            <dataField fieldName="Rainbow_RegionRegion" columns="50" hidden="true" />
+            <dataField fieldName="Rainbow_modelmodeldesc" hidden="true" />
+            <dataField fieldName="Rainbow_modelCatidlistCatidlistdesc" columns="50" hidden="true" />
+            <dataField fieldName="Rainbow_ReplaceReplaceDesc" hidden="true" />
+            <dataField fieldName="collectorcollectmdcollectmdname" hidden="true" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Real Tbl Promissory Notes">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Real Tbl Promissory Notes" flow="NewColumn"  newColumn="true">
+ 
+          <dataFields>
+            <dataField fieldName="Rainbow_no" aliasFieldName="Rainbow_Arabic_Name" />
+            <dataField fieldName="Voucher_no" columns="15" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="Installment" columns="15" />
+            <dataField fieldName="Flag"  hidden="true" />
+            <dataField fieldName="Collectors" columns="50"  hidden="true" />
+            <dataField fieldName="Flag_Delete" hidden="true" />
+
+            <dataField fieldName="CollectDate" columns="10" />
+            <dataField fieldName="CollectInstallment" columns="15" />
+            <dataField fieldName="collectorid" aliasFieldName="collectorCollector_name"  hidden="true" />
+            <dataField fieldName="collectmdid" columns="15"  hidden="true" />
+            <dataField fieldName="address" />
+            <dataField fieldName="Notes" />
+            <dataField fieldName="instalmentorder" columns="50"  hidden="true" />
+            <dataField fieldName="imported" columns="50"  hidden="true" />
+            <dataField fieldName="morenotes" columns="50"  hidden="true" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

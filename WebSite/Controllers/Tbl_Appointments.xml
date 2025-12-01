@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Tbl_Appointments" conflictDetection="overwriteChanges" label="Tbl Appointments" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text>
+		<![CDATA[
+select
+	"Tbl_Appointments"."HomePhone" "HomePhone"
+	,"Tbl_Appointments"."branch" "branch"
+	,"Tbl_Appointments"."CallDepid" "CallDepid"
+	,"Tbl_Appointments"."MobilePhone" "MobilePhone"
+	,"Tbl_Appointments"."Date" "Date"
+	,"Tbl_Appointments"."DayID" "DayID"
+	,"Tbl_Appointments"."Time" "Time"
+	,"Tbl_Appointments"."MDID" "MDID"
+	,"Tbl_Appointments"."Customer_Name" "Customer_Name"
+	,"Tbl_Appointments"."Ref_Name" "Ref_Name"
+	,"Tbl_Appointments"."Ref_KindID" "Ref_KindID"
+	,"Tbl_Appointments"."Ref_Phone" "Ref_Phone"
+	,"Tbl_Appointments"."RegionID" "RegionID"
+	,"Tbl_Appointments"."Full_DetailsAddress" "Full_DetailsAddress"
+	,"Tbl_Appointments"."Fixed_Date" "Fixed_Date"
+	,"Tbl_Appointments"."Tele_Mark_SecID" "Tele_Mark_SecID"
+	,"Tbl_Appointments"."Customer_onCall" "Customer_onCall"
+	,"Tbl_Appointments"."ResultID" "ResultID"
+	,"Tbl_Appointments"."DealerID" "DealerID"
+	,"Tbl_Appointments"."Names_No" "Names_No"
+	,"Tbl_Appointments"."enter_usre" "enter_usre"
+	,"Tbl_Appointments"."old_Names" "old_Names"
+	,"Tbl_Appointments"."Postponement_Cause" "Postponement_Cause"
+	,"Tbl_Appointments"."Dealer_Remarks" "Dealer_Remarks"
+	,"Tbl_Appointments"."ModifiedBy" "ModifiedBy"
+	,"Tbl_Appointments"."ModifiedOn" "ModifiedOn"
+	,"Tbl_Appointments"."CreatedBy" "CreatedBy"
+	,"Tbl_Appointments"."CreatedOn" "CreatedOn"
+	,"Tbl_Appointments"."CallDepDesc" "CallDepDesc"
+	,"Tbl_Appointments"."Dealer_name" "Dealer_name"
+	,"Tbl_Appointments"."Desc1" "Desc1"
+	,"Tbl_Appointments"."Ref_Kind" "Ref_Kind"
+	,"Tbl_Appointments"."Region" "Region"
+	,"Tbl_Appointments"."Tele_Mark_Sec" "Tele_Mark_Sec"
+	,"Tbl_Appointments"."MD_Name" "MD_Name"
+	,"Tbl_Appointments"."Day" "Day"
+	,"Tbl_Appointments"."MD" "MD"
+	,"Tbl_Appointments"."Result" "Result"
+	,"Tbl_Appointments"."insale" "insale"
+	,"Tbl_Appointments"."usercodename" "usercodename"
+from "dbo"."Tbl_Appointments" "Tbl_Appointments"
+]]></text>
+    </command>
+    <command id="branchIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="branch" />
+      </output>
+    </command>
+    <command id="CallDepidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="CallDepid" />
+      </output>
+    </command>
+    <command id="DayIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="DayID" />
+      </output>
+    </command>
+    <command id="MDIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="MDID" />
+      </output>
+    </command>
+    <command id="Ref_KindIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Ref_KindID" />
+      </output>
+    </command>
+    <command id="RegionIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="RegionID" />
+      </output>
+    </command>
+    <command id="Tele_Mark_SecIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Tele_Mark_SecID" />
+      </output>
+    </command>
+    <command id="ResultIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ResultID" />
+      </output>
+    </command>
+    <command id="DealerIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="DealerID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="HomePhone" type="Int32" allowNulls="false" label="Home Phone" showInSummary="true" />
+    <field name="branch" type="Int64" label="Branch" readOnly="true" showInSummary="true" allowLEV="true"/>
+    <field name="CallDepid" type="Int64" label="Call Depid" readOnly="true" showInSummary="true" allowLEV="true">
+      <items style="DropDownList" dataView="grid1" dataTextField="CallDepDesc" dataValueField="CallDepid" dataController="CallDeplist" />
+    </field>
+    <field name="MobilePhone" type="Int32" label="Mobile Phone" showInSummary="true" />
+    <field name="Date" type="DateTime" label="Date" showInSummary="true" allowLEV="true" />
+    <field name="DayID" type="Int64" label="Day#" readOnly="true" />
+    <field name="Time" type="String" label="Time" length="50">
+      <items style="DropDownList" dataView="grid1" dataTextField="الوقت" dataValueField="الوقت" />
+    </field>
+    <field name="MDID" type="Int64" label="Mdid" readOnly="true" />
+    <field name="Customer_Name" type="String" label="Customer Name" length="50" />
+	  <field name="usercodename" type="String" label="usercodename" length="50" />
+	  
+	  <field name="Ref_Name" type="String" label="Ref Name" length="50" />
+    <field name="Ref_KindID" type="Int64" label="Ref Kind#" readOnly="true" />
+    <field name="Ref_Phone" type="String" label="Ref Phone" length="15" />
+    <field name="RegionID" type="Int64" label="Region#" readOnly="true" />
+    <field name="Full_DetailsAddress" type="String" allowQBE="false" allowSorting="false" label="Full Details Address" />
+    <field name="Fixed_Date" type="DateTime" label="Fixed Date" />
+    <field name="Tele_Mark_SecID" type="Int64" label="Tele Mark Sec#" readOnly="true" />
+    <field name="ResultID" type="Int64" label="Result#" readOnly="true" />
+    <field name="DealerID" type="Int64" label="Dealer#" readOnly="true" />
+    <field name="Names_No" type="Int32" label="Names No" />
+    <field name="old_Names" type="Int32" label="old Names" />
+    <field name="Postponement_Cause" type="String" allowQBE="false" allowSorting="false" label="Postponement Cause" />
+    <field name="Dealer_Remarks" type="String" allowQBE="false" allowSorting="false" label="Dealer Remarks" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="CallDepDesc" type="String" label="Call Dep Desc" length="50" />
+    <field name="Desc1" type="String" label="Desc1" length="50" />
+	<field name="insale" type="Int64" label="insale"  />
+	  <field name="Ref_Kind" type="String" label="Ref Kind" length="10">
+      <items style="DropDownList">
+        <item value="عرض" text="عرض" />
+        <item value="بيع" text="بيع" />
+        <item value="شركة" text="شركة" />
+        <item value="عرض لبيع قديم" text="عرض لبيع قديم" />
+        <item value="مباشر" text="مباشر" />
+      </items>
+    </field>
+    <field name="Region" type="String" label="Region" length="50">
+      <items style="DropDownList" dataView="grid1" dataTextField="Region" dataValueField="Region" />
+    </field>
+    <field name="Customer_onCall" type="String" label="Customer on Call" length="50" />
+    <field name="Dealer_name" type="String" label="Dealer name" length="50" allowLEV="true">
+      <items style="AutoComplete" dataView="grid1" dataTextField="Dealer_name" dataValueField="Dealer_name" />
+    </field>
+    <field name="Tele_Mark_Sec" type="String" label="Tele Mark Sec" length="50">
+      <items dataView="grid1" dataTextField="Tele_Mark_Sec" dataValueField="Tele_Mark_Sec" style="AutoComplete" />
+    </field>
+    <field name="MD_Name" type="String" label="MD Name" length="50" />
+    <field name="Day" type="String" label="Day" length="50" allowLEV="true">
+      <items style="DropDownList" dataView="grid1" dataTextField="اليوم" dataValueField="اليوم" />
+    </field>
+    <field name="MD" type="String" label="Md" length="50">
+      <items dataView="grid1" dataTextField="MD_Name" dataValueField="MD_Name" style="AutoComplete" />
+    </field>
+    <field name="Result" type="String" label="Result" length="50">
+      <items dataView="grid1" dataTextField="النتيجة" dataValueField="النتيجة" style="DropDownList" />
+    </field>
+    <field name="enter_usre" type="String" label="enter_usre" htmlEncode="false" hidden="false" length="20">
+      <items letters="false" style="DropDownList">
+        <item value="Ass_1" text="Ass_1" />
+        <item value="Ass_2" text="Ass_2" />
+        <item value="Ass_3" text="Ass_3" />
+      </items>
+    </field>
+    <field name="phonesearsh" type="String" allowNulls="false" label="phonesearsh" htmlEncode="false" hidden="false" readOnly="true" computed="true">
+      <items letters="false" />
+      <formula>CAST(Tbl_Appointments.HomePhone AS nvarchar(9)) + N'N|' + CAST(ISNULL(Tbl_Appointments.MobilePhone, 0) AS nvarchar(9))</formula>
+    </field>
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Tbl Appointments"  sortExpression="Date Desc">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+	  
+	
+        <dataField fieldName="phonesearsh" rows="5" search="Suggested" />
+        <dataField fieldName="Date" columns="10" search="Suggested" />
+        <dataField fieldName="MD" columns="50" search="Suggested" />
+        <dataField fieldName="DayID" columns="15" />
+        <dataField fieldName="MDID" columns="15" />
+        <dataField fieldName="Dealer_name" columns="50" />
+        <dataField fieldName="Customer_Name" columns="50" />
+        <dataField fieldName="Result" columns="50" />
+        <dataField fieldName="Day" columns="50" />
+        <dataField fieldName="Time" columns="50" />
+        <dataField fieldName="Ref_Kind" columns="10" />
+        <dataField fieldName="Ref_Name" columns="50" />
+        <dataField fieldName="Ref_Phone" columns="15" />
+        <dataField fieldName="Region" columns="50" />
+        <dataField fieldName="Fixed_Date" columns="10" />
+        <dataField fieldName="Customer_onCall" columns="50" />
+        <dataField fieldName="Tele_Mark_Sec" columns="50" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="Full_DetailsAddress" rows="2" hidden="true" />
+        <dataField fieldName="Segment" hidden="true" />
+        <dataField fieldName="Dealer_Remarks" rows="5" hidden="true" />
+        <dataField fieldName="Postponement_Cause" rows="5" hidden="true" />
+        <dataField fieldName="Names_No" columns="15" hidden="true" />
+        <dataField fieldName="old_Names" columns="15" hidden="true" />
+        <dataField fieldName="enter_usre" />
+        <dataField fieldName="HomePhone" columns="15" />
+        <dataField fieldName="MobilePhone" columns="15" />
+        <dataField fieldName="branch" columns="15" aliasFieldName="Desc1" />
+        <dataField fieldName="CallDepid" columns="15" />
+		  <dataField fieldName="insale" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Tbl Appointments">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Tbl Appointments" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CallDepDesc" columns="50" />
+            <dataField fieldName="Desc1" columns="50" />
+            <dataField fieldName="MD_Name" columns="50" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="Day" columns="50" />
+            <dataField fieldName="Time" columns="50" />
+            <dataField fieldName="MD" columns="50" />
+            <dataField fieldName="HomePhone" columns="15" />
+            <dataField fieldName="MobilePhone" columns="15" />
+            <dataField fieldName="Customer_Name" columns="50" />
+            <dataField fieldName="Ref_Name" columns="50" />
+            <dataField fieldName="Ref_Kind" columns="10" />
+            <dataField fieldName="Ref_Phone" columns="15" />
+            <dataField fieldName="Fixed_Date" columns="10" />
+			
+          </dataFields>
+        </category>
+        <category headerText="MoreDetailes" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="Tele_Mark_Sec" columns="50" />
+            <dataField fieldName="Region" columns="50" />
+            <dataField fieldName="Customer_onCall" columns="50" />
+            <dataField fieldName="Full_DetailsAddress" rows="2" />
+            <dataField fieldName="Dealer_name" columns="50" />
+            <dataField fieldName="Segment" />
+            <dataField fieldName="Result" columns="50" />
+            <dataField fieldName="Names_No" columns="15" />
+            <dataField fieldName="old_Names" columns="15" />
+            <dataField fieldName="enter_usre" />
+            <dataField fieldName="Postponement_Cause" rows="1" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Tbl Appointments">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Tbl Appointments" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="CallDepDesc" columns="50" />
+            <dataField fieldName="Desc1" columns="50" />
+            <dataField fieldName="MD_Name" columns="50" />
+            <dataField fieldName="Date" columns="10" />
+            <dataField fieldName="Day" columns="50" />
+            <dataField fieldName="Time" columns="50" />
+            <dataField fieldName="MD" columns="50" />
+            <dataField fieldName="HomePhone" columns="15" />
+            <dataField fieldName="MobilePhone" columns="15" />
+            <dataField fieldName="Customer_Name" columns="50" />
+            <dataField fieldName="Ref_Name" columns="50" />
+            <dataField fieldName="Ref_Kind" columns="10" />
+            <dataField fieldName="Ref_Phone" columns="15" />
+            <dataField fieldName="Fixed_Date" columns="10" />
+          </dataFields>
+        </category>
+        <category headerText="MoreDetailes" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="Tele_Mark_Sec" columns="50" />
+            <dataField fieldName="Region" columns="50" />
+            <dataField fieldName="Customer_onCall" columns="50" />
+            <dataField fieldName="Full_DetailsAddress" rows="2" />
+            <dataField fieldName="Dealer_name" columns="50" />
+            <dataField fieldName="Segment" />
+            <dataField fieldName="Names_No" columns="15" />
+            <dataField fieldName="old_Names" columns="15" />
+            <dataField fieldName="enter_usre" />
+            <dataField fieldName="Postponement_Cause" rows="1" />
+            <dataField fieldName="Result" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="grid2" commandId="command1" type="DataSheet" label="grid2" sortExpression="Date Desc,MD,Dealer_name,Time">
+      <dataFields>
+        <dataField fieldName="HomePhone" columns="15" />
+        <dataField fieldName="Date" columns="10" />
+        <dataField fieldName="MD" columns="50" />
+        <dataField fieldName="Dealer_name" columns="50" />
+        <dataField fieldName="Time" columns="50" />
+        <dataField fieldName="Result" columns="50" />
+        <dataField fieldName="Names_No" columns="15" />
+        <dataField fieldName="Day" columns="50" />
+        <dataField fieldName="MobilePhone" columns="15" />
+        <dataField fieldName="Customer_Name" columns="50" />
+        <dataField fieldName="Ref_Name" columns="50" />
+        <dataField fieldName="Ref_Kind" columns="10" />
+        <dataField fieldName="Ref_Phone" columns="15" />
+        <dataField fieldName="Region" columns="50" />
+        <dataField fieldName="Fixed_Date" columns="10" />
+        <dataField fieldName="Customer_onCall" columns="50" />
+		  <dataField fieldName="insale" columns="15" />
+      </dataFields>
+    </view>
+    <view id="grid3" commandId="command1" type="Grid" label="grid3">
+      <dataFields>
+        <dataField fieldName="Date" columns="10" search="Suggested" />
+        <dataField fieldName="Dealer_name" columns="50" search="Suggested" />
+        <dataField fieldName="Result" columns="50" search="Suggested" />
+        <dataField fieldName="Ref_Kind" columns="10" />
+        <dataField fieldName="Customer_Name" columns="50" />
+        <dataField fieldName="Dealer_Remarks" rows="5" />
+        <dataField fieldName="branch" columns="15" />
+        <dataField fieldName="CallDepid" columns="15" />
+		  <dataField fieldName="insale" columns="15" />
+      </dataFields>
+    </view>
+    <view id="gridreadonley" commandId="command1" type="Grid" label="gridreadonley" filter="usercodename=@BusinessRules_UserName" sortExpression="Date Desc">>
+      <dataFields>
+        <dataField fieldName="phonesearsh" rows="5" search="Suggested" />
+        <dataField fieldName="Date" columns="10" search="Suggested" />
+        <dataField fieldName="MD" columns="50" search="Suggested" />
+        <dataField fieldName="DayID" columns="15" />
+        <dataField fieldName="MDID" columns="15" />
+        <dataField fieldName="Dealer_name" columns="50" />
+        <dataField fieldName="Customer_Name" columns="50" />
+		  <dataField fieldName="usercodename" columns="50" />
+		  <dataField fieldName="ResultID" columns="50" />
+		  
+		  <dataField fieldName="Result" columns="50" />
+        <dataField fieldName="Day" columns="50" />
+        <dataField fieldName="Time" columns="50" />
+        <dataField fieldName="Ref_Kind" columns="10" />
+        <dataField fieldName="Ref_Name" columns="50" />
+        <dataField fieldName="Ref_Phone" columns="15" />
+        <dataField fieldName="Region" columns="50" />
+        <dataField fieldName="Fixed_Date" columns="10" />
+        <dataField fieldName="Customer_onCall" columns="50" />
+        <dataField fieldName="branch" columns="15" />
+		  <dataField fieldName="insale" columns="15" />
+      </dataFields>
+    </view>
+	  <view id="gridreadonley1001" commandId="command1" type="Grid" label="gridreadonleyall"  sortExpression="Date Desc">
+		    <dataFields>
+			  <dataField fieldName="phonesearsh" rows="5" search="Suggested" />
+			  <dataField fieldName="Date" columns="10" search="Suggested" />
+			  <dataField fieldName="MD" columns="50" search="Suggested" />
+			  <dataField fieldName="DayID" columns="15" />
+			  <dataField fieldName="MDID" columns="15" />
+			  <dataField fieldName="Dealer_name" columns="50" />
+			  <dataField fieldName="Customer_Name" columns="50" />
+			  <dataField fieldName="Result" columns="50" />
+			  <dataField fieldName="Day" columns="50" />
+			  <dataField fieldName="Time" columns="50" />
+			  <dataField fieldName="Ref_Kind" columns="10" />
+			  <dataField fieldName="Ref_Name" columns="50" />
+			  <dataField fieldName="Ref_Phone" columns="15" />
+			  <dataField fieldName="Region" columns="50" />
+			  <dataField fieldName="Fixed_Date" columns="10" />
+			  <dataField fieldName="Customer_onCall" columns="50" />
+			  <dataField fieldName="branch" columns="15" />
+			  <dataField fieldName="insale" columns="15" />
+		  </dataFields>
+	  </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid" />
+    <actionGroup id="ag2" scope="Form" />
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true" />
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true" />
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions" />
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record" />
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report" />
+    <actionGroup id="ag8" scope="Row" />
+    <actionGroup id="ag9" scope="ActionColumn" />
+  </actions>
+</dataController>

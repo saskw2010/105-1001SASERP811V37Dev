@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Transorder" conflictDetection="overwriteChanges" label="Transorder" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Transorder"."TransorderID" "TransorderID"
+	,"Transorder"."TransorderDate" "TransorderDate"
+	,"Transorder"."Cstm_no" "Cstm_no"
+	,"Cstm_"."Cstm_Nm" "Cstm_Cstm_Nm"
+	,"Cstm_Area"."Area_name" "Cstm_AreaArea_name"
+	,"Cstm_Evaluation"."Evaluation_name" "Cstm_EvaluationEvaluation_name"
+	,"Cstm_acc_"."Acc_Nm" "Cstm_acc_Acc_Nm"
+	,"Cstm_acc_Clsacc_"."Acc_Nm" "Cstm_acc_Clsacc_Acc_Nm"
+	,"Cstm_acc_Acc_Bnd"."Acc_Nm" "Cstm_acc_Acc_BndAcc_Nm"
+	,"Cstm_Cntry_"."Cntry_Nm" "Cstm_Cntry_Cntry_Nm"
+	,"Cstm_curncy_"."Curncy_Nm" "Cstm_curncy_Curncy_Nm"
+	,"Cstm_TSNEF"."TSNEF_name" "Cstm_TSNEFTSNEF_name"
+	,"Cstm_TSNEFNO1"."TSNEF1_name" "Cstm_TSNEFNO1TSNEF1_name"
+	,"Cstm_Slm_"."Slm_Nm" "Cstm_Slm_Slm_Nm"
+	,"Cstm_Slm_masngerclass"."masngerclass" "Cstm_Slm_masngerclassmasngerclass"
+	,"Transorder"."TransorderInform" "TransorderInform"
+	,"Transorder"."TransorderPrice" "TransorderPrice"
+	,"Transorder"."transcurrentid" "transcurrentid"
+	,"transcurrent"."transcurrentdesc" "transcurrenttranscurrentdesc"
+	,"Transorder"."transloadingDestid" "transloadingDestid"
+	,"transloadingDest"."transloadingDestdesc" "transloadingDesttransloadingDestdesc"
+	,"Transorder"."loadingtypeid" "loadingtypeid"
+	,"loadingtype"."loadingtypedesc" "loadingtypeloadingtypedesc"
+	,"Transorder"."trnsdilvno" "trnsdilvno"
+	,"trnsdilv"."trnsdilvdesc" "trnsdilvtrnsdilvdesc"
+	,"Transorder"."ModifiedBy" "ModifiedBy"
+	,"Transorder"."ModifiedOn" "ModifiedOn"
+	,"Transorder"."CreatedBy" "CreatedBy"
+	,"Transorder"."CreatedOn" "CreatedOn"
+from "dbo"."Transorder" "Transorder"
+	left join "dbo"."Stcustmr" "Cstm_" on "Transorder"."Cstm_no" = "Cstm_"."Cstm_No"
+	left join "dbo"."AreaList" "Cstm_Area" on "Cstm_"."AreaNo" = "Cstm_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "Cstm_Evaluation" on "Cstm_"."EvaluationNO" = "Cstm_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "Cstm_acc_" on "Cstm_"."acc_no" = "Cstm_acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "Cstm_acc_Clsacc_" on "Cstm_acc_"."Clsacc_No" = "Cstm_acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Cstm_acc_Acc_Bnd" on "Cstm_acc_"."Acc_Bnd" = "Cstm_acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."PYCntry" "Cstm_Cntry_" on "Cstm_"."Cntry_No" = "Cstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "Cstm_curncy_" on "Cstm_"."curncy_no" = "Cstm_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "Cstm_TSNEF" on "Cstm_"."TSNEFNO" = "Cstm_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "Cstm_TSNEFNO1" on "Cstm_"."TSNEFNO1" = "Cstm_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "Cstm_Slm_" on "Cstm_"."Slm_No" = "Cstm_Slm_"."Slm_No"
+	left join "dbo"."masngerclass" "Cstm_Slm_masngerclass" on "Cstm_Slm_"."masngerclassid" = "Cstm_Slm_masngerclass"."masngerclassid"
+	left join "dbo"."transcurrentlocation" "transcurrent" on "Transorder"."transcurrentid" = "transcurrent"."transcurrentid"
+	left join "dbo"."transloadingDest" "transloadingDest" on "Transorder"."transloadingDestid" = "transloadingDest"."transloadingDestid"
+	left join "dbo"."transloadingtype" "loadingtype" on "Transorder"."loadingtypeid" = "loadingtype"."loadingtypeid"
+	left join "dbo"."trnsdilvtype" "trnsdilv" on "Transorder"."trnsdilvno" = "trnsdilv"."trnsdilvno"
+]]></text>
+    </command>
+    <command id="TransorderIDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="TransorderID" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="TransorderID" type="Int64" allowNulls="false" isPrimaryKey="true" label="Transorder#" readOnly="true" />
+    <field name="TransorderDate" type="DateTime" label="Transorder Date" showInSummary="true" />
+    <field name="Cstm_no" type="Int64" label="Cstm no" showInSummary="true">
+      <items style="Lookup" dataController="Stcustmr" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Cstm_Cstm_Nm" type="String" readOnly="true" label="Cstm Nm" length="155" />
+    <field name="Cstm_AreaArea_name" type="String" readOnly="true" label="Cstm Area name" length="150" />
+    <field name="Cstm_EvaluationEvaluation_name" type="String" readOnly="true" label="Cstm Evaluation name" length="150" />
+    <field name="Cstm_acc_Acc_Nm" type="String" readOnly="true" label="Cstm acc Acc Nm" length="255" />
+    <field name="Cstm_acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Cstm acc Clsacc Acc Nm" length="250" />
+    <field name="Cstm_acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Cstm acc Acc Bnd Acc Nm" length="50" />
+    <field name="Cstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="Cstm Cntry Nm" length="255" />
+    <field name="Cstm_curncy_Curncy_Nm" type="String" readOnly="true" label="Cstm curncy Curncy Nm" length="200" />
+    <field name="Cstm_TSNEFTSNEF_name" type="String" readOnly="true" label="Cstm TSNEFTSNEF name" length="150" />
+    <field name="Cstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="Cstm TSNEFNO1TSNEF1 name" length="150" />
+    <field name="Cstm_Slm_Slm_Nm" type="String" readOnly="true" label="Cstm Slm Nm" length="100" />
+    <field name="Cstm_Slm_masngerclassmasngerclass" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Cstm Slm masngerclassmasngerclass" length="-1" />
+    <field name="TransorderInform" type="String" label="Transorder Inform" length="160" showInSummary="true" />
+    <field name="TransorderPrice" type="Decimal" label="Transorder Price" showInSummary="true" />
+    <field name="transcurrentid" type="Int64" label="Transcurrentid" showInSummary="true">
+      <items style="Lookup" dataController="transcurrentlocation" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="transcurrenttranscurrentdesc" type="String" readOnly="true" label="Transcurrenttranscurrentdesc" length="250" />
+    <field name="transloadingDestid" type="Int64" label="transloading Destid">
+      <items style="Lookup" dataController="transloadingDest" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="transloadingDesttransloadingDestdesc" type="String" readOnly="true" label="transloading Desttransloading Destdesc" length="250" />
+    <field name="loadingtypeid" type="Int64" label="Loadingtypeid">
+      <items style="Lookup" dataController="transloadingtype" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="loadingtypeloadingtypedesc" type="String" readOnly="true" label="Loadingtypeloadingtypedesc" length="250" />
+    <field name="trnsdilvno" type="Int64" label="Trnsdilvno">
+      <items style="Lookup" dataController="trnsdilvtype" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="trnsdilvtrnsdilvdesc" type="String" readOnly="true" label="Trnsdilvtrnsdilvdesc" length="250" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Transorder">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="TransorderDate" columns="10" />
+        <dataField fieldName="Cstm_no" aliasFieldName="Cstm_Cstm_Nm" hyperlinkFormatString="~/Pages/Stcustmr.aspx?Cstm_No={Cstm_no}&amp;_controller=Stcustmr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="TransorderInform" />
+        <dataField fieldName="TransorderPrice" dataFormatString="c" columns="15" />
+        <dataField fieldName="transcurrentid" aliasFieldName="transcurrenttranscurrentdesc" hyperlinkFormatString="~/Pages/transcurrentlocation.aspx?transcurrentid={transcurrentid}&amp;_controller=transcurrentlocation&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="transloadingDestid" aliasFieldName="transloadingDesttransloadingDestdesc" hyperlinkFormatString="~/Pages/transloadingDest.aspx?transloadingDestid={transloadingDestid}&amp;_controller=transloadingDest&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="loadingtypeid" aliasFieldName="loadingtypeloadingtypedesc" hyperlinkFormatString="~/Pages/transloadingtype.aspx?loadingtypeid={loadingtypeid}&amp;_controller=transloadingtype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="trnsdilvno" aliasFieldName="trnsdilvtrnsdilvdesc" hyperlinkFormatString="~/Pages/trnsdilvtype.aspx?trnsdilvno={trnsdilvno}&amp;_controller=trnsdilvtype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="Cstm_AreaArea_name" />
+        <dataField fieldName="Cstm_EvaluationEvaluation_name" />
+        <dataField fieldName="Cstm_acc_Acc_Nm" />
+        <dataField fieldName="Cstm_acc_Clsacc_Acc_Nm" />
+        <dataField fieldName="Cstm_acc_Acc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="Cstm_Cntry_Cntry_Nm" />
+        <dataField fieldName="Cstm_curncy_Curncy_Nm" />
+        <dataField fieldName="Cstm_TSNEFTSNEF_name" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Transorder">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Transorder" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="TransorderDate" columns="10" />
+            <dataField fieldName="Cstm_no" aliasFieldName="Cstm_Cstm_Nm" hyperlinkFormatString="~/Pages/Stcustmr.aspx?Cstm_No={Cstm_no}&amp;_controller=Stcustmr&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="TransorderInform" />
+            <dataField fieldName="TransorderPrice" dataFormatString="c" columns="15" />
+            <dataField fieldName="transcurrentid" aliasFieldName="transcurrenttranscurrentdesc" hyperlinkFormatString="~/Pages/transcurrentlocation.aspx?transcurrentid={transcurrentid}&amp;_controller=transcurrentlocation&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="transloadingDestid" aliasFieldName="transloadingDesttransloadingDestdesc" hyperlinkFormatString="~/Pages/transloadingDest.aspx?transloadingDestid={transloadingDestid}&amp;_controller=transloadingDest&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="loadingtypeid" aliasFieldName="loadingtypeloadingtypedesc" hyperlinkFormatString="~/Pages/transloadingtype.aspx?loadingtypeid={loadingtypeid}&amp;_controller=transloadingtype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="trnsdilvno" aliasFieldName="trnsdilvtrnsdilvdesc" hyperlinkFormatString="~/Pages/trnsdilvtype.aspx?trnsdilvno={trnsdilvno}&amp;_controller=trnsdilvtype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Cstm_AreaArea_name" />
+            <dataField fieldName="Cstm_EvaluationEvaluation_name" />
+            <dataField fieldName="Cstm_acc_Acc_Nm" />
+            <dataField fieldName="Cstm_acc_Clsacc_Acc_Nm" />
+            <dataField fieldName="Cstm_acc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="Cstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="Cstm_curncy_Curncy_Nm" />
+            <dataField fieldName="Cstm_TSNEFTSNEF_name" />
+            <dataField fieldName="Cstm_TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="Cstm_Slm_Slm_Nm" />
+            <dataField fieldName="Cstm_Slm_masngerclassmasngerclass" rows="5" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Transorder">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Transorder" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="TransorderDate" columns="10" />
+            <dataField fieldName="Cstm_no" aliasFieldName="Cstm_Cstm_Nm" />
+            <dataField fieldName="TransorderInform" />
+            <dataField fieldName="TransorderPrice" dataFormatString="c" columns="15" />
+            <dataField fieldName="transcurrentid" aliasFieldName="transcurrenttranscurrentdesc" />
+            <dataField fieldName="transloadingDestid" aliasFieldName="transloadingDesttransloadingDestdesc" />
+            <dataField fieldName="loadingtypeid" aliasFieldName="loadingtypeloadingtypedesc" />
+            <dataField fieldName="trnsdilvno" aliasFieldName="trnsdilvtrnsdilvdesc" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

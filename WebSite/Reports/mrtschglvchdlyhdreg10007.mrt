@@ -1,0 +1,1133 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <mosConnection1 Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>mosConnection1</Alias>
+        <ConnectionStringEncrypted>9HDhSEQJQxl7TJyE5RQlJ9FYs41FGNKFaUfoyWoY4yrDVrXrT0zTzUVHpVhhhHd/+XiV6tdVk7zpS6GE83BtL8NwZS1NXbvVzE3t3GFw7WLZOGXDYkyTgct9nGzk+KR721TB68wFo20=</ConnectionStringEncrypted>
+        <Name>mosConnection1</Name>
+      </mosConnection1>
+    </Databases>
+    <DataSources isList="true" count="3">
+      <mosDataSource1 Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>mosDataSource1</Alias>
+        <Columns isList="true" count="24">
+          <value>schglvchdlyhdregid,System.Int64</value>
+          <value>Trs_Dt,System.DateTime</value>
+          <value>Balance,System.Decimal</value>
+          <value>ReferanceNo,System.String</value>
+          <value>IDregorg,System.Int64</value>
+          <value>IDregorgNAME_1,System.String</value>
+          <value>Delevername,System.String</value>
+          <value>Delevercivil,System.String</value>
+          <value>DeleverTel,System.String</value>
+          <value>Notes,System.String</value>
+          <value>approved,System.Boolean</value>
+          <value>posted,System.Boolean</value>
+          <value>deleted,System.Boolean</value>
+          <value>havdetails,System.Boolean</value>
+          <value>ModifiedBy,System.String</value>
+          <value>ModifiedOn,System.DateTime</value>
+          <value>CreatedBy,System.String</value>
+          <value>CreatedOn,System.DateTime</value>
+          <value>branch,System.Int64</value>
+          <value>ThebranchDesc1,System.String</value>
+          <value>Thebranchsgmsgm_Nm,System.String</value>
+          <value>ThebranchsgmOpcoOpcoName,System.String</value>
+          <value>ThebranchGenderGender,System.String</value>
+          <value>ThebranchschtypschtypDesc,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>mosDataSource1</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>Parameter1,,0,0</value>
+        </Parameters>
+        <SqlCommand>select
+	"schglvchdlyhdreg"."schglvchdlyhdregid" "schglvchdlyhdregid"
+	,"schglvchdlyhdreg"."Trs_Dt" "Trs_Dt"
+	,"schglvchdlyhdreg"."Balance" "Balance"
+	,"schglvchdlyhdreg"."ReferanceNo" "ReferanceNo"
+	,"schglvchdlyhdreg"."IDregorg" "IDregorg"
+	,"IDregorg"."NAME_1" "IDregorgNAME_1"
+	,"schglvchdlyhdreg"."Delevername" "Delevername"
+	,"schglvchdlyhdreg"."Delevercivil" "Delevercivil"
+	,"schglvchdlyhdreg"."DeleverTel" "DeleverTel"
+	,"schglvchdlyhdreg"."Notes" "Notes"
+	,"schglvchdlyhdreg"."approved" "approved"
+	,"schglvchdlyhdreg"."posted" "posted"
+	,"schglvchdlyhdreg"."deleted" "deleted"
+	,"schglvchdlyhdreg"."havdetails" "havdetails"
+	,"schglvchdlyhdreg"."ModifiedBy" "ModifiedBy"
+	,"schglvchdlyhdreg"."ModifiedOn" "ModifiedOn"
+	,"schglvchdlyhdreg"."CreatedBy" "CreatedBy"
+	,"schglvchdlyhdreg"."CreatedOn" "CreatedOn"
+	,"schglvchdlyhdreg"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"Thebranchsgm"."sgm_Nm" "Thebranchsgmsgm_Nm"
+	,"ThebranchsgmOpco"."OpcoName" "ThebranchsgmOpcoOpcoName"
+	,"ThebranchGender"."Gender" "ThebranchGenderGender"
+	,"Thebranchschtyp"."schtypDesc" "ThebranchschtypschtypDesc"
+from "dbo"."schglvchdlyhdreg" "schglvchdlyhdreg"
+	left join "dbo"."REG_ORGANIZATIONS" "IDregorg" on "schglvchdlyhdreg"."IDregorg" = "IDregorg"."IDIDregorg"
+	left join "dbo"."schBranch" "Thebranch" on "schglvchdlyhdreg"."branch" = "Thebranch"."branch"
+	left join "dbo"."glmulcmp" "Thebranchsgm" on "Thebranch"."sgm" = "Thebranchsgm"."sgmid"
+	left join "dbo"."OpCo" "ThebranchsgmOpco" on "Thebranchsgm"."OpcoID" = "ThebranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "ThebranchGender" on "Thebranch"."Genderid" = "ThebranchGender"."Genderid"
+	left join "dbo"."schtyp" "Thebranchschtyp" on "Thebranch"."schtypid" = "Thebranchschtyp"."schtypid"
+where "schglvchdlyhdreg"."schglvchdlyhdregid"=@Parameter1</SqlCommand>
+      </mosDataSource1>
+      <mosDataSource2 Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>mosDataSource2</Alias>
+        <Columns isList="true" count="99">
+          <value>Trs_No,System.Int64</value>
+          <value>schglvchdlyhdregid,System.Int64</value>
+          <value>schglvchdlyhdregReferanceNo,System.String</value>
+          <value>schglvchdlyhdregIDregorgNAME_1,System.String</value>
+          <value>schglvchdlyhdregbranchDesc1,System.String</value>
+          <value>schglvchdlyhdregbranchsgmsgm_Nm,System.String</value>
+          <value>schglvchdlyhdregbranchGenderGender,System.String</value>
+          <value>schglvchdlyhdregbranchschtypschtypDesc,System.String</value>
+          <value>branch,System.Int64</value>
+          <value>ThebranchDesc1,System.String</value>
+          <value>Thebranchsgmsgm_Nm,System.String</value>
+          <value>ThebranchsgmOpcoOpcoName,System.String</value>
+          <value>ThebranchGenderGender,System.String</value>
+          <value>ThebranchschtypschtypDesc,System.String</value>
+          <value>acdcode,System.Int64</value>
+          <value>acdAcademicYear,System.String</value>
+          <value>acdGlFinperiodFin_period_info,System.String</value>
+          <value>acdGlFinperiodaccountnumberAcc_Nm,System.String</value>
+          <value>cstyp_no,System.Int64</value>
+          <value>cstyp_SchstCivilidnumber,System.String</value>
+          <value>cstyp_areaDesc1,System.String</value>
+          <value>cstyp_branchDesc1,System.String</value>
+          <value>cstyp_branchsgmsgm_Nm,System.String</value>
+          <value>cstyp_branchGenderGender,System.String</value>
+          <value>cstyp_branchschtypschtypDesc,System.String</value>
+          <value>cstyp_Cntry_Cntry_Nm,System.String</value>
+          <value>cstyp_GenderGender,System.String</value>
+          <value>cstyp_ReligionReljan_nm,System.String</value>
+          <value>cstyp_stateState_Nm,System.String</value>
+          <value>cstyp_idname_1,System.String</value>
+          <value>cstyp_acdAcademicYear,System.String</value>
+          <value>cstyp_acdGlFinperiodFin_period_info,System.String</value>
+          <value>cstyp_ApplicationCodeautocivilidst,System.String</value>
+          <value>cstyp_ApplicationCodeautoCntry_Cntry_Nm,System.String</value>
+          <value>cstyp_ApplicationCodeautoCntry_No2Cntry_Nm,System.String</value>
+          <value>cstyp_ApplicationCodeautoCntry_No1Cntry_Nm,System.String</value>
+          <value>cstyp_ApplicationCodeautoGenderGender,System.String</value>
+          <value>cstyp_ApplicationCodeautostateState_Nm,System.String</value>
+          <value>cstyp_ApplicationCodeautoidname_1,System.String</value>
+          <value>cstyp_ApplicationCodeautoAcademicYeartoAcademicYear,System.String</value>
+          <value>cstyp_ApplicationCodeautoareaDesc1,System.String</value>
+          <value>cstyp_ApplicationCodeautobranchDesc1,System.String</value>
+          <value>cstyp_ApplicationCodeautoClassClassDesc1,System.String</value>
+          <value>cstyp_ApplicationCodeautoSchclasskindSchclasskinddesc,System.String</value>
+          <value>cstyp_ApplicationCodeautofathercasejob_desc,System.String</value>
+          <value>cstyp_ApplicationCodeautoGradeAppliedShortDesc1,System.String</value>
+          <value>cstyp_ApplicationCodeautomothercasejob_desc,System.String</value>
+          <value>cstyp_ApplicationCodeautosocialstatusschsocialstatuscaseDesc,System.String</value>
+          <value>cstyp_ApplicationCodeautoStageAppliedtoShortDesc1,System.String</value>
+          <value>cstyp_ApplicationCodeautoschstatus_schstatus_name,System.String</value>
+          <value>cstyp_ApplicationCodeautoschstclasskinddmgschstclasskinddmgDesc,System.String</value>
+          <value>cstyp_ApplicationCodeautoschsthlthcaseschsthlthcaseDesc,System.String</value>
+          <value>cstyp_ApplicationCodeautostudentsefastudentsefaar,System.String</value>
+          <value>cstyp_ApplicationCodeautoschstudenttypschstudenttyp,System.String</value>
+          <value>cstyp_ApplicationCodeautoSchtransferSchtransferDesc,System.String</value>
+          <value>cstyp_ApplicationCodeautoschtrnsschtrnsDesc,System.String</value>
+          <value>cstyp_ClassClassDesc1,System.String</value>
+          <value>cstyp_SchclasskindSchclasskinddesc,System.String</value>
+          <value>cstyp_Fatherfathfirstname1,System.String</value>
+          <value>cstyp_FatherMaritalStatusStatus_Nm,System.String</value>
+          <value>cstyp_FatherareaDesc1,System.String</value>
+          <value>cstyp_FatherCntry_Cntry_Nm,System.String</value>
+          <value>cstyp_FatherreligionReljan_nm,System.String</value>
+          <value>cstyp_FatherStateState_Nm,System.String</value>
+          <value>cstyp_Fatherjob_job_desc,System.String</value>
+          <value>cstyp_GradeShortDesc1,System.String</value>
+          <value>cstyp_GradeacdAcademicYear,System.String</value>
+          <value>cstyp_GradeStageShortDesc1,System.String</value>
+          <value>cstyp_Motherfirstname1,System.String</value>
+          <value>cstyp_MotherareaDesc1,System.String</value>
+          <value>cstyp_MotherCntry_Cntry_Nm,System.String</value>
+          <value>cstyp_MotherreligionReljan_nm,System.String</value>
+          <value>cstyp_MotherStateState_Nm,System.String</value>
+          <value>cstyp_Motherjob_job_desc,System.String</value>
+          <value>cstyp_StageShortDesc1,System.String</value>
+          <value>cstyp_schstatus_schstatus_name,System.String</value>
+          <value>cstyp_schstclasskinddmgschstclasskinddmgDesc,System.String</value>
+          <value>cstyp_schstsplschstsplDsc,System.String</value>
+          <value>cstyp_schsthlthcaseschsthlthcaseDesc,System.String</value>
+          <value>cstyp_studentsefastudentsefaar,System.String</value>
+          <value>cstyp_studentsefadebitaccountAcc_Nm,System.String</value>
+          <value>cstyp_schstudenttypschstudenttyp,System.String</value>
+          <value>cstyp_SchtransferSchtransferDesc,System.String</value>
+          <value>subaccountno,System.Int64</value>
+          <value>Trs_Dt,System.DateTime</value>
+          <value>schpaymenttypeid,System.Int64</value>
+          <value>schpaymenttypeschpaymenttypenm,System.String</value>
+          <value>schpaymenttypedebitaccountAcc_Nm,System.String</value>
+          <value>schpaymenttypedebitaccountClsacc_Acc_Nm,System.String</value>
+          <value>schpaymenttypedebitaccountAcc_BndAcc_Nm,System.String</value>
+          <value>schpaymenttypecreditaccountAcc_Nm,System.String</value>
+          <value>schpaymenttypecreditaccountClsacc_Acc_Nm,System.String</value>
+          <value>schpaymenttypecreditaccountAcc_BndAcc_Nm,System.String</value>
+          <value>Mony_Paid,System.Decimal</value>
+          <value>Notes,System.String</value>
+          <value>ModifiedBy,System.String</value>
+          <value>ModifiedOn,System.DateTime</value>
+          <value>CreatedBy,System.String</value>
+          <value>CreatedOn,System.DateTime</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>mosDataSource2</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>Parameter2,,0,0</value>
+        </Parameters>
+        <SqlCommand>select
+	"schglvchdlydetailreg"."Trs_No" "Trs_No"
+	,"schglvchdlydetailreg"."schglvchdlyhdregid" "schglvchdlyhdregid"
+	,"schglvchdlyhdreg"."ReferanceNo" "schglvchdlyhdregReferanceNo"
+	,"schglvchdlyhdregIDregorg"."NAME_1" "schglvchdlyhdregIDregorgNAME_1"
+	,"schglvchdlyhdregbranch"."Desc1" "schglvchdlyhdregbranchDesc1"
+	,"schglvchdlyhdregbranchsgm"."sgm_Nm" "schglvchdlyhdregbranchsgmsgm_Nm"
+	,"schglvchdlyhdregbranchGender"."Gender" "schglvchdlyhdregbranchGenderGender"
+	,"schglvchdlyhdregbranchschtyp"."schtypDesc" "schglvchdlyhdregbranchschtypschtypDesc"
+	,"schglvchdlydetailreg"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"Thebranchsgm"."sgm_Nm" "Thebranchsgmsgm_Nm"
+	,"ThebranchsgmOpco"."OpcoName" "ThebranchsgmOpcoOpcoName"
+	,"ThebranchGender"."Gender" "ThebranchGenderGender"
+	,"Thebranchschtyp"."schtypDesc" "ThebranchschtypschtypDesc"
+	,"schglvchdlydetailreg"."acdcode" "acdcode"
+	,"acd"."AcademicYear" "acdAcademicYear"
+	,"acdGlFinperiod"."Fin_period_info" "acdGlFinperiodFin_period_info"
+	,"acdGlFinperiodaccountnumber"."Acc_Nm" "acdGlFinperiodaccountnumberAcc_Nm"
+	,"schglvchdlydetailreg"."cstyp_no" "cstyp_no"
+	,"cstyp_"."SchstCivilidnumber" "cstyp_SchstCivilidnumber"
+	,"cstyp_area"."Desc1" "cstyp_areaDesc1"
+	,"cstyp_branch"."Desc1" "cstyp_branchDesc1"
+	,"cstyp_branchsgm"."sgm_Nm" "cstyp_branchsgmsgm_Nm"
+	,"cstyp_branchGender"."Gender" "cstyp_branchGenderGender"
+	,"cstyp_branchschtyp"."schtypDesc" "cstyp_branchschtypschtypDesc"
+	,"cstyp_Cntry_"."Cntry_Nm" "cstyp_Cntry_Cntry_Nm"
+	,"cstyp_Gender"."Gender" "cstyp_GenderGender"
+	,"cstyp_Religion"."Reljan_nm" "cstyp_ReligionReljan_nm"
+	,"cstyp_state"."State_Nm" "cstyp_stateState_Nm"
+	,"cstyp_id"."name_1" "cstyp_idname_1"
+	,"cstyp_acd"."AcademicYear" "cstyp_acdAcademicYear"
+	,"cstyp_acdGlFinperiod"."Fin_period_info" "cstyp_acdGlFinperiodFin_period_info"
+	,"cstyp_ApplicationCodeauto"."civilidst" "cstyp_ApplicationCodeautocivilidst"
+	,"cstyp_ApplicationCodeautoCntry_"."Cntry_Nm" "cstyp_ApplicationCodeautoCntry_Cntry_Nm"
+	,"cstyp_ApplicationCodeautoCntry_No2"."Cntry_Nm" "cstyp_ApplicationCodeautoCntry_No2Cntry_Nm"
+	,"cstyp_ApplicationCodeautoCntry_No1"."Cntry_Nm" "cstyp_ApplicationCodeautoCntry_No1Cntry_Nm"
+	,"cstyp_ApplicationCodeautoGender"."Gender" "cstyp_ApplicationCodeautoGenderGender"
+	,"cstyp_ApplicationCodeautostate"."State_Nm" "cstyp_ApplicationCodeautostateState_Nm"
+	,"cstyp_ApplicationCodeautoid"."name_1" "cstyp_ApplicationCodeautoidname_1"
+	,"cstyp_ApplicationCodeautoAcademicYearto"."AcademicYear" "cstyp_ApplicationCodeautoAcademicYeartoAcademicYear"
+	,"cstyp_ApplicationCodeautoarea"."Desc1" "cstyp_ApplicationCodeautoareaDesc1"
+	,"cstyp_ApplicationCodeautobranch"."Desc1" "cstyp_ApplicationCodeautobranchDesc1"
+	,"cstyp_ApplicationCodeautoClass"."ClassDesc1" "cstyp_ApplicationCodeautoClassClassDesc1"
+	,"cstyp_ApplicationCodeautoSchclasskind"."Schclasskinddesc" "cstyp_ApplicationCodeautoSchclasskindSchclasskinddesc"
+	,"cstyp_ApplicationCodeautofathercase"."job_desc" "cstyp_ApplicationCodeautofathercasejob_desc"
+	,"cstyp_ApplicationCodeautoGradeApplied"."ShortDesc1" "cstyp_ApplicationCodeautoGradeAppliedShortDesc1"
+	,"cstyp_ApplicationCodeautomothercase"."job_desc" "cstyp_ApplicationCodeautomothercasejob_desc"
+	,"cstyp_ApplicationCodeautosocialstatus"."schsocialstatuscaseDesc" "cstyp_ApplicationCodeautosocialstatusschsocialstatuscaseDesc"
+	,"cstyp_ApplicationCodeautoStageAppliedto"."ShortDesc1" "cstyp_ApplicationCodeautoStageAppliedtoShortDesc1"
+	,"cstyp_ApplicationCodeautoschstatus_"."schstatus_name" "cstyp_ApplicationCodeautoschstatus_schstatus_name"
+	,"cstyp_ApplicationCodeautoschstclasskinddmg"."schstclasskinddmgDesc" "cstyp_ApplicationCodeautoschstclasskinddmgschstclasskinddmgDesc"
+	,"cstyp_ApplicationCodeautoschsthlthcase"."schsthlthcaseDesc" "cstyp_ApplicationCodeautoschsthlthcaseschsthlthcaseDesc"
+	,"cstyp_ApplicationCodeautostudentsefa"."studentsefaar" "cstyp_ApplicationCodeautostudentsefastudentsefaar"
+	,"cstyp_ApplicationCodeautoschstudenttyp"."schstudenttyp" "cstyp_ApplicationCodeautoschstudenttypschstudenttyp"
+	,"cstyp_ApplicationCodeautoSchtransfer"."SchtransferDesc" "cstyp_ApplicationCodeautoSchtransferSchtransferDesc"
+	,"cstyp_ApplicationCodeautoschtrns"."schtrnsDesc" "cstyp_ApplicationCodeautoschtrnsschtrnsDesc"
+	,"cstyp_Class"."ClassDesc1" "cstyp_ClassClassDesc1"
+	,"cstyp_Schclasskind"."Schclasskinddesc" "cstyp_SchclasskindSchclasskinddesc"
+	,"cstyp_Father"."fathfirstname1" "cstyp_Fatherfathfirstname1"
+	,"cstyp_FatherMaritalStatus"."Status_Nm" "cstyp_FatherMaritalStatusStatus_Nm"
+	,"cstyp_Fatherarea"."Desc1" "cstyp_FatherareaDesc1"
+	,"cstyp_FatherCntry_"."Cntry_Nm" "cstyp_FatherCntry_Cntry_Nm"
+	,"cstyp_Fatherreligion"."Reljan_nm" "cstyp_FatherreligionReljan_nm"
+	,"cstyp_FatherState"."State_Nm" "cstyp_FatherStateState_Nm"
+	,"cstyp_Fatherjob_"."job_desc" "cstyp_Fatherjob_job_desc"
+	,"cstyp_Grade"."ShortDesc1" "cstyp_GradeShortDesc1"
+	,"cstyp_Gradeacd"."AcademicYear" "cstyp_GradeacdAcademicYear"
+	,"cstyp_GradeStage"."ShortDesc1" "cstyp_GradeStageShortDesc1"
+	,"cstyp_Mother"."firstname1" "cstyp_Motherfirstname1"
+	,"cstyp_Motherarea"."Desc1" "cstyp_MotherareaDesc1"
+	,"cstyp_MotherCntry_"."Cntry_Nm" "cstyp_MotherCntry_Cntry_Nm"
+	,"cstyp_Motherreligion"."Reljan_nm" "cstyp_MotherreligionReljan_nm"
+	,"cstyp_MotherState"."State_Nm" "cstyp_MotherStateState_Nm"
+	,"cstyp_Motherjob_"."job_desc" "cstyp_Motherjob_job_desc"
+	,"cstyp_Stage"."ShortDesc1" "cstyp_StageShortDesc1"
+	,"cstyp_schstatus_"."schstatus_name" "cstyp_schstatus_schstatus_name"
+	,"cstyp_schstclasskinddmg"."schstclasskinddmgDesc" "cstyp_schstclasskinddmgschstclasskinddmgDesc"
+	,"cstyp_schstspl"."schstsplDsc" "cstyp_schstsplschstsplDsc"
+	,"cstyp_schsthlthcase"."schsthlthcaseDesc" "cstyp_schsthlthcaseschsthlthcaseDesc"
+	,"cstyp_studentsefa"."studentsefaar" "cstyp_studentsefastudentsefaar"
+	,"cstyp_studentsefadebitaccount"."Acc_Nm" "cstyp_studentsefadebitaccountAcc_Nm"
+	,"cstyp_schstudenttyp"."schstudenttyp" "cstyp_schstudenttypschstudenttyp"
+	,"cstyp_Schtransfer"."SchtransferDesc" "cstyp_SchtransferSchtransferDesc"
+	,"schglvchdlydetailreg"."subaccountno" "subaccountno"
+	,"schglvchdlydetailreg"."Trs_Dt" "Trs_Dt"
+	,"schglvchdlydetailreg"."schpaymenttypeid" "schpaymenttypeid"
+	,"schpaymenttype"."schpaymenttypenm" "schpaymenttypeschpaymenttypenm"
+	,"schpaymenttypedebitaccount"."Acc_Nm" "schpaymenttypedebitaccountAcc_Nm"
+	,"schpaymenttypedebitaccountClsacc_"."Acc_Nm" "schpaymenttypedebitaccountClsacc_Acc_Nm"
+	,"schpaymenttypedebitaccountAcc_Bnd"."Acc_Nm" "schpaymenttypedebitaccountAcc_BndAcc_Nm"
+	,"schpaymenttypecreditaccount"."Acc_Nm" "schpaymenttypecreditaccountAcc_Nm"
+	,"schpaymenttypecreditaccountClsacc_"."Acc_Nm" "schpaymenttypecreditaccountClsacc_Acc_Nm"
+	,"schpaymenttypecreditaccountAcc_Bnd"."Acc_Nm" "schpaymenttypecreditaccountAcc_BndAcc_Nm"
+	,"schglvchdlydetailreg"."Mony_Paid" "Mony_Paid"
+	,"schglvchdlydetailreg"."Notes" "Notes"
+	,"schglvchdlydetailreg"."ModifiedBy" "ModifiedBy"
+	,"schglvchdlydetailreg"."ModifiedOn" "ModifiedOn"
+	,"schglvchdlydetailreg"."CreatedBy" "CreatedBy"
+	,"schglvchdlydetailreg"."CreatedOn" "CreatedOn"
+from "dbo"."schglvchdlydetailreg" "schglvchdlydetailreg"
+	left join "dbo"."schglvchdlyhdreg" "schglvchdlyhdreg" on "schglvchdlydetailreg"."schglvchdlyhdregid" = "schglvchdlyhdreg"."schglvchdlyhdregid"
+	left join "dbo"."REG_ORGANIZATIONS" "schglvchdlyhdregIDregorg" on "schglvchdlyhdreg"."IDregorg" = "schglvchdlyhdregIDregorg"."IDIDregorg"
+	left join "dbo"."schBranch" "schglvchdlyhdregbranch" on "schglvchdlyhdreg"."branch" = "schglvchdlyhdregbranch"."branch"
+	left join "dbo"."glmulcmp" "schglvchdlyhdregbranchsgm" on "schglvchdlyhdregbranch"."sgm" = "schglvchdlyhdregbranchsgm"."sgmid"
+	left join "dbo"."PyGender" "schglvchdlyhdregbranchGender" on "schglvchdlyhdregbranch"."Genderid" = "schglvchdlyhdregbranchGender"."Genderid"
+	left join "dbo"."schtyp" "schglvchdlyhdregbranchschtyp" on "schglvchdlyhdregbranch"."schtypid" = "schglvchdlyhdregbranchschtyp"."schtypid"
+	left join "dbo"."schBranch" "Thebranch" on "schglvchdlydetailreg"."branch" = "Thebranch"."branch"
+	left join "dbo"."glmulcmp" "Thebranchsgm" on "Thebranch"."sgm" = "Thebranchsgm"."sgmid"
+	left join "dbo"."OpCo" "ThebranchsgmOpco" on "Thebranchsgm"."OpcoID" = "ThebranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "ThebranchGender" on "Thebranch"."Genderid" = "ThebranchGender"."Genderid"
+	left join "dbo"."schtyp" "Thebranchschtyp" on "Thebranch"."schtypid" = "Thebranchschtyp"."schtypid"
+	left join "dbo"."schAcademicyear" "acd" on "schglvchdlydetailreg"."acdcode" = "acd"."Code"
+	left join "dbo"."GlFinanceperiod" "acdGlFinperiod" on "acd"."GlFinperiodID" = "acdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."GLmstrfl" "acdGlFinperiodaccountnumber" on "acdGlFinperiod"."accountnumber" = "acdGlFinperiodaccountnumber"."Acc_No"
+	left join "dbo"."SchStudent" "cstyp_" on "schglvchdlydetailreg"."cstyp_no" = "cstyp_"."StudentCode"
+	left join "dbo"."schArea" "cstyp_area" on "cstyp_"."area" = "cstyp_area"."Code"
+	left join "dbo"."schBranch" "cstyp_branch" on "cstyp_"."branch" = "cstyp_branch"."branch"
+	left join "dbo"."glmulcmp" "cstyp_branchsgm" on "cstyp_branch"."sgm" = "cstyp_branchsgm"."sgmid"
+	left join "dbo"."PyGender" "cstyp_branchGender" on "cstyp_branch"."Genderid" = "cstyp_branchGender"."Genderid"
+	left join "dbo"."schtyp" "cstyp_branchschtyp" on "cstyp_branch"."schtypid" = "cstyp_branchschtyp"."schtypid"
+	left join "dbo"."PYCntry" "cstyp_Cntry_" on "cstyp_"."Cntry_No" = "cstyp_Cntry_"."Cntry_No"
+	left join "dbo"."PyGender" "cstyp_Gender" on "cstyp_"."Genderid" = "cstyp_Gender"."Genderid"
+	left join "dbo"."PyReljan" "cstyp_Religion" on "cstyp_"."Religion" = "cstyp_Religion"."reljan"
+	left join "dbo"."PyState" "cstyp_state" on "cstyp_"."state" = "cstyp_state"."State"
+	left join "dbo"."reg_other_schools" "cstyp_id" on "cstyp_"."id" = "cstyp_id"."id"
+	left join "dbo"."schAcademicyear" "cstyp_acd" on "cstyp_"."acdcode" = "cstyp_acd"."Code"
+	left join "dbo"."GlFinanceperiod" "cstyp_acdGlFinperiod" on "cstyp_acd"."GlFinperiodID" = "cstyp_acdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."schApplication" "cstyp_ApplicationCodeauto" on "cstyp_"."ApplicationCodeauto" = "cstyp_ApplicationCodeauto"."ApplicationCodeauto"
+	left join "dbo"."PYCntry" "cstyp_ApplicationCodeautoCntry_" on "cstyp_ApplicationCodeauto"."Cntry_No" = "cstyp_ApplicationCodeautoCntry_"."Cntry_No"
+	left join "dbo"."PYCntry" "cstyp_ApplicationCodeautoCntry_No2" on "cstyp_ApplicationCodeauto"."Cntry_No2" = "cstyp_ApplicationCodeautoCntry_No2"."Cntry_No"
+	left join "dbo"."PYCntry" "cstyp_ApplicationCodeautoCntry_No1" on "cstyp_ApplicationCodeauto"."Cntry_No1" = "cstyp_ApplicationCodeautoCntry_No1"."Cntry_No"
+	left join "dbo"."PyGender" "cstyp_ApplicationCodeautoGender" on "cstyp_ApplicationCodeauto"."Genderid" = "cstyp_ApplicationCodeautoGender"."Genderid"
+	left join "dbo"."PyState" "cstyp_ApplicationCodeautostate" on "cstyp_ApplicationCodeauto"."state" = "cstyp_ApplicationCodeautostate"."State"
+	left join "dbo"."reg_other_schools" "cstyp_ApplicationCodeautoid" on "cstyp_ApplicationCodeauto"."id" = "cstyp_ApplicationCodeautoid"."id"
+	left join "dbo"."schAcademicyear" "cstyp_ApplicationCodeautoAcademicYearto" on "cstyp_ApplicationCodeauto"."AcademicYearto" = "cstyp_ApplicationCodeautoAcademicYearto"."Code"
+	left join "dbo"."schArea" "cstyp_ApplicationCodeautoarea" on "cstyp_ApplicationCodeauto"."area" = "cstyp_ApplicationCodeautoarea"."Code"
+	left join "dbo"."schBranch" "cstyp_ApplicationCodeautobranch" on "cstyp_ApplicationCodeauto"."branch" = "cstyp_ApplicationCodeautobranch"."branch"
+	left join "dbo"."schClassConfig" "cstyp_ApplicationCodeautoClass" on "cstyp_ApplicationCodeauto"."Class" = "cstyp_ApplicationCodeautoClass"."classcode"
+	left join "dbo"."Schclasskindlist" "cstyp_ApplicationCodeautoSchclasskind" on "cstyp_ApplicationCodeauto"."Schclasskindid" = "cstyp_ApplicationCodeautoSchclasskind"."Schclasskindid"
+	left join "dbo"."SchFatherjob" "cstyp_ApplicationCodeautofathercase" on "cstyp_ApplicationCodeauto"."fathercase" = "cstyp_ApplicationCodeautofathercase"."job_no"
+	left join "dbo"."schGrade" "cstyp_ApplicationCodeautoGradeApplied" on "cstyp_ApplicationCodeauto"."GradeApplied" = "cstyp_ApplicationCodeautoGradeApplied"."GradeCode"
+	left join "dbo"."SchMotherjob" "cstyp_ApplicationCodeautomothercase" on "cstyp_ApplicationCodeauto"."mothercase" = "cstyp_ApplicationCodeautomothercase"."job_no"
+	left join "dbo"."schsocialstatuscase" "cstyp_ApplicationCodeautosocialstatus" on "cstyp_ApplicationCodeauto"."socialstatus" = "cstyp_ApplicationCodeautosocialstatus"."schsocialstatuscaseid"
+	left join "dbo"."schStage" "cstyp_ApplicationCodeautoStageAppliedto" on "cstyp_ApplicationCodeauto"."StageAppliedto" = "cstyp_ApplicationCodeautoStageAppliedto"."Code"
+	left join "dbo"."schstatus" "cstyp_ApplicationCodeautoschstatus_" on "cstyp_ApplicationCodeauto"."schstatus_code" = "cstyp_ApplicationCodeautoschstatus_"."schstatus_code"
+	left join "dbo"."schstclasskinddmg" "cstyp_ApplicationCodeautoschstclasskinddmg" on "cstyp_ApplicationCodeauto"."schstclasskinddmgid" = "cstyp_ApplicationCodeautoschstclasskinddmg"."schstclasskinddmgid"
+	left join "dbo"."schsthealthcase" "cstyp_ApplicationCodeautoschsthlthcase" on "cstyp_ApplicationCodeauto"."schsthlthcaseid" = "cstyp_ApplicationCodeautoschsthlthcase"."schsthlthcaseid"
+	left join "dbo"."Schstudentsefa" "cstyp_ApplicationCodeautostudentsefa" on "cstyp_ApplicationCodeauto"."studentsefa" = "cstyp_ApplicationCodeautostudentsefa"."studentsefaid"
+	left join "dbo"."schstudenttyp" "cstyp_ApplicationCodeautoschstudenttyp" on "cstyp_ApplicationCodeauto"."schstudenttypid" = "cstyp_ApplicationCodeautoschstudenttyp"."schstudenttypid"
+	left join "dbo"."Schtransferlist" "cstyp_ApplicationCodeautoSchtransfer" on "cstyp_ApplicationCodeauto"."Schtransferid" = "cstyp_ApplicationCodeautoSchtransfer"."Schtransferid"
+	left join "dbo"."schtrnstype" "cstyp_ApplicationCodeautoschtrns" on "cstyp_ApplicationCodeauto"."schtrnsid" = "cstyp_ApplicationCodeautoschtrns"."schtrnsid"
+	left join "dbo"."schClassConfig" "cstyp_Class" on "cstyp_"."Class" = "cstyp_Class"."classcode"
+	left join "dbo"."Schclasskindlist" "cstyp_Schclasskind" on "cstyp_"."Schclasskindid" = "cstyp_Schclasskind"."Schclasskindid"
+	left join "dbo"."schFather" "cstyp_Father" on "cstyp_"."FatherCode" = "cstyp_Father"."FatherCode"
+	left join "dbo"."PyStatus" "cstyp_FatherMaritalStatus" on "cstyp_Father"."MaritalStatus" = "cstyp_FatherMaritalStatus"."Status_Type"
+	left join "dbo"."schArea" "cstyp_Fatherarea" on "cstyp_Father"."area" = "cstyp_Fatherarea"."Code"
+	left join "dbo"."PYCntry" "cstyp_FatherCntry_" on "cstyp_Father"."Cntry_No" = "cstyp_FatherCntry_"."Cntry_No"
+	left join "dbo"."PyReljan" "cstyp_Fatherreligion" on "cstyp_Father"."religion" = "cstyp_Fatherreligion"."reljan"
+	left join "dbo"."PyState" "cstyp_FatherState" on "cstyp_Father"."State" = "cstyp_FatherState"."State"
+	left join "dbo"."SchFatherjob" "cstyp_Fatherjob_" on "cstyp_Father"."job_no" = "cstyp_Fatherjob_"."job_no"
+	left join "dbo"."schGrade" "cstyp_Grade" on "cstyp_"."GradeCode" = "cstyp_Grade"."GradeCode"
+	left join "dbo"."schAcademicyear" "cstyp_Gradeacd" on "cstyp_Grade"."acdcode" = "cstyp_Gradeacd"."Code"
+	left join "dbo"."schStage" "cstyp_GradeStage" on "cstyp_Grade"."StageCode" = "cstyp_GradeStage"."Code"
+	left join "dbo"."schMother" "cstyp_Mother" on "cstyp_"."MotherCode" = "cstyp_Mother"."MotherCode"
+	left join "dbo"."schArea" "cstyp_Motherarea" on "cstyp_Mother"."area" = "cstyp_Motherarea"."Code"
+	left join "dbo"."PYCntry" "cstyp_MotherCntry_" on "cstyp_Mother"."Cntry_No" = "cstyp_MotherCntry_"."Cntry_No"
+	left join "dbo"."PyReljan" "cstyp_Motherreligion" on "cstyp_Mother"."religion" = "cstyp_Motherreligion"."reljan"
+	left join "dbo"."PyState" "cstyp_MotherState" on "cstyp_Mother"."State" = "cstyp_MotherState"."State"
+	left join "dbo"."SchMotherjob" "cstyp_Motherjob_" on "cstyp_Mother"."job_no" = "cstyp_Motherjob_"."job_no"
+	left join "dbo"."schStage" "cstyp_Stage" on "cstyp_"."Stage" = "cstyp_Stage"."Code"
+	left join "dbo"."schstatus" "cstyp_schstatus_" on "cstyp_"."schstatus_code" = "cstyp_schstatus_"."schstatus_code"
+	left join "dbo"."schstclasskinddmg" "cstyp_schstclasskinddmg" on "cstyp_"."schstclasskinddmgid" = "cstyp_schstclasskinddmg"."schstclasskinddmgid"
+	left join "dbo"."schstespetialest" "cstyp_schstspl" on "cstyp_"."schstsplid" = "cstyp_schstspl"."schstsplid"
+	left join "dbo"."schsthealthcase" "cstyp_schsthlthcase" on "cstyp_"."schsthlthcaseid" = "cstyp_schsthlthcase"."schsthlthcaseid"
+	left join "dbo"."Schstudentsefa" "cstyp_studentsefa" on "cstyp_"."studentsefa" = "cstyp_studentsefa"."studentsefaid"
+	left join "dbo"."GLmstrfl" "cstyp_studentsefadebitaccount" on "cstyp_studentsefa"."debitaccount" = "cstyp_studentsefadebitaccount"."Acc_No"
+	left join "dbo"."schstudenttyp" "cstyp_schstudenttyp" on "cstyp_"."schstudenttypid" = "cstyp_schstudenttyp"."schstudenttypid"
+	left join "dbo"."Schtransferlist" "cstyp_Schtransfer" on "cstyp_"."Schtransferid" = "cstyp_Schtransfer"."Schtransferid"
+	left join "dbo"."schpaymenttype" "schpaymenttype" on "schglvchdlydetailreg"."schpaymenttypeid" = "schpaymenttype"."schpaymenttypeid"
+	left join "dbo"."GLmstrfl" "schpaymenttypedebitaccount" on "schpaymenttype"."debitaccount" = "schpaymenttypedebitaccount"."Acc_No"
+	left join "dbo"."GLmfbab" "schpaymenttypedebitaccountClsacc_" on "schpaymenttypedebitaccount"."Clsacc_No" = "schpaymenttypedebitaccountClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "schpaymenttypedebitaccountAcc_Bnd" on "schpaymenttypedebitaccount"."Acc_Bnd" = "schpaymenttypedebitaccountAcc_Bnd"."Acc_Bnd"
+	left join "dbo"."GLmstrfl" "schpaymenttypecreditaccount" on "schpaymenttype"."creditaccount" = "schpaymenttypecreditaccount"."Acc_No"
+	left join "dbo"."GLmfbab" "schpaymenttypecreditaccountClsacc_" on "schpaymenttypecreditaccount"."Clsacc_No" = "schpaymenttypecreditaccountClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "schpaymenttypecreditaccountAcc_Bnd" on "schpaymenttypecreditaccount"."Acc_Bnd" = "schpaymenttypecreditaccountAcc_Bnd"."Acc_Bnd"
+where "schglvchdlydetailreg"."schglvchdlyhdregid"=@Parameter2</SqlCommand>
+      </mosDataSource2>
+      <DataSource1 Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>DataSource1</Alias>
+        <Columns isList="true" count="26">
+          <value>schglvchdlydetailpaymentid,System.Int64</value>
+          <value>schglvchdlyhdregid,System.Int64</value>
+          <value>schglvchdlyhdregReferanceNo,System.String</value>
+          <value>schglvchdlyhdregIDregorgNAME_1,System.String</value>
+          <value>schglvchdlyhdregbranchDesc1,System.String</value>
+          <value>schglvchdlyhdregbranchsgmsgm_Nm,System.String</value>
+          <value>schglvchdlyhdregbranchGenderGender,System.String</value>
+          <value>schglvchdlyhdregbranchschtypschtypDesc,System.String</value>
+          <value>Pymnt_No,System.Int64</value>
+          <value>Pymnt_Pymnt_Nm,System.String</value>
+          <value>Pymnt_pymnt_accAcc_Nm,System.String</value>
+          <value>Pymnt_pymnt_accClsacc_Acc_Nm,System.String</value>
+          <value>Pymnt_pymnt_accAcc_BndAcc_Nm,System.String</value>
+          <value>Pymnt_sgmsgm_Nm,System.String</value>
+          <value>Pymnt_sgmOpcoOpcoName,System.String</value>
+          <value>paymentwaynumber,System.String</value>
+          <value>schBnk_No,System.Int64</value>
+          <value>schBnk_schBnk_Nm,System.String</value>
+          <value>checkAccount,System.String</value>
+          <value>checkdate,System.DateTime</value>
+          <value>moneypaidto,System.Decimal</value>
+          <value>paymentnotes,System.String</value>
+          <value>ModifiedBy,System.String</value>
+          <value>ModifiedOn,System.DateTime</value>
+          <value>CreatedBy,System.String</value>
+          <value>CreatedOn,System.DateTime</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>DataSource1</Name>
+        <NameInSource>mosConnection1</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>Parameter3,,0,0</value>
+        </Parameters>
+        <SqlCommand>select
+	"schglvchdlydetailpayment"."schglvchdlydetailpaymentid" "schglvchdlydetailpaymentid"
+	,"schglvchdlydetailpayment"."schglvchdlyhdregid" "schglvchdlyhdregid"
+	,"schglvchdlyhdreg"."ReferanceNo" "schglvchdlyhdregReferanceNo"
+	,"schglvchdlyhdregIDregorg"."NAME_1" "schglvchdlyhdregIDregorgNAME_1"
+	,"schglvchdlyhdregbranch"."Desc1" "schglvchdlyhdregbranchDesc1"
+	,"schglvchdlyhdregbranchsgm"."sgm_Nm" "schglvchdlyhdregbranchsgmsgm_Nm"
+	,"schglvchdlyhdregbranchGender"."Gender" "schglvchdlyhdregbranchGenderGender"
+	,"schglvchdlyhdregbranchschtyp"."schtypDesc" "schglvchdlyhdregbranchschtypschtypDesc"
+	,"schglvchdlydetailpayment"."Pymnt_No" "Pymnt_No"
+	,"Pymnt_"."Pymnt_Nm" "Pymnt_Pymnt_Nm"
+	,"Pymnt_pymnt_acc"."Acc_Nm" "Pymnt_pymnt_accAcc_Nm"
+	,"Pymnt_pymnt_accClsacc_"."Acc_Nm" "Pymnt_pymnt_accClsacc_Acc_Nm"
+	,"Pymnt_pymnt_accAcc_Bnd"."Acc_Nm" "Pymnt_pymnt_accAcc_BndAcc_Nm"
+	,"Pymnt_sgm"."sgm_Nm" "Pymnt_sgmsgm_Nm"
+	,"Pymnt_sgmOpco"."OpcoName" "Pymnt_sgmOpcoOpcoName"
+	,"schglvchdlydetailpayment"."paymentwaynumber" "paymentwaynumber"
+	,"schglvchdlydetailpayment"."schBnk_No" "schBnk_No"
+	,"schBnk_"."schBnk_Nm" "schBnk_schBnk_Nm"
+	,"schglvchdlydetailpayment"."checkAccount" "checkAccount"
+	,"schglvchdlydetailpayment"."checkdate" "checkdate"
+	,"schglvchdlydetailpayment"."moneypaidto" "moneypaidto"
+	,"schglvchdlydetailpayment"."paymentnotes" "paymentnotes"
+	,"schglvchdlydetailpayment"."ModifiedBy" "ModifiedBy"
+	,"schglvchdlydetailpayment"."ModifiedOn" "ModifiedOn"
+	,"schglvchdlydetailpayment"."CreatedBy" "CreatedBy"
+	,"schglvchdlydetailpayment"."CreatedOn" "CreatedOn"
+from "dbo"."schglvchdlydetailpayment" "schglvchdlydetailpayment"
+	left join "dbo"."schglvchdlyhdreg" "schglvchdlyhdreg" on "schglvchdlydetailpayment"."schglvchdlyhdregid" = "schglvchdlyhdreg"."schglvchdlyhdregid"
+	left join "dbo"."REG_ORGANIZATIONS" "schglvchdlyhdregIDregorg" on "schglvchdlyhdreg"."IDregorg" = "schglvchdlyhdregIDregorg"."IDIDregorg"
+	left join "dbo"."schBranch" "schglvchdlyhdregbranch" on "schglvchdlyhdreg"."branch" = "schglvchdlyhdregbranch"."branch"
+	left join "dbo"."glmulcmp" "schglvchdlyhdregbranchsgm" on "schglvchdlyhdregbranch"."sgm" = "schglvchdlyhdregbranchsgm"."sgmid"
+	left join "dbo"."PyGender" "schglvchdlyhdregbranchGender" on "schglvchdlyhdregbranch"."Genderid" = "schglvchdlyhdregbranchGender"."Genderid"
+	left join "dbo"."schtyp" "schglvchdlyhdregbranchschtyp" on "schglvchdlyhdregbranch"."schtypid" = "schglvchdlyhdregbranchschtyp"."schtypid"
+	left join "dbo"."Pymntype" "Pymnt_" on "schglvchdlydetailpayment"."Pymnt_No" = "Pymnt_"."Pymnt_No"
+	left join "dbo"."GLmstrfl" "Pymnt_pymnt_acc" on "Pymnt_"."pymnt_acc" = "Pymnt_pymnt_acc"."Acc_No"
+	left join "dbo"."GLmfbab" "Pymnt_pymnt_accClsacc_" on "Pymnt_pymnt_acc"."Clsacc_No" = "Pymnt_pymnt_accClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Pymnt_pymnt_accAcc_Bnd" on "Pymnt_pymnt_acc"."Acc_Bnd" = "Pymnt_pymnt_accAcc_Bnd"."Acc_Bnd"
+	left join "dbo"."glmulcmp" "Pymnt_sgm" on "Pymnt_"."sgm" = "Pymnt_sgm"."sgmid"
+	left join "dbo"."OpCo" "Pymnt_sgmOpco" on "Pymnt_sgm"."OpcoID" = "Pymnt_sgmOpco"."OpcoIDidentity"
+	left join "dbo"."schGLacnBnk" "schBnk_" on "schglvchdlydetailpayment"."schBnk_No" = "schBnk_"."schBnk_No"
+where  "schglvchdlydetailpayment"."schglvchdlyhdregid"=@Parameter3</SqlCommand>
+      </DataSource1>
+    </DataSources>
+    <Relations isList="true" count="2">
+      <Relation1dp Ref="6" type="DataRelation" isKey="true">
+        <Alias>Relation1dp</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>schglvchdlyhdregid</value>
+        </ChildColumns>
+        <ChildSource isRef="5" />
+        <Dictionary isRef="1" />
+        <Name>Relation1dp</Name>
+        <NameInSource>Relation1dp</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>schglvchdlyhdregid</value>
+        </ParentColumns>
+        <ParentSource isRef="3" />
+      </Relation1dp>
+      <Relation12dp Ref="7" type="DataRelation" isKey="true">
+        <Alias>Relation12dp</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>schglvchdlyhdregid</value>
+        </ChildColumns>
+        <ChildSource isRef="4" />
+        <Dictionary isRef="1" />
+        <Name>Relation12dp</Name>
+        <NameInSource>Relation12dp</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>schglvchdlyhdregid</value>
+        </ParentColumns>
+        <ParentSource isRef="3" />
+      </Relation12dp>
+    </Relations>
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="8" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="9">
+        <PageHeaderBand1 Ref="9" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.2,7.72,0.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text37 Ref="10" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>CornflowerBlue</Brush>
+              <ClientRectangle>2.9,0.1,2.1,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>8d77b97a1c2a34ede35f7f51e2dcd217</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text37</Name>
+              <Page isRef="8" />
+              <Parent isRef="9" />
+              <Text>سند القبض العام</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text37>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageHeaderBand1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </PageHeaderBand1>
+        <PageFooterBand1 Ref="11" type="PageFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.92,7.72,1.3</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text22 Ref="12" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.7,-0.02,1.9,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>c98c85a24f0e28886482a8a2fa09d146</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="8" />
+              <Parent isRef="11" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text22>
+            <Text20 Ref="13" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.9,-0.02,1.8,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>e3c5e4367975eeb961d0a8a4fb7ce1b7</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="8" />
+              <Parent isRef="11" />
+              <Text>{Sum(DataBand2,mosDataSource2.Mony_Paid)}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Totals</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text20>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageFooterBand1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </PageFooterBand1>
+        <GroupHeaderBand1 Ref="14" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,1.2,7.72,1.5</ClientRectangle>
+          <Components isList="true" count="6">
+            <Text2 Ref="15" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.6,3,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>1fdf06bf240b5b3767f6a84c7b445a40</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="8" />
+              <Parent isRef="14" />
+              <Text>{mosDataSource1.Thebranchsgmsgm_Nm}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text2>
+            <Text14 Ref="16" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.3,3,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="8" />
+              <Parent isRef="14" />
+              <Text>{mosDataSource1.Trs_Dt}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="17" type="DateFormat" isKey="true">
+                <StringFormat>MM.dd.yyyy</StringFormat>
+              </TextFormat>
+              <VertAlignment>Center</VertAlignment>
+            </Text14>
+            <Text11 Ref="18" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.9,3,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="8" />
+              <Parent isRef="14" />
+              <Text>{mosDataSource1.schglvchdlyhdregid}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text11>
+            <Text3 Ref="19" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.9,0.3,2.8,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>944b60c33bc98a603a1ba84f03145353</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="8" />
+              <Parent isRef="14" />
+              <Text>{mosDataSource1.Delevername}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text3>
+            <Text18 Ref="20" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.9,0.6,2.8,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>78dda86844791d8323a7a895a7442cc9</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="8" />
+              <Parent isRef="14" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text18>
+            <Text21 Ref="21" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.9,0.9,2.8,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>c2f25d52476ee914ce88a89a31204f77</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="8" />
+              <Parent isRef="14" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text21>
+          </Components>
+          <Condition>{mosDataSource1.schglvchdlyhdregid}</Condition>
+          <Conditions isList="true" count="0" />
+          <Name>GroupHeaderBand1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </GroupHeaderBand1>
+        <DataBand2 Ref="22" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,3.1,7.72,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <DataSourceName>mosDataSource1</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand2</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+          <Sort isList="true" count="0" />
+        </DataBand2>
+        <GroupHeaderBand3 Ref="23" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.5,7.72,2.2</ClientRectangle>
+          <Components isList="true" count="8">
+            <Text10 Ref="24" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.7,3,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>30c7ef4c42469b48c208a850c9cf60b6</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="8" />
+              <Parent isRef="23" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text10>
+            <Text5 Ref="25" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.4,0.7,2.8,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>44c831fc98b0bbf29efea850c9cfb440</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="8" />
+              <Parent isRef="23" />
+              <Text>{mosDataSource2.subaccountno}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text5>
+            <Text6 Ref="26" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1,3,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>9960ddfcfd2ddb2832c9a892c7bb6544</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="8" />
+              <Parent isRef="23" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text6>
+            <Text9 Ref="27" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.3,3,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>c397568f3e15d89b370da892daec1fc2</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="8" />
+              <Parent isRef="23" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text9>
+            <Text13 Ref="28" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.6,3,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>86fc4d985a7e0de5239ea892f8c48a1c</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="8" />
+              <Parent isRef="23" />
+              <Text>{mosDataSource2.acdAcademicYear}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text13>
+            <Text15 Ref="29" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.4,1,2.8,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>ad43e6698dd452998990a8942f37497a</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="8" />
+              <Parent isRef="23" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text15>
+            <Text16 Ref="30" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.4,1.3,2.8,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>d45cfeca8293c1d68c30a894411d5828</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="8" />
+              <Parent isRef="23" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text16>
+            <Text17 Ref="31" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.4,1.6,2.8,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>b30665955b7c77c5cf18a8951644bd91</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="8" />
+              <Parent isRef="23" />
+              <Text>{mosDataSource2.schglvchdlyhdregbranchDesc1}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text17>
+          </Components>
+          <Condition>{mosDataSource2.cstyp_no}</Condition>
+          <Conditions isList="true" count="0" />
+          <Guid>3751817bd3711e809b35a850c9cff1b3</Guid>
+          <Name>GroupHeaderBand3</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </GroupHeaderBand3>
+        <DataBand3 Ref="32" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,6.1,7.72,0.4</ClientRectangle>
+          <Components isList="true" count="4">
+            <Text12 Ref="33" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.3,0.1,2,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>99a46fb3cafccc7cbdefa86ff44e407a</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="8" />
+              <Parent isRef="32" />
+              <Text>{mosDataSource2.schpaymenttypeschpaymenttypenm}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text12>
+            <Text4 Ref="34" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.3,0.1,1.4,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>6ac02461fe3269705bd0a86ff44eb292</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="8" />
+              <Parent isRef="32" />
+              <Text>{mosDataSource2.Mony_Paid}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text4>
+            <Text7 Ref="35" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.6,0.1,1.7,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>874c1f3355c5221724c5a86ff44e2c37</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="8" />
+              <Parent isRef="32" />
+              <Text>{mosDataSource2.acdAcademicYear}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text7>
+            <Text8 Ref="36" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.1,2.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>f858148eb5cea51ffceda86ff44ea503</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="8" />
+              <Parent isRef="32" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text8>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName>Relation12dp</DataRelationName>
+          <DataSourceName>mosDataSource2</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand3</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+          <Sort isList="true" count="0" />
+        </DataBand3>
+        <GroupHeaderBand2 Ref="37" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,6.9,7.72,0.3</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text27 Ref="38" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.3,0,1.4,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>d7e89b3824a1bac75124a8ada76647e3</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="8" />
+              <Parent isRef="37" />
+              <Text>{mosDataSource2.Mony_Paid}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text27>
+          </Components>
+          <Condition>{mosDataSource2.Mony_Paid}</Condition>
+          <Conditions isList="true" count="0" />
+          <Name>GroupHeaderBand2</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </GroupHeaderBand2>
+        <DataBand1 Ref="39" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,7.6,7.72,0.4</ClientRectangle>
+          <Components isList="true" count="5">
+            <Text19 Ref="40" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.2,0.1,1.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>b0246e1de340b5e59548a8a7db01792c</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="8" />
+              <Parent isRef="39" />
+              <Text>{DataSource1.moneypaidto}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text19>
+            <Text23 Ref="41" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.2,0.1,2,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>0be407bb060b00fd7a0fa8a7f1b7c124</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="8" />
+              <Parent isRef="39" />
+              <Text>{DataSource1.Pymnt_Pymnt_Nm}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text23>
+            <Text24 Ref="42" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.7,0.1,1.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>7effef0a34c9878cfc9ba8a929054d55</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="8" />
+              <Parent isRef="39" />
+              <Text>{DataSource1.Pymnt_Pymnt_Nm}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text24>
+            <Text25 Ref="43" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.2,0.1,1.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>0d097125f038e96b744ca8ab7d0eda12</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="8" />
+              <Parent isRef="39" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text25>
+            <Text26 Ref="44" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.1,1.2,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>e85151f0cd4613c9794da8abf1936ba2</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="8" />
+              <Parent isRef="39" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text26>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName>Relation12dp</DataRelationName>
+          <DataSourceName>mosDataSource2</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+        <GroupHeaderBand5 Ref="45" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.4,7.72,0.3</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text28 Ref="46" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.3,0,1.4,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>55df5c544c319a805841a8b359b051a8</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text28</Name>
+              <Page isRef="8" />
+              <Parent isRef="45" />
+              <Text>{mosDataSource2.Mony_Paid}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text28>
+          </Components>
+          <Condition>{mosDataSource2.Mony_Paid}</Condition>
+          <Conditions isList="true" count="0" />
+          <Guid>1a796b00c8dd5c12b0b4a8b359b0ebd5</Guid>
+          <Name>GroupHeaderBand5</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </GroupHeaderBand5>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>8038ee44c7ab4799b130ae92f225461c</Guid>
+      <Margins>0.39,0.39,0.39,0.39</Margins>
+      <Name>Page1</Name>
+      <PageHeight>11</PageHeight>
+      <PageWidth>8.5</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="47" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="48" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>schglvchdlyhdreg</ReportAlias>
+  <ReportChanged>9/24/2014 8:27:10 PM</ReportChanged>
+  <ReportCreated>8/18/2013 8:22:02 AM</ReportCreated>
+  <ReportFile />
+  <ReportGuid>b7e24d7a1c14a3f488bfa8b3d2aff09d</ReportGuid>
+  <ReportName>schglvchdlyhdreg</ReportName>
+  <ReportUnit>Inches</ReportUnit>
+  <ReportVersion>2013.1.1600</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

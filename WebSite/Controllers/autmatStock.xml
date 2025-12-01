@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="autmatStock" conflictDetection="overwriteChanges" label="autmat Stock" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"autmatStock"."Brn_No" "Brn_No"
+	,"autmatStock"."countrdus" "countrdus"
+	,"autmatStock"."doc_typ" "doc_typ"
+	,"autmatStock"."ID_comp" "ID_comp"
+	,"autmatStock"."Unit_No" "Unit_No"
+	,"autmatStock"."ID_USER" "ID_USER"
+	,"autmatStock"."ITEM" "ITEM"
+	,"autmatStock"."ITEME" "ITEME"
+	,"autmatStock"."cost" "cost"
+	,"autmatStock"."quantity" "quantity"
+	,"autmatStock"."egmaly" "egmaly"
+	,"autmatStock"."Itm_Sal1" "Itm_Sal1"
+	,"autmatStock"."IDate" "IDate"
+	,"autmatStock"."doc_name" "doc_name"
+	,"autmatStock"."doc_kind" "doc_kind"
+	,"autmatStock"."TRNSQUN" "TRNSQUN"
+	,"autmatStock"."Unit_Nm" "Unit_Nm"
+	,"autmatStock"."TRANSCST" "TRANSCST"
+	,"autmatStock"."CSTegmaly" "CSTegmaly"
+	,"autmatStock"."Cstm_No" "Cstm_No"
+	,"autmatStock"."flat" "flat"
+	,"autmatStock"."grdegmaly" "grdegmaly"
+	,"autmatStock"."grdquntity" "grdquntity"
+	,"autmatStock"."factor" "factor"
+	,"autmatStock"."ITM_NM" "ITM_NM"
+	,"autmatStock"."typcmsup" "typcmsup"
+	,"autmatStock"."Sup_No" "Sup_No"
+	,"autmatStock"."classacc" "classacc"
+	,"autmatStock"."Acc_Bnd" "Acc_Bnd"
+	,"autmatStock"."Acc_Mag" "Acc_Mag"
+	,"autmatStock"."Acc_Bab" "Acc_Bab"
+	,"autmatStock"."Acc_Nm" "Acc_Nm"
+	,"autmatStock"."Acc_Nme" "Acc_Nme"
+	,"autmatStock"."ID_USERN" "ID_USERN"
+	,"autmatStock"."Expr1" "Expr1"
+	,"autmatStock"."quntit" "quntit"
+	,"autmatStock"."quntitb4" "quntitb4"
+	,"autmatStock"."opnblnc" "opnblnc"
+	,"autmatStock"."talbhad" "talbhad"
+	,"autmatStock"."sarfhad" "sarfhad"
+	,"autmatStock"."Barcodu" "Barcodu"
+	,"autmatStock"."MASTERNOD" "MASTERNOD"
+	,"autmatStock"."Ref_No" "Ref_No"
+	,"autmatStock"."TOT_cost1" "TOT_cost1"
+	,"autmatStock"."id4" "id4"
+	,"autmatStock"."id3" "id3"
+	,"autmatStock"."id2" "id2"
+	,"autmatStock"."id1" "id1"
+	,"autmatStock"."notes" "notes"
+	,"autmatStock"."Expr2" "Expr2"
+	,"autmatStock"."Expr3" "Expr3"
+	,"autmatStock"."openblnc" "openblnc"
+	,"autmatStock"."combin" "combin"
+	,"autmatStock"."Barcod2" "Barcod2"
+	,"autmatStock"."Barcod1" "Barcod1"
+	,"autmatStock"."Itm_colr" "Itm_colr"
+	,"autmatStock"."Itm_size" "Itm_size"
+	,"autmatStock"."Itm_Othr" "Itm_Othr"
+	,"autmatStock"."Itm_Sal2" "Itm_Sal2"
+	,"autmatStock"."Expr4" "Expr4"
+	,"autmatStock"."Itm_COst" "Itm_COst"
+	,"autmatStock"."Expr5" "Expr5"
+	,"autmatStock"."Itm_Pur" "Itm_Pur"
+	,"autmatStock"."Expr6" "Expr6"
+	,"autmatStock"."Expr7" "Expr7"
+	,"autmatStock"."unit_nme" "unit_nme"
+	,"autmatStock"."Cstm_Nm" "Cstm_Nm"
+	,"autmatStock"."Cstm_Nme" "Cstm_Nme"
+	,"autmatStock"."Req_NM" "Req_NM"
+	,"autmatStock"."Expr8" "Expr8"
+	,"autmatStock"."carno" "carno"
+	,"autmatStock"."shad" "shad"
+	,"autmatStock"."typ" "typ"
+	,"autmatStock"."Cstm_Tel" "Cstm_Tel"
+	,"autmatStock"."Cstm_Adr" "Cstm_Adr"
+from "dbo"."autmatStock" "autmatStock"
+]]></text>
+    </command>
+    <command id="ID_compIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID_comp" />
+      </output>
+    </command>
+    <command id="Unit_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Unit_No" />
+      </output>
+    </command>
+    <command id="ID_USERNIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ID_USERN" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Brn_No" type="Int64" label="Brn No" showInSummary="true" />
+    <field name="countrdus" type="Int64" label="Countrdus" showInSummary="true" />
+    <field name="doc_typ" type="Int64" label="Doc Typ" showInSummary="true" />
+    <field name="ID_comp" type="Int64" label="ID comp" readOnly="true" showInSummary="true" />
+    <field name="Unit_No" type="Int64" label="Unit No" readOnly="true" showInSummary="true" />
+    <field name="ID_USER" type="String" label="Id User" length="50" />
+    <field name="ITEM" type="String" label="Item" length="255" />
+    <field name="ITEME" type="String" label="Iteme" length="255" />
+    <field name="cost" type="Decimal" label="Cost" />
+    <field name="quantity" type="Double" label="Quantity" readOnly="true" />
+    <field name="egmaly" type="Double" label="Egmaly" readOnly="true" />
+    <field name="Itm_Sal1" type="Decimal" label="Itm Sal1" />
+    <field name="IDate" type="DateTime" label="I Date" />
+    <field name="doc_name" type="String" label="Doc Name" length="255" />
+    <field name="doc_kind" type="Int64" label="Doc Kind" />
+    <field name="TRNSQUN" type="Double" label="Trnsqun" readOnly="true" />
+    <field name="Unit_Nm" type="String" label="Unit Nm" length="255" />
+    <field name="TRANSCST" type="Double" label="Transcst" readOnly="true" />
+    <field name="CSTegmaly" type="Double" label="CS Tegmaly" readOnly="true" />
+    <field name="Cstm_No" type="Double" label="Cstm No" />
+    <field name="flat" type="Int64" label="Flat" />
+    <field name="grdegmaly" type="Double" label="Grdegmaly" readOnly="true" />
+    <field name="grdquntity" type="Double" label="Grdquntity" readOnly="true" />
+    <field name="factor" type="Single" allowNulls="false" label="Factor" readOnly="true" />
+    <field name="ITM_NM" type="String" label="Itm Nm" length="255" />
+    <field name="typcmsup" type="Int64" label="Typcmsup" />
+    <field name="Sup_No" type="Int64" label="Sup No" />
+    <field name="classacc" type="Int64" label="Classacc" />
+    <field name="Acc_Bnd" type="Int64" label="Acc Bnd" />
+    <field name="Acc_Mag" type="Int64" label="Acc Mag" readOnly="true" />
+    <field name="Acc_Bab" type="Int64" label="Acc Bab" readOnly="true" />
+    <field name="Acc_Nm" type="String" label="Acc Nm" length="255" />
+    <field name="Acc_Nme" type="String" label="Acc Nme" length="255" />
+    <field name="ID_USERN" type="Int64" label="Id Usern" readOnly="true" />
+    <field name="Expr1" type="Single" label="Expr1" readOnly="true" />
+    <field name="quntit" type="Single" label="Quntit" />
+    <field name="quntitb4" type="Single" label="Quntitb4" />
+    <field name="opnblnc" type="Single" label="Opnblnc" />
+    <field name="talbhad" type="Single" label="Talbhad" />
+    <field name="sarfhad" type="Single" label="Sarfhad" />
+    <field name="Barcodu" type="String" label="Barcodu" length="255" />
+    <field name="MASTERNOD" type="Int64" label="Masternod" />
+    <field name="Ref_No" type="String" label="Ref No" length="50" />
+    <field name="TOT_cost1" type="Decimal" label="TOT cost1" />
+    <field name="id4" type="Int32" label="Id4" />
+    <field name="id3" type="Int32" label="Id3" />
+    <field name="id2" type="Int32" label="Id2" />
+    <field name="id1" type="Int32" label="Id1" />
+    <field name="notes" type="String" label="Notes" length="255" />
+    <field name="Expr2" type="Double" label="Expr2" />
+    <field name="Expr3" type="Double" label="Expr3" />
+    <field name="openblnc" type="Double" label="Openblnc" />
+    <field name="combin" type="Boolean" label="Combin" />
+    <field name="Barcod2" type="String" label="Barcod2" length="50" />
+    <field name="Barcod1" type="String" label="Barcod1" length="50" />
+    <field name="Itm_colr" type="String" label="Itm colr" length="50" />
+    <field name="Itm_size" type="String" label="Itm size" length="50" />
+    <field name="Itm_Othr" type="String" label="Itm Othr" length="40" />
+    <field name="Itm_Sal2" type="Double" label="Itm Sal2" />
+    <field name="Expr4" type="Double" label="Expr4" />
+    <field name="Itm_COst" type="Double" label="Itm C Ost" />
+    <field name="Expr5" type="String" label="Expr5" length="50" />
+    <field name="Itm_Pur" type="Decimal" label="Itm Pur" />
+    <field name="Expr6" type="Double" label="Expr6" />
+    <field name="Expr7" type="Double" label="Expr7" />
+    <field name="unit_nme" type="String" label="Unit Nme" length="255" />
+    <field name="Cstm_Nm" type="String" allowQBE="false" allowSorting="false" label="Cstm Nm" length="-1" />
+    <field name="Cstm_Nme" type="String" label="Cstm Nme" length="255" />
+    <field name="Req_NM" type="String" label="Req NM" length="255" />
+    <field name="Expr8" type="String" label="Expr8" length="255" />
+    <field name="carno" type="Int64" label="Carno" />
+    <field name="shad" type="Int64" allowNulls="false" label="Shad" />
+    <field name="typ" type="Int32" label="Typ" />
+    <field name="Cstm_Tel" type="String" label="Cstm Tel" length="15" />
+    <field name="Cstm_Adr" type="String" label="Cstm Adr" length="200" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="autmat Stock">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="factor" columns="15" />
+        <dataField fieldName="Brn_No" columns="15" />
+        <dataField fieldName="countrdus" columns="15" />
+        <dataField fieldName="doc_typ" columns="15" />
+        <dataField fieldName="ID_comp" columns="15" />
+        <dataField fieldName="Unit_No" columns="15" />
+        <dataField fieldName="ID_USER" columns="50" />
+        <dataField fieldName="ITEM" />
+        <dataField fieldName="ITEME" />
+        <dataField fieldName="cost" dataFormatString="c" columns="15" />
+        <dataField fieldName="quantity" columns="15" />
+        <dataField fieldName="egmaly" columns="15" />
+        <dataField fieldName="Itm_Sal1" dataFormatString="c" columns="15" />
+        <dataField fieldName="IDate" columns="10" />
+        <dataField fieldName="doc_name" />
+        <dataField fieldName="doc_kind" columns="15" />
+        <dataField fieldName="TRNSQUN" columns="15" />
+        <dataField fieldName="Unit_Nm" />
+        <dataField fieldName="TRANSCST" columns="15" />
+        <dataField fieldName="CSTegmaly" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review autmat Stock">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="autmat Stock" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Brn_No" columns="15" />
+            <dataField fieldName="countrdus" columns="15" />
+            <dataField fieldName="doc_typ" columns="15" />
+            <dataField fieldName="ID_comp" columns="15" />
+            <dataField fieldName="Unit_No" columns="15" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="ITEME" />
+            <dataField fieldName="cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="quantity" columns="15" />
+            <dataField fieldName="egmaly" columns="15" />
+            <dataField fieldName="Itm_Sal1" dataFormatString="c" columns="15" />
+            <dataField fieldName="IDate" columns="10" />
+            <dataField fieldName="doc_name" />
+            <dataField fieldName="doc_kind" columns="15" />
+            <dataField fieldName="TRNSQUN" columns="15" />
+            <dataField fieldName="Unit_Nm" />
+            <dataField fieldName="TRANSCST" columns="15" />
+            <dataField fieldName="CSTegmaly" columns="15" />
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="flat" columns="15" />
+            <dataField fieldName="grdegmaly" columns="15" />
+            <dataField fieldName="grdquntity" columns="15" />
+            <dataField fieldName="factor" columns="15" />
+            <dataField fieldName="ITM_NM" />
+            <dataField fieldName="typcmsup" columns="15" />
+            <dataField fieldName="Sup_No" columns="15" />
+            <dataField fieldName="classacc" columns="15" />
+            <dataField fieldName="Acc_Bnd" columns="15" />
+            <dataField fieldName="Acc_Mag" columns="15" />
+            <dataField fieldName="Acc_Bab" columns="15" />
+            <dataField fieldName="Acc_Nm" />
+            <dataField fieldName="Acc_Nme" />
+            <dataField fieldName="ID_USERN" columns="15" />
+            <dataField fieldName="Expr1" columns="15" />
+            <dataField fieldName="quntit" columns="15" />
+            <dataField fieldName="quntitb4" columns="15" />
+            <dataField fieldName="opnblnc" columns="15" />
+            <dataField fieldName="talbhad" columns="15" />
+            <dataField fieldName="sarfhad" columns="15" />
+            <dataField fieldName="Barcodu" />
+            <dataField fieldName="MASTERNOD" columns="15" />
+            <dataField fieldName="Ref_No" columns="50" />
+            <dataField fieldName="TOT_cost1" dataFormatString="c" columns="15" />
+            <dataField fieldName="id4" columns="15" />
+            <dataField fieldName="id3" columns="15" />
+            <dataField fieldName="id2" columns="15" />
+            <dataField fieldName="id1" columns="15" />
+            <dataField fieldName="notes" />
+            <dataField fieldName="Expr2" columns="15" />
+            <dataField fieldName="Expr3" columns="15" />
+            <dataField fieldName="openblnc" columns="15" />
+            <dataField fieldName="combin" />
+            <dataField fieldName="Barcod2" columns="50" />
+            <dataField fieldName="Barcod1" columns="50" />
+            <dataField fieldName="Itm_colr" columns="50" />
+            <dataField fieldName="Itm_size" columns="50" />
+            <dataField fieldName="Itm_Othr" columns="40" />
+            <dataField fieldName="Itm_Sal2" columns="15" />
+            <dataField fieldName="Expr4" columns="15" />
+            <dataField fieldName="Itm_COst" columns="15" />
+            <dataField fieldName="Expr5" columns="50" />
+            <dataField fieldName="Itm_Pur" columns="15" />
+            <dataField fieldName="Expr6" columns="15" />
+            <dataField fieldName="Expr7" columns="15" />
+            <dataField fieldName="unit_nme" />
+            <dataField fieldName="Cstm_Nm" rows="5" />
+            <dataField fieldName="Cstm_Nme" />
+            <dataField fieldName="Req_NM" />
+            <dataField fieldName="Expr8" />
+            <dataField fieldName="carno" columns="15" />
+            <dataField fieldName="shad" columns="15" />
+            <dataField fieldName="typ" columns="15" />
+            <dataField fieldName="Cstm_Tel" columns="15" />
+            <dataField fieldName="Cstm_Adr" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New autmat Stock">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New autmat Stock" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Brn_No" columns="15" />
+            <dataField fieldName="countrdus" columns="15" />
+            <dataField fieldName="doc_typ" columns="15" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="ITEM" />
+            <dataField fieldName="ITEME" />
+            <dataField fieldName="cost" dataFormatString="c" columns="15" />
+            <dataField fieldName="Itm_Sal1" dataFormatString="c" columns="15" />
+            <dataField fieldName="IDate" columns="10" />
+            <dataField fieldName="doc_name" />
+            <dataField fieldName="doc_kind" columns="15" />
+            <dataField fieldName="Unit_Nm" />
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="flat" columns="15" />
+            <dataField fieldName="ITM_NM" />
+            <dataField fieldName="typcmsup" columns="15" />
+            <dataField fieldName="Sup_No" columns="15" />
+            <dataField fieldName="classacc" columns="15" />
+            <dataField fieldName="Acc_Bnd" columns="15" />
+            <dataField fieldName="Acc_Nm" />
+            <dataField fieldName="Acc_Nme" />
+            <dataField fieldName="quntit" columns="15" />
+            <dataField fieldName="quntitb4" columns="15" />
+            <dataField fieldName="opnblnc" columns="15" />
+            <dataField fieldName="talbhad" columns="15" />
+            <dataField fieldName="sarfhad" columns="15" />
+            <dataField fieldName="Barcodu" />
+            <dataField fieldName="MASTERNOD" columns="15" />
+            <dataField fieldName="Ref_No" columns="50" />
+            <dataField fieldName="TOT_cost1" dataFormatString="c" columns="15" />
+            <dataField fieldName="id4" columns="15" />
+            <dataField fieldName="id3" columns="15" />
+            <dataField fieldName="id2" columns="15" />
+            <dataField fieldName="id1" columns="15" />
+            <dataField fieldName="notes" />
+            <dataField fieldName="Expr2" columns="15" />
+            <dataField fieldName="Expr3" columns="15" />
+            <dataField fieldName="openblnc" columns="15" />
+            <dataField fieldName="combin" />
+            <dataField fieldName="Barcod2" columns="50" />
+            <dataField fieldName="Barcod1" columns="50" />
+            <dataField fieldName="Itm_colr" columns="50" />
+            <dataField fieldName="Itm_size" columns="50" />
+            <dataField fieldName="Itm_Othr" columns="40" />
+            <dataField fieldName="Itm_Sal2" columns="15" />
+            <dataField fieldName="Expr4" columns="15" />
+            <dataField fieldName="Itm_COst" columns="15" />
+            <dataField fieldName="Expr5" columns="50" />
+            <dataField fieldName="Itm_Pur" columns="15" />
+            <dataField fieldName="Expr6" columns="15" />
+            <dataField fieldName="Expr7" columns="15" />
+            <dataField fieldName="unit_nme" />
+            <dataField fieldName="Cstm_Nm" rows="5" />
+            <dataField fieldName="Cstm_Nme" />
+            <dataField fieldName="Req_NM" />
+            <dataField fieldName="Expr8" />
+            <dataField fieldName="carno" columns="15" />
+            <dataField fieldName="shad" columns="15" />
+            <dataField fieldName="typ" columns="15" />
+            <dataField fieldName="Cstm_Tel" columns="15" />
+            <dataField fieldName="Cstm_Adr" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

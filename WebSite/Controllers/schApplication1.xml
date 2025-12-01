@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="schApplication" conflictDetection="overwriteChanges" label="sch Application" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.schApplicationhandlr" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text" tableName="schApplication" custom="true">
+      <text>
+    <![CDATA[
+select
+	"schApplication"."ApplicationCodeauto" "ApplicationCodeauto"
+	,"schApplication"."schtrnsid" "schtrnsid"
+	,"schtrns"."schtrnsDesc" "schtrnsschtrnsDesc"
+	,"schApplication"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"Thebranchsgm"."sgm_Nm" "Thebranchsgmsgm_Nm"
+	,"ThebranchsgmOpco"."OpcoName" "ThebranchsgmOpcoOpcoName"
+	,"ThebranchGender"."Gender" "ThebranchGenderGender"
+	,"Thebranchstage"."ShortDesc1" "ThebranchstageShortDesc1"
+	,"Thebranchschtyp"."schtypDesc" "ThebranchschtypschtypDesc"
+	,"schApplication"."ApplicationDate" "ApplicationDate"
+	,"schApplication"."StudentCode" "StudentCode"
+	,"Student"."SchstCivilidnumber" "StudentSchstCivilidnumber"
+	,"Studentarea"."Desc1" "StudentareaDesc1"
+	,"Studentbranch"."Desc1" "StudentbranchDesc1"
+	,"Studentbranchsgm"."sgm_Nm" "Studentbranchsgmsgm_Nm"
+	,"StudentbranchGender"."Gender" "StudentbranchGenderGender"
+	,"Studentbranchstage"."ShortDesc1" "StudentbranchstageShortDesc1"
+	,"Studentbranchschtyp"."schtypDesc" "StudentbranchschtypschtypDesc"
+	,"StudentCntry_"."Cntry_Nm" "StudentCntry_Cntry_Nm"
+	,"StudentGender"."Gender" "StudentGenderGender"
+	,"StudentReligion"."Reljan_nm" "StudentReligionReljan_nm"
+	,"Studentstate"."State_Nm" "StudentstateState_Nm"
+	,"Studentid"."name_1" "Studentidname_1"
+	,"Studentacd"."AcademicYear" "StudentacdAcademicYear"
+	,"StudentacdGlFinperiod"."Fin_period_info" "StudentacdGlFinperiodFin_period_info"
+	,"StudentClass"."ClassDesc1" "StudentClassClassDesc1"
+	,"StudentSchclasskind"."Schclasskinddesc" "StudentSchclasskindSchclasskinddesc"
+	,"StudentFather"."fathfirstname1" "StudentFatherfathfirstname1"
+	,"StudentFatherMaritalStatus"."Status_Nm" "StudentFatherMaritalStatusStatus_Nm"
+	,"StudentFatherarea"."Desc1" "StudentFatherareaDesc1"
+	,"StudentFatherCntry_"."Cntry_Nm" "StudentFatherCntry_Cntry_Nm"
+	,"StudentFatherreligion"."Reljan_nm" "StudentFatherreligionReljan_nm"
+	,"StudentFatherState"."State_Nm" "StudentFatherStateState_Nm"
+	,"StudentFatherjob_"."job_desc" "StudentFatherjob_job_desc"
+	,"StudentGrade"."ShortDesc1" "StudentGradeShortDesc1"
+	,"StudentGradeacd"."AcademicYear" "StudentGradeacdAcademicYear"
+	,"StudentGradeStage"."ShortDesc1" "StudentGradeStageShortDesc1"
+	,"StudentMother"."firstname1" "StudentMotherfirstname1"
+	,"StudentMotherarea"."Desc1" "StudentMotherareaDesc1"
+	,"StudentMotherCntry_"."Cntry_Nm" "StudentMotherCntry_Cntry_Nm"
+	,"StudentMotherreligion"."Reljan_nm" "StudentMotherreligionReljan_nm"
+	,"StudentMotherState"."State_Nm" "StudentMotherStateState_Nm"
+	,"StudentMotherjob_"."job_desc" "StudentMotherjob_job_desc"
+	,"StudentStage"."ShortDesc1" "StudentStageShortDesc1"
+	,"Studentschstatus_"."schstatus_name" "Studentschstatus_schstatus_name"
+	,"Studentschstclasskinddmg"."schstclasskinddmgDesc" "StudentschstclasskinddmgschstclasskinddmgDesc"
+	,"Studentschstspl"."schstsplDsc" "StudentschstsplschstsplDsc"
+	,"Studentschsthlthcase"."schsthlthcaseDesc" "StudentschsthlthcaseschsthlthcaseDesc"
+	,"Studentstudentsefa"."studentsefaar" "Studentstudentsefastudentsefaar"
+	,"Studentstudentsefadebitaccount"."Acc_Nm" "StudentstudentsefadebitaccountAcc_Nm"
+	,"Studentschstudenttyp"."schstudenttyp" "Studentschstudenttypschstudenttyp"
+	,"StudentSchtransfer"."SchtransferDesc" "StudentSchtransferSchtransferDesc"
+	,"schApplication"."civilidst" "civilidst"
+	,"schApplication"."studentfullname" "studentfullname"
+	,"schApplication"."Fathername" "Fathername"
+	,"schApplication"."Cntry_No" "Cntry_No"
+	,"Cntry_"."Cntry_Nm" "Cntry_Cntry_Nm"
+	,"schApplication"."DateofBirth" "DateofBirth"
+	,"schApplication"."Genderid" "Genderid"
+	,"Gender"."Gender" "GenderGender"
+	,"schApplication"."StageAppliedto" "StageAppliedto"
+	,"StageAppliedto"."ShortDesc1" "StageAppliedtoShortDesc1"
+	,"schApplication"."GradeApplied" "GradeApplied"
+	,"GradeApplied"."ShortDesc1" "GradeAppliedShortDesc1"
+	,"GradeAppliedacd"."AcademicYear" "GradeAppliedacdAcademicYear"
+	,"GradeAppliedacdGlFinperiod"."Fin_period_info" "GradeAppliedacdGlFinperiodFin_period_info"
+	,"GradeAppliedStage"."ShortDesc1" "GradeAppliedStageShortDesc1"
+	,"schApplication"."AcademicYearto" "AcademicYearto"
+	,"AcademicYearto"."AcademicYear" "AcademicYeartoAcademicYear"
+	,"AcademicYeartoGlFinperiod"."Fin_period_info" "AcademicYeartoGlFinperiodFin_period_info"
+	,"AcademicYeartoGlFinperiodaccountnumber"."Acc_Nm" "AcademicYeartoGlFinperiodaccountnumberAcc_Nm"
+	,"schApplication"."Class" "Class"
+	,"Class"."ClassDesc1" "ClassClassDesc1"
+	,"schApplication"."schstatus_code" "schstatus_code"
+	,"schstatus_"."schstatus_name" "schstatus_schstatus_name"
+	,"schApplication"."schstudenttypid" "schstudenttypid"
+	,"schstudenttyp"."schstudenttyp" "schstudenttypschstudenttyp"
+	,"schApplication"."id" "id"
+	,"Theid"."name_1" "Theidname_1"
+	,"schApplication"."CurrentSchool" "CurrentSchool"
+	,"schApplication"."Remarks" "Remarks"
+	,"schApplication"."Fathertel" "Fathertel"
+	,"schApplication"."Fathertel2" "Fathertel2"
+	,"schApplication"."passfail" "passfail"
+	,"schApplication"."fromout" "fromout"
+	,"schApplication"."fatherjob" "fatherjob"
+	,"schApplication"."fatheraddress" "fatheraddress"
+	,"schApplication"."fathertel3" "fathertel3"
+	,"schApplication"."fatheremail" "fatheremail"
+	,"schApplication"."ageyear" "ageyear"
+	,"schApplication"."agemonth" "agemonth"
+	,"schApplication"."ageday" "ageday"
+	,"schApplication"."homephone" "homephone"
+	,"schApplication"."printed" "printed"
+	,"schApplication"."BirthDocNo" "BirthDocNo"
+	,"schApplication"."birthdocdate" "birthdocdate"
+	,"schApplication"."BirthDocPlace" "BirthDocPlace"
+	,"schApplication"."BirthPlace" "BirthPlace"
+	,"schApplication"."Residencenumber" "Residencenumber"
+	,"schApplication"."ResidenceExpDate" "ResidenceExpDate"
+	,"schApplication"."schsthlthcaseid" "schsthlthcaseid"
+	,"schsthlthcase"."schsthlthcaseDesc" "schsthlthcaseschsthlthcaseDesc"
+	,"schApplication"."Cntry_No1" "Cntry_No1"
+	,"Cntry_No1"."Cntry_Nm" "Cntry_No1Cntry_Nm"
+	,"schApplication"."Cntry_No2" "Cntry_No2"
+	,"Cntry_No2"."Cntry_Nm" "Cntry_No2Cntry_Nm"
+	,"schApplication"."state" "state"
+	,"state"."State_Nm" "stateState_Nm"
+	,"schApplication"."area" "area"
+	,"area"."Desc1" "areaDesc1"
+	,"schApplication"."blockno" "blockno"
+	,"schApplication"."streetno" "streetno"
+	,"schApplication"."gadah" "gadah"
+	,"schApplication"."houseno" "houseno"
+	,"schApplication"."addressdetail" "addressdetail"
+	,"schApplication"."EmergencyTelNo1" "EmergencyTelNo1"
+	,"schApplication"."mothercase" "mothercase"
+	,"mothercase"."job_desc" "mothercasejob_desc"
+	,"schApplication"."fathercase" "fathercase"
+	,"fathercase"."job_desc" "fathercasejob_desc"
+	,"schApplication"."socialstatus" "socialstatus"
+	,"socialstatus"."schsocialstatuscaseDesc" "socialstatusschsocialstatuscaseDesc"
+	,"schApplication"."studentsefa" "studentsefa"
+	,"studentsefa"."studentsefaar" "studentsefastudentsefaar"
+	,"studentsefadebitaccount"."Acc_Nm" "studentsefadebitaccountAcc_Nm"
+	,"studentsefadebitaccountClsacc_"."Acc_Nm" "studentsefadebitaccountClsacc_Acc_Nm"
+	,"studentsefadebitaccountAcc_Bnd"."Acc_Nm" "studentsefadebitaccountAcc_BndAcc_Nm"
+	,"schApplication"."Schclasskindid" "Schclasskindid"
+	,"Schclasskind"."Schclasskinddesc" "SchclasskindSchclasskinddesc"
+	,"schApplication"."schstclasskinddmgid" "schstclasskinddmgid"
+	,"schstclasskinddmg"."schstclasskinddmgDesc" "schstclasskinddmgschstclasskinddmgDesc"
+	,"schApplication"."Schtransferid" "Schtransferid"
+	,"Schtransfer"."SchtransferDesc" "SchtransferSchtransferDesc"
+	,"schApplication"."classorder" "classorder"
+	,"schApplication"."ModifiedBy" "ModifiedBy"
+	,"schApplication"."ModifiedOn" "ModifiedOn"
+	,"schApplication"."CreatedBy" "CreatedBy"
+	,"schApplication"."CreatedOn" "CreatedOn"
+	,"schApplication"."calssserial" "calssserial"
+	,"schApplication"."agarulyear" "agarulyear"
+	,"schApplication"."agarulmonth" "agarulmonth"
+	,"schApplication"."dateofcalculate" "dateofcalculate"
+	,"schApplication"."agarulyearmax" "agarulyearmax"
+	,"schApplication"."agarulmonthmax" "agarulmonthmax"
+	,"schApplication"."studentBalance1" "studentBalance1"
+	,"schApplication"."studentnotes" "studentnotes"
+	,"schApplication"."paidrosom" "paidrosom"
+  ,"schApplication"."fatherrecord" "fatherrecord"
+  ,"schApplication"."BookRecive" "BookRecive"
+   ,"schApplication"."BookDiscount" "BookDiscount"
+    ,"schApplication"."rosomDiscount" "rosomDiscount"
+     ,"schApplication"."busid" "busid"
+      ,"schApplication"."BUSPAY" "BUSPAY"
+       ,"schApplication"."AMT00" "AMT00"
+      ,"schApplication"."TTLADV" "TTLADV"
+     ,"schApplication"."TTLDEP" "TTLDEP"
+          ,"schApplication"."TTLPAY" "TTLPAY"
+               ,"schApplication"."TTLOTH" "TTLOTH"
+	
+from "dbo"."schApplication" "schApplication"
+	left join "dbo"."schtrnstype" "schtrns" on "schApplication"."schtrnsid" = "schtrns"."schtrnsid"
+	left join "dbo"."schBranch" "Thebranch" on "schApplication"."branch" = "Thebranch"."branch"
+	left join "dbo"."glmulcmp" "Thebranchsgm" on "Thebranch"."sgm" = "Thebranchsgm"."sgmid"
+	left join "dbo"."OpCo" "ThebranchsgmOpco" on "Thebranchsgm"."OpcoID" = "ThebranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "ThebranchGender" on "Thebranch"."Genderid" = "ThebranchGender"."Genderid"
+	left join "dbo"."schStage" "Thebranchstage" on "Thebranch"."stagecode" = "Thebranchstage"."Code"
+	left join "dbo"."schtyp" "Thebranchschtyp" on "Thebranch"."schtypid" = "Thebranchschtyp"."schtypid"
+	left join "dbo"."SchStudent" "Student" on "schApplication"."StudentCode" = "Student"."StudentCode"
+	left join "dbo"."schArea" "Studentarea" on "Student"."area" = "Studentarea"."Code"
+	left join "dbo"."schBranch" "Studentbranch" on "Student"."branch" = "Studentbranch"."branch"
+	left join "dbo"."glmulcmp" "Studentbranchsgm" on "Studentbranch"."sgm" = "Studentbranchsgm"."sgmid"
+	left join "dbo"."PyGender" "StudentbranchGender" on "Studentbranch"."Genderid" = "StudentbranchGender"."Genderid"
+	left join "dbo"."schStage" "Studentbranchstage" on "Studentbranch"."stagecode" = "Studentbranchstage"."Code"
+	left join "dbo"."schtyp" "Studentbranchschtyp" on "Studentbranch"."schtypid" = "Studentbranchschtyp"."schtypid"
+	left join "dbo"."PYCntry" "StudentCntry_" on "Student"."Cntry_No" = "StudentCntry_"."Cntry_No"
+	left join "dbo"."PyGender" "StudentGender" on "Student"."Genderid" = "StudentGender"."Genderid"
+	left join "dbo"."PyReljan" "StudentReligion" on "Student"."Religion" = "StudentReligion"."reljan"
+	left join "dbo"."PyState" "Studentstate" on "Student"."state" = "Studentstate"."State"
+	left join "dbo"."reg_other_schools" "Studentid" on "Student"."id" = "Studentid"."id"
+	left join "dbo"."schAcademicyear" "Studentacd" on "Student"."acdcode" = "Studentacd"."Code"
+	left join "dbo"."GlFinanceperiod" "StudentacdGlFinperiod" on "Studentacd"."GlFinperiodID" = "StudentacdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."schClassConfig" "StudentClass" on "Student"."Class" = "StudentClass"."classcode"
+	left join "dbo"."Schclasskindlist" "StudentSchclasskind" on "Student"."Schclasskindid" = "StudentSchclasskind"."Schclasskindid"
+	left join "dbo"."schFather" "StudentFather" on "Student"."FatherCode" = "StudentFather"."FatherCode"
+	left join "dbo"."PyStatus" "StudentFatherMaritalStatus" on "StudentFather"."MaritalStatus" = "StudentFatherMaritalStatus"."Status_Type"
+	left join "dbo"."schArea" "StudentFatherarea" on "StudentFather"."area" = "StudentFatherarea"."Code"
+	left join "dbo"."PYCntry" "StudentFatherCntry_" on "StudentFather"."Cntry_No" = "StudentFatherCntry_"."Cntry_No"
+	left join "dbo"."PyReljan" "StudentFatherreligion" on "StudentFather"."religion" = "StudentFatherreligion"."reljan"
+	left join "dbo"."PyState" "StudentFatherState" on "StudentFather"."State" = "StudentFatherState"."State"
+	left join "dbo"."SchFatherjob" "StudentFatherjob_" on "StudentFather"."job_no" = "StudentFatherjob_"."job_no"
+	left join "dbo"."schGrade" "StudentGrade" on "Student"."GradeCode" = "StudentGrade"."GradeCode"
+	left join "dbo"."schAcademicyear" "StudentGradeacd" on "StudentGrade"."acdcode" = "StudentGradeacd"."Code"
+	left join "dbo"."schStage" "StudentGradeStage" on "StudentGrade"."StageCode" = "StudentGradeStage"."Code"
+	left join "dbo"."schMother" "StudentMother" on "Student"."MotherCode" = "StudentMother"."MotherCode"
+	left join "dbo"."schArea" "StudentMotherarea" on "StudentMother"."area" = "StudentMotherarea"."Code"
+	left join "dbo"."PYCntry" "StudentMotherCntry_" on "StudentMother"."Cntry_No" = "StudentMotherCntry_"."Cntry_No"
+	left join "dbo"."PyReljan" "StudentMotherreligion" on "StudentMother"."religion" = "StudentMotherreligion"."reljan"
+	left join "dbo"."PyState" "StudentMotherState" on "StudentMother"."State" = "StudentMotherState"."State"
+	left join "dbo"."SchMotherjob" "StudentMotherjob_" on "StudentMother"."job_no" = "StudentMotherjob_"."job_no"
+	left join "dbo"."schStage" "StudentStage" on "Student"."Stage" = "StudentStage"."Code"
+	left join "dbo"."schstatus" "Studentschstatus_" on "Student"."schstatus_code" = "Studentschstatus_"."schstatus_code"
+	left join "dbo"."schstclasskinddmg" "Studentschstclasskinddmg" on "Student"."schstclasskinddmgid" = "Studentschstclasskinddmg"."schstclasskinddmgid"
+	left join "dbo"."schstespetialest" "Studentschstspl" on "Student"."schstsplid" = "Studentschstspl"."schstsplid"
+	left join "dbo"."schsthealthcase" "Studentschsthlthcase" on "Student"."schsthlthcaseid" = "Studentschsthlthcase"."schsthlthcaseid"
+	left join "dbo"."Schstudentsefa" "Studentstudentsefa" on "Student"."studentsefa" = "Studentstudentsefa"."studentsefaid"
+	left join "dbo"."GLmstrfl" "Studentstudentsefadebitaccount" on "Studentstudentsefa"."debitaccount" = "Studentstudentsefadebitaccount"."Acc_No"
+	left join "dbo"."schstudenttyp" "Studentschstudenttyp" on "Student"."schstudenttypid" = "Studentschstudenttyp"."schstudenttypid"
+	left join "dbo"."Schtransferlist" "StudentSchtransfer" on "Student"."Schtransferid" = "StudentSchtransfer"."Schtransferid"
+	left join "dbo"."PYCntry" "Cntry_" on "schApplication"."Cntry_No" = "Cntry_"."Cntry_No"
+	left join "dbo"."PyGender" "Gender" on "schApplication"."Genderid" = "Gender"."Genderid"
+	left join "dbo"."schStage" "StageAppliedto" on "schApplication"."StageAppliedto" = "StageAppliedto"."Code"
+	left join "dbo"."schGrade" "GradeApplied" on "schApplication"."GradeApplied" = "GradeApplied"."GradeCode"
+	left join "dbo"."schAcademicyear" "GradeAppliedacd" on "GradeApplied"."acdcode" = "GradeAppliedacd"."Code"
+	left join "dbo"."GlFinanceperiod" "GradeAppliedacdGlFinperiod" on "GradeAppliedacd"."GlFinperiodID" = "GradeAppliedacdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."schStage" "GradeAppliedStage" on "GradeApplied"."StageCode" = "GradeAppliedStage"."Code"
+	left join "dbo"."schAcademicyear" "AcademicYearto" on "schApplication"."AcademicYearto" = "AcademicYearto"."Code"
+	left join "dbo"."GlFinanceperiod" "AcademicYeartoGlFinperiod" on "AcademicYearto"."GlFinperiodID" = "AcademicYeartoGlFinperiod"."GlFinperiodID"
+	left join "dbo"."GLmstrfl" "AcademicYeartoGlFinperiodaccountnumber" on "AcademicYeartoGlFinperiod"."accountnumber" = "AcademicYeartoGlFinperiodaccountnumber"."Acc_No"
+	left join "dbo"."schClassConfig" "Class" on "schApplication"."Class" = "Class"."classcode"
+	left join "dbo"."schstatus" "schstatus_" on "schApplication"."schstatus_code" = "schstatus_"."schstatus_code"
+	left join "dbo"."schstudenttyp" "schstudenttyp" on "schApplication"."schstudenttypid" = "schstudenttyp"."schstudenttypid"
+	left join "dbo"."reg_other_schools" "Theid" on "schApplication"."id" = "Theid"."id"
+	left join "dbo"."schsthealthcase" "schsthlthcase" on "schApplication"."schsthlthcaseid" = "schsthlthcase"."schsthlthcaseid"
+	left join "dbo"."PYCntry" "Cntry_No1" on "schApplication"."Cntry_No1" = "Cntry_No1"."Cntry_No"
+	left join "dbo"."PYCntry" "Cntry_No2" on "schApplication"."Cntry_No2" = "Cntry_No2"."Cntry_No"
+	left join "dbo"."PyState" "state" on "schApplication"."state" = "state"."State"
+	left join "dbo"."schArea" "area" on "schApplication"."area" = "area"."Code"
+	left join "dbo"."SchMotherjob" "mothercase" on "schApplication"."mothercase" = "mothercase"."job_no"
+	left join "dbo"."SchFatherjob" "fathercase" on "schApplication"."fathercase" = "fathercase"."job_no"
+	left join "dbo"."schsocialstatuscase" "socialstatus" on "schApplication"."socialstatus" = "socialstatus"."schsocialstatuscaseid"
+	left join "dbo"."Schstudentsefa" "studentsefa" on "schApplication"."studentsefa" = "studentsefa"."studentsefaid"
+	left join "dbo"."GLmstrfl" "studentsefadebitaccount" on "studentsefa"."debitaccount" = "studentsefadebitaccount"."Acc_No"
+	left join "dbo"."GLmfbab" "studentsefadebitaccountClsacc_" on "studentsefadebitaccount"."Clsacc_No" = "studentsefadebitaccountClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "studentsefadebitaccountAcc_Bnd" on "studentsefadebitaccount"."Acc_Bnd" = "studentsefadebitaccountAcc_Bnd"."Acc_Bnd"
+	left join "dbo"."Schclasskindlist" "Schclasskind" on "schApplication"."Schclasskindid" = "Schclasskind"."Schclasskindid"
+	left join "dbo"."schstclasskinddmg" "schstclasskinddmg" on "schApplication"."schstclasskinddmgid" = "schstclasskinddmg"."schstclasskinddmgid"
+	left join "dbo"."Schtransferlist" "Schtransfer" on "schApplication"."Schtransferid" = "Schtransfer"."Schtransferid"
+]]></text>
+    </command>
+    <command id="ApplicationCodeautoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="ApplicationCodeauto" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="ApplicationCodeauto" type="Int64" allowNulls="false" isPrimaryKey="true" label="Application Codeauto" readOnly="true" />
+    <field name="schtrnsid" type="Int64" allowNulls="false" label="Schtrnsid" showInSummary="true">
+      <items style="DropDownList" dataController="schtrnstype" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="schtrnsDesc" dataValueField="schtrnsid" />
+    </field>
+    <field name="schtrnsschtrnsDesc" type="String" readOnly="true" label="schtrnsschtrns Desc" length="150" />
+    <field name="branch" type="Int64" allowNulls="false" label="Branch" showInSummary="true">
+      <items style="DropDownList" dataController="schBranch" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Desc1" dataValueField="branch" copy="Genderid=Genderid" />
+    </field>
+    <field name="ThebranchDesc1" type="String" readOnly="true" label="Thebranch Desc1" length="50" />
+    <field name="Thebranchsgmsgm_Nm" type="String" readOnly="true" label="Thebranchsgmsgm Nm" length="255" />
+    <field name="ThebranchsgmOpcoOpcoName" type="String" readOnly="true" label="Thebranchsgm Opco Name" length="50" />
+    <field name="ThebranchGenderGender" type="String" readOnly="true" label="Thebranch Gender" length="100" />
+    <field name="ThebranchstageShortDesc1" type="String" readOnly="true" label="Thebranchstage Short Desc1" length="50" />
+    <field name="ThebranchschtypschtypDesc" type="String" readOnly="true" label="Thebranchschtypschtyp Desc" length="150" />
+    <field name="ApplicationDate" type="DateTime" default="(getdate())" label="Application Date" showInSummary="true" calculated="false" allowNulls="false" />
+    <field name="StudentCode" type="Int64" label="Student Code" showInSummary="true">
+      <items style="Lookup" dataController="SchStudent" newDataView="createForm1" searchOnStart="true" dataTextField="FirstName1" dataValueField="StudentCode" />
+    </field>
+    <field name="StudentSchstCivilidnumber" type="String" readOnly="true" label="Student Schst Civilidnumber" length="50" />
+    <field name="StudentareaDesc1" type="String" readOnly="true" label="Studentarea Desc1" length="40" />
+    <field name="StudentbranchDesc1" type="String" readOnly="true" label="Studentbranch Desc1" length="50" />
+    <field name="Studentbranchsgmsgm_Nm" type="String" readOnly="true" label="Studentbranchsgmsgm Nm" length="255" />
+    <field name="StudentbranchGenderGender" type="String" readOnly="true" label="Studentbranch Gender" length="100" />
+    <field name="StudentbranchstageShortDesc1" type="String" readOnly="true" label="Studentbranchstage Short Desc1" length="50" />
+    <field name="StudentbranchschtypschtypDesc" type="String" readOnly="true" label="Studentbranchschtypschtyp Desc" length="150" />
+    <field name="StudentCntry_Cntry_Nm" type="String" readOnly="true" label="Student Cntry Nm" length="255" />
+    <field name="StudentGenderGender" type="String" readOnly="true" label="Student Gender" length="100" />
+    <field name="StudentReligionReljan_nm" type="String" readOnly="true" label="Student Religion Reljan nm" length="50" />
+    <field name="StudentstateState_Nm" type="String" readOnly="true" label="Studentstate State Nm" length="60" />
+    <field name="Studentidname_1" type="String" readOnly="true" label="Studentidname 1" length="50" />
+    <field name="StudentacdAcademicYear" type="String" readOnly="true" label="Studentacd Academic Year" length="150" />
+    <field name="StudentacdGlFinperiodFin_period_info" type="String" readOnly="true" label="Studentacd Gl Finperiod Fin period info" length="150" />
+    <field name="StudentClassClassDesc1" type="String" readOnly="true" label="Student Class Desc1" length="15" />
+    <field name="StudentSchclasskindSchclasskinddesc" type="String" readOnly="true" label="Student Schclasskind Schclasskinddesc" length="255" />
+    <field name="StudentFatherfathfirstname1" type="String" readOnly="true" label="Student Fatherfathfirstname1" length="255" />
+    <field name="StudentFatherMaritalStatusStatus_Nm" type="String" readOnly="true" label="Student Father Marital Status Nm" length="255" />
+    <field name="StudentFatherareaDesc1" type="String" readOnly="true" label="Student Fatherarea Desc1" length="40" />
+    <field name="StudentFatherCntry_Cntry_Nm" type="String" readOnly="true" label="Student Father Cntry Nm" length="255" />
+    <field name="StudentFatherreligionReljan_nm" type="String" readOnly="true" label="Student Fatherreligion Reljan nm" length="50" />
+    <field name="StudentFatherStateState_Nm" type="String" readOnly="true" label="Student Father State Nm" length="60" />
+    <field name="StudentFatherjob_job_desc" type="String" readOnly="true" label="Student Fatherjob job desc" length="150" />
+    <field name="StudentGradeShortDesc1" type="String" readOnly="true" label="Student Grade Short Desc1" length="50" />
+    <field name="StudentGradeacdAcademicYear" type="String" readOnly="true" label="Student Gradeacd Academic Year" length="150" />
+    <field name="StudentGradeStageShortDesc1" type="String" readOnly="true" label="Student Grade Stage Short Desc1" length="50" />
+    <field name="StudentMotherfirstname1" type="String" readOnly="true" label="Student Motherfirstname1" length="50" />
+    <field name="StudentMotherareaDesc1" type="String" readOnly="true" label="Student Motherarea Desc1" length="40" />
+    <field name="StudentMotherCntry_Cntry_Nm" type="String" readOnly="true" label="Student Mother Cntry Nm" length="255" />
+    <field name="StudentMotherreligionReljan_nm" type="String" readOnly="true" label="Student Motherreligion Reljan nm" length="50" />
+    <field name="StudentMotherStateState_Nm" type="String" readOnly="true" label="Student Mother State Nm" length="60" />
+    <field name="StudentMotherjob_job_desc" type="String" readOnly="true" label="Student Motherjob job desc" length="150" />
+    <field name="StudentStageShortDesc1" type="String" readOnly="true" label="Student Stage Short Desc1" length="50" />
+    <field name="Studentschstatus_schstatus_name" type="String" readOnly="true" label="Studentschstatus schstatus name" length="50" />
+    <field name="StudentschstclasskinddmgschstclasskinddmgDesc" type="String" readOnly="true" label="Studentschstclasskinddmgschstclasskinddmg Desc" length="150" />
+    <field name="StudentschstsplschstsplDsc" type="String" readOnly="true" label="Studentschstsplschstspl Dsc" length="150" />
+    <field name="StudentschsthlthcaseschsthlthcaseDesc" type="String" readOnly="true" label="Studentschsthlthcaseschsthlthcase Desc" length="150" />
+    <field name="Studentstudentsefastudentsefaar" type="String" readOnly="true" label="Studentstudentsefastudentsefaar" length="150" />
+    <field name="StudentstudentsefadebitaccountAcc_Nm" type="String" readOnly="true" label="Studentstudentsefadebitaccount Acc Nm" length="255" />
+    <field name="Studentschstudenttypschstudenttyp" type="String" readOnly="true" label="Studentschstudenttypschstudenttyp" length="50" />
+    <field name="StudentSchtransferSchtransferDesc" type="String" readOnly="true" label="Student Schtransfer Desc" length="150" />
+    <field name="civilidst" type="String" label="Civilidst" length="12" showInSummary="true" allowNulls="false" causesCalculate="true" />
+    <field name="studentfullname" type="String" label="Studentfullname" length="150" allowNulls="false" />
+    <field name="Fathername" type="String" label="Fathername" length="150" calculated="true" contextFields="studentfullname" allowNulls="false" />
+    <field name="Cntry_No" type="Int64" label="CntryNost" allowNulls="false">
+      <items style="DropDownList" dataController="PYCntry" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataValueField="Cntry_No" dataTextField="Cntry_Nm" copy="Cntry_No1=Cntry_No&#xD;&#xA;Cntry_No2=Cntry_No" />
+    </field>
+    <field name="Cntry_Cntry_Nm" type="String" readOnly="true" label="Cntry Nm" length="255" />
+    <field name="DateofBirth" type="DateTime" label="Dateof Birth" calculated="true" contextFields="studentfullname,civilidst" allowNulls="false" allowQBE="true" maskType="None" dataFormatString="d" showInSummary="true" />
+    <field name="Genderid" type="Int64" label="Genderid" allowNulls="false">
+      <items style="DropDownList" dataController="PyGender" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataValueField="Genderid" dataTextField="Gender" />
+    </field>
+    <field name="GenderGender" type="String" readOnly="true" label="Gender" length="100" />
+    <field name="StageAppliedto" type="Int64" label="Stage Appliedto" allowSorting="false" allowLEV="true">
+      <items style="DropDownList" dataController="schStage" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="ShortDesc1" dataValueField="Code" />
+    </field>
+    <field name="StageAppliedtoShortDesc1" type="String" readOnly="true" label="Stage Appliedto Short Desc1" length="50" />
+    <field name="GradeApplied" type="Int64" label="Grade Applied" allowSorting="false" allowLEV="true">
+      <items style="DropDownList" dataController="schGrade" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataValueField="GradeCode" dataTextField="ShortDesc1" copy="StageAppliedto=StageCode" />
+    </field>
+    <field name="GradeAppliedShortDesc1" type="String" readOnly="true" label="Grade Applied Short Desc1" length="50" />
+    <field name="GradeAppliedacdAcademicYear" type="String" readOnly="true" label="Grade Appliedacd Academic Year" length="150" />
+    <field name="GradeAppliedacdGlFinperiodFin_period_info" type="String" readOnly="true" label="Grade Appliedacd Gl Finperiod Fin period info" length="150" />
+    <field name="GradeAppliedStageShortDesc1" type="String" readOnly="true" label="Grade Applied Stage Short Desc1" length="50" />
+    <field name="AcademicYearto" type="Int64" allowNulls="false" label="Academic Yearto" allowSorting="false" allowLEV="true">
+      <items style="DropDownList" dataController="schAcademicyear" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="AcademicYear" dataValueField="Code" />
+    </field>
+    <field name="AcademicYeartoAcademicYear" type="String" readOnly="true" label="Academic Yearto Academic Year" length="150" />
+    <field name="AcademicYeartoGlFinperiodFin_period_info" type="String" readOnly="true" label="Academic Yearto Gl Finperiod Fin period info" length="150" />
+    <field name="AcademicYeartoGlFinperiodaccountnumberAcc_Nm" type="String" readOnly="true" label="Academic Yearto Gl Finperiodaccountnumber Acc Nm" length="255" />
+    <field name="Class" type="Int64" label="Class" allowSorting="false">
+      <items style="DropDownList" dataController="schClassConfig" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="ClassClassDesc1" type="String" readOnly="true" label="Class Desc1" length="15" />
+    <field name="schstatus_code" type="Int64" label="Schstatus Code">
+      <items style="DropDownList" dataController="schstatus" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="schstatus_schstatus_name" type="String" readOnly="true" label="Schstatus Name" length="50" />
+    <field name="schstudenttypid" type="Int64" label="Schstudenttypid">
+      <items style="DropDownList" dataController="schstudenttyp" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="schstudenttypschstudenttyp" type="String" readOnly="true" label="Schstudenttypschstudenttyp" length="50" />
+    <field name="id" type="Int64" label="Idotherschool">
+      <items style="Lookup" dataController="reg_other_schools" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataValueField="id" dataTextField="name_1" />
+    </field>
+    <field name="Theidname_1" type="String" readOnly="true" label="Theidname 1" length="50" />
+    <field name="CurrentSchool" type="String" label="Current School" length="150" />
+    <field name="Remarks" type="String" label="Remarks" length="250" />
+    <field name="Fathertel" type="String" label="Fathertel" length="50" />
+    <field name="Fathertel2" type="String" label="Fathertel2" length="50" />
+    <field name="passfail" type="Boolean" label="Passfail" allowNulls="false">
+      <items style="CheckBox" />
+    </field>
+    <field name="fromout" type="Boolean" label="Fromout" readOnly="false" allowNulls="false" calculated="true" contextFields="AssesmentDate2" allowQBE="false" allowSorting="false">
+      <items style="CheckBox" />
+      <validate />
+    </field>
+    <field name="fatherjob" type="String" label="Fatherjob" length="50" />
+    <field name="fatheraddress" type="String" label="Fatheraddress" length="50" />
+    <field name="fathertel3" type="String" label="Fathertel3" length="12" allowNulls="false" />
+    <field name="fatheremail" type="String" label="Fatheremail" length="50" />
+    <field name="ageyear" type="Int64" label="Ageyear" contextFields="civilidst,dateofBirth" />
+    <field name="agemonth" type="Int64" label="Agemonth" />
+    <field name="ageday" type="Int64" label="Ageday" />
+    <field name="homephone" type="String" label="Homephone" length="10" />
+    <field name="printed" type="Int64" label="Printed" />
+    <field name="BirthDocNo" type="String" label="Birth Doc No" length="50" />
+    <field name="birthdocdate" type="DateTime" label="Birthdocdate" />
+    <field name="BirthDocPlace" type="String" label="Birth Doc Place" length="50" />
+    <field name="BirthPlace" type="String" label="Birth Place" length="50" />
+    <field name="Residencenumber" type="String" label="Residencenumber" length="50" />
+    <field name="ResidenceExpDate" type="DateTime" label="Residence Exp Date" />
+    <field name="schsthlthcaseid" type="Int64" label="Schsthlthcaseid">
+      <items style="DropDownList" dataController="schsthealthcase" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="schsthlthcaseschsthlthcaseDesc" type="String" readOnly="true" label="schsthlthcaseschsthlthcase Desc" length="150" />
+    <field name="Cntry_No1" type="Int64" label="Cntry No1">
+      <items style="DropDownList" dataController="PYCntry" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Cntry_No1Cntry_Nm" type="String" readOnly="true" label="Cntry No1 Cntry Nm" length="255" />
+    <field name="Cntry_No2" type="Int64" label="Cntry No2">
+      <items style="DropDownList" dataController="PYCntry" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Cntry_No2Cntry_Nm" type="String" readOnly="true" label="Cntry No2 Cntry Nm" length="255" />
+    <field name="state" type="Int64" label="State">
+      <items style="DropDownList" dataController="PyState" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="stateState_Nm" type="String" readOnly="true" label="state State Nm" length="60" />
+    <field name="area" type="Int64" label="Area">
+      <items style="DropDownList" dataController="schArea" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="areaDesc1" type="String" readOnly="true" label="area Desc1" length="40" />
+    <field name="blockno" type="String" label="Blockno" length="150" />
+    <field name="streetno" type="String" label="Streetno" length="150" />
+    <field name="gadah" type="String" label="Gadah" length="40" />
+    <field name="houseno" type="String" label="Houseno" length="150" />
+    <field name="addressdetail" type="String" allowQBE="false" allowSorting="false" label="Addressdetail" length="-1" />
+    <field name="EmergencyTelNo1" type="String" label="Emergency Tel No1" length="50" />
+    <field name="mothercase" type="Int64" label="Mothercase">
+      <items style="DropDownList" dataController="SchMotherjob" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="mothercasejob_desc" type="String" readOnly="true" label="Mothercasejob Desc" length="150" />
+    <field name="fathercase" type="Int64" label="Fathercase">
+      <items style="DropDownList" dataController="SchFatherjob" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="fathercasejob_desc" type="String" readOnly="true" label="Fathercasejob Desc" length="150" />
+    <field name="socialstatus" type="Int64" label="Socialstatus">
+      <items style="DropDownList" dataController="schsocialstatuscase" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="socialstatusschsocialstatuscaseDesc" type="String" readOnly="true" label="socialstatusschsocialstatuscase Desc" length="150" />
+    <field name="studentsefa" type="Int64" label="Studentsefa">
+      <items style="DropDownList" dataController="Schstudentsefa" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="studentsefastudentsefaar" type="String" readOnly="true" label="Studentsefastudentsefaar" length="150" />
+    <field name="studentsefadebitaccountAcc_Nm" type="String" readOnly="true" label="studentsefadebitaccount Acc Nm" length="255" />
+    <field name="studentsefadebitaccountClsacc_Acc_Nm" type="String" readOnly="true" label="studentsefadebitaccount Clsacc Acc Nm" length="250" />
+    <field name="studentsefadebitaccountAcc_BndAcc_Nm" type="String" readOnly="true" label="studentsefadebitaccount Acc Bnd Acc Nm" length="50" />
+    <field name="Schclasskindid" type="Int64" label="Schclasskindid">
+      <items style="DropDownList" dataController="Schclasskindlist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="SchclasskindSchclasskinddesc" type="String" readOnly="true" label="Schclasskind Schclasskinddesc" length="255" />
+    <field name="schstclasskinddmgid" type="Int64" label="Schstclasskinddmgid">
+      <items style="DropDownList" dataController="schstclasskinddmg" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="schstclasskinddmgschstclasskinddmgDesc" type="String" readOnly="true" label="schstclasskinddmgschstclasskinddmg Desc" length="150" />
+    <field name="Schtransferid" type="Int64" label="Schtransferid">
+      <items style="DropDownList" dataController="Schtransferlist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="SchtransferSchtransferDesc" type="String" readOnly="true" label="Schtransfer Desc" length="150" />
+    <field name="classorder" type="Int64" label="Classorder" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="calssserial" type="Int64" label="Calssserial" showInSummary="true" default="0"/>
+    <field name="agarulyear" type="Single" label="Agarulyear" readOnly="true" default="0"  />
+    <field name="agarulmonth" type="Single" label="Agarulmonth"  />
+    <field name="dateofcalculate" type="DateTime" label="Dateofcalculate" allowNulls="true" dataFormatString="d" />
+    <field name="agarulyearmax" type="Single" label="agarulyearmax" />
+    <field name="agarulmonthmax" type="Single" label="Agarulmonthmax" />
+    <field name="studentBalance1" type="Single" label="student Balance1" default="0" />
+    <field name="studentnotes" type="Single" label="Studentnotes" default="0" />
+    <field name="paidrosom" type="Single" label="Paidrosom" default="0"/>
+    <field name="agarulyear_1" type="Single" label="Agarulyear" readOnly="true" contextFields="GradeApplied,civilidst,dateofBirth" computed="true">
+      <formula>"schApplication"."agarulyear"</formula>
+    </field>
+    <field name="agarulmonth_1" type="Single" label="agarulmonthmax" contextFields="GradeApplied,civilidst,dateofBirth" computed="true" readOnly="true">
+      <formula>"schApplication"."agarulmonth"</formula>
+    </field>
+    <field name="fatherrecord" type="Boolean" label="Fatherrecord" />
+    <field name="BookRecive" type="Boolean" label="BookRecive" />
+    <field name="BookDiscount" type="Decimal" label="BookDiscount" default="0"/>
+    <field name="rosomDiscount" type="Decimal" label="rosomDiscount" default="0"/>
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Booklist" filter="AcademicYearto=50">
+        <dataFields>
+          <dataField fieldName="BookRecive" />
+          <dataField fieldName="BookDiscount" />
+          <dataField fieldName="rosomDiscount" />
+        <dataField fieldName="StudentCode" />
+        <dataField fieldName="studentfullname" />
+
+        <dataField fieldName="Cntry_No" aliasFieldName="Cntry_Cntry_Nm"   hidden="true"/>
+        <dataField fieldName="DateofBirth" columns="10" />
+        <dataField fieldName="Genderid" aliasFieldName="GenderGender"  />
+        <dataField fieldName="StageAppliedto" aliasFieldName="StageAppliedtoShortDesc1"  />
+        <dataField fieldName="GradeApplied" aliasFieldName="GradeAppliedShortDesc1"  />
+        <dataField fieldName="AcademicYearto" aliasFieldName="AcademicYeartoAcademicYear"  search="Suggested" />
+        <dataField fieldName="Class" aliasFieldName="ClassClassDesc1"  search="Suggested" />
+        <dataField fieldName="schstatus_code" aliasFieldName="schstatus_schstatus_name"  search="Suggested"  hidden="true"/>
+        <dataField fieldName="schstudenttypid" aliasFieldName="schstudenttypschstudenttyp"  search="Suggested"  hidden="true"/>
+        <dataField fieldName="Schtransferid" aliasFieldName="SchtransferSchtransferDesc" />
+        <dataField fieldName="id" aliasFieldName="Theidname_1"   hidden="true"/>
+        <dataField fieldName="CurrentSchool"  hidden="true"/>
+        <dataField fieldName="Remarks"  hidden="true"/>
+        <dataField fieldName="passfail" hidden="true" />
+        <dataField fieldName="Fathertel" columns="50" />
+        <dataField fieldName="calssserial" columns="15"  hidden="true"/>
+        <dataField fieldName="paidrosom" />
+        
+        <dataField fieldName="fatherrecord" />
+<dataField fieldName="ApplicationCodeauto" />
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1"  search="Suggested" />
+        <dataField fieldName="ApplicationDate" columns="10"  hidden="true" />
+        <dataField fieldName="civilidst" columns="12" />
+       
+      </dataFields>
+    </view>
+   
+   
+    <view id="grid3" commandId="command1" type="Grid" label="grid3" filter="schtrnsid&lt;&gt;1" baseViewId="grid1" />
+  </views>
+  <actions>
+    <actionGroup id="ag7" scope="ActionBar">
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="ax101b" commandName="SQL" headerText="الكتب بالكامل" >
+        <data>
+          <![CDATA[if @BookRecive=1
+begin
+update [schApplication]  Set BookRecive= 0
+where ApplicationCodeauto = @ApplicationCodeauto
+end
+if @BookRecive=0
+begin
+update [schApplication]  Set BookRecive= 1
+where ApplicationCodeauto = @ApplicationCodeauto
+end
+]]>
+       </data>
+      </action>
+      <action id="ax101s" commandName="SQL" headerText="BookDiscount" confirmation="_controller=rosomDiscount&#xD;&#xA;_width=500 &#xD;&#xA;_title=StudentDiscount&#xD;&#xA;_shortcut=true">
+        <data>
+          <![CDATA[update [schApplication]  set BookDiscount = @Parameters_rosomDiscount 
+where ApplicationCodeauto = @ApplicationCodeauto]]>
+        </data>
+      </action>
+      <action id="az100b" commandName="SQL" headerText="StudentDiscount" confirmation="_controller=StudentDiscount&#xD;&#xA;_width=500 &#xD;&#xA;_title=rosomDiscount &#xD;&#xA;_shortcut=true" roles="administrators">
+        <data>
+          <![CDATA[update [schApplication]  set rosomDiscount = @Parameters_StudentDiscount 
+where ApplicationCodeauto = @ApplicationCodeauto]]></data>
+      </action>
+    </actionGroup>
+  </actions>
+ 
+</dataController>
+
+<!--update [SchStudent]  Set BookRecive= 0  
+where StudentCode= @StudentCode and acdcode=@AcademicYearto-->

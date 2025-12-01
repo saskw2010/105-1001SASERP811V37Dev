@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="EnqPrj" conflictDetection="overwriteChanges" label="Enq Prj" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"EnqPrj"."Br_Code" "Br_Code"
+	,"EnqPrj"."Area_Code" "Area_Code"
+	,"EnqPrj"."Sal_Brcode" "Sal_Brcode"
+	,"EnqPrj"."Enq_Accno" "Enq_Accno"
+	,"EnqPrj"."Enq_No" "Enq_No"
+	,"EnqPrj"."Enq_Ordrno" "Enq_Ordrno"
+	,"EnqPrj"."Enq_Year" "Enq_Year"
+	,"EnqPrj"."Enq_Refno" "Enq_Refno"
+	,"EnqPrj"."Enq_Categ" "Enq_Categ"
+	,"EnqPrj"."Enq_Status" "Enq_Status"
+	,"EnqPrj"."Prj_No" "Prj_No"
+	,"EnqPrj"."Emp_No1" "Emp_No1"
+	,"EnqPrj"."Emp_No2" "Emp_No2"
+	,"EnqPrj"."Emp_No3" "Emp_No3"
+	,"EnqPrj"."Loc_Code" "Loc_Code"
+	,"EnqPrj"."Country_No" "Country_No"
+	,"EnqPrj"."Enq_Type" "Enq_Type"
+	,"EnqPrj"."Enq_Dt" "Enq_Dt"
+	,"EnqPrj"."Ordr_Dt" "Ordr_Dt"
+	,"EnqPrj"."Bid_Dt" "Bid_Dt"
+	,"EnqPrj"."Cstm_No" "Cstm_No"
+	,"EnqPrj"."Cstm_Sub" "Cstm_Sub"
+	,"EnqPrj"."Cstm_Status" "Cstm_Status"
+	,"EnqPrj"."Enq_Desc" "Enq_Desc"
+	,"EnqPrj"."Nxt_Vst" "Nxt_Vst"
+	,"EnqPrj"."Enq_Value" "Enq_Value"
+	,"EnqPrj"."Mnth_Year" "Mnth_Year"
+	,"EnqPrj"."To_Whome" "To_Whome"
+	,"EnqPrj"."Compet_Val" "Compet_Val"
+	,"EnqPrj"."sgm" "sgm"
+	,"EnqPrj"."ModifiedBy" "ModifiedBy"
+	,"EnqPrj"."ModifiedOn" "ModifiedOn"
+	,"EnqPrj"."CreatedBy" "CreatedBy"
+	,"EnqPrj"."CreatedOn" "CreatedOn"
+from "dbo"."EnqPrj" "EnqPrj"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="Br_Code" type="Int16" isPrimaryKey="true" label="Br Code" />
+    <field name="Area_Code" type="Int16" label="Area Code" showInSummary="true" />
+    <field name="Sal_Brcode" type="Int16" label="Sal Brcode" showInSummary="true" />
+    <field name="Enq_Accno" type="Int16" label="Enq Accno" showInSummary="true" />
+    <field name="Enq_No" type="Int16" label="Enq No" showInSummary="true" />
+    <field name="Enq_Ordrno" type="Int16" label="Enq Ordrno" showInSummary="true" />
+    <field name="Enq_Year" type="String" label="Enq Year" length="4" />
+    <field name="Enq_Refno" type="String" label="Enq Refno" length="6" />
+    <field name="Enq_Categ" type="Int16" label="Enq Categ" />
+    <field name="Enq_Status" type="Int16" label="Enq Status" />
+    <field name="Prj_No" type="Int32" label="Prj No" />
+    <field name="Emp_No1" type="Int16" label="Emp No1" />
+    <field name="Emp_No2" type="Int16" label="Emp No2" />
+    <field name="Emp_No3" type="Int16" label="Emp No3" />
+    <field name="Loc_Code" type="Int16" label="Loc Code" />
+    <field name="Country_No" type="Int16" label="Country No" />
+    <field name="Enq_Type" type="Int16" label="Enq Type" />
+    <field name="Enq_Dt" type="String" label="Enq Dt" length="10" />
+    <field name="Ordr_Dt" type="String" label="Ordr Dt" length="10" />
+    <field name="Bid_Dt" type="String" label="Bid Dt" length="10" />
+    <field name="Cstm_No" type="Int16" label="Cstm No" />
+    <field name="Cstm_Sub" type="Int16" label="Cstm Sub" />
+    <field name="Cstm_Status" type="Int16" label="Cstm Status" />
+    <field name="Enq_Desc" type="String" label="Enq Desc" length="100" />
+    <field name="Nxt_Vst" type="Int16" label="Nxt Vst" />
+    <field name="Enq_Value" type="Decimal" label="Enq Value" />
+    <field name="Mnth_Year" type="String" label="Mnth Year" length="7" />
+    <field name="To_Whome" type="String" label="To Whome" length="50" />
+    <field name="Compet_Val" type="Decimal" label="Compet Val" />
+    <field name="sgm" type="Int64" label="Sgm" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Enq Prj">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Area_Code" columns="15" />
+        <dataField fieldName="Sal_Brcode" columns="15" />
+        <dataField fieldName="Enq_Accno" columns="15" />
+        <dataField fieldName="Enq_No" columns="15" />
+        <dataField fieldName="Enq_Ordrno" columns="15" />
+        <dataField fieldName="Enq_Year" columns="4" />
+        <dataField fieldName="Enq_Refno" columns="6" />
+        <dataField fieldName="Enq_Categ" columns="15" />
+        <dataField fieldName="Enq_Status" columns="15" />
+        <dataField fieldName="Prj_No" columns="15" />
+        <dataField fieldName="Emp_No1" columns="15" />
+        <dataField fieldName="Emp_No2" columns="15" />
+        <dataField fieldName="Emp_No3" columns="15" />
+        <dataField fieldName="Loc_Code" columns="15" />
+        <dataField fieldName="Country_No" columns="15" />
+        <dataField fieldName="Enq_Type" columns="15" />
+        <dataField fieldName="Enq_Dt" columns="10" />
+        <dataField fieldName="Ordr_Dt" columns="10" />
+        <dataField fieldName="Bid_Dt" columns="10" />
+        <dataField fieldName="Cstm_No" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Enq Prj">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Enq Prj" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Area_Code" columns="15" />
+            <dataField fieldName="Sal_Brcode" columns="15" />
+            <dataField fieldName="Enq_Accno" columns="15" />
+            <dataField fieldName="Enq_No" columns="15" />
+            <dataField fieldName="Enq_Ordrno" columns="15" />
+            <dataField fieldName="Enq_Year" columns="4" />
+            <dataField fieldName="Enq_Refno" columns="6" />
+            <dataField fieldName="Enq_Categ" columns="15" />
+            <dataField fieldName="Enq_Status" columns="15" />
+            <dataField fieldName="Prj_No" columns="15" />
+            <dataField fieldName="Emp_No1" columns="15" />
+            <dataField fieldName="Emp_No2" columns="15" />
+            <dataField fieldName="Emp_No3" columns="15" />
+            <dataField fieldName="Loc_Code" columns="15" />
+            <dataField fieldName="Country_No" columns="15" />
+            <dataField fieldName="Enq_Type" columns="15" />
+            <dataField fieldName="Enq_Dt" columns="10" />
+            <dataField fieldName="Ordr_Dt" columns="10" />
+            <dataField fieldName="Bid_Dt" columns="10" />
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="Cstm_Sub" columns="15" />
+            <dataField fieldName="Cstm_Status" columns="15" />
+            <dataField fieldName="Enq_Desc" />
+            <dataField fieldName="Nxt_Vst" columns="15" />
+            <dataField fieldName="Enq_Value" dataFormatString="c" columns="15" />
+            <dataField fieldName="Mnth_Year" columns="7" />
+            <dataField fieldName="To_Whome" columns="50" />
+            <dataField fieldName="Compet_Val" dataFormatString="c" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Enq Prj">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Enq Prj" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Br_Code" columns="15" />
+            <dataField fieldName="Area_Code" columns="15" />
+            <dataField fieldName="Sal_Brcode" columns="15" />
+            <dataField fieldName="Enq_Accno" columns="15" />
+            <dataField fieldName="Enq_No" columns="15" />
+            <dataField fieldName="Enq_Ordrno" columns="15" />
+            <dataField fieldName="Enq_Year" columns="4" />
+            <dataField fieldName="Enq_Refno" columns="6" />
+            <dataField fieldName="Enq_Categ" columns="15" />
+            <dataField fieldName="Enq_Status" columns="15" />
+            <dataField fieldName="Prj_No" columns="15" />
+            <dataField fieldName="Emp_No1" columns="15" />
+            <dataField fieldName="Emp_No2" columns="15" />
+            <dataField fieldName="Emp_No3" columns="15" />
+            <dataField fieldName="Loc_Code" columns="15" />
+            <dataField fieldName="Country_No" columns="15" />
+            <dataField fieldName="Enq_Type" columns="15" />
+            <dataField fieldName="Enq_Dt" columns="10" />
+            <dataField fieldName="Ordr_Dt" columns="10" />
+            <dataField fieldName="Bid_Dt" columns="10" />
+            <dataField fieldName="Cstm_No" columns="15" />
+            <dataField fieldName="Cstm_Sub" columns="15" />
+            <dataField fieldName="Cstm_Status" columns="15" />
+            <dataField fieldName="Enq_Desc" />
+            <dataField fieldName="Nxt_Vst" columns="15" />
+            <dataField fieldName="Enq_Value" dataFormatString="c" columns="15" />
+            <dataField fieldName="Mnth_Year" columns="7" />
+            <dataField fieldName="To_Whome" columns="50" />
+            <dataField fieldName="Compet_Val" dataFormatString="c" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

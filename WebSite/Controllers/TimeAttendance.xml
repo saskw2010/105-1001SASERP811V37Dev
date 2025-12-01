@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="TimeAttendance" conflictDetection="overwriteChanges" label="Time Attendance" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"TimeAttendance"."Tattendid" "Tattendid"
+	,"TimeAttendance"."Emp_No" "Emp_No"
+	,"Emp_"."Emp_NOt" "Emp_Emp_NOt"
+	,"Emp_sgm"."sgm_Nm" "Emp_sgmsgm_Nm"
+	,"Emp_sgmOpco"."OpcoName" "Emp_sgmOpcoOpcoName"
+	,"Emp_salrycat"."grade_desc_a" "Emp_salrycatgrade_desc_a"
+	,"Emp_salrycatEarning_"."Earning_Nm" "Emp_salrycatEarning_Earning_Nm"
+	,"Emp_Blood_Type"."ModifiedBy" "Emp_Blood_TypeModifiedBy"
+	,"Emp_Bnk_"."Bnk_Acc" "Emp_Bnk_Bnk_Acc"
+	,"Emp_Sub_Bnk"."Bnk_Acc" "Emp_Sub_BnkBnk_Acc"
+	,"Emp_Cntry_"."Cntry_Nm" "Emp_Cntry_Cntry_Nm"
+	,"Emp_Depm_"."Depm_Nm" "Emp_Depm_Depm_Nm"
+	,"Emp_Educt_Type"."Educt_Nm" "Emp_Educt_TypeEduct_Nm"
+	,"Emp_Job_Stu"."Emp_Stunm" "Emp_Job_StuEmp_Stunm"
+	,"Emp_Earning_"."Earning_Nm" "Emp_Earning_Earning_Nm"
+	,"Emp_Gender"."Gender" "Emp_GenderGender"
+	,"Emp_Job_"."Job_Nm" "Emp_Job_Job_Nm"
+	,"Emp_Loc_"."Loc_Nm" "Emp_Loc_Loc_Nm"
+	,"Emp_Ownr_"."Ownr_ID" "Emp_Ownr_Ownr_ID"
+	,"Emp_Ownr_cmp_"."Grp_Nm" "Emp_Ownr_cmp_Grp_Nm"
+	,"Emp_Reljan"."Reljan_nm" "Emp_ReljanReljan_nm"
+	,"Emp_Status_Type"."Status_Nm" "Emp_Status_TypeStatus_Nm"
+	,"Emp_branch"."Desc1" "Emp_branchDesc1"
+	,"Emp_branchsgm"."sgm_Nm" "Emp_branchsgmsgm_Nm"
+	,"Emp_branchGender"."Gender" "Emp_branchGenderGender"
+	,"Emp_branchstage"."ShortDesc1" "Emp_branchstageShortDesc1"
+	,"Emp_branchschtyp"."schtypDesc" "Emp_branchschtypschtypDesc"
+	,"TimeAttendance"."AC-No#" "ACNo"
+	,"TimeAttendance"."Name" "Name"
+	,"TimeAttendance"."Date" "Date"
+	,"TimeAttendance"."Timetable" "Timetable"
+	,"TimeAttendance"."On duty" "Onduty"
+	,"TimeAttendance"."Off duty" "Offduty"
+	,"TimeAttendance"."Clock In" "ClockIn"
+	,"TimeAttendance"."Clock Out" "ClockOut"
+	,"TimeAttendance"."Late" "Late"
+	,"TimeAttendance"."Early" "Early"
+	,"TimeAttendance"."Absent" "Absent"
+	,"TimeAttendance"."Work Time" "WorkTime"
+	,"TimeAttendance"."Department" "Department"
+	,"TimeAttendance"."week" "week"
+from "dbo"."TimeAttendance" "TimeAttendance"
+	left join "dbo"."Pyempmfs" "Emp_" on "TimeAttendance"."Emp_No" = "Emp_"."Emp_No"
+	left join "dbo"."glmulcmp" "Emp_sgm" on "Emp_"."sgm" = "Emp_sgm"."sgmid"
+	left join "dbo"."OpCo" "Emp_sgmOpco" on "Emp_sgm"."OpcoID" = "Emp_sgmOpco"."OpcoIDidentity"
+	left join "dbo"."grade" "Emp_salrycat" on "Emp_"."salrycat" = "Emp_salrycat"."grade_code"
+	left join "dbo"."Pyerntsalyp1" "Emp_salrycatEarning_" on "Emp_salrycat"."Earning_No" = "Emp_salrycatEarning_"."Earning_No"
+	left join "dbo"."pyBlood" "Emp_Blood_Type" on "Emp_"."Blood_Type" = "Emp_Blood_Type"."Blood_Type"
+	left join "dbo"."PybnkAcc" "Emp_Bnk_" on "Emp_"."Bnk_No" = "Emp_Bnk_"."Bnk_No"
+	left join "dbo"."PybnkAcc" "Emp_Sub_Bnk" on "Emp_"."Sub_Bnk" = "Emp_Sub_Bnk"."Bnk_No"
+	left join "dbo"."PYCntry" "Emp_Cntry_" on "Emp_"."Cntry_No" = "Emp_Cntry_"."Cntry_No"
+	left join "dbo"."Pydepm" "Emp_Depm_" on "Emp_"."Depm_No" = "Emp_Depm_"."Depm_No"
+	left join "dbo"."PyempEdu" "Emp_Educt_Type" on "Emp_"."Educt_Type" = "Emp_Educt_Type"."Educt_Type"
+	left join "dbo"."Pyempstu" "Emp_Job_Stu" on "Emp_"."Job_Stu" = "Emp_Job_Stu"."Emp_stu"
+	left join "dbo"."Pyerntsalyp1" "Emp_Earning_" on "Emp_"."Earning_no" = "Emp_Earning_"."Earning_No"
+	left join "dbo"."PyGender" "Emp_Gender" on "Emp_"."Genderid" = "Emp_Gender"."Genderid"
+	left join "dbo"."Pyjobs" "Emp_Job_" on "Emp_"."Job_No" = "Emp_Job_"."Job_No"
+	left join "dbo"."PyLocation" "Emp_Loc_" on "Emp_"."Loc_No" = "Emp_Loc_"."loc_No"
+	left join "dbo"."Pyownrmf" "Emp_Ownr_" on "Emp_"."Ownr_No" = "Emp_Ownr_"."Ownr_No"
+	left join "dbo"."Pycnstnt" "Emp_Ownr_cmp_" on "Emp_Ownr_"."cmp_no" = "Emp_Ownr_cmp_"."Cmp_No"
+	left join "dbo"."PyReljan" "Emp_Reljan" on "Emp_"."Reljan" = "Emp_Reljan"."reljan"
+	left join "dbo"."PyStatus" "Emp_Status_Type" on "Emp_"."Status_Type" = "Emp_Status_Type"."Status_Type"
+	left join "dbo"."schBranch" "Emp_branch" on "Emp_"."branch" = "Emp_branch"."branch"
+	left join "dbo"."glmulcmp" "Emp_branchsgm" on "Emp_branch"."sgm" = "Emp_branchsgm"."sgmid"
+	left join "dbo"."PyGender" "Emp_branchGender" on "Emp_branch"."Genderid" = "Emp_branchGender"."Genderid"
+	left join "dbo"."schStage" "Emp_branchstage" on "Emp_branch"."stagecode" = "Emp_branchstage"."Code"
+	left join "dbo"."schtyp" "Emp_branchschtyp" on "Emp_branch"."schtypid" = "Emp_branchschtyp"."schtypid"
+]]></text>
+    </command>
+    <command id="TattendidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Tattendid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Tattendid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Tattendid" readOnly="true" />
+    <field name="Emp_No" type="Int64" label="Emp No" showInSummary="true">
+      <items style="Lookup" dataController="Pyempmfs" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Emp_Emp_NOt" type="String" readOnly="true" label="Emp N Ot" length="50" />
+    <field name="Emp_sgmsgm_Nm" type="String" readOnly="true" label="Emp sgmsgm Nm" length="255" />
+    <field name="Emp_sgmOpcoOpcoName" type="String" readOnly="true" label="Emp sgm Opco Name" length="50" />
+    <field name="Emp_salrycatgrade_desc_a" type="String" readOnly="true" label="Emp salrycatgrade desc a" length="20" />
+    <field name="Emp_salrycatEarning_Earning_Nm" type="String" readOnly="true" label="Emp salrycat Earning Nm" length="255" />
+    <field name="Emp_Blood_TypeModifiedBy" type="String" readOnly="true" label="Emp Blood Type Modified By" length="50" />
+    <field name="Emp_Bnk_Bnk_Acc" type="String" readOnly="true" label="Emp Bnk Acc" length="20" />
+    <field name="Emp_Sub_BnkBnk_Acc" type="String" readOnly="true" label="Emp Sub Bnk Acc" length="20" />
+    <field name="Emp_Cntry_Cntry_Nm" type="String" readOnly="true" label="Emp Cntry Nm" length="255" />
+    <field name="Emp_Depm_Depm_Nm" type="String" readOnly="true" label="Emp Depm Nm" length="255" />
+    <field name="Emp_Educt_TypeEduct_Nm" type="String" readOnly="true" label="Emp Educt Type Educt Nm" length="15" />
+    <field name="Emp_Job_StuEmp_Stunm" type="String" readOnly="true" label="Emp Job Stu Emp Stunm" length="255" />
+    <field name="Emp_Earning_Earning_Nm" type="String" readOnly="true" label="Emp Earning Nm" length="255" />
+    <field name="Emp_GenderGender" type="String" readOnly="true" label="Emp Gender" length="100" />
+    <field name="Emp_Job_Job_Nm" type="String" readOnly="true" label="Emp Job Nm" length="255" />
+    <field name="Emp_Loc_Loc_Nm" type="String" readOnly="true" label="Emp Loc Nm" length="50" />
+    <field name="Emp_Ownr_Ownr_ID" type="String" readOnly="true" label="Emp Ownr#" length="15" />
+    <field name="Emp_Ownr_cmp_Grp_Nm" type="String" readOnly="true" label="Emp Ownr cmp Grp Nm" length="255" />
+    <field name="Emp_ReljanReljan_nm" type="String" readOnly="true" label="Emp Reljan nm" length="50" />
+    <field name="Emp_Status_TypeStatus_Nm" type="String" readOnly="true" label="Emp Status Type Status Nm" length="255" />
+    <field name="Emp_branchDesc1" type="String" readOnly="true" label="Emp branch Desc1" length="50" />
+    <field name="Emp_branchsgmsgm_Nm" type="String" readOnly="true" label="Emp branchsgmsgm Nm" length="255" />
+    <field name="Emp_branchGenderGender" type="String" readOnly="true" label="Emp branch Gender" length="100" />
+    <field name="Emp_branchstageShortDesc1" type="String" readOnly="true" label="Emp branchstage Short Desc1" length="50" />
+    <field name="Emp_branchschtypschtypDesc" type="String" readOnly="true" label="Emp branchschtypschtyp Desc" length="150" />
+    <field name="ACNo" type="String" label="AC No" length="255" showInSummary="true" />
+    <field name="Name" type="String" label="Name" length="255" showInSummary="true" />
+    <field name="Date" type="String" label="Date" length="255" showInSummary="true" />
+    <field name="Timetable" type="String" label="Timetable" length="255" showInSummary="true" />
+    <field name="Onduty" type="String" label="Onduty" length="255" />
+    <field name="Offduty" type="String" label="Offduty" length="255" />
+    <field name="ClockIn" type="String" label="Clock In" length="255" />
+    <field name="ClockOut" type="String" label="Clock Out" length="255" />
+    <field name="Late" type="String" label="Late" length="255" />
+    <field name="Early" type="String" label="Early" length="255" />
+    <field name="Absent" type="String" label="Absent" length="255" />
+    <field name="WorkTime" type="String" label="Work Time" length="255" />
+    <field name="Department" type="String" label="Department" length="255" />
+    <field name="week" type="String" label="Week" length="255" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Time Attendance">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Emp_No" aliasFieldName="Emp_Emp_NOt" />
+        <dataField fieldName="ACNo" />
+        <dataField fieldName="Name" />
+        <dataField fieldName="Date" />
+        <dataField fieldName="Timetable" />
+        <dataField fieldName="Onduty" />
+        <dataField fieldName="Offduty" />
+        <dataField fieldName="ClockIn" />
+        <dataField fieldName="ClockOut" />
+        <dataField fieldName="Late" />
+        <dataField fieldName="Early" />
+        <dataField fieldName="Absent" />
+        <dataField fieldName="WorkTime" />
+        <dataField fieldName="Department" />
+        <dataField fieldName="week" />
+        <dataField fieldName="Emp_sgmsgm_Nm" />
+        <dataField fieldName="Emp_sgmOpcoOpcoName" columns="50" />
+        <dataField fieldName="Emp_salrycatgrade_desc_a" columns="20" />
+        <dataField fieldName="Emp_salrycatEarning_Earning_Nm" />
+        <dataField fieldName="Emp_Blood_TypeModifiedBy" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Time Attendance">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Time Attendance" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_No" aliasFieldName="Emp_Emp_NOt" hyperlinkFormatString="~/Pages/Pyempmfs.aspx?Emp_No={Emp_No}&amp;_controller=Pyempmfs&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ACNo" />
+            <dataField fieldName="Name" />
+            <dataField fieldName="Date" />
+            <dataField fieldName="Timetable" />
+            <dataField fieldName="Onduty" />
+            <dataField fieldName="Offduty" />
+            <dataField fieldName="ClockIn" />
+            <dataField fieldName="ClockOut" />
+            <dataField fieldName="Late" />
+            <dataField fieldName="Early" />
+            <dataField fieldName="Absent" />
+            <dataField fieldName="WorkTime" />
+            <dataField fieldName="Department" />
+            <dataField fieldName="week" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_sgmsgm_Nm" />
+            <dataField fieldName="Emp_sgmOpcoOpcoName" columns="50" />
+            <dataField fieldName="Emp_salrycatgrade_desc_a" columns="20" />
+            <dataField fieldName="Emp_salrycatEarning_Earning_Nm" />
+            <dataField fieldName="Emp_Blood_TypeModifiedBy" columns="50" />
+            <dataField fieldName="Emp_Bnk_Bnk_Acc" columns="20" />
+            <dataField fieldName="Emp_Sub_BnkBnk_Acc" columns="20" />
+            <dataField fieldName="Emp_Cntry_Cntry_Nm" />
+            <dataField fieldName="Emp_Depm_Depm_Nm" />
+            <dataField fieldName="Emp_Educt_TypeEduct_Nm" columns="15" />
+            <dataField fieldName="Emp_Job_StuEmp_Stunm" />
+            <dataField fieldName="Emp_Earning_Earning_Nm" />
+            <dataField fieldName="Emp_GenderGender" />
+            <dataField fieldName="Emp_Job_Job_Nm" />
+            <dataField fieldName="Emp_Loc_Loc_Nm" columns="50" />
+            <dataField fieldName="Emp_Ownr_Ownr_ID" columns="15" />
+            <dataField fieldName="Emp_Ownr_cmp_Grp_Nm" />
+            <dataField fieldName="Emp_ReljanReljan_nm" columns="50" />
+            <dataField fieldName="Emp_Status_TypeStatus_Nm" />
+            <dataField fieldName="Emp_branchDesc1" columns="50" />
+            <dataField fieldName="Emp_branchsgmsgm_Nm" />
+            <dataField fieldName="Emp_branchGenderGender" />
+            <dataField fieldName="Emp_branchstageShortDesc1" columns="50" />
+            <dataField fieldName="Emp_branchschtypschtypDesc" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Time Attendance">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Time Attendance" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_No" aliasFieldName="Emp_Emp_NOt" />
+            <dataField fieldName="ACNo" />
+            <dataField fieldName="Name" />
+            <dataField fieldName="Date" />
+            <dataField fieldName="Timetable" />
+            <dataField fieldName="Onduty" />
+            <dataField fieldName="Offduty" />
+            <dataField fieldName="ClockIn" />
+            <dataField fieldName="ClockOut" />
+            <dataField fieldName="Late" />
+            <dataField fieldName="Early" />
+            <dataField fieldName="Absent" />
+            <dataField fieldName="WorkTime" />
+            <dataField fieldName="Department" />
+            <dataField fieldName="week" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>ASMX GetPage Tester</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif; margin:1rem;}
+    textarea, input, select{width:100%;}
+    pre{background:#0b1020; color:#dbe3ff; padding:1rem; border-radius:6px; overflow:auto;}
+    .row{display:grid; grid-template-columns:1fr 1fr; gap:1rem;}
+    .row > div{border:1px solid #ddd; padding:.75rem; border-radius:6px;}
+    label{font-weight:600;}
+    .ok{color:#0a7f2e}
+    .err{color:#b00020}
+  </style>
+</head>
+<body>
+  <h1>ASMX GetPage Tester</h1>
+  <p>This page posts JSON to DataControllerService.asmx/GetPage using a canonical endpoint resolver.</p>
+
+  <div class="row">
+    <div>
+      <h3>Request</h3>
+      <label>Controller</label>
+      <input id="controller" value="glmfbab" />
+      <label>View</label>
+      <input id="view" value="grid1" />
+      <label>Page Index</label>
+      <input id="pageIndex" type="number" value="0" />
+      <label>Page Size</label>
+      <input id="pageSize" type="number" value="20" />
+      <label>Quick Find</label>
+      <input id="quickFind" value="" placeholder="optional" />
+      <label>Sort Expression</label>
+      <input id="sortExpression" value="" placeholder="e.g., ID asc" />
+      <button id="run">POST GetPage</button>
+      <div id="endpointInfo"></div>
+    </div>
+    <div>
+      <h3>Response</h3>
+      <div id="status"></div>
+      <pre id="raw"></pre>
+      <h4>Parsed</h4>
+      <pre id="parsed"></pre>
+    </div>
+  </div>
+
+  <script>
+    function resolveAsmxBase(){
+      var base = null;
+      try{ if (window.AppConfig && window.AppConfig.asmxBase) base = window.AppConfig.asmxBase; }catch(e){}
+      if (!base){ var b = document.body && document.body.getAttribute('data-asmx-base'); if (b) base = b; }
+      if (!base){ try{ base = localStorage.getItem('saserp.asmxBase'); }catch(e){} }
+      if (!base) base = '/Services/DataControllerService.asmx';
+      if (/\/Services\/?$/.test(base)) base = base.replace(/\/?$/, '/DataControllerService.asmx');
+      base = String(base).replace(/\/(GetPage|Execute|GetListOfValues)(?:\/?|$)/i,'');
+      if (!/^\//.test(base) && !/^https?:/i.test(base)) base = '/' + base;
+      base = base.replace(/\/$/, '');
+      return base;
+    }
+    function compose(method){ return resolveAsmxBase() + '/' + method; }
+    function safeJsonParse(t){ try{ return JSON.parse(t); }catch(e){ return null; } }
+    function text(n, v){ document.getElementById(n).textContent = v; }
+    function html(n, v){ document.getElementById(n).innerHTML = v; }
+
+    function run(){
+      var url = compose('GetPage');
+      html('endpointInfo', 'Endpoint: <code>'+url+'</code>');
+      var filter = [];
+      var qf = document.getElementById('quickFind').value.trim();
+      if (qf) filter.push('_quickfind_:~'+qf);
+      var payload = {
+        controller: document.getElementById('controller').value.trim(),
+        view: document.getElementById('view').value.trim(),
+        request: {
+          PageIndex: parseInt(document.getElementById('pageIndex').value||'0',10),
+          PageSize: parseInt(document.getElementById('pageSize').value||'20',10),
+          SortExpression: document.getElementById('sortExpression').value.trim(),
+          Filter: filter,
+          RequiresMetaData: true,
+          RequiresRowCount: true,
+          QuickFind: qf || null
+        }
+      };
+      fetch(url,{
+        method:'POST', credentials:'same-origin', headers:{'Content-Type':'application/json; charset=utf-8'}, body: JSON.stringify(payload)
+      }).then(function(r){
+        text('status', r.ok ? 'OK '+r.status : 'HTTP '+r.status+' '+r.statusText);
+        return r.text();
+      }).then(function(t){
+        text('raw', t);
+        var j = safeJsonParse(t);
+        var d = (j && Object.prototype.hasOwnProperty.call(j,'d')) ? j.d : j;
+        text('parsed', JSON.stringify(d, null, 2));
+      }).catch(function(err){
+        text('status', 'Error');
+        text('raw', String(err));
+      });
+    }
+    document.getElementById('run').addEventListener('click', run);
+    // show endpoint on load
+    html('endpointInfo', 'Endpoint: <code>'+compose('GetPage')+'</code>');
+  </script>
+</body>
+</html>

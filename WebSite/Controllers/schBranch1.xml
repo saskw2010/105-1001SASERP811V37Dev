@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="schBranch" conflictDetection="overwriteChanges" label="sch Branch" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"schBranch"."branch" "branch1"
+	,"schBranch"."Desc1" "Desc1"
+	,"schBranch"."Desc2" "Desc2"
+	,"schBranch"."schtypid" "schtypid"
+	,"schtyp"."schtypDesc" "schtypschtypDesc"
+	,"schBranch"."sgm" "sgm"
+	,"sgm"."sgm_Nm" "sgmsgm_Nm"
+	,"sgmOpco"."OpcoName" "sgmOpcoOpcoName"
+	,"schBranch"."ModifiedBy" "ModifiedBy"
+	,"schBranch"."ModifiedOn" "ModifiedOn"
+	,"schBranch"."CreatedBy" "CreatedBy"
+	,"schBranch"."CreatedOn" "CreatedOn"
+	,"schBranch"."Genderid" "Genderid"
+	,"Gender"."Gender" "GenderGender"
+	,"schBranch"."stagecode" "stagecode"
+	,"stage"."ShortDesc1" "stageShortDesc1"
+from "dbo"."schBranch" "schBranch"
+	left join "dbo"."schtyp" "schtyp" on "schBranch"."schtypid" = "schtyp"."schtypid"
+	left join "dbo"."glmulcmp" "sgm" on "schBranch"."sgm" = "sgm"."sgmid"
+	left join "dbo"."OpCo" "sgmOpco" on "sgm"."OpcoID" = "sgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "Gender" on "schBranch"."Genderid" = "Gender"."Genderid"
+	left join "dbo"."schStage" "stage" on "schBranch"."stagecode" = "stage"."Code"
+]]></text>
+    </command>
+    <command id="branchIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="branch" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="branch1" type="Int64" allowNulls="false" isPrimaryKey="true" label="Branch1" readOnly="true" />
+    <field name="Desc1" type="String" label="Desc1" length="50" showInSummary="true" />
+    <field name="Desc2" type="String" label="Desc2" length="50" showInSummary="true" />
+    <field name="schtypid" type="Int64" label="Schtypid" showInSummary="true">
+      <items style="Lookup" dataController="schtyp" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="schtypschtypDesc" type="String" readOnly="true" label="schtypschtyp Desc" length="150" />
+    <field name="sgm" type="Int64" label="Sgm" showInSummary="true">
+      <items style="Lookup" dataController="glmulcmp" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sgmsgm_Nm" type="String" readOnly="true" label="sgmsgm Nm" length="255" />
+    <field name="sgmOpcoOpcoName" type="String" readOnly="true" label="sgm Opco Name" length="50" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" showInSummary="true" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="Genderid" type="Int64" label="Genderid">
+      <items style="Lookup" dataController="PyGender" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="GenderGender" type="String" readOnly="true" label="Gender" length="100" />
+    <field name="stagecode" type="Int64" label="Stagecode">
+      <items style="Lookup" dataController="schStage" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="stageShortDesc1" type="String" readOnly="true" label="stage Short Desc1" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="sch Branch">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="branch1" columns="15" />
+        <dataField fieldName="Desc2" columns="50" />
+        <dataField fieldName="Desc1" columns="50" />
+       <dataField fieldName="Desc11" columns="50" />
+        <dataField fieldName="schtypid" aliasFieldName="schtypschtypDesc"  />
+        <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm"  />
+        <dataField fieldName="Genderid" aliasFieldName="GenderGender"  />
+        <dataField fieldName="stagecode" aliasFieldName="stageShortDesc1"  />
+        <dataField fieldName="sgmOpcoOpcoName" columns="50" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review sch Branch">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="sch Branch" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Desc1" columns="50" />
+            <dataField fieldName="Desc2" columns="50" />
+ <dataField fieldName="Desc11" columns="50" />
+            <dataField fieldName="schtypid" aliasFieldName="schtypschtypDesc" hyperlinkFormatString="~/Pages/schtyp.aspx?schtypid={schtypid}&amp;_controller=schtyp&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" hyperlinkFormatString="~/Pages/glmulcmp.aspx?sgmid={sgm}&amp;_controller=glmulcmp&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="Genderid" aliasFieldName="GenderGender" hyperlinkFormatString="~/Pages/PyGender.aspx?Genderid={Genderid}&amp;_controller=PyGender&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="stagecode" aliasFieldName="stageShortDesc1" hyperlinkFormatString="~/Pages/schStage.aspx?Code={stagecode}&amp;_controller=schStage&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sgmOpcoOpcoName" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New sch Branch">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New sch Branch" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Desc1" columns="50" />
+            <dataField fieldName="Desc2" columns="50" />
+ <dataField fieldName="Desc11" columns="50" />
+            <dataField fieldName="schtypid" aliasFieldName="schtypschtypDesc" />
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="Genderid" aliasFieldName="GenderGender" />
+            <dataField fieldName="stagecode" aliasFieldName="stageShortDesc1" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  
+</dataController>

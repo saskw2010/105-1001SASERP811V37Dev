@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Stsuplir" conflictDetection="overwriteChanges" label="Stsuplir" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Stsuplir"."Sup_No" "Sup_No"
+	,"Stsuplir"."Supcvilid" "Supcvilid"
+	,"Stsuplir"."Sup_Nm" "Sup_Nm"
+	,"Stsuplir"."Sup_Nme" "Sup_Nme"
+	,"Stsuplir"."Sup_Adr" "Sup_Adr"
+	,"Stsuplir"."Sup_Rsp" "Sup_Rsp"
+	,"Stsuplir"."Sup_Othr" "Sup_Othr"
+	,"Stsuplir"."Sup_Email" "Sup_Email"
+	,"Stsuplir"."Sup_webUrl" "Sup_webUrl"
+	,"Stsuplir"."Sup_Limt" "Sup_Limt"
+	,"Stsuplir"."Sup_limitDays" "Sup_limitDays"
+	,"Stsuplir"."Sup_Tel" "Sup_Tel"
+	,"Stsuplir"."Sup_Tel2" "Sup_Tel2"
+	,"Stsuplir"."Sup_Fax2" "Sup_Fax2"
+	,"Stsuplir"."Sup_Fax" "Sup_Fax"
+	,"Stsuplir"."Cntry_No" "Cntry_No"
+	,"Cntry_"."Cntry_Nm" "Cntry_Cntry_Nm"
+	,"Stsuplir"."Acc_No" "Acc_No"
+	,"Acc_"."Acc_Nm" "Acc_Acc_Nm"
+	,"Acc_Clsacc_"."Acc_Nm" "Acc_Clsacc_Acc_Nm"
+	,"Acc_Acc_Bnd"."Acc_Nm" "Acc_Acc_BndAcc_Nm"
+	,"Acc_Acc_Bndaccclass"."accountclass" "Acc_Acc_Bndaccclassaccountclass"
+	,"Acc_Acc_BndAcc_Bab"."Acc_Nm" "Acc_Acc_BndAcc_BabAcc_Nm"
+	,"Stsuplir"."Curncy_No" "Curncy_No"
+	,"Curncy_"."Curncy_Nm" "Curncy_Curncy_Nm"
+	,"Stsuplir"."Fbal_DB" "Fbal_DB"
+	,"Stsuplir"."FBal_CR" "FBal_CR"
+	,"Stsuplir"."ModifiedBy" "ModifiedBy"
+	,"Stsuplir"."ModifiedOn" "ModifiedOn"
+	,"Stsuplir"."CreatedBy" "CreatedBy"
+	,"Stsuplir"."CreatedOn" "CreatedOn"
+	,"Stsuplir"."typ" "typ"
+from "dbo"."Stsuplir" "Stsuplir"
+	left join "dbo"."PYCntry" "Cntry_" on "Stsuplir"."Cntry_No" = "Cntry_"."Cntry_No"
+	left join "dbo"."GLmstrfl" "Acc_" on "Stsuplir"."Acc_No" = "Acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "Acc_Clsacc_" on "Acc_"."Clsacc_No" = "Acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Acc_Acc_Bnd" on "Acc_"."Acc_Bnd" = "Acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "Acc_Acc_Bndaccclass" on "Acc_Acc_Bnd"."accclass" = "Acc_Acc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "Acc_Acc_BndAcc_Bab" on "Acc_Acc_Bnd"."Acc_Bab" = "Acc_Acc_BndAcc_Bab"."Acc_Bab"
+	left join "dbo"."Stcurncy" "Curncy_" on "Stsuplir"."Curncy_No" = "Curncy_"."Curncy_No"
+]]></text>
+    </command>
+    <command id="Sup_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Sup_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Sup_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Sup No" readOnly="true" />
+    <field name="Supcvilid" type="Decimal" label="Supcvilid" showInSummary="true" />
+    <field name="Sup_Nm" type="String" label="Sup Nm" length="255" showInSummary="true" />
+    <field name="Sup_Nme" type="String" label="Sup Nme" length="255" showInSummary="true" />
+    <field name="Sup_Adr" type="String" label="Sup Adr" length="255" showInSummary="true" />
+    <field name="Sup_Rsp" type="String" label="Sup Rsp" length="255" showInSummary="true" />
+    <field name="Sup_Othr" type="String" label="Sup Othr" length="255" />
+    <field name="Sup_Email" type="String" label="Sup Email" length="100" />
+    <field name="Sup_webUrl" type="String" label="Sup web Url" length="100" />
+    <field name="Sup_Limt" type="Decimal" label="Sup Limt" />
+    <field name="Sup_limitDays" type="Decimal" label="Sup limit Days" />
+    <field name="Sup_Tel" type="String" label="Sup Tel" length="8" />
+    <field name="Sup_Tel2" type="String" label="Sup Tel2" length="13" />
+    <field name="Sup_Fax2" type="String" label="Sup Fax2" length="13" />
+    <field name="Sup_Fax" type="Int64" label="Sup Fax" />
+    <field name="Cntry_No" type="Int64" label="Cntry No">
+      <items style="Lookup" dataController="PYCntry" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Cntry_Cntry_Nm" type="String" readOnly="true" label="Cntry Nm" length="255" />
+    <field name="Acc_No" type="Int64" label="Acc No">
+      <items style="Lookup" dataController="GLmstrfl" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Acc_Acc_Nm" type="String" readOnly="true" label="Acc Nm" length="255" />
+    <field name="Acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="Acc Clsacc Acc Nm" length="250" />
+    <field name="Acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Nm" length="50" />
+    <field name="Acc_Acc_Bndaccclassaccountclass" type="String" readOnly="true" label="Acc Bndaccclassaccountclass" length="100" />
+    <field name="Acc_Acc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="Acc Bnd Acc Bab Acc Nm" length="250" />
+    <field name="Curncy_No" type="Int64" label="Curncy No">
+      <items style="Lookup" dataController="Stcurncy" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Curncy_Curncy_Nm" type="String" readOnly="true" label="Curncy Nm" length="200" />
+    <field name="Fbal_DB" type="Decimal" label="Fbal DB" />
+    <field name="FBal_CR" type="Decimal" label="F Bal CR" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="typ" type="Int64" default="((2))" label="Typ" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Stsuplir">
+       <dataFields>
+        <dataField fieldName="Sup_Nm" searchOptions="$contains,*" search="Suggested" />
+        <dataField fieldName="Sup_No" search="Suggested"/>
+        <dataField fieldName="Supcvilid" columns="15" search="Suggested"/>
+        <dataField fieldName="Sup_Nme" search="Suggested"/>
+        <dataField fieldName="Sup_Adr" />
+        <dataField fieldName="Sup_Rsp" />
+        <dataField fieldName="Sup_Othr" />
+        <dataField fieldName="Sup_Email" />
+        <dataField fieldName="Sup_webUrl" />
+        <dataField fieldName="Sup_Limt" dataFormatString="n3" columns="15" />
+        <dataField fieldName="Sup_limitDays" columns="15" />
+        <dataField fieldName="Sup_Tel" columns="8" />
+        <dataField fieldName="Sup_Tel2" columns="13" />
+        <dataField fieldName="Sup_Fax2" columns="13" />
+        <dataField fieldName="Sup_Fax" columns="15" />
+        <dataField fieldName="Cntry_No" aliasFieldName="Cntry_Cntry_Nm" hyperlinkFormatString="~/Pages/PYCntry.aspx?Cntry_No={Cntry_No}&amp;_controller=PYCntry&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Acc_No" aliasFieldName="Acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={Acc_No}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Curncy_No" aliasFieldName="Curncy_Curncy_Nm" hyperlinkFormatString="~/Pages/Stcurncy.aspx?Curncy_No={Curncy_No}&amp;_controller=Stcurncy&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Stsuplir">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Stsuplir" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Supcvilid" columns="15" />
+            <dataField fieldName="Sup_Nm" />
+            <dataField fieldName="Sup_Nme" />
+            <dataField fieldName="Sup_Adr" />
+            <dataField fieldName="Sup_Rsp" />
+            <dataField fieldName="Sup_Othr" />
+            <dataField fieldName="Sup_Email" />
+            <dataField fieldName="Sup_webUrl" />
+            <dataField fieldName="Sup_Limt" dataFormatString="n3" columns="15" />
+            <dataField fieldName="Sup_limitDays" columns="15" />
+            <dataField fieldName="Sup_Tel" columns="8" />
+            <dataField fieldName="Sup_Tel2" columns="13" />
+            <dataField fieldName="Sup_Fax2" columns="13" />
+            <dataField fieldName="Sup_Fax" columns="15" />
+            <dataField fieldName="Cntry_No" aliasFieldName="Cntry_Cntry_Nm" hyperlinkFormatString="~/Pages/PYCntry.aspx?Cntry_No={Cntry_No}&amp;_controller=PYCntry&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Acc_No" aliasFieldName="Acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={Acc_No}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Curncy_No" aliasFieldName="Curncy_Curncy_Nm" hyperlinkFormatString="~/Pages/Stcurncy.aspx?Curncy_No={Curncy_No}&amp;_controller=Stcurncy&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="typ" columns="15" />
+            <dataField fieldName="Sup_No" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Acc_Clsacc_Acc_Nm" />
+            <dataField fieldName="Acc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="Acc_Acc_Bndaccclassaccountclass" />
+            <dataField fieldName="Acc_Acc_BndAcc_BabAcc_Nm" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Stsuplir">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Stsuplir" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Supcvilid" columns="15" />
+            <dataField fieldName="Sup_Nm" />
+            <dataField fieldName="Sup_Nme" />
+            <dataField fieldName="Sup_Adr" />
+            <dataField fieldName="Sup_Rsp" />
+            <dataField fieldName="Sup_Othr" />
+            <dataField fieldName="Sup_Email" />
+            <dataField fieldName="Sup_webUrl" />
+            <dataField fieldName="Sup_Limt" dataFormatString="c" columns="15" />
+            <dataField fieldName="Sup_limitDays" columns="15" />
+            <dataField fieldName="Sup_Tel" columns="8" />
+            <dataField fieldName="Sup_Tel2" columns="13" />
+            <dataField fieldName="Sup_Fax2" columns="13" />
+            <dataField fieldName="Sup_Fax" columns="15" />
+            <dataField fieldName="Cntry_No" aliasFieldName="Cntry_Cntry_Nm" />
+            <dataField fieldName="Acc_No" aliasFieldName="Acc_Acc_Nm" />
+            <dataField fieldName="Curncy_No" aliasFieldName="Curncy_Curncy_Nm" />
+            <dataField fieldName="Fbal_DB" dataFormatString="c" columns="15" />
+            <dataField fieldName="FBal_CR" dataFormatString="c" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+            <dataField fieldName="typ" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+
+
+   </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" 
+	  
+	     
+ 
+      />
+	  <action commandName="SQL" headerText="دمج الموردين" id="a107" description="Insert newcode" confirmation="_controller=CustomINsert1006sup&#xD;&#xA;_width=600 &#xD;&#xA;_title=Insert new &#xD;&#xA;_shortcut=true&#xD;&#xA;_view=createForm2">
+        <data><![CDATA[exec dbo.[fixaccode12016] @Parameters_truenumber,@Parameters_Errornumber
+ set @Result_Refresh = 1
+          set @Result_ShowViewMessage = 'code change '
+
+ ]]></data>
+      </action>
+	  
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+      <action commandName="SQL" headerText="NewCode" confirmation="_controller=CustomINsert1001&#xD;&#xA;_width=500&#xD;&#xA;_title=Insert new&#xD;&#xA;_shortcut=true&#xD;&#xA;_view=createForm2&#xD;&#xA;" id="a100">
+        <data><![CDATA[exec dbo.[insertStsuplirCode] @Parameters_Recalldateagain,@BusinessRules_UserName ]]></data>
+      </action>
+    </actionGroup>
+  </actions>
+</dataController>

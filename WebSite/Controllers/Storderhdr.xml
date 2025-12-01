@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Storderhdr" conflictDetection="overwriteChanges" label="Storderhdr" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Storderhdr"."Work_order_no" "Work_order_no"
+	,"Storderhdr"."Request_no" "Request_no"
+	,"Request_"."Notes" "Request_Notes"
+	,"Request_Div_"."Emp_Nmdriver" "Request_Div_Emp_Nmdriver"
+	,"Request_Div_sgm"."sgm_Nm" "Request_Div_sgmsgm_Nm"
+	,"Request_Div_Emp_no1"."Emp_NOt" "Request_Div_Emp_no1Emp_NOt"
+	,"Request_Costcnter_"."Costcntr_Nm" "Request_Costcnter_Costcntr_Nm"
+	,"Request_Costcnter_cost_typ"."Costcntr_Nm" "Request_Costcnter_cost_typCostcntr_Nm"
+	,"Request_reqtype"."reqDesc" "Request_reqtypereqDesc"
+	,"Request_Cstm_"."Cstm_Nm" "Request_Cstm_Cstm_Nm"
+	,"Request_Cstm_Area"."Area_name" "Request_Cstm_AreaArea_name"
+	,"Request_Cstm_Evaluation"."Evaluation_name" "Request_Cstm_EvaluationEvaluation_name"
+	,"Request_Cstm_acc_"."Acc_Nm" "Request_Cstm_acc_Acc_Nm"
+	,"Request_Cstm_Cntry_"."Cntry_Nm" "Request_Cstm_Cntry_Cntry_Nm"
+	,"Request_Cstm_curncy_"."Curncy_Nm" "Request_Cstm_curncy_Curncy_Nm"
+	,"Request_Cstm_TSNEF"."TSNEF_name" "Request_Cstm_TSNEFTSNEF_name"
+	,"Request_Cstm_TSNEFNO1"."TSNEF1_name" "Request_Cstm_TSNEFNO1TSNEF1_name"
+	,"Request_Cstm_Slm_"."Slm_Nm" "Request_Cstm_Slm_Slm_Nm"
+	,"Storderhdr"."Inspc_No" "Inspc_No"
+	,"Inspc_"."inspction_name" "Inspc_inspction_name"
+	,"Storderhdr"."Doc_Dt" "Doc_Dt"
+	,"Storderhdr"."Notes" "Notes"
+	,"Storderhdr"."User_Id" "User_Id"
+	,"Storderhdr"."user_id1" "user_id1"
+	,"Storderhdr"."expcted_date" "expcted_date"
+	,"Storderhdr"."Real_outdate" "Real_outdate"
+	,"Storderhdr"."status_code" "status_code"
+	,"status_"."storderdesc" "status_storderdesc"
+	,"Storderhdr"."ModifiedBy" "ModifiedBy"
+	,"Storderhdr"."ModifiedOn" "ModifiedOn"
+	,"Storderhdr"."CreatedBy" "CreatedBy"
+	,"Storderhdr"."CreatedOn" "CreatedOn"
+from "dbo"."Storderhdr" "Storderhdr"
+	left join "dbo"."maintncrequest" "Request_" on "Storderhdr"."Request_no" = "Request_"."Doc_No"
+	left join "dbo"."Cadriver" "Request_Div_" on "Request_"."Div_No" = "Request_Div_"."Emp_No"
+	left join "dbo"."glmulcmp" "Request_Div_sgm" on "Request_Div_"."sgm" = "Request_Div_sgm"."sgmid"
+	left join "dbo"."Pyempmfs" "Request_Div_Emp_no1" on "Request_Div_"."Emp_no1" = "Request_Div_Emp_no1"."Emp_No"
+	left join "dbo"."GLcostcntr" "Request_Costcnter_" on "Request_"."Costcnter_no" = "Request_Costcnter_"."Costcntr_No"
+	left join "dbo"."Glcostcentgruop" "Request_Costcnter_cost_typ" on "Request_Costcnter_"."cost_typ" = "Request_Costcnter_cost_typ"."Costcntr_No"
+	left join "dbo"."maintainReqtype" "Request_reqtype" on "Request_"."reqtype" = "Request_reqtype"."reqtype"
+	left join "dbo"."Stcustmr" "Request_Cstm_" on "Request_"."Cstm_No" = "Request_Cstm_"."Cstm_No"
+	left join "dbo"."AreaList" "Request_Cstm_Area" on "Request_Cstm_"."AreaNo" = "Request_Cstm_Area"."AreaNo"
+	left join "dbo"."EvaluationList" "Request_Cstm_Evaluation" on "Request_Cstm_"."EvaluationNO" = "Request_Cstm_Evaluation"."EvaluationNO"
+	left join "dbo"."GLmstrfl" "Request_Cstm_acc_" on "Request_Cstm_"."acc_no" = "Request_Cstm_acc_"."Acc_No"
+	left join "dbo"."PYCntry" "Request_Cstm_Cntry_" on "Request_Cstm_"."Cntry_No" = "Request_Cstm_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "Request_Cstm_curncy_" on "Request_Cstm_"."curncy_no" = "Request_Cstm_curncy_"."Curncy_No"
+	left join "dbo"."stcustmrtasnef" "Request_Cstm_TSNEF" on "Request_Cstm_"."TSNEFNO" = "Request_Cstm_TSNEF"."TSNEFNO"
+	left join "dbo"."stcustmrtasnef1" "Request_Cstm_TSNEFNO1" on "Request_Cstm_"."TSNEFNO1" = "Request_Cstm_TSNEFNO1"."TSNEFNO1"
+	left join "dbo"."Stslsman" "Request_Cstm_Slm_" on "Request_Cstm_"."Slm_No" = "Request_Cstm_Slm_"."Slm_No"
+	left join "dbo"."StorderInspctions" "Inspc_" on "Storderhdr"."Inspc_No" = "Inspc_"."Inspction_no"
+	left join "dbo"."Storderstatus" "status_" on "Storderhdr"."status_code" = "status_"."storderstuid"
+]]></text>
+    </command>
+    <command id="Work_order_noIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Work_order_no" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Work_order_no" type="Int64" allowNulls="false" isPrimaryKey="true" label="Work order no" readOnly="true" />
+    <field name="Request_no" type="Int64" label="Request no" showInSummary="true">
+      <items searchOnStart="true" />
+    </field>
+    <field name="Request_Notes" type="String" readOnly="true" allowQBE="false" allowSorting="false" label="Request Notes" length="-1" />
+    <field name="Request_Div_Emp_Nmdriver" type="String" readOnly="true" label="Request Div Emp Nmdriver" length="60" />
+    <field name="Request_Div_sgmsgm_Nm" type="String" readOnly="true" label="Request Div sgmsgm Nm" length="255" />
+    <field name="Request_Div_Emp_no1Emp_NOt" type="String" readOnly="true" label="Request Div Emp no1 Emp N Ot" length="50" />
+    <field name="Request_Costcnter_Costcntr_Nm" type="String" readOnly="true" label="Request Costcnter Costcntr Nm" length="255" />
+    <field name="Request_Costcnter_cost_typCostcntr_Nm" type="String" readOnly="true" label="Request Costcnter cost typ Costcntr Nm" length="255" />
+    <field name="Request_reqtypereqDesc" type="String" readOnly="true" label="Request reqtypereq Desc" length="100" />
+    <field name="Request_Cstm_Cstm_Nm" type="String" readOnly="true" label="Request Cstm Nm" length="155" />
+    <field name="Request_Cstm_AreaArea_name" type="String" readOnly="true" label="Request Cstm Area name" length="150" />
+    <field name="Request_Cstm_EvaluationEvaluation_name" type="String" readOnly="true" label="Request Cstm Evaluation name" length="150" />
+    <field name="Request_Cstm_acc_Acc_Nm" type="String" readOnly="true" label="Request Cstm acc Acc Nm" length="255" />
+    <field name="Request_Cstm_Cntry_Cntry_Nm" type="String" readOnly="true" label="Request Cstm Cntry Nm" length="255" />
+    <field name="Request_Cstm_curncy_Curncy_Nm" type="String" readOnly="true" label="Request Cstm curncy Curncy Nm" length="200" />
+    <field name="Request_Cstm_TSNEFTSNEF_name" type="String" readOnly="true" label="Request Cstm TSNEFTSNEF name" length="150" />
+    <field name="Request_Cstm_TSNEFNO1TSNEF1_name" type="String" readOnly="true" label="Request Cstm TSNEFNO1TSNEF1 name" length="150" />
+    <field name="Request_Cstm_Slm_Slm_Nm" type="String" readOnly="true" label="Request Cstm Slm Nm" length="100" />
+    <field name="Inspc_No" type="Int64" label="Inspc No" showInSummary="true">
+      <items style="Lookup" dataController="StorderInspctions" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Inspc_inspction_name" type="String" readOnly="true" label="Inspc inspction name" length="100" />
+    <field name="Doc_Dt" type="DateTime" label="Doc Dt" showInSummary="true" />
+    <field name="Notes" type="String" label="Notes" length="50" showInSummary="true" />
+    <field name="User_Id" type="Int64" label="User#" showInSummary="true" />
+    <field name="user_id1" type="Int64" label="User Id1" />
+    <field name="expcted_date" type="DateTime" label="Expcted Date" />
+    <field name="Real_outdate" type="DateTime" label="Real outdate" />
+    <field name="status_code" type="Int64" label="Status Code">
+      <items style="Lookup" dataController="Storderstatus" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="status_storderdesc" type="String" readOnly="true" label="Status Storderdesc" length="50" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Storderhdr">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Request_no" aliasFieldName="Request_Notes" />
+        <dataField fieldName="Inspc_No" aliasFieldName="Inspc_inspction_name" hyperlinkFormatString="~/Pages/StorderInspctions.aspx?Inspction_no={Inspc_No}&amp;_controller=StorderInspctions&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Doc_Dt" columns="10" />
+        <dataField fieldName="Notes" columns="50" />
+        <dataField fieldName="User_Id" columns="15" />
+        <dataField fieldName="user_id1" columns="15" />
+        <dataField fieldName="expcted_date" columns="10" />
+        <dataField fieldName="Real_outdate" columns="10" />
+        <dataField fieldName="status_code" aliasFieldName="status_storderdesc" hyperlinkFormatString="~/Pages/Storderstatus.aspx?storderstuid={status_code}&amp;_controller=Storderstatus&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="Request_Div_Emp_Nmdriver" />
+        <dataField fieldName="Request_Div_sgmsgm_Nm" />
+        <dataField fieldName="Request_Div_Emp_no1Emp_NOt" columns="50" />
+        <dataField fieldName="Request_Costcnter_Costcntr_Nm" />
+        <dataField fieldName="Request_Costcnter_cost_typCostcntr_Nm" />
+        <dataField fieldName="Request_reqtypereqDesc" />
+        <dataField fieldName="Request_Cstm_Cstm_Nm" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Storderhdr">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Storderhdr" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Request_no" aliasFieldName="Request_Notes" hyperlinkFormatString="~/Pages/maintncrequest.aspx?Doc_No={Request_no}&amp;_controller=maintncrequest&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Inspc_No" aliasFieldName="Inspc_inspction_name" hyperlinkFormatString="~/Pages/StorderInspctions.aspx?Inspction_no={Inspc_No}&amp;_controller=StorderInspctions&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Doc_Dt" columns="10" />
+            <dataField fieldName="Notes" columns="50" />
+            <dataField fieldName="User_Id" columns="15" />
+            <dataField fieldName="user_id1" columns="15" />
+            <dataField fieldName="expcted_date" columns="10" />
+            <dataField fieldName="Real_outdate" columns="10" />
+            <dataField fieldName="status_code" aliasFieldName="status_storderdesc" hyperlinkFormatString="~/Pages/Storderstatus.aspx?storderstuid={status_code}&amp;_controller=Storderstatus&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Request_Div_Emp_Nmdriver" />
+            <dataField fieldName="Request_Div_sgmsgm_Nm" />
+            <dataField fieldName="Request_Div_Emp_no1Emp_NOt" columns="50" />
+            <dataField fieldName="Request_Costcnter_Costcntr_Nm" />
+            <dataField fieldName="Request_Costcnter_cost_typCostcntr_Nm" />
+            <dataField fieldName="Request_reqtypereqDesc" />
+            <dataField fieldName="Request_Cstm_Cstm_Nm" />
+            <dataField fieldName="Request_Cstm_AreaArea_name" />
+            <dataField fieldName="Request_Cstm_EvaluationEvaluation_name" />
+            <dataField fieldName="Request_Cstm_acc_Acc_Nm" />
+            <dataField fieldName="Request_Cstm_Cntry_Cntry_Nm" />
+            <dataField fieldName="Request_Cstm_curncy_Curncy_Nm" />
+            <dataField fieldName="Request_Cstm_TSNEFTSNEF_name" />
+            <dataField fieldName="Request_Cstm_TSNEFNO1TSNEF1_name" />
+            <dataField fieldName="Request_Cstm_Slm_Slm_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Storderhdr">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Storderhdr" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Request_no" aliasFieldName="Request_Notes" />
+            <dataField fieldName="Inspc_No" aliasFieldName="Inspc_inspction_name" />
+            <dataField fieldName="Doc_Dt" columns="10" />
+            <dataField fieldName="Notes" columns="50" />
+            <dataField fieldName="User_Id" columns="15" />
+            <dataField fieldName="user_id1" columns="15" />
+            <dataField fieldName="expcted_date" columns="10" />
+            <dataField fieldName="Real_outdate" columns="10" />
+            <dataField fieldName="status_code" aliasFieldName="status_storderdesc" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Insert" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+    <rule id="r105" commandName="Insert" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+    <rule id="r104" commandName="Update" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+    <rule id="r101" commandName="Update" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm
+set @Result_NavigateUrl = 'webreportviwer.aspx?reportquery=' + @Arguments_Controller    + '&idfilter=' + cast(@Doc_No as nvarchar) +  '&sosoname=' + cast(@sgm as nvarchar)]]></rule>
+    <rule id="r103" commandName="Delete" type="Sql" phase="Before"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Before'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+    <rule id="r102" commandName="Delete" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+    <rule id="r107" commandName="Calculate" type="Sql" phase="Execute"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'Execute'
+exec ValidateRequestPost   @execname 
+exec  @execname  @Doc_No,@sgm]]></rule>
+  </businessRules>
+</dataController>

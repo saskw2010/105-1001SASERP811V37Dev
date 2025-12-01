@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Qgltrialbancnew" conflictDetection="overwriteChanges" label="Qgltrialbancnew" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Qgltrialbancnew"."acdcode" "acdcode"
+	,"Qgltrialbancnew"."branch" "branch"
+	,"Qgltrialbancnew"."sgm" "sgm"
+	,"Qgltrialbancnew"."yer" "yer"
+	,"Qgltrialbancnew"."Mnth" "Mnth"
+	,"Qgltrialbancnew"."Tr_Dt" "Tr_Dt"
+	,"Qgltrialbancnew"."Acc_No" "Acc_No"
+	,"Qgltrialbancnew"."Accountname" "Accountname"
+	,"Qgltrialbancnew"."Acc_Bnd" "Acc_Bnd"
+	,"Qgltrialbancnew"."Branchaccount" "Branchaccount"
+	,"Qgltrialbancnew"."Acc_mag" "Acc_mag"
+	,"Qgltrialbancnew"."submainaccount" "submainaccount"
+	,"Qgltrialbancnew"."Acc_Bab" "Acc_Bab"
+	,"Qgltrialbancnew"."mainaccount" "mainaccount"
+	,"Qgltrialbancnew"."jr_ty" "jr_ty"
+	,"Qgltrialbancnew"."Ln_No" "Ln_No"
+	,"Qgltrialbancnew"."Tr_no" "Tr_no"
+	,"Qgltrialbancnew"."Tr_db" "Tr_db"
+	,"Qgltrialbancnew"."Tr_Ds" "Tr_Ds"
+	,"Qgltrialbancnew"."tr_cr" "tr_cr"
+	,"Qgltrialbancnew"."Dc_No" "Dc_No"
+	,"Qgltrialbancnew"."Clsacc_No" "Clsacc_No"
+	,"Qgltrialbancnew"."Costcntr_No" "Costcntr_No"
+	,"Qgltrialbancnew"."Tr_Dsc1" "Tr_Dsc1"
+	,"Qgltrialbancnew"."curno" "curno"
+	,"Qgltrialbancnew"."curprice" "curprice"
+	,"Qgltrialbancnew"."curvalue" "curvalue"
+	,"Qgltrialbancnew"."CSMSUP_NM" "CSMSUP_NM"
+	,"Qgltrialbancnew"."CSMSUP_NO" "CSMSUP_NO"
+	,"Qgltrialbancnew"."cstyp_NO" "cstyp_NO"
+	,"Qgltrialbancnew"."balanc1" "balanc1"
+	,"Qgltrialbancnew"."GlFinperiodID" "GlFinperiodID"
+	,"Qgltrialbancnew"."Monthtrs" "Monthtrs"
+	,"Qgltrialbancnew"."YEARTRS" "YEARTRS"
+from "dbo"."Qgltrialbancnew" "Qgltrialbancnew"
+]]></text>
+    </command>
+    <command id="Acc_BabIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Acc_Bab" />
+      </output>
+    </command>
+    <command id="Costcntr_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Costcntr_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="acdcode" type="Int64" label="Acdcode" readOnly="true" showInSummary="true" />
+    <field name="branch" type="Int64" label="Branch" showInSummary="true" />
+    <field name="sgm" type="Int32" allowNulls="false" label="Sgm" readOnly="true" showInSummary="true" />
+    <field name="yer" type="String" label="Yer" readOnly="true" length="4" showInSummary="true" />
+    <field name="Mnth" type="String" label="Mnth" readOnly="true" length="2" showInSummary="true" />
+    <field name="Tr_Dt" type="DateTime" label="Tr Dt" />
+    <field name="Acc_No" type="Int64" label="Acc No" />
+    <field name="Accountname" type="String" label="Accountname" length="255" />
+    <field name="Acc_Bnd" type="Int64" label="Acc Bnd" />
+    <field name="Branchaccount" type="String" label="Branchaccount" length="50" />
+    <field name="Acc_mag" type="Int64" label="Acc mag" />
+    <field name="submainaccount" type="String" label="Submainaccount" length="50" />
+    <field name="Acc_Bab" type="Int64" label="Acc Bab" readOnly="true" />
+    <field name="mainaccount" type="String" label="Mainaccount" length="250" />
+    <field name="jr_ty" type="Int64" label="Jr Ty" />
+    <field name="Ln_No" type="Int64" label="Ln No" />
+    <field name="Tr_no" type="Int64" label="Tr no" />
+    <field name="Tr_db" type="Decimal" label="Tr db" readOnly="true" />
+    <field name="Tr_Ds" type="String" label="Tr Ds" length="255" />
+    <field name="tr_cr" type="Decimal" label="Tr Cr" readOnly="true" />
+    <field name="Dc_No" type="String" label="Dc No" length="50" />
+    <field name="Clsacc_No" type="Int64" label="Clsacc No" />
+    <field name="Costcntr_No" type="Int64" label="Costcntr No" readOnly="true" />
+    <field name="Tr_Dsc1" type="String" label="Tr Dsc1" length="255" />
+    <field name="curno" type="Int64" label="Curno" />
+    <field name="curprice" type="Decimal" label="Curprice" />
+    <field name="curvalue" type="Decimal" label="Curvalue" />
+    <field name="CSMSUP_NM" type="String" label="Csmsup Nm" length="255" />
+    <field name="CSMSUP_NO" type="Int64" label="Csmsup No" />
+    <field name="cstyp_NO" type="Int64" label="cstyp NO" />
+    <field name="balanc1" type="Decimal" label="Balanc1" readOnly="true" />
+    <field name="GlFinperiodID" type="Int64" label="Gl Finperiod#" readOnly="true" />
+    <field name="Monthtrs" type="String" label="Monthtrs" readOnly="true" length="2" />
+    <field name="YEARTRS" type="String" label="Yeartrs" readOnly="true" length="4" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Qgltrialbancnew">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="sgm" columns="15" />
+        <dataField fieldName="acdcode" columns="15" />
+        <dataField fieldName="branch" columns="15" />
+        <dataField fieldName="yer" columns="4" />
+        <dataField fieldName="Mnth" columns="2" />
+        <dataField fieldName="Tr_Dt" columns="10" />
+        <dataField fieldName="Acc_No" columns="15" />
+        <dataField fieldName="Accountname" />
+        <dataField fieldName="Acc_Bnd" columns="15" />
+        <dataField fieldName="Branchaccount" columns="50" />
+        <dataField fieldName="Acc_mag" columns="15" />
+        <dataField fieldName="submainaccount" columns="50" />
+        <dataField fieldName="Acc_Bab" columns="15" />
+        <dataField fieldName="mainaccount" />
+        <dataField fieldName="jr_ty" columns="15" />
+        <dataField fieldName="Ln_No" columns="15" />
+        <dataField fieldName="Tr_no" columns="15" />
+        <dataField fieldName="Tr_db" dataFormatString="c" columns="15" />
+        <dataField fieldName="Tr_Ds" />
+        <dataField fieldName="tr_cr" dataFormatString="c" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Qgltrialbancnew">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Qgltrialbancnew" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="yer" columns="4" />
+            <dataField fieldName="Mnth" columns="2" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="Accountname" />
+            <dataField fieldName="Acc_Bnd" columns="15" />
+            <dataField fieldName="Branchaccount" columns="50" />
+            <dataField fieldName="Acc_mag" columns="15" />
+            <dataField fieldName="submainaccount" columns="50" />
+            <dataField fieldName="Acc_Bab" columns="15" />
+            <dataField fieldName="mainaccount" />
+            <dataField fieldName="jr_ty" columns="15" />
+            <dataField fieldName="Ln_No" columns="15" />
+            <dataField fieldName="Tr_no" columns="15" />
+            <dataField fieldName="Tr_db" dataFormatString="c" columns="15" />
+            <dataField fieldName="Tr_Ds" />
+            <dataField fieldName="tr_cr" dataFormatString="c" columns="15" />
+            <dataField fieldName="Dc_No" columns="50" />
+            <dataField fieldName="Clsacc_No" columns="15" />
+            <dataField fieldName="Costcntr_No" columns="15" />
+            <dataField fieldName="Tr_Dsc1" />
+            <dataField fieldName="curno" columns="15" />
+            <dataField fieldName="curprice" dataFormatString="c" columns="15" />
+            <dataField fieldName="curvalue" dataFormatString="c" columns="15" />
+            <dataField fieldName="CSMSUP_NM" />
+            <dataField fieldName="CSMSUP_NO" columns="15" />
+            <dataField fieldName="cstyp_NO" columns="15" />
+            <dataField fieldName="balanc1" dataFormatString="c" columns="15" />
+            <dataField fieldName="GlFinperiodID" columns="15" />
+            <dataField fieldName="Monthtrs" columns="2" />
+            <dataField fieldName="YEARTRS" columns="4" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Qgltrialbancnew">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Qgltrialbancnew" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="Tr_Dt" columns="10" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="Accountname" />
+            <dataField fieldName="Acc_Bnd" columns="15" />
+            <dataField fieldName="Branchaccount" columns="50" />
+            <dataField fieldName="Acc_mag" columns="15" />
+            <dataField fieldName="submainaccount" columns="50" />
+            <dataField fieldName="mainaccount" />
+            <dataField fieldName="jr_ty" columns="15" />
+            <dataField fieldName="Ln_No" columns="15" />
+            <dataField fieldName="Tr_no" columns="15" />
+            <dataField fieldName="Tr_Ds" />
+            <dataField fieldName="Dc_No" columns="50" />
+            <dataField fieldName="Clsacc_No" columns="15" />
+            <dataField fieldName="Tr_Dsc1" />
+            <dataField fieldName="curno" columns="15" />
+            <dataField fieldName="curprice" dataFormatString="c" columns="15" />
+            <dataField fieldName="curvalue" dataFormatString="c" columns="15" />
+            <dataField fieldName="CSMSUP_NM" />
+            <dataField fieldName="CSMSUP_NO" columns="15" />
+            <dataField fieldName="cstyp_NO" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

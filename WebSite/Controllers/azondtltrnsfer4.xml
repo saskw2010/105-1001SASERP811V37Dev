@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="azondtltrnsfer4" conflictDetection="overwriteChanges" label="azondtltrnsfer4" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"azondtltrnsfer4"."Ln_No" "Ln_No"
+	,"azondtltrnsfer4"."countrdus" "countrdus"
+	,"Thecountrdus"."subject" "Thecountrdussubject"
+	,"Thecountrdus"."Brn_No" "Brn_No"
+        ,"ThecountrdusBrn_"."Brn_Nm" "ThecountrdusBrn_Brn_Nm"
+	,"ThecountrdusBrn_Cmp_"."Grp_Nm" "ThecountrdusBrn_Cmp_Grp_Nm"
+	,"ThecountrdusTRFBrn_"."Brn_Nm" "ThecountrdusTRFBrn_Brn_Nm"
+	,"ThecountrdusTRFBrn_Cmp_"."Grp_Nm" "ThecountrdusTRFBrn_Cmp_Grp_Nm"
+	,"azondtltrnsfer4"."ID_comp" "ID_comp"
+        ,"Itm_"."ID_USER" "Itm_ID_USER"
+	,"Itm_"."ITEM" "ITEM"
+	,"azondtltrnsfer4"."Unit_No" "Unit_No"
+	,"Unit_"."Unit_Nm" "Unit_Unit_Nm"
+	,"azondtltrnsfer4"."quantity" "quantity"
+	,"azondtltrnsfer4"."cost" "cost"
+        ,"azondtltrnsfer4"."BATCHNO" "BATCHNO"
+        ,"azondtltrnsfer4"."EXPIREDATE" "EXPIREDATE"
+        ,"azondtltrnsfer4"."TITM_COST" "TITM_COST"
+        ,"azondtltrnsfer4"."LASTPRICE" "LASTPRICE"
+	,"azondtltrnsfer4"."ModifiedBy" "ModifiedBy"
+	,"azondtltrnsfer4"."ModifiedOn" "ModifiedOn"
+	,"azondtltrnsfer4"."CreatedBy" "CreatedBy"
+	,"azondtltrnsfer4"."CreatedOn" "CreatedOn"
+	,"azondtltrnsfer4"."ITEMIN" "ITEMIN"
+	,"azondtltrnsfer4"."ITEMOUT" "ITEMOUT"
+        ,"azondtltrnsfer4"."UPRICE" "UPRICE"
+	,"azondtltrnsfer4"."TITM_UPRICE" "TITM_UPRICE"
+      ,"azondtltrnsfer4"."TLASTPRICE" "TLASTPRICE"
+      ,"azondtltrnsfer4"."balance" "balance"
+from "dbo"."azondtltrnsfer4" "azondtltrnsfer4"
+         left join "dbo"."ITEMS" "Itm_" on "azondtltrnsfer4"."ID_comp" = "Itm_"."ID_comp"
+	left join "dbo"."azonhdrtrnsfer4" "Thecountrdus" on "azondtltrnsfer4"."countrdus" = "Thecountrdus"."countrdus"
+	left join "dbo"."Branchcnst" "ThecountrdusBrn_" on "Thecountrdus"."Brn_No" = "ThecountrdusBrn_"."Brn_No"
+	left join "dbo"."Pycnstnt" "ThecountrdusBrn_Cmp_" on "ThecountrdusBrn_"."Cmp_code" = "ThecountrdusBrn_Cmp_"."Cmp_No"
+	left join "dbo"."Branchcnst" "ThecountrdusTRFBrn_" on "Thecountrdus"."TRFBrn_NO" = "ThecountrdusTRFBrn_"."Brn_No"
+	left join "dbo"."Pycnstnt" "ThecountrdusTRFBrn_Cmp_" on "ThecountrdusTRFBrn_"."Cmp_code" = "ThecountrdusTRFBrn_Cmp_"."Cmp_No"
+	left join "dbo"."Stunit" "Unit_" on "azondtltrnsfer4"."Unit_No" = "Unit_"."Unit_No"
+]]></text>
+    </command>
+    <command id="Ln_NoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Ln_No" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+
+    <field name="Ln_No" type="Int64" allowNulls="false" isPrimaryKey="true" label="Ln No" readOnly="true" />
+    <field name="countrdus" type="Int64" allowNulls="false" label="Countrdus" showInSummary="true">
+      <items style="Lookup" dataController="azonhdrtrnsfer4" newDataView="createForm1" searchOnStart="true" />
+    </field>
+     <field name="Brn_No" type="Int64" label="Brn_No"  />
+    <field name="Thecountrdussubject" type="String" readOnly="true" label="Thecountrdussubject" length="255" />
+    <field name="ThecountrdusBrn_Brn_Nm" type="String" readOnly="true" label="Thecountrdus Brn Nm" length="255" />
+    <field name="ThecountrdusBrn_Cmp_Grp_Nm" type="String" readOnly="true" label="Thecountrdus Brn Cmp Grp Nm" length="255" />
+    <field name="ThecountrdusTRFBrn_Brn_Nm" type="String" readOnly="true" label="Thecountrdus TRF Brn Nm" length="255" />
+    <field name="ThecountrdusTRFBrn_Cmp_Grp_Nm" type="String" readOnly="true" label="Thecountrdus TRF Brn Cmp Grp Nm" length="255" />
+    <field name="ID_comp" type="Int64" label="ID comp" allowNulls="false" showInSummary="true" contextFields="BranchTo=countrdus">
+     <items style="Lookup" dataController="ITemBalance1002" dataView="grid1" dataTextField="ITEM" dataValueField="ID_comp" copy="cost=quntitb4&#xD;&#xA;UPRICE=quntit&#xD;&#xA;balance=frombalance&#xD;Unit_No=Unit_No&#xD;&#xA;LASTPRICE=sarfhad&#xD;&#xA;BATCHNO=ID_USER"  description="Search About Item" />
+    </field>
+    <field name="Itm_ID_USER" type="String" readOnly="true" label="Itm ID USER" length="50" />
+    <field name="ITEM" type="String" readOnly="true" label="ITEM" length="50" />
+
+    <field name="Unit_No" type="Int64" label="Unit No" allowNulls="false" showInSummary="true" >
+      <items style="Lookup" dataController="Stunit" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="cost" type="Decimal" label="Cost" showInSummary="true"  />
+ <field name="BATCHNO" type="String"  label="BATCHNO" length="50" />
+<field name="EXPIREDATE" type="DateTime" label="EXPIREDATE" showInSummary="true" />
+<field name="TITM_COST" type="Decimal" label="TITM_COST" showInSummary="true" />
+<field name="LASTPRICE" type="Decimal" label="LASTPRICE" showInSummary="true"  />
+<field name="UPRICE" type="Decimal" label="UPRICE" showInSummary="true" />
+<field name="TITM_UPRICE" type="Decimal" label="TITM_UPRICE" showInSummary="true"  />
+    <field name="Unit_Unit_Nm" type="String" readOnly="true" label="Unit Nm" length="255" />
+    <field name="quantity" type="Decimal" label="Quantity" allowNulls="false" showInSummary="true" /> 
+    <field name="ITEMIN" type="Decimal" label="QtyIN" showInSummary="true" />
+    <field name="ITEMOUT" type="Decimal" label="QtyOUT" showInSummary="true" />
+     
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="balance" type="Int64" label="balance" />
+<field name="TLASTPRICE" type="Decimal" label="TLASTPRICE" showInSummary="true" />
+  </fields>
+  <views>
+    <view id="grid1" type="DataSheet" commandId="command1" label="Adjustment">
+    
+      <dataFields>
+
+        <dataField fieldName="countrdus"  />
+        <dataField fieldName="" columns="15" />
+        <dataField fieldName="ID_comp" aliasFieldName="ITEM" />
+        <dataField fieldName="quantity" columns="15" hidden="true"/>
+        <dataField fieldName="ITEMIN" columns="15" />
+        <dataField fieldName="ITEMOUT" columns="15" />
+        <dataField fieldName="Itm_ID_USER" columns="15" />
+        <dataField fieldName="ModifiedBy" columns="50" hidden="true"/>
+        <dataField fieldName="ModifiedOn" columns="10" hidden="true"/>
+        <dataField fieldName="CreatedBy" columns="50" hidden="true"/>
+        <dataField fieldName="CreatedOn" columns="10" hidden="true"/>
+        <dataField fieldName="ThecountrdusBrn_Brn_Nm" hidden="true"/>
+        <dataField fieldName="ThecountrdusBrn_Cmp_Grp_Nm" hidden="true" />
+        <dataField fieldName="ThecountrdusTRFBrn_Brn_Nm" hidden="true" />
+        <dataField fieldName="ThecountrdusTRFBrn_Cmp_Grp_Nm" hidden="true" />
+        <dataField fieldName="BATCHNO" columns="15" hidden="true"/>
+        <dataField fieldName="EXPIREDATE" columns="15" hidden="true"/>
+        <dataField fieldName="balance" />
+        <dataField fieldName="cost" columns="15" />
+        <dataField fieldName="UPRICE" columns="15" />
+        <dataField fieldName="LASTPRICE" columns="15" />
+        <dataField fieldName="TITM_UPRICE" columns="15" aggregate="Sum"/>
+        <dataField fieldName="TITM_COST" columns="15" aggregate="Sum"/>
+        <dataField fieldName="TLASTPRICE" hidden="true"/>
+        <dataField fieldName="Unit_No" hidden="true"/>
+        <dataField fieldName="Unit_Unit_Nm" hidden="true"/>
+
+
+        
+
+      </dataFields>
+    </view>
+<view id="grid2" type="Grid" commandId="command1" label="Adjustment2">
+   
+      <dataFields>
+        <dataField fieldName="countrdus"  />
+        <dataField fieldName="" columns="15" />
+       <dataField fieldName="ID_comp" aliasFieldName="ITEM"  />
+        <dataField fieldName="quantity" columns="15" hidden="true"/>
+      <dataField fieldName="ITEMIN" columns="15" />
+        <dataField fieldName="ITEMOUT" columns="15" />
+<dataField fieldName="TLASTPRICE" columns="50" hidden="true"/>   
+        <dataField fieldName="ModifiedBy" columns="50" hidden="true"/>
+        <dataField fieldName="ModifiedOn" columns="10" hidden="true"/>
+        <dataField fieldName="CreatedBy" columns="50" hidden="true"/>
+        <dataField fieldName="CreatedOn" columns="10" hidden="true"/>
+        <dataField fieldName="ThecountrdusBrn_Brn_Nm" hidden="true"/>
+        <dataField fieldName="ThecountrdusBrn_Cmp_Grp_Nm" hidden="true" />
+        <dataField fieldName="ThecountrdusTRFBrn_Brn_Nm" hidden="true" />
+        <dataField fieldName="ThecountrdusTRFBrn_Cmp_Grp_Nm" hidden="true" />
+        <dataField fieldName="cost" columns="15" />
+        <dataField fieldName="UPRICE" columns="15" />
+        <dataField fieldName="TITM_UPRICE" columns="15" />
+        <dataField fieldName="BATCHNO" columns="15" hidden="true" />
+        <dataField fieldName="EXPIREDATE" columns="15" hidden="true" />
+        <dataField fieldName="TITM_COST" columns="15" />
+ <dataField fieldName="LASTPRICE" columns="15" />
+<dataField fieldName="Itm_ID_USER" columns="15" />
+<dataField fieldName="Unit_No" aliasFieldName="Unit_Unit_Nm"  />
+
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review azondtltrnsfer4">
+    
+      <categories>
+        <category id="c1" headerText="azondtltrnsfer4" flow="NewColumn"  newColumn="true">
+        
+          <dataFields>
+            <dataField fieldName="countrdus"  />
+            <dataField fieldName="ID_comp" columns="15" />
+            <dataField fieldName="Unit_No" aliasFieldName="Unit_Unit_Nm"  />
+            <dataField fieldName="quantity" columns="15" hidden="true"/>
+            <dataField fieldName="cost" columns="15" />
+            <dataField fieldName="UPRICE" columns="15" />
+            <dataField fieldName="TITM_UPRICE" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+             <dataField fieldName="TLASTPRICE" columns="10" hidden="true"/>
+      <dataField fieldName="balance" columns="10" />
+          </dataFields>
+        </category>
+       
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New azondtltrnsfer4">
+     
+      <categories>
+        <category id="c1" headerText="New azondtltrnsfer4" flow="NewColumn"  newColumn="true">
+        
+          <dataFields>
+            <dataField fieldName="countrdus"  />
+            <dataField fieldName="ID_comp" columns="15" />
+            <dataField fieldName="Unit_No" aliasFieldName="Unit_Unit_Nm" />
+            <dataField fieldName="quantity" columns="15" />
+            <dataField fieldName="cost" columns="15" />
+            <dataField fieldName="UPRICE" columns="15" />
+            <dataField fieldName="TITM_UPRICE" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+           <dataField fieldName="TLASTPRICE" columns="10" hidden="true"/>
+   <dataField fieldName="balance" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="grid1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+     
+ <rule id="r105" commandName="Insert" type="Sql" phase="After"><![CDATA[DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname   @countrdus,@ln_no,0]]></rule>
+   <rule id="r102" commandName="Update" type="Sql" phase="After">
+<![CDATA[
+
+DECLARE	@execname nvarchar(max)= @Arguments_Controller    + @Arguments_CommandName + 'After'
+exec ValidateRequestPost   @execname 
+exec  @execname  @countrdus,@ln_no,0
+
+
+
+]]></rule>
+<rule id="r108j" type="JavaScript" commandName="Insert|Update" phase="Before" name="ITEMOUT_Validator"><![CDATA[
+var fieldValue = [ITEMOUT];
+if (fieldValue == null) {
+  
+       fieldValue =0 ;
+   
+  
+}
+var fieldValue1 = [balance];
+if (fieldValue1 == null) {
+  
+       fieldValue1 =0 ;
+}
+if (fieldValue > fieldValue1 ) {
+    // prevent the default action processing
+    this.preventDefault();
+    // set the focus on the field and display an error
+    this.result.focus('ITEMOUT', 'Required less than or equal  balance');
+}]]></rule>
+
+
+  </businessRules>
+
+</dataController>

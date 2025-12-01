@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="unpaidpaidblancTot" conflictDetection="overwriteChanges" label="unpaidpaidblanc Tot" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"unpaidpaidblancTot"."Emp_No" "Emp_No"
+	,"unpaidpaidblancTot"."ln_no" "ln_no"
+	,"unpaidpaidblancTot"."Hld_Ern_Prod" "Hld_Ern_Prod"
+	,"unpaidpaidblancTot"."Start_Date" "Start_Date"
+	,"unpaidpaidblancTot"."periodend" "periodend"
+	,"unpaidpaidblancTot"."realdate" "realdate"
+	,"unpaidpaidblancTot"."Workdays" "Workdays"
+	,"unpaidpaidblancTot"."Start_Paid" "Start_Paid"
+	,"unpaidpaidblancTot"."Start_UnPaid" "Start_UnPaid"
+	,"unpaidpaidblancTot"."cadu_paid" "cadu_paid"
+	,"unpaidpaidblancTot"."start_LastHld" "start_LastHld"
+	,"unpaidpaidblancTot"."late_dys" "late_dys"
+	,"unpaidpaidblancTot"."paid_hld" "paid_hld"
+	,"unpaidpaidblancTot"."unpaid_hld" "unpaid_hld"
+	,"unpaidpaidblancTot"."netwrkdys" "netwrkdys"
+	,"unpaidpaidblancTot"."loh365rl" "loh365rl"
+	,"unpaidpaidblancTot"."loh365ERNrl" "loh365ERNrl"
+from "dbo"."unpaidpaidblancTot" "unpaidpaidblancTot"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="Emp_No" type="Int64" allowNulls="false" label="Emp No" showInSummary="true" />
+    <field name="ln_no" type="Int64" label="Ln No" showInSummary="true" />
+    <field name="Hld_Ern_Prod" type="Double" label="Hld Ern Prod" showInSummary="true" />
+    <field name="Start_Date" type="DateTime" label="Start Date" showInSummary="true" />
+    <field name="periodend" type="DateTime" label="Periodend" showInSummary="true" />
+    <field name="realdate" type="DateTime" label="Realdate" />
+    <field name="Workdays" type="Int32" label="Workdays" />
+    <field name="Start_Paid" type="Double" label="Start Paid" />
+    <field name="Start_UnPaid" type="Double" label="Start Un Paid" />
+    <field name="cadu_paid" type="Double" label="Cadu Paid" />
+    <field name="start_LastHld" type="DateTime" label="start Last Hld" />
+    <field name="late_dys" type="Decimal" label="Late Dys" />
+    <field name="paid_hld" type="Decimal" label="Paid Hld" />
+    <field name="unpaid_hld" type="Decimal" label="Unpaid Hld" />
+    <field name="netwrkdys" type="Double" label="Netwrkdys" readOnly="true" />
+    <field name="loh365rl" type="Double" label="Loh365rl" readOnly="true" />
+    <field name="loh365ERNrl" type="Double" label="loh365 ER Nrl" readOnly="true" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="unpaidpaidblanc Tot">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Emp_No" columns="15" />
+        <dataField fieldName="ln_no" columns="15" />
+        <dataField fieldName="Hld_Ern_Prod" columns="15" />
+        <dataField fieldName="Start_Date" columns="10" />
+        <dataField fieldName="periodend" columns="10" />
+        <dataField fieldName="realdate" columns="10" />
+        <dataField fieldName="Workdays" columns="15" />
+        <dataField fieldName="Start_Paid" columns="15" />
+        <dataField fieldName="Start_UnPaid" columns="15" />
+        <dataField fieldName="cadu_paid" columns="15" />
+        <dataField fieldName="start_LastHld" columns="10" />
+        <dataField fieldName="late_dys" dataFormatString="c" columns="15" />
+        <dataField fieldName="paid_hld" dataFormatString="c" columns="15" />
+        <dataField fieldName="unpaid_hld" dataFormatString="c" columns="15" />
+        <dataField fieldName="netwrkdys" columns="15" />
+        <dataField fieldName="loh365rl" columns="15" />
+        <dataField fieldName="loh365ERNrl" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review unpaidpaidblanc Tot">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="unpaidpaidblanc Tot" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_No" columns="15" />
+            <dataField fieldName="ln_no" columns="15" />
+            <dataField fieldName="Hld_Ern_Prod" columns="15" />
+            <dataField fieldName="Start_Date" columns="10" />
+            <dataField fieldName="periodend" columns="10" />
+            <dataField fieldName="realdate" columns="10" />
+            <dataField fieldName="Workdays" columns="15" />
+            <dataField fieldName="Start_Paid" columns="15" />
+            <dataField fieldName="Start_UnPaid" columns="15" />
+            <dataField fieldName="cadu_paid" columns="15" />
+            <dataField fieldName="start_LastHld" columns="10" />
+            <dataField fieldName="late_dys" dataFormatString="c" columns="15" />
+            <dataField fieldName="paid_hld" dataFormatString="c" columns="15" />
+            <dataField fieldName="unpaid_hld" dataFormatString="c" columns="15" />
+            <dataField fieldName="netwrkdys" columns="15" />
+            <dataField fieldName="loh365rl" columns="15" />
+            <dataField fieldName="loh365ERNrl" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New unpaidpaidblanc Tot">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New unpaidpaidblanc Tot" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Emp_No" columns="15" />
+            <dataField fieldName="ln_no" columns="15" />
+            <dataField fieldName="Hld_Ern_Prod" columns="15" />
+            <dataField fieldName="Start_Date" columns="10" />
+            <dataField fieldName="periodend" columns="10" />
+            <dataField fieldName="realdate" columns="10" />
+            <dataField fieldName="Workdays" columns="15" />
+            <dataField fieldName="Start_Paid" columns="15" />
+            <dataField fieldName="Start_UnPaid" columns="15" />
+            <dataField fieldName="cadu_paid" columns="15" />
+            <dataField fieldName="start_LastHld" columns="10" />
+            <dataField fieldName="late_dys" dataFormatString="c" columns="15" />
+            <dataField fieldName="paid_hld" dataFormatString="c" columns="15" />
+            <dataField fieldName="unpaid_hld" dataFormatString="c" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

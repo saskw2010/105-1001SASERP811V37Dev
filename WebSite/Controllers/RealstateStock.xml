@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="RealstateStock" conflictDetection="overwriteChanges" label="Realstate Stock" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"RealstateStock"."Stockunitid" "Stockunitid"
+	,"RealstateStock"."StockunitDesc" "StockunitDesc"
+	,"RealstateStock"."Floor" "Floor"
+	,"RealstateStock"."viewlistid" "viewlistid"
+	,"viewlist"."viewlistDesc" "viewlistviewlistDesc"
+	,"RealstateStock"."Realstateunittypeid" "Realstateunittypeid"
+	,"Realstateunittype"."Realstateunittype" "RealstateunittypeRealstateunittype"
+	,"RealstateStock"."Area" "Area"
+	,"RealstateStock"."kindlistid" "kindlistid"
+	,"kindlist"."kindlistdesc" "kindlistkindlistdesc"
+	,"RealstateStock"."Realstateprjid" "Realstateprjid"
+	,"Realstateprj"."RealstateprjDesc" "RealstateprjRealstateprjDesc"
+	,"Realstateprjsgm"."sgm_Nm" "Realstateprjsgmsgm_Nm"
+	,"RealstateprjsgmOpco"."OpcoName" "RealstateprjsgmOpcoOpcoName"
+	,"RealstateprjCntry_"."Cntry_Nm" "RealstateprjCntry_Cntry_Nm"
+	,"RealstateprjSup_"."Sup_Nm" "RealstateprjSup_Sup_Nm"
+	,"RealstateprjSup_Acc_"."Acc_Nm" "RealstateprjSup_Acc_Acc_Nm"
+	,"RealstateprjSup_sgm"."sgm_Nm" "RealstateprjSup_sgmsgm_Nm"
+	,"RealstateprjSup_Cntry_"."Cntry_Nm" "RealstateprjSup_Cntry_Cntry_Nm"
+	
+	,"RealstateprjSup_Cntry_"."Cntry_Nm" "RealstateprjSup_Cntry_Cntry_Nm"
+	
+	,"RealstateprjSup_Curncy_"."Curncy_Nm" "RealstateprjSup_Curncy_Curncy_Nm"
+	,"RealstateStock"."countoffloor" "countoffloor"
+	,"RealstateStock"."price" "price"
+	,"RealstateStock"."price1" "price1"
+	,"RealstateStock"."price2" "price2"
+	,"RealstateStock"."statusid" "statusid"
+	,"status"."statusdesc" "statusstatusdesc"
+	,"RealstateStock"."ReservationAmount" "ReservationAmount"
+	,"RealstateStock"."ReservationDate" "ReservationDate"
+	,"RealstateStock"."ReservationVoucherNo" "ReservationVoucherNo"
+	,"RealstateStock"."RealstatypeId" "RealstatypeId"
+	,"Realstatype"."Realstatype" "RealstatypeRealstatype"
+	,"RealstateStock"."unitowner" "unitowner"
+	,"RealstateOwners_"."RealstateOwners" "RealstateOwners"
+	,"RealstateStock"."Segment" "Segment"
+	,"RealstateStock"."Street" "Street"
+	,"RealstateStock"."Avenue" "Avenue"
+	,"RealstateStock"."Building_Home" "Building_Home"
+	,"RealstateStock"."Appartment" "Appartment"
+
+from "dbo"."RealstateStock" "RealstateStock"
+	left join "dbo"."Realstarteviewlist" "viewlist" on "RealstateStock"."viewlistid" = "viewlist"."viewlistid"
+	left join "dbo"."Realstateunittypelist" "Realstateunittype" on "RealstateStock"."Realstateunittypeid" = "Realstateunittype"."Realstateunittypeid"
+	left join "dbo"."RealstateKindlist" "kindlist" on "RealstateStock"."kindlistid" = "kindlist"."kindlistid"
+	left join "dbo"."Realstateproject" "Realstateprj" on "RealstateStock"."Realstateprjid" = "Realstateprj"."Realstateprjid"
+	left join "dbo"."glmulcmp" "Realstateprjsgm" on "Realstateprj"."sgm" = "Realstateprjsgm"."sgmid"
+	left join "dbo"."OpCo" "RealstateprjsgmOpco" on "Realstateprjsgm"."OpcoID" = "RealstateprjsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PYCntry" "RealstateprjCntry_" on "Realstateprj"."Cntry_No" = "RealstateprjCntry_"."Cntry_No"
+	left join "dbo"."Stsuplir" "RealstateprjSup_" on "Realstateprj"."Sup_No" = "RealstateprjSup_"."Sup_No"
+	left join "dbo"."GLmstrfl" "RealstateprjSup_Acc_" on "RealstateprjSup_"."Acc_No" = "RealstateprjSup_Acc_"."Acc_No"
+	left join "dbo"."glmulcmp" "RealstateprjSup_sgm" on "RealstateprjSup_"."sgm" = "RealstateprjSup_sgm"."sgmid"
+	
+    left join "dbo"."RealstateOwners" "RealstateOwners_" on "RealstateStock"."unitowner" = "RealstateOwners_"."Ownerid"
+	
+	left join "dbo"."PYCntry" "RealstateprjSup_Cntry_" on "RealstateprjSup_"."Cntry_No" = "RealstateprjSup_Cntry_"."Cntry_No"
+	left join "dbo"."Stcurncy" "RealstateprjSup_Curncy_" on "RealstateprjSup_"."Curncy_No" = "RealstateprjSup_Curncy_"."Curncy_No"
+	left join "dbo"."Realstatestatuslist" "status" on "RealstateStock"."statusid" = "status"."statusid"
+	left join "dbo"."RealstaType" "Realstatype" on "RealstateStock"."RealstatypeId" = "Realstatype"."RealstatypeId"
+	
+]]></text>
+    </command>
+    <command id="StockunitidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Stockunitid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Stockunitid" type="Int64" allowNulls="false" isPrimaryKey="true" label="Stockunitid" readOnly="true" />
+    <field name="StockunitDesc" type="String" allowNulls="false" label="Stockunit Desc" length="50" showInSummary="true" />
+	<field name="RealstateOwners" type="String" label="RealstateOwners" length="50" showInSummary="true" />
+    <field name="Floor" type="String" default="((0))" label="Floor" length="5" showInSummary="true" />
+    <field name="viewlistid" type="Int64" allowNulls="false" label="Viewlistid" showInSummary="true">
+      <items style="Lookup" dataController="Realstarteviewlist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="viewlistviewlistDesc" type="String" readOnly="true" label="viewlistviewlist Desc" length="150" />
+    <field name="Realstateunittypeid" type="Int64" allowNulls="false" default="((1))" label="Realstateunittypeid" showInSummary="true">
+      <items style="Lookup" dataController="Realstateunittypelist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="RealstateunittypeRealstateunittype" type="String" readOnly="true" label="Realstateunittype" length="150" />
+    <field name="Area" type="String" label="Area" length="50" showInSummary="true" />
+    <field name="kindlistid" type="Int64" allowNulls="false" label="Kindlistid">
+      <items style="Lookup" dataController="RealstateKindlist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="kindlistkindlistdesc" type="String" readOnly="true" label="Kindlistkindlistdesc" length="50" />
+    <field name="Realstateprjid" type="Int64" allowNulls="false" label="Realstateprjid">
+      <items style="Lookup" dataController="Realstateproject" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="RealstateprjRealstateprjDesc" type="String" readOnly="true" label="Realstateprj Desc" length="150" />
+    <field name="Realstateprjsgmsgm_Nm" type="String" readOnly="true" label="Realstateprjsgmsgm Nm" length="255" />
+    <field name="RealstateprjsgmOpcoOpcoName" type="String" readOnly="true" label="Realstateprjsgm Opco Name" length="50" />
+    <field name="RealstateprjCntry_Cntry_Nm" type="String" readOnly="true" label="Realstateprj Cntry Nm" length="255" />
+    <field name="RealstateprjSup_Sup_Nm" type="String" readOnly="true" label="Realstateprj Sup Nm" length="255" />
+    <field name="RealstateprjSup_Acc_Acc_Nm" type="String" readOnly="true" label="Realstateprj Sup Acc Nm" length="255" />
+    <field name="RealstateprjSup_sgmsgm_Nm" type="String" readOnly="true" label="Realstateprj Sup sgmsgm Nm" length="255" />
+    <field name="RealstateprjSup_Cntry_Cntry_Nm" type="String" readOnly="true" label="Realstateprj Sup Cntry Nm" length="255" />
+    <field name="RealstateprjSup_Curncy_Curncy_Nm" type="String" readOnly="true" label="Realstateprj Sup Curncy Nm" length="200" />
+    <field name="countoffloor" type="String" default="((1))" label="Countoffloor" length="5" />
+    <field name="price" type="Decimal" default="((0))" label="Price" />
+    <field name="price1" type="Decimal" default="((0))" label="Price1" />
+    <field name="price2" type="Decimal" default="((0))" label="Price2" />
+    <field name="statusid" type="Int64" allowNulls="false" default="((1))" label="Statusid">
+      <items style="Lookup" dataController="Realstatestatuslist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="statusstatusdesc" type="String" readOnly="true" label="Statusstatusdesc" length="50" />
+    <field name="ReservationAmount" type="Decimal" label="Reservation Amount" />
+    <field name="ReservationDate" type="DateTime" label="Reservation Date" />
+    <field name="ReservationVoucherNo" type="Int64" label="Reservation Voucher No" />
+    <field name="RealstatypeId" type="Int64" label="Realstatype#">
+      <items style="Lookup" dataController="RealstaType" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="RealstatypeRealstatype" type="String" readOnly="true" label="Realstatype" length="150" />
+    <field name="unitowner" type="Int64"  label="Unitowner" length="50" >
+    <items style="Lookup" dataController="RealstateOwners" newDataView="createForm1" searchOnStart="true" />
+	    </field>
+    <field name="Segment" type="String" label="Segment" length="255" />
+    <field name="Street" type="String" label="Street" length="255" />
+    <field name="Avenue" type="String" label="Avenue" length="255" />
+    <field name="Building_Home" type="String" label="Building Home" length="255" />
+    <field name="Appartment" type="String" default="((0))" allowQBE="false" allowSorting="false" label="Appartment" length="-1" />
+		
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Realstate Stock">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="StockunitDesc" columns="50" />
+			    <dataField fieldName="Segment" />
+	    <dataField fieldName="Street" />
+        <dataField fieldName="Avenue" />
+        <dataField fieldName="Building_Home" />
+        <dataField fieldName="Appartment" rows="5" />
+        <dataField fieldName="Floor" columns="5" />
+        <dataField fieldName="viewlistid" aliasFieldName="viewlistviewlistDesc" hyperlinkFormatString="~/Pages/Realstarteviewlist.aspx?viewlistid={viewlistid}&amp;_controller=Realstarteviewlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Realstateunittypeid" aliasFieldName="RealstateunittypeRealstateunittype" hyperlinkFormatString="~/Pages/Realstateunittypelist.aspx?Realstateunittypeid={Realstateunittypeid}&amp;_controller=Realstateunittypelist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Area" columns="50" />
+        <dataField fieldName="kindlistid" aliasFieldName="kindlistkindlistdesc" hyperlinkFormatString="~/Pages/RealstateKindlist.aspx?kindlistid={kindlistid}&amp;_controller=RealstateKindlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Realstateprjid" aliasFieldName="RealstateprjRealstateprjDesc" hyperlinkFormatString="~/Pages/Realstateproject.aspx?Realstateprjid={Realstateprjid}&amp;_controller=Realstateproject&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="countoffloor" columns="5" />
+        <dataField fieldName="price" columns="15" />
+        <dataField fieldName="price1" columns="15" />
+        <dataField fieldName="price2" columns="15" />
+        <dataField fieldName="statusid" aliasFieldName="statusstatusdesc" hyperlinkFormatString="~/Pages/Realstatestatuslist.aspx?statusid={statusid}&amp;_controller=Realstatestatuslist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="ReservationAmount" dataFormatString="c" columns="15" />
+        <dataField fieldName="ReservationDate" columns="10" />
+        <dataField fieldName="ReservationVoucherNo" columns="15" />
+        <dataField fieldName="RealstatypeId" aliasFieldName="RealstatypeRealstatype" hyperlinkFormatString="~/Pages/RealstaType.aspx?RealstatypeId={RealstatypeId}&amp;_controller=RealstaType&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="unitowner" columns="50"  aliasFieldName="RealstateOwners"  />
+        <dataField fieldName="Realstateprjsgmsgm_Nm" hidden="true" />
+        <dataField fieldName="RealstateprjsgmOpcoOpcoName" columns="50" hidden="true" />
+        <dataField fieldName="RealstateprjCntry_Cntry_Nm"  hidden="true" />
+
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Realstate Stock">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Realstate Stock" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="StockunitDesc" columns="50" />
+						    <dataField fieldName="Segment" />
+					<dataField fieldName="Street" />
+        <dataField fieldName="Avenue" />
+        <dataField fieldName="Building_Home" />
+        <dataField fieldName="Appartment" rows="5" />
+            <dataField fieldName="Floor" columns="5" />
+            <dataField fieldName="viewlistid" aliasFieldName="viewlistviewlistDesc" hyperlinkFormatString="~/Pages/Realstarteviewlist.aspx?viewlistid={viewlistid}&amp;_controller=Realstarteviewlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Realstateunittypeid" aliasFieldName="RealstateunittypeRealstateunittype" hyperlinkFormatString="~/Pages/Realstateunittypelist.aspx?Realstateunittypeid={Realstateunittypeid}&amp;_controller=Realstateunittypelist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Area" columns="50" />
+            <dataField fieldName="kindlistid" aliasFieldName="kindlistkindlistdesc" hyperlinkFormatString="~/Pages/RealstateKindlist.aspx?kindlistid={kindlistid}&amp;_controller=RealstateKindlist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Realstateprjid" aliasFieldName="RealstateprjRealstateprjDesc" hyperlinkFormatString="~/Pages/Realstateproject.aspx?Realstateprjid={Realstateprjid}&amp;_controller=Realstateproject&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="countoffloor" columns="5" />
+            <dataField fieldName="price" columns="15" />
+            <dataField fieldName="price1" columns="15" />
+            <dataField fieldName="price2" columns="15" />
+            <dataField fieldName="statusid" aliasFieldName="statusstatusdesc" hyperlinkFormatString="~/Pages/Realstatestatuslist.aspx?statusid={statusid}&amp;_controller=Realstatestatuslist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="ReservationAmount" dataFormatString="c" columns="15" />
+            <dataField fieldName="ReservationDate" columns="10" />
+            <dataField fieldName="ReservationVoucherNo" columns="15" />
+            <dataField fieldName="RealstatypeId" aliasFieldName="RealstatypeRealstatype" hyperlinkFormatString="~/Pages/RealstaType.aspx?RealstatypeId={RealstatypeId}&amp;_controller=RealstaType&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="unitowner" columns="50"  aliasFieldName="RealstateOwners"  />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Realstateprjsgmsgm_Nm" hidden="true" />
+            <dataField fieldName="RealstateprjsgmOpcoOpcoName" columns="50" hidden="true" />
+            <dataField fieldName="RealstateprjCntry_Cntry_Nm" hidden="true" />
+            <dataField fieldName="RealstateprjSup_Sup_Nm" hidden="true" />
+            <dataField fieldName="RealstateprjSup_Acc_Acc_Nm" hidden="true" />
+            <dataField fieldName="RealstateprjSup_sgmsgm_Nm" hidden="true" />
+            <dataField fieldName="RealstateprjSup_Cntry_Cntry_Nm" hidden="true" />
+            <dataField fieldName="RealstateprjSup_Curncy_Curncy_Nm" hidden="true" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Realstate Stock">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Realstate Stock" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="StockunitDesc" columns="50" />
+						    <dataField fieldName="Segment" />
+					<dataField fieldName="Street" />
+        <dataField fieldName="Avenue" />
+        <dataField fieldName="Building_Home" />
+        <dataField fieldName="Appartment" rows="5" />
+
+            <dataField fieldName="Floor" columns="5" />
+            <dataField fieldName="viewlistid" aliasFieldName="viewlistviewlistDesc" />
+            <dataField fieldName="Realstateunittypeid" aliasFieldName="RealstateunittypeRealstateunittype" />
+            <dataField fieldName="Area" columns="50" />
+            <dataField fieldName="kindlistid" aliasFieldName="kindlistkindlistdesc" />
+            <dataField fieldName="Realstateprjid" aliasFieldName="RealstateprjRealstateprjDesc" />
+            <dataField fieldName="countoffloor" columns="5" />
+            <dataField fieldName="price" columns="15" />
+            <dataField fieldName="price1" columns="15" />
+            <dataField fieldName="price2" columns="15" />
+            <dataField fieldName="statusid" aliasFieldName="statusstatusdesc" />
+            <dataField fieldName="ReservationAmount" dataFormatString="c" columns="15" />
+            <dataField fieldName="ReservationDate" columns="10" />
+            <dataField fieldName="ReservationVoucherNo" columns="15" />
+            <dataField fieldName="RealstatypeId" aliasFieldName="RealstatypeRealstatype" />
+            <dataField fieldName="unitowner" columns="50"  aliasFieldName="RealstateOwners"  />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

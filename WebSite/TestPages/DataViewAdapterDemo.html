@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DataView Runtime Adapter - HTML Demo</title>
+  <style>
+    body{font-family:Segoe UI,Arial,sans-serif;margin:16px;}
+    .DataView{border-collapse:collapse;width:100%;}
+    .DataView th,.DataView td{border:1px solid #ddd;padding:6px 8px;font-size:14px}
+    .HeaderRow{background:#f5f7fb;color:#1f2a44}
+    .Row{background:#fff}
+    .AlternatingRow{background:#fafafa}
+    .FooterRow .Footer{padding:8px 0}
+    .DataViewPager a[aria-disabled="true"]{pointer-events:none;opacity:.4}
+    .DataViewToolbar{margin-bottom:6px}
+    .log{background:#0b1020;color:#c7e0ff;padding:8px 10px;border-radius:6px;font:12px Consolas,monospace;white-space:pre-wrap}
+  </style>
+</head>
+<body>
+  <h2>DataView Runtime Adapter - HTML Demo</h2>
+  <p>
+    Controller: <code>glmfbab</code> · View: <code>grid1</code>
+  </p>
+  <div id="host" style="border:1px solid #e1e5ee;border-radius:6px;padding:10px"></div>
+  <h3>Console Echo</h3>
+  <div id="echo" class="log"></div>
+
+  <script src="../js/dataview-runtime-adapter.js"></script>
+  <script>
+    (function(){
+      var host = document.getElementById('host');
+      var echo = document.getElementById('echo');
+      function log(){
+        var args = Array.prototype.slice.call(arguments).map(function(a){
+          try { return typeof a === 'string' ? a : JSON.stringify(a, null, 2); } catch(e){ return String(a); }
+        }).join('\n');
+        console.log.apply(console, arguments);
+        echo.textContent = (echo.textContent ? echo.textContent + '\n\n' : '') + args;
+      }
+
+      // Wrap fetchers to echo request/response
+      var origGet = DataViewRuntime.fetchViewPageAsmx;
+      DataViewRuntime.fetchViewPageAsmx = function(req, options){
+        log('GetPage: request', { controller:req.controller, view:req.view, pageIndex:req.pageIndex, pageSize:req.pageSize, sort:req.sortExpression, filter:req.filter, quickFind:req.quickFind });
+        return origGet(req, options).then(function(vp){ log('GetPage: response snapshot', { totalRowCount: vp.TotalRowCount||vp.totalRowCount, fields:(vp.Fields||[]).length, rows:(vp.Rows||vp.rows||[]).length, sort: vp.SortExpression||vp.sortExpression }); return vp; });
+      };
+      var origExec = DataViewRuntime.executeActionAsmx;
+      DataViewRuntime.executeActionAsmx = function(action, options){ log('Execute: action', action); return origExec(action, options).then(function(r){ log('Execute: result', r); return r; }); };
+
+      var req = {
+        controller: 'glmfbab',
+        view: 'grid1',
+        pageIndex: 0,
+        pageSize: 20,
+        sortExpression: ''
+      };
+      var options = {
+        // from TestPages/, Services folder is one level up
+        asmxUrl: '../Services/DataControllerService.asmx/GetPage',
+        asmxExecuteUrl: '../Services/DataControllerService.asmx/Execute',
+        requireMetaData: true,
+        requireRowCount: true
+      };
+
+      // Mount
+      DataViewRuntime.mountDataView(host, req, options).then(function(model){
+        log('Model:', model);
+      }).catch(function(err){
+        log('Mount failed:', String(err && err.message || err));
+      });
+
+      // Tip for testers
+      log('Tip:', 'Use the Quick Find box above the grid: type and press Enter (or blur). Expect network POST to GetPage with Filter containing _quickfind_:~term.');
+    })();
+  </script>
+</body>
+</html>

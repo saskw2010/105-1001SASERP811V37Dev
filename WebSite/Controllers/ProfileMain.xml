@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="ProfileMain" conflictDetection="overwriteChanges" label="Profile Main" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"ProfileMain"."profilecode" "profilecode"
+	,"ProfileMain"."Profileyear" "Profileyear"
+	,"ProfileMain"."Mokelcode" "Mokelcode"
+	,"Mokel"."name" "Mokelname"
+	,"ProfileMain"."Mokpcode" "Mokpcode"
+	,"Mokp"."name" "Mokpname"
+	,"ProfileMain"."khesmcode" "khesmcode"
+	,"khesm"."name" "khesmname"
+	,"khesmkhosmetype"."khosmetypename" "khesmkhosmetypekhosmetypename"
+	,"khesmnationality"."Cntry_Nm" "khesmnationalityCntry_Nm"
+	,"khesmreligion"."Reljan_nm" "khesmreligionReljan_nm"
+	,"ProfileMain"."number1" "number1"
+	,"ProfileMain"."internetCode" "internetCode"
+	,"ProfileMain"."summary" "summary"
+	,"ProfileMain"."localMony" "localMony"
+	,"ProfileMain"."profiltype" "profiltype"
+	,"profiltype"."name" "profiltypename"
+	,"ProfileMain"."Enterdate" "Enterdate"
+	,"ProfileMain"."laywercode" "laywercode"
+	,"laywer"."laywername" "laywerlaywername"
+	,"ProfileMain"."Empolyeecode" "Empolyeecode"
+	,"Empolyee"."name" "Empolyeename"
+	,"ProfileMain"."CortID" "CortID"
+	,"Cort"."CortName" "CortCortName"
+	,"ProfileMain"."CortDawaNo" "CortDawaNo"
+	,"ProfileMain"."CortDawaState" "CortDawaState"
+	,"ProfileMain"."paymentsType" "paymentsType"
+	,"paymentsType"."Name" "paymentsTypeName"
+	,"ProfileMain"."IdaryID" "IdaryID"
+	,"Idary"."Dwaername" "IdaryDwaername"
+	,"ProfileMain"."UID" "UID"
+	,"ProfileMain"."ModifiedBy" "ModifiedBy"
+	,"ProfileMain"."ModifiedOn" "ModifiedOn"
+	,"ProfileMain"."CreatedBy" "CreatedBy"
+	,"ProfileMain"."CreatedOn" "CreatedOn"
+from "dbo"."ProfileMain" "ProfileMain"
+	left join "dbo"."Mowakel" "Mokel" on "ProfileMain"."Mokelcode" = "Mokel"."Mokelcode"
+	left join "dbo"."MowakelProperties" "Mokp" on "ProfileMain"."Mokpcode" = "Mokp"."Mokpcode"
+	left join "dbo"."Khsom" "khesm" on "ProfileMain"."khesmcode" = "khesm"."khosmcode"
+	left join "dbo"."khosmetypetable" "khesmkhosmetype" on "khesm"."khosmetype" = "khesmkhosmetype"."khosmetype"
+	left join "dbo"."PYCntry" "khesmnationality" on "khesm"."nationality" = "khesmnationality"."Cntry_No"
+	left join "dbo"."PyReljan" "khesmreligion" on "khesm"."religion" = "khesmreligion"."reljan"
+	left join "dbo"."ProfileType" "profiltype" on "ProfileMain"."profiltype" = "profiltype"."code"
+	left join "dbo"."Lawyers" "laywer" on "ProfileMain"."laywercode" = "laywer"."laywercode"
+	left join "dbo"."profileEmployees" "Empolyee" on "ProfileMain"."Empolyeecode" = "Empolyee"."Empolyeecode"
+	left join "dbo"."Corts" "Cort" on "ProfileMain"."CortID" = "Cort"."CortID"
+	left join "dbo"."PaymentTypes" "paymentsType" on "ProfileMain"."paymentsType" = "paymentsType"."Code"
+	left join "dbo"."Dwaer" "Idary" on "ProfileMain"."IdaryID" = "Idary"."Dwaercode"
+]]></text>
+    </command>
+    <command id="profilecodeIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="profilecode" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="profilecode" type="Int64" allowNulls="false" isPrimaryKey="true" label="Profilecode" readOnly="true" />
+    <field name="Profileyear" type="Int64" label="Profileyear" showInSummary="true" />
+    <field name="Mokelcode" type="Int64" label="Mokelcode" showInSummary="true">
+      <items style="Lookup" dataController="Mowakel" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Mokelname" type="String" readOnly="true" label="Mokelname" length="100" />
+    <field name="Mokpcode" type="Int64" label="Mokpcode" showInSummary="true">
+      <items style="Lookup" dataController="MowakelProperties" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Mokpname" type="String" readOnly="true" label="Mokpname" length="175" />
+    <field name="khesmcode" type="Int64" label="Khesmcode" showInSummary="true">
+      <items style="Lookup" dataController="Khsom" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="khesmname" type="String" readOnly="true" label="Khesmname" length="100" />
+    <field name="khesmkhosmetypekhosmetypename" type="String" readOnly="true" label="Khesmkhosmetypekhosmetypename" length="50" />
+    <field name="khesmnationalityCntry_Nm" type="String" readOnly="true" label="khesmnationality Cntry Nm" length="255" />
+    <field name="khesmreligionReljan_nm" type="String" readOnly="true" label="khesmreligion Reljan nm" length="50" />
+    <field name="number1" type="Decimal" label="Number1" showInSummary="true" />
+    <field name="internetCode" type="String" label="internet Code" length="50" />
+    <field name="summary" type="String" allowQBE="false" allowSorting="false" label="Summary" length="-1" />
+    <field name="localMony" type="Decimal" label="local Mony" />
+    <field name="profiltype" type="Int64" label="Profiltype">
+      <items style="Lookup" dataController="ProfileType" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="profiltypename" type="String" readOnly="true" label="Profiltypename" length="150" />
+    <field name="Enterdate" type="DateTime" default="(getdate())" label="Enterdate" />
+    <field name="laywercode" type="Int64" label="Laywercode">
+      <items style="Lookup" dataController="Lawyers" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="laywerlaywername" type="String" readOnly="true" label="Laywerlaywername" length="60" />
+    <field name="Empolyeecode" type="Int64" label="Empolyeecode">
+      <items style="Lookup" dataController="profileEmployees" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="Empolyeename" type="String" readOnly="true" label="Empolyeename" length="100" />
+    <field name="CortID" type="Int64" label="Cort#">
+      <items searchOnStart="true" />
+    </field>
+    <field name="CortCortName" type="String" readOnly="true" label="Cort Name" length="50" />
+    <field name="CortDawaNo" type="String" label="Cort Dawa No" length="30" />
+    <field name="CortDawaState" type="String" label="Cort Dawa State" length="50" />
+    <field name="paymentsType" type="Int64" label="payments Type">
+      <items style="Lookup" dataController="PaymentTypes" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="paymentsTypeName" type="String" readOnly="true" label="payments Type Name" length="75" />
+    <field name="IdaryID" type="Int64" label="Idary#">
+      <items style="Lookup" dataController="Dwaer" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="IdaryDwaername" type="String" readOnly="true" label="Idary Dwaername" length="100" />
+    <field name="UID" type="Int64" label="Uid" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Profile Main">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Profileyear" columns="15" />
+        <dataField fieldName="Mokelcode" aliasFieldName="Mokelname" hyperlinkFormatString="~/Pages/Mowakel.aspx?Mokelcode={Mokelcode}&amp;_controller=Mowakel&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Mokpcode" aliasFieldName="Mokpname" hyperlinkFormatString="~/Pages/MowakelProperties.aspx?Mokpcode={Mokpcode}&amp;_controller=MowakelProperties&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="khesmcode" aliasFieldName="khesmname" hyperlinkFormatString="~/Pages/Khsom.aspx?khosmcode={khesmcode}&amp;_controller=Khsom&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="number1" columns="15" />
+        <dataField fieldName="internetCode" columns="50" />
+        <dataField fieldName="summary" rows="5" />
+        <dataField fieldName="localMony" dataFormatString="c" columns="15" />
+        <dataField fieldName="profiltype" aliasFieldName="profiltypename" hyperlinkFormatString="~/Pages/ProfileType.aspx?code={profiltype}&amp;_controller=ProfileType&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Enterdate" columns="10" />
+        <dataField fieldName="laywercode" aliasFieldName="laywerlaywername" hyperlinkFormatString="~/Pages/Lawyers.aspx?laywercode={laywercode}&amp;_controller=Lawyers&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Empolyeecode" aliasFieldName="Empolyeename" hyperlinkFormatString="~/Pages/profileEmployees.aspx?Empolyeecode={Empolyeecode}&amp;_controller=profileEmployees&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="CortID" aliasFieldName="CortCortName" hyperlinkFormatString="~/Pages/Corts.aspx?CortID={CortID}&amp;_controller=Corts&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="CortDawaNo" columns="30" />
+        <dataField fieldName="CortDawaState" columns="50" />
+        <dataField fieldName="paymentsType" aliasFieldName="paymentsTypeName" hyperlinkFormatString="~/Pages/PaymentTypes.aspx?Code={paymentsType}&amp;_controller=PaymentTypes&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="IdaryID" aliasFieldName="IdaryDwaername" hyperlinkFormatString="~/Pages/Dwaer.aspx?Dwaercode={IdaryID}&amp;_controller=Dwaer&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="UID" columns="15" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Profile Main">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Profile Main" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Profileyear" columns="15" />
+            <dataField fieldName="Mokelcode" aliasFieldName="Mokelname" hyperlinkFormatString="~/Pages/Mowakel.aspx?Mokelcode={Mokelcode}&amp;_controller=Mowakel&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Mokpcode" aliasFieldName="Mokpname" hyperlinkFormatString="~/Pages/MowakelProperties.aspx?Mokpcode={Mokpcode}&amp;_controller=MowakelProperties&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="khesmcode" aliasFieldName="khesmname" hyperlinkFormatString="~/Pages/Khsom.aspx?khosmcode={khesmcode}&amp;_controller=Khsom&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="number1" columns="15" />
+            <dataField fieldName="internetCode" columns="50" />
+            <dataField fieldName="summary" rows="5" />
+            <dataField fieldName="localMony" dataFormatString="c" columns="15" />
+            <dataField fieldName="profiltype" aliasFieldName="profiltypename" hyperlinkFormatString="~/Pages/ProfileType.aspx?code={profiltype}&amp;_controller=ProfileType&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Enterdate" columns="10" />
+            <dataField fieldName="laywercode" aliasFieldName="laywerlaywername" hyperlinkFormatString="~/Pages/Lawyers.aspx?laywercode={laywercode}&amp;_controller=Lawyers&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="Empolyeecode" aliasFieldName="Empolyeename" hyperlinkFormatString="~/Pages/profileEmployees.aspx?Empolyeecode={Empolyeecode}&amp;_controller=profileEmployees&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="CortID" aliasFieldName="CortCortName" hyperlinkFormatString="~/Pages/Corts.aspx?CortID={CortID}&amp;_controller=Corts&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="CortDawaNo" columns="30" />
+            <dataField fieldName="CortDawaState" columns="50" />
+            <dataField fieldName="paymentsType" aliasFieldName="paymentsTypeName" hyperlinkFormatString="~/Pages/PaymentTypes.aspx?Code={paymentsType}&amp;_controller=PaymentTypes&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="IdaryID" aliasFieldName="IdaryDwaername" hyperlinkFormatString="~/Pages/Dwaer.aspx?Dwaercode={IdaryID}&amp;_controller=Dwaer&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="UID" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="khesmkhosmetypekhosmetypename" columns="50" />
+            <dataField fieldName="khesmnationalityCntry_Nm" />
+            <dataField fieldName="khesmreligionReljan_nm" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Profile Main">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Profile Main" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Profileyear" columns="15" />
+            <dataField fieldName="Mokelcode" aliasFieldName="Mokelname" />
+            <dataField fieldName="Mokpcode" aliasFieldName="Mokpname" />
+            <dataField fieldName="khesmcode" aliasFieldName="khesmname" />
+            <dataField fieldName="number1" columns="15" />
+            <dataField fieldName="internetCode" columns="50" />
+            <dataField fieldName="summary" rows="5" />
+            <dataField fieldName="localMony" dataFormatString="c" columns="15" />
+            <dataField fieldName="profiltype" aliasFieldName="profiltypename" />
+            <dataField fieldName="Enterdate" columns="10" />
+            <dataField fieldName="laywercode" aliasFieldName="laywerlaywername" />
+            <dataField fieldName="Empolyeecode" aliasFieldName="Empolyeename" />
+            <dataField fieldName="CortID" aliasFieldName="CortCortName" />
+            <dataField fieldName="CortDawaNo" columns="30" />
+            <dataField fieldName="CortDawaState" columns="50" />
+            <dataField fieldName="paymentsType" aliasFieldName="paymentsTypeName" />
+            <dataField fieldName="IdaryID" aliasFieldName="IdaryDwaername" />
+            <dataField fieldName="UID" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

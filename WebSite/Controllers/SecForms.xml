@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="SecForms" conflictDetection="overwriteChanges" label="Sec Forms" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"SecForms"."FormId" "FormId"
+	,"SecForms"."FormNM" "FormNM"
+	,"SecForms"."FormNamenet" "FormNamenet"
+	,"SecForms"."EN" "EN"
+	,"SecForms"."AR" "AR"
+	,"SecForms"."MenuID" "MenuID"
+	,"Menu"."MenuAr" "MenuMenuAr"
+	,"MenuIDGroup"."GroupAr" "MenuIDGroupGroupAr"
+	,"MenuIDGroupMOD"."MODAr" "MenuIDGroupMODMODAr"
+	,"SecForms"."TableNameo" "TableNameo"
+	,"SecForms"."ModifiedBy" "ModifiedBy"
+	,"SecForms"."ModifiedOn" "ModifiedOn"
+	,"SecForms"."CreatedBy" "CreatedBy"
+	,"SecForms"."CreatedOn" "CreatedOn"
+from "dbo"."SecForms" "SecForms"
+	left join "dbo"."MenuMaster" "Menu" on "SecForms"."MenuID" = "Menu"."MenuID"
+	left join "dbo"."GroupMaster" "MenuIDGroup" on "Menu"."IDGroup" = "MenuIDGroup"."GroupID"
+	left join "dbo"."MODMaster" "MenuIDGroupMOD" on "MenuIDGroup"."MODID" = "MenuIDGroupMOD"."MODID"
+]]></text>
+    </command>
+    <command id="FormIdIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="FormId" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="FormId" type="Decimal" allowNulls="false" label="Form#" readOnly="true" showInSummary="true" />
+    <field name="FormNM" type="String" allowNulls="false" label="Form NM" length="50" showInSummary="true" />
+    <field name="FormNamenet" type="String" allowNulls="false" isPrimaryKey="true" label="Form Namenet" length="50" showInSummary="true" />
+    <field name="EN" type="String" label="En" length="255" showInSummary="true" />
+    <field name="AR" type="String" label="Ar" length="255" showInSummary="true" />
+    <field name="MenuID" type="Int64" label="Menu#">
+      <items style="Lookup" dataController="MenuMaster" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="MenuMenuAr" type="String" readOnly="true" label="Menu Ar" length="50" />
+    <field name="MenuIDGroupGroupAr" type="String" readOnly="true" label="Menu ID Group Ar" length="50" />
+    <field name="MenuIDGroupMODMODAr" type="String" readOnly="true" label="Menu ID Group MODMOD Ar" length="50" />
+    <field name="TableNameo" type="String" label="Table Nameo" length="50" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Sec Forms">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="FormId" columns="15" />
+        <dataField fieldName="FormNM" columns="50" />
+        <dataField fieldName="FormNamenet" columns="50" />
+        <dataField fieldName="EN" />
+        <dataField fieldName="AR" />
+        <dataField fieldName="MenuID" aliasFieldName="MenuMenuAr" hyperlinkFormatString="~/Pages/MenuMaster.aspx?MenuID={MenuID}&amp;_controller=MenuMaster&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="TableNameo" columns="50" />
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="MenuIDGroupGroupAr" columns="50" />
+        <dataField fieldName="MenuIDGroupMODMODAr" columns="50" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Sec Forms">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Sec Forms" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="FormId" columns="15" />
+            <dataField fieldName="FormNM" columns="50" />
+            <dataField fieldName="FormNamenet" columns="50" />
+            <dataField fieldName="EN" />
+            <dataField fieldName="AR" />
+            <dataField fieldName="MenuID" aliasFieldName="MenuMenuAr" hyperlinkFormatString="~/Pages/MenuMaster.aspx?MenuID={MenuID}&amp;_controller=MenuMaster&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="TableNameo" columns="50" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="MenuIDGroupGroupAr" columns="50" />
+            <dataField fieldName="MenuIDGroupMODMODAr" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Sec Forms">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Sec Forms" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="FormNM" columns="50" />
+            <dataField fieldName="FormNamenet" columns="50" />
+            <dataField fieldName="EN" />
+            <dataField fieldName="AR" />
+            <dataField fieldName="MenuID" aliasFieldName="MenuMenuAr" />
+            <dataField fieldName="TableNameo" columns="50" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

@@ -1,0 +1,5 @@
+# Folder: appsitemap
+
+Purpose: additional sitemap files for specific modules/areas.
+
+Back to hub: ../index.md | TOC: ../TOC.md

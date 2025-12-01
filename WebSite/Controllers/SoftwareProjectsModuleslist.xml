@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="SoftwareProjectsModuleslist" conflictDetection="overwriteChanges" label="Software Projects Moduleslist" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"SoftwareProjectsModuleslist"."sprid" "sprid"
+	,"spr"."sprnotes" "sprsprnotes"
+	,"sprsprcustm"."sprcustomername" "sprsprcustmsprcustomername"
+	,"sprsprcustmsprcustomerclass1"."sprcustomerclass1Desc" "sprsprcustmsprcustomerclass1sprcustomerclass1Desc"
+	,"sprsprcustmsprcustomerclass2"."sprcustomerclass2Desc" "sprsprcustmsprcustomerclass2sprcustomerclass2Desc"
+	,"sprsprcustmsprcustomerclass3"."sprcustomerclass3Desc" "sprsprcustmsprcustomerclass3sprcustomerclass3Desc"
+	,"sprsprcustmsprcustomerclass4"."sprcustomerclass4Desc" "sprsprcustmsprcustomerclass4sprcustomerclass4Desc"
+	,"sprsprslm"."sprpersonname" "sprsprslmsprpersonname"
+	,"sprsprslmsprjob"."sprjobdesc" "sprsprslmsprjobsprjobdesc"
+	,"sprsprleader"."sprpersonname" "sprsprleadersprpersonname"
+	,"sprsprleadersprjob"."sprjobdesc" "sprsprleadersprjobsprjobdesc"
+	,"sprsprdesigner"."sprpersonname" "sprsprdesignersprpersonname"
+	,"sprsprdesignersprjob"."sprjobdesc" "sprsprdesignersprjobsprjobdesc"
+	,"sprsprtype"."sprtypeDesc" "sprsprtypesprtypeDesc"
+	,"SoftwareProjectsModuleslist"."sprModuleid" "sprModuleid"
+	,"sprModule"."sprModuleDesc" "sprModulesprModuleDesc"
+	,"sprModulesprModulecat"."sprModulecatDesc" "sprModulesprModulecatsprModulecatDesc"
+from "dbo"."SoftwareProjectsModuleslist" "SoftwareProjectsModuleslist"
+	left join "dbo"."SoftwareProjects" "spr" on "SoftwareProjectsModuleslist"."sprid" = "spr"."sprid"
+	left join "dbo"."Softwareprojectcustomers" "sprsprcustm" on "spr"."sprcustmno" = "sprsprcustm"."sprcustmno"
+	left join "dbo"."softwareprojectcustomerclass1" "sprsprcustmsprcustomerclass1" on "sprsprcustm"."sprcustomerclass1id" = "sprsprcustmsprcustomerclass1"."sprcustomerclass1id"
+	left join "dbo"."softwareprojectcustomerclass2" "sprsprcustmsprcustomerclass2" on "sprsprcustm"."sprcustomerclass2id" = "sprsprcustmsprcustomerclass2"."sprcustomerclass2id"
+	left join "dbo"."softwareprojectcustomerclass3" "sprsprcustmsprcustomerclass3" on "sprsprcustm"."sprcustomerclass3id" = "sprsprcustmsprcustomerclass3"."sprcustomerclass3id"
+	left join "dbo"."softwareprojectcustomerclass4" "sprsprcustmsprcustomerclass4" on "sprsprcustm"."sprcustomerclass4id" = "sprsprcustmsprcustomerclass4"."sprcustomerclass4id"
+	left join "dbo"."softwareprojectsteam" "sprsprslm" on "spr"."sprslmno" = "sprsprslm"."softwareprojecttid"
+	left join "dbo"."sprjobs" "sprsprslmsprjob" on "sprsprslm"."sprjob" = "sprsprslmsprjob"."sprjobid"
+	left join "dbo"."softwareprojectsteam" "sprsprleader" on "spr"."sprleader" = "sprsprleader"."softwareprojecttid"
+	left join "dbo"."sprjobs" "sprsprleadersprjob" on "sprsprleader"."sprjob" = "sprsprleadersprjob"."sprjobid"
+	left join "dbo"."softwareprojectsteam" "sprsprdesigner" on "spr"."sprdesigner" = "sprsprdesigner"."softwareprojecttid"
+	left join "dbo"."sprjobs" "sprsprdesignersprjob" on "sprsprdesigner"."sprjob" = "sprsprdesignersprjob"."sprjobid"
+	left join "dbo"."softwareprojecttype" "sprsprtype" on "spr"."sprtype" = "sprsprtype"."sprtypeid"
+	left join "dbo"."SoftwareModuleslist" "sprModule" on "SoftwareProjectsModuleslist"."sprModuleid" = "sprModule"."sprModuleid"
+	left join "dbo"."SoftwareModulescatlist" "sprModulesprModulecat" on "sprModule"."sprModulecatid" = "sprModulesprModulecat"."sprModulecatid"
+]]></text>
+    </command>
+  </commands>
+  <fields>
+    <field name="sprid" type="Int64" isPrimaryKey="true" label="Sprid" showInSummary="true">
+      <items style="Lookup" dataController="SoftwareProjects" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sprsprnotes" type="String" readOnly="true" oneToOne="sprnotes" allowQBE="false" allowSorting="false" label="Sprsprnotes" length="-1" />
+    <field name="sprsprcustmsprcustomername" type="String" readOnly="true" label="Sprsprcustmsprcustomername" length="150" />
+    <field name="sprsprcustmsprcustomerclass1sprcustomerclass1Desc" type="String" readOnly="true" label="sprsprcustmsprcustomerclass1sprcustomerclass1 Desc" length="150" />
+    <field name="sprsprcustmsprcustomerclass2sprcustomerclass2Desc" type="String" readOnly="true" label="sprsprcustmsprcustomerclass2sprcustomerclass2 Desc" length="150" />
+    <field name="sprsprcustmsprcustomerclass3sprcustomerclass3Desc" type="String" readOnly="true" label="sprsprcustmsprcustomerclass3sprcustomerclass3 Desc" length="150" />
+    <field name="sprsprcustmsprcustomerclass4sprcustomerclass4Desc" type="String" readOnly="true" label="sprsprcustmsprcustomerclass4sprcustomerclass4 Desc" length="150" />
+    <field name="sprsprslmsprpersonname" type="String" readOnly="true" label="Sprsprslmsprpersonname" length="150" />
+    <field name="sprsprslmsprjobsprjobdesc" type="String" readOnly="true" label="Sprsprslmsprjobsprjobdesc" length="150" />
+    <field name="sprsprleadersprpersonname" type="String" readOnly="true" label="Sprsprleadersprpersonname" length="150" />
+    <field name="sprsprleadersprjobsprjobdesc" type="String" readOnly="true" label="Sprsprleadersprjobsprjobdesc" length="150" />
+    <field name="sprsprdesignersprpersonname" type="String" readOnly="true" label="Sprsprdesignersprpersonname" length="150" />
+    <field name="sprsprdesignersprjobsprjobdesc" type="String" readOnly="true" label="Sprsprdesignersprjobsprjobdesc" length="150" />
+    <field name="sprsprtypesprtypeDesc" type="String" readOnly="true" label="sprsprtypesprtype Desc" length="150" />
+    <field name="sprModuleid" type="Int64" label="spr Moduleid" showInSummary="true">
+      <items style="Lookup" dataController="SoftwareModuleslist" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="sprModulesprModuleDesc" type="String" readOnly="true" oneToOne="sprModuleDesc" label="spr Modulespr Module Desc" length="50" />
+    <field name="sprModulesprModulecatsprModulecatDesc" type="String" readOnly="true" label="spr Modulespr Modulecatspr Modulecat Desc" length="50" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Software Projects Moduleslist">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="sprid" aliasFieldName="sprsprnotes" />
+        <dataField fieldName="sprModuleid" aliasFieldName="sprModulesprModuleDesc" hyperlinkFormatString="~/Pages/SoftwareModuleslist.aspx?sprModuleid={sprModuleid}&amp;_controller=SoftwareModuleslist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Software Projects Moduleslist">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Software Projects Moduleslist" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sprid" aliasFieldName="sprsprnotes" hyperlinkFormatString="~/Pages/SoftwareProjects.aspx?sprid={sprid}&amp;_controller=SoftwareProjects&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="sprModuleid" aliasFieldName="sprModulesprModuleDesc" hyperlinkFormatString="~/Pages/SoftwareModuleslist.aspx?sprModuleid={sprModuleid}&amp;_controller=SoftwareModuleslist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sprsprcustmsprcustomername" />
+            <dataField fieldName="sprsprcustmsprcustomerclass1sprcustomerclass1Desc" />
+            <dataField fieldName="sprsprcustmsprcustomerclass2sprcustomerclass2Desc" />
+            <dataField fieldName="sprsprcustmsprcustomerclass3sprcustomerclass3Desc" />
+            <dataField fieldName="sprsprcustmsprcustomerclass4sprcustomerclass4Desc" />
+            <dataField fieldName="sprsprslmsprpersonname" />
+            <dataField fieldName="sprsprslmsprjobsprjobdesc" />
+            <dataField fieldName="sprsprleadersprpersonname" />
+            <dataField fieldName="sprsprleadersprjobsprjobdesc" />
+            <dataField fieldName="sprsprdesignersprpersonname" />
+            <dataField fieldName="sprsprdesignersprjobsprjobdesc" />
+            <dataField fieldName="sprsprtypesprtypeDesc" />
+            <dataField fieldName="sprModulesprModulecatsprModulecatDesc" columns="50" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Software Projects Moduleslist">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Software Projects Moduleslist" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="sprid" aliasFieldName="sprsprnotes" />
+            <dataField fieldName="sprModuleid" aliasFieldName="sprModulesprModuleDesc" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

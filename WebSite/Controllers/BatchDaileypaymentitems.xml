@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="BatchDaileypaymentitems" conflictDetection="overwriteChanges" label="Batch Daileypaymentitems" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"BatchDaileypaymentitems"."itmiD" "itmiD"
+	,"BatchDaileypaymentitems"."itmDescription" "itmDescription"
+	,"BatchDaileypaymentitems"."itmDescription1" "itmDescription1"
+	,"BatchDaileypaymentitems"."itmacc_no" "itmacc_no"
+	,"itmacc_"."Acc_Nm" "itmacc_Acc_Nm"
+	,"itmacc_Clsacc_"."Acc_Nm" "itmacc_Clsacc_Acc_Nm"
+	,"itmacc_Acc_Bnd"."Acc_Nm" "itmacc_Acc_BndAcc_Nm"
+	,"itmacc_Acc_Bndaccclass"."accountclass" "itmacc_Acc_Bndaccclassaccountclass"
+	,"itmacc_Acc_BndAcc_Bab"."Acc_Nm" "itmacc_Acc_BndAcc_BabAcc_Nm"
+from "dbo"."BatchDaileypaymentitems" "BatchDaileypaymentitems"
+	left join "dbo"."GLmstrfl" "itmacc_" on "BatchDaileypaymentitems"."itmacc_no" = "itmacc_"."Acc_No"
+	left join "dbo"."GLmfbab" "itmacc_Clsacc_" on "itmacc_"."Clsacc_No" = "itmacc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "itmacc_Acc_Bnd" on "itmacc_"."Acc_Bnd" = "itmacc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "itmacc_Acc_Bndaccclass" on "itmacc_Acc_Bnd"."accclass" = "itmacc_Acc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "itmacc_Acc_BndAcc_Bab" on "itmacc_Acc_Bnd"."Acc_Bab" = "itmacc_Acc_BndAcc_Bab"."Acc_Bab"
+]]></text>
+    </command>
+    <command id="itmiDIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="itmiD" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="itmiD" type="Int64" allowNulls="false" isPrimaryKey="true" label="itmi D" readOnly="true" />
+    <field name="itmDescription" type="String" label="itm Description" length="50" showInSummary="true" />
+    <field name="itmDescription1" type="String" label="itm Description1" length="50" showInSummary="true" />
+    <field name="itmacc_no" type="Int64" label="Itmacc No" showInSummary="true">
+      <items style="Lookup" dataController="GLmstrfl" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="itmacc_Acc_Nm" type="String" readOnly="true" label="itmacc Acc Nm" length="255" />
+    <field name="itmacc_Clsacc_Acc_Nm" type="String" readOnly="true" label="itmacc Clsacc Acc Nm" length="250" />
+    <field name="itmacc_Acc_BndAcc_Nm" type="String" readOnly="true" label="itmacc Acc Bnd Acc Nm" length="50" />
+    <field name="itmacc_Acc_Bndaccclassaccountclass" type="String" readOnly="true" label="itmacc Acc Bndaccclassaccountclass" length="100" />
+    <field name="itmacc_Acc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="itmacc Acc Bnd Acc Bab Acc Nm" length="250" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Batch Daileypaymentitems">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="itmDescription" columns="50" />
+        <dataField fieldName="itmDescription1" columns="50" />
+        <dataField fieldName="itmacc_no" aliasFieldName="itmacc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={itmacc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="itmacc_Clsacc_Acc_Nm" />
+        <dataField fieldName="itmacc_Acc_BndAcc_Nm" columns="50" />
+        <dataField fieldName="itmacc_Acc_Bndaccclassaccountclass" />
+        <dataField fieldName="itmacc_Acc_BndAcc_BabAcc_Nm" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Batch Daileypaymentitems">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Batch Daileypaymentitems" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="itmDescription" columns="50" />
+            <dataField fieldName="itmDescription1" columns="50" />
+            <dataField fieldName="itmacc_no" aliasFieldName="itmacc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={itmacc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+          </dataFields>
+        </category>
+        <category id="c2" headerText="Reference Information">
+          <description><![CDATA[$DefaultReferenceDescription]]></description>
+          <dataFields>
+            <dataField fieldName="itmacc_Clsacc_Acc_Nm" />
+            <dataField fieldName="itmacc_Acc_BndAcc_Nm" columns="50" />
+            <dataField fieldName="itmacc_Acc_Bndaccclassaccountclass" />
+            <dataField fieldName="itmacc_Acc_BndAcc_BabAcc_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Batch Daileypaymentitems">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Batch Daileypaymentitems" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="itmDescription" columns="50" />
+            <dataField fieldName="itmDescription1" columns="50" />
+            <dataField fieldName="itmacc_no" aliasFieldName="itmacc_Acc_Nm" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

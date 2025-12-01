@@ -1,0 +1,27 @@
+﻿# File: Global.asax
+
+- Application_Start -> eZee.Services.ApplicationServices.Initialize()
+- Session_Start sets Session("wcp")
+- Session_End -> OnlineActiveUsers.OnlineUsersInstance.OnlineUsers.UpdateForUserLeave()
+
+### Function: Application_Start
+- Signature: Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
+- Purpose: Initialize application services.
+- Calls: eZee.Services.ApplicationServices.Initialize()
+- Called by: ASP.NET runtime on app start.
+
+### Function: Application_BeginRequest
+- Signature: Sub Application_BeginRequest(ByVal sender As Object, ByVal e As EventArgs)
+- Purpose: Per-request initialization and URL normalization hooks.
+- Called by: ASP.NET runtime at the start of each request.
+
+### Function: Session_Start
+- Signature: Sub Session_Start(ByVal sender As Object, ByVal e As EventArgs)
+- Purpose: Initialize per-session data.
+- Behavior: Sets Session("wcp").
+
+### Function: Session_End
+- Signature: Sub Session_End(ByVal sender As Object, ByVal e As EventArgs)
+- Purpose: Cleanup on session end.
+- Calls: OnlineActiveUsers.OnlineUsersInstance.OnlineUsers.UpdateForUserLeave()
+

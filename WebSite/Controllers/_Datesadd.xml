@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="_Datesadd" label="_Datesadd" conflictDetection="overwriteChanges" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <fields>
+<field name="d1" type="DateTime" allowNulls="false" label="D1" showInSummary="true" />
+    <field name="d2" type="DateTime" allowNulls="false" label="D2" showInSummary="true" />
+     <field name="usercashid" type="Int64" default="((1))" label="Usercashid" allowNulls="false">
+      <items style="DropDownList">
+        <item value="1" text="With Open Balance" />
+        <item value="2" text="Without Open Balance" />
+      </items>
+    </field>
+	
+       <field name="sgm" type="Int64" allowNulls="false" label="Sgm" showInSummary="true">
+      <items style="DropDownList" dataController="glmulcmp1"  searchOnStart="true" dataView="grid1" dataTextField="sgm_Nm" dataValueField="sgm" />
+    </field>
+  
+ <field name="acdcode" type="Int64" label="Acdcode" allowNulls="false" >
+      <items dataView="grid1" dataValueField="Code" dataTextField="AcademicYear" copy="d1=startdate&#xD;&#xA;d2=enddate" style="DropDownList" dataController="schAcademicyear" />
+    </field>   
+  </fields>
+  <views>
+    <view id="createForm2" type="Form" label="createForm2">
+      <categories>
+        <category id="c1" headerText="" flow="NewColumn"  newColumn="true">
+          <dataFields>
+		     <dataField fieldName="sgm" columns="10" />
+	   
+        <dataField fieldName="acdcode" columns="10" />
+        <dataField fieldName="d1" columns="10" />
+        <dataField fieldName="d2" columns="10" />
+		<dataField fieldName="usercashid" columns="15" />
+		
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+</dataController>

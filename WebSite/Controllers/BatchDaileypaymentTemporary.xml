@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="BatchDaileypayment" conflictDetection="overwriteChanges" label="Batch Daileypayment" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.BatchDaileypaymentBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"BatchDaileypayment"."BatchDaileypayment" "BatchDaileypayment"
+	,"BatchDaileypayment"."Batchstartdate" "Batchstartdate"
+	,"BatchDaileypayment"."sgm" "sgm"
+	,"sgm"."sgm_Nm" "sgmsgm_Nm"
+	,"sgmOpco"."OpcoName" "sgmOpcoOpcoName"
+	,"BatchDaileypayment"."branch" "branch"
+	,"Thebranch"."Desc1" "ThebranchDesc1"
+	,"Thebranchsgm"."sgm_Nm" "Thebranchsgmsgm_Nm"
+	,"ThebranchsgmOpco"."OpcoName" "ThebranchsgmOpcoOpcoName"
+	,"ThebranchGender"."Gender" "ThebranchGenderGender"
+	,"Thebranchstage"."ShortDesc1" "ThebranchstageShortDesc1"
+	,"Thebranchschtyp"."schtypDesc" "ThebranchschtypschtypDesc"
+	,"BatchDaileypayment"."acc_no" "acc_no"
+	,"acc_"."Acc_Nm" "acc_Acc_Nm"
+	,"acc_Clsacc_"."Acc_Nm" "acc_Clsacc_Acc_Nm"
+	,"acc_Acc_Bnd"."Acc_Nm" "acc_Acc_BndAcc_Nm"
+	,"acc_Acc_Bndaccclass"."accountclass" "acc_Acc_Bndaccclassaccountclass"
+	,"acc_Acc_BndAcc_Bab"."Acc_Nm" "acc_Acc_BndAcc_BabAcc_Nm"
+	,"BatchDaileypayment"."Balancesuppose" "Balancesuppose"
+	,"BatchDaileypayment"."Notes" "Notes"
+	,"BatchDaileypayment"."acdcode" "acdcode"
+	,"acd"."AcademicYear" "acdAcademicYear"
+	,"acdGlFinperiod"."Fin_period_info" "acdGlFinperiodFin_period_info"
+	,"acdGlFinperiodaccountnumber"."Acc_Nm" "acdGlFinperiodaccountnumberAcc_Nm"
+	,"BatchDaileypayment"."RecivedMoney" "RecivedMoney"
+	,"BatchDaileypayment"."RecievedDate" "RecievedDate"
+	,"BatchDaileypayment"."Pymnt_No" "Pymnt_No"
+	,"Pymnt_"."Pymnt_Nm" "Pymnt_Pymnt_Nm"
+	,"Pymnt_pymnt_acc"."Acc_Nm" "Pymnt_pymnt_accAcc_Nm"
+	,"Pymnt_pymnt_accClsacc_"."Acc_Nm" "Pymnt_pymnt_accClsacc_Acc_Nm"
+	,"Pymnt_pymnt_accAcc_Bnd"."Acc_Nm" "Pymnt_pymnt_accAcc_BndAcc_Nm"
+	,"Pymnt_sgm"."sgm_Nm" "Pymnt_sgmsgm_Nm"
+	,"Pymnt_sgmOpco"."OpcoName" "Pymnt_sgmOpcoOpcoName"
+	,"BatchDaileypayment"."paymentwaynumber" "paymentwaynumber"
+	,"BatchDaileypayment"."schBnk_No" "schBnk_No"
+	,"BatchDaileypayment"."checkAccount" "checkAccount"
+	,"BatchDaileypayment"."checkdate" "checkdate"
+	,"BatchDaileypayment"."paymentnotes" "paymentnotes"
+	,"BatchDaileypayment"."ModifiedBy" "ModifiedBy"
+	,"BatchDaileypayment"."ModifiedOn" "ModifiedOn"
+	,"BatchDaileypayment"."CreatedBy" "CreatedBy"
+	,"BatchDaileypayment"."CreatedOn" "CreatedOn"
+	,"BatchDaileypayment"."batchapproved" "batchapproved"
+	,"BatchDaileypayment"."batchposted" "batchposted"
+	,"BatchDaileypayment"."batchdeleted" "batchdeleted"
+	,"BatchDaileypayment"."batchhavdetails" "batchhavdetails"
+	,"BatchDaileypayment"."cstyp_NO" "cstyp_NO"
+	,"cstyp_"."SubledgerDescrption" "cstyp_SubledgerDescrption"
+	,"BatchDaileypayment"."CSMSUP_NO" "CSMSUP_NO"
+from "dbo"."BatchDaileypayment" "BatchDaileypayment"
+	left join "dbo"."glmulcmp" "sgm" on "BatchDaileypayment"."sgm" = "sgm"."sgmid"
+	left join "dbo"."OpCo" "sgmOpco" on "sgm"."OpcoID" = "sgmOpco"."OpcoIDidentity"
+	left join "dbo"."schBranch" "Thebranch" on "BatchDaileypayment"."branch" = "Thebranch"."branch"
+	left join "dbo"."glmulcmp" "Thebranchsgm" on "Thebranch"."sgm" = "Thebranchsgm"."sgmid"
+	left join "dbo"."OpCo" "ThebranchsgmOpco" on "Thebranchsgm"."OpcoID" = "ThebranchsgmOpco"."OpcoIDidentity"
+	left join "dbo"."PyGender" "ThebranchGender" on "Thebranch"."Genderid" = "ThebranchGender"."Genderid"
+	left join "dbo"."schStage" "Thebranchstage" on "Thebranch"."stagecode" = "Thebranchstage"."Code"
+	left join "dbo"."schtyp" "Thebranchschtyp" on "Thebranch"."schtypid" = "Thebranchschtyp"."schtypid"
+	left join "dbo"."GLmstrfl" "acc_" on "BatchDaileypayment"."acc_no" = "acc_"."Acc_No"
+	left join "dbo"."GLmfbab" "acc_Clsacc_" on "acc_"."Clsacc_No" = "acc_Clsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "acc_Acc_Bnd" on "acc_"."Acc_Bnd" = "acc_Acc_Bnd"."Acc_Bnd"
+	left join "dbo"."accountclasslist" "acc_Acc_Bndaccclass" on "acc_Acc_Bnd"."accclass" = "acc_Acc_Bndaccclass"."accountclassid"
+	left join "dbo"."GLmfbab" "acc_Acc_BndAcc_Bab" on "acc_Acc_Bnd"."Acc_Bab" = "acc_Acc_BndAcc_Bab"."Acc_Bab"
+	left join "dbo"."schAcademicyear" "acd" on "BatchDaileypayment"."acdcode" = "acd"."Code"
+	left join "dbo"."GlFinanceperiod" "acdGlFinperiod" on "acd"."GlFinperiodID" = "acdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."GLmstrfl" "acdGlFinperiodaccountnumber" on "acdGlFinperiod"."accountnumber" = "acdGlFinperiodaccountnumber"."Acc_No"
+	left join "dbo"."Pymntype" "Pymnt_" on "BatchDaileypayment"."Pymnt_No" = "Pymnt_"."Pymnt_No"
+	left join "dbo"."GLmstrfl" "Pymnt_pymnt_acc" on "Pymnt_"."pymnt_acc" = "Pymnt_pymnt_acc"."Acc_No"
+	left join "dbo"."GLmfbab" "Pymnt_pymnt_accClsacc_" on "Pymnt_pymnt_acc"."Clsacc_No" = "Pymnt_pymnt_accClsacc_"."Acc_Bab"
+	left join "dbo"."GLmfband" "Pymnt_pymnt_accAcc_Bnd" on "Pymnt_pymnt_acc"."Acc_Bnd" = "Pymnt_pymnt_accAcc_Bnd"."Acc_Bnd"
+	left join "dbo"."glmulcmp" "Pymnt_sgm" on "Pymnt_"."sgm" = "Pymnt_sgm"."sgmid"
+	left join "dbo"."OpCo" "Pymnt_sgmOpco" on "Pymnt_sgm"."OpcoID" = "Pymnt_sgmOpco"."OpcoIDidentity"
+	left join "dbo"."GLSubledgertyplist" "cstyp_" on "BatchDaileypayment"."cstyp_NO" = "cstyp_"."Subledgerid"
+]]></text>
+    </command>
+    <command id="BatchDaileypaymentIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="BatchDaileypayment" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="BatchDaileypayment" type="Int64" allowNulls="false" isPrimaryKey="true" label="Batch Daileypayment" readOnly="true" />
+    <field name="Batchstartdate" type="DateTime" allowNulls="false" default="(getdate())" label="Batchstartdate" showInSummary="true" />
+    <field name="sgm" type="Int64" allowNulls="false" label="Sgm" showInSummary="true">
+      <items style="DropDownList" dataController="glmulcmp" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="sgm_Nm" dataValueField="sgmid" />
+    </field>
+    <field name="sgmsgm_Nm" type="String" readOnly="true" label="sgmsgm Nm" length="255" />
+    <field name="sgmOpcoOpcoName" type="String" readOnly="true" label="sgm Opco Name" length="50" />
+    <field name="branch" type="Int64" allowNulls="false" label="Branch" showInSummary="true">
+      <items style="DropDownList" dataController="schBranch" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Desc1" dataValueField="branch" copy="sgm=sgm" />
+    </field>
+    <field name="ThebranchDesc1" type="String" readOnly="true" label="Thebranch Desc1" length="50" />
+    <field name="Thebranchsgmsgm_Nm" type="String" readOnly="true" label="Thebranchsgmsgm Nm" length="255" />
+    <field name="ThebranchsgmOpcoOpcoName" type="String" readOnly="true" label="Thebranchsgm Opco Name" length="50" />
+    <field name="ThebranchGenderGender" type="String" readOnly="true" label="Thebranch Gender" length="100" />
+    <field name="ThebranchstageShortDesc1" type="String" readOnly="true" label="Thebranchstage Short Desc1" length="50" />
+    <field name="ThebranchschtypschtypDesc" type="String" readOnly="true" label="Thebranchschtypschtyp Desc" length="150" />
+    <field name="acc_no" type="Int64" allowNulls="false" label="Acc No" showInSummary="true">
+      <items style="Lookup" dataController="GLmstrfl" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Acc_Nm" dataValueField="Acc_No" />
+    </field>
+    <field name="acc_Acc_Nm" type="String" readOnly="true" label="acc Acc Nm" length="255" />
+    <field name="acc_Clsacc_Acc_Nm" type="String" readOnly="true" label="acc Clsacc Acc Nm" length="250" />
+    <field name="acc_Acc_BndAcc_Nm" type="String" readOnly="true" label="acc Acc Bnd Acc Nm" length="50" />
+    <field name="acc_Acc_Bndaccclassaccountclass" type="String" readOnly="true" label="acc Acc Bndaccclassaccountclass" length="100" />
+    <field name="acc_Acc_BndAcc_BabAcc_Nm" type="String" readOnly="true" label="acc Acc Bnd Acc Bab Acc Nm" length="250" />
+    <field name="Balancesuppose" type="Decimal" label="Balancesuppose" showInSummary="true" />
+    <field name="Notes" type="String" allowQBE="false" allowSorting="false" label="Notes" length="-1" />
+    <field name="acdcode" type="Int64" allowNulls="false" label="Acdcode">
+      <items style="DropDownList" dataController="schAcademicyear" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="GlFinperiodFin_period_info" dataValueField="Code" />
+    </field>
+    <field name="acdAcademicYear" type="String" readOnly="true" label="acd Academic Year" length="150" />
+    <field name="acdGlFinperiodFin_period_info" type="String" readOnly="true" label="acd Gl Finperiod Fin period info" length="150" />
+    <field name="acdGlFinperiodaccountnumberAcc_Nm" type="String" readOnly="true" label="acd Gl Finperiodaccountnumber Acc Nm" length="255" />
+    <field name="RecivedMoney" type="Decimal" label="Recived Money" contextFields="BatchDaileypaymentDetailes" calculated="true" allowNulls="false" />
+    <field name="RecievedDate" type="DateTime" label="Recieved Date" />
+    <field name="Pymnt_No" type="Int64" label="Pymnt No">
+      <items style="DropDownList" dataController="Pymntype" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="Pymnt_Nm" dataValueField="Pymnt_No" />
+    </field>
+    <field name="Pymnt_Pymnt_Nm" type="String" readOnly="true" label="Pymnt Nm" length="255" />
+    <field name="Pymnt_pymnt_accAcc_Nm" type="String" readOnly="true" label="Pymnt pymnt acc Acc Nm" length="255" />
+    <field name="Pymnt_pymnt_accClsacc_Acc_Nm" type="String" readOnly="true" label="Pymnt pymnt acc Clsacc Acc Nm" length="250" />
+    <field name="Pymnt_pymnt_accAcc_BndAcc_Nm" type="String" readOnly="true" label="Pymnt pymnt acc Acc Bnd Acc Nm" length="50" />
+    <field name="Pymnt_sgmsgm_Nm" type="String" readOnly="true" label="Pymnt sgmsgm Nm" length="255" />
+    <field name="Pymnt_sgmOpcoOpcoName" type="String" readOnly="true" label="Pymnt sgm Opco Name" length="50" />
+    <field name="paymentwaynumber" type="String" label="Paymentwaynumber" length="50" />
+    <field name="schBnk_No" type="Int64" label="sch Bnk No" />
+    <field name="checkAccount" type="String" label="check Account" length="50" />
+    <field name="checkdate" type="DateTime" label="Checkdate" />
+    <field name="paymentnotes" type="String" label="Paymentnotes" length="50" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="batchapproved" type="Boolean" default="((0))" label="Batchapproved" />
+    <field name="batchposted" type="Boolean" default="((0))" label="Batchposted" />
+    <field name="batchdeleted" type="Boolean" default="((0))" label="Batchdeleted" />
+    <field name="batchhavdetails" type="Boolean" default="((0))" label="Batchhavdetails" />
+    <field name="cstyp_NO" type="Int64" label="cstyp NO">
+      <items style="DropDownList" dataController="GLSubledgertyplist" newDataView="createForm1" searchOnStart="true" dataView="grid1" dataTextField="SubledgerDescrption" dataValueField="Subledgerid" />
+    </field>
+    <field name="cstyp_SubledgerDescrption" type="String" readOnly="true" label="cstyp Subledger Descrption" length="50" />
+    <field name="CSMSUP_NO" type="Int64" label="Csmsup No" contextFields="typ=cstyp_NO" calculated="true">
+      <items style="Lookup" dataController="Qsupcstmr" dataView="grid1" dataTextField="Cstm_nm" dataValueField="Cstm_no" copy="acc_no=classacc" />
+    </field>
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Batch Daileypayment" filter="batchapproved=0">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="BatchDaileypayment" />
+        <dataField fieldName="Batchstartdate" columns="10" />
+        <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" hyperlinkFormatString="~/Pages/glmulcmp.aspx?sgmid={sgm}&amp;_controller=glmulcmp&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="checkAccount" columns="50" />
+        <dataField fieldName="acc_no" aliasFieldName="acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={acc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Balancesuppose" columns="15" />
+
+        <dataField fieldName="Notes" rows="5" />
+        <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" hyperlinkFormatString="~/Pages/schAcademicyear.aspx?Code={acdcode}&amp;_controller=schAcademicyear&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="RecivedMoney" columns="15" />
+        <dataField fieldName="RecievedDate" columns="10" />
+        <dataField fieldName="Pymnt_No" aliasFieldName="Pymnt_Pymnt_Nm" hyperlinkFormatString="~/Pages/Pymntype.aspx?Pymnt_No={Pymnt_No}&amp;_controller=Pymntype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="paymentwaynumber" columns="50" />
+        <dataField fieldName="schBnk_No" columns="15" />
+
+        <dataField fieldName="checkdate" columns="10" />
+        <dataField fieldName="paymentnotes" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+        <dataField fieldName="batchapproved" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Batch Daileypayment">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Batch Daileypayment" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" />
+            <dataField fieldName="cstyp_NO" aliasFieldName="cstyp_SubledgerDescrption" hyperlinkFormatString="~/Pages/GLSubledgertyplist.aspx?Subledgerid={cstyp_NO}&amp;_controller=GLSubledgertyplist&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="CSMSUP_NO" columns="15" />
+            <dataField fieldName="acc_no" aliasFieldName="acc_Acc_Nm" />
+            <dataField fieldName="Batchstartdate" columns="10" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" />
+            <dataField fieldName="Balancesuppose" columns="15" />
+            <dataField fieldName="Notes" rows="5" />
+          </dataFields>
+        </category>
+        <category headerText="More Deatils" id="c3" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="Pymnt_No" aliasFieldName="Pymnt_Pymnt_Nm" />
+            <dataField fieldName="paymentwaynumber" columns="50" />
+            <dataField fieldName="schBnk_No" columns="15" />
+            <dataField fieldName="checkAccount" columns="50" />
+            <dataField fieldName="checkdate" columns="10" />
+            <dataField fieldName="paymentnotes" columns="50" />
+            <dataField fieldName="RecivedMoney" columns="15" />
+            <dataField fieldName="RecievedDate" columns="10" />
+            <dataField fieldName="batchapproved" />
+            <dataField fieldName="batchposted" />
+            <dataField fieldName="batchdeleted" />
+            <dataField fieldName="batchhavdetails" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Batch Daileypayment">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Batch Daileypayment" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Batchstartdate" columns="10" />
+            <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" />
+            <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" />
+            <dataField fieldName="cstyp_NO" aliasFieldName="cstyp_SubledgerDescrption" />
+            <dataField fieldName="CSMSUP_NO" columns="15" />
+            <dataField fieldName="acc_no" aliasFieldName="acc_Acc_Nm" />
+            <dataField fieldName="Balancesuppose" columns="15" />
+            <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" />
+            <dataField fieldName="Notes" rows="5" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="grid2" commandId="command1" type="Grid" label="grid2">
+      <dataFields>
+        <dataField fieldName="BatchDaileypayment" />
+        <dataField fieldName="Batchstartdate" columns="10" />
+        <dataField fieldName="sgm" aliasFieldName="sgmsgm_Nm" hyperlinkFormatString="~/Pages/glmulcmp.aspx?sgmid={sgm}&amp;_controller=glmulcmp&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="branch" aliasFieldName="ThebranchDesc1" hyperlinkFormatString="~/Pages/schBranch.aspx?branch={branch}&amp;_controller=schBranch&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="acc_no" aliasFieldName="acc_Acc_Nm" hyperlinkFormatString="~/Pages/GLmstrfl.aspx?Acc_No={acc_no}&amp;_controller=GLmstrfl&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="Balancesuppose" columns="15" />
+        <dataField fieldName="Notes" rows="5" />
+        <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" hyperlinkFormatString="~/Pages/schAcademicyear.aspx?Code={acdcode}&amp;_controller=schAcademicyear&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="RecivedMoney" columns="15" />
+        <dataField fieldName="RecievedDate" columns="10" />
+        <dataField fieldName="Pymnt_No" aliasFieldName="Pymnt_Pymnt_Nm" hyperlinkFormatString="~/Pages/Pymntype.aspx?Pymnt_No={Pymnt_No}&amp;_controller=Pymntype&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="paymentwaynumber" columns="50" />
+        <dataField fieldName="schBnk_No" columns="15" />
+        <dataField fieldName="checkAccount" columns="50" />
+        <dataField fieldName="checkdate" columns="10" />
+        <dataField fieldName="paymentnotes" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="batchapproved" />
+      </dataFields>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" roles="GL,ADMINGL" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" roles="GL,ADMINGL" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" roles="GL,ADMINGL" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" roles="GL,ADMINGL" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" roles="GL,ADMINGL" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Edit" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" roles="GL,ADMINGL" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" roles="GL,ADMINGL" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" roles="GL,ADMINGL" />
+      <action id="a8" commandName="Grid" roles="GL,ADMINGL" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" roles="GL,ADMINGL" />
+      <action id="a2" commandName="Delete" roles="GL,ADMINGL" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="r100" commandName="Calculate" type="Code" phase="Execute" />
+    <rule id="r101" commandName="Update" type="Code" phase="After" />
+  </businessRules>
+</dataController>

@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Now_balanc22" conflictDetection="overwriteChanges" label="Now balanc22" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Now_balanc22"."Acc_Bab" "Acc_Bab"
+	,"Now_balanc22"."mainaccount" "mainaccount"
+	,"Now_balanc22"."Acc_mag" "Acc_mag"
+	,"Now_balanc22"."submainaccount" "submainaccount"
+	,"Now_balanc22"."Acc_Bnd" "Acc_Bnd"
+	,"Now_balanc22"."Branchaccount" "Branchaccount"
+	,"Now_balanc22"."Acc_No" "Acc_No"
+	,"Now_balanc22"."Accountname" "Accountname"
+	,"Now_balanc22"."Clos_no" "Clos_no"
+	,"Now_balanc22"."branch" "branch"
+	,"Now_balanc22"."Desc1" "Desc1"
+	,"Now_balanc22"."sgm" "sgm"
+	,"Now_balanc22"."Costcntr_Nm" "Costcntr_Nm"
+	,"Now_balanc22"."cost_typ" "cost_typ"
+	,"Now_balanc22"."AcademicYear" "AcademicYear"
+	,"Now_balanc22"."acdcode" "acdcode"
+	,"Now_balanc22"."CostcntrNo" "CostcntrNo"
+	,"Now_balanc22"."ZBalance" "ZBalance"
+	,"Now_balanc22"."Monthblnc" "Monthblnc"
+from "dbo"."Now_balanc22" "Now_balanc22"
+]]></text>
+    </command>
+    <command id="Acc_BabIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Acc_Bab" />
+      </output>
+    </command>
+    <command id="branchIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="branch" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Acc_Bab" type="Int64" label="Acc Bab" readOnly="true" showInSummary="true" />
+    <field name="mainaccount" type="String" label="Mainaccount" length="250" showInSummary="true" />
+    <field name="Acc_mag" type="Int64" label="Acc mag" showInSummary="true" />
+    <field name="submainaccount" type="String" label="Submainaccount" length="50" showInSummary="true" />
+    <field name="Acc_Bnd" type="Int64" label="Acc Bnd" showInSummary="true" />
+    <field name="Branchaccount" type="String" label="Branchaccount" length="50" />
+    <field name="Acc_No" type="Int64" allowNulls="false" label="Acc No" />
+    <field name="Accountname" type="String" label="Accountname" length="255" />
+    <field name="Clos_no" type="Int64" label="Clos no" />
+    <field name="branch" type="Int64" label="Branch" readOnly="true" />
+    <field name="Desc1" type="String" label="Desc1" length="50" />
+    <field name="sgm" type="Int64" label="Sgm" />
+    <field name="Costcntr_Nm" type="String" label="Costcntr Nm" length="255" />
+    <field name="cost_typ" type="Int64" label="Cost Typ" />
+    <field name="AcademicYear" type="String" label="Academic Year" length="150" />
+    <field name="acdcode" type="Int64" label="Acdcode" />
+    <field name="CostcntrNo" type="Int64" label="Costcntr No" />
+    <field name="ZBalance" type="Decimal" label="Z Balance" readOnly="true" />
+    <field name="Monthblnc" type="Int32" allowNulls="false" label="Monthblnc" readOnly="true" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Now balanc22">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="Acc_No" columns="15" />
+        <dataField fieldName="Acc_Bab" columns="15" />
+        <dataField fieldName="mainaccount" />
+        <dataField fieldName="Acc_mag" columns="15" />
+        <dataField fieldName="submainaccount" columns="50" />
+        <dataField fieldName="Acc_Bnd" columns="15" />
+        <dataField fieldName="Branchaccount" columns="50" />
+        <dataField fieldName="Accountname" />
+        <dataField fieldName="Clos_no" columns="15" />
+        <dataField fieldName="branch" columns="15" />
+        <dataField fieldName="Desc1" columns="50" />
+        <dataField fieldName="sgm" columns="15" />
+        <dataField fieldName="Costcntr_Nm" />
+        <dataField fieldName="cost_typ" columns="15" />
+        <dataField fieldName="AcademicYear" />
+        <dataField fieldName="acdcode" columns="15" />
+        <dataField fieldName="CostcntrNo" columns="15" />
+        <dataField fieldName="ZBalance" dataFormatString="c" columns="15" />
+        <dataField fieldName="Monthblnc" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Now balanc22">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Now balanc22" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Acc_Bab" columns="15" />
+            <dataField fieldName="mainaccount" />
+            <dataField fieldName="Acc_mag" columns="15" />
+            <dataField fieldName="submainaccount" columns="50" />
+            <dataField fieldName="Acc_Bnd" columns="15" />
+            <dataField fieldName="Branchaccount" columns="50" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="Accountname" />
+            <dataField fieldName="Clos_no" columns="15" />
+            <dataField fieldName="branch" columns="15" />
+            <dataField fieldName="Desc1" columns="50" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="Costcntr_Nm" />
+            <dataField fieldName="cost_typ" columns="15" />
+            <dataField fieldName="AcademicYear" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="CostcntrNo" columns="15" />
+            <dataField fieldName="ZBalance" dataFormatString="c" columns="15" />
+            <dataField fieldName="Monthblnc" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Now balanc22">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New Now balanc22" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="mainaccount" />
+            <dataField fieldName="Acc_mag" columns="15" />
+            <dataField fieldName="submainaccount" columns="50" />
+            <dataField fieldName="Acc_Bnd" columns="15" />
+            <dataField fieldName="Branchaccount" columns="50" />
+            <dataField fieldName="Acc_No" columns="15" />
+            <dataField fieldName="Accountname" />
+            <dataField fieldName="Clos_no" columns="15" />
+            <dataField fieldName="Desc1" columns="50" />
+            <dataField fieldName="sgm" columns="15" />
+            <dataField fieldName="Costcntr_Nm" />
+            <dataField fieldName="cost_typ" columns="15" />
+            <dataField fieldName="AcademicYear" />
+            <dataField fieldName="acdcode" columns="15" />
+            <dataField fieldName="CostcntrNo" columns="15" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

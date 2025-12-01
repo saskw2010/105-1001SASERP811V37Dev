@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="GROUPStk" conflictDetection="overwriteChanges" label="GROUP Stk" plugIn="eZee.Data.AnnotationPlugIn" handler="eZee.Rules.GROUPStkBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"GROUPStk"."IDGROUP" "IDGROUP"
+	,"GROUPStk"."MASTERNOD" "MASTERNOD"
+	,"MASTERNOD"."IDGROUP" "MASTERNODID_USER"
+	,"GROUPStk"."ID_USER" "ID_USER"
+	,"GROUPStk"."GROUPA" "GROUPA"
+	,"GROUPStk"."GROUPE" "GROUPE"
+	,"GROUPStk"."ModifiedBy" "ModifiedBy"
+	,"GROUPStk"."ModifiedOn" "ModifiedOn"
+	,"GROUPStk"."CreatedBy" "CreatedBy"
+	,"GROUPStk"."CreatedOn" "CreatedOn"
+	,"GROUPStk"."id" "id"
+from "dbo"."GROUPStk" "GROUPStk"
+	left join "dbo"."GROUPStk" "MASTERNOD" on "GROUPStk"."MASTERNOD" = "MASTERNOD"."IDGROUP"
+]]></text>
+    </command>
+    <command id="IDGROUPIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="IDGROUP" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="IDGROUP" type="Int64" allowNulls="false" isPrimaryKey="true" label="Idgroup" readOnly="true" />
+    <field name="MASTERNOD" type="Int64" label="Masternod" showInSummary="true">
+      <items style="Lookup" dataController="GROUPStk" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="MASTERNODID_USER" type="String" readOnly="true" label="Masternodid User" length="50" />
+    <field name="ID_USER" type="String" allowNulls="false" label="Id User" length="50" showInSummary="true" contextFields="MASTERNOD" calculated="true" />
+    <field name="GROUPA" type="String" label="Groupa" length="255" showInSummary="true" />
+    <field name="GROUPE" type="String" label="Groupe" length="255" showInSummary="true" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" showInSummary="true" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="id" type="Int64" label="Id" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="GROUP Stk">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IDGROUP" />
+               
+        <dataField fieldName="MASTERNOD" aliasFieldName="MASTERNODID_USER" hyperlinkFormatString="~/Pages/GROUPStk.aspx?IDGROUP={MASTERNOD}&amp;_controller=GROUPStk&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="GROUPA" />
+        
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+       
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review GROUP Stk">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New GROUP Stk" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[New GROUP Stk]]></description>
+          <dataFields>
+            <dataField fieldName="MASTERNOD" aliasFieldName="MASTERNODID_USER" />
+            <dataField fieldName="ID_USER" columns="50" />
+            <dataField fieldName="GROUPA" />
+           
+          </dataFields>
+        </category>
+        <category headerText="More Detailes" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+          <description><![CDATA[More Detailes]]></description>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New GROUP Stk">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New GROUP Stk" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[New GROUP Stk]]></description>
+          <dataFields>
+            <dataField fieldName="MASTERNOD" aliasFieldName="MASTERNODID_USER" />
+           
+            <dataField fieldName="GROUPA" />
+           
+           
+          </dataFields>
+        </category>
+        <category headerText="More Detailes" id="c2" flow="NewColumn"  newColumn="true">
+          <dataFields>
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+          <description><![CDATA[More Detailes]]></description>
+        </category>
+      </categories>
+    </view>
+    <view id="grid2" commandId="command1" type="DataSheet" label="grid2">
+      <dataFields>
+        <dataField fieldName="IDGROUP" />
+        <dataField fieldName="MASTERNOD" aliasFieldName="MASTERNODID_USER" hyperlinkFormatString="~/Pages/GROUPStk.aspx?IDGROUP={MASTERNOD}&amp;_controller=GROUPStk&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+        <dataField fieldName="GROUPA" />
+       
+        <dataField fieldName="ModifiedBy" columns="50" />
+        <dataField fieldName="ModifiedOn" columns="10" />
+        <dataField fieldName="CreatedBy" columns="50" />
+        <dataField fieldName="CreatedOn" columns="10" />
+       
+        
+      </dataFields>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+  <businessRules>
+    <rule id="GROUPSTKCalculate100" commandName="Calculate" type="Code" phase="Execute" name="GROUPSTK" />
+    <rule id="GROUPStkbefore100" commandName="Insert|Update" type="Code" phase="Before" />
+ <rule id="r102" commandName="Insert|Update" type="Sql" phase="After" ><![CDATA[
+
+update GROUPStk   set ID_USER=IDGROUP WHERE IDGROUP=@IDGROUP 
+
+]]></rule>
+  </businessRules>
+</dataController>

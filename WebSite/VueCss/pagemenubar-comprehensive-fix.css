@@ -1,0 +1,366 @@
+/* ===== PAGEMENUBAR COMPREHENSIVE FIX ===== */
+/* إصلاح شامل لمشكلة عدم ظهور PageMenuBar */
+/* تاريخ الإنشاء: ديسمبر 2024 */
+
+/* =================
+   CRITICAL FIX - إصلاح حاسم
+   ================= */
+
+/* DESKTOP - إجبار ظهور PageMenuBar في الشاشات الكبيرة */
+@media (min-width: 769px) {
+    #ctl00_PageMenuBar,
+    .PageMenuBar,
+    .PageMenuBar.responsive-pagemenubar,
+    #ctl00_PageMenuBar.responsive-pagemenubar {
+        /* فرض الظهور */
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        transform: none !important;
+        
+        /* الأبعاد والموضع */
+        width: 100% !important;
+        height: auto !important;
+        min-height: 60px !important;
+        
+        /* الخلفية والمظهر */
+        background: var(--primary-gradient, linear-gradient(135deg, #2563eb, #3b82f6, #1d4ed8)) !important;
+        box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3) !important;
+        border-radius: 0 0 15px 15px !important;
+        
+        /* التخطيط */
+        overflow: visible !important;
+        z-index: 999 !important;
+        margin-bottom: 20px !important;
+        padding: 0 !important;
+        
+        /* إلغاء أي تحولات من الموبايل */
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        backdrop-filter: none !important;
+        pointer-events: all !important;
+    }
+    
+    /* إخفاء زر الموبايل في الديسكتوب */
+    .pagemenu-mobile-toggle,
+    #mobile-toggle-fixed {
+        display: none !important;
+    }
+}
+
+/* MOBILE - تحسين العرض في الموبايل */
+@media (max-width: 768px) {
+    /* إخفاء PageMenuBar بشكل افتراضي في الموبايل */
+    #ctl00_PageMenuBar,
+    .PageMenuBar,
+    .PageMenuBar.responsive-pagemenubar,
+    #ctl00_PageMenuBar.responsive-pagemenubar {
+        /* إخفاء افتراضي */
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        
+        /* المظهر */
+        background: rgba(30, 64, 175, 0.96) !important;
+        backdrop-filter: blur(15px) !important;
+        
+        /* إخفاء مع تحريك */
+        transform: translateY(-100vh) !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        
+        /* التخطيط */
+        z-index: 999999 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 20px !important;
+        
+        /* التحولات */
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        
+        /* إعدادات إضافية */
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        margin: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: 0 0 50px rgba(37, 99, 235, 0.5) !important;
+    }
+    
+    /* إظهار القائمة عند التفعيل */
+    #ctl00_PageMenuBar.mobile-active,
+    .PageMenuBar.mobile-active,
+    .PageMenuBar.responsive-pagemenubar.mobile-active,
+    #ctl00_PageMenuBar.responsive-pagemenubar.mobile-active {
+        transform: translateY(0) !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: all !important;
+    }
+    
+    /* زر الموبايل - تحسين الظهور */
+    .pagemenu-mobile-toggle,
+    #mobile-toggle-fixed {
+        /* الموضع */
+        display: flex !important;
+        position: fixed !important;
+        top: 20px !important;
+        right: 20px !important;
+        z-index: 10000 !important;
+        
+        /* الأبعاد */
+        width: 60px !important;
+        height: 60px !important;
+        
+        /* المظهر */
+        background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 15px !important;
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
+        
+        /* التخطيط */
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        
+        /* التحولات */
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        font-size: 20px !important;
+        
+        /* إعدادات إضافية */
+        user-select: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+    }
+    
+    /* حالة التفعيل للزر */
+    .pagemenu-mobile-toggle.active,
+    #mobile-toggle-fixed.active {
+        background: linear-gradient(135deg, #dc2626, #ef4444) !important;
+        transform: translateY(0) rotate(90deg) !important;
+    }
+}
+
+/* =================
+   MENU ITEMS STYLING
+   ================= */
+
+/* تحسين عناصر القائمة للديسكتوب */
+@media (min-width: 769px) {
+    .PageMenuBar .Menu,
+    #ctl00_PageMenuBar .Menu {
+        display: flex !important;
+        align-items: center !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 10px 20px !important;
+        width: 100% !important;
+        justify-content: space-around !important;
+    }
+    
+    .PageMenuBar .Menu .Item,
+    #ctl00_PageMenuBar .Menu .Item {
+        margin: 0 10px !important;
+        position: relative !important;
+    }
+    
+    .PageMenuBar .Menu .Item .Link a,
+    #ctl00_PageMenuBar .Menu .Item .Link a {
+        color: white !important;
+        text-decoration: none !important;
+        padding: 12px 20px !important;
+        border-radius: 8px !important;
+        font-weight: 500 !important;
+        transition: all 0.3s ease !important;
+        display: block !important;
+    }
+    
+    .PageMenuBar .Menu .Item .Link a:hover,
+    #ctl00_PageMenuBar .Menu .Item .Link a:hover {
+        background: rgba(255, 255, 255, 0.2) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    .PageMenuBar .Menu .Item.Selected .Link a,
+    #ctl00_PageMenuBar .Menu .Item.Selected .Link a {
+        background: rgba(255, 255, 255, 0.25) !important;
+        font-weight: 600 !important;
+    }
+}
+
+/* تحسين عناصر القائمة للموبايل */
+@media (max-width: 768px) {
+    .PageMenuBar .Menu,
+    #ctl00_PageMenuBar .Menu {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 20px !important;
+        width: 100% !important;
+        max-width: 400px !important;
+    }
+    
+    .PageMenuBar .Menu .Item,
+    #ctl00_PageMenuBar .Menu .Item {
+        margin: 0 !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .PageMenuBar .Menu .Item .Link a,
+    #ctl00_PageMenuBar .Menu .Item .Link a {
+        color: white !important;
+        text-decoration: none !important;
+        padding: 15px 25px !important;
+        border-radius: 12px !important;
+        font-weight: 500 !important;
+        font-size: 18px !important;
+        transition: all 0.3s ease !important;
+        display: block !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .PageMenuBar .Menu .Item .Link a:hover,
+    .PageMenuBar .Menu .Item .Link a:active,
+    #ctl00_PageMenuBar .Menu .Item .Link a:hover,
+    #ctl00_PageMenuBar .Menu .Item .Link a:active {
+        background: rgba(255, 255, 255, 0.25) !important;
+        transform: scale(1.05) !important;
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15) !important;
+    }
+    
+    .PageMenuBar .Menu .Item.Selected .Link a,
+    #ctl00_PageMenuBar .Menu .Item.Selected .Link a {
+        background: rgba(255, 255, 255, 0.3) !important;
+        font-weight: 600 !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+    }
+}
+
+/* =================
+   THEME INTEGRATION
+   ================= */
+
+/* دعم نظام الثيمات */
+[data-theme="light"] .PageMenuBar,
+[data-theme="light"] #ctl00_PageMenuBar {
+    background: var(--light-primary-gradient, linear-gradient(135deg, #3b82f6, #2563eb)) !important;
+}
+
+[data-theme="dark"] .PageMenuBar,
+[data-theme="dark"] #ctl00_PageMenuBar {
+    background: var(--dark-primary-gradient, linear-gradient(135deg, #1e293b, #334155)) !important;
+}
+
+[data-theme="ai"] .PageMenuBar,
+[data-theme="ai"] #ctl00_PageMenuBar {
+    background: var(--ai-primary-gradient, linear-gradient(135deg, #667eea, #764ba2)) !important;
+}
+
+/* =================
+   ACCESSIBILITY & UX
+   ================= */
+
+/* تحسينات إمكانية الوصول */
+.PageMenuBar,
+#ctl00_PageMenuBar {
+    /* تحسين التباين */
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* تحسين التفاعل باللمس */
+@media (hover: none) and (pointer: coarse) {
+    .PageMenuBar .Menu .Item .Link a,
+    #ctl00_PageMenuBar .Menu .Item .Link a {
+        min-height: 48px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .pagemenu-mobile-toggle,
+    #mobile-toggle-fixed {
+        min-height: 60px !important;
+        min-width: 60px !important;
+    }
+}
+
+/* =================
+   PRINT MEDIA
+   ================= */
+
+@media print {
+    .PageMenuBar,
+    #ctl00_PageMenuBar,
+    .pagemenu-mobile-toggle,
+    #mobile-toggle-fixed {
+        display: none !important;
+    }
+}
+
+/* =================
+   BROWSER COMPATIBILITY
+   ================= */
+
+/* دعم المتصفحات القديمة */
+.PageMenuBar,
+#ctl00_PageMenuBar {
+    /* Fallback for older browsers */
+    background: #2563eb !important;
+}
+
+/* دعم Safari */
+@supports (-webkit-backdrop-filter: blur(15px)) {
+    @media (max-width: 768px) {
+        .PageMenuBar.mobile-active,
+        #ctl00_PageMenuBar.mobile-active {
+            -webkit-backdrop-filter: blur(15px) !important;
+        }
+    }
+}
+
+/* =================
+   DEBUG UTILITIES
+   ================= */
+
+/* للتشخيص - يمكن إزالتها في الإنتاج */
+.pagemenubar-debug {
+    border: 2px solid red !important;
+    background: yellow !important;
+}
+
+.pagemenubar-debug * {
+    border: 1px solid blue !important;
+}
+
+/* =================
+   OVERRIDE PROTECTION
+   ================= */
+
+/* حماية من التعديلات غير المرغوبة */
+.PageMenuBar,
+#ctl00_PageMenuBar {
+    /* فرض الخصائص الأساسية */
+    box-sizing: border-box !important;
+    font-family: inherit !important;
+}
+
+/* إنهاء الملف */

@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="schGrade" conflictDetection="overwriteChanges" label="sch Grade" plugIn="eZee.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"schGrade"."GradeCode" "GradeCode"
+	,"schGrade"."ShortDesc1" "ShortDesc1"
+	,"schGrade"."ShortDesc2" "ShortDesc2"
+	,"schGrade"."Desc1" "Desc1"
+	,"schGrade"."Desc2" "Desc2"
+	,"schGrade"."acdcode" "acdcode"
+	,"acd"."AcademicYear" "acdAcademicYear"
+	,"acdGlFinperiod"."Fin_period_info" "acdGlFinperiodFin_period_info"
+	,"acdGlFinperiodaccountnumber"."Acc_Nm" "acdGlFinperiodaccountnumberAcc_Nm"
+	,"schGrade"."Totutionsfees" "Totutionsfees"
+	,"schGrade"."Books" "Books"
+	,"schGrade"."Totalfees" "Totalfees"
+	,"schGrade"."registerationfees" "registerationfees"
+	,"schGrade"."registrationstartdate" "registrationstartdate"
+	,"schGrade"."Firstinstalmmentdate" "Firstinstalmmentdate"
+	,"schGrade"."Firstinstalmmentpercent1" "Firstinstalmmentpercent1"
+	,"schGrade"."Secondinstalmmentdate2" "Secondinstalmmentdate2"
+	,"schGrade"."Secondinstalmmentpercent2" "Secondinstalmmentpercent2"
+	,"schGrade"."thirdinstalmmentdate21" "thirdinstalmmentdate21"
+	,"schGrade"."thirdinstalmmentpercent21" "thirdinstalmmentpercent21"
+	,"schGrade"."fourthinstalmmentdate3" "fourthinstalmmentdate3"
+	,"schGrade"."fourthinstalmmentpercent3" "fourthinstalmmentpercent3"
+	,"schGrade"."agecalculatedate" "agecalculatedate"
+	,"schGrade"."ageexpectedbyyear" "ageexpectedbyyear"
+	,"schGrade"."ageexpectedbymonth" "ageexpectedbymonth"
+	,"schGrade"."ModifiedBy" "ModifiedBy"
+	,"schGrade"."ModifiedOn" "ModifiedOn"
+	,"schGrade"."CreatedBy" "CreatedBy"
+	,"schGrade"."CreatedOn" "CreatedOn"
+	,"schGrade"."StageCode" "StageCode"
+	,"Stage"."ShortDesc1" "StageShortDesc1"
+	,"schGrade"."ageexpectedbyyear1" "ageexpectedbyyear1"
+	,"schGrade"."ageexpectedbymonth1" "ageexpectedbymonth1"
+from "dbo"."schGrade" "schGrade"
+	left join "dbo"."schAcademicyear" "acd" on "schGrade"."acdcode" = "acd"."Code"
+	left join "dbo"."GlFinanceperiod" "acdGlFinperiod" on "acd"."GlFinperiodID" = "acdGlFinperiod"."GlFinperiodID"
+	left join "dbo"."GLmstrfl" "acdGlFinperiodaccountnumber" on "acdGlFinperiod"."accountnumber" = "acdGlFinperiodaccountnumber"."Acc_No"
+	left join "dbo"."schStage" "Stage" on "schGrade"."StageCode" = "Stage"."Code"
+]]></text>
+    </command>
+    <command id="GradeCodeIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="GradeCode" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="GradeCode" type="Int64" allowNulls="false" isPrimaryKey="true" label="Grade Code" readOnly="true" />
+    <field name="ShortDesc1" type="String" label="Short Desc1" length="50" showInSummary="true" />
+    <field name="ShortDesc2" type="String" label="Short Desc2" length="50" showInSummary="true" />
+    <field name="Desc1" type="String" label="Desc1" length="50" showInSummary="true" />
+    <field name="Desc2" type="String" label="Desc2" length="50" showInSummary="true" />
+    <field name="acdcode" type="Int64" label="Acdcode" showInSummary="true">
+      <items style="Lookup" dataController="schAcademicyear" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="acdAcademicYear" type="String" readOnly="true" label="acd Academic Year" length="150" />
+    <field name="acdGlFinperiodFin_period_info" type="String" readOnly="true" label="acd Gl Finperiod Fin period info" length="150" />
+    <field name="acdGlFinperiodaccountnumberAcc_Nm" type="String" readOnly="true" label="acd Gl Finperiodaccountnumber Acc Nm" length="255" />
+    <field name="Totutionsfees" type="Decimal" label="Totutionsfees" />
+    <field name="Books" type="Decimal" label="Books" />
+    <field name="Totalfees" type="Decimal" label="Totalfees" />
+    <field name="registerationfees" type="Decimal" label="Registerationfees" />
+    <field name="registrationstartdate" type="DateTime" label="Registrationstartdate" />
+    <field name="Firstinstalmmentdate" type="DateTime" label="Firstinstalmmentdate" />
+    <field name="Firstinstalmmentpercent1" type="Decimal" label="Firstinstalmmentpercent1" />
+    <field name="Secondinstalmmentdate2" type="DateTime" label="Secondinstalmmentdate2" />
+    <field name="Secondinstalmmentpercent2" type="Decimal" label="Secondinstalmmentpercent2" />
+    <field name="thirdinstalmmentdate21" type="DateTime" label="Thirdinstalmmentdate21" />
+    <field name="thirdinstalmmentpercent21" type="Decimal" label="Thirdinstalmmentpercent21" />
+    <field name="fourthinstalmmentdate3" type="DateTime" label="Fourthinstalmmentdate3" />
+    <field name="fourthinstalmmentpercent3" type="Decimal" label="Fourthinstalmmentpercent3" />
+    <field name="agecalculatedate" type="DateTime" label="Agecalculatedate" />
+    <field name="ageexpectedbyyear" type="Int64" label="Ageexpectedbyyear" />
+    <field name="ageexpectedbymonth" type="Int64" label="Ageexpectedbymonth" />
+    <field name="ModifiedBy" type="String" label="Modified By" length="50" />
+    <field name="ModifiedOn" type="DateTime" label="Modified On" />
+    <field name="CreatedBy" type="String" label="Created By" length="50" />
+    <field name="CreatedOn" type="DateTime" label="Created On" />
+    <field name="StageCode" type="Int64" label="Stage Code">
+      <items style="Lookup" dataController="schStage" newDataView="createForm1" searchOnStart="true" />
+    </field>
+    <field name="StageShortDesc1" type="String" readOnly="true" label="Stage Short Desc1" length="50" />
+    <field name="ageexpectedbyyear1" type="Int64" label="Ageexpectedbyyear1" />
+    <field name="ageexpectedbymonth1" type="Int64" label="Ageexpectedbymonth1" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="sch Grade" sortExpression="GradeCode">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="ShortDesc1" columns="50" />
+        <dataField fieldName="ShortDesc2" columns="50" />
+        <dataField fieldName="Desc1" columns="50" />
+        <dataField fieldName="Desc2" columns="50" />
+        <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" />
+        <dataField fieldName="StageCode" aliasFieldName="StageShortDesc1" />
+        <dataField fieldName="agecalculatedate" columns="10" />
+        <dataField fieldName="ageexpectedbyyear" columns="15" />
+        <dataField fieldName="GradeCode" columns="15" />
+        <dataField fieldName="ageexpectedbyyear1" columns="15" />
+        <dataField fieldName="ageexpectedbymonth1" columns="15" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review sch Grade">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="sch Grade" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ShortDesc1" columns="50" />
+            <dataField fieldName="ShortDesc2" columns="50" />
+            <dataField fieldName="Desc1" columns="50" />
+            <dataField fieldName="Desc2" columns="50" />
+            <dataField fieldName="StageCode" aliasFieldName="StageShortDesc1" hyperlinkFormatString="~/Pages/schStage.aspx?Code={StageCode}&amp;_controller=schStage&amp;_commandName=Select&amp;_commandArgument=editForm1" />
+            <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" />
+            <dataField fieldName="agecalculatedate" columns="10" />
+            <dataField fieldName="ageexpectedbyyear" columns="15" />
+            <dataField fieldName="ageexpectedbymonth" columns="15" />
+            <dataField fieldName="ageexpectedbyyear1" columns="15" />
+            <dataField fieldName="ageexpectedbymonth1" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New sch Grade">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="New sch Grade" flow="NewColumn"  newColumn="true">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="ShortDesc1" columns="50" />
+            <dataField fieldName="ShortDesc2" columns="50" />
+            <dataField fieldName="Desc1" columns="50" />
+            <dataField fieldName="Desc2" columns="50" />
+            <dataField fieldName="StageCode" aliasFieldName="StageShortDesc1" />
+            <dataField fieldName="acdcode" aliasFieldName="acdAcademicYear" />
+            <dataField fieldName="agecalculatedate" columns="10" />
+            <dataField fieldName="ageexpectedbyyear" columns="15" />
+            <dataField fieldName="ageexpectedbymonth" columns="15" />
+            <dataField fieldName="ageexpectedbyyear1" columns="15" />
+            <dataField fieldName="ageexpectedbymonth1" columns="15" />
+            <dataField fieldName="ModifiedBy" columns="50" />
+            <dataField fieldName="ModifiedOn" columns="10" />
+            <dataField fieldName="CreatedBy" columns="50" />
+            <dataField fieldName="CreatedOn" columns="10" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+      <action id="a9" />
+      <action id="a10" commandName="BatchEdit" />
+      <action id="a11" commandName="BatchEdit" commandArgument="editForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Delete" />
+      <action id="a6" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a11" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a12" whenLastCommandName="BatchEdit" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenKeySelected="true" whenClientScript="this.get_hasDetails()" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a8" whenLastCommandName="BatchEdit" commandName="Update" />
+      <action id="a9" whenLastCommandName="BatchEdit" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag9" scope="ActionColumn">
+      <action id="a1" commandName="Edit" commandArgument="editForm1" />
+      <action id="a2" commandName="Delete" />
+    </actionGroup>
+  </actions>
+</dataController>

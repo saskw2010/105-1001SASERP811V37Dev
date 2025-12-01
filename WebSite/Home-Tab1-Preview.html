@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏠 التاب الأول - لوحة التحكم الرئيسية | SASERP V4.1.0</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Vue.js 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        /* Import the updated CSS from Home.aspx */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        /* 🏢 Enterprise Multi-Tab Modular Dashboard V4.1.0 */
+        .enterprise-dashboard-container {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Tab Navigation Styles */
+        .dashboard-tabs-container {
+            background: white;
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .enterprise-tabs {
+            border: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0 20px;
+            display: flex;
+        }
+
+        .enterprise-tabs .nav-item {
+            margin: 0;
+        }
+
+        .enterprise-tabs .nav-link {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 20px 30px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .enterprise-tabs .nav-link:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .enterprise-tabs .nav-link.active {
+            color: #2c3e50;
+            background: white;
+            border-bottom: 4px solid #3498db;
+        }
+
+        .enterprise-tabs .nav-link i {
+            font-size: 18px;
+        }
+
+        /* Tab Content */
+        .enterprise-tab-content {
+            background: white;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            min-height: 80vh;
+        }
+
+        .tab-pane {
+            padding: 0;
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        /* Original Dashboard Content */
+        .original-dashboard-content {
+            padding: 30px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 80vh;
+        }
+
+        /* Sidebar Toggle Button */
+        .sidebar-toggle-btn {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 999;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-toggle-btn:hover {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .sidebar-toggle-btn .btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border: none;
+            border-radius: 25px;
+            padding: 12px 20px;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-toggle-btn .btn:hover {
+            background: linear-gradient(135deg, #2980b9, #1f4e79);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        /* Dashboard Layout */
+        .dashboard-layout {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Right Sidebar Styles */
+        .dashboard-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px; /* Hidden by default */
+            width: 450px;
+            height: 100vh;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
+            direction: rtl;
+        }
+
+        .dashboard-sidebar.active {
+            right: 0;
+        }
+
+        .sidebar-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .sidebar-close {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .sidebar-content {
+            padding: 1.5rem;
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #f39c12;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Main Content Area */
+        .dashboard-main-content {
+            transition: margin-right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px;
+        }
+
+        .dashboard-sidebar.active ~ .dashboard-main-content {
+            margin-right: 450px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(155, 89, 182, 0.1));
+            border-radius: 15px;
+            border: 2px solid rgba(52, 152, 219, 0.2);
+        }
+
+        .section-header h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .section-header h2 i {
+            color: #3498db;
+            font-size: 2.2rem;
+        }
+
+        .section-header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        /* School Dashboard Section */
+        .school-dashboard-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            overflow: hidden;
+            border: 1px solid #e8f4f8;
+        }
+
+        .school-dashboard-section .container {
+            padding: 2rem;
+        }
+
+        /* Current Menu Section */
+        .current-menu-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid #e8f4f8;
+        }
+
+        .current-menu-section .container {
+            padding: 2rem;
+        }
+
+        /* Navigation Section */
+        .navigation-section {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.02), rgba(26, 188, 156, 0.02));
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 2px solid rgba(46, 204, 113, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navigation-section:hover {
+            border-color: rgba(46, 204, 113, 0.3);
+            box-shadow: 0 5px 20px rgba(46, 204, 113, 0.1);
+        }
+
+        /* Table of Contents Sidebar Styling */
+        .table-of-contents-sidebar {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+
+        /* Demo content */
+        .demo-sidebar-content {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .demo-menu-item {
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .demo-menu-item:hover {
+            background: #e9ecef;
+            transform: translateX(-5px);
+        }
+
+        .demo-menu-item i {
+            margin-left: 10px;
+            color: #3498db;
+        }
+
+        /* Success notification */
+        .success-notification {
+            background: linear-gradient(135deg, #00b894, #00a085);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Storage & API Management Controls */
+        .storage-controls {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .storage-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .storage-status {
+            padding: 5px 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .refresh-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .refresh-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .refresh-btn.spinning i {
+            animation: spin 1s linear infinite;
+        }
+
+        /* API Testing Panel */
+        .api-testing-panel {
+            background: #2c3e50;
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 10px 25px rgba(44, 62, 80, 0.3);
+        }
+
+        .api-endpoint {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            border-left: 4px solid #3498db;
+        }
+
+        /* Vue.js Component Styles */
+        .dashboard-component {
+            transition: all 0.3s ease;
+        }
+
+        .vue-data-display {
+            background: #ecf0f1;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .data-item {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .data-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Mock API Data Cards */
+        .mock-api-card {
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 8px 20px rgba(142, 68, 173, 0.3);
+        }
+
+        .api-response {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Vue.js App Container -->
+    <div id="dashboardApp" class="enterprise-dashboard-container">
+        
+        <!-- Tab Navigation -->
+        <div class="dashboard-tabs-container">
+            <ul class="nav nav-tabs enterprise-tabs" role="tablist" id="dashboardTabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="original-tab" href="#original-dashboard" role="tab">
+                        <i class="fas fa-home"></i>
+                        <span>لوحة التحكم الرئيسية</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="financial-tab" href="#financial-dashboard" role="tab">
+                        <i class="fas fa-chart-line"></i>
+                        <span>💰 المالية</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="operations-tab" href="#operations-dashboard" role="tab">
+                        <i class="fas fa-cogs"></i>
+                        <span>⚙️ العمليات</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="hr-tab" href="#hr-dashboard" role="tab">
+                        <i class="fas fa-users"></i>
+                        <span>👥 الموارد البشرية</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="analytics-tab" href="#analytics-dashboard" role="tab">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>📊 التحليلات</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content enterprise-tab-content" id="dashboardTabContent">
+            
+            <!-- 🏠 Original Dashboard Tab (Always First and Active) -->
+            <div class="tab-pane fade show active" id="original-dashboard" role="tabpanel">
+                <div class="original-dashboard-content">
+                    
+                    <!-- Storage & API Management Controls -->
+                    <div class="storage-controls">
+                        <div class="storage-info">
+                            <i class="fas fa-database"></i>
+                            <span>Storage Manager</span>
+                            <span class="storage-status" :class="{'bg-success': storageLoaded, 'bg-warning': !storageLoaded}">
+                                {{ storageLoaded ? 'Loaded' : 'Loading...' }}
+                            </span>
+                        </div>
+                        <button class="refresh-btn" @click="refreshSidebarData" :class="{'spinning': isRefreshing}">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Refresh القائمة الجانبية</span>
+                        </button>
+                    </div>
+
+                    <!-- API Testing Panel -->
+                    <div class="api-testing-panel">
+                        <h4><i class="fas fa-code"></i> API Testing & Configuration</h4>
+                        <div class="api-endpoint">
+                            <strong>Current API URL:</strong> {{ apiConfig.baseUrl }}/api/dashboard
+                        </div>
+                        <div class="api-endpoint">
+                            <strong>Status:</strong> {{ apiConfig.status }} | <strong>Mock Data:</strong> {{ mockDataEnabled ? 'Enabled' : 'Disabled' }}
+                        </div>
+                        <button class="btn btn-sm btn-outline-light" @click="testApi">
+                            <i class="fas fa-play"></i> Test API
+                        </button>
+                        <button class="btn btn-sm btn-outline-warning ml-2" @click="toggleMockData">
+                            {{ mockDataEnabled ? 'Disable' : 'Enable' }} Mock Data
+                        </button>
+                    </div>
+
+                    <!-- Success Notification -->
+                    <div class="success-notification">
+                        <h4><i class="fas fa-check-circle"></i> الخطة المحدثة - تم التطوير!</h4>
+                        <p><strong>✅ Storage Manager:</strong> Session/LocalStorage مع Refresh<br>
+                        <strong>✅ Vue.js Frontend:</strong> بدلاً من AJAX<br>
+                        <strong>✅ Mock API:</strong> بيانات افتراضية كاملة<br>
+                        <strong>✅ Global.asax API:</strong> جاهز للتطوير</p>
+                    </div>
+                    
+                    <!-- Right Sidebar Toggle Button -->
+                    <div class="sidebar-toggle-btn">
+                        <button type="button" class="btn btn-primary" onclick="toggleDashboardSidebar()">
+                            <i class="fas fa-bars"></i>
+                            القائمة الجانبية
+                        </button>
+                    </div>
+
+                    <%-- Main Dashboard Layout with Right Sidebar --%>
+                    <div class="dashboard-layout">
+                        <!-- Right Sidebar (Collapsed by default) -->
+                        <div class="dashboard-sidebar" id="dashboardSidebar">
+                            <div class="sidebar-header">
+                                <h3 class="sidebar-title">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    التنقل السريع
+                                </h3>
+                                <button type="button" class="sidebar-close" onclick="toggleDashboardSidebar()">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="sidebar-content">
+                                <!-- Navigation in Sidebar -->
+                                <div class="sidebar-section">
+                                    <h4 class="sidebar-section-title">
+                                        <i class="fas fa-compass"></i>
+                                        جدول المحتويات - السايد بار
+                                    </h4>
+                                    <div class="table-of-contents-sidebar">
+                                        <!-- Vue.js Sidebar Content -->
+                                        <div class="vue-data-display">
+                                            <h5><i class="fas fa-database"></i> Cached Data</h5>
+                                            <div v-for="item in sidebarMenuItems" :key="item.id" class="data-item">
+                                                <i :class="item.icon"></i>
+                                                {{ item.title }}
+                                                <small class="text-muted d-block">{{ item.description }}</small>
+                                            </div>
+                                            <div v-if="sidebarMenuItems.length === 0" class="text-center">
+                                                <i class="fas fa-spinner fa-spin"></i>
+                                                Loading menu items...
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Main Content Area -->
+                        <div class="dashboard-main-content">
+                            <!-- School Dashboard Control - Parent Menu as requested -->
+                            <div class="school-dashboard-section">
+                                <div class="section-header">
+                                    <h2>
+                                        <i class="fas fa-school"></i>
+                                        القوائم الرئيسية - Parent Menu
+                                    </h2>
+                                    <p>الوحدات الأساسية للنظام</p>
+                                </div>
+                                <div class="container contenthome">
+                                    <!-- Mock API Data Display -->
+                                    <div class="mock-api-card">
+                                        <h4><i class="fas fa-school"></i> schoolDashBoard Control (Vue.js Enhanced)</h4>
+                                        <p><strong>Status:</strong> ✅ محفوظ + Enhanced with Vue.js</p>
+                                        <p><strong>Function:</strong> عرض القوائم الرئيسية (Parent Menu) + API Integration</p>
+                                        
+                                        <!-- Live Data from Mock API -->
+                                        <div class="vue-data-display mt-3">
+                                            <h6>🔄 Live Dashboard Modules (Mock API):</h6>
+                                            <div v-for="module in dashboardModules" :key="module.id" class="data-item">
+                                                <i :class="module.icon" :style="{color: module.color}"></i>
+                                                <strong>{{ module.name }}</strong>
+                                                <span class="badge badge-light ml-2">{{ module.status }}</span>
+                                                <div class="small text-muted">{{ module.description }}</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="api-response">
+                                            <strong>API Response:</strong><br>
+                                            {{ JSON.stringify(apiResponse, null, 2) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    
+                    <!-- Current Menu Content Display Section -->
+                    <div class="current-menu-section">
+                        <div class="container contenthome">
+                            <!-- TableOfContents for Current Menu Display -->
+                            <div class="navigation-section">
+                                <div class="section-header">
+                                    <h2>
+                                        <i class="fas fa-sitemap"></i>
+                                        جدول المحتويات - القائمة الحالية
+                                    </h2>
+                                    <p>عرض محتويات الصفحة الحالية من Site Map</p>
+                                </div>
+                                <div class="demo-sidebar-content" style="background: #f8f9fa; color: #495057; border: 2px dashed #2ecc71;">
+                                    <h4><i class="fas fa-sitemap"></i> TableOfContents - Current Menu (Vue.js Enhanced)</h4>
+                                    <p><strong>Status:</strong> ✅ Enhanced مع Vue.js و Storage Manager</p>
+                                    <p><strong>Function:</strong> عرض الـ sitemap للقائمة الحالية مع API Integration</p>
+                                    
+                                    <!-- Vue.js Current Menu Display -->
+                                    <div class="vue-data-display mt-3">
+                                        <h6>🗺️ Current Site Map (Live Data):</h6>
+                                        <div v-for="page in currentSiteMap" :key="page.id" class="data-item">
+                                            <i :class="page.icon"></i>
+                                            <strong>{{ page.title }}</strong>
+                                            <span class="badge badge-info ml-2">{{ page.type }}</span>
+                                            <div class="small text-muted">{{ page.url }}</div>
+                                        </div>
+                                        
+                                        <div class="mt-3">
+                                            <button class="btn btn-sm btn-success" @click="refreshCurrentMenu">
+                                                <i class="fas fa-sync-alt"></i> Refresh Site Map
+                                            </button>
+                                            <button class="btn btn-sm btn-primary ml-2" @click="loadFromStorage">
+                                                <i class="fas fa-download"></i> Load from Storage
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Other tabs (placeholder) -->
+            <div class="tab-pane fade" id="financial-dashboard">
+                <div style="padding: 3rem; text-align: center;">
+                    <h3>💰 لوحة المالية</h3>
+                    <p>سيتم تحميل محتوى هذا القسم لاحقاً</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // 🏢 Enterprise Dashboard V4.1.0 - Vue.js Implementation
+        const { createApp } = Vue;
+
+        // 🔄 DashboardStorageManager Class
+        class DashboardStorageManager {
+            constructor() {
+                this.sessionKey = 'SASERP_Dashboard_Data';
+                this.localKey = 'SASERP_Dashboard_Config';
+                this.cacheTimeout = 30 * 60 * 1000; // 30 minutes
+            }
+
+            // Save to Session Storage
+            saveToSession(key, data) {
+                const storageData = {
+                    data: data,
+                    timestamp: Date.now(),
+                    version: '4.1.0'
+                };
+                sessionStorage.setItem(key, JSON.stringify(storageData));
+                console.log('💾 Data saved to session storage:', key);
+            }
+
+            // Load from Session Storage
+            loadFromSession(key) {
+                try {
+                    const stored = sessionStorage.getItem(key);
+                    if (!stored) return null;
+
+                    const storageData = JSON.parse(stored);
+                    const isExpired = (Date.now() - storageData.timestamp) > this.cacheTimeout;
+                    
+                    if (isExpired) {
+                        sessionStorage.removeItem(key);
+                        console.log('⏰ Session data expired, removed:', key);
+                        return null;
+                    }
+
+                    console.log('📖 Data loaded from session storage:', key);
+                    return storageData.data;
+                } catch (error) {
+                    console.error('❌ Error loading from session storage:', error);
+                    return null;
+                }
+            }
+
+            // Save to Local Storage
+            saveToLocal(key, data) {
+                localStorage.setItem(key, JSON.stringify({
+                    data: data,
+                    timestamp: Date.now(),
+                    version: '4.1.0'
+                }));
+                console.log('💾 Data saved to local storage:', key);
+            }
+
+            // Load from Local Storage
+            loadFromLocal(key) {
+                try {
+                    const stored = localStorage.getItem(key);
+                    if (!stored) return null;
+                    
+                    const storageData = JSON.parse(stored);
+                    console.log('📖 Data loaded from local storage:', key);
+                    return storageData.data;
+                } catch (error) {
+                    console.error('❌ Error loading from local storage:', error);
+                    return null;
+                }
+            }
+
+            // Clear all storage
+            clearAll() {
+                sessionStorage.removeItem(this.sessionKey);
+                localStorage.removeItem(this.localKey);
+                console.log('🧹 All dashboard storage cleared');
+            }
+        }
+
+        // 🌐 Mock API Service
+        class MockAPIService {
+            constructor() {
+                this.baseUrl = window.location.origin; // Current site URL
+                this.endpoints = {
+                    dashboard: '/api/dashboard',
+                    modules: '/api/modules',
+                    sitemap: '/api/sitemap',
+                    config: '/api/config'
+                };
+                this.enabled = true;
+            }
+
+            // Mock Dashboard Data
+            async getDashboardModules() {
+                // Simulate API delay
+                await this.delay(800);
+                
+                return {
+                    success: true,
+                    data: [
+                        {
+                            id: 1,
+                            name: 'المالية والمحاسبة',
+                            icon: 'fas fa-chart-line',
+                            color: '#3498db',
+                            status: 'Active',
+                            description: 'إدارة الحسابات والتقارير المالية',
+                            modules: ['الحسابات العامة', 'الفواتير', 'التقارير المالية']
+                        },
+                        {
+                            id: 2,
+                            name: 'إدارة العمليات',
+                            icon: 'fas fa-cogs',
+                            color: '#e74c3c',
+                            status: 'Active',
+                            description: 'متابعة العمليات والإنتاج',
+                            modules: ['المخازن', 'الإنتاج', 'جودة المنتج']
+                        },
+                        {
+                            id: 3,
+                            name: 'الموارد البشرية',
+                            icon: 'fas fa-users',
+                            color: '#2ecc71',
+                            status: 'Active',
+                            description: 'إدارة الموظفين والرواتب',
+                            modules: ['الموظفين', 'الحضور والانصراف', 'الرواتب']
+                        },
+                        {
+                            id: 4,
+                            name: 'إدارة المبيعات',
+                            icon: 'fas fa-shopping-cart',
+                            color: '#f39c12',
+                            status: 'Active',
+                            description: 'متابعة المبيعات والعملاء',
+                            modules: ['العملاء', 'أوامر البيع', 'متابعة المبيعات']
+                        },
+                        {
+                            id: 5,
+                            name: 'التقارير والتحليلات',
+                            icon: 'fas fa-chart-bar',
+                            color: '#9b59b6',
+                            status: 'Active',
+                            description: 'تقارير شاملة وتحليل البيانات',
+                            modules: ['التقارير المالية', 'تحليل المبيعات', 'تقارير الإنتاج']
+                        }
+                    ],
+                    timestamp: new Date().toISOString()
+                };
+            }
+
+            // Mock Site Map Data
+            async getCurrentSiteMap() {
+                await this.delay(600);
+                
+                return {
+                    success: true,
+                    data: [
+                        {
+                            id: 1,
+                            title: 'الصفحة الرئيسية',
+                            url: '/Home.aspx',
+                            icon: 'fas fa-home',
+                            type: 'Page',
+                            parent: null
+                        },
+                        {
+                            id: 2,
+                            title: 'إدارة المستخدمين',
+                            url: '/Pages/Users.aspx',
+                            icon: 'fas fa-users',
+                            type: 'Module',
+                            parent: 'Admin'
+                        },
+                        {
+                            id: 3,
+                            title: 'التقارير المالية',
+                            url: '/Pages/Reports/Financial.aspx',
+                            icon: 'fas fa-file-alt',
+                            type: 'Report',
+                            parent: 'Finance'
+                        },
+                        {
+                            id: 4,
+                            title: 'إعدادات النظام',
+                            url: '/Pages/Settings.aspx',
+                            icon: 'fas fa-cog',
+                            type: 'Settings',
+                            parent: 'Admin'
+                        },
+                        {
+                            id: 5,
+                            title: 'لوحة التحكم التنفيذية',
+                            url: '/Pages/Executive.aspx',
+                            icon: 'fas fa-tachometer-alt',
+                            type: 'Dashboard',
+                            parent: 'Management'
+                        }
+                    ],
+                    timestamp: new Date().toISOString()
+                };
+            }
+
+            // Mock Sidebar Menu
+            async getSidebarMenu() {
+                await this.delay(500);
+                
+                return {
+                    success: true,
+                    data: [
+                        {
+                            id: 1,
+                            title: 'التنقل السريع',
+                            icon: 'fas fa-bolt',
+                            description: 'الوصول السريع للوحدات الأساسية'
+                        },
+                        {
+                            id: 2,
+                            title: 'المفضلة',
+                            icon: 'fas fa-star',
+                            description: 'الصفحات المحفوظة في المفضلة'
+                        },
+                        {
+                            id: 3,
+                            title: 'المهام المعلقة',
+                            icon: 'fas fa-tasks',
+                            description: 'المهام التي تحتاج للمتابعة'
+                        },
+                        {
+                            id: 4,
+                            title: 'الإشعارات',
+                            icon: 'fas fa-bell',
+                            description: 'آخر الإشعارات والتحديثات'
+                        }
+                    ],
+                    timestamp: new Date().toISOString()
+                };
+            }
+
+            // Utility delay function
+            delay(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            // Test API connectivity
+            async testConnection() {
+                try {
+                    await this.delay(1000);
+                    return {
+                        success: true,
+                        message: 'API connection successful',
+                        endpoints: this.endpoints,
+                        timestamp: new Date().toISOString()
+                    };
+                } catch (error) {
+                    return {
+                        success: false,
+                        message: 'API connection failed',
+                        error: error.message
+                    };
+                }
+            }
+        }
+
+        // 🎯 Vue.js Application
+        createApp({
+            data() {
+                return {
+                    // Storage Manager
+                    storageManager: new DashboardStorageManager(),
+                    storageLoaded: false,
+                    isRefreshing: false,
+                    
+                    // API Configuration
+                    apiService: new MockAPIService(),
+                    apiConfig: {
+                        baseUrl: window.location.origin,
+                        status: 'Ready',
+                        version: '4.1.0'
+                    },
+                    mockDataEnabled: true,
+                    
+                    // Dashboard Data
+                    dashboardModules: [],
+                    currentSiteMap: [],
+                    sidebarMenuItems: [],
+                    
+                    // API Response for display
+                    apiResponse: {}
+                }
+            },
+            
+            async mounted() {
+                console.log('🚀 Enterprise Dashboard V4.1.0 - Vue.js App Started');
+                await this.initializeDashboard();
+            },
+            
+            methods: {
+                async initializeDashboard() {
+                    try {
+                        // Load data from storage first
+                        await this.loadStoredData();
+                        
+                        // Load fresh data from API
+                        await this.loadDashboardData();
+                        
+                        this.storageLoaded = true;
+                        console.log('✅ Dashboard initialization complete');
+                        
+                    } catch (error) {
+                        console.error('❌ Dashboard initialization failed:', error);
+                    }
+                },
+                
+                async loadStoredData() {
+                    // Try to load from session storage first
+                    const storedModules = this.storageManager.loadFromSession('dashboardModules');
+                    const storedSiteMap = this.storageManager.loadFromSession('currentSiteMap');
+                    const storedSidebar = this.storageManager.loadFromSession('sidebarMenu');
+                    
+                    if (storedModules) this.dashboardModules = storedModules;
+                    if (storedSiteMap) this.currentSiteMap = storedSiteMap;
+                    if (storedSidebar) this.sidebarMenuItems = storedSidebar;
+                    
+                    if (storedModules || storedSiteMap || storedSidebar) {
+                        console.log('📖 Loaded cached data from storage');
+                    }
+                },
+                
+                async loadDashboardData() {
+                    if (!this.mockDataEnabled) return;
+                    
+                    try {
+                        // Load dashboard modules
+                        const modulesResponse = await this.apiService.getDashboardModules();
+                        if (modulesResponse.success) {
+                            this.dashboardModules = modulesResponse.data;
+                            this.storageManager.saveToSession('dashboardModules', modulesResponse.data);
+                        }
+                        
+                        // Load current site map
+                        const siteMapResponse = await this.apiService.getCurrentSiteMap();
+                        if (siteMapResponse.success) {
+                            this.currentSiteMap = siteMapResponse.data;
+                            this.storageManager.saveToSession('currentSiteMap', siteMapResponse.data);
+                        }
+                        
+                        // Load sidebar menu
+                        const sidebarResponse = await this.apiService.getSidebarMenu();
+                        if (sidebarResponse.success) {
+                            this.sidebarMenuItems = sidebarResponse.data;
+                            this.storageManager.saveToSession('sidebarMenu', sidebarResponse.data);
+                        }
+                        
+                        this.apiResponse = {
+                            modules: modulesResponse,
+                            siteMap: siteMapResponse,
+                            sidebar: sidebarResponse
+                        };
+                        
+                        console.log('🔄 Fresh data loaded from API');
+                        
+                    } catch (error) {
+                        console.error('❌ Error loading dashboard data:', error);
+                    }
+                },
+                
+                async refreshSidebarData() {
+                    this.isRefreshing = true;
+                    
+                    try {
+                        // Clear cached data
+                        this.storageManager.clearAll();
+                        
+                        // Reload data
+                        await this.loadDashboardData();
+                        
+                        console.log('🔄 Sidebar data refreshed');
+                        
+                    } catch (error) {
+                        console.error('❌ Error refreshing sidebar data:', error);
+                    } finally {
+                        this.isRefreshing = false;
+                    }
+                },
+                
+                async testApi() {
+                    try {
+                        const result = await this.apiService.testConnection();
+                        alert(`API Test Result: ${result.success ? 'Success' : 'Failed'}\n${result.message}`);
+                        console.log('🧪 API Test Result:', result);
+                    } catch (error) {
+                        console.error('❌ API Test Error:', error);
+                    }
+                },
+                
+                toggleMockData() {
+                    this.mockDataEnabled = !this.mockDataEnabled;
+                    console.log('🔄 Mock data:', this.mockDataEnabled ? 'Enabled' : 'Disabled');
+                    
+                    if (this.mockDataEnabled) {
+                        this.loadDashboardData();
+                    } else {
+                        this.dashboardModules = [];
+                        this.currentSiteMap = [];
+                        this.sidebarMenuItems = [];
+                    }
+                },
+                
+                async refreshCurrentMenu() {
+                    try {
+                        const response = await this.apiService.getCurrentSiteMap();
+                        if (response.success) {
+                            this.currentSiteMap = response.data;
+                            this.storageManager.saveToSession('currentSiteMap', response.data);
+                            console.log('🗺️ Site map refreshed');
+                        }
+                    } catch (error) {
+                        console.error('❌ Error refreshing site map:', error);
+                    }
+                },
+                
+                loadFromStorage() {
+                    this.loadStoredData();
+                    console.log('📖 Data reloaded from storage');
+                }
+            }
+        }).mount('#dashboardApp');
+
+        // Global sidebar toggle function (for compatibility)
+        function toggleDashboardSidebar() {
+            const sidebar = document.getElementById('dashboardSidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Tab switching (Bootstrap compatible)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.enterprise-tabs .nav-link').forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active classes
+                    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                    document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('show', 'active'));
+                    
+                    // Add active class
+                    this.classList.add('active');
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetPane = document.getElementById(targetId);
+                    if (targetPane) {
+                        targetPane.classList.add('show', 'active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
