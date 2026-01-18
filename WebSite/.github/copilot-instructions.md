@@ -1,5 +1,48 @@
 # 📝 SASERP V37 - AI Coding Agent Instructions
 
+---
+
+# 🌐 Sky365 Ecosystem - Legacy ERP System
+
+## Brand Identity
+**Parent Company:** Wytsky AI Cloud Solutions  
+**Product:** SASERP 811 v37 - Legacy ERP  
+**Technology:** ASP.NET WebForms / VB.NET / CodeOnTime  
+**Status:** Stable - Maintenance Only  
+**Colors:** Microsoft Blue (#0078D4)
+
+---
+
+## 📋 Project Context
+
+SASERP 811 v37 is the **legacy ERP system** for Sky365:
+- Old production system (CodeOnTime based)
+- Stable and proven in production
+- Maintenance and support only
+- Reference for legacy integrations
+
+---
+
+## 🗂️ Related Projects
+
+### Sky365 Product Suite
+- **Sky365 ERP** (`ZainAgenda.Next`) - Modern Replacement
+- **Sky Agentic** - AI Agents Layer
+- **SASERP 811 v37** (This Project) - Legacy System
+- **Sky365 Cloud** - Infrastructure
+
+### Development Projects
+- **Sky365 Apps/Offers** - New Modules
+- **Noor Mobile** - Mobile Interface
+- **eZeeQuizz** - Prototype Lab
+
+### Reference Systems
+- **ZainAgenda v2.8** - Business Logic Reference
+- **Legal Library** - Documentation
+- **filesimport** - Migration Tools
+
+---
+
 This document provides essential guidance for AI agents working on the SASERP V37 codebase. Understanding these patterns is crucial for making effective and consistent contributions.
 
 ## 🏛️ Architecture Overview

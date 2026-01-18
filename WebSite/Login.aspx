@@ -728,121 +728,73 @@
         }
         
         /* ========================================
-           System Updates & News Section Styles
+           System Updates & News Section Styles - COMPACT V2
         ======================================== */
         
         .news-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.9) 100%);
-            border-radius: 24px;
-            padding: 2rem;
-            box-shadow: 0 20px 60px rgba(37,99,235,0.15),
-                        0 8px 24px rgba(0,0,0,0.1),
-                        inset 0 1px 0 rgba(255,255,255,0.6);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(37,99,235,0.1);
-            animation: slideInUp 0.8s cubic-bezier(.4,0,.2,1);
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 1s ease-out;
+            color: white;
         }
         
         .news-header {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid rgba(37,99,235,0.1);
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .news-header i {
-            font-size: 1.8rem;
-            background: var(--neural-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: pulse 2s ease-in-out infinite;
+            font-size: 1.4rem;
+            color: #60a5fa;
         }
         
         .news-header h3 {
             margin: 0;
-            font-size: 1.3rem;
-            font-weight: 700;
-            background: var(--ai-gradient-2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
         }
         
         .news-items {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
         }
         
         .news-item {
             display: flex;
-            gap: 1rem;
-            padding: 1rem;
-            background: linear-gradient(135deg, rgba(248,250,252,0.8) 0%, rgba(255,255,255,0.6) 100%);
-            border-radius: 16px;
-            border: 1px solid rgba(37,99,235,0.08);
-            transition: all 0.4s cubic-bezier(.4,0,.2,1);
-            animation: fadeInSlide 0.6s cubic-bezier(.4,0,.2,1) backwards;
-            cursor: pointer;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
         
         .news-item:hover {
-            transform: translateX(-8px) scale(1.02);
-            box-shadow: 0 12px 32px rgba(37,99,235,0.15),
-                        0 4px 16px rgba(0,0,0,0.08);
-            border-color: rgba(37,99,235,0.2);
-            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.9) 100%);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
         }
         
         .news-icon {
-            width: 50px;
-            height: 50px;
-            min-width: 50px;
-            border-radius: 12px;
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            transition: all 0.4s cubic-bezier(.4,0,.2,1);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-        }
-        
-        .news-item:hover .news-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-        
-        /* Icon Colors */
-        .ai-icon {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        .analytics-icon {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-        }
-        
-        .mobile-icon {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-        }
-        
-        .security-icon {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            color: white;
-        }
-        
-        .cloud-icon {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-            color: white;
-        }
-        
-        .performance-icon {
-            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
-            color: white;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.2);
         }
         
         .news-content {
@@ -851,91 +803,30 @@
         }
         
         .news-content h4 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--dark-text);
-            line-height: 1.4;
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: white;
         }
         
         .news-content p {
-            margin: 0;
-            font-size: 0.85rem;
-            color: var(--light-text);
-            line-height: 1.6;
+            margin: 2px 0 0 0;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
         }
         
-        /* Animations */
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .badge-update {
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: #10b981;
+            color: white;
+            margin-right: 5px;
         }
         
-        @keyframes fadeInSlide {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .news-updates-container {
-                max-width: 100%;
-                margin-top: 1.5rem;
-            }
-            
-            .news-card {
-                padding: 1.5rem;
-                border-radius: 16px;
-            }
-            
-            .news-header h3 {
-                font-size: 1.1rem;
-            }
-            
-            .news-icon {
-                width: 45px;
-                height: 45px;
-                min-width: 45px;
-                font-size: 1.3rem;
-            }
-            
-            .news-content h4 {
-                font-size: 0.95rem;
-            }
-            
-            .news-content p {
-                font-size: 0.8rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .news-card {
-                padding: 1rem;
-            }
-            
-            .news-item {
-                padding: 0.8rem;
-                gap: 0.8rem;
-            }
-            
-            .news-icon {
-                width: 40px;
-                height: 40px;
-                min-width: 40px;
-                font-size: 1.2rem;
-            }
+        .badge-upcoming {
+            background: #3b82f6;
         }
     </style>
 </head>
@@ -1021,78 +912,56 @@
                         </div>
                     </div>
                     
-                    <!-- System Updates & News Section -->
+                    <!-- System Updates & News Section - COMPACT V2 -->
                     <div class="news-updates-container">
                         <div class="news-card">
                             <div class="news-header">
-                                <i class="fas fa-newspaper"></i>
-                                <h3>آخر التحديثات والمميزات</h3>
+                                <i class="fas fa-sparkles"></i>
+                                <h3>تحديثات النظام والتقدم</h3>
                             </div>
                             
                             <div class="news-items">
-                                <!-- News Item 1 - AI Feature -->
-                                <div class="news-item" style="animation-delay: 0.1s">
-                                    <div class="news-icon ai-icon">
-                                        <i class="fas fa-brain"></i>
+                                <!-- Progress 1 -->
+                                <div class="news-item">
+                                    <div class="news-icon" style="color: #10b981;">
+                                        <i class="fas fa-mobile-screen"></i>
                                     </div>
                                     <div class="news-content">
-                                        <h4>🤖 الذكاء الاصطناعي متاح الآن!</h4>
-                                        <p>هل تعلم أن الذكاء الاصطناعي أصبح متوفراً بالنظام؟ يمكنك الآن التحدث مع النظام والحصول على تحليلات ذكية من بياناتك</p>
+                                        <h4>تطبيق الموبايل (Noor Mobile) <span class="badge-update">مكتمل</span></h4>
+                                        <p>إطلاق النسخة التجريبية من تطبيق الموبايل بتقنية .NET MAUI</p>
                                     </div>
                                 </div>
                                 
-                                <!-- News Item 2 - Analytics -->
-                                <div class="news-item" style="animation-delay: 0.2s">
-                                    <div class="news-icon analytics-icon">
-                                        <i class="fas fa-chart-line"></i>
+                                <!-- Progress 2 -->
+                                <div class="news-item">
+                                    <div class="news-icon" style="color: #60a5fa;">
+                                        <i class="fas fa-robot"></i>
                                     </div>
                                     <div class="news-content">
-                                        <h4>📊 تقارير تفاعلية محسّنة</h4>
-                                        <p>تقارير ديناميكية مع رسوم بيانية تفاعلية وتصدير متعدد الصيغ (PDF, Excel, Word)</p>
+                                        <h4>تكامل الذكاء الاصطناعي <span class="badge-update">مكتمل</span></h4>
+                                        <p>إضافة مساعد ذكي لتحليل البيانات والتقارير بشكل آلي</p>
                                     </div>
                                 </div>
                                 
-                                <!-- News Item 3 - Mobile -->
-                                <div class="news-item" style="animation-delay: 0.3s">
-                                    <div class="news-icon mobile-icon">
-                                        <i class="fas fa-mobile-alt"></i>
+                                <!-- Upcoming 1 -->
+                                <div class="news-item">
+                                    <div class="news-icon" style="color: #f59e0b;">
+                                        <i class="fas fa-chart-pie"></i>
                                     </div>
                                     <div class="news-content">
-                                        <h4>📱 تصميم متجاوب بالكامل</h4>
-                                        <p>واجهة محسّنة للهواتف والأجهزة اللوحية - اعمل من أي مكان بكل سهولة</p>
+                                        <h4>لوحة تحليلات متقدمة <span class="badge-update badge-upcoming">قريباً</span></h4>
+                                        <p>نظام تقارير تفاعلي جديد كلياً مع رسوم بيانية متطورة</p>
                                     </div>
                                 </div>
                                 
-                                <!-- News Item 4 - Security -->
-                                <div class="news-item" style="animation-delay: 0.4s">
-                                    <div class="news-icon security-icon">
-                                        <i class="fas fa-shield-alt"></i>
+                                <!-- Upcoming 2 -->
+                                <div class="news-item">
+                                    <div class="news-icon" style="color: #8b5cf6;">
+                                        <i class="fas fa-cloud-arrow-up"></i>
                                     </div>
                                     <div class="news-content">
-                                        <h4>🔒 أمان محسّن</h4>
-                                        <p>تشفير متقدم ومصادقة ثنائية لحماية بياناتك بأعلى معايير الأمان</p>
-                                    </div>
-                                </div>
-                                
-                                <!-- News Item 5 - Cloud -->
-                                <div class="news-item" style="animation-delay: 0.5s">
-                                    <div class="news-icon cloud-icon">
-                                        <i class="fas fa-cloud"></i>
-                                    </div>
-                                    <div class="news-content">
-                                        <h4>☁️ النسخ الاحتياطي التلقائي</h4>
-                                        <p>بياناتك محمية تلقائياً في السحابة - لا تقلق بشأن فقدان المعلومات</p>
-                                    </div>
-                                </div>
-                                
-                                <!-- News Item 6 - Performance -->
-                                <div class="news-item" style="animation-delay: 0.6s">
-                                    <div class="news-icon performance-icon">
-                                        <i class="fas fa-rocket"></i>
-                                    </div>
-                                    <div class="news-content">
-                                        <h4>⚡ أداء فائق السرعة</h4>
-                                        <p>تحسينات كبيرة في الأداء - النظام أسرع بـ 3 أضعاف من الإصدار السابق</p>
+                                        <h4>دعم السحابة المتعددة <span class="badge-update badge-upcoming">قريباً</span></h4>
+                                        <p>توسيع نطاق النظام ليدعم بيئات سحابية متعددة (SaaS)</p>
                                     </div>
                                 </div>
                             </div>

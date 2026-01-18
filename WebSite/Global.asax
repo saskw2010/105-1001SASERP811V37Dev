@@ -10,6 +10,23 @@ Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
     eZee.Services.ApplicationServices.Initialize()
 End Sub
 
+Sub Application_BeginRequest(ByVal sender As Object, ByVal e As EventArgs)
+    ' V2 API Rewrite
+    Dim path As String = Request.Url.AbsolutePath
+    If path.IndexOf("/v2/", StringComparison.OrdinalIgnoreCase) >= 0 Then
+        Dim idx As Integer = path.IndexOf("/v2/", StringComparison.OrdinalIgnoreCase)
+        Dim controller As String = path.Substring(idx + 4)
+        
+        Dim query As String = Request.QueryString.ToString()
+        Dim newUrl As String = "~/v2_handler.aspx?controller=" & controller
+        If Not String.IsNullOrEmpty(query) Then
+            newUrl &= "&" & query
+        End If
+        
+        Context.RewritePath(newUrl)
+    End If
+End Sub
+
 Sub Application_End(ByVal sender As Object, ByVal e As EventArgs)
     'Fires on application shutdown
 End Sub

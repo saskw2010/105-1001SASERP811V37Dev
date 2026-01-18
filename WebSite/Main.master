@@ -1,4 +1,5 @@
 <%@ Master Language="VB" AutoEventWireup="false" CodeFile="Main.master.vb" Inherits="Main" %>
+<%@ Register Src="~/Controls/PremiumSidebar.ascx" TagName="PremiumSidebar" TagPrefix="uc" %>
 <!DOCTYPE html>
 <html xml:lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>" lang="<%= System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag %>" dir="<%= If(System.Threading.Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft, "rtl", "ltr") %>">
 <head runat="server">
@@ -20,6 +21,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" referrerpolicy="no-referrer" />
     <!-- Consolidated App Styles -->
     <link href="/css/stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="/css/premium-sidebar.css" rel="stylesheet" type="text/css" />
+    <link href="/css/ultra-main.css" rel="stylesheet" type="text/css" />
     
     <!-- Ultra Modern Design System moved to external stylesheet: /css/ultra-main.css -->
     
@@ -106,13 +109,18 @@
         .CultureLink {
             display: inline-block !important;
             float: right !important;
-            margin: 0 5px !important;
+            margin: 0 15px !important;
+            min-width: 55px !important;
+            text-align: center !important;
+            position: relative !important;
+            z-index: 10080 !important;
         }
         
         .CultureLink a {
-            display: inline !important;
+            display: inline-block !important;
             color: #fff !important;
             text-decoration: underline !important;
+            padding: 5px 8px !important;
         }
         
         /* Remove legacy-hidden class effects */
@@ -264,14 +272,24 @@
         <act:ToolkitScriptManager ID="sm" runat="server" ScriptMode="Release" EnableScriptGlobalization="True" OnResolveScriptReference="sm_ResolveScriptReference" />
         <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
         
+        <!-- NEW PREMIUM SIDEBAR -->
+        <uc:PremiumSidebar ID="PremiumSidebar1" runat="server" />
+
         <!-- Membership Top Bar -->
         <div class="membership-top-bar">
             <div class="membership-content">
                 <div class="user-info">
                     <span class="welcome-text">مرحباً،</span>
                     <span class="username" id="currentUserName">المستخدم</span>
+                    <!-- New License Area -->
+                    <div id="ModernLicenseArea" class="license-area"></div>
                 </div>
                 <div class="membership-actions">
+                    <!-- Language Toggle Button -->
+                    <button type="button" class="membership-btn" onclick="toggleMembershipLanguage(); return false;" title="تغيير اللغة">
+                        <i class="fas fa-language"></i>
+                    </button>
+
                     <!-- Burger inside top bar (single header) -->
                     <button type="button" class="membership-btn" id="menuToggleBtn" aria-label="القائمة" aria-controls="ModernMenuHost" aria-expanded="false" title="القائمة">
                         <i class="fas fa-bars"></i>
@@ -1293,60 +1311,6 @@
                 if (ma && !ma.classList.contains('center')) ma.classList.add('center');
             } catch (e) { console && console.warn && console.warn('Header icon relocation skipped:', e); }
         });
-        
-        // Language Toggle Function - Code On Time Framework Compatible
-        function toggleMembershipLanguage() {
-            try {
-                console.log('🌐 Attempting to toggle language...');
-                
-                // Method 1: Use Code On Time Web.Membership API
-                if (typeof Web !== 'undefined' && Web.Membership && Web.Membership._instance) {
-                    const membership = Web.Membership._instance;
-                    console.log('✅ Found Web.Membership instance');
-                    
-                    // Try to find and trigger the culture selector
-                    const cultureSelector = document.getElementById('Membership$Cultures');
-                    if (cultureSelector) {
-                        console.log('✅ Found culture selector, showing it');
-                        // Trigger the hover event to show culture options
-                        if (typeof $showHover === 'function') {
-                            const cultureLinkElement = document.querySelector('.CultureLink a');
-                            if (cultureLinkElement) {
-                                $showHover(cultureLinkElement, 'Membership$Cultures', 'CultureSelector', 1);
-                                return;
-                            }
-                        }
-                    }
-                }
-                
-                // Method 2: Direct click on CultureLink
-                const cultureLink = document.querySelector('.CultureLink a');
-                if (cultureLink) {
-                    console.log('✅ Found CultureLink, clicking it');
-                    // Simulate mouse events to trigger the hover menu
-                    const mouseOverEvent = new MouseEvent('mouseover', { bubbles: true, cancelable: true });
-                    const clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true });
-                    cultureLink.dispatchEvent(mouseOverEvent);
-                    setTimeout(() => cultureLink.dispatchEvent(clickEvent), 50);
-                    return;
-                }
-                
-                // Method 3: Try to find the culture selector dropdown
-                const membershipBar = document.getElementById('Membership_Login');
-                if (membershipBar) {
-                    const langLink = membershipBar.querySelector('a[title*="language"], a[onclick*="toggleHover"]');
-                    if (langLink) {
-                        console.log('✅ Found language link via fallback');
-                        langLink.click();
-                        return;
-                    }
-                }
-                
-                console.warn('⚠️ No language selector method worked');
-            } catch (e) {
-                console.error('❌ Error toggling language:', e);
-            }
-        }
     </script>
     
     <!-- Root Sidebar Styles -->
@@ -1458,6 +1422,84 @@
     
     <!-- Root Sidebar Script - Site-wide -->
     <script src="/js/modern-root-sidebar.js?v=1"></script>
+
+    <script>
+    // 🌐 Robust Language Toggle for Code On Time
+    function toggleMembershipLanguage() {
+        console.log('🌐 Language toggle triggered');
+        try {
+            // Method 1: Use Code On Time native hover trigger
+            if (typeof $toggleHover === 'function') {
+                console.log('✅ Using $toggleHover');
+                $toggleHover('Membership$Cultures');
+                return;
+            }
+
+            // Method 2: Click hidden CultureLink
+            var cultureLink = document.querySelector('.CultureLink a, .CultureSelector a');
+            if (cultureLink) {
+                console.log('✅ Found CultureLink, clicking');
+                cultureLink.click();
+                return;
+            }
+
+            // Method 3: Show the hidden dropdown directly
+            var cultures = document.getElementById('Membership$Cultures');
+            if (cultures) {
+                cultures.style.display = (cultures.style.display === 'none' ? 'block' : 'none');
+                cultures.style.visibility = 'visible';
+                cultures.style.opacity = '1';
+                return;
+            }
+            
+            console.warn('Language selector not found.');
+        } catch (e) {
+            console.error('❌ Language toggle error:', e);
+        }
+    }
+
+    // 🛡️ Move License Bar to Header
+    function moveLicenseBar() {
+        try {
+            // Common COT license bar selectors
+            const licenseSelector = '#LicenseBar, .LicenseBar, [id*="LicenseNotice"], .license-notice, .Banner';
+            const originalLicense = document.querySelector(licenseSelector);
+            const target = document.getElementById('ModernLicenseArea');
+            
+            if (originalLicense && target) {
+                console.log('✅ Found license bar, moving to header');
+                // Clean up any internal COT styles that break the flow
+                originalLicense.style.display = 'inline-block';
+                originalLicense.style.margin = '0 10px';
+                originalLicense.style.padding = '2px 8px';
+                originalLicense.style.background = 'rgba(16, 185, 129, 0.2)'; // Subtle green
+                originalLicense.style.border = '1px solid rgba(16, 185, 129, 0.3)';
+                originalLicense.style.borderRadius = '4px';
+                originalLicense.style.color = '#34d399'; 
+                originalLicense.style.fontSize = '0.7rem';
+                originalLicense.style.fontWeight = '600';
+                originalLicense.style.whiteSpace = 'nowrap';
+                
+                target.appendChild(originalLicense);
+            }
+        } catch (e) {
+            console.warn('License relocation failed:', e);
+        }
+    }
+
+    // Run utilities on load
+    document.addEventListener('DOMContentLoaded', () => {
+        moveLicenseBar();
+        // Periodically check in case COT injects it late
+        setTimeout(moveLicenseBar, 1000);
+        setTimeout(moveLicenseBar, 3000);
+    });
+
+    // Handle AJAX updates
+    if (typeof Sys !== 'undefined' && Sys.WebForms) {
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(moveLicenseBar);
+    }
+    </script>
     
 </body>
 </html>

@@ -1,0 +1,291 @@
+/* 
+   Sky365 ERP - Premium Sidebar Styles (Ultra Floating Edition)
+   File: premium-sidebar.css
+   Description: Floating drawer sidebar with Sky365 Branding
+*/
+
+:root {
+    --sky-blue: #0078D4;
+    /* Microsoft Blue */
+    --sky-blue-hover: #005A9E;
+    --sidebar-bg: rgba(15, 23, 42, 0.98);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   1. FLOATING TRIGGER BUTTON
+   ============================================ */
+.premium-sidebar-trigger {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sky-blue), #00A4EF);
+    color: white;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 15px rgba(0, 120, 212, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 9998;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.premium-sidebar-trigger:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 15px 35px rgba(0, 120, 212, 0.5);
+    background: linear-gradient(135deg, #00A4EF, var(--sky-blue));
+}
+
+.premium-sidebar-trigger.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0);
+}
+
+/* ============================================
+   2. SIDEBAR CONTAINER (Drawer Style)
+   ============================================ */
+.premium-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(25px);
+    border-right: 1px solid var(--glass-border);
+    z-index: 10000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.premium-sidebar.visible {
+    transform: translateX(0);
+}
+
+.sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.sidebar-backdrop.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body.sidebar-open {
+    overflow: hidden;
+}
+
+/* ============================================
+   3. SIDEBAR HEADER (Brand + Close)
+   ============================================ */
+.sidebar-header {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--glass-border);
+    background: linear-gradient(135deg, rgba(0, 120, 212, 0.1), rgba(0, 164, 239, 0.1));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+.sidebar-brand span {
+    background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sidebar-brand i {
+    color: var(--sky-blue);
+    font-size: 1.25rem;
+}
+
+.sidebar-close-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.7rem;
+}
+
+.sidebar-close-btn:hover {
+    background: #ef4444;
+}
+
+.sidebar-close-btn i {
+    font-size: 1rem;
+}
+
+/* ============================================
+   4. NAVIGATION MENU
+   ============================================ */
+.sidebar-nav {
+    padding: 15px 10px;
+}
+
+.nav-section-title {
+    padding: 20px 15px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 1.5px;
+}
+
+.nav-item,
+.nav-item-collapsible {
+    margin-bottom: 4px;
+}
+
+.nav-link,
+.nav-toggle {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 12px;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.nav-link i,
+.nav-toggle i:first-child {
+    font-size: 1.25rem;
+    width: 25px;
+    text-align: center;
+    color: var(--sky-blue);
+}
+
+.nav-link:hover,
+.nav-toggle:hover {
+    background: rgba(0, 120, 212, 0.15);
+    color: white;
+    transform: translateX(5px);
+}
+
+.nav-link.active {
+    background: var(--sky-blue);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 120, 212, 0.3);
+}
+
+.nav-link.active i {
+    color: white;
+}
+
+.nav-toggle .toggle-icon {
+    margin-left: auto;
+    font-size: 0.75rem;
+    transition: transform 0.3s;
+}
+
+.nav-toggle.expanded .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.nav-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+    padding-left: 45px;
+}
+
+.nav-submenu.expanded {
+    max-height: 1000px;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.nav-submenu .nav-link {
+    font-size: 0.85rem;
+    padding: 8px 10px;
+}
+
+/* ============================================
+   5. FOOTER & USER PROFILE
+   ============================================ */
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid var(--glass-border);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: var(--sky-blue);
+    color: white;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-10deg);
+}
+
+.user-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.user-role a {
+    font-size: 0.75rem;
+    color: var(--sky-blue);
+    text-decoration: none;
+}
+
+.premium-sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.premium-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(0, 120, 212, 0.3);
+    border-radius: 10px;
+}

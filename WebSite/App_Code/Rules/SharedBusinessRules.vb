@@ -1023,10 +1023,35 @@ Namespace eZee.Web
                 Else
                     Context.Response.Redirect("~/help/Expires.aspx")
                 End If
+
+                ' التحقق من اقتراب تاريخ الانتهاء (قبل 30 يوم) - يظهر للجميع حتى في ساس ووايت سكاي
+                Dim daysRemaining As Long = DateDiff(DateInterval.Day, d, DateValue("2026-01-30"))
+                If daysRemaining <= 30 AndAlso daysRemaining > 0 Then
+                    Dim warningMsg As String = "تنبيه: ستنتهي صلاحية الترخيص خلال " & daysRemaining & " يوم. يرجى التواصل مع الإدارة لتجديد الاشتراك."
+                    
+                    ' تحديد طريقة العرض بناءً على الصفحة
+                    Dim script As String = ""
+                    If Me.Page.AppRelativeVirtualPath.ToLower().Contains("home.aspx") Then
+                        ' عرض في الفوتر لصفحة الهوم
+                        script = "setTimeout(function() { " &
+                                 "var footer = document.getElementById('license-footer-warning'); " &
+                                 "var text = document.getElementById('license-warning-text'); " &
+                                 "if(footer && text) { text.innerText = '" & warningMsg & "'; footer.style.display = 'block'; } " &
+                                 "}, 1000);"
+                    Else
+                        ' عرض كتنبيه في باقي الصفحات
+                        script = "setTimeout(function() { if(window.showNotification) { window.showNotification('" & warningMsg & "', 'warning'); } else { alert('" & warningMsg & "'); } }, 2000);"
+                    End If
+                    
+                    Me.Page.ClientScript.RegisterStartupScript(Me.GetType(), "LicenseWarning", script, True)
+                End If
+
 				Dim hostName As String = HttpContext.Current.Request.Url.Host
                 If System.Text.RegularExpressions.Regex.IsMatch(hostName, "^[a-z0-9]+\.(saskw\.net|wytsky\.com|wytsky\.net|whitesky\.tech|skyaierp\.com)$") Then
+                    ' في نطاقات ساس ووايت سكاي، لا يتوقف السيرفر أبداً
 				Else
-                    If DateValue(d.ToString) > DateValue("2025-12-12") Then
+                    ' في النطاقات الأخرى، يتوقف السيرفر بعد انتهاء التاريخ
+                    If DateValue(d.ToString) > DateValue("2026-01-30") Then
                         Dim filepathlic2 As String
                         filepathlic2 = HttpContext.Current.Server.MapPath("~/help/Stimulsoft.compare.dll")
                         Dim file As System.IO.StreamWriter

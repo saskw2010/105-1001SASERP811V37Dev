@@ -310,8 +310,10 @@ Namespace eZee.Security
                 m_UserId = Guid.Empty
                 If (HttpContext.Current.User.Identity.IsAuthenticated AndAlso Not (HttpContext.Current.User.Identity.GetType().Equals(GetType(System.Security.Principal.WindowsIdentity)))) Then
                     Dim user As MembershipUser = Membership.GetUser()
-                    m_UserId = Convert.ToString(user.ProviderUserKey)
-                    m_Email = user.Email
+                    If (Not (user) Is Nothing) Then
+                        m_UserId = Convert.ToString(user.ProviderUserKey)
+                        m_Email = user.Email
+                    End If
                 End If
             End If
         End Sub
